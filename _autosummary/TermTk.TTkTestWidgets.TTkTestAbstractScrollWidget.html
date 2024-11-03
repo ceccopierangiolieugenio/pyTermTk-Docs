@@ -1,0 +1,1193 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TTkTestAbstractScrollWidget &#8212; pyTermTk 0.40.0-a
+ documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=60f23d94"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget';</script>
+    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TTkTestWidget" href="TermTk.TTkTestWidgets.TTkTestWidget.html" />
+    <link rel="prev" title="TTkLogViewer" href="TermTk.TTkTestWidgets.TTkLogViewer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyTermTk 0.40.0-a
+ documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to pyTermTk’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/000-examples.html">pyTermTk - &lt; <strong>the Examples</strong> &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/001-helloworld.html">pyTermTk - Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/002-layout.html">pyTermTk - Layouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/003-signalslots.html">pyTermTk - Signal &amp; Slots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/004-logging.html">pyTermTk - Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/005-calculator.html">pyTermTk - Your first Calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/ttkDesigner/textEdit/README.html">ttkDesigner - Your first TextEditor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../info/features/index.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../info/features/crosscompatible.html">Cross Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../info/features/widgets.html">Widgets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dev</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../info/installing.html">Installation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../info/debug.html">Debug</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../info/resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../info/resources/clipboard.html">Clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info/resources/modal.html">Overlay Widgets (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info/resources/dragdrop.html">Drag and Drop</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkAbstract.html">TermTk.TTkAbstract</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractItemModel.html">TTkAbstractItemModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html">TTkAbstractScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html">TTkAbstractScrollView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html">TTkAbstractScrollViewGridLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html">TTkAbstractScrollViewInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html">TTkAbstractTableModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkAbstract.TTkModelIndex.html">TTkModelIndex</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkCore.html">TermTk.TTkCore</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTk.html">TTk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkAlternateColor.html">TTkAlternateColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkCanvas.html">TTkCanvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkGlbl.html">TTkGlbl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkHelper.html">TTkHelper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkK.html">TTkK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkLinearGradient.html">TTkLinearGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkLog.html">TTkLog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkPropertyAnimation.html">TTkPropertyAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkShortcut.html">TTkShortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkString.html">TTkString</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkTimer.html">TTkTimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.TTkUtil.html">TTkUtil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkToolTip.html">TTkToolTip</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkLayouts.html">TermTk.TTkLayouts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html">TTkGridLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkHBoxLayout.html">TTkHBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">TTkTestAbstractScrollWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkTestWidgets.TTkTestWidget.html">TTkTestWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkTestWidgets.TTkTestWidgetSizes.html">TTkTestWidgetSizes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkUiTools.html">TermTk.TTkUiTools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkUiTools.TTkUiLoader.html">TTkUiLoader</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkWidgets.html">TermTk.TTkWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkAbout.html">TTkAbout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkAbstractListItem.html">TTkAbstractListItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkAppTemplate.html">TTkAppTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkButton.html">TTkButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkCheckbox.html">TTkCheckbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkComboBox.html">TTkComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html">TTkContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkFrame.html">TTkFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkGraph.html">TTkGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkImage.html">TTkImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkKodeTab.html">TTkKodeTab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkLabel.html">TTkLabel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkLineEdit.html">TTkLineEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkList.html">TTkList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html">TTkListWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkMenu.html">TTkMenu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkMenuBarButton.html">TTkMenuBarButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkMenuBarLayout.html">TTkMenuBarLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkMenuButton.html">TTkMenuButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPadding.html">TTkPadding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkRadioButton.html">TTkRadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkResizableFrame.html">TTkResizableFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkScrollArea.html">TTkScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkScrollBar.html">TTkScrollBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkSlider.html">TTkSlider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkSpacer.html">TTkSpacer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkSpinBox.html">TTkSpinBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkSplitter.html">TTkSplitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTabBar.html">TTkTabBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTabButton.html">TTkTabButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTabWidget.html">TTkTabWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEdit.html">TTkTextEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html">TTkTextEditView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html">TTkWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkWindow.html">TTkWindow</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.html">TermTk.TTkWidgets.Fancy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyProgressBar.html">TTkFancyProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyTable.html">TTkFancyTable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyTableView.html">TTkFancyTableView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyTree.html">TTkFancyTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyTreeView.html">TTkFancyTreeView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyTreeWidget.html">TTkFancyTreeWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkFancyTreeWidgetItem.html">TTkFancyTreeWidgetItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.Fancy.TTkLookAndFeelFPBar.html">TTkLookAndFeelFPBar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.html">TermTk.TTkWidgets.TTkModelView</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTree.html">TTkFileTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html">TTkFileTreeWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html">TTkFileTreeWidgetItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html">TTkHeaderView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTable.html">TTkTable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableModelCSV.html">TTkTableModelCSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html">TTkTableModelList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html">TTkTableWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTree.html">TTkTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html">TTkTreeWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html">TTkTreeWidgetItem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.html">TermTk.TTkWidgets.TTkPickers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker.html">TTkColorButtonPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker.html">TTkColorDialogPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html">TTkFileButtonPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkFileDialog.html">TTkFileDialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html">TTkFileDialogPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html">TTkMessageBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.html">TTkTextDialogPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkTextPicker.html">TTkTextPicker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.html">TermTk.TTkWidgets.TTkTerminal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html">TTkTerminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html">TTkTerminalHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html">TTkTerminalView</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.html">TermTk.TTkWidgets.TTkModelView</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTree.html">TTkFileTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html">TTkFileTreeWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html">TTkFileTreeWidgetItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html">TTkHeaderView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTable.html">TTkTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableModelCSV.html">TTkTableModelCSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html">TTkTableModelList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html">TTkTableWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTree.html">TTkTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html">TTkTreeWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html">TTkTreeWidgetItem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.html">TermTk.TTkWidgets.TTkPickers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker.html">TTkColorButtonPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker.html">TTkColorDialogPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html">TTkFileButtonPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkFileDialog.html">TTkFileDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html">TTkFileDialogPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html">TTkMessageBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.html">TTkTextDialogPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkTextPicker.html">TTkTextPicker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.html">TermTk.TTkWidgets.TTkTerminal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html">TTkTerminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html">TTkTerminalHelper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html">TTkTerminalView</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_autosummary/TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TTkTestAbstractScrollWidget</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget"><code class="docutils literal notranslate"><span class="pre">TTkTestAbstractScrollWidget</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.closed"><code class="docutils literal notranslate"><span class="pre">closed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewChanged"><code class="docutils literal notranslate"><span class="pre">viewChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewMovedTo"><code class="docutils literal notranslate"><span class="pre">viewMovedTo</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewSizeChanged"><code class="docutils literal notranslate"><span class="pre">viewSizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mousePressEvent"><code class="docutils literal notranslate"><span class="pre">mousePressEvent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mouseReleaseEvent"><code class="docutils literal notranslate"><span class="pre">mouseReleaseEvent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewDisplayedSize"><code class="docutils literal notranslate"><span class="pre">viewDisplayedSize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewFullAreaSize"><code class="docutils literal notranslate"><span class="pre">viewFullAreaSize()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttktestabstractscrollwidget-attributes">TTkTestAbstractScrollWidget Attributes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ttktestabstractscrollwidget">
+<h1>TTkTestAbstractScrollWidget<a class="headerlink" href="#ttktestabstractscrollwidget" title="Link to this heading"><span>🌶️</span></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTestAbstractScrollWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkTestWidgets/testabstractscroll.html#TTkTestAbstractScrollWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.abstractscrollview.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
+<section id="signals">
+<h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.closed" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
+<td><p>This signal is emitted whenever the widget is closed</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.currentStyleChanged" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.currentStyleChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></p></td>
+<td><p>This signal is emitted whenever the widget stye change</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.focusChanged" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.focusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusChanged</span></code></a></p></td>
+<td><p>This signal is emitted whenever the focus status change i.e. with the <code class="xref py py-meth docutils literal notranslate"><span class="pre">setFocus()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">clearFocus()</span></code> methods.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.sizeChanged" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.sizeChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></p></td>
+<td><p>This signal is emitted whenever the widget size change</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewChanged" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewChanged</span></code></a></p></td>
+<td><p>This signal is emitted whenever there is a change in the view content topology (size,pos)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewMovedTo" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewMovedTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMovedTo</span></code></a></p></td>
+<td><p>This signal is emitted when the view content move to a new position (x,y),</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewSizeChanged" title="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewSizeChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewSizeChanged</span></code></a></p></td>
+<td><p>This signal is emitted when the view content size changed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="slots">
+<h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMoveTo</span></code>(x, y)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
+<td><p>hide the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code>()</p></td>
+<td><p>show the widget</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
+<td><p>Close (Destroy/Remove) the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
+<td><p>hide the widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerWidget</span></code>()</p></td>
+<td><p>Lower the Widget below its relatives</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseWidget</span></code>([raiseParent])</p></td>
+<td><p>Raise the Widget above its relatives</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabled</span></code>([disabled])</p></td>
+<td><p>This property holds whether the widget is disnabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code>([enabled])</p></td>
+<td><p>This property holds whether the widget is enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code>()</p></td>
+<td><p>Focus the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisible</span></code>(visible)</p></td>
+<td><p>Set the visibility status of this widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code>()</p></td>
+<td><p>show the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
+<td><p>Notify the drawing routine that the widget changed and needs to draw its new content.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="members">
+<h2>Members<a class="headerlink" href="#members" title="Link to this heading"><span>🌶️</span></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.closed">
+<span class="sig-name descname"><span class="pre">closed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.closed" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever the widget is closed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>widget</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><em>TTkWidget</em></a>) – the widget closed (=self)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.currentStyleChanged">
+<span class="sig-name descname"><span class="pre">currentStyleChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.currentStyleChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever the widget stye change</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>style</strong> (<em>dict</em>) – the new style applied</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.focusChanged">
+<span class="sig-name descname"><span class="pre">focusChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.focusChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever the focus status change
+i.e. with the <code class="xref py py-meth docutils literal notranslate"><span class="pre">setFocus()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">clearFocus()</span></code> methods</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>status</strong> (<em>bool</em>) – the curent focus status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.sizeChanged">
+<span class="sig-name descname"><span class="pre">sizeChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.sizeChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever the widget size change</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – the new widget width</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the new widget height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewChanged">
+<span class="sig-name descname"><span class="pre">viewChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever there is a change in the view content topology (size,pos)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This signal must be implemented in any implementation
+of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a> to notify that the view content boudaries changed</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewMovedTo">
+<span class="sig-name descname"><span class="pre">viewMovedTo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewMovedTo" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when the view content move to a new position (x,y),</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – the new horizontal offset</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – the new vertical offset</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewSizeChanged">
+<span class="sig-name descname"><span class="pre">viewSizeChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewSizeChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when the view content size changed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – the new width</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the new heighht</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mousePressEvent">
+<span class="sig-name descname"><span class="pre">mousePressEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkTestWidgets/testabstractscroll.html#TTkTestAbstractScrollWidget.mousePressEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mousePressEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This event handler, can be reimplemented in a subclass to receive mouse press events for the widget.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>evt</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code>) – The mouse event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>True</strong> if the event has been handled</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mouseReleaseEvent">
+<span class="sig-name descname"><span class="pre">mouseReleaseEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkTestWidgets/testabstractscroll.html#TTkTestAbstractScrollWidget.mouseReleaseEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mouseReleaseEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This event handler, can be reimplemented in a subclass to receive mouse release events for the widget.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>evt</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code>) – The mouse event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>True</strong> if the event has been handled</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewDisplayedSize">
+<span class="sig-name descname"><span class="pre">viewDisplayedSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkTestWidgets/testabstractscroll.html#TTkTestAbstractScrollWidget.viewDisplayedSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewDisplayedSize" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewFullAreaSize">
+<span class="sig-name descname"><span class="pre">viewFullAreaSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkTestWidgets/testabstractscroll.html#TTkTestAbstractScrollWidget.viewFullAreaSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewFullAreaSize" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd></dd></dl>
+
+<p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
+<td><p>Convenience function, Event Callback triggered after a successful resize</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
+<td><p>Notify the drawing routine that the widget changed and needs to draw its new content.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMoveTo</span></code>(x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code>(evt)</p></td>
+<td><p>This event handler, can be reimplemented in a subclass to receive mouse wheel events for the widget.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addWidget</span></code>(widget)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPadding</span></code>()</p></td>
+<td><p>Retrieve the <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a>'s paddings sizes as shown in <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#container-layout-topology"><span class="std std-ref">Layout Topology</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getWidgetByName</span></code>(name)</p></td>
+<td><p>Return the widget from its name.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
+<td><p>hide the widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">layout</span></code>()</p></td>
+<td><p>Get the <a class="reference internal" href="../tutorial/002-layout.html#layout-tutorial-intro"><span class="std std-ref">Layout</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumHeight</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumWidth</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumHeight</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumWidth</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseEvent</span></code>(evt)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintChildCanvas</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidget</span></code>(widget)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rootLayout</span></code>()</p></td>
+<td><p>This is a root layout mainly used to place items that are not supposed to be inside the main layout (i.e. the menu elements).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentStyle</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLayout</span></code>(layout)</p></td>
+<td><p>Set the <a class="reference internal" href="../tutorial/002-layout.html#layout-tutorial-intro"><span class="std std-ref">Layout</span></a> used by this widget to place all the child widgets.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPadding</span></code>(top, bottom, left, right)</p></td>
+<td><p>Set the <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a>'s paddings sizes as shown in <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#container-layout-topology"><span class="std std-ref">Layout Topology</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code>()</p></td>
+<td><p>show the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
+<td><p>Notify the drawing routine that the widget changed and needs to draw its new content.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearFocus</span></code>()</p></td>
+<td><p>Remove the Focus state of this widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
+<td><p>Close (Destroy/Remove) the widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentStyle</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">disableWidgetCursor</span></code>([disable])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">enableWidgetCursor</span></code>([enable])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusInEvent</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusPolicy</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getCanvas</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPixmap</span></code>()</p></td>
+<td><p>Convenience function which return a pixmap representing the current widget status</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getWidgetByName</span></code>(name)</p></td>
+<td><p>Return the widget from its name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasFocus</span></code>()</p></td>
+<td><p>This property holds the focus status of this widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
+<td><p>hide the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEnabled</span></code>()</p></td>
+<td><p>This property holds whether the widget is enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEntered</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isVisible</span></code>()</p></td>
+<td><p>Retrieve the visibility status of this widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isVisibleAndParent</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerWidget</span></code>()</p></td>
+<td><p>Lower the Widget below its relatives</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxDimension</span></code>(orientation)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumHeight</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumSize</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumWidth</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mergeStyle</span></code>(style)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minDimension</span></code>(orientation)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumHeight</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumSize</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumWidth</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseEvent</span></code>(evt)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">move</span></code>(x, y)</p></td>
+<td><p>Move the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveEvent</span></code>(x, y)</p></td>
+<td><p>Convenience function, Event Callback triggered after a successful move</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintChildCanvas</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code>(canvas)</p></td>
+<td><p>Paint Event callback, this need to be overridden in the widget.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentWidget</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pasteEvent</span></code>(txt)</p></td>
+<td><p>Callback triggered when a paste event is forwarded to this widget.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pos</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseWidget</span></code>([raiseParent])</p></td>
+<td><p>Raise the Widget above its relatives</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code>(width, height)</p></td>
+<td><p>Resize the widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
+<td><p>Convenience function, Event Callback triggered after a successful resize</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentStyle</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDefaultSize</span></code>(arg, width, height)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabled</span></code>([disabled])</p></td>
+<td><p>This property holds whether the widget is disnabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code>([enabled])</p></td>
+<td><p>This property holds whether the widget is enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code>()</p></td>
+<td><p>Focus the widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocusPolicy</span></code>(policy)</p></td>
+<td><p>This property holds the way the widget accepts keyboard focus</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, width, height)</p></td>
+<td><p>Resize and move the widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumHeight</span></code>(maxh)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumSize</span></code>(maxw, maxh)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumWidth</span></code>(maxw)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumHeight</span></code>(minh)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumSize</span></code>(minw, minh)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumWidth</span></code>(minw)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setName</span></code>(name)</p></td>
+<td><p>Set the name of this Instance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyle</span></code>([style])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setToolTip</span></code>(toolTip)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisible</span></code>(visible)</p></td>
+<td><p>Set the visibility status of this widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWidgetCursor</span></code>([pos, type])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code>()</p></td>
+<td><p>show the widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolTip</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
+<td><p>Notify the drawing routine that the widget changed and needs to draw its new content.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">widgetItem</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">x</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</dd></dl>
+
+<section id="ttktestabstractscrollwidget-attributes">
+<h2>TTkTestAbstractScrollWidget Attributes<a class="headerlink" href="#ttktestabstractscrollwidget-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ID</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TermTk.TTkTestWidgets.TTkLogViewer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TTkLogViewer</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TermTk.TTkTestWidgets.TTkTestWidget.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TTkTestWidget</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget"><code class="docutils literal notranslate"><span class="pre">TTkTestAbstractScrollWidget</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.closed"><code class="docutils literal notranslate"><span class="pre">closed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewChanged"><code class="docutils literal notranslate"><span class="pre">viewChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewMovedTo"><code class="docutils literal notranslate"><span class="pre">viewMovedTo</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewSizeChanged"><code class="docutils literal notranslate"><span class="pre">viewSizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mousePressEvent"><code class="docutils literal notranslate"><span class="pre">mousePressEvent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.mouseReleaseEvent"><code class="docutils literal notranslate"><span class="pre">mouseReleaseEvent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewDisplayedSize"><code class="docutils literal notranslate"><span class="pre">viewDisplayedSize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.viewFullAreaSize"><code class="docutils literal notranslate"><span class="pre">viewFullAreaSize()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttktestabstractscrollwidget-attributes">TTkTestAbstractScrollWidget Attributes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eugenio Parodi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021, Eugenio Parodi.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
