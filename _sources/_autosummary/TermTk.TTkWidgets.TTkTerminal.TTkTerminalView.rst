@@ -93,13 +93,6 @@ TTkTerminalView
    
 
    
-   .. automethod:: keyEvent
-   .. automethod:: mouseDoubleClickEvent
-   .. automethod:: mouseDragEvent
-   .. automethod:: mouseMoveEvent
-   .. automethod:: mousePressEvent
-   .. automethod:: mouseReleaseEvent
-   .. automethod:: mouseTapEvent
    .. automethod:: termSize
    .. automethod:: termWrite
    .. automethod:: viewDisplayedSize
@@ -222,7 +215,39 @@ TTkTerminalView
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

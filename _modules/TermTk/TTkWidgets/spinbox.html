@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -596,18 +601,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">))</span>
 
-<div class="viewcode-block" id="TTkSpinBox.wheelEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSpinBox.html#TermTk.TTkWidgets.TTkSpinBox.wheelEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">wheelEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WHEEL_Up</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkSpinBox.keyEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSpinBox.html#TermTk.TTkWidgets.TTkSpinBox.keyEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Up</span><span class="p">:</span>
@@ -616,11 +616,8 @@
             <span class="k">elif</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Down</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="n">TTkLineEdit</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineEdit</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">TTkLineEdit</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineEdit</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span>
 
-
-<div class="viewcode-block" id="TTkSpinBox.mousePressEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSpinBox.html#TermTk.TTkWidgets.TTkSpinBox.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
@@ -635,17 +632,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouseDelta</span> <span class="o">=</span> <span class="n">y</span><span class="o">-</span><span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_valueDelta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkSpinBox.mouseDragEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSpinBox.html#TermTk.TTkWidgets.TTkSpinBox.mouseDragEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="o">-</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draggable</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_valueDelta</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mouseDelta</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">True</span></div>
-
+            <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">setEnabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineEdit</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">enabled</span><span class="p">)</span>

@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -811,8 +816,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">contentSize</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="TTkTreeWidget.mouseDoubleClickEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.mouseDoubleClickEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDoubleClickEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -851,14 +854,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">itemActivated</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">focusOutEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="TTkTreeWidget.mousePressEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -906,11 +906,8 @@
                     <span class="k">break</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">itemClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkTreeWidget.mouseDragEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.mouseDragEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="c1">#    columnPos       (Selected = 2)</span>
         <span class="c1">#        0       1        2          3   4</span>
@@ -937,8 +934,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
-
+        <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">_alignWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">y</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">):</span>

@@ -100,9 +100,7 @@ TTkTabWidget
    .. automethod:: addTab
    .. automethod:: count
    .. automethod:: currentWidget
-   .. automethod:: dropEvent
    .. automethod:: insertTab
-   .. automethod:: keyEvent
    .. automethod:: removeTab
    .. automethod:: setCurrentWidget
    .. automethod:: widget
@@ -231,7 +229,39 @@ TTkTabWidget
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

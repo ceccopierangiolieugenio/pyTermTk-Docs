@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -641,8 +646,6 @@
 
     <span class="c1"># This is a hack to force the action aftet the keypress</span>
     <span class="c1"># And not key release as normally happen to the button</span>
-<div class="viewcode-block" id="TTkTabButton.mousePressEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html#TermTk.TTkWidgets.TTkTabButton.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -653,10 +656,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closable</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">w</span><span class="o">-</span><span class="mi">4</span><span class="o">&lt;=</span><span class="n">x</span><span class="o">&lt;</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_closeButtonPressed</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseReleaseEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TTkTabButton.mouseReleaseEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html#TermTk.TTkWidgets.TTkTabButton.mouseReleaseEvent">[docs]</a>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseReleaseEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -665,10 +665,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">closeClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_closeButtonPressed</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
-
-<div class="viewcode-block" id="TTkTabButton.mouseDragEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html#TermTk.TTkWidgets.TTkTabButton.mouseDragEvent">[docs]</a>
+        <span class="k">return</span> <span class="kc">False</span>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">drag</span> <span class="o">=</span> <span class="n">TTkDrag</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_closeButtonPressed</span> <span class="o">=</span> <span class="kc">False</span>
@@ -688,8 +685,7 @@
                     <span class="n">drag</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
                     <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
                     <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseDragEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span></div>
-
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseDragEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
@@ -1028,18 +1024,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentIndex</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updateTabs</span><span class="p">()</span>
 
-<div class="viewcode-block" id="TTkTabBar.wheelEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.wheelEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">wheelEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WHEEL_Up</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_moveToTheLeft</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_andMoveToTheRight</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkTabBar.keyEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.keyEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Right</span><span class="p">:</span>
@@ -1055,8 +1046,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_currentIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_updateTabs</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
-
+        <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
@@ -1201,14 +1191,9 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">widget</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
 
-<div class="viewcode-block" id="TTkTabWidget.keyEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.keyEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabBar</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabBar</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
 
-
-<div class="viewcode-block" id="TTkTabWidget.dropEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.dropEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
@@ -1242,8 +1227,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_tabChanged</span><span class="p">(</span><span class="n">newIndex</span><span class="p">)</span>
 
         <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
+        <span class="k">return</span> <span class="kc">True</span>
 
 <div class="viewcode-block" id="TTkTabWidget.addMenu">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.addMenu">[docs]</a>

@@ -104,8 +104,6 @@ TTkSplitter
    .. automethod:: indexOf
    .. automethod:: insertItem
    .. automethod:: insertWidget
-   .. automethod:: mouseDragEvent
-   .. automethod:: mousePressEvent
    .. automethod:: orientation
    .. automethod:: removeItem
    .. automethod:: replaceItem
@@ -221,7 +219,39 @@ TTkSplitter
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

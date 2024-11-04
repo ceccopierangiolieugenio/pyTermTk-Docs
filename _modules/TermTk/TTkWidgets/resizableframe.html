@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -494,8 +499,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setFocusPolicy</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="TTkResizableFrame.mousePressEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkResizableFrame.html#TermTk.TTkWidgets.TTkResizableFrame.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_resizable</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouseDelta</span> <span class="o">=</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
@@ -513,11 +516,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_resizable</span> <span class="o">|=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">BOTTOM</span>
         <span class="c1"># TTkLog.debug(f&quot;{(x,y)} - {self._resizable}&quot;)</span>
         <span class="c1">#return self._resizable != TTkK.NONE</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkResizableFrame.mouseDragEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkResizableFrame.html#TermTk.TTkWidgets.TTkResizableFrame.mouseDragEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resizable</span><span class="p">:</span>
             <span class="c1"># TTkLog.debug(f&quot;{self._resizable}&quot;)</span>
@@ -548,7 +548,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
-</div>
 
 </pre></div>
 

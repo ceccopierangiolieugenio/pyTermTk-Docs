@@ -110,9 +110,7 @@ TTkComboBox
    .. automethod:: currentText
    .. automethod:: insertPolicy
    .. automethod:: isEditable
-   .. automethod:: keyEvent
    .. automethod:: lineEdit
-   .. automethod:: mousePressEvent
    .. automethod:: setCurrentIndex
    .. automethod:: setCurrentText
    .. automethod:: setEditText
@@ -120,7 +118,6 @@ TTkComboBox
    .. automethod:: setInsertPolicy
    .. automethod:: setTextAlign
    .. automethod:: textAlign
-   .. automethod:: wheelEvent
 
    
 
@@ -228,7 +225,39 @@ TTkComboBox
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

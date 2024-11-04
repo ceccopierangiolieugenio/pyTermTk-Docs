@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -1382,13 +1387,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_hSeparatorSelected</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_vSeparatorSelected</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="TTkTableWidget.leaveEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.leaveEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">leaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hoverPos</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">leaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span></div>
-
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">leaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkTableWidget.setColumnWidth">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setColumnWidth">[docs]</a>
@@ -1744,8 +1746,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">viewMoveTo</span><span class="p">(</span><span class="n">ox</span><span class="p">,</span><span class="n">oy</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<div class="viewcode-block" id="TTkTableWidget.keyEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.keyEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="c1"># rows = self._tableModel.rowCount()</span>
         <span class="n">cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableModel</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()</span>
@@ -1795,12 +1795,9 @@
             <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tableModel</span><span class="o">.</span><span class="n">flags</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="o">.</span><span class="n">ItemIsEditable</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_tableModel_setData</span><span class="p">([(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="p">)])</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_editCell</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">richEditSupport</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
 
-
-<div class="viewcode-block" id="TTkTableWidget.mouseDoubleClickEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.mouseDoubleClickEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDoubleClickEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -1840,11 +1837,8 @@
         <span class="n">row</span><span class="p">,</span><span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_findCell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cellDoubleClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_editCell</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkTableWidget.mouseMoveEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.mouseMoveEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -1875,11 +1869,8 @@
         <span class="k">if</span> <span class="n">row</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">col</span><span class="o">&gt;&gt;</span><span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cellEntered</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkTableWidget.mousePressEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -1959,11 +1950,8 @@
                               <span class="n">flags</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TTkItemSelectionModel</span><span class="o">.</span><span class="n">Clear</span> <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="ow">and</span>  <span class="n">_ctrl</span><span class="p">)</span> <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TTkItemSelectionModel</span><span class="o">.</span><span class="n">Select</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hoverPos</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkTableWidget.mouseDragEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.mouseDragEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="c1">#     columnPos       (Selected = 2)</span>
         <span class="c1">#         0       1        2          3   4</span>
@@ -2012,11 +2000,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="kc">False</span>
 
-
-<div class="viewcode-block" id="TTkTableWidget.mouseReleaseEvent">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.mouseReleaseEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span><span class="p">:</span>
             <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableModel</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()</span>
@@ -2048,8 +2033,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_hoverPos</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="c1">#</span>
     <span class="c1">#   -1  X</span>

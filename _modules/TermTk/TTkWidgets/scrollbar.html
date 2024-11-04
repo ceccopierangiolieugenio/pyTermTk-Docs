@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -594,8 +599,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_screenPgUp</span> <span class="o">=</span>     <span class="p">(</span> <span class="n">bb</span><span class="o">+</span><span class="mi">1</span> <span class="p">,</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
         <span class="c1"># TTkLog.debug(f&quot;aa:{aa} bb:{bb}, a:{a}, size2:{size2}&quot;)</span>
 
-<div class="viewcode-block" id="TTkScrollBar.wheelEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkScrollBar.html#TermTk.TTkWidgets.TTkScrollBar.wheelEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">wheelEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WHEEL_Up</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_pageStep</span>
@@ -603,11 +606,8 @@
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_pageStep</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_minimum</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maximum</span><span class="p">,</span><span class="n">value</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sliderMoved</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkScrollBar.mousePressEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkScrollBar.html#TermTk.TTkWidgets.TTkScrollBar.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
             <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span>
@@ -631,11 +631,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sliderMoved</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkScrollBar.mouseDragEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkScrollBar.html#TermTk.TTkWidgets.TTkScrollBar.mouseDragEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draggable</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
@@ -655,8 +652,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_minimum</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maximum</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_minimum</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sliderMoved</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
         <span class="c1"># TTkLog.debug(f&quot;m={mouse}, md:{self._mouseDelta}, aa:{aa}&quot;)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
+        <span class="k">return</span> <span class="kc">True</span>
 
 
     <span class="k">def</span> <span class="nf">focusInEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

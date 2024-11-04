@@ -134,13 +134,7 @@ TTkTextEditView
    .. automethod:: isReadOnly
    .. automethod:: isRedoAvailable
    .. automethod:: isUndoAvailable
-   .. automethod:: keyEvent
    .. automethod:: lineWrapMode
-   .. automethod:: mouseDoubleClickEvent
-   .. automethod:: mouseDragEvent
-   .. automethod:: mousePressEvent
-   .. automethod:: mouseReleaseEvent
-   .. automethod:: mouseTapEvent
    .. automethod:: multiLine
    .. automethod:: paste
    .. automethod:: redo
@@ -278,7 +272,39 @@ TTkTextEditView
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

@@ -158,14 +158,7 @@ TTkTableWidget
    .. automethod:: isRedoAvailable
    .. automethod:: isSortingEnabled
    .. automethod:: isUndoAvailable
-   .. automethod:: keyEvent
-   .. automethod:: leaveEvent
    .. automethod:: model
-   .. automethod:: mouseDoubleClickEvent
-   .. automethod:: mouseDragEvent
-   .. automethod:: mouseMoveEvent
-   .. automethod:: mousePressEvent
-   .. automethod:: mouseReleaseEvent
    .. automethod:: paste
    .. automethod:: redo
    .. automethod:: resizeColumnToContents
@@ -309,7 +302,39 @@ TTkTableWidget
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

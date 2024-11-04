@@ -235,7 +235,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
@@ -635,19 +640,14 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<div class="viewcode-block" id="TTkLineEdit.mousePressEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.mousePressEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">txtPos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">tabCharPos</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cursorPos</span>     <span class="o">=</span> <span class="n">txtPos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionFrom</span> <span class="o">=</span> <span class="n">txtPos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionTo</span>   <span class="o">=</span> <span class="n">txtPos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pushCursor</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkLineEdit.mouseDragEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.mouseDragEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">txtPos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">tabCharPos</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionFrom</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>              <span class="nb">min</span><span class="p">(</span><span class="n">txtPos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_cursorPos</span><span class="p">))</span>
@@ -656,11 +656,8 @@
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">hideCursor</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkLineEdit.mouseDoubleClickEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.mouseDoubleClickEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseDoubleClickEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">before</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cursorPos</span><span class="p">)</span>
         <span class="n">after</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cursorPos</span><span class="p">)</span>
@@ -684,11 +681,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="TTkLineEdit.mouseTapEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.mouseTapEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">mouseTapEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionFrom</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionTo</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
@@ -696,8 +690,7 @@
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">hideCursor</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_isFloat</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
@@ -760,8 +753,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">textEdited</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="TTkLineEdit.keyEvent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.keyEvent">[docs]</a>
     <span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">baseText</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">:</span>
@@ -843,8 +834,7 @@
         <span class="c1"># Emit event only if the text changed</span>
         <span class="k">if</span> <span class="n">baseText</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">textEdited</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">focusInEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pushCursor</span><span class="p">()</span>

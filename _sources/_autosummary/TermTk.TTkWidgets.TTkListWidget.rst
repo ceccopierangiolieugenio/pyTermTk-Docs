@@ -98,15 +98,9 @@ TTkListWidget
    .. automethod:: addItems
    .. automethod:: addItemsAt
    .. automethod:: dragDropMode
-   .. automethod:: dragEnterEvent
-   .. automethod:: dragLeaveEvent
-   .. automethod:: dragMoveEvent
-   .. automethod:: dropEvent
    .. automethod:: indexOf
    .. automethod:: itemAt
    .. automethod:: items
-   .. automethod:: keyEvent
-   .. automethod:: mouseDragEvent
    .. automethod:: moveItem
    .. automethod:: removeAt
    .. automethod:: removeItem
@@ -238,7 +232,39 @@ TTkListWidget
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 

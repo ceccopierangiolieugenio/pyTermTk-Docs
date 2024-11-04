@@ -110,9 +110,6 @@ TTkButton
    .. automethod:: border
    .. automethod:: isCheckable
    .. automethod:: isChecked
-   .. automethod:: keyEvent
-   .. automethod:: mousePressEvent
-   .. automethod:: mouseReleaseEvent
    .. automethod:: setCheckable
    .. automethod:: setChecked
    .. automethod:: setText
@@ -199,7 +196,39 @@ TTkButton
       y
    
    
+   Methods Inherited from: :py:class:`TMouseEvents`
+
+   .. autosummary::
+
    
+      enterEvent
+      leaveEvent
+      mouseDoubleClickEvent
+      mouseDragEvent
+      mouseMoveEvent
+      mousePressEvent
+      mouseReleaseEvent
+      mouseTapEvent
+      wheelEvent
+   
+   
+   Methods Inherited from: :py:class:`TKeyEvents`
+
+   .. autosummary::
+
+   
+      keyEvent
+   
+   
+   Methods Inherited from: :py:class:`TDragEvents`
+
+   .. autosummary::
+
+   
+      dragEnterEvent
+      dragLeaveEvent
+      dragMoveEvent
+      dropEvent
    
    
 
