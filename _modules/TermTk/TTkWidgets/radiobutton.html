@@ -507,6 +507,8 @@
 <span class="sd">    :type radiogroup: str, optional</span>
 <span class="sd">    :param bool checked: Checked status, defaults to &quot;False&quot;</span>
 <span class="sd">    :type checked: bool, optional</span>
+<span class="sd">    :param checkStatus: If defined, override the option defined in the &#39;checked&#39; field otherwise defaults to :py:class:`TTkK.CheckState.Checked` or :py:class:`TTkK.CheckState.Unchecked` based on the checked status</span>
+<span class="sd">    :type checkStatus: :py:class:`TTkK.CheckState` , optional</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">clicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
@@ -535,6 +537,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">radiogroup</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;DefaultGroup&#39;</span><span class="p">,</span>
                  <span class="n">checked</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">checkStatus</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">CheckState</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                  <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># Define Signals</span>
@@ -544,6 +547,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_radiogroup</span> <span class="o">=</span> <span class="n">radiogroup</span>
         <span class="c1"># self.checked = pyTTkSignal()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_checked</span> <span class="o">=</span> <span class="n">checked</span>
+        <span class="k">if</span> <span class="n">checkStatus</span> <span class="o">!=</span> <span class="kc">None</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checked</span> <span class="o">=</span> <span class="n">checkStatus</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Checked</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checked</span> <span class="o">=</span> <span class="n">checked</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
         <span class="n">TTkWidget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

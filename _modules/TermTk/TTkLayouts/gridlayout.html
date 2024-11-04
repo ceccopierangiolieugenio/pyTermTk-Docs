@@ -512,15 +512,18 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_gridItems&#39;</span><span class="p">,</span><span class="s1">&#39;_columnMinWidth&#39;</span><span class="p">,</span><span class="s1">&#39;_rowMinHeight&#39;</span><span class="p">,</span> <span class="s1">&#39;_rows&#39;</span><span class="p">,</span> <span class="s1">&#39;_cols&#39;</span><span class="p">,</span> <span class="s1">&#39;_horSizes&#39;</span><span class="p">,</span> <span class="s1">&#39;_verSizes&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">columnMinWidth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">rowMinHeight</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">TTkLayout</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span> <span class="o">=</span> <span class="p">[[]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_columnMinWidth</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;columnMinWidth&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rowMinHeight</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rowMinHeight&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_columnMinWidth</span> <span class="o">=</span> <span class="n">columnMinWidth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rowMinHeight</span> <span class="o">=</span> <span class="n">rowMinHeight</span>
+        <span class="n">TTkLayout</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_gridUsedsize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">rows</span> <span class="o">=</span> <span class="mi">0</span>

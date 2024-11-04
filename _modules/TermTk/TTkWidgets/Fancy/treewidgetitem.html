@@ -487,14 +487,17 @@
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_parent&#39;</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">,</span> <span class="s1">&#39;_children&#39;</span><span class="p">,</span> <span class="s1">&#39;_expand&#39;</span><span class="p">,</span> <span class="s1">&#39;_childIndicatorPolicy&#39;</span><span class="p">,</span>
         <span class="c1"># Signals</span>
         <span class="s1">&#39;refreshData&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                 <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">childIndicatorPolicy</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ChildIndicatorPolicy</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ChildIndicatorPolicy</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span>
+                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># Signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refreshData</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkFancyTreeWidgetItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_childIndicatorPolicy</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;childIndicatorPolicy&#39;</span><span class="p">,</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_childIndicatorPolicy</span> <span class="o">=</span> <span class="n">childIndicatorPolicy</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_expand</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parent&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
 
 <div class="viewcode-block" id="TTkFancyTreeWidgetItem.childIndicatorPolicy">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeWidgetItem.html#TermTk.TTkWidgets.Fancy.TTkFancyTreeWidgetItem.childIndicatorPolicy">[docs]</a>

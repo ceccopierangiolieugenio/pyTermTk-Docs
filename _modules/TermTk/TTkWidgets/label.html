@@ -497,6 +497,7 @@
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_text&#39;</span><span class="p">,</span> <span class="s1">&#39;_alignment&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                 <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">alignment</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT_ALIGN</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">TTkString</span><span class="p">):</span>
@@ -507,6 +508,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setDefaultSize</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">))</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">color</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textUpdated</span><span class="p">()</span>
 
 <div class="viewcode-block" id="TTkLabel.alignment">

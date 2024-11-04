@@ -493,7 +493,7 @@
         <span class="c1"># Signals</span>
         <span class="s1">&#39;wrapChanged&#39;</span>
         <span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span><span class="n">TTkTextDocument</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wrapChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
 
@@ -502,7 +502,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabSpaces</span> <span class="o">=</span> <span class="mi">4</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wrapWidth</span>     <span class="o">=</span> <span class="mi">80</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wordWrapMode</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WrapAnywhere</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setDocument</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;document&#39;</span><span class="p">,</span><span class="n">TTkTextDocument</span><span class="p">()))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">document</span><span class="p">:</span>
+            <span class="n">document</span> <span class="o">=</span> <span class="n">TTkTextDocument</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setDocument</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkTextWrap.setDocument">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.html#TermTk.TTkGui.TTkTextWrap.setDocument">[docs]</a>

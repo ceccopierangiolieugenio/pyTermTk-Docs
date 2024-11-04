@@ -546,7 +546,7 @@
             <span class="s1">&#39;bell&#39;</span><span class="p">,</span>
             <span class="s1">&#39;titleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;terminalClosed&#39;</span><span class="p">,</span> <span class="s1">&#39;textSelected&#39;</span><span class="p">,</span>
             <span class="s1">&#39;termData&#39;</span><span class="p">,</span><span class="s1">&#39;termResized&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bell</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">terminalClosed</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">titleChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
@@ -572,7 +572,7 @@
         <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_termLoop</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_termLoop</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">TTkAbstractScrollView</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_screen_alt</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
