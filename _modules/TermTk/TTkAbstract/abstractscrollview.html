@@ -511,7 +511,7 @@
     <span class="c1"># Override this function</span>
 <div class="viewcode-block" id="TTkAbstractScrollViewInterface.viewFullAreaSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewFullAreaSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This method returns the full widget area size of the :py:class:`TTkAbstractScrollViewInterface` implementation.</span>
 
@@ -528,7 +528,7 @@
     <span class="c1"># Override this function</span>
 <div class="viewcode-block" id="TTkAbstractScrollViewInterface.viewDisplayedSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This method returns the displayed size of the :py:class:`TTkAbstractScrollViewInterface` implementation.</span>
 
@@ -650,7 +650,7 @@
 
 <div class="viewcode-block" id="TTkAbstractScrollView.viewDisplayedSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
 
 
@@ -747,11 +747,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_excludeEvent</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">TTkLayout</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">_</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fullWidgetAreaGeometry</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span>
 
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">_</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span>
 
@@ -876,7 +876,7 @@
     <span class="c1"># Override this function</span>
 <div class="viewcode-block" id="TTkAbstractScrollViewGridLayout.viewFullAreaSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.viewFullAreaSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
         <span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterWidgets</span><span class="p">(</span><span class="n">recurse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">ww</span><span class="p">,</span><span class="n">wh</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">viewFullAreaSize</span><span class="p">()</span>
@@ -888,7 +888,7 @@
     <span class="c1"># Override this function</span>
 <div class="viewcode-block" id="TTkAbstractScrollViewGridLayout.viewDisplayedSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
         <span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterWidgets</span><span class="p">(</span><span class="n">recurse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">ww</span><span class="p">,</span><span class="n">wh</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">viewDisplayedSize</span><span class="p">()</span>

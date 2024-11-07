@@ -102,17 +102,25 @@ API Reference
    TTkWidgets.TTkPickers
    TTkWidgets.TTkTerminal
 
+.. #   TTkAbstract
+.. #   TTkCore
+.. #   TTkGui
+.. #   TTkLayouts
+.. #   TTkTemplates
+.. #   TTkTestWidgets
+.. #   TTkUiTools
+.. #   TTkWidgets
+.. #   TTkWidgets.TTkModelView
+.. #   TTkWidgets.TTkPickers
+.. #   TTkWidgets.TTkTerminal
+
 .. #.. autosummary::
 .. #   :caption: Classes:
 .. #   :toctree: _autosummary
 .. #   :template: custom-class-template.01.rst
 .. #
-.. #   TTkCore.TTkK
-.. #   TTkWidgets.TTkList
-.. #   TTkWidgets.TTkListWidget
-.. #   TTkWidgets.TTkTextEdit
-.. #   TTkWidgets.TTkTextEditView
-
+.. #   TTkCore.pyTTkSignal
+.. #   TTkCore.pyTTkSlot
 .. #
 .. #   TTkWidgets.TTkAppTemplate
 .. #   TTkWidgets.TTkMenuBar

@@ -21,7 +21,10 @@ TTkFileButtonPicker
       clicked
       closed
       currentStyleChanged
+      filePicked
       focusChanged
+      folderPicked
+      pathPicked
       sizeChanged
       toggled
    
@@ -68,7 +71,10 @@ TTkFileButtonPicker
    .. autoattribute:: clicked
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
+   .. autoattribute:: filePicked
    .. autoattribute:: focusChanged
+   .. autoattribute:: folderPicked
+   .. autoattribute:: pathPicked
    .. autoattribute:: sizeChanged
    .. autoattribute:: toggled
    
@@ -244,9 +250,7 @@ TTkFileButtonPicker Attributes
 
 
   classStyle
-  filePicked
   filesPicked
-  folderPicked
 
 .. currentmodule::  TermTk.TTkWidgets.TTkPickers
 
