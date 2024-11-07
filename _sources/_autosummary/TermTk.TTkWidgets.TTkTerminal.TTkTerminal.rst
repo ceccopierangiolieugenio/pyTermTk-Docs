@@ -14,6 +14,21 @@ TTkTerminal
    
 
    
+   Signals linked to: :py:class:`TTkTerminalView`
+
+   .. autosummary::
+   
+      TTkTerminalView.bell
+      TTkTerminalView.termData
+      TTkTerminalView.termResized
+      TTkTerminalView.terminalClosed
+      TTkTerminalView.textSelected
+      TTkTerminalView.titleChanged
+
+   
+   :py:class:`TTkTerminal` signals:
+   
+   
 
    
    .. autosummary::
@@ -83,6 +98,17 @@ TTkTerminal
    -------
    
 
+   
+   Methods linked to: :py:class:`TTkTerminalView`
+
+   .. autosummary::
+   
+      TTkTerminalView.termSize
+      TTkTerminalView.termWrite
+
+   
+   :py:class:`TTkTerminal` methods:
+   
    
 
 

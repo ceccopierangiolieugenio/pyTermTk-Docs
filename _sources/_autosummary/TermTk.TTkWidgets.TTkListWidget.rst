@@ -21,7 +21,9 @@ TTkListWidget
       closed
       currentStyleChanged
       focusChanged
+      itemClicked
       sizeChanged
+      textClicked
       viewChanged
       viewMovedTo
       viewSizeChanged
@@ -85,7 +87,9 @@ TTkListWidget
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
+   .. autoattribute:: itemClicked
    .. autoattribute:: sizeChanged
+   .. autoattribute:: textClicked
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
    .. autoattribute:: viewSizeChanged
@@ -121,7 +125,6 @@ TTkListWidget
    .. automethod:: setCurrentRow
    .. automethod:: setDragDropMode
    .. automethod:: setSelectionMode
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
 
    
@@ -134,8 +137,10 @@ TTkListWidget
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    
@@ -291,8 +296,6 @@ TTkListWidget Attributes
 
 
   classStyle
-  itemClicked
-  textClicked
 
 .. currentmodule::  TermTk.TTkWidgets
 

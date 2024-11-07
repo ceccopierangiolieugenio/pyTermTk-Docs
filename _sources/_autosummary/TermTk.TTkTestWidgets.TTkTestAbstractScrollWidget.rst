@@ -102,7 +102,6 @@ TTkTestAbstractScrollWidget
    
 
    
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
 
    
@@ -115,8 +114,10 @@ TTkTestAbstractScrollWidget
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    

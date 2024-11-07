@@ -150,6 +150,12 @@ TTkK Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkK
 
+.. autoclass::  SelectionMode
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkK
+
 .. autoclass::  ShortcutContext
    :show-inheritance:
    :members:
@@ -206,7 +212,6 @@ TTkK Attributes
   Character
   Checked
   ClickFocus
-  ContiguousSelection
   ControlModifier
   Cursor_Blinking_Bar
   Cursor_Blinking_Block
@@ -223,7 +228,6 @@ TTkK Attributes
   DontShowIndicator
   DontShowIndicatorWhenChildless
   Drag
-  ExtendedSelection
   FILLED
   FOOTER
   FixedWidth

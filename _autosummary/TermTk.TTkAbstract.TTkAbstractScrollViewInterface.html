@@ -33,7 +33,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -529,12 +529,21 @@
 <dt class="sig sig-object py" id="TermTk.TTkAbstract.TTkAbstractScrollViewInterface">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkAbstractScrollViewInterface</span></span><a class="reference internal" href="../_modules/TermTk/TTkAbstract/abstractscrollview.html#TTkAbstractScrollViewInterface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a> provide the basic interface that can be used in <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a> to enable on-demand scroll bars.</p>
+<p>When subclassing <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a>,
+you must implement <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewFullAreaSize" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewFullAreaSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">viewFullAreaSize()</span></code></a>, <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewDisplayedSize" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewDisplayedSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">viewDisplayedSize()</span></code></a>, <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.getViewOffsets" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.getViewOffsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getViewOffsets()</span></code></a>, and <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">viewMoveTo()</span></code></a>.</p>
+<p>This interface is implemented in the following specialised classes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewLayout</span></code></p></li>
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout" title="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewGridLayout</span></code></a></p></li>
+</ul>
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMoveTo</span></code></a>(x, y)</p></td>
-<td><p></p></td>
+<td><p>This method is used to set the vertical and horizontal offsets of the <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -544,23 +553,99 @@
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.getViewOffsets">
-<span class="sig-name descname"><span class="pre">getViewOffsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkAbstract/abstractscrollview.html#TTkAbstractScrollViewInterface.getViewOffsets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.getViewOffsets" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getViewOffsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkAbstract/abstractscrollview.html#TTkAbstractScrollViewInterface.getViewOffsets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.getViewOffsets" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Retrieve the vertical and horizontal offsets of the <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+<dl class="simple">
+<dt>This method is already implemented in the following classes:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewLayout</span></code></p></li>
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout" title="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewGridLayout</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the (x,y) offset</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int,int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewDisplayedSize">
 <span class="sig-name descname"><span class="pre">viewDisplayedSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkAbstract/abstractscrollview.html#TTkAbstractScrollViewInterface.viewDisplayedSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewDisplayedSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>This method returns the displayed size of the <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a> implementation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+<p>This method is already implemented in the following classes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewLayout</span></code></p></li>
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout" title="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewGridLayout</span></code></a></p></li>
+</ul>
+</div>
+<p>Unless a different iplementation is required, by default it should return <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.size" title="TermTk.TTkWidgets.TTkWidget.size"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkWidget.size()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the displayed size as a tuple of 2 int elements (width,height)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int,int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewFullAreaSize">
 <span class="sig-name descname"><span class="pre">viewFullAreaSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkAbstract/abstractscrollview.html#TTkAbstractScrollViewInterface.viewFullAreaSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewFullAreaSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>This method returns the full widget area size of the <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a> implementation.</p>
+<p>This is required to <cite>TTkAbstractScrollArea</cite> implementation to handle the on-demand scroll bars.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the full area size as a tuple of 2 int elements (width,height)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int,int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo">
 <span class="sig-name descname"><span class="pre">viewMoveTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkAbstract/abstractscrollview.html#TTkAbstractScrollViewInterface.viewMoveTo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>This method is used to set the vertical and horizontal offsets of the <a class="reference internal" href="#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+<dl class="simple">
+<dt>This method is already implemented in the following classes:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewLayout</span></code></p></li>
+<li><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout" title="TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewGridLayout</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – the horizontal position</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – the vertical position</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </dd></dl>

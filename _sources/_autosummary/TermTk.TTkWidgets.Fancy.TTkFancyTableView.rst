@@ -102,10 +102,8 @@ TTkFancyTableView
    
 
    
-   .. automethod:: getViewOffsets
    .. automethod:: setAlignment
    .. automethod:: setColumnSize
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
 
    
@@ -118,8 +116,10 @@ TTkFancyTableView
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    

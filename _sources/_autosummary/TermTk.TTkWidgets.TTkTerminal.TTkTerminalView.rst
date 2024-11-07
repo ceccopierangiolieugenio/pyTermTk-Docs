@@ -18,10 +18,16 @@ TTkTerminalView
    
    .. autosummary::
    
+      bell
       closed
       currentStyleChanged
       focusChanged
       sizeChanged
+      termData
+      termResized
+      terminalClosed
+      textSelected
+      titleChanged
       viewChanged
       viewMovedTo
       viewSizeChanged
@@ -82,10 +88,16 @@ TTkTerminalView
    -------
 
    
+   .. autoattribute:: bell
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
+   .. autoattribute:: termData
+   .. autoattribute:: termResized
+   .. autoattribute:: terminalClosed
+   .. autoattribute:: textSelected
+   .. autoattribute:: titleChanged
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
    .. autoattribute:: viewSizeChanged
@@ -104,7 +116,6 @@ TTkTerminalView
    
    .. automethod:: termSize
    .. automethod:: termWrite
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
 
    
@@ -117,8 +128,10 @@ TTkTerminalView
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    
@@ -273,7 +286,6 @@ TTkTerminalView Attributes
 .. autosummary::
 
 
-  bell
   classStyle
   re_CSI_Ps_Ps_fu
   re_CSI_Ps_fu
@@ -281,11 +293,6 @@ TTkTerminalView Attributes
   re_DEC_SET_RST
   re_OSC_ps_Pt
   re_XTWINOPS
-  termData
-  termResized
-  terminalClosed
-  textSelected
-  titleChanged
 
 .. currentmodule::  TermTk.TTkWidgets.TTkTerminal
 

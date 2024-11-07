@@ -153,7 +153,6 @@ TTkTreeWidget
    .. automethod:: sortItems
    .. automethod:: takeTopLevelItem
    .. automethod:: topLevelItem
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
 
    
@@ -166,8 +165,10 @@ TTkTreeWidget
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    

@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -547,12 +547,32 @@
     <span class="n">HEADER</span> <span class="o">=</span> <span class="mh">0x0020</span>
     <span class="n">FOOTER</span> <span class="o">=</span> <span class="mh">0x0040</span>
 
+    <span class="k">class</span> <span class="nc">SelectionMode</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This class type indicates how the view responds to user selections.</span>
+
+<span class="sd">        .. autosummary::</span>
+<span class="sd">          NoSelection</span>
+<span class="sd">          SingleSelection</span>
+<span class="sd">          MultiSelection</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">NoSelection</span>         <span class="o">=</span> <span class="mh">0x00</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Items cannot be selected.&#39;&#39;&#39;</span>
+        <span class="n">SingleSelection</span>     <span class="o">=</span> <span class="mh">0x01</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;When the user selects an item, any already-selected item becomes unselected. It is possible for the user to deselect the selected item by pressing the Ctrl key when clicking the selected item.&#39;&#39;&#39;</span>
+        <span class="c1"># ContiguousSelection = 0x04</span>
+        <span class="c1"># &#39;&#39;&#39;When the user selects an item in the usual way, the selection is cleared and the new item selected. However, if the user presses the Shift key while clicking on an item, all items between the current item and the clicked item are selected or unselected, depending on the state of the clicked item.&#39;&#39;&#39;</span>
+        <span class="c1"># ExtendedSelection   = 0x03</span>
+        <span class="c1"># &#39;&#39;&#39;When the user selects an item in the usual way, the selection is cleared and the new item selected. However, if the user presses the Ctrl key when clicking on an item, the clicked item gets toggled and all other items are left untouched. If the user presses the Shift key while clicking on an item, all items between the current item and the clicked item are selected or unselected, depending on the state of the clicked item. Multiple items can be selected by dragging the mouse over them.&#39;&#39;&#39;</span>
+        <span class="n">MultiSelection</span>      <span class="o">=</span> <span class="mh">0x02</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;When the user selects an item in the usual way, the selection status of that item is toggled and the other items are left alone. Multiple items can be toggled by dragging the mouse over them.&#39;&#39;&#39;</span>
+
     <span class="c1"># SelectionMode</span>
-    <span class="n">NoSelection</span>         <span class="o">=</span> <span class="mh">0x00</span>
-    <span class="n">SingleSelection</span>     <span class="o">=</span> <span class="mh">0x01</span>
-    <span class="n">MultiSelection</span>      <span class="o">=</span> <span class="mh">0x02</span>
-    <span class="n">ExtendedSelection</span>   <span class="o">=</span> <span class="mh">0x03</span>
-    <span class="n">ContiguousSelection</span> <span class="o">=</span> <span class="mh">0x04</span>
+    <span class="n">NoSelection</span>         <span class="o">=</span> <span class="n">SelectionMode</span><span class="o">.</span><span class="n">NoSelection</span>
+    <span class="n">SingleSelection</span>     <span class="o">=</span> <span class="n">SelectionMode</span><span class="o">.</span><span class="n">SingleSelection</span>
+    <span class="c1"># ExtendedSelection   = SelectionMode.ExtendedSelection</span>
+    <span class="c1"># ContiguousSelection = SelectionMode.ContiguousSelection</span>
+    <span class="n">MultiSelection</span>      <span class="o">=</span> <span class="n">SelectionMode</span><span class="o">.</span><span class="n">MultiSelection</span>
 
     <span class="c1"># Graph types</span>
     <span class="n">FILLED</span> <span class="o">=</span> <span class="mh">0x0001</span>

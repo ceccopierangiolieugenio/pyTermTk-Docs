@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -493,12 +493,35 @@
 <div class="viewcode-block" id="TTkAbstractScrollViewInterface">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkAbstractScrollViewInterface</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkAbstractScrollViewInterface&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The :py:class:`TTkAbstractScrollViewInterface` provide the basic interface that can be used in :py:class:`TTkAbstractScrollArea` to enable on-demand scroll bars.</span>
+
+<span class="sd">    When subclassing :py:class:`TTkAbstractScrollViewInterface`,</span>
+<span class="sd">    you must implement :meth:`viewFullAreaSize`, :meth:`viewDisplayedSize`, :meth:`getViewOffsets`, and :meth:`viewMoveTo`.</span>
+
+<span class="sd">    This interface is implemented in the following specialised classes:</span>
+
+<span class="sd">    * :py:class:`TTkAbstractScrollView`</span>
+<span class="sd">    * :py:class:`TTkAbstractScrollViewLayout`</span>
+<span class="sd">    * :py:class:`TTkAbstractScrollViewGridLayout`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="k">pass</span>
 
     <span class="c1"># Override this function</span>
 <div class="viewcode-block" id="TTkAbstractScrollViewInterface.viewFullAreaSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewFullAreaSize">[docs]</a>
     <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method returns the full widget area size of the :py:class:`TTkAbstractScrollViewInterface` implementation.</span>
+
+<span class="sd">        This is required to `TTkAbstractScrollArea` implementation to handle the on-demand scroll bars.</span>
+
+<span class="sd">        .. note:: Reimplement this function to handle this event</span>
+
+<span class="sd">        :return: the full area size as a tuple of 2 int elements (width,height)</span>
+<span class="sd">        :rtype: tuple[int,int]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
@@ -506,6 +529,24 @@
 <div class="viewcode-block" id="TTkAbstractScrollViewInterface.viewDisplayedSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewDisplayedSize">[docs]</a>
     <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method returns the displayed size of the :py:class:`TTkAbstractScrollViewInterface` implementation.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            Reimplement this function to handle this event</span>
+
+<span class="sd">            This method is already implemented in the following classes:</span>
+
+<span class="sd">            * :py:class:`TTkAbstractScrollView`</span>
+<span class="sd">            * :py:class:`TTkAbstractScrollViewLayout`</span>
+<span class="sd">            * :py:class:`TTkAbstractScrollViewGridLayout`</span>
+
+<span class="sd">        Unless a different iplementation is required, by default it should return :py:meth:`TTkWidget.size`</span>
+
+<span class="sd">        :return: the displayed size as a tuple of 2 int elements (width,height)</span>
+<span class="sd">        :rtype: tuple[int,int]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
@@ -513,12 +554,44 @@
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.viewMoveTo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">viewMoveTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method is used to set the vertical and horizontal offsets of the :py:class:`TTkAbstractScrollViewInterface`</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            Reimplement this function to handle this event</span>
+
+<span class="sd">            This method is already implemented in the following classes:</span>
+<span class="sd">             * :py:class:`TTkAbstractScrollView`</span>
+<span class="sd">             * :py:class:`TTkAbstractScrollViewLayout`</span>
+<span class="sd">             * :py:class:`TTkAbstractScrollViewGridLayout`</span>
+
+<span class="sd">        :param x: the horizontal position</span>
+<span class="sd">        :type x: int</span>
+<span class="sd">        :param y: the vertical position</span>
+<span class="sd">        :type y: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractScrollViewInterface.getViewOffsets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface.getViewOffsets">[docs]</a>
-    <span class="k">def</span> <span class="nf">getViewOffsets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">getViewOffsets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Retrieve the vertical and horizontal offsets of the :py:class:`TTkAbstractScrollViewInterface`</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            Reimplement this function to handle this event</span>
+
+<span class="sd">            This method is already implemented in the following classes:</span>
+<span class="sd">             * :py:class:`TTkAbstractScrollView`</span>
+<span class="sd">             * :py:class:`TTkAbstractScrollViewLayout`</span>
+<span class="sd">             * :py:class:`TTkAbstractScrollViewGridLayout`</span>
+
+<span class="sd">        :return: the (x,y) offset</span>
+<span class="sd">        :rtype: tuple[int,int]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetY</span></div>
 </div>
 
@@ -526,7 +599,13 @@
 <div class="viewcode-block" id="TTkAbstractScrollView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkAbstractScrollView</span><span class="p">(</span><span class="n">TTkContainer</span><span class="p">,</span> <span class="n">TTkAbstractScrollViewInterface</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkAbstractScrollView&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The :py:class:`TTkAbstractScrollView` is a :py:class:`TTkContainer` widget that incude :py:class:`TTkAbstractScrollViewInterface` api.</span>
+
+<span class="sd">    The placement of any widget inside this container will change accordingly to the offset of this view.</span>
+
+<span class="sd">    This class is used in the convenience widget :py:class:`TTkScrollArea`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">viewMovedTo</span><span class="p">:</span><span class="n">pyTTkSignal</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -569,6 +648,12 @@
         <span class="c1"># Do NOT use super()</span>
         <span class="n">TTkContainer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
+<div class="viewcode-block" id="TTkAbstractScrollView.viewDisplayedSize">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView.viewDisplayedSize">[docs]</a>
+    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
+
+
 <div class="viewcode-block" id="TTkAbstractScrollView.viewMoveTo">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView.viewMoveTo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
@@ -591,6 +676,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
 
+<div class="viewcode-block" id="TTkAbstractScrollView.getViewOffsets">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView.getViewOffsets">[docs]</a>
+    <span class="k">def</span> <span class="nf">getViewOffsets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetY</span></div>
+
+
     <span class="k">def</span> <span class="nf">wheelEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">scrollDelta</span>
         <span class="n">offx</span><span class="p">,</span> <span class="n">offy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -611,7 +702,9 @@
 
 
 <span class="k">class</span> <span class="nc">TTkAbstractScrollViewLayout</span><span class="p">(</span><span class="n">TTkLayout</span><span class="p">,</span> <span class="n">TTkAbstractScrollViewInterface</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkAbstractScrollViewLayout&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    :py:class:`TTkAbstractScrollViewLayout`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">viewMovedTo</span><span class="p">:</span><span class="n">pyTTkSignal</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -666,6 +759,9 @@
     <span class="k">def</span> <span class="nf">viewMoveTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setOffset</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">getViewOffsets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetY</span>
+
     <span class="k">def</span> <span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="n">TTkLayout</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
@@ -673,7 +769,9 @@
 <div class="viewcode-block" id="TTkAbstractScrollViewGridLayout">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkAbstractScrollViewGridLayout</span><span class="p">(</span><span class="n">TTkGridLayout</span><span class="p">,</span> <span class="n">TTkAbstractScrollViewInterface</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkAbstractScrollViewGridLayout&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    :py:class:`TTkAbstractScrollViewGridLayout`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">viewMovedTo</span><span class="p">:</span><span class="n">pyTTkSignal</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -741,6 +839,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">viewMovedTo</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractScrollViewGridLayout.getViewOffsets">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html#TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.getViewOffsets">[docs]</a>
+    <span class="k">def</span> <span class="nf">getViewOffsets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewOffsetY</span></div>
 
 
     <span class="k">def</span> <span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>

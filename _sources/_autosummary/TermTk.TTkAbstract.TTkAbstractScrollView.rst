@@ -98,6 +98,8 @@ TTkAbstractScrollView
    
 
    
+   .. automethod:: getViewOffsets
+   .. automethod:: viewDisplayedSize
    .. automethod:: viewMoveTo
 
    

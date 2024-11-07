@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -538,9 +538,6 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-
     <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -567,7 +564,62 @@
 <div class="viewcode-block" id="TTkTextEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkTextEditView</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkTextEditView&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    :py:class:`TTkTextEditView`</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        ╔═══════════════════════════════════════════════════════════════════════════════════════╗</span>
+<span class="sd">        ║ 0▌&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ╥   ║</span>
+<span class="sd">        ║ &lt;▌incididunt ut labore et dolore magna aliqua.                                    ║   ║</span>
+<span class="sd">        ║ 1▌                                                                                ║   ║</span>
+<span class="sd">        ║ 2▌Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu║   ║</span>
+<span class="sd">        ║ &lt;▌ip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ║   ║</span>
+<span class="sd">        ║ &lt;▌velit esse cillum dolore eu fugiat nulla pariatur.                              ║   ║</span>
+<span class="sd">        ║ 3▌                                                                                ║   ║</span>
+<span class="sd">        ║ 4▌Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru║   ║</span>
+<span class="sd">        ║ &lt;▌nt mollit anim id est laborum.&quot;                                                 ╨   ║</span>
+<span class="sd">        ╚═══════════════════════════════════════════════════════════════════════════════════════╝</span>
+
+<span class="sd">    Demo: `textedit.py &lt;https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/demo/showcase/textedit.py&gt;`_</span>
+<span class="sd">    (`Try Online &lt;https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/demo/showcase/textedit.py&gt;`__)</span>
+
+<span class="sd">    `ttkdesigner Tutorial &lt;https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/ttkDesigner/textEdit&gt;`_</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">currentColorChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted if the current character color has changed,</span>
+<span class="sd">    for example caused by a change of the cursor position.</span>
+
+<span class="sd">    :param color: the new color</span>
+<span class="sd">    :type color: :py:class:`TTkColor`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">undoAvailable</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted whenever undo operations become available (available is true)</span>
+<span class="sd">    or unavailable (available is false).</span>
+
+<span class="sd">    :param available: the availability of undo</span>
+<span class="sd">    :type available: bool</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">redoAvailable</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted whenever redo operations become available (available is true)</span>
+<span class="sd">    or unavailable (available is false).</span>
+
+<span class="sd">    :param available: the availability of redo</span>
+<span class="sd">    :type available: bool</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">textChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted whenever the document&#39;s content changes;</span>
+<span class="sd">    for example, when text is inserted or deleted, or when formatting is applied.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span>         <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#dddddd&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#222222&quot;</span><span class="p">),</span>
@@ -598,24 +650,38 @@
             <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
             <span class="s1">&#39;textChanged&#39;</span>
         <span class="p">)</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        in order to support the line wrap, I need to divide the full data text in;</span>
-<span class="sd">        _textDocument = the entire text divided in lines, easy to add/remove/append lines</span>
-<span class="sd">        _textWrap._lines     = an array of tuples for each displayed line with a pointer to a</span>
-<span class="sd">                     specific line and its slice to be shown at this coordinate;</span>
-<span class="sd">                     [ (line, (posFrom, posTo)), ... ]</span>
-<span class="sd">                     This is required to support the wrap feature</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1">#    in order to support the line wrap, I need to divide the full data text in;</span>
+    <span class="c1">#    _textDocument = the entire text divided in lines, easy to add/remove/append lines</span>
+    <span class="c1">#    _textWrap._lines     = an array of tuples for each displayed line with a pointer to a</span>
+    <span class="c1">#                 specific line and its slice to be shown at this coordinate;</span>
+    <span class="c1">#                 [ (line, (posFrom, posTo)), ... ]</span>
+    <span class="c1">#                 This is required to support the wrap feature</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">readOnly</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">multiLine</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">document</span><span class="p">:</span><span class="n">TTkTextDocument</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param lineNumber: Show the line number on the left, defaults to **False**</span>
+<span class="sd">        :type lineNumber: bool, optional</span>
+
+<span class="sd">        :param readOnly: In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible, defaults to **True**</span>
+<span class="sd">        :type readOnly: bool, optional</span>
+
+<span class="sd">        :param multiLine: In a multiline text edit the user can split the text in multiple lines, defaults to **True**</span>
+<span class="sd">        :type multiLine: bool, optional</span>
+
+<span class="sd">        :param document: If required an external Document can be used in this text editor, this option is useful if multiple editors share the same document as in the `demo &lt;https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/demo/showcase/textedit.py&gt;`__, defaults to a new Document</span>
+<span class="sd">        :type document: :py:class:`TTkTextDocument`, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">currentColorChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">undoAvailable</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">redoAvailable</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">textChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span> <span class="o">=</span> <span class="n">readOnly</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_multiLine</span> <span class="o">=</span> <span class="n">multiLine</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_multiCursor</span> <span class="o">=</span> <span class="kc">True</span>
@@ -628,6 +694,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clipboard</span> <span class="o">=</span> <span class="n">TTkClipboard</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">setFocusPolicy</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span> <span class="o">+</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TabFocus</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setDocument</span><span class="p">(</span><span class="n">document</span> <span class="k">if</span> <span class="n">document</span> <span class="k">else</span> <span class="n">TTkTextDocument</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disableWidgetCursor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">)</span>
@@ -910,12 +979,6 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="TTkTextEditView.viewDisplayedSize">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
-
-
     <span class="k">def</span> <span class="nf">_pushCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
 
@@ -1175,181 +1238,20 @@
 <div class="viewcode-block" id="TTkTextEdit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkTextEdit</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkTextEdit</span>
+    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    :py:class:`TTkTextEdit` is a container widget which place :py:class:`TTkTextEditView` in a scrolling area with on-demand scroll bars.</span>
 
-<span class="sd">    ::</span>
-
-<span class="sd">        ╔═══════════════════════════════════════════════════════════════════════════════════════╗</span>
-<span class="sd">        ║ 0▌&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ╥   ║</span>
-<span class="sd">        ║ &lt;▌incididunt ut labore et dolore magna aliqua.                                    ║   ║</span>
-<span class="sd">        ║ 1▌                                                                                ║   ║</span>
-<span class="sd">        ║ 2▌Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu║   ║</span>
-<span class="sd">        ║ &lt;▌ip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ║   ║</span>
-<span class="sd">        ║ &lt;▌velit esse cillum dolore eu fugiat nulla pariatur.                              ║   ║</span>
-<span class="sd">        ║ 3▌                                                                                ║   ║</span>
-<span class="sd">        ║ 4▌Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru║   ║</span>
-<span class="sd">        ║ &lt;▌nt mollit anim id est laborum.&quot;                                                 ╨   ║</span>
-<span class="sd">        ╚═══════════════════════════════════════════════════════════════════════════════════════╝</span>
-
-<span class="sd">    Demo: `textedit.py &lt;https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/demo/showcase/textedit.py&gt;`_</span>
-<span class="sd">    (`Try Online &lt;https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/demo/showcase/textedit.py&gt;`__)</span>
-
-<span class="sd">    `ttkdesigner Tutorial &lt;https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/ttkDesigner/textEdit&gt;`_</span>
-
-<span class="sd">    :param lineNumber: Show the line number on the left, defaults to **False**</span>
-<span class="sd">    :type lineNumber: bool, optional</span>
-
-<span class="sd">    :param readOnly: In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible, defaults to **True**</span>
-<span class="sd">    :type readOnly: bool, optional</span>
-
-<span class="sd">    :param multiLine: In a multiline text edit the user can split the text in multiple lines, defaults to **True**</span>
-<span class="sd">    :type multiLine: bool, optional</span>
-
-<span class="sd">    :param document: If required an external Document can be used in this text editor, this option is useful if multiple editors share the same document as in the `demo &lt;https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/demo/showcase/textedit.py&gt;`__, defaults to a new Document</span>
-<span class="sd">    :type document: :py:class:`TTkTextDocument`, optional</span>
-
-
-<span class="sd">    .. py:method:: toAnsi()</span>
-
-
-<span class="sd">    .. py:method:: clear()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.clear`</span>
-
-<span class="sd">    .. py:method:: setText(text)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.setText`</span>
-
-<span class="sd">    .. py:method:: append(text)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.append`</span>
-
-<span class="sd">    .. py:method:: isReadOnly()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.isReadOnly`</span>
-
-<span class="sd">    .. py:method:: setReadOnly(ro)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.setReadOnly`</span>
-
-<span class="sd">    .. py:method:: document()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.document`</span>
-
-<span class="sd">    .. py:method:: wrapWidth()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.wrapWidth`</span>
-
-<span class="sd">    .. py:method:: setWrapWidth(width)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.setWrapWidth`</span>
-
-<span class="sd">    .. py:method:: multiLine()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.multiLine`</span>
-
-<span class="sd">    .. py:method:: lineWrapMode()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.lineWrapMode`</span>
-
-<span class="sd">    .. py:method:: setLineWrapMode(mode)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.setLineWrapMode`</span>
-
-<span class="sd">    .. py:method:: wordWrapMode()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.wordWrapMode`</span>
-
-<span class="sd">    .. py:method:: setWordWrapMode(mode)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.setWordWrapMode`</span>
-
-<span class="sd">    .. py:method:: textCursor()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.textCursor`</span>
-
-<span class="sd">    .. py:method:: setColor(color)</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.setColor`</span>
-
-<span class="sd">    .. py:method:: cut()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.cut`</span>
-
-<span class="sd">    .. py:method:: copy()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.copy`</span>
-
-<span class="sd">    .. py:method:: paste()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.paste`</span>
-
-<span class="sd">    .. py:method:: undo()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.undo`</span>
-
-<span class="sd">    .. py:method:: redo()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.redo`</span>
-
-<span class="sd">    .. py:method:: isUndoAvailable()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.isUndoAvailable`</span>
-
-<span class="sd">    .. py:method:: isRedoAvailable()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.isRedoAvailable`</span>
-
-<span class="sd">    .. py:method:: toAnsi()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.toAnsi`</span>
-
-<span class="sd">    .. py:method:: toRawText()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.toRawText`</span>
-
-<span class="sd">    .. py:method:: toPlainText()</span>
-
-<span class="sd">        This method is forwarded to :meth:`TTkTextEditView.toPlainText`</span>
-
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">currentColorChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted if the current character color has changed,</span>
-<span class="sd">    for example caused by a change of the cursor position.</span>
-
-<span class="sd">    :param color: the new color</span>
-<span class="sd">    :type color: :py:class:`TTkColor`</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">undoAvailable</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever undo operations become available (available is true)</span>
-<span class="sd">    or unavailable (available is false).</span>
-
-<span class="sd">    :param available: the availability of undo</span>
-<span class="sd">    :type available: bool</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">redoAvailable</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever redo operations become available (available is true)</span>
-<span class="sd">    or unavailable (available is false).</span>
-
-<span class="sd">    :param available: the availability of redo</span>
-<span class="sd">    :type available: bool</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">textChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever the document&#39;s content changes;</span>
-<span class="sd">    for example, when text is inserted or deleted, or when formatting is applied.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">TTkTextEditView</span><span class="o">.</span><span class="vm">__doc__</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">]</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">_forwardedSignals</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTexteditView</span>
+            <span class="c1"># Signals</span>
+            <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;textChanged&#39;</span><span class="p">])</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">_forwardedMethods</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Methods From TTkTexteditView</span>
             <span class="c1"># Forwarded Methods</span>
             <span class="s1">&#39;clear&#39;</span><span class="p">,</span> <span class="s1">&#39;setText&#39;</span><span class="p">,</span> <span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="s1">&#39;isReadOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;setReadOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;document&#39;</span><span class="p">,</span>
             <span class="s1">&#39;wrapWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;setWrapWidth&#39;</span><span class="p">,</span>
@@ -1361,11 +1263,10 @@
             <span class="s1">&#39;undo&#39;</span><span class="p">,</span> <span class="s1">&#39;redo&#39;</span><span class="p">,</span> <span class="s1">&#39;isUndoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;isRedoAvailable&#39;</span><span class="p">,</span>
             <span class="c1"># Export Methods,</span>
             <span class="s1">&#39;toAnsi&#39;</span><span class="p">,</span> <span class="s1">&#39;toRawText&#39;</span><span class="p">,</span> <span class="s1">&#39;toPlainText&#39;</span><span class="p">,</span> <span class="c1"># &#39;toHtml&#39;, &#39;toMarkdown&#39;,</span>
-            <span class="c1"># Signals</span>
-            <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;textChanged&#39;</span>
+            <span class="p">])</span>
         <span class="p">)</span>
+    <span class="n">_forwardWidget</span> <span class="o">=</span> <span class="n">TTkTextEditView</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="c1"># TTkWidget init</span>
                  <span class="n">parent</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1381,6 +1282,14 @@
                  <span class="n">lineNumber</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">lineNumberStarting</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param textEditView: a custom TextEdit View to be used instead of the default one.</span>
+<span class="sd">        :type textEditView: :py:class:`TTkTextEditView`, optional</span>
+<span class="sd">        :param lineNumber: show the line number on the left side, defaults to False</span>
+<span class="sd">        :type lineNumber: bool, optional</span>
+<span class="sd">        :param lineNumberStarting: set the starting number of the left line number column, defaults to 0</span>
+<span class="sd">        :type lineNumberStarting: int, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="n">visible</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span> <span class="o">=</span> <span class="n">textEditView</span> <span class="k">if</span> <span class="n">textEditView</span> <span class="k">else</span> <span class="n">TTkTextEditView</span><span class="p">(</span><span class="n">readOnly</span><span class="o">=</span><span class="n">readOnly</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="n">multiLine</span><span class="p">,</span> <span class="n">document</span><span class="o">=</span><span class="n">document</span><span class="p">)</span>
         <span class="c1"># self.setFocusPolicy(self._textEditView.focusPolicy())</span>
@@ -1394,46 +1303,13 @@
         <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">textEditLayout</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">clear</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setText</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setText</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">append</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">append</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">document</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">isReadOnly</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isReadOnly</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setReadOnly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setReadOnly</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textCursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textCursor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setFocus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setFocus</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">multiLine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">multiLine</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setColor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setColor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cut</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cut</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">copy</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">paste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">paste</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">undo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undo</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redo</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">isUndoAvailable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isUndoAvailable</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">isRedoAvailable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isRedoAvailable</span>
-        <span class="c1"># Forward export methods</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toAnsi</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toAnsi</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toRawText</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toRawText</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toPlainText</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toPlainText</span>
-        <span class="c1"># self.toHtml      = self._textEditView.toHtml</span>
-        <span class="c1"># self.toMarkdown  = self._textEditView.toMarkdown</span>
-        <span class="c1"># Forward Wrap Methods</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wrapWidth</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wrapWidth</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWrapWidth</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWrapWidth</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lineWrapMode</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">lineWrapMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setLineWrapMode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setLineWrapMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wordWrapMode</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wordWrapMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWordWrapMode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWordWrapMode</span>
-        <span class="c1"># Forward Signals</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">focusChanged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">focusChanged</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">currentColorChanged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">currentColorChanged</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">undoAvailable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undoAvailable</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redoAvailable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redoAvailable</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textChanged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textChanged</span>
+        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
 
 <div class="viewcode-block" id="TTkTextEdit.textEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textEditView">[docs]</a>
     <span class="k">def</span> <span class="nf">textEditView</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;textEditView&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span></div>
 
 
@@ -1455,6 +1331,7 @@
 <div class="viewcode-block" id="TTkTextEdit.lineNumberStarting">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting">[docs]</a>
     <span class="k">def</span> <span class="nf">lineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;lineNumberStarting&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span></div>
 
 
@@ -1462,6 +1339,7 @@
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">setLineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starting</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumberStarting&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span> <span class="o">=</span> <span class="n">starting</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
 

@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -490,53 +490,44 @@
 <div class="viewcode-block" id="TTkList">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkList</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkList&#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_listView&#39;</span><span class="p">,</span> <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">,</span>
-        <span class="c1"># Forwarded Methods</span>
-        <span class="s1">&#39;items&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;dragDropMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setDragDropMode&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;addItem&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;addItems&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemsAt&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;indexOf&#39;</span><span class="p">,</span> <span class="s1">&#39;itemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;moveItem&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;removeAt&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItem&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItems&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;selectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setSelectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedItems&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedLabels&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;setCurrentRow&#39;</span><span class="p">,</span> <span class="s1">&#39;setCurrentItem&#39;</span><span class="p">,</span>  <span class="p">)</span>
+    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    :py:class:`TTkList` is a container widget which place :py:class:`TTkListWidget` in a scrolling area with on-demand scroll bars.</span>
+
+<span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">TTkListWidget</span><span class="o">.</span><span class="vm">__doc__</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;_listView&#39;</span><span class="p">]</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">_forwardedSignals</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTable</span>
+            <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">])</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">_forwardedMethods</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Methods From TTkTable</span>
+            <span class="s1">&#39;items&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;dragDropMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setDragDropMode&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;addItem&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;addItems&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemsAt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;indexOf&#39;</span><span class="p">,</span> <span class="s1">&#39;itemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;moveItem&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;removeAt&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItem&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItems&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;selectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setSelectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedItems&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedLabels&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;setCurrentRow&#39;</span><span class="p">,</span> <span class="s1">&#39;setCurrentItem&#39;</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="n">_forwardWidget</span> <span class="o">=</span> <span class="n">TTkListWidget</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">listWidget</span><span class="p">:</span><span class="n">TTkListWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">selectionMode</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span>
                  <span class="n">dragDropMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">TTkAbstractScrollArea</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param listWidget: a custom List Widget to be used instead of the default one.</span>
+<span class="sd">        :type listWidget: :py:class:`TTkListWidget`, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span> <span class="o">=</span> <span class="n">listWidget</span> <span class="k">if</span> <span class="n">listWidget</span> <span class="k">else</span> <span class="n">TTkListWidget</span><span class="p">(</span>
                                                             <span class="n">selectionMode</span><span class="o">=</span><span class="n">selectionMode</span><span class="p">,</span>
                                                             <span class="n">dragDropMode</span><span class="o">=</span><span class="n">dragDropMode</span><span class="p">,</span>
                                                             <span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;parent&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;visible&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">itemClicked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">itemClicked</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textClicked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">textClicked</span>
-        <span class="c1"># self.setFocusPolicy(TTkK.ClickFocus + TTkK.TabFocus)</span>
 
-        <span class="c1"># Forwearded Methods</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">items</span>            <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">items</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">indexOf</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">indexOf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">itemAt</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">itemAt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">moveItem</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">moveItem</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">removeAt</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeAt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">removeItem</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeItem</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeItems</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addItem</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItem</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addItems</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItems</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addItemAt</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItemAt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addItemsAt</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItemsAt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">selectionMode</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectionMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setSelectionMode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSelectionMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">selectedItems</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectedItems</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">selectedLabels</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectedLabels</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentRow</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setCurrentRow</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentItem</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setCurrentItem</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dragDropMode</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">dragDropMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setDragDropMode</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setDragDropMode</span></div>
+        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span></div>
 
 
 </pre></div>

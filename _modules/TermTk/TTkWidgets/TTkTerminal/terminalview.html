@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -524,6 +524,66 @@
 <div class="viewcode-block" id="TTkTerminalView">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkTerminalView</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">,</span> <span class="n">_TTkTerminal_CSI_DEC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    :py:class:`TTkTerminalView` is a terminal emulator fot TermTk</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        This is an Alpha feature, it is not optimized and the API definition may change in the future</span>
+
+
+<span class="sd">    TermShot from: `tests/t.pty/test.pty.006.terminal.07.py           &lt;https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tests/t.pty/test.pty.006.terminal.07.py&gt;`_</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        ╔════════════════════════════════════════════════════════════════════════════════════╗</span>
+<span class="sd">        ║ Terminello n.1                                                            [_][^][x]║</span>
+<span class="sd">        ╟────────────────────────────────────────────────────────────────────────────────────╢</span>
+<span class="sd">        ║ $ neofetch                                                                        ▲║</span>
+<span class="sd">        ║`.-::---..                     PierCecco@FrankenstOne                              ┊║</span>
+<span class="sd">        ║      .:++++ooooosssoo:.       ---------------------------                         ┊║</span>
+<span class="sd">        ║    .+o++::.      `.:oos+.     OS: LMDE 6 (faye) x86_64                            ┊║</span>
+<span class="sd">        ║   :oo:.`             -+oo:    Host: Lemur Pro lemp11                              ┊║</span>
+<span class="sd">        ║ `+o/`    .::::::-.    .++-`   Kernel: 6.1.0-26-amd64                              ▓║</span>
+<span class="sd">        ║`/s/    .yyyyyyyyyyo:   +o-`   Uptime: 27 days, 2 hours, 33 mins                   ▓║</span>
+<span class="sd">        ║`so     .ss       ohyo` :s-:   Packages: 2787 (dpkg), 38 (flatpak)                 ▓║</span>
+<span class="sd">        ║`s/     .ss  h  m  myy/ /s``   Shell: bash 5.2.15                                  ▓║</span>
+<span class="sd">        ║`s:     `oo  s  m  Myy+-o:`    Resolution: 1920x1080, 3440x1440                    ▓║</span>
+<span class="sd">        ║`oo      :+sdoohyoydyso/.      DE: Cinnamon 6.2.9                                  ▓║</span>
+<span class="sd">        ║ :o.      .:////////++:        WM: Mutter (Muffin)                                 ▓║</span>
+<span class="sd">        ║ `/++        -:::::-           WM Theme: Mint-Y-Dark-Orange (Mint-Y)               ▓║</span>
+<span class="sd">        ║  `++-                         Theme: Mint-L-Dark [GTK2/3]                         ▓║</span>
+<span class="sd">        ║   `/+-                        Icons: Mint-X-Orange [GTK2/3]                       ▓║</span>
+<span class="sd">        ║     .+/.                      Terminal: tmux                                      ▓║</span>
+<span class="sd">        ║       .:+-.                   CPU: 12th Gen Intel i7-1255U (12) @ 4.700GHz        ▓║</span>
+<span class="sd">        ║          `--.``               GPU: Intel Alder Lake-UP3 GT2 [Iris Xe Graphics]    ▓║</span>
+<span class="sd">        ║                               Memory: 32111MiB / 39956MiB                         ▓║</span>
+<span class="sd">        ║                                                                                   ▓║</span>
+<span class="sd">        ║23 PierCecco FrankenstOne &lt; 12:24 &gt; (1052) ~/github/Varie/pyTermTk                 ▓║</span>
+<span class="sd">        ║ $                                                                                 ▼║</span>
+<span class="sd">        ╚════════════════════════════════════════════════════════════════════════════════════╝</span>
+
+<span class="sd">    Quickstart:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        import TermTk as ttk</span>
+
+<span class="sd">        root = ttk.TTk(mouseTrack=True)</span>
+
+<span class="sd">        win = ttk.TTkWindow(parent=root, title=&quot;Terminal&quot;, size=(80+2,24+4), layout=ttk.TTkGridLayout())</span>
+
+<span class="sd">        term = ttk.TTkTerminal(parent=win)</span>
+
+<span class="sd">        th = ttk.TTkTerminalHelper(term=term)</span>
+<span class="sd">        th.runShell()</span>
+
+<span class="sd">        root.mainloop()</span>
+
+<span class="sd">    More examples are available :ref:`here &lt;Examples-Terminal&gt;`.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="nd">@dataclass</span>
     <span class="k">class</span> <span class="nc">_Terminal</span><span class="p">():</span>
         <span class="n">bracketedMode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
@@ -541,6 +601,55 @@
         <span class="n">reportMove</span><span class="p">:</span>  <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">sgrMode</span><span class="p">:</span>     <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 
+    <span class="n">bell</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when the `bell &lt;https://en.wikipedia.org/wiki/Bell_character&gt;`__ is received.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">terminalClosed</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when the terminl is closed.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">titleChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when the terminal title change through OSC &quot;ESC ]0;&quot;</span>
+
+<span class="sd">    :param title: the new title</span>
+<span class="sd">    :type title: str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">textSelected</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a text is selected.</span>
+
+<span class="sd">    :param text: the selected text</span>
+<span class="sd">    :type text: :py:class:`ttkString`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">termData</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when data event fires.</span>
+
+<span class="sd">    This happens for example when the user types or pastes into the terminal.</span>
+<span class="sd">    The event value is whatever &#39;str&#39; results, in a typical setup,</span>
+<span class="sd">    this should be passed on to the backing pty.</span>
+
+<span class="sd">    This signal is used in :py:class:`TTkTerminalHelper` through :py:meth:`TTkTerminalHelper.attachTTkTerminal`</span>
+<span class="sd">    to frward all the terminal events to the pty interface.</span>
+
+<span class="sd">    :param data: the event data</span>
+<span class="sd">    :type data: str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">termResized</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when the terminal is resized.</span>
+
+<span class="sd">    :param size: the new size [width, height] of the terminal</span>
+<span class="sd">    :type size: (int,int)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s1">&#39;_termLoop&#39;</span><span class="p">,</span> <span class="s1">&#39;_newSize&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_clipboard&#39;</span><span class="p">,</span> <span class="s1">&#39;_selecting&#39;</span><span class="p">,</span>
@@ -552,13 +661,14 @@
             <span class="s1">&#39;titleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;terminalClosed&#39;</span><span class="p">,</span> <span class="s1">&#39;textSelected&#39;</span><span class="p">,</span>
             <span class="s1">&#39;termData&#39;</span><span class="p">,</span><span class="s1">&#39;termResized&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#Signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bell</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">terminalClosed</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">titleChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textSelected</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">textSelected</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkString</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">termData</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">termResized</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_newSize</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_terminal</span> <span class="o">=</span> <span class="n">TTkTerminalView</span><span class="o">.</span><span class="n">_Terminal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_keyboard</span> <span class="o">=</span> <span class="n">TTkTerminalView</span><span class="o">.</span><span class="n">_Keyboard</span><span class="p">()</span>
@@ -577,6 +687,7 @@
         <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_termLoop</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_termLoop</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
+        <span class="c1"># Do NOT use super() due to the multiple imports</span>
         <span class="n">TTkAbstractScrollView</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -606,15 +717,15 @@
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span></div>
 
 
-<div class="viewcode-block" id="TTkTerminalView.viewDisplayedSize">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
-
-
 <div class="viewcode-block" id="TTkTerminalView.termSize">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">termSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">termSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This property holds the size of the terminal</span>
+
+<span class="sd">        :return: a tuple of 2 integers (width, height)</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
 
 
@@ -646,7 +757,13 @@
 
 <div class="viewcode-block" id="TTkTerminalView.termWrite">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termWrite">[docs]</a>
-    <span class="k">def</span> <span class="nf">termWrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">termWrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Write data to the terminal.</span>
+
+<span class="sd">        :params data: the data to write</span>
+<span class="sd">        :type data: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_termLoop</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 

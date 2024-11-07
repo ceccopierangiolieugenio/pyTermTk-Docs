@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -628,26 +628,6 @@
 <span class="sd">    To distribute the available space according to the space requirement of each column or row,</span>
 <span class="sd">    call the view&#39;s :meth:`resizeColumnsToContents` or :meth:`resizeRowsToContents` functions.</span>
 
-<span class="sd">    :param tableModel: the model for the view to present.</span>
-<span class="sd">    :type tableModel: :py:class:`TTkAbstractTableModel`</span>
-
-<span class="sd">    :param vSeparator: show the vertical separators, defaults to True</span>
-<span class="sd">    :type vSeparator: bool, optional</span>
-
-<span class="sd">    :param hSeparator: show the horizontal separators, defaults to True</span>
-<span class="sd">    :type hSeparator: bool, optional</span>
-
-<span class="sd">    :param vHeader: show the vertical header, defaults to True</span>
-<span class="sd">    :type vHeader: bool, optional</span>
-
-<span class="sd">    :param hHeader: show the horizontal header, defaults to True</span>
-<span class="sd">    :type hHeader: bool, optional</span>
-
-<span class="sd">    :param sortingEnabled: enable the column sorting, defaults to False</span>
-<span class="sd">    :type sortingEnabled: bool, optional</span>
-
-<span class="sd">    :param dataPadding: the right column padding, defaults to 1</span>
-<span class="sd">    :type dataPadding: int, optional</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">cellChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
@@ -758,6 +738,28 @@
                  <span class="n">sortingEnabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">dataPadding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param tableModel: the model for the view to present.</span>
+<span class="sd">        :type tableModel: :py:class:`TTkAbstractTableModel`</span>
+
+<span class="sd">        :param vSeparator: show the vertical separators, defaults to True</span>
+<span class="sd">        :type vSeparator: bool, optional</span>
+
+<span class="sd">        :param hSeparator: show the horizontal separators, defaults to True</span>
+<span class="sd">        :type hSeparator: bool, optional</span>
+
+<span class="sd">        :param vHeader: show the vertical header, defaults to True</span>
+<span class="sd">        :type vHeader: bool, optional</span>
+
+<span class="sd">        :param hHeader: show the horizontal header, defaults to True</span>
+<span class="sd">        :type hHeader: bool, optional</span>
+
+<span class="sd">        :param sortingEnabled: enable the column sorting, defaults to False</span>
+<span class="sd">        :type sortingEnabled: bool, optional</span>
+
+<span class="sd">        :param dataPadding: the right column padding, defaults to 1</span>
+<span class="sd">        :type dataPadding: int, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># Signals</span>
         <span class="c1"># self.itemActivated     = pyTTkSignal(TTkTableWidgetItem, int)</span>
         <span class="c1"># self.itemChanged       = pyTTkSignal(TTkTableWidgetItem, int)</span>
@@ -1078,13 +1080,6 @@
         <span class="n">w</span> <span class="o">=</span> <span class="n">vhs</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_colsPos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
         <span class="n">h</span> <span class="o">=</span> <span class="n">hhs</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowsPos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span></div>
-
-
-    <span class="c1"># Overridden function</span>
-<div class="viewcode-block" id="TTkTableWidget.viewDisplayedSize">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTableWidget.clearSelection">

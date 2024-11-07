@@ -149,7 +149,6 @@ TTkFileTreeWidget
       sortItems
       takeTopLevelItem
       topLevelItem
-      viewDisplayedSize
       viewFullAreaSize
    
    
@@ -158,8 +157,10 @@ TTkFileTreeWidget
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    

@@ -191,7 +191,6 @@ TTkTableWidget
    .. automethod:: unselectRow
    .. automethod:: vSeparatorVisibility
    .. automethod:: verticalHeader
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
 
    
@@ -204,8 +203,10 @@ TTkTableWidget
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    

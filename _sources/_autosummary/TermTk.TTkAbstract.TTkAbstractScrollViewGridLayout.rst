@@ -63,6 +63,7 @@ TTkAbstractScrollViewGridLayout
    
 
    
+   .. automethod:: getViewOffsets
    .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
    .. automethod:: viewMoveTo

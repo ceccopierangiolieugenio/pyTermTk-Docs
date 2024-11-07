@@ -40,9 +40,13 @@ TTkTextEditView
    .. autosummary::
    
       closed
+      currentColorChanged
       currentStyleChanged
       focusChanged
+      redoAvailable
       sizeChanged
+      textChanged
+      undoAvailable
       viewChanged
       viewMovedTo
       viewSizeChanged
@@ -116,9 +120,13 @@ TTkTextEditView
 
    
    .. autoattribute:: closed
+   .. autoattribute:: currentColorChanged
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
+   .. autoattribute:: redoAvailable
    .. autoattribute:: sizeChanged
+   .. autoattribute:: textChanged
+   .. autoattribute:: undoAvailable
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
    .. autoattribute:: viewSizeChanged
@@ -159,7 +167,6 @@ TTkTextEditView
    .. automethod:: toPlainText
    .. automethod:: toRawText
    .. automethod:: undo
-   .. automethod:: viewDisplayedSize
    .. automethod:: viewFullAreaSize
    .. automethod:: wordWrapMode
    .. automethod:: wrapWidth
@@ -174,8 +181,10 @@ TTkTextEditView
    .. autosummary::
 
    
+      getViewOffsets
       resizeEvent
       update
+      viewDisplayedSize
       viewMoveTo
       wheelEvent
    
@@ -331,10 +340,6 @@ TTkTextEditView Attributes
 
 
   classStyle
-  currentColorChanged
-  redoAvailable
-  textChanged
-  undoAvailable
 
 .. currentmodule::  TermTk.TTkWidgets
 

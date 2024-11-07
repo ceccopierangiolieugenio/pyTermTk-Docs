@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -509,10 +509,6 @@
     <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
-    <span class="c1"># Override this function</span>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">viewMoveTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -657,9 +653,6 @@
 
     <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableWidth</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tableDataText</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
     <span class="c1"># def items(self): return self._tableDataText</span>
 
@@ -913,11 +906,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<div class="viewcode-block" id="TTkFancyTableView.getViewOffsets">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTableView.html#TermTk.TTkWidgets.Fancy.TTkFancyTableView.getViewOffsets">[docs]</a>
     <span class="k">def</span> <span class="nf">getViewOffsets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
 
 <div class="viewcode-block" id="TTkFancyTableView.viewFullAreaSize">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTableView.html#TermTk.TTkWidgets.Fancy.TTkFancyTableView.viewFullAreaSize">[docs]</a>
@@ -925,11 +915,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">viewFullAreaSize</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="TTkFancyTableView.viewDisplayedSize">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTableView.html#TermTk.TTkWidgets.Fancy.TTkFancyTableView.viewDisplayedSize">[docs]</a>
     <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">viewDisplayedSize</span><span class="p">()</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">viewDisplayedSize</span><span class="p">()</span>
 
 <div class="viewcode-block" id="TTkFancyTableView.setAlignment">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTableView.html#TermTk.TTkWidgets.Fancy.TTkFancyTableView.setAlignment">[docs]</a>

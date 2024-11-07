@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -623,7 +623,10 @@
         <span class="n">widgets</span><span class="p">:</span> <span class="nb">list</span>
         <span class="n">firstLine</span><span class="p">:</span> <span class="nb">bool</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[],</span> <span class="n">sortingEnabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">header</span><span class="o">=</span><span class="p">[],</span>
+                 <span class="n">sortingEnabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># Signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">itemActivated</span>     <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">itemChanged</span>       <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
@@ -662,14 +665,6 @@
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="c1"># TTkLog.debug(f&quot;{w=} {h=}&quot;)</span>
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span></div>
-
-
-    <span class="c1"># Overridden function</span>
-<div class="viewcode-block" id="TTkTreeWidget.viewDisplayedSize">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.viewDisplayedSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">viewDisplayedSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="c1"># TTkLog.debug(f&quot;{self.size()=}&quot;)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.clear">

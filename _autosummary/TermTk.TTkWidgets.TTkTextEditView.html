@@ -33,7 +33,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=266008ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
   <!-- So that users can add custom icons -->
@@ -507,9 +507,13 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView"><code class="docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.closed"><code class="docutils literal notranslate"><span class="pre">closed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.currentColorChanged"><code class="docutils literal notranslate"><span class="pre">currentColorChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.redoAvailable"><code class="docutils literal notranslate"><span class="pre">redoAvailable</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.textChanged"><code class="docutils literal notranslate"><span class="pre">textChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.undoAvailable"><code class="docutils literal notranslate"><span class="pre">undoAvailable</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewChanged"><code class="docutils literal notranslate"><span class="pre">viewChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewMovedTo"><code class="docutils literal notranslate"><span class="pre">viewMovedTo</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewSizeChanged"><code class="docutils literal notranslate"><span class="pre">viewSizeChanged</span></code></a></li>
@@ -537,7 +541,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.toPlainText"><code class="docutils literal notranslate"><span class="pre">toPlainText()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.toRawText"><code class="docutils literal notranslate"><span class="pre">toRawText()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.undo"><code class="docutils literal notranslate"><span class="pre">undo()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewDisplayedSize"><code class="docutils literal notranslate"><span class="pre">viewDisplayedSize()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewFullAreaSize"><code class="docutils literal notranslate"><span class="pre">viewFullAreaSize()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode"><code class="docutils literal notranslate"><span class="pre">wordWrapMode()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.wrapWidth"><code class="docutils literal notranslate"><span class="pre">wrapWidth()</span></code></a></li>
@@ -561,6 +564,73 @@
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTextEditView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readOnly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument" title="TermTk.TTkGui.textdocument.TTkTextDocument"><span class="pre">TTkTextDocument</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEditView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.abstractscrollview.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
+<p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.TTkTextEditView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╔═══════════════════════════════════════════════════════════════════════════════════════╗
+║ 0▌&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ╥   ║
+║ &lt;▌incididunt ut labore et dolore magna aliqua.                                    ║   ║
+║ 1▌                                                                                ║   ║
+║ 2▌Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu║   ║
+║ &lt;▌ip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ║   ║
+║ &lt;▌velit esse cillum dolore eu fugiat nulla pariatur.                              ║   ║
+║ 3▌                                                                                ║   ║
+║ 4▌Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru║   ║
+║ &lt;▌nt mollit anim id est laborum.&quot;                                                 ╨   ║
+╚═══════════════════════════════════════════════════════════════════════════════════════╝
+</pre></div>
+</div>
+<p>Demo: <a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/demo/showcase/textedit.py">textedit.py</a>
+(<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/demo/showcase/textedit.py">Try Online</a>)</p>
+<p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/ttkDesigner/textEdit">ttkdesigner Tutorial</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lineNumber</strong> (<em>bool</em><em>, </em><em>optional</em>) – Show the line number on the left, defaults to <strong>False</strong></p></li>
+<li><p><strong>readOnly</strong> (<em>bool</em><em>, </em><em>optional</em>) – In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible, defaults to <strong>True</strong></p></li>
+<li><p><strong>multiLine</strong> (<em>bool</em><em>, </em><em>optional</em>) – In a multiline text edit the user can split the text in multiple lines, defaults to <strong>True</strong></p></li>
+<li><p><strong>document</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument" title="TermTk.TTkGui.TTkTextDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextDocument</span></code></a>, optional) – If required an external Document can be used in this text editor, this option is useful if multiple editors share the same document as in the <a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/demo/showcase/textedit.py">demo</a>, defaults to a new Document</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a>’s inherited init params:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layout</strong> (<a class="reference internal" href="TermTk.TTkLayouts.html#module-TermTk.TTkLayouts" title="TermTk.TTkLayouts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">TermTk.TTkLayouts</span></code></a>) – the layout of this widget, optional, defaults to <a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout" title="TermTk.TTkLayouts.TTkLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayout</span></code></a></p></li>
+<li><p><strong>padding</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkPadding.html#TermTk.TTkWidgets.TTkPadding" title="TermTk.TTkWidgets.TTkPadding"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkPadding</span></code></a>) – the padding (top, bottom, left, right) of the widget, defaults to (0,0,0,0)</p></li>
+<li><p><strong>paddingTop</strong> (<em>int</em>) – the Top padding, override Top padding if already defined, optional, default=0 if padding is not defined</p></li>
+<li><p><strong>paddingBottom</strong> (<em>int</em>) – the Bottom padding, override Bottom padding if already defined, optional, default=0 if padding is not defined</p></li>
+<li><p><strong>paddingLeft</strong> (<em>int</em>) – the Left padding, override Left padding if already defined, optional, default=0 if padding is not defined</p></li>
+<li><p><strong>paddingRight</strong> (<em>int</em>) – the Right padding, override Right padding if already defined, optional, default=0 if padding is not defined</p></li>
+<li><p><strong>forwardStyle</strong> (<em>bool</em>) – [<strong>Experimental</strong>] any change of style will reflect the children, defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a>’s inherited init params:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – the name of the widget, defaults to “”</p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a>, optional) – the parent widget, defaults to None</p></li>
+<li><p><strong>x</strong> (<em>int</em><em>, </em><em>optional</em>) – the x position, defaults to 0</p></li>
+<li><p><strong>y</strong> (<em>int</em><em>, </em><em>optional</em>) – the y position, defaults to 0</p></li>
+<li><p><strong>pos</strong> (<em>(</em><em>int</em><em>,</em><em>int</em><em>)</em><em>, </em><em>optional</em>) – the [x,y] position (override the previously defined x, y), defaults to (x,y)</p></li>
+<li><p><strong>width</strong> (<em>int</em><em>, </em><em>optional</em>) – the width of the widget, defaults to 0</p></li>
+<li><p><strong>height</strong> (<em>int</em><em>, </em><em>optional</em>) – the height of the widget, defaults to 0</p></li>
+<li><p><strong>size</strong> (<em>(</em><em>int</em><em>,</em><em>int</em><em>)</em><em>, </em><em>optional</em>) – the size [width, height] of the widget (override the previously defined sizes), defaults to (width,height)</p></li>
+<li><p><strong>maxWidth</strong> (<em>int</em><em>, </em><em>optional</em>) – the maxWidth of the widget, defaults to 0x10000</p></li>
+<li><p><strong>maxHeight</strong> (<em>int</em><em>, </em><em>optional</em>) – the maxHeight of the widget, defaults to 0x10000</p></li>
+<li><p><strong>maxSize</strong> (<em>(</em><em>int</em><em>,</em><em>int</em><em>)</em><em>, </em><em>optional</em>) – the max [width,height] of the widget, optional, defaults to (maxWidth,maxHeight)</p></li>
+<li><p><strong>minWidth</strong> (<em>int</em><em>, </em><em>optional</em>) – the minWidth of the widget, defaults to 0</p></li>
+<li><p><strong>minHeight</strong> (<em>int</em><em>, </em><em>optional</em>) – the minHeight of the widget, defaults to 0</p></li>
+<li><p><strong>minSize</strong> (<em>(</em><em>int</em><em>,</em><em>int</em><em>)</em><em>, </em><em>optional</em>) – the minSize [width,height] of the widget, optional, defaults to (minWidth,minHeight)</p></li>
+<li><p><strong>toolTip</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a>, optional) – This property holds the widget’s tooltip, defaults to ‘’</p></li>
+<li><p><strong>style</strong> (<em>dict</em><em>, </em><em>optional</em>) – this field hold the custom style to be used by this widget</p></li>
+<li><p><strong>addStyle</strong> (<em>dict</em><em>, </em><em>optional</em>) – this field is required to override/merge the new style on top of the current one, useful if only few params need to be changed</p></li>
+<li><p><strong>visible</strong> (<em>bool</em><em>, </em><em>optional</em>) – the visibility, optional, defaults to True</p></li>
+<li><p><strong>enabled</strong> (<em>bool</em><em>, </em><em>optional</em>) – the ability to handle input events, optional, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
 <section id="style">
 <span id="termtk-ttkwidgets-ttktexteditview-classstyle"></span><h2>Style<a class="headerlink" href="#style" title="Link to this heading"><span>🌶️</span></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
@@ -584,14 +654,26 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.closed" title="TermTk.TTkWidgets.TTkTextEditView.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget is closed</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged" title="TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.currentColorChanged" title="TermTk.TTkWidgets.TTkTextEditView.currentColorChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentColorChanged</span></code></a></p></td>
+<td><p>This signal is emitted if the current character color has changed, for example caused by a change of the cursor position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged" title="TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget stye change</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.focusChanged" title="TermTk.TTkWidgets.TTkTextEditView.focusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusChanged</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.focusChanged" title="TermTk.TTkWidgets.TTkTextEditView.focusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever the focus status change i.e. with the <code class="xref py py-meth docutils literal notranslate"><span class="pre">setFocus()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">clearFocus()</span></code> methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.redoAvailable" title="TermTk.TTkWidgets.TTkTextEditView.redoAvailable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redoAvailable</span></code></a></p></td>
+<td><p>This signal is emitted whenever redo operations become available (available is true) or unavailable (available is false).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.sizeChanged" title="TermTk.TTkWidgets.TTkTextEditView.sizeChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget size change</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.textChanged" title="TermTk.TTkWidgets.TTkTextEditView.textChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">textChanged</span></code></a></p></td>
+<td><p>This signal is emitted whenever the document's content changes; for example, when text is inserted or deleted, or when formatting is applied.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.undoAvailable" title="TermTk.TTkWidgets.TTkTextEditView.undoAvailable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoAvailable</span></code></a></p></td>
+<td><p>This signal is emitted whenever undo operations become available (available is true) or unavailable (available is false).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEditView.viewChanged" title="TermTk.TTkWidgets.TTkTextEditView.viewChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever there is a change in the view content topology (size,pos)</p></td>
@@ -644,7 +726,7 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMoveTo</span></code>(x, y)</p></td>
-<td><p></p></td>
+<td><p>This method is used to set the vertical and horizontal offsets of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -712,6 +794,18 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.currentColorChanged">
+<span class="sig-name descname"><span class="pre">currentColorChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.currentColorChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted if the current character color has changed,
+for example caused by a change of the cursor position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the new color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged">
 <span class="sig-name descname"><span class="pre">currentStyleChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This signal is emitted whenever the widget stye change</p>
@@ -735,6 +829,18 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.redoAvailable">
+<span class="sig-name descname"><span class="pre">redoAvailable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.redoAvailable" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever redo operations become available (available is true)
+or unavailable (available is false).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>available</strong> (<em>bool</em>) – the availability of redo</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.sizeChanged">
 <span class="sig-name descname"><span class="pre">sizeChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.sizeChanged" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This signal is emitted whenever the widget size change</p>
@@ -744,6 +850,25 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <li><p><strong>width</strong> (<em>int</em>) – the new widget width</p></li>
 <li><p><strong>height</strong> (<em>int</em>) – the new widget height</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.textChanged">
+<span class="sig-name descname"><span class="pre">textChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.textChanged" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever the document’s content changes;
+for example, when text is inserted or deleted, or when formatting is applied.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.undoAvailable">
+<span class="sig-name descname"><span class="pre">undoAvailable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.undoAvailable" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted whenever undo operations become available (available is true)
+or unavailable (available is false).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>available</strong> (<em>bool</em>) – the availability of undo</p>
 </dd>
 </dl>
 </dd></dl>
@@ -912,14 +1037,23 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.viewDisplayedSize">
-<span class="sig-name descname"><span class="pre">viewDisplayedSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEditView.viewDisplayedSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.viewDisplayedSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.viewFullAreaSize">
 <span class="sig-name descname"><span class="pre">viewFullAreaSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEditView.viewFullAreaSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEditView.viewFullAreaSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>This method returns the full widget area size of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a> implementation.</p>
+<p>This is required to <cite>TTkAbstractScrollArea</cite> implementation to handle the on-demand scroll bars.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplement this function to handle this event</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the full area size as a tuple of 2 int elements (width,height)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int,int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEditView.wordWrapMode">
@@ -934,14 +1068,20 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getViewOffsets</span></code>()</p></td>
+<td><p>Retrieve the vertical and horizontal offsets of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
 <td><p>Convenience function, Event Callback triggered after a successful resize</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
 <td><p>Notify the drawing routine that the widget changed and needs to draw its new content.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewDisplayedSize</span></code>()</p></td>
+<td><p>This method returns the displayed size of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a> implementation.</p></td>
+</tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMoveTo</span></code>(x, y)</p></td>
-<td><p></p></td>
+<td><p>This method is used to set the vertical and horizontal offsets of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wheelEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse wheel events for the widget.</p></td>
@@ -1292,18 +1432,6 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentColorChanged</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">textChanged</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1358,9 +1486,13 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView"><code class="docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.closed"><code class="docutils literal notranslate"><span class="pre">closed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.currentColorChanged"><code class="docutils literal notranslate"><span class="pre">currentColorChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.redoAvailable"><code class="docutils literal notranslate"><span class="pre">redoAvailable</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.textChanged"><code class="docutils literal notranslate"><span class="pre">textChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.undoAvailable"><code class="docutils literal notranslate"><span class="pre">undoAvailable</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewChanged"><code class="docutils literal notranslate"><span class="pre">viewChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewMovedTo"><code class="docutils literal notranslate"><span class="pre">viewMovedTo</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewSizeChanged"><code class="docutils literal notranslate"><span class="pre">viewSizeChanged</span></code></a></li>
@@ -1388,7 +1520,6 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.toPlainText"><code class="docutils literal notranslate"><span class="pre">toPlainText()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.toRawText"><code class="docutils literal notranslate"><span class="pre">toRawText()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.undo"><code class="docutils literal notranslate"><span class="pre">undo()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewDisplayedSize"><code class="docutils literal notranslate"><span class="pre">viewDisplayedSize()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.viewFullAreaSize"><code class="docutils literal notranslate"><span class="pre">viewFullAreaSize()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode"><code class="docutils literal notranslate"><span class="pre">wordWrapMode()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEditView.wrapWidth"><code class="docutils literal notranslate"><span class="pre">wrapWidth()</span></code></a></li>

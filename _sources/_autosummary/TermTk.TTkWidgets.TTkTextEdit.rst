@@ -14,18 +14,28 @@ TTkTextEdit
    
 
    
+   Signals linked to: :py:class:`TTkTextEditView`
+
+   .. autosummary::
+   
+      TTkTextEditView.currentColorChanged
+      TTkTextEditView.focusChanged
+      TTkTextEditView.redoAvailable
+      TTkTextEditView.textChanged
+      TTkTextEditView.undoAvailable
+
+   
+   :py:class:`TTkTextEdit` signals:
+   
+   
 
    
    .. autosummary::
    
       closed
-      currentColorChanged
       currentStyleChanged
       focusChanged
-      redoAvailable
       sizeChanged
-      textChanged
-      undoAvailable
    
 
    
@@ -33,6 +43,24 @@ TTkTextEdit
    -------------------------------
    
 
+   
+   Slots linked to: :py:class:`TTkTextEditView`
+
+   .. autosummary::
+   
+      TTkTextEditView.append
+      TTkTextEditView.clear
+      TTkTextEditView.copy
+      TTkTextEditView.cut
+      TTkTextEditView.paste
+      TTkTextEditView.redo
+      TTkTextEditView.setColor
+      TTkTextEditView.setText
+      TTkTextEditView.undo
+
+   
+   :py:class:`TTkTextEdit` slots:
+   
    
 
    
@@ -82,13 +110,9 @@ TTkTextEdit
 
    
    .. autoattribute:: closed
-   .. autoattribute:: currentColorChanged
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
-   .. autoattribute:: redoAvailable
    .. autoattribute:: sizeChanged
-   .. autoattribute:: textChanged
-   .. autoattribute:: undoAvailable
    
 
    
@@ -96,6 +120,40 @@ TTkTextEdit
    -------
    
 
+   
+   Methods linked to: :py:class:`TTkTextEditView`
+
+   .. autosummary::
+   
+      TTkTextEditView.append
+      TTkTextEditView.clear
+      TTkTextEditView.copy
+      TTkTextEditView.cut
+      TTkTextEditView.document
+      TTkTextEditView.isReadOnly
+      TTkTextEditView.isRedoAvailable
+      TTkTextEditView.isUndoAvailable
+      TTkTextEditView.lineWrapMode
+      TTkTextEditView.multiLine
+      TTkTextEditView.paste
+      TTkTextEditView.redo
+      TTkTextEditView.setColor
+      TTkTextEditView.setLineWrapMode
+      TTkTextEditView.setReadOnly
+      TTkTextEditView.setText
+      TTkTextEditView.setWordWrapMode
+      TTkTextEditView.setWrapWidth
+      TTkTextEditView.textCursor
+      TTkTextEditView.toAnsi
+      TTkTextEditView.toPlainText
+      TTkTextEditView.toRawText
+      TTkTextEditView.undo
+      TTkTextEditView.wordWrapMode
+      TTkTextEditView.wrapWidth
+
+   
+   :py:class:`TTkTextEdit` methods:
+   
    
 
 
@@ -281,6 +339,7 @@ TTkTextEdit Attributes
   classStyle
   clear
   copy
+  currentColorChanged
   cut
   document
   isReadOnly
@@ -290,6 +349,7 @@ TTkTextEdit Attributes
   multiLine
   paste
   redo
+  redoAvailable
   setColor
   setFocus
   setLineWrapMode
@@ -297,11 +357,13 @@ TTkTextEdit Attributes
   setText
   setWordWrapMode
   setWrapWidth
+  textChanged
   textCursor
   toAnsi
   toPlainText
   toRawText
   undo
+  undoAvailable
   wordWrapMode
   wrapWidth
 
