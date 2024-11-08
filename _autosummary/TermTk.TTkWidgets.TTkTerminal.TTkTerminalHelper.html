@@ -506,6 +506,8 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper"><code class="docutils literal notranslate"><span class="pre">TTkTerminalHelper</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.dataOut"><code class="docutils literal notranslate"><span class="pre">dataOut</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.terminalClosed"><code class="docutils literal notranslate"><span class="pre">terminalClosed</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.attachTTkTerminal"><code class="docutils literal notranslate"><span class="pre">attachTTkTerminal()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.loop"><code class="docutils literal notranslate"><span class="pre">loop()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
@@ -513,7 +515,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.runShell"><code class="docutils literal notranslate"><span class="pre">runShell()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttkterminalhelper-attributes">TTkTerminalHelper Attributes</a></li>
 </ul>
             </nav>
         </div>
@@ -529,66 +530,151 @@
 <h1>TTkTerminalHelper<a class="headerlink" href="#ttkterminalhelper" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTerminalHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTerminalHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal" title="TermTk.TTkWidgets.TTkTerminal.terminal.TTkTerminal"><span class="pre">TTkTerminal</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTerminalHelper</span></code></a> is a convenience class that simplify the initilization and the handling of a <a class="reference external" href="https://docs.python.org/3/library/pty.html">pty</a> terminal session</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This helper is available only on Linux and Mac</p>
+</div>
+<p>Quickstart:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TermTk</span> <span class="k">as</span> <span class="nn">ttk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTk</span><span class="p">(</span><span class="n">mouseTrack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">win</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkWindow</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Terminal&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">24</span><span class="o">+</span><span class="mi">4</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkGridLayout</span><span class="p">())</span>
+
+<span class="n">term</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTerminal</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">win</span><span class="p">)</span>
+
+<span class="n">th</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTerminalHelper</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">)</span>
+<span class="n">th</span><span class="o">.</span><span class="n">runShell</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>term</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminal"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTerminal</span></code></a>) – The terminal handled by this helper.</p>
+</dd>
+</dl>
+<section id="signals">
+<h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.dataOut" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.dataOut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataOut</span></code></a></p></td>
+<td><p>This signal is emitted when some data is available in the pty interface</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.terminalClosed" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.terminalClosed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terminalClosed</span></code></a></p></td>
+<td><p>This signal is emitted when the pty session ends</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push"><code class="xref py py-obj docutils literal notranslate"><span class="pre">push</span></code></a>(data)</p></td>
-<td><p></p></td>
+<td><p>Send the data to the pty session</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(w, h)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(width, height)</p></td>
+<td><p>Send a resize &quot;<a class="reference external" href="https://docs.python.org/3/library/termios.html#termios.tcgetwinsize">TIOCSWINSZ</a>&quot; ioctl to the pty session</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
+<section id="members">
+<h2>Members<a class="headerlink" href="#members" title="Link to this heading"><span>🌶️</span></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.dataOut">
+<span class="sig-name descname"><span class="pre">dataOut</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.dataOut" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when some data is available in the pty interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>str</em>) – the pty data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.terminalClosed">
+<span class="sig-name descname"><span class="pre">terminalClosed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.terminalClosed" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when the pty session ends</p>
+</dd></dl>
+
 </section>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.attachTTkTerminal">
-<span class="sig-name descname"><span class="pre">attachTTkTerminal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.attachTTkTerminal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.attachTTkTerminal" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">attachTTkTerminal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal" title="TermTk.TTkWidgets.TTkTerminal.terminal.TTkTerminal"><span class="pre">TTkTerminal</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.attachTTkTerminal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.attachTTkTerminal" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Attach a <a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminal"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTerminal</span></code></a> to this helper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>term</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal" title="TermTk.TTkWidgets.TTkTerminal.TTkTerminal"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTerminal</span></code></a>) – The terminal handled by this helper.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.loop">
-<span class="sig-name descname"><span class="pre">loop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.loop" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">loop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.loop" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This is the main loop routine responsible of handling the pty and terminal events,
+for example, forwarding the input codes to the pty session and the pty output to the terminal emulator.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>TTkTerminal
+╔═══════╗                                                       pty
+║ C:\   ║ --[ KeyPresses, MouseEvents, ResizeSignal, ... ]--&gt; ┌────┈┄╶
+║       ║ &lt;---------[ Output, Ansi escape codes, ... ]------- │ bash, sh, ...
+╚═══════╝                                                     └────┈┄╶
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Do not touch this! (unless you know what you are doing)</p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push">
-<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.push"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.push"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Send the data to the pty session</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>str</em>) – the data</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize">
-<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Send a resize “<a class="reference external" href="https://docs.python.org/3/library/termios.html#termios.tcgetwinsize">TIOCSWINSZ</a>” ioctl to the pty session</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – the new width</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the new height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.runShell">
-<span class="sig-name descname"><span class="pre">runShell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.runShell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.runShell" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">runShell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkTerminal/terminalhelper.html#TTkTerminalHelper.runShell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.runShell" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Run a “program” attaching it the the pty session linked to this terminal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>program</strong> (<em>str</em><em>, </em><em>optional</em>) – The program required to run, defaults to the cmd defined bu the “SHELL” env variable or “sh” if missing</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </dd></dl>
 
-<section id="ttkterminalhelper-attributes">
-<h2>TTkTerminalHelper Attributes<a class="headerlink" href="#ttkterminalhelper-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataOut</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">terminalClosed</span></code></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 </section>
 
 
@@ -638,6 +724,8 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper"><code class="docutils literal notranslate"><span class="pre">TTkTerminalHelper</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.dataOut"><code class="docutils literal notranslate"><span class="pre">dataOut</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.terminalClosed"><code class="docutils literal notranslate"><span class="pre">terminalClosed</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.attachTTkTerminal"><code class="docutils literal notranslate"><span class="pre">attachTTkTerminal()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.loop"><code class="docutils literal notranslate"><span class="pre">loop()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push"><code class="docutils literal notranslate"><span class="pre">push()</span></code></a></li>
@@ -645,7 +733,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.runShell"><code class="docutils literal notranslate"><span class="pre">runShell()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttkterminalhelper-attributes">TTkTerminalHelper Attributes</a></li>
 </ul>
   </nav></div>
 

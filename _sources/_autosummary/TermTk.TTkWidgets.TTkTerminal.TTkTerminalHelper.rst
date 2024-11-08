@@ -9,9 +9,17 @@ TTkTerminalHelper
    
 
    
+   :ref:`Signals <Signal and Slots>`
+   ---------------------------------
+   
 
    
 
+   
+   .. autosummary::
+   
+      dataOut
+      terminalClosed
    
 
    
@@ -30,6 +38,13 @@ TTkTerminalHelper
 
    
 
+   
+   Members
+   -------
+
+   
+   .. autoattribute:: dataOut
+   .. autoattribute:: terminalClosed
    
 
    
@@ -56,19 +71,5 @@ TTkTerminalHelper
 
 
 
-
-
-TTkTerminalHelper Attributes
-------------------------
-
-.. currentmodule::  TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper
-
-.. autosummary::
-
-
-  dataOut
-  terminalClosed
-
-.. currentmodule::  TermTk.TTkWidgets.TTkTerminal
 
 

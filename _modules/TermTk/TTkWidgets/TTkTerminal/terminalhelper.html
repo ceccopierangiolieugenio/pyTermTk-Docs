@@ -490,15 +490,59 @@
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span><span class="n">pyTTkSlot</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.helper</span> <span class="kn">import</span> <span class="n">TTkHelper</span>
+<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkTerminal.terminal</span> <span class="kn">import</span> <span class="n">TTkTerminal</span>
 
 <div class="viewcode-block" id="TTkTerminalHelper">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkTerminalHelper</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    :py:class:`TTkTerminalHelper` is a convenience class that simplify the initilization and the handling of a `pty &lt;https://docs.python.org/3/library/pty.html&gt;`__ terminal session</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        This helper is available only on Linux and Mac</span>
+
+<span class="sd">    Quickstart:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        import TermTk as ttk</span>
+
+<span class="sd">        root = ttk.TTk(mouseTrack=True)</span>
+
+<span class="sd">        win = ttk.TTkWindow(parent=root, title=&quot;Terminal&quot;, size=(80+2,24+4), layout=ttk.TTkGridLayout())</span>
+
+<span class="sd">        term = ttk.TTkTerminal(parent=win)</span>
+
+<span class="sd">        th = ttk.TTkTerminalHelper(term=term)</span>
+<span class="sd">        th.runShell()</span>
+
+<span class="sd">        root.mainloop()</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">dataOut</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when some data is available in the pty interface</span>
+
+<span class="sd">    :param data: the pty data</span>
+<span class="sd">    :type data: str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">terminalClosed</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when the pty session ends</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_shell&#39;</span><span class="p">,</span> <span class="s1">&#39;_fd&#39;</span><span class="p">,</span> <span class="s1">&#39;_inout&#39;</span><span class="p">,</span> <span class="s1">&#39;_pid&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;_quit_pipe&#39;</span><span class="p">,</span> <span class="s1">&#39;_size&#39;</span><span class="p">,</span> <span class="s1">&#39;_term&#39;</span><span class="p">,</span>
                  <span class="c1">#Signals</span>
                  <span class="s1">&#39;terminalClosed&#39;</span><span class="p">,</span> <span class="s1">&#39;dataOut&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">term</span><span class="p">:</span><span class="n">TTkTerminal</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param term: The terminal handled by this helper.</span>
+<span class="sd">        :type term: :py:class:`TTkTerminal`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataOut</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">terminalClosed</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_shell</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SHELL&#39;</span><span class="p">,</span> <span class="s1">&#39;sh&#39;</span><span class="p">)]</span>
@@ -514,7 +558,14 @@
 
 <div class="viewcode-block" id="TTkTerminalHelper.attachTTkTerminal">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.attachTTkTerminal">[docs]</a>
-    <span class="k">def</span> <span class="nf">attachTTkTerminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">attachTTkTerminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">:</span><span class="n">TTkTerminal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Attach a :py:class:`TTkTerminal` to this helper.</span>
+
+<span class="sd">        :param term: The terminal handled by this helper.</span>
+<span class="sd">        :type term: :py:class:`TTkTerminal`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_term</span> <span class="o">=</span> <span class="n">term</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataOut</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">termWrite</span><span class="p">)</span>
         <span class="n">term</span><span class="o">.</span><span class="n">termData</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">push</span><span class="p">)</span>
@@ -524,7 +575,13 @@
 
 <div class="viewcode-block" id="TTkTerminalHelper.runShell">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.runShell">[docs]</a>
-    <span class="k">def</span> <span class="nf">runShell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">runShell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Run a &quot;program&quot; attaching it the the pty session linked to this terminal.</span>
+
+<span class="sd">        :param program: The program required to run, defaults to the cmd defined bu the &quot;SHELL&quot; env variable or &quot;sh&quot; if missing</span>
+<span class="sd">        :type program: str, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_shell</span> <span class="o">=</span> <span class="n">program</span> <span class="k">if</span> <span class="n">program</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shell</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shell</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_shell</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_shell</span><span class="p">]</span>
@@ -559,22 +616,36 @@
 <div class="viewcode-block" id="TTkTerminalHelper.resize">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.resize">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Send a resize &quot;`TIOCSWINSZ &lt;https://docs.python.org/3/library/termios.html#termios.tcgetwinsize&gt;`__&quot; ioctl to the pty session</span>
+
+<span class="sd">        :param width: the new width</span>
+<span class="sd">        :type width: int</span>
+<span class="sd">        :param height: the new height</span>
+<span class="sd">        :type height: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># if w&lt;=0 or h&lt;=0: return</span>
         <span class="c1"># if self._fd:</span>
         <span class="c1">#     s = struct.pack(&#39;HHHH&#39;, h, w, 0, 0)</span>
         <span class="c1">#     t = fcntl.ioctl(self._fd, termios.TIOCSWINSZ, s)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fd</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">!=</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">w</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">h</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;HHHH&#39;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fd</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">!=</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">width</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">height</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;HHHH&#39;</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
             <span class="n">t</span> <span class="o">=</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fd</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TIOCSWINSZ</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTerminalHelper.push">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.push">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Send the data to the pty session</span>
+
+<span class="sd">        :param data: the data</span>
+<span class="sd">        :type data: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
 
@@ -595,7 +666,22 @@
 
 <div class="viewcode-block" id="TTkTerminalHelper.loop">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.loop">[docs]</a>
-    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This is the main loop routine responsible of handling the pty and terminal events,</span>
+<span class="sd">        for example, forwarding the input codes to the pty session and the pty output to the terminal emulator.</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            TTkTerminal</span>
+<span class="sd">            ╔═══════╗                                                       pty</span>
+<span class="sd">            ║ C:\   ║ --[ KeyPresses, MouseEvents, ResizeSignal, ... ]--&gt; ┌────┈┄╶</span>
+<span class="sd">            ║       ║ &lt;---------[ Output, Ansi escape codes, ... ]------- │ bash, sh, ...</span>
+<span class="sd">            ╚═══════╝                                                     └────┈┄╶</span>
+
+<span class="sd">        .. caution:: Do not touch this! (unless you know what you are doing)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
         <span class="k">while</span> <span class="n">rs</span> <span class="o">:=</span> <span class="n">select</span><span class="p">(</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_inout</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_quit_pipe</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[],</span> <span class="p">[])[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quit_pipe</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">:</span>
                 <span class="c1"># os.close(self._quit_pipe[0])</span>

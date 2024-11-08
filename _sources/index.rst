@@ -102,18 +102,6 @@ API Reference
    TTkWidgets.TTkPickers
    TTkWidgets.TTkTerminal
 
-.. #   TTkAbstract
-.. #   TTkCore
-.. #   TTkGui
-.. #   TTkLayouts
-.. #   TTkTemplates
-.. #   TTkTestWidgets
-.. #   TTkUiTools
-.. #   TTkWidgets
-.. #   TTkWidgets.TTkModelView
-.. #   TTkWidgets.TTkPickers
-.. #   TTkWidgets.TTkTerminal
-
 .. #.. autosummary::
 .. #   :caption: Classes:
 .. #   :toctree: _autosummary
