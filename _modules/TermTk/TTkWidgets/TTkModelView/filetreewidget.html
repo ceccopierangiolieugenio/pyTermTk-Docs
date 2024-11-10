@@ -540,12 +540,59 @@
 <span class="sd">        root.mainloop()</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
+    <span class="n">fileClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a file is clicked</span>
+
+<span class="sd">    :param file:</span>
+<span class="sd">    :type  file: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">folderClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a folder is clicked</span>
+
+<span class="sd">    :param folder:</span>
+<span class="sd">    :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fileDoubleClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a file is doubleclicked</span>
+
+<span class="sd">    :param file:</span>
+<span class="sd">    :type  file: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">folderDoubleClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a folder is doubleclicked</span>
+
+<span class="sd">    :param folder:</span>
+<span class="sd">    :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fileActivated</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a file is activated</span>
+
+<span class="sd">    :param file:</span>
+<span class="sd">    :type  file: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">folderActivated</span><span class="p">:</span><span class="n">pyTTkSignal</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This signal is emitted when a fiilder is activated</span>
+
+<span class="sd">    :param folder:</span>
+<span class="sd">    :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_path&#39;</span><span class="p">,</span> <span class="s1">&#39;_filter&#39;</span><span class="p">,</span>
                  <span class="c1"># Signals</span>
                  <span class="s1">&#39;fileClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;fileDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;fileActivated&#39;</span><span class="p">,</span> <span class="s1">&#39;folderActivated&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param path: the starting path opened by the :py:class:`TTkFileTreeWidget`, defaults to the current path (&#39;.&#39;)</span>
+<span class="sd">        :type  path: str, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># Signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fileClicked</span>         <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folderClicked</span>       <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">)</span>
@@ -584,6 +631,7 @@
 <div class="viewcode-block" id="TTkFileTreeWidget.openPath">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.openPath">[docs]</a>
     <span class="k">def</span> <span class="nf">openPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">path</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>

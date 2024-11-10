@@ -544,6 +544,13 @@
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">loadDict</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">baseWidget</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div>
 
 
+    <span class="k">def</span> <span class="nf">_convert_2_0_2_to_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">TTkUiSignature</span><span class="p">,</span>
+            <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.1.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;connections&quot;</span> <span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;connections&#39;</span><span class="p">],</span>
+            <span class="s2">&quot;tui&quot;</span><span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;tui&#39;</span><span class="p">]</span> <span class="p">}</span>
+
     <span class="k">def</span> <span class="nf">_convert_2_0_1_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">TTkUiSignature</span><span class="p">,</span>
@@ -591,10 +598,14 @@
         <span class="n">ui</span> <span class="o">=</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_1_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ui</span> <span class="o">=</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_2_to_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_loadDict_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span>
-            <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;2.0.2&#39;</span> <span class="ow">or</span>
+            <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;2.1.0&#39;</span> <span class="ow">or</span>
             <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ui</span> <span class="ow">or</span>
             <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">TTkUiSignature</span><span class="p">):</span>
             <span class="n">TTkLog</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Ui Format not valid&quot;</span><span class="p">)</span>
@@ -792,7 +803,8 @@
               <span class="s1">&#39;1.0.1&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_1_0_1_to_2_0_0</span><span class="p">,</span>
               <span class="s1">&#39;2.0.0&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_0_to_2_0_2</span><span class="p">,</span>
               <span class="s1">&#39;2.0.1&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_1_to_2_0_2</span><span class="p">,</span>
-              <span class="s1">&#39;2.0.2&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+              <span class="s1">&#39;2.0.2&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_2_to_2_1_0</span><span class="p">,</span>
+              <span class="s1">&#39;2.1.0&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
               <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ui</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">cb</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span></div>
 
@@ -817,6 +829,7 @@
               <span class="s1">&#39;2.0.0&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_0</span><span class="p">,</span>
               <span class="s1">&#39;2.0.1&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_1</span><span class="p">,</span>
               <span class="s1">&#39;2.0.2&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_2</span><span class="p">,</span>
+              <span class="s1">&#39;2.1.0&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_1_0</span><span class="p">,</span>
               <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ui</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">cb</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">cb</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>

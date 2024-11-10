@@ -508,7 +508,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget"><code class="docutils literal notranslate"><span class="pre">TTkFileTreeWidget</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.closed"><code class="docutils literal notranslate"><span class="pre">closed</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileActivated"><code class="docutils literal notranslate"><span class="pre">fileActivated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileClicked"><code class="docutils literal notranslate"><span class="pre">fileClicked</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileDoubleClicked"><code class="docutils literal notranslate"><span class="pre">fileDoubleClicked</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderActivated"><code class="docutils literal notranslate"><span class="pre">folderActivated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderClicked"><code class="docutils literal notranslate"><span class="pre">folderClicked</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderDoubleClicked"><code class="docutils literal notranslate"><span class="pre">folderDoubleClicked</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemActivated"><code class="docutils literal notranslate"><span class="pre">itemActivated</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemChanged"><code class="docutils literal notranslate"><span class="pre">itemChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemClicked"><code class="docutils literal notranslate"><span class="pre">itemClicked</span></code></a></li>
@@ -577,6 +583,20 @@
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – the starting path opened by the <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidget</span></code></a>, defaults to the current path (‘.’)</p>
+</dd>
+</dl>
+<p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTreeWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTreeWidget</span></code></a>’s inherited init params:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header</strong> (<em>list</em><em>[</em><a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><em>TTkString</em></a><em>]</em><em>, </em><em>optional</em>) – define the header labels of each column, defaults to []</p></li>
+<li><p><strong>sortingEnabled</strong> (<em>bool</em><em>, </em><em>optional</em>) – enable the column sorting, defaults to False</p></li>
+</ul>
+</dd>
+</dl>
 <p><a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a>’s inherited init params:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -627,8 +647,26 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.currentStyleChanged" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.currentStyleChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget stye change</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusChanged</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileActivated" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileActivated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileActivated</span></code></a></p></td>
+<td><p>This signal is emitted when a file is activated</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileClicked" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileClicked</span></code></a></p></td>
+<td><p>This signal is emitted when a file is clicked</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileDoubleClicked" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileDoubleClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileDoubleClicked</span></code></a></p></td>
+<td><p>This signal is emitted when a file is doubleclicked</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever the focus status change i.e. with the <code class="xref py py-meth docutils literal notranslate"><span class="pre">setFocus()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">clearFocus()</span></code> methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderActivated" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderActivated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">folderActivated</span></code></a></p></td>
+<td><p>This signal is emitted when a fiilder is activated</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderClicked" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">folderClicked</span></code></a></p></td>
+<td><p>This signal is emitted when a folder is clicked</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderDoubleClicked" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderDoubleClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">folderDoubleClicked</span></code></a></p></td>
+<td><p>This signal is emitted when a folder is doubleclicked</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemActivated" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemActivated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemActivated</span></code></a></p></td>
 <td><p>This signal is emitted when the user activates an item by double-clicking or pressing a special key (e.g., Enter).</p></td>
@@ -749,6 +787,39 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileActivated">
+<span class="sig-name descname"><span class="pre">fileActivated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileActivated" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when a file is activated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidgetItem</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileClicked">
+<span class="sig-name descname"><span class="pre">fileClicked</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileClicked" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when a file is clicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidgetItem</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileDoubleClicked">
+<span class="sig-name descname"><span class="pre">fileDoubleClicked</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileDoubleClicked" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when a file is doubleclicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidgetItem</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged">
 <span class="sig-name descname"><span class="pre">focusChanged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This signal is emitted whenever the focus status change
@@ -756,6 +827,39 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>status</strong> (<em>bool</em>) – the curent focus status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderActivated">
+<span class="sig-name descname"><span class="pre">folderActivated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderActivated" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when a fiilder is activated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidgetItem</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderClicked">
+<span class="sig-name descname"><span class="pre">folderClicked</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderClicked" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when a folder is clicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidgetItem</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderDoubleClicked">
+<span class="sig-name descname"><span class="pre">folderDoubleClicked</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal" title="TermTk.TTkCore.signal.pyTTkSignal"><span class="pre">pyTTkSignal</span></a></em><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderDoubleClicked" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>This signal is emitted when a folder is doubleclicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkFileTreeWidgetItem</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1348,24 +1452,6 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileActivated</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileClicked</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fileDoubleClicked</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folderActivated</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folderClicked</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folderDoubleClicked</span></code></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1421,7 +1507,13 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget"><code class="docutils literal notranslate"><span class="pre">TTkFileTreeWidget</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.closed"><code class="docutils literal notranslate"><span class="pre">closed</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileActivated"><code class="docutils literal notranslate"><span class="pre">fileActivated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileClicked"><code class="docutils literal notranslate"><span class="pre">fileClicked</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.fileDoubleClicked"><code class="docutils literal notranslate"><span class="pre">fileDoubleClicked</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderActivated"><code class="docutils literal notranslate"><span class="pre">folderActivated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderClicked"><code class="docutils literal notranslate"><span class="pre">folderClicked</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.folderDoubleClicked"><code class="docutils literal notranslate"><span class="pre">folderDoubleClicked</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemActivated"><code class="docutils literal notranslate"><span class="pre">itemActivated</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemChanged"><code class="docutils literal notranslate"><span class="pre">itemChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.itemClicked"><code class="docutils literal notranslate"><span class="pre">itemClicked</span></code></a></li>
