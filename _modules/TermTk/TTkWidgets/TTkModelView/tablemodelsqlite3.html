@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkCore.drivers.term_unix &#8212; pyTermTk 0.41.0-a
+    <title>TermTk.TTkWidgets.TTkModelView.tablemodelsqlite3 &#8212; pyTermTk 0.41.0-a
  documentation</title>
   
   
@@ -45,7 +45,7 @@
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/TermTk/TTkCore/drivers/term_unix';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/TermTk/TTkWidgets/TTkModelView/tablemodelsqlite3';</script>
     <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -458,10 +458,10 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Source code for TermTk.TTkCore.drivers.term_unix</h1><div class="highlight"><pre>
+  <h1>Source code for TermTk.TTkWidgets.TTkModelView.tablemodelsqlite3</h1><div class="highlight"><pre>
 <span></span><span class="c1"># MIT License</span>
 <span class="c1">#</span>
-<span class="c1"># Copyright (c) 2022 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
+<span class="c1"># Copyright (c) 2024 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -481,147 +481,206 @@
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTerm&#39;</span><span class="p">]</span>
+<span class="n">__all__</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;TTkTableModelSQLite3&#39;</span><span class="p">]</span>
 
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">signal</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span><span class="p">,</span> <span class="n">Lock</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">threading</span>
 
-<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">termios</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">..TTkTerm.term_base</span> <span class="kn">import</span> <span class="n">TTkTermBase</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
+<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstracttablemodel</span> <span class="kn">import</span> <span class="n">TTkAbstractTableModel</span><span class="p">,</span> <span class="n">TTkModelIndex</span>
 
-<div class="viewcode-block" id="TTkTerm">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html#TermTk.TTkCore.TTkTerm.TTkTerm">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTerm</span><span class="p">(</span><span class="n">TTkTermBase</span><span class="p">):</span>
-    <span class="n">_sigWinChCb</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">class</span> <span class="nc">_TTkModelIndexSQLite3</span><span class="p">(</span><span class="n">TTkModelIndex</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_col&#39;</span><span class="p">,</span><span class="s1">&#39;_rowId&#39;</span><span class="p">,</span><span class="s1">&#39;_sqModel&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">rowId</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">sqModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col</span>     <span class="o">=</span> <span class="n">col</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rowId</span>   <span class="o">=</span> <span class="n">rowId</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqModel</span> <span class="o">=</span> <span class="n">sqModel</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-    <span class="c1"># Save treminal attributes during the initialization in order to</span>
-    <span class="c1"># restore later the original states</span>
-    <span class="n">_termAttr</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">row</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqModel</span><span class="o">.</span><span class="n">_getRow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowId</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">col</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_col</span>
 
-    <span class="n">_termAttrBk</span> <span class="o">=</span> <span class="p">[]</span>
-<div class="viewcode-block" id="TTkTerm.saveTermAttr">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html#TermTk.TTkCore.TTkTerm.TTkTerm.saveTermAttr">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">saveTermAttr</span><span class="p">():</span>
-        <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_termAttrBk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">))</span></div>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqModel</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span><span class="n">col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqModel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span><span class="n">col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">(),</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TTkTableModelSQLite3">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3">[docs]</a>
+<span class="k">class</span> <span class="nc">TTkTableModelSQLite3</span><span class="p">(</span><span class="n">TTkAbstractTableModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    :py:class:`TTkTableModelSQLite3` extends :py:class:`TTkAbstractTableModel`,</span>
+<span class="sd">    allowing to map an sqlite3 table to this table model</span>
+
+<span class="sd">    Quickstart:</span>
+
+<span class="sd">    In This example i assume i have a database named **sqlite.database.db** which contain a table **users**</span>
+
+<span class="sd">    Please refer to `test.ui.032.table.10.sqlite.py  &lt;https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tests/t.ui/test.ui.026.toolTip.py&gt;`_   (`tryItOnline &lt;https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?fileUri=https://raw.githubusercontent.com/ceccopierangiolieugenio/pyTermTk/main/tests/t.ui/test.ui.032.table.10.sqlite.py&gt;`__) for  working eample.</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        import TermTk as ttk</span>
+
+<span class="sd">        filename=&#39;sqlite.database.db&#39;</span>
+<span class="sd">        tablename=&#39;users&#39;</span>
+
+<span class="sd">        root = ttk.TTk(mouseTrack=True, layout=ttk.TTkGridLayout())</span>
+
+<span class="sd">        basicTableModel = ttk.TTkTableModelSQLite3(fileName=filename, table=tablename)</span>
+<span class="sd">        table = ttk.TTkTable(parent=root, tableModel=basicTableModel, sortingEnabled=True)</span>
+<span class="sd">        table.resizeColumnsToContents()</span>
+
+<span class="sd">        root.mainloop()</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;_conn&#39;</span><span class="p">,</span> <span class="s1">&#39;_cur&#39;</span><span class="p">,</span> <span class="s1">&#39;_table&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_key&#39;</span><span class="p">,</span> <span class="s1">&#39;_columns&#39;</span><span class="p">,</span> <span class="s1">&#39;_count&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_sort&#39;</span><span class="p">,</span> <span class="s1">&#39;_sortColumn&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_sqliteMutex&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_idMap&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+                 <span class="n">table</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+                 <span class="c1"># header:list[str]=None</span>
+                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param fileName: the sqlite3 file database</span>
+<span class="sd">        :type fileName: str</span>
+
+<span class="sd">        :param table: the name of the sqlite3 table to be mapped</span>
+<span class="sd">        :type table: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_table</span> <span class="o">=</span> <span class="n">table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idMap</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">check_same_thread</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span>  <span class="o">=</span> <span class="n">cur</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT COUNT(*) FROM </span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PRAGMA table_info(</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_key</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_refreshIdMap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idMap</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">_id</span> <span class="p">:</span> <span class="n">_rn</span>
+            <span class="k">for</span> <span class="n">_rn</span><span class="p">,</span><span class="n">_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT ROW_NUMBER() OVER (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2">) RN, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> from users&quot;</span><span class="p">)}</span>
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.rowCount">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.rowCount">[docs]</a>
+    <span class="k">def</span> <span class="nf">rowCount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span></div>
 
 
-<div class="viewcode-block" id="TTkTerm.restoreTermAttr">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html#TermTk.TTkCore.TTkTerm.TTkTerm.restoreTermAttr">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">restoreTermAttr</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_termAttrBk</span><span class="p">:</span>
-            <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_termAttrBk</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<div class="viewcode-block" id="TTkTableModelSQLite3.columnCount">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.columnCount">[docs]</a>
+    <span class="k">def</span> <span class="nf">columnCount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_getRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idMap</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.index">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.index">[docs]</a>
+    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkModelIndex</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">key</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_TTkModelIndexSQLite3</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span><span class="n">rowId</span><span class="o">=</span><span class="n">key</span><span class="p">,</span><span class="n">sqModel</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.data">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.data">[docs]</a>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.setData">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.setData">[docs]</a>
+    <span class="k">def</span> <span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">key</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;UPDATE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;SET </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> = &#39;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;WHERE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">releases</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.headerData">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.headerData">[docs]</a>
+    <span class="k">def</span> <span class="nf">headerData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">headerData</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">orientation</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.flags">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.flags">[docs]</a>
+    <span class="k">def</span> <span class="nf">flags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="o">.</span><span class="n">ItemIsEnabled</span>  <span class="o">|</span>
+            <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="o">.</span><span class="n">ItemIsEditable</span> <span class="o">|</span>
+            <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="o">.</span><span class="n">ItemIsSelectable</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelSQLite3.sort">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="n">column</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_termAttr</span><span class="p">)</span></div>
-
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_setSigmask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">attr</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="o">&amp;</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_C</span><span class="p">:</span>
-            <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VINTR</span><span class="p">]</span><span class="o">=</span>  <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="o">&amp;</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_S</span><span class="p">:</span>
-            <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VSTOP</span><span class="p">]</span><span class="o">=</span>  <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x13</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="o">&amp;</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_Z</span><span class="p">:</span>
-            <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VSUSP</span><span class="p">]</span><span class="o">=</span>  <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x1a</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="o">&amp;</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_Q</span><span class="p">:</span>
-            <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VSTART</span><span class="p">]</span><span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">setSigmask</span> <span class="o">=</span> <span class="n">_setSigmask</span>
-
-<div class="viewcode-block" id="TTkTerm.getSigmask">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html#TermTk.TTkCore.TTkTerm.TTkTerm.getSigmask">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">getSigmask</span><span class="p">():</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="mh">0x00</span>
-        <span class="n">attr</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">)</span>
-        <span class="n">mask</span> <span class="o">|=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_C</span> <span class="k">if</span> <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VINTR</span><span class="p">]</span>  <span class="k">else</span> <span class="mi">0</span>
-        <span class="n">mask</span> <span class="o">|=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_S</span> <span class="k">if</span> <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VSTOP</span><span class="p">]</span>  <span class="k">else</span> <span class="mi">0</span>
-        <span class="n">mask</span> <span class="o">|=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_Z</span> <span class="k">if</span> <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VSUSP</span><span class="p">]</span>  <span class="k">else</span> <span class="mi">0</span>
-        <span class="n">mask</span> <span class="o">|=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Sigmask</span><span class="o">.</span><span class="n">CTRL_Q</span> <span class="k">if</span> <span class="n">attr</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="n">termios</span><span class="o">.</span><span class="n">VSTART</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="k">return</span> <span class="n">mask</span></div>
-
-
-<div class="viewcode-block" id="TTkTerm.exit">
-<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html#TermTk.TTkCore.TTkTerm.TTkTerm.exit">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">exit</span><span class="p">():</span>
-        <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_termAttr</span><span class="p">)</span></div>
-
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_push</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">BlockingIOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">=}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">characters_written</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">push</span> <span class="o">=</span> <span class="n">_push</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_flush</span><span class="p">():</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">flush</span> <span class="o">=</span> <span class="n">_flush</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_setEcho</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="c1"># Set/Unset Terminal Input Echo</span>
-        <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">isp</span><span class="p">,</span><span class="n">osp</span><span class="p">,</span><span class="n">cc</span><span class="p">)</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
-        <span class="k">if</span> <span class="n">val</span><span class="p">:</span> <span class="n">l</span> <span class="o">|=</span> <span class="n">termios</span><span class="o">.</span><span class="n">ECHO</span>
-        <span class="k">else</span><span class="p">:</span>   <span class="n">l</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">termios</span><span class="o">.</span><span class="n">ECHO</span>
-        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">isp</span><span class="p">,</span><span class="n">osp</span><span class="p">,</span><span class="n">cc</span><span class="p">])</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">setEcho</span> <span class="o">=</span> <span class="n">_setEcho</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_CRNL</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="c1">#Translate carriage return to newline on input (unless IGNCR is set).</span>
-        <span class="c1"># &#39;\n&#39; CTRL-J</span>
-        <span class="c1"># &#39;\r&#39; CTRL-M (Enter)</span>
-        <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">isp</span><span class="p">,</span><span class="n">osp</span><span class="p">,</span><span class="n">cc</span><span class="p">)</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
-        <span class="k">if</span> <span class="n">val</span><span class="p">:</span> <span class="n">i</span> <span class="o">|=</span> <span class="n">termios</span><span class="o">.</span><span class="n">ICRNL</span>
-        <span class="k">else</span><span class="p">:</span>    <span class="n">i</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">termios</span><span class="o">.</span><span class="n">ICRNL</span>
-        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">isp</span><span class="p">,</span><span class="n">osp</span><span class="p">,</span><span class="n">cc</span><span class="p">])</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">CRNL</span> <span class="o">=</span> <span class="n">_CRNL</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_getTerminalSize</span><span class="p">():</span>
-       <span class="k">try</span><span class="p">:</span>
-           <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">get_terminal_size</span><span class="p">()</span>
-       <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-           <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">getTerminalSize</span> <span class="o">=</span> <span class="n">_getTerminalSize</span>
-
-    <span class="n">_sigWinChMutex</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_sigWinChThreaded</span><span class="p">():</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinChMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> <span class="k">return</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">TTkTerm</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">height</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="n">wh</span><span class="o">:=</span><span class="n">TTkTerm</span><span class="o">.</span><span class="n">getTerminalSize</span><span class="p">()):</span>
-            <span class="n">TTkTerm</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">wh</span>
-            <span class="k">if</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinChCb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinChCb</span><span class="p">(</span><span class="n">TTkTerm</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-        <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinChMutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_sigWinCh</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
-        <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinChThreaded</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_registerResizeCb</span><span class="p">(</span><span class="n">callback</span><span class="p">):</span>
-        <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinChCb</span> <span class="o">=</span> <span class="n">callback</span>
-        <span class="c1"># Dummy call to retrieve the terminal size</span>
-        <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinCh</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGWINCH</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGWINCH</span><span class="p">,</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">_sigWinCh</span><span class="p">)</span>
-    <span class="n">TTkTermBase</span><span class="o">.</span><span class="n">registerResizeCb</span> <span class="o">=</span> <span class="n">_registerResizeCb</span></div>
+            <span class="k">if</span> <span class="n">order</span> <span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">AscendingOrder</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ORDER BY </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2"> ASC&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ORDER BY </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2"> DESC&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+</div>
 
 </pre></div>
 

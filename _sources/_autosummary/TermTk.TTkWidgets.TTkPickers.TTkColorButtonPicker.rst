@@ -20,6 +20,10 @@ TTkColorButtonPicker
    
       clicked
       closed
+      colorClicked
+      colorSelected
+      colorSelectedBG
+      colorSelectedFG
       currentStyleChanged
       focusChanged
       sizeChanged
@@ -68,6 +72,10 @@ TTkColorButtonPicker
    
    .. autoattribute:: clicked
    .. autoattribute:: closed
+   .. autoattribute:: colorClicked
+   .. autoattribute:: colorSelected
+   .. autoattribute:: colorSelectedBG
+   .. autoattribute:: colorSelectedFG
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
@@ -232,9 +240,6 @@ TTkColorButtonPicker Attributes
 
 
   classStyle
-  colorClicked
-  colorSelected
-  colorSelectedBG
   lastClicked
 
 .. currentmodule::  TermTk.TTkWidgets.TTkPickers

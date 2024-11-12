@@ -15,7 +15,6 @@ TermTk.TTkWidgets.TTkPickers
       TTkColorButtonPicker
       TTkColorDialogPicker
       TTkFileButtonPicker
-      TTkFileDialog
       TTkFileDialogPicker
       TTkMessageBox
       TTkTextDialogPicker

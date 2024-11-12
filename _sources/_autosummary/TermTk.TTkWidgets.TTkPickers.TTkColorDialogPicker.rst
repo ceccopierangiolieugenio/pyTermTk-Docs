@@ -40,6 +40,7 @@ TTkColorDialogPicker
    .. autosummary::
    
       closed
+      colorSelected
       currentStyleChanged
       focusChanged
       sizeChanged
@@ -96,6 +97,7 @@ TTkColorDialogPicker
 
    
    .. autoattribute:: closed
+   .. autoattribute:: colorSelected
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
@@ -312,7 +314,6 @@ TTkColorDialogPicker Attributes
 
 
   classStyle
-  colorSelected
   customButtons
 
 .. currentmodule::  TermTk.TTkWidgets.TTkPickers

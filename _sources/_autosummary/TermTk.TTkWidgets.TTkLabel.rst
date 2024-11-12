@@ -49,6 +49,7 @@ TTkLabel
    .. autosummary::
    
       setAlignment
+      setColor
       setText
    
 

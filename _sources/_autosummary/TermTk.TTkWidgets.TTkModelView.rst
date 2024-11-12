@@ -19,6 +19,7 @@ TermTk.TTkWidgets.TTkModelView
       TTkTable
       TTkTableModelCSV
       TTkTableModelList
+      TTkTableModelSQLite3
       TTkTableWidget
       TTkTree
       TTkTreeWidget

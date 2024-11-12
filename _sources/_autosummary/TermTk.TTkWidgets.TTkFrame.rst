@@ -18,8 +18,10 @@ TTkFrame
       
           classStyle = {
                       'default':     {'color': TTkColor.fg("#dddddd")+TTkColor.bg("#222222"),
+                                      'fillColor': TTkColor.RST,
                                       'borderColor': TTkColor.RST},
                       'disabled':    {'color': TTkColor.fg('#888888'),
+                                      'fillColor': TTkColor.RST,
                                       'borderColor':TTkColor.fg('#888888')}
                   }
    

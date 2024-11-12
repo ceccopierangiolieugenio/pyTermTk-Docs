@@ -66,6 +66,12 @@ TTkConstant Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkConstant
 
+.. autoclass::  ColorPickerReturnType
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkConstant
+
 .. autoclass::  ColorType
    :show-inheritance:
    :members:
