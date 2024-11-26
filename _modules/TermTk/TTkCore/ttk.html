@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -650,6 +651,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_mainLoop</span><span class="p">()</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;Emscripten&#39;</span><span class="p">:</span>
+                <span class="n">TTkHelper</span><span class="o">.</span><span class="n">quitEvent</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_time_event</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_paintEvent</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
                 <span class="n">TTkSignalDriver</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
                 <span class="n">TTkTerm</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span></div>
@@ -803,7 +809,6 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_time_event</span><span class="p">)</span>
         <span class="n">TTkInput</span><span class="o">.</span><span class="n">inputEvent</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_paintEvent</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
         <span class="n">TTkInput</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>

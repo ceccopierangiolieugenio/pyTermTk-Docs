@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -505,6 +506,8 @@
         <span class="s1">&#39;_data&#39;</span><span class="p">,</span> <span class="s1">&#39;_colors&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_bufferedData&#39;</span><span class="p">,</span> <span class="s1">&#39;_bufferedColors&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_visible&#39;</span><span class="p">,</span> <span class="s1">&#39;_transparent&#39;</span><span class="p">,</span> <span class="s1">&#39;_doubleBuffer&#39;</span><span class="p">)</span>
+    <span class="n">_data</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="n">_colors</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">height</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -513,7 +516,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_doubleBuffer</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">[[]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>   <span class="o">=</span> <span class="p">[[]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="p">[[]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_newWidth</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_newHeight</span> <span class="o">=</span> <span class="n">height</span>
@@ -653,7 +656,7 @@
         <span class="n">fillCh</span>    <span class="o">=</span> <span class="p">[</span><span class="n">char</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">fxb</span><span class="o">-</span><span class="n">fxa</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fya</span><span class="p">,</span><span class="n">fyb</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">iy</span><span class="p">][</span><span class="n">fxa</span><span class="p">:</span><span class="n">fxb</span><span class="p">]</span>   <span class="o">=</span> <span class="n">fillCh</span>
-        <span class="k">if</span> <span class="n">color</span><span class="o">.</span><span class="n">colorType</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Modifier</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">color</span><span class="o">.</span><span class="n">colorType</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ColorType</span><span class="o">.</span><span class="n">ColorModifier</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fya</span><span class="p">,</span><span class="n">fyb</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fxa</span><span class="p">,</span><span class="n">fxb</span><span class="p">):</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">iy</span><span class="p">][</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">fxa</span><span class="o">+</span><span class="n">ix</span><span class="p">,</span><span class="n">fya</span><span class="o">+</span><span class="n">iy</span><span class="p">)</span>
@@ -751,7 +754,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">txt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="o">!=</span> <span class="n">color</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="n">color</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="p">(</span><span class="ow">not</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">background</span><span class="p">())</span> <span class="ow">and</span> <span class="n">color</span><span class="o">.</span><span class="n">background</span><span class="p">():</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="ow">not</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">())</span> <span class="ow">and</span> <span class="n">color</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">+</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
@@ -1310,14 +1313,14 @@
                     <span class="n">ansi</span> <span class="o">=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Cursor</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
                     <span class="n">empty</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">if</span> <span class="n">color</span> <span class="o">!=</span> <span class="n">lastcolor</span><span class="p">:</span>
-                    <span class="n">ansi</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">color</span><span class="o">-</span><span class="n">lastcolor</span><span class="p">)</span>
+                    <span class="n">ansi</span> <span class="o">+=</span> <span class="n">color</span><span class="o">-</span><span class="n">lastcolor</span>
                     <span class="n">lastcolor</span> <span class="o">=</span> <span class="n">color</span>
                 <span class="n">ansi</span><span class="o">+=</span><span class="n">ch</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">empty</span><span class="p">:</span>
                 <span class="n">TTkTerm</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">ansi</span><span class="p">)</span>
                 <span class="n">empty</span><span class="o">=</span><span class="kc">True</span>
         <span class="c1"># Reset the color at the end</span>
-        <span class="n">TTkTerm</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">)</span>
+        <span class="n">TTkTerm</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="o">-</span><span class="n">lastcolor</span><span class="p">)</span>
         <span class="c1"># TTkTerm.flush()</span>
         <span class="c1"># Switch the buffer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedColors</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">colors</span>
@@ -1371,6 +1374,8 @@
                 <span class="n">empty</span><span class="o">=</span><span class="kc">True</span>
         <span class="c1"># Reset the color at the end</span>
         <span class="n">TTkTerm</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lastcolor</span><span class="o">.</span><span class="n">_link</span><span class="p">:</span>
+            <span class="n">TTkTerm</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">]8;;</span><span class="se">\033\\</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="c1"># Switch the buffer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedColors</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">colors</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span>         <span class="o">=</span> <span class="n">oldData</span><span class="p">,</span> <span class="n">oldColors</span></div>

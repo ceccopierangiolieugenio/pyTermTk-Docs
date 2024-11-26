@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -530,7 +531,7 @@
         <span class="c1">#signals</span>
         <span class="s1">&#39;currentIndexChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentTextChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;editTextChanged&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="nb">list</span><span class="p">:</span><span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span>
+                 <span class="nb">list</span><span class="p">:</span><span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                  <span class="n">index</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">insertPolicy</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">InsertPolicy</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">InsertAtBottom</span><span class="p">,</span>
                  <span class="n">textAlign</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">CENTER_ALIGN</span><span class="p">,</span>
@@ -557,7 +558,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># self.checked = pyTTkSignal()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineEdit</span> <span class="o">=</span> <span class="n">TTkLineEdit</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_list</span> <span class="o">=</span> <span class="nb">list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_list</span> <span class="o">=</span>  <span class="nb">list</span> <span class="k">if</span> <span class="nb">list</span> <span class="k">else</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_insertPolicy</span> <span class="o">=</span> <span class="n">insertPolicy</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineEdit</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineEditChanged</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textAlign</span> <span class="o">=</span> <span class="n">textAlign</span>

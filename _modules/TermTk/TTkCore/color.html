@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -482,6 +483,7 @@
 <span class="c1"># SOFTWARE.</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkColor&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;TTkColorModifier&#39;</span><span class="p">,</span>
            <span class="s1">&#39;TTkColorGradient&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkLinearGradient&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkAlternateColor&#39;</span><span class="p">]</span>
 
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.colors</span> <span class="kn">import</span> <span class="n">TTkTermColor</span>
@@ -524,20 +526,17 @@
 <span class="c1"># [49m          2.53      set background color to default (black)</span>
 
 <span class="k">class</span> <span class="nc">_TTkColor</span><span class="p">:</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fg&#39;</span><span class="p">,</span><span class="s1">&#39;_bg&#39;</span><span class="p">,</span><span class="s1">&#39;_mod&#39;</span><span class="p">,</span> <span class="s1">&#39;_colorMod&#39;</span><span class="p">,</span> <span class="s1">&#39;_link&#39;</span><span class="p">,</span> <span class="s1">&#39;_buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;_clean&#39;</span><span class="p">)</span>
-    <span class="n">_fg</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">];</span> <span class="n">_bg</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">];</span> <span class="n">_mod</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fg&#39;</span><span class="p">,</span><span class="s1">&#39;_bg&#39;</span><span class="p">,</span> <span class="s1">&#39;_colorMod&#39;</span><span class="p">,</span> <span class="s1">&#39;_buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;_clean&#39;</span><span class="p">)</span>
+    <span class="n">_fg</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">_bg</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">fg</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bg</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">mod</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">colorMod</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">link</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                  <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>  <span class="o">=</span> <span class="n">fg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>  <span class="o">=</span> <span class="n">bg</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">=</span> <span class="n">mod</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="n">link</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="n">clean</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="n">fg</span> <span class="ow">or</span> <span class="n">bg</span> <span class="ow">or</span> <span class="n">mod</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="n">clean</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="n">fg</span> <span class="ow">or</span> <span class="n">bg</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span> <span class="o">=</span> <span class="n">colorMod</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -545,34 +544,40 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
 
     <span class="k">def</span> <span class="nf">background</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
+
+    <span class="k">def</span> <span class="nf">hasForeground</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span> <span class="k">else</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">hasBackground</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span> <span class="k">else</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">bold</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BOLD</span>
+        <span class="k">return</span>  <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">italic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">ITALIC</span>
+        <span class="k">return</span>  <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">underline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">UNDERLINE</span>
+        <span class="k">return</span>  <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">strikethrough</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">STRIKETROUGH</span>
+        <span class="k">return</span>  <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">blinking</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BLINKING</span>
+        <span class="k">return</span>  <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">colorType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> \
-            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Foreground</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>  <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">)</span> <span class="o">|</span> \
-            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Background</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>  <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">)</span> <span class="o">|</span> \
-            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Modifier</span>   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ColorType</span><span class="o">.</span><span class="n">ColorModifier</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span>  <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">)</span> <span class="o">|</span>
+            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ColorType</span><span class="o">.</span><span class="n">Foreground</span>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>        <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">)</span> <span class="o">|</span>
+            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ColorType</span><span class="o">.</span><span class="n">Background</span>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>        <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">)</span> <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">rgb2hsl</span><span class="p">(</span><span class="n">rgb</span><span class="p">):</span>
@@ -631,7 +636,7 @@
         <span class="k">return</span> <span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span>
 
     <span class="k">def</span> <span class="nf">getHex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctype</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">ctype</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Foreground</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ctype</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ColorType</span><span class="o">.</span><span class="n">Foreground</span><span class="p">:</span>
             <span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fgToRGB</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bgToRGB</span><span class="p">()</span>
@@ -652,61 +657,54 @@
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi</span><span class="p">(</span>
-                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span>
-                                <span class="n">link</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_link</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean</span><span class="p">)</span>
+                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span>
+                                <span class="n">clean</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">other</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span>   <span class="ow">and</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span>   <span class="ow">and</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>  <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span>  <span class="ow">and</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_link</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">and</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="p">)</span>
 
-    <span class="c1"># self | other</span>
-    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="c1"># TTkLog.debug(&quot;__add__&quot;)</span>
-        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">_clean</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
-        <span class="n">fg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span>
-        <span class="n">bg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span>
-        <span class="n">mod</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span>
-        <span class="n">link</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_link</span>
-        <span class="n">colorMod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_colorMod</span>
-        <span class="k">return</span> <span class="n">TTkColor</span><span class="p">(</span>
-                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span>
-                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">,</span>
-                    <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
+    <span class="c1"># # self | other</span>
+    <span class="c1"># def __or__(self, other):</span>
+    <span class="c1">#     # TTkLog.debug(&quot;__add__&quot;)</span>
+    <span class="c1">#     if other._clean:</span>
+    <span class="c1">#         return other</span>
+    <span class="c1">#     clean = self._clean</span>
+    <span class="c1">#     fg:  str = self._fg or other._fg</span>
+    <span class="c1">#     bg:  str = self._bg or other._bg</span>
+    <span class="c1">#     colorMod = self._colorMod or other._colorMod</span>
+    <span class="c1">#     return _TTkColor(</span>
+    <span class="c1">#                 fg=fg, bg=bg,</span>
+    <span class="c1">#                 colorMod=colorMod,</span>
+    <span class="c1">#                 clean=clean)</span>
 
     <span class="c1"># self + other</span>
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="c1"># TTkLog.debug(&quot;__add__&quot;)</span>
         <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">_clean</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">other</span>
         <span class="n">clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
         <span class="n">fg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>
         <span class="n">bg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>
-        <span class="n">mod</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span>
-        <span class="n">link</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_link</span>
         <span class="n">colorMod</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_colorMod</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span>
-        <span class="k">return</span> <span class="n">TTkColor</span><span class="p">(</span>
-                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span>
-                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">,</span>
+        <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span>
+                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span>
+                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span>
                     <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="c1"># TTkLog.debug(&quot;__sub__&quot;)</span>
-        <span class="c1"># if other is None: return str(self)</span>
-        <span class="k">if</span> <span class="p">(</span> <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span>   <span class="ow">or</span>
-             <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span>   <span class="ow">or</span>
-                     <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_link</span> <span class="ow">or</span>
-                     <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>  <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span> <span class="p">):</span>
-            <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">return</span> <span class="n">ret</span>
-        <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        I am abusing this operator in order to save time in the diff resolv between two adjacent colors</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span>
+             <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="p">):</span>
+            <span class="k">return</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi</span><span class="p">(</span>
+                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span>
+                                <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">modParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
@@ -722,6 +720,231 @@
         <span class="n">ret</span> <span class="o">=</span> <span class="n">_TTkColor</span><span class="p">()</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
+        <span class="k">if</span> <span class="n">modifier</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span><span class="p">:</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">_colorMod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+<span class="k">class</span> <span class="nc">_TTkColor_mod</span><span class="p">(</span><span class="n">_TTkColor</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_mod&#39;</span><span class="p">)</span>
+    <span class="n">_mod</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">mod</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span>
+                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">=</span> <span class="n">mod</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">mod</span>
+
+    <span class="k">def</span> <span class="nf">bold</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BOLD</span>
+
+    <span class="k">def</span> <span class="nf">italic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">ITALIC</span>
+
+    <span class="k">def</span> <span class="nf">underline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">UNDERLINE</span>
+
+    <span class="k">def</span> <span class="nf">strikethrough</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">STRIKETROUGH</span>
+
+    <span class="k">def</span> <span class="nf">blinking</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">&amp;</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BLINKING</span>
+
+    <span class="k">def</span> <span class="nf">colorType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">colorType</span><span class="p">()</span> <span class="o">|</span>
+            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ColorType</span><span class="o">.</span><span class="n">Modifier</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi</span><span class="p">(</span>
+                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span>
+                                <span class="n">clean</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+                <span class="n">_TTkColor</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_mod</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">)</span>
+
+    <span class="c1"># # self | other</span>
+    <span class="c1"># def __or__(self, other):</span>
+    <span class="c1">#     # TTkLog.debug(&quot;__add__&quot;)</span>
+    <span class="c1">#     if other._clean:</span>
+    <span class="c1">#         return other</span>
+    <span class="c1">#     otherMod = other._mod if isinstance(other,_TTkColor_mod) else 0</span>
+    <span class="c1">#     clean = self._clean</span>
+    <span class="c1">#     fg:  str = self._fg or other._fg</span>
+    <span class="c1">#     bg:  str = self._bg or other._bg</span>
+    <span class="c1">#     mod: str = self._mod + otherMod</span>
+    <span class="c1">#     colorMod = self._colorMod or other._colorMod</span>
+    <span class="c1">#     return _TTkColor_mod(</span>
+    <span class="c1">#                 fg=fg, bg=bg, mod=mod,</span>
+    <span class="c1">#                 colorMod=colorMod,</span>
+    <span class="c1">#                 clean=clean)</span>
+
+    <span class="c1"># self + other</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># TTkLog.debug(&quot;__add__&quot;)</span>
+        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">_clean</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">other</span>
+        <span class="n">otherMod</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
+        <span class="n">fg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>
+        <span class="n">bg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>
+        <span class="n">mod</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">+</span> <span class="n">otherMod</span>
+        <span class="n">colorMod</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_colorMod</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span>
+        <span class="k">return</span> <span class="n">_TTkColor_mod</span><span class="p">(</span>
+                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span>
+                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span>
+                    <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
+
+    <span class="c1"># self + other</span>
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># TTkLog.debug(&quot;__add__&quot;)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_clean</span>
+        <span class="n">fg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span>
+        <span class="n">bg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span>
+        <span class="n">mod</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>
+        <span class="n">colorMod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_colorMod</span>
+        <span class="k">return</span> <span class="n">_TTkColor_mod</span><span class="p">(</span>
+                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span>
+                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span>
+                    <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">otherMod</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span>
+             <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>  <span class="o">!=</span> <span class="n">otherMod</span> <span class="p">):</span>
+            <span class="k">return</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi</span><span class="p">(</span>
+                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span>
+                                <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">_TTkColor_mod</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_mod</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
+        <span class="k">if</span> <span class="n">modifier</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span><span class="p">:</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">_colorMod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+
+<span class="k">class</span> <span class="nc">_TTkColor_mod_link</span><span class="p">(</span><span class="n">_TTkColor_mod</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_link&#39;</span><span class="p">)</span>
+    <span class="n">_link</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">link</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span>
+                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="n">link</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">link</span>
+
+    <span class="k">def</span> <span class="nf">colorType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">colorType</span><span class="p">()</span> <span class="o">|</span>
+            <span class="p">(</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Link</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="k">else</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span> <span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi_link</span><span class="p">(</span>
+                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span>
+                                <span class="n">link</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_link</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_clean</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+                <span class="n">_TTkColor_mod</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_link</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod_link</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">)</span>
+
+    <span class="c1"># # self | other</span>
+    <span class="c1"># def __or__(self, other):</span>
+    <span class="c1">#     # TTkLog.debug(&quot;__add__&quot;)</span>
+    <span class="c1">#     if other._clean:</span>
+    <span class="c1">#         return other</span>
+    <span class="c1">#     otherMod  = other._mod  if isinstance(other,_TTkColor_mod) else 0</span>
+    <span class="c1">#     otherLink = other._link if isinstance(other,_TTkColor_mod_link) else &#39;&#39;</span>
+    <span class="c1">#     clean = self._clean</span>
+    <span class="c1">#     fg:  str = self._fg or other._fg</span>
+    <span class="c1">#     bg:  str = self._bg or other._bg</span>
+    <span class="c1">#     mod: str = self._mod + otherMod</span>
+    <span class="c1">#     link:str = self._link or otherLink</span>
+    <span class="c1">#     colorMod = self._colorMod or other._colorMod</span>
+    <span class="c1">#     return _TTkColor_mod_link(</span>
+    <span class="c1">#                 fg=fg, bg=bg, mod=mod,</span>
+    <span class="c1">#                 colorMod=colorMod, link=link,</span>
+    <span class="c1">#                 clean=clean)</span>
+
+    <span class="c1"># self + other</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># TTkLog.debug(&quot;__add__&quot;)</span>
+        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">_clean</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">other</span>
+        <span class="n">otherMod</span>  <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span>  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">otherLink</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_link</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod_link</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
+        <span class="n">fg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>
+        <span class="n">bg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>
+        <span class="n">mod</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">+</span> <span class="n">otherMod</span>
+        <span class="n">link</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="ow">or</span> <span class="n">otherLink</span>
+        <span class="n">colorMod</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_colorMod</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span>
+        <span class="k">return</span> <span class="n">_TTkColor_mod_link</span><span class="p">(</span>
+                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span>
+                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">,</span>
+                    <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># TTkLog.debug(&quot;__add__&quot;)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">otherMod</span>  <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span>  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
+        <span class="n">fg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span>
+        <span class="n">bg</span><span class="p">:</span>  <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span>
+        <span class="n">mod</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span> <span class="o">+</span> <span class="n">otherMod</span>
+        <span class="n">link</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span>
+        <span class="n">colorMod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_colorMod</span>
+        <span class="k">return</span> <span class="n">_TTkColor_mod_link</span><span class="p">(</span>
+                    <span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span>
+                    <span class="n">colorMod</span><span class="o">=</span><span class="n">colorMod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">,</span>
+                    <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># TTkLog.debug(&quot;__sub__&quot;)</span>
+        <span class="c1"># if other is None: return str(self)</span>
+        <span class="n">otherMod</span>  <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_mod</span>  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">otherLink</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_link</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">_TTkColor_mod_link</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_bg</span> <span class="ow">or</span>
+             <span class="kc">None</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_fg</span> <span class="ow">or</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">!=</span> <span class="n">otherLink</span> <span class="ow">or</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>  <span class="o">!=</span> <span class="n">otherMod</span> <span class="p">):</span>
+            <span class="k">return</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi_link</span><span class="p">(</span>
+                                <span class="n">fg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span>
+                                <span class="n">link</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_link</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="n">_TTkColor</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi_link</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cleanLink</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">rgb2ansi_link</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">_mod</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cleanLink</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">_TTkColor_mod_link</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_fg</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fg</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_bg</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bg</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_mod</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mod</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_clean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clean</span>
@@ -729,14 +952,24 @@
             <span class="n">ret</span><span class="o">.</span><span class="n">_colorMod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colorMod</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ret</span>
 
-<span class="k">class</span> <span class="nc">_TTkColorModifier</span><span class="p">():</span>
+
+<div class="viewcode-block" id="TTkColorModifier">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier">[docs]</a>
+<span class="k">class</span> <span class="nc">TTkColorModifier</span><span class="p">():</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="k">pass</span>
-    <span class="k">def</span> <span class="nf">setParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="k">pass</span>
-    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="TTkColorModifier.setParam">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier.setParam">[docs]</a>
+    <span class="k">def</span> <span class="nf">setParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="TTkColorModifier.copy">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier.copy">[docs]</a>
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
 
 <div class="viewcode-block" id="TTkColorGradient">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html#TermTk.TTkCore.TTkColorGradient">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkColorGradient</span><span class="p">(</span><span class="n">_TTkColorModifier</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TTkColorGradient</span><span class="p">(</span><span class="n">TTkColorModifier</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkColorGradient&#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fgincrement&#39;</span><span class="p">,</span> <span class="s1">&#39;_bgincrement&#39;</span><span class="p">,</span> <span class="s1">&#39;_val&#39;</span><span class="p">,</span> <span class="s1">&#39;_step&#39;</span><span class="p">,</span> <span class="s1">&#39;_buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;_orientation&#39;</span><span class="p">)</span>
@@ -800,7 +1033,7 @@
 
 <div class="viewcode-block" id="TTkLinearGradient">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkLinearGradient.html#TermTk.TTkCore.TTkLinearGradient">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkLinearGradient</span><span class="p">(</span><span class="n">_TTkColorModifier</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TTkLinearGradient</span><span class="p">(</span><span class="n">TTkColorModifier</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkLinearGradient&#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
@@ -946,16 +1179,16 @@
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;(bg) #FFFF00 - Yellow&#39;&#39;&#39;</span>
 
     <span class="c1"># Modifiers:</span>
-    <span class="n">BOLD</span>         <span class="o">=</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">)</span>
+    <span class="n">BOLD</span>         <span class="o">=</span> <span class="n">_TTkColor_mod</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;**Bold** modifier&#39;&#39;&#39;</span>
-    <span class="n">ITALIC</span>       <span class="o">=</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">ITALIC</span><span class="p">)</span>
+    <span class="n">ITALIC</span>       <span class="o">=</span> <span class="n">_TTkColor_mod</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">ITALIC</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;*Italic* modifier&#39;&#39;&#39;</span>
-    <span class="n">UNDERLINE</span>    <span class="o">=</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">UNDERLINE</span><span class="p">)</span>
+    <span class="n">UNDERLINE</span>    <span class="o">=</span> <span class="n">_TTkColor_mod</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">UNDERLINE</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;:underline:`Underline` modifier&#39;&#39;&#39;</span>
-    <span class="n">STRIKETROUGH</span> <span class="o">=</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">STRIKETROUGH</span><span class="p">)</span>
+    <span class="n">STRIKETROUGH</span> <span class="o">=</span> <span class="n">_TTkColor_mod</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">STRIKETROUGH</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;:strike:`Striketrough` modifier&#39;&#39;&#39;</span>
 
-    <span class="n">BLINKING</span>     <span class="o">=</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BLINKING</span><span class="p">)</span>
+    <span class="n">BLINKING</span>     <span class="o">=</span> <span class="n">_TTkColor_mod</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">TTkTermColor</span><span class="o">.</span><span class="n">BLINKING</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;&quot;Blinking&quot; modifier&#39;&#39;&#39;</span>
 
 <div class="viewcode-block" id="TTkColor.hexToRGB">
@@ -973,7 +1206,10 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">ansi</span><span class="p">(</span><span class="n">ansi</span><span class="p">):</span>
         <span class="n">fg</span><span class="p">,</span><span class="n">bg</span><span class="p">,</span><span class="n">mod</span><span class="p">,</span><span class="n">clean</span> <span class="o">=</span> <span class="n">TTkTermColor</span><span class="o">.</span><span class="n">ansi2rgb</span><span class="p">(</span><span class="n">ansi</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">mod</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor_mod</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="n">clean</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkColor.fg">
@@ -1003,7 +1239,10 @@
             <span class="n">color</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span>
-        <span class="k">return</span> <span class="n">TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">link</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor_mod_link</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">mod</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkColor.bg">
@@ -1033,13 +1272,16 @@
             <span class="n">color</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span>
-        <span class="k">return</span> <span class="n">TTkColor</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">link</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor_mod_link</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">mod</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">mod</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkColor.fgbg">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor.fgbg">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">fgbg</span><span class="p">(</span><span class="n">fg</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">link</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">modifier</span><span class="p">:</span><span class="n">_TTkColorModifier</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">fgbg</span><span class="p">(</span><span class="n">fg</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">link</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">modifier</span><span class="p">:</span><span class="n">TTkColorModifier</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Helper to generate a Background color</span>
 
 <span class="sd">        Example:</span>
@@ -1059,13 +1301,16 @@
 
 <span class="sd">        :return: :py:class:`TTkColor`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="n">TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">fg</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">bg</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">modifier</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">link</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor_mod_link</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">fg</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">bg</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">modifier</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">link</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_TTkColor</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">fg</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">hexToRGB</span><span class="p">(</span><span class="n">bg</span><span class="p">),</span> <span class="n">colorMod</span><span class="o">=</span><span class="n">modifier</span><span class="p">)</span></div>
 </div>
 
 
 <div class="viewcode-block" id="TTkAlternateColor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkAlternateColor.html#TermTk.TTkCore.TTkAlternateColor">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkAlternateColor</span><span class="p">(</span><span class="n">_TTkColorModifier</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TTkAlternateColor</span><span class="p">(</span><span class="n">TTkColorModifier</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkAlternateColor&#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_alternateColor&#39;</span><span class="p">)</span>

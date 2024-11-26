@@ -18,6 +18,7 @@
       TTkCfg
       TTkColor
       TTkColorGradient
+      TTkColorModifier
       TTkConstant
       TTkEasingCurve
       TTkFileBuffer

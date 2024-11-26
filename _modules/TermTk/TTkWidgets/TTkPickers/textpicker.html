@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -636,18 +637,18 @@
 
         <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">_currentColorChangedCB</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">fg</span> <span class="o">:=</span> <span class="nb">format</span><span class="o">.</span><span class="n">foreground</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">format</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">():</span>
                 <span class="n">cb_fg</span><span class="o">.</span><span class="n">setCheckState</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Checked</span><span class="p">)</span>
                 <span class="n">btn_fgColor</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">()</span>
-                <span class="n">btn_fgColor</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">fg</span><span class="p">)</span>
+                <span class="n">btn_fgColor</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="nb">format</span><span class="o">.</span><span class="n">foreground</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">cb_fg</span><span class="o">.</span><span class="n">setCheckState</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Unchecked</span><span class="p">)</span>
                 <span class="n">btn_fgColor</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>
 
-            <span class="k">if</span> <span class="n">bg</span> <span class="o">:=</span> <span class="nb">format</span><span class="o">.</span><span class="n">background</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">format</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">():</span>
                 <span class="n">cb_bg</span><span class="o">.</span><span class="n">setCheckState</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Checked</span><span class="p">)</span>
                 <span class="n">btn_bgColor</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">()</span>
-                <span class="n">btn_bgColor</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">bg</span><span class="p">)</span>
+                <span class="n">btn_bgColor</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="nb">format</span><span class="o">.</span><span class="n">background</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">cb_bg</span><span class="o">.</span><span class="n">setCheckState</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Unchecked</span><span class="p">)</span>
                 <span class="n">btn_bgColor</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>

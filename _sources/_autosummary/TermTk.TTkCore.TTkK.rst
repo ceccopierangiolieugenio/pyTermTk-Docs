@@ -211,7 +211,6 @@ TTkK Attributes
   ApplicationShortcut
   AscendingOrder
   BOTTOM
-  Background
   CENTER
   CENTER_ALIGN
   CTRL
@@ -237,7 +236,6 @@ TTkK Attributes
   FILLED
   FOOTER
   FixedWidth
-  Foreground
   GroupSwitchModifier
   HEADER
   HORIZONTAL
@@ -728,7 +726,6 @@ TTkK Attributes
   MetaModifier
   MidButton
   MiddleButton
-  Modifier
   Move
   MultiSelection
   NONE

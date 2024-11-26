@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -485,6 +486,7 @@
 
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span> <span class="nn">TermTk.TTkCore.canvas</span> <span class="kn">import</span> <span class="n">TTkCanvas</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSlot</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.widget</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
@@ -526,7 +528,7 @@
 <div class="viewcode-block" id="TTkLabel.setAlignment">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLabel.html#TermTk.TTkWidgets.TTkLabel.setAlignment">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setAlignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">:</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setAlignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">:</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alignment</span> <span class="o">==</span> <span class="n">alignment</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_alignment</span> <span class="o">=</span> <span class="n">alignment</span>
@@ -535,7 +537,7 @@
 
 <div class="viewcode-block" id="TTkLabel.color">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLabel.html#TermTk.TTkWidgets.TTkLabel.color">[docs]</a>
-    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span><span class="n">TTkColor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;color&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">()[</span><span class="s1">&#39;default&#39;</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">]</span></div>
 
@@ -543,14 +545,14 @@
 <div class="viewcode-block" id="TTkLabel.setColor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLabel.html#TermTk.TTkWidgets.TTkLabel.setColor">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setColor&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mergeStyle</span><span class="p">({</span><span class="s1">&#39;default&#39;</span><span class="p">:{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">color</span><span class="p">}})</span></div>
 
 
 <div class="viewcode-block" id="TTkLabel.text">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLabel.html#TermTk.TTkWidgets.TTkLabel.text">[docs]</a>
-    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;text&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span></div>
 
@@ -558,7 +560,7 @@
 <div class="viewcode-block" id="TTkLabel.setText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkLabel.html#TermTk.TTkWidgets.TTkLabel.setText">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setText&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">sameAs</span><span class="p">(</span><span class="n">text</span><span class="p">):</span> <span class="k">return</span>
         <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">TTkString</span><span class="p">):</span>
@@ -568,7 +570,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_textUpdated</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
         <span class="n">color</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
 

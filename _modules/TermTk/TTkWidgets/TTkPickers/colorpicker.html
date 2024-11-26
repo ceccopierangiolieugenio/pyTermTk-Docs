@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -668,10 +669,10 @@
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">style</span><span class="p">:</span>
             <span class="k">if</span> <span class="s1">&#39;color&#39;</span> <span class="ow">in</span> <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">]:</span>
-                <span class="k">if</span>   <span class="n">fg</span> <span class="o">:=</span> <span class="n">color</span><span class="o">.</span><span class="n">foreground</span><span class="p">():</span>
-                    <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
-                <span class="k">elif</span> <span class="n">bg</span> <span class="o">:=</span> <span class="n">color</span><span class="o">.</span><span class="n">background</span><span class="p">():</span>
-                    <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bg</span>
+                <span class="k">if</span>   <span class="n">color</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">():</span>
+                    <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="n">color</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">():</span>
+                    <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BG_BLACK</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setStyle</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
@@ -684,12 +685,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_returnType</span> <span class="o">=</span> <span class="n">returnType</span>
 
     <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkColor</span><span class="p">:</span>
-        <span class="n">fg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span>
-        <span class="n">bg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_returnType</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ColorPickerReturnType</span><span class="o">.</span><span class="n">Foreground</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">fg</span> <span class="k">if</span> <span class="n">fg</span> <span class="k">else</span> <span class="n">bg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span> <span class="k">if</span> <span class="n">bg</span> <span class="k">else</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_returnType</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ColorPickerReturnType</span><span class="o">.</span><span class="n">Background</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">bg</span> <span class="k">if</span> <span class="n">bg</span> <span class="k">else</span> <span class="n">fg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span> <span class="k">if</span> <span class="n">fg</span> <span class="k">else</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span>
 
     <span class="k">def</span> <span class="nf">isCustom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -826,7 +831,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">colorSelected</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_returnType</span><span class="o">=</span><span class="n">returnType</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">color</span> <span class="k">if</span> <span class="n">color</span> <span class="ow">and</span> <span class="n">color</span><span class="o">!=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="k">else</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BLACK</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_isForeground</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="ow">not</span> <span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">colorType</span><span class="p">()</span><span class="o">&amp;</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Background</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_isForeground</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">color</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">()</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowFlag</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WindowFlag</span><span class="o">.</span><span class="n">WindowMaximizeButtonHint</span> <span class="o">|</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WindowFlag</span><span class="o">.</span><span class="n">WindowCloseButtonHint</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">TTkGridLayout</span><span class="p">())</span>
@@ -1014,12 +1019,16 @@
 <span class="sd">        :return: the current color</span>
 <span class="sd">        :rtype: :py:class:`TTkColor`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">fg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span>
-        <span class="n">bg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_returnType</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ColorPickerReturnType</span><span class="o">.</span><span class="n">Foreground</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">fg</span> <span class="k">if</span> <span class="n">fg</span> <span class="k">else</span> <span class="n">bg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span> <span class="k">if</span> <span class="n">bg</span> <span class="k">else</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_returnType</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ColorPickerReturnType</span><span class="o">.</span><span class="n">Background</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">bg</span> <span class="k">if</span> <span class="n">bg</span> <span class="k">else</span> <span class="n">fg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span> <span class="k">if</span> <span class="n">fg</span> <span class="k">else</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span></div>
 
 
@@ -1135,10 +1144,12 @@
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_processColorSelected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">):</span>
-        <span class="k">if</span>   <span class="n">fg</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">()</span><span class="o">.</span><span class="n">foreground</span><span class="p">():</span>
-            <span class="n">bg</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">bg</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">()</span><span class="o">.</span><span class="n">background</span><span class="p">():</span>
-            <span class="n">fg</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
+        <span class="k">if</span>   <span class="n">color</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">():</span>
+            <span class="n">fg</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span>
+            <span class="n">bg</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">foreground</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">color</span><span class="o">.</span><span class="n">hasBackground</span><span class="p">():</span>
+            <span class="n">fg</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
+            <span class="n">bg</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">fg</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BLACK</span>
             <span class="n">bg</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BG_BLACK</span>

@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -651,6 +652,7 @@
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">quitEvent</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_quit</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">pid</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pid</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>

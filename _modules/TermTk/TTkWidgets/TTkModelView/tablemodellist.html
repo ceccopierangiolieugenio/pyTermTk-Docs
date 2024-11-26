@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -518,9 +519,9 @@
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_data&#39;</span><span class="p">,</span><span class="s1">&#39;_dataOriginal&#39;</span><span class="p">,</span> <span class="s1">&#39;_hheader&#39;</span><span class="p">,</span> <span class="s1">&#39;_vheader&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">data</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]]</span><span class="o">=</span><span class="p">[],</span>
-                 <span class="n">header</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span>
-                 <span class="n">indexes</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+                 <span class="n">data</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">header</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">indexes</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        :param data: the 2D List model for the view to present.</span>
 <span class="sd">        :type data: list[list]</span>
@@ -532,8 +533,8 @@
 <span class="sd">        :type indexes: list[str], optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataOriginal</span> <span class="o">=</span> <span class="n">data</span> <span class="k">if</span> <span class="n">data</span> <span class="k">else</span> <span class="p">[[</span><span class="s1">&#39;&#39;</span><span class="p">]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hheader</span> <span class="o">=</span> <span class="n">header</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_vheader</span> <span class="o">=</span> <span class="n">indexes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hheader</span> <span class="o">=</span> <span class="n">header</span>  <span class="k">if</span> <span class="n">header</span>  <span class="k">else</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vheader</span> <span class="o">=</span> <span class="n">indexes</span> <span class="k">if</span> <span class="n">indexes</span> <span class="k">else</span> <span class="p">[]</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="TTkTableModelList.modelList">

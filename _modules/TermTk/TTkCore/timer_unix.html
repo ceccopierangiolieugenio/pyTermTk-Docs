@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCfg.html">TTkCfg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
@@ -481,6 +482,8 @@
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTimer&#39;</span><span class="p">]</span>
+
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
@@ -504,6 +507,8 @@
 <div class="viewcode-block" id="TTkTimer.quit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkTimer.html#TermTk.TTkCore.TTkTimer.quit">[docs]</a>
     <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">quitEvent</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_quit</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div>
