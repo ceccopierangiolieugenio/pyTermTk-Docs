@@ -75,6 +75,7 @@ TTkTextDocument Attributes
   contentsChange
   contentsChanged
   cursorPositionChanged
+  formatChanged
   modificationChanged
   redoAvailable
   undoAvailable

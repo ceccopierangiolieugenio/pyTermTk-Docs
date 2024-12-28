@@ -227,6 +227,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkToolTip.html">TTkToolTip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TextDocumentHighlight.html">TextDocumentHighlight</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkLayouts.html">TermTk.TTkLayouts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -546,48 +547,6 @@
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkTextDocument">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTextDocument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/textdocument.html#TTkTextDocument"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkTextDocument" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Undo,Redo Logic</p>
-<p>Old:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_snapshotId</span><span class="p">:</span> <span class="o">=</span> <span class="n">last</span> <span class="n">saved</span><span class="o">/</span><span class="n">undo</span><span class="o">/</span><span class="n">redo</span> <span class="n">state</span>
-                       <span class="mi">3</span> <span class="o">=</span> <span class="n">doc4</span>
-<span class="n">_snapshots</span><span class="p">:</span>
-    <span class="p">[</span><span class="n">doc1</span><span class="p">,</span> <span class="n">doc2</span><span class="p">,</span> <span class="n">doc3</span><span class="p">,</span> <span class="n">doc4</span><span class="p">,</span> <span class="n">doc5</span><span class="p">,</span> <span class="n">doc6</span><span class="p">,</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>New:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SnapshotId:
-                  2
-Snapshots:                  _lastSnap     _dataLines (unstaged)
-    ╒═══╕ ╒═══╕ ╒═══╕ ╒═══╕ ╒═══╕         ╒═══╕
-    │ 0 │ │ 1 │ │ 2 │ │ 3 │ │ 4 │         │ 5 │
-    └───┘ └───┘ └───┘ └───┘ └───┘         └───┘
-Cursors:
-     c0,   c1,   c2,   c3,   c4 = _lastCursor
-Diffs:
-    [   d01,  d12,  d23,  d34   ] = Forward  Diffs
-    [   d10,  d21,  d32,  d43   ] = Backward Diffs
-Slices: = common txt slices between snapshots
-    [   s01,  s12,  s23,  s34   ]
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Data Structure
-            ╔═══════════════╗                         ╔═══════════════╗
-            ║   Snapshot B  ║          ┌─────────────&gt;║   Snapshot C  ║
-            ╟───────────────╢          │              ╟───────────────╢
-            ║ _nextDiff     ║──────┐   │              ║ _nextDiff     ║───&gt; Next snapshot
-        ┌───║ _prevDiff     ║      │   │          ┌───║ _prevDiff     ║  or Null if at the end
-        │   ╚═══════════════╝      │   │          │   ╚═══════════════╝
-        V              A           V   │          V
-    ╔═══════════════╗  │  ╔═══════════════╗   ╔═══════════════╗
-    ║   Diff B-&gt;A   ║  │  ║   Diff B-&gt;C   ║   ║   Diff C-&gt;B   ║
-    ╟───────────────╢  │  ╟───────────────╢   ╟───────────────╢
-    ║ slice = txtBA ║  │  ║ slice = txtBC ║   ║ slice = txtBA ║
-    ║ snap          ║  │  ║ snap          ║   ║ snap          ║
-    ╚═══════════════╝  │  ╚═══════════════╝   ╚═══════════════╝
-                       │                             │
-                       └─────────────────────────────┘
-</pre></div>
-</div>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
@@ -701,16 +660,19 @@ Slices: = common txt slices between snapshots
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cursorPositionChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">modificationChanged</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redoAvailable</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">modificationChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoAvailable</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redoAvailable</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoCommandAdded</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoAvailable</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoCommandAdded</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

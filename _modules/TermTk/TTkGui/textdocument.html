@@ -226,6 +226,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkToolTip.html">TTkToolTip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TextDocumentHighlight.html">TextDocumentHighlight</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.html">TermTk.TTkLayouts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -484,63 +485,66 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextDocument&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span>
+
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
 
 <div class="viewcode-block" id="TTkTextDocument">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument">[docs]</a>
 <span class="k">class</span> <span class="nc">TTkTextDocument</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Undo,Redo Logic</span>
-
-<span class="sd">        Old:</span>
-
-<span class="sd">        ::</span>
-
-<span class="sd">            _snapshotId: = last saved/undo/redo state</span>
-<span class="sd">                                   3 = doc4</span>
-<span class="sd">            _snapshots:</span>
-<span class="sd">                [doc1, doc2, doc3, doc4, doc5, doc6, . . .]</span>
-
-<span class="sd">        New:</span>
-
-<span class="sd">        ::</span>
-
-<span class="sd">            SnapshotId:</span>
-<span class="sd">                              2</span>
-<span class="sd">            Snapshots:                  _lastSnap     _dataLines (unstaged)</span>
-<span class="sd">                ╒═══╕ ╒═══╕ ╒═══╕ ╒═══╕ ╒═══╕         ╒═══╕</span>
-<span class="sd">                │ 0 │ │ 1 │ │ 2 │ │ 3 │ │ 4 │         │ 5 │</span>
-<span class="sd">                └───┘ └───┘ └───┘ └───┘ └───┘         └───┘</span>
-<span class="sd">            Cursors:</span>
-<span class="sd">                 c0,   c1,   c2,   c3,   c4 = _lastCursor</span>
-<span class="sd">            Diffs:</span>
-<span class="sd">                [   d01,  d12,  d23,  d34   ] = Forward  Diffs</span>
-<span class="sd">                [   d10,  d21,  d32,  d43   ] = Backward Diffs</span>
-<span class="sd">            Slices: = common txt slices between snapshots</span>
-<span class="sd">                [   s01,  s12,  s23,  s34   ]</span>
-
-<span class="sd">        ::</span>
-
-<span class="sd">            Data Structure</span>
-<span class="sd">                        ╔═══════════════╗                         ╔═══════════════╗</span>
-<span class="sd">                        ║   Snapshot B  ║          ┌─────────────&gt;║   Snapshot C  ║</span>
-<span class="sd">                        ╟───────────────╢          │              ╟───────────────╢</span>
-<span class="sd">                        ║ _nextDiff     ║──────┐   │              ║ _nextDiff     ║───&gt; Next snapshot</span>
-<span class="sd">                    ┌───║ _prevDiff     ║      │   │          ┌───║ _prevDiff     ║  or Null if at the end</span>
-<span class="sd">                    │   ╚═══════════════╝      │   │          │   ╚═══════════════╝</span>
-<span class="sd">                    V              A           V   │          V</span>
-<span class="sd">                ╔═══════════════╗  │  ╔═══════════════╗   ╔═══════════════╗</span>
-<span class="sd">                ║   Diff B-&gt;A   ║  │  ║   Diff B-&gt;C   ║   ║   Diff C-&gt;B   ║</span>
-<span class="sd">                ╟───────────────╢  │  ╟───────────────╢   ╟───────────────╢</span>
-<span class="sd">                ║ slice = txtBA ║  │  ║ slice = txtBC ║   ║ slice = txtBA ║</span>
-<span class="sd">                ║ snap          ║  │  ║ snap          ║   ║ snap          ║</span>
-<span class="sd">                ╚═══════════════╝  │  ╚═══════════════╝   ╚═══════════════╝</span>
-<span class="sd">                                   │                             │</span>
-<span class="sd">                                   └─────────────────────────────┘</span>
-
-<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># &#39;&#39;&#39;</span>
+    <span class="c1">#     Undo,Redo Logic</span>
+    <span class="c1">#</span>
+    <span class="c1">#     Old:</span>
+    <span class="c1">#</span>
+    <span class="c1">#     ::</span>
+    <span class="c1">#</span>
+    <span class="c1">#         _snapshotId: = last saved/undo/redo state</span>
+    <span class="c1">#                                 3 = doc4</span>
+    <span class="c1">#         _snapshots:</span>
+    <span class="c1">#             [doc1, doc2, doc3, doc4, doc5, doc6, . . .]</span>
+    <span class="c1">#</span>
+    <span class="c1">#     New:</span>
+    <span class="c1">#</span>
+    <span class="c1">#     ::</span>
+    <span class="c1">#</span>
+    <span class="c1">#         SnapshotId:</span>
+    <span class="c1">#                             2</span>
+    <span class="c1">#         Snapshots:                  _lastSnap     _dataLines (unstaged)</span>
+    <span class="c1">#             ╒═══╕ ╒═══╕ ╒═══╕ ╒═══╕ ╒═══╕         ╒═══╕</span>
+    <span class="c1">#             │ 0 │ │ 1 │ │ 2 │ │ 3 │ │ 4 │         │ 5 │</span>
+    <span class="c1">#             └───┘ └───┘ └───┘ └───┘ └───┘         └───┘</span>
+    <span class="c1">#         Cursors:</span>
+    <span class="c1">#                 c0,   c1,   c2,   c3,   c4 = _lastCursor</span>
+    <span class="c1">#         Diffs:</span>
+    <span class="c1">#             [   d01,  d12,  d23,  d34   ] = Forward  Diffs</span>
+    <span class="c1">#             [   d10,  d21,  d32,  d43   ] = Backward Diffs</span>
+    <span class="c1">#         Slices: = common txt slices between snapshots</span>
+    <span class="c1">#             [   s01,  s12,  s23,  s34   ]</span>
+    <span class="c1">#</span>
+    <span class="c1">#     ::</span>
+    <span class="c1">#</span>
+    <span class="c1">#         Data Structure</span>
+    <span class="c1">#                     ╔═══════════════╗                         ╔═══════════════╗</span>
+    <span class="c1">#                     ║   Snapshot B  ║          ┌─────────────&gt;║   Snapshot C  ║</span>
+    <span class="c1">#                     ╟───────────────╢          │              ╟───────────────╢</span>
+    <span class="c1">#                     ║ _nextDiff     ║──────┐   │              ║ _nextDiff     ║───&gt; Next snapshot</span>
+    <span class="c1">#                 ┌───║ _prevDiff     ║      │   │          ┌───║ _prevDiff     ║  or Null if at the end</span>
+    <span class="c1">#                 │   ╚═══════════════╝      │   │          │   ╚═══════════════╝</span>
+    <span class="c1">#                 V              A           V   │          V</span>
+    <span class="c1">#             ╔═══════════════╗  │  ╔═══════════════╗   ╔═══════════════╗</span>
+    <span class="c1">#             ║   Diff B-&gt;A   ║  │  ║   Diff B-&gt;C   ║   ║   Diff C-&gt;B   ║</span>
+    <span class="c1">#             ╟───────────────╢  │  ╟───────────────╢   ╟───────────────╢</span>
+    <span class="c1">#             ║ slice = txtBA ║  │  ║ slice = txtBC ║   ║ slice = txtBA ║</span>
+    <span class="c1">#             ║ snap          ║  │  ║ snap          ║   ║ snap          ║</span>
+    <span class="c1">#             ╚═══════════════╝  │  ╚═══════════════╝   ╚═══════════════╝</span>
+    <span class="c1">#                                 │                             │</span>
+    <span class="c1">#                                 └─────────────────────────────┘</span>
+    <span class="c1">#</span>
+    <span class="c1"># &#39;&#39;&#39;</span>
     <span class="k">class</span> <span class="nc">_snapDiff</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Doc:</span>
@@ -586,21 +590,27 @@
         <span class="s1">&#39;_dataLines&#39;</span><span class="p">,</span> <span class="s1">&#39;_modified&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_snap&#39;</span><span class="p">,</span> <span class="s1">&#39;_snapChanged&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_lastSnap&#39;</span><span class="p">,</span> <span class="s1">&#39;_lastCursor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_backgroundColor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_docMutex&#39;</span><span class="p">,</span>
         <span class="c1"># Signals</span>
         <span class="s1">&#39;contentsChange&#39;</span><span class="p">,</span> <span class="s1">&#39;contentsChanged&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;formatChanged&#39;</span><span class="p">,</span>
         <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
         <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;undoCommandAdded&#39;</span><span class="p">,</span>
         <span class="s1">&#39;modificationChanged&#39;</span>
         <span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">TermTk.TTkGui.textcursor</span> <span class="kn">import</span> <span class="n">TTkTextCursor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docMutex</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cursorPositionChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contentsChange</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># int line, int linesRemoved, int linesAdded</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contentsChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formatChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">undoAvailable</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">redoAvailable</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">undoCommandAdded</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modificationChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backgroundColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span> <span class="o">=</span> <span class="p">[</span><span class="n">TTkString</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_modified</span> <span class="o">=</span> <span class="kc">False</span>
@@ -633,6 +643,12 @@
     <span class="c1"># y2 = l2+r2 + (r1-a1)</span>
     <span class="c1"># z1 = l1+a1 + (a2-r2)</span>
     <span class="c1"># z2 = l2+a2</span>
+
+    <span class="k">def</span> <span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docMutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_release</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_docMutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_mergeChangesSlices</span><span class="p">(</span><span class="n">ch1</span><span class="p">,</span><span class="n">ch2</span><span class="p">):</span>
@@ -708,10 +724,12 @@
         <span class="n">remLines</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">TTkString</span><span class="p">):</span>
             <span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span> <span class="o">=</span> <span class="p">[</span><span class="n">TTkString</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_modified</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastSnap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="o">=</span> <span class="n">TTkTextDocument</span><span class="o">.</span><span class="n">_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lastCursor</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_release</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contentsChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contentsChange</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">remLines</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_snapChanged</span> <span class="o">=</span> <span class="kc">None</span></div>
@@ -722,11 +740,13 @@
     <span class="k">def</span> <span class="nf">appendText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span> <span class="o">+</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
         <span class="n">oldLines</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span> <span class="o">+=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_modified</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastSnap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="o">=</span> <span class="n">TTkTextDocument</span><span class="o">.</span><span class="n">_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lastCursor</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_release</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contentsChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contentsChange</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">oldLines</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">)</span><span class="o">-</span><span class="n">oldLines</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_snapChanged</span> <span class="o">=</span> <span class="kc">None</span></div>
@@ -798,10 +818,12 @@
             <span class="p">(</span><span class="ow">not</span> <span class="nb">next</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">_prevDiff</span><span class="p">)</span> <span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">next</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">getNextSnap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">getPrevSnap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_release</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastSnap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastCursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">_cursor</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>

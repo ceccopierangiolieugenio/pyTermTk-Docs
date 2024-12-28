@@ -19,5 +19,6 @@
       TTkTextDocument
       TTkTextWrap
       TTkToolTip
+      TextDocumentHighlight
    
 
