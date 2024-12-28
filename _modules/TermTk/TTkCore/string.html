@@ -1228,12 +1228,10 @@
     <span class="k">def</span> <span class="nf">_getDataW_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">retTxt</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">retCol</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">retTxt_append</span> <span class="o">=</span> <span class="n">retTxt</span><span class="o">.</span><span class="n">append</span>
-        <span class="n">retCol_append</span> <span class="o">=</span> <span class="n">retCol</span><span class="o">.</span><span class="n">append</span>
         <span class="k">for</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
-                <span class="n">retTxt</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ch</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
-                <span class="n">retCol</span> <span class="o">+=</span> <span class="p">[</span><span class="n">color</span><span class="p">,</span><span class="n">color</span><span class="p">]</span>
+                <span class="n">retTxt</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ch</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">retCol</span> <span class="o">+=</span> <span class="p">(</span><span class="n">color</span><span class="p">,</span><span class="n">color</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">retTxt</span><span class="p">:</span>
                     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">retTxt</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">retTxt</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
@@ -1244,22 +1242,20 @@
                 <span class="c1">#    retTxt = [f&quot;{ch}&quot;]</span>
                 <span class="c1">#    retCol = [TTkColor.RST]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">retTxt_append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
-                <span class="n">retCol_append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+                <span class="n">retTxt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+                <span class="n">retCol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">retTxt</span><span class="p">,</span> <span class="n">retCol</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_getDataW_tty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">retTxt</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">retCol</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">retTxt_append</span> <span class="o">=</span> <span class="n">retTxt</span><span class="o">.</span><span class="n">append</span>
-        <span class="n">retCol_append</span> <span class="o">=</span> <span class="n">retCol</span><span class="o">.</span><span class="n">append</span>
         <span class="k">for</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
-                <span class="n">retTxt</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;■&#39;</span><span class="p">,</span><span class="s1">&#39;■&#39;</span><span class="p">]</span>
-                <span class="n">retCol</span> <span class="o">+=</span> <span class="p">[</span><span class="n">color</span><span class="p">,</span><span class="n">color</span><span class="p">]</span>
+                <span class="n">retTxt</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;■&#39;</span><span class="p">,</span><span class="s1">&#39;■&#39;</span><span class="p">)</span>
+                <span class="n">retCol</span> <span class="o">+=</span> <span class="p">(</span><span class="n">color</span><span class="p">,</span><span class="n">color</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">):</span>
-                <span class="n">retTxt_append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
-                <span class="n">retCol_append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+                <span class="n">retTxt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+                <span class="n">retCol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">retTxt</span><span class="p">,</span> <span class="n">retCol</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TERMTK_GPM&quot;</span><span class="p">,</span><span class="kc">False</span><span class="p">):</span>
