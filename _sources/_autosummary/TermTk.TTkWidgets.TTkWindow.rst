@@ -18,10 +18,13 @@ TTkWindow
       
           classStyle = {
                       'default':     {'color': TTkColor.RST,
+                                      'fillColor':TTkColor.RST,
                                       'borderColor': TTkColor.RST},
                       'disabled':    {'color': TTkColor.fg('#888888'),
+                                      'fillColor':TTkColor.RST,
                                       'borderColor':TTkColor.fg('#888888')},
                       'focus':       {'color': TTkColor.fg("#dddd88")+TTkColor.bg("#000044")+TTkColor.BOLD,
+                                      'fillColor':TTkColor.RST,
                                       'borderColor': TTkColor.fg("#ffff55")}
                   }
    
