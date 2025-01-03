@@ -214,6 +214,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
 </details></li>
@@ -221,8 +223,9 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
@@ -486,11 +489,22 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkHelper&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.colors</span> <span class="kn">import</span> <span class="n">TTkTermColor</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.term</span> <span class="kn">import</span> <span class="n">TTkTerm</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span><span class="p">,</span> <span class="n">TTkGlbl</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">TermTk.TTkGui.drag</span> <span class="kn">import</span> <span class="n">TTkDnDEvent</span><span class="p">,</span> <span class="n">TTkDrag</span>
+    <span class="kn">from</span> <span class="nn">TermTk.TTkWidgets</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">class</span> <span class="nc">TTkDrag</span><span class="p">():</span> <span class="o">...</span>
+    <span class="k">class</span> <span class="nc">TTkDnDEvent</span><span class="p">():</span> <span class="o">...</span>
+    <span class="k">class</span> <span class="nc">TTkWidget</span><span class="p">():</span> <span class="o">...</span>
 
 <div class="viewcode-block" id="TTkHelper">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper">[docs]</a>
@@ -789,8 +803,8 @@
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_mousePos</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="c1"># update the position of the Drag and Drop Widget</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">:</span>
-            <span class="n">hsx</span><span class="p">,</span> <span class="n">hsy</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hotSpot</span><span class="p">()</span>
-            <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">hsx</span><span class="p">,</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">hsy</span><span class="p">)</span></div>
+            <span class="n">hsx</span><span class="p">,</span> <span class="n">hsy</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">hotSpot</span><span class="p">()</span>
+            <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">hsx</span><span class="p">,</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">hsy</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.mousePos">
@@ -1057,17 +1071,19 @@
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_cursorWidget</span></div>
 
 
+    <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">class</span> <span class="nc">_DnD</span><span class="p">():</span>
+        <span class="n">d</span><span class="p">:</span>    <span class="n">TTkDrag</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">w</span><span class="p">:</span>  <span class="n">TTkWidget</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="c1"># Drag and Drop related helper routines</span>
     <span class="n">_dnd</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="TTkHelper.dndInit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndInit">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndInit</span><span class="p">(</span><span class="n">drag</span><span class="p">):</span>
-        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;d&#39;</span> <span class="p">:</span> <span class="n">drag</span><span class="p">,</span>
-                <span class="s1">&#39;w&#39;</span> <span class="p">:</span> <span class="kc">None</span>
-            <span class="p">}</span>
+    <span class="k">def</span> <span class="nf">dndInit</span><span class="p">(</span><span class="n">drag</span><span class="p">:</span><span class="n">TTkDrag</span><span class="p">):</span>
+        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_DnD</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">drag</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">drag</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span>
         <span class="n">drag</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">raiseWidget</span><span class="p">()</span></div>
 
@@ -1075,28 +1091,28 @@
 <div class="viewcode-block" id="TTkHelper.dndGetDrag">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndGetDrag">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndGetDrag</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="k">else</span> <span class="kc">None</span></div>
+    <span class="k">def</span> <span class="nf">dndGetDrag</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TTkDrag</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">d</span> <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="k">else</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.dndWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndWidget">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndWidget</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="k">else</span> <span class="kc">None</span></div>
+    <span class="k">def</span> <span class="nf">dndWidget</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">w</span> <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="k">else</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.dndEnter">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndEnter">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndEnter</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
-        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">widget</span></div>
+    <span class="k">def</span> <span class="nf">dndEnter</span><span class="p">(</span><span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">):</span>
+        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">widget</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.isDnD">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.isDnD">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">isDnD</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">isDnD</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 
@@ -1105,7 +1121,7 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">dndEnd</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">:</span>
-            <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span>
+            <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 

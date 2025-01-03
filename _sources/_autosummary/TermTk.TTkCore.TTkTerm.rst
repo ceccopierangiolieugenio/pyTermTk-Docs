@@ -13,6 +13,8 @@ TermTk.TTkCore.TTkTerm
 
    
       TTkInput
+      TTkKeyEvent
+      TTkMouseEvent
       TTkTerm
    
 

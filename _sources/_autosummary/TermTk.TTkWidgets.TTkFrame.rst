@@ -135,7 +135,6 @@ TTkFrame
       maximumWidth
       minimumHeight
       minimumWidth
-      mouseEvent
       paintChildCanvas
       removeWidget
       rootLayout

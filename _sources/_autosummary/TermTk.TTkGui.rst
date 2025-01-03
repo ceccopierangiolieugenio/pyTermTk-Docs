@@ -13,8 +13,9 @@
 
    
       TTkClipboard
+      TTkDnD
+      TTkDnDEvent
       TTkDrag
-      TTkDropEvent
       TTkTextCursor
       TTkTextDocument
       TTkTextWrap

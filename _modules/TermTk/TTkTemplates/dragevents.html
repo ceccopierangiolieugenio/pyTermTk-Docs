@@ -214,6 +214,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
 </details></li>
@@ -221,8 +223,9 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
@@ -486,21 +489,26 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TDragEvents&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">TermTk.TTkGui.drag</span> <span class="kn">import</span> <span class="n">TTkDnDEvent</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">class</span> <span class="nc">TTkDnDEvent</span><span class="p">():</span> <span class="o">...</span>
+
 <div class="viewcode-block" id="TDragEvents">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents">[docs]</a>
 <span class="k">class</span> <span class="nc">TDragEvents</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="k">pass</span>
-
 <div class="viewcode-block" id="TDragEvents.dragEnterEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragEnterEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This event handler, can be reimplemented in a subclass to receive drag events for the widget.</span>
 
 <span class="sd">        .. note:: Reimplement this function to handle this event</span>
 
 <span class="sd">        :param evt: The drop event</span>
-<span class="sd">        :type evt: :py:class:`TTkDropEvent`</span>
+<span class="sd">        :type evt: :py:class:`TTkDnDEvent`</span>
 
 <span class="sd">        :return: **True** if the event has been handled</span>
 <span class="sd">        :rtype: bool</span>
@@ -510,14 +518,16 @@
 
 <div class="viewcode-block" id="TDragEvents.dragLeaveEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragLeaveEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">dragLeaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">dragLeaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This event handler, can be reimplemented in a subclass to receive drag events for the widget.</span>
 
 <span class="sd">        .. note:: Reimplement this function to handle this event</span>
 
+<span class="sd">        .. note:: This event is triggered only if :py:meth:`TDragEvents.dragEnterEvent` or :py:meth:`TDragEvents.dragMoveEvent` were previously handled inside this widget.</span>
+
 <span class="sd">        :param evt: The drop event</span>
-<span class="sd">        :type evt: :py:class:`TTkDropEvent`</span>
+<span class="sd">        :type evt: :py:class:`TTkDnDEvent`</span>
 
 <span class="sd">        :return: **True** if the event has been handled</span>
 <span class="sd">        :rtype: bool</span>
@@ -527,14 +537,14 @@
 
 <div class="viewcode-block" id="TDragEvents.dragMoveEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragMoveEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This event handler, can be reimplemented in a subclass to receive drag events for the widget.</span>
 
 <span class="sd">        .. note:: Reimplement this function to handle this event</span>
 
 <span class="sd">        :param evt: The drop event</span>
-<span class="sd">        :type evt: :py:class:`TTkDropEvent`</span>
+<span class="sd">        :type evt: :py:class:`TTkDnDEvent`</span>
 
 <span class="sd">        :return: **True** if the event has been handled</span>
 <span class="sd">        :rtype: bool</span>
@@ -544,14 +554,14 @@
 
 <div class="viewcode-block" id="TDragEvents.dropEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dropEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This event handler, can be reimplemented in a subclass to receive drag events for the widget.</span>
 
 <span class="sd">        .. note:: Reimplement this function to handle this event</span>
 
 <span class="sd">        :param evt: The drop event</span>
-<span class="sd">        :type evt: :py:class:`TTkDropEvent`</span>
+<span class="sd">        :type evt: :py:class:`TTkDnDEvent`</span>
 
 <span class="sd">        :return: **True** if the event has been handled</span>
 <span class="sd">        :rtype: bool</span>

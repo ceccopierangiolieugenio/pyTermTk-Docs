@@ -50,8 +50,8 @@
     <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TTkDropEvent" href="TermTk.TTkGui.TTkDropEvent.html" />
-    <link rel="prev" title="TTkClipboard" href="TermTk.TTkGui.TTkClipboard.html" />
+    <link rel="next" title="TTkTextCursor" href="TermTk.TTkGui.TTkTextCursor.html" />
+    <link rel="prev" title="TTkDnDEvent" href="TermTk.TTkGui.TTkDnDEvent.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -215,6 +215,8 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
 </details></li>
@@ -222,8 +224,9 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="TermTk.TTkGui.html">TermTk.TTkGui</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TTkDrag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
@@ -509,18 +512,13 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag"><code class="docutils literal notranslate"><span class="pre">TTkDrag</span></code></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.data"><code class="docutils literal notranslate"><span class="pre">data()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.exec"><code class="docutils literal notranslate"><span class="pre">exec()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDragEnterEvent"><code class="docutils literal notranslate"><span class="pre">getDragEnterEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDragLeaveEvent"><code class="docutils literal notranslate"><span class="pre">getDragLeaveEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDragMoveEvent"><code class="docutils literal notranslate"><span class="pre">getDragMoveEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDropEvent"><code class="docutils literal notranslate"><span class="pre">getDropEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.hidePixmap"><code class="docutils literal notranslate"><span class="pre">hidePixmap()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.hotSpot"><code class="docutils literal notranslate"><span class="pre">hotSpot()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.pixmap"><code class="docutils literal notranslate"><span class="pre">pixmap()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.setData"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.setHotSpot"><code class="docutils literal notranslate"><span class="pre">setHotSpot()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.setPixmap"><code class="docutils literal notranslate"><span class="pre">setPixmap()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.showPixmap"><code class="docutils literal notranslate"><span class="pre">showPixmap()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.visible"><code class="docutils literal notranslate"><span class="pre">visible()</span></code></a></li>
@@ -541,84 +539,135 @@
 <h1>TTkDrag<a class="headerlink" href="#ttkdrag" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkDrag</span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkDrag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD" title="TermTk.TTkGui.drag.TTkDnD"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnD</span></code></a></p>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.copy">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.copy" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.data">
-<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.data" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.exec">
-<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.exec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.exec" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.exec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.exec" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Starts the drag operation.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.getDragEnterEvent">
-<span class="sig-name descname"><span class="pre">getDragEnterEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDragEnterEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDragEnterEvent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getDragEnterEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.inputmouse.TTkMouseEvent"><span class="pre">TTkMouseEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.drag.TTkDnDEvent"><span class="pre">TTkDnDEvent</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDragEnterEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDragEnterEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Returns a Drag and Drop event for the DragEnter event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code></a>) – The mouse event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Drag and Drop event</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.getDragLeaveEvent">
-<span class="sig-name descname"><span class="pre">getDragLeaveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDragLeaveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDragLeaveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getDragLeaveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.inputmouse.TTkMouseEvent"><span class="pre">TTkMouseEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.drag.TTkDnDEvent"><span class="pre">TTkDnDEvent</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDragLeaveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDragLeaveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Returns a Drag and Drop event for the DragLeave event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code></a>) – The mouse event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Drag and Drop event</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.getDragMoveEvent">
-<span class="sig-name descname"><span class="pre">getDragMoveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDragMoveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDragMoveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getDragMoveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.inputmouse.TTkMouseEvent"><span class="pre">TTkMouseEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.drag.TTkDnDEvent"><span class="pre">TTkDnDEvent</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDragMoveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDragMoveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Returns a Drag and Drop event for the DragMove event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code></a>) – The mouse event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Drag and Drop event</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.getDropEvent">
-<span class="sig-name descname"><span class="pre">getDropEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDropEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDropEvent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getDropEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.inputmouse.TTkMouseEvent"><span class="pre">TTkMouseEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.drag.TTkDnDEvent"><span class="pre">TTkDnDEvent</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.getDropEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.getDropEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Returns a Drag and Drop event for the Drop event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code></a>) – The mouse event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Drag and Drop event</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.hidePixmap">
-<span class="sig-name descname"><span class="pre">hidePixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.hidePixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.hidePixmap" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.hotSpot">
-<span class="sig-name descname"><span class="pre">hotSpot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.hotSpot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.hotSpot" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">hidePixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.hidePixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.hidePixmap" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Hides the pixmap used to represent the data in a drag and drop operation.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.pixmap">
-<span class="sig-name descname"><span class="pre">pixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.pixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.pixmap" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.setData">
-<span class="sig-name descname"><span class="pre">setData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.setData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.setData" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.setHotSpot">
-<span class="sig-name descname"><span class="pre">setHotSpot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.setHotSpot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.setHotSpot" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">pixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.canvas.TTkCanvas"><span class="pre">TTkCanvas</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.pixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.pixmap" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Returns the pixmap used to represent the data in a drag and drop operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the pixmap used to represent the data in a drag and drop operation.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.setPixmap">
-<span class="sig-name descname"><span class="pre">setPixmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixmap</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.setPixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.setPixmap" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setPixmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.widget.TTkWidget"><span class="pre">TTkWidget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.canvas.TTkCanvas"><span class="pre">TTkCanvas</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.setPixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.setPixmap" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Sets the pixmap used to represent the data in a drag and drop operation.
+If a <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a> is provided as pixmap, its default rendering will be used in the pixmap <a class="reference internal" href="TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pixmap</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a> or <a class="reference internal" href="TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a>) – the pixmap</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.showPixmap">
-<span class="sig-name descname"><span class="pre">showPixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.showPixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.showPixmap" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">showPixmap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.showPixmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.showPixmap" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Shows the pixmap used to represent the data in a drag and drop operation.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkGui.TTkDrag.visible">
-<span class="sig-name descname"><span class="pre">visible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.visible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.visible" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">visible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkGui/drag.html#TTkDrag.visible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkGui.TTkDrag.visible" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Returns pixmap’s visibility status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the pixmap is visible, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </dd></dl>
@@ -637,20 +686,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="TermTk.TTkGui.TTkClipboard.html"
+       href="TermTk.TTkGui.TTkDnDEvent.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">TTkClipboard</p>
+        <p class="prev-next-title">TTkDnDEvent</p>
       </div>
     </a>
     <a class="right-next"
-       href="TermTk.TTkGui.TTkDropEvent.html"
+       href="TermTk.TTkGui.TTkTextCursor.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">TTkDropEvent</p>
+        <p class="prev-next-title">TTkTextCursor</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -672,18 +721,13 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag"><code class="docutils literal notranslate"><span class="pre">TTkDrag</span></code></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.data"><code class="docutils literal notranslate"><span class="pre">data()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.exec"><code class="docutils literal notranslate"><span class="pre">exec()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDragEnterEvent"><code class="docutils literal notranslate"><span class="pre">getDragEnterEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDragLeaveEvent"><code class="docutils literal notranslate"><span class="pre">getDragLeaveEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDragMoveEvent"><code class="docutils literal notranslate"><span class="pre">getDragMoveEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.getDropEvent"><code class="docutils literal notranslate"><span class="pre">getDropEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.hidePixmap"><code class="docutils literal notranslate"><span class="pre">hidePixmap()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.hotSpot"><code class="docutils literal notranslate"><span class="pre">hotSpot()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.pixmap"><code class="docutils literal notranslate"><span class="pre">pixmap()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.setData"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.setHotSpot"><code class="docutils literal notranslate"><span class="pre">setHotSpot()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.setPixmap"><code class="docutils literal notranslate"><span class="pre">setPixmap()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.showPixmap"><code class="docutils literal notranslate"><span class="pre">showPixmap()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkGui.TTkDrag.visible"><code class="docutils literal notranslate"><span class="pre">visible()</span></code></a></li>

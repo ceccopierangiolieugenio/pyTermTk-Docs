@@ -214,6 +214,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
 </details></li>
@@ -221,8 +223,9 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
@@ -773,107 +776,8 @@
                     <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="n">_mouseOver</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">_mouseOverTmp</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">_mouseOverProcessed</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="k">def</span> <span class="nf">mouseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; .. caution:: Don&#39;t touch this! &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
-
-        <span class="c1"># Saving self in this global variable</span>
-        <span class="c1"># So that after the &quot;_mouseEventLayoutHandle&quot;</span>
-        <span class="c1"># this tmp value will hold the last widget below the mouse</span>
-        <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverTmp</span> <span class="o">=</span> <span class="bp">self</span>
-
-        <span class="c1"># Mouse Drag has priority because it</span>
-        <span class="c1"># should be handled by the focused widget and</span>
-        <span class="c1"># not pushed to the unfocused childs</span>
-        <span class="c1"># unless there is a Drag and Drop event ongoing</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Drag</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">isDnD</span><span class="p">():</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseDragEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span>  <span class="n">TTkContainer</span><span class="o">.</span><span class="n">_mouseEventLayoutHandle</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-
-        <span class="c1"># If there is an overlay and it is modal,</span>
-        <span class="c1"># return False if this widget is not part of any</span>
-        <span class="c1"># of the widgets above the modal</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">checkModalOverlay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
-
-        <span class="c1"># Handle Drag and Drop Events</span>
-        <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">isDnD</span><span class="p">():</span>
-            <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Drag</span><span class="p">:</span>
-                <span class="n">dndw</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndWidget</span><span class="p">()</span>
-                <span class="k">if</span> <span class="n">dndw</span> <span class="o">==</span> <span class="bp">self</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dragMoveEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)):</span>
-                        <span class="k">return</span> <span class="kc">True</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dragEnterEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragEnterEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)):</span>
-                        <span class="k">if</span> <span class="n">dndw</span><span class="p">:</span>
-                            <span class="n">ret</span> <span class="o">=</span> <span class="n">dndw</span><span class="o">.</span><span class="n">dragLeaveEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragLeaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span>
-                        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndEnter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-                        <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDropEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)):</span>
-                    <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">return</span> <span class="n">ret</span>
-
-        <span class="c1"># handle Enter/Leave Events</span>
-        <span class="c1"># _mouseOverTmp hold the top widget under the mouse</span>
-        <span class="c1"># if different than self it means that it is a child</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Move</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverProcessed</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span> <span class="o">!=</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverTmp</span> <span class="o">==</span> <span class="bp">self</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span><span class="p">:</span>
-                        <span class="c1"># TTkLog.debug(f&quot;Leave: {TTkWidget._mouseOver._name}&quot;)</span>
-                        <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span><span class="o">.</span><span class="n">leaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
-                    <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span> <span class="o">=</span> <span class="bp">self</span>
-                    <span class="c1"># TTkLog.debug(f&quot;Enter: {TTkWidget._mouseOver._name}&quot;)</span>
-                    <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipClose</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                        <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span><span class="p">)</span>
-                    <span class="c1"># TTkHelper.triggerToolTip(self._name)</span>
-                    <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span><span class="o">.</span><span class="n">enterEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
-                <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverProcessed</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipClose</span><span class="p">()</span>
-
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_pendingMouseRelease</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_processStyleEvent</span><span class="p">(</span><span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_NONE</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseReleaseEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Press</span><span class="p">:</span>
-            <span class="c1"># in case of parent focus, check the parent that can accept the focus</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span>
-            <span class="k">while</span> <span class="n">w</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">and</span> <span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">focusPolicy</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ParentFocus</span><span class="p">)</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ParentFocus</span><span class="p">:</span>
-                <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">_parent</span>
-            <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">focusPolicy</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span><span class="p">:</span>
-                <span class="n">w</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
-                <span class="n">w</span><span class="o">.</span><span class="n">raiseWidget</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_processStyleEvent</span><span class="p">(</span><span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_PRESSED</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseDoubleClickEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="c1">#self._pendingMouseRelease = True</span>
-                <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseTapEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mousePressEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="c1"># TTkLog.debug(f&quot;Click {self._name}&quot;)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_pendingMouseRelease</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="k">return</span> <span class="kc">True</span>
-
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Wheel</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wheelEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-
-        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="nf">_mouseEventParseChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">TTkContainer</span><span class="o">.</span><span class="n">_mouseEventLayoutHandle</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">())</span>
 
 <div class="viewcode-block" id="TTkContainer.setLayout">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer.setLayout">[docs]</a>

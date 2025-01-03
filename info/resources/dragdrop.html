@@ -215,6 +215,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
 </details></li>
@@ -222,8 +224,9 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_autosummary/TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
@@ -485,7 +488,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -501,6 +506,20 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drag-and-drop-classes">Drag and Drop Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dragging">Dragging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropping">Dropping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events">Events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pixmap">Pixmap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hotspot">HotSpot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -512,7 +531,184 @@
                   
   <section id="drag-and-drop">
 <span id="dnd"></span><h1>Drag and Drop<a class="headerlink" href="#drag-and-drop" title="Link to this heading"><span>🌶️</span></a></h1>
-<p>TBD</p>
+<p>Drag and drop provides a simple visual mechanism which users can use to transfer
+information between and within widgets.
+Drag and drop is similar in function to the clipboard’s cut and paste mechanism.</p>
+<img alt="https://github.com/user-attachments/assets/857fd144-7a2a-4173-80b3-d135e62b8235" src="https://github.com/user-attachments/assets/857fd144-7a2a-4173-80b3-d135e62b8235" />
+<p>This document describes the basic drag and drop mechanism and outlines the
+approach used to enable it in custom controls.
+Drag and drop operations are also supported by many of TermTk’s controls,
+such as <a class="reference internal" href="../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList" title="TermTk.TTkWidgets.TTkList"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkList</span></code></a> or <a class="reference internal" href="../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget" title="TermTk.TTkWidgets.TTkTabWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTabWidget</span></code></a>.</p>
+<section id="drag-and-drop-classes">
+<h2>Drag and Drop Classes<a class="headerlink" href="#drag-and-drop-classes" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>These classes deal with drag and drop and the necessary mime type encoding and decoding.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag" title="TermTk.TTkGui.TTkDrag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkGui.TTkDrag</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="dragging">
+<h2>Dragging<a class="headerlink" href="#dragging" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>To start a drag, create a <a class="reference internal" href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag" title="TermTk.TTkGui.TTkDrag"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDrag</span></code></a> object, and call its <a class="reference internal" href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.exec" title="TermTk.TTkGui.TTkDrag.exec"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkDrag.exec()</span></code></a> function.
+In most applications, it is a good idea to begin a drag and drop operation only
+after a mouse button has been pressed and the cursor has been moved a certain distance.
+However, the simplest way to enable dragging from a widget is to reimplement
+the widget’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkWidget.mouseDragEvent()</span></code> and start a drag and drop operation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">LeftButton</span><span class="p">:</span>
+        <span class="n">drag</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkDrag</span><span class="p">()</span>
+        <span class="n">drag</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="s2">&quot;LeftClick Drag&quot;</span><span class="p">)</span>
+        <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Note that the <a class="reference internal" href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.exec" title="TermTk.TTkGui.TTkDrag.exec"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkDrag.exec()</span></code></a> function does not block the main event loop.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.01.basic.py">tutorial/examples/DragAndDrop/dnd.01.basic.py</a>       (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.01.basic.py">tryItOnline</a>)</p></li>
+</ul>
+</div>
+</section>
+<section id="dropping">
+<h2>Dropping<a class="headerlink" href="#dropping" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>To be able to receive the content dropped on a widget, reimplement
+the <a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dropEvent" title="TermTk.TTkTemplates.TDragEvents.dropEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dropEvent()</span></code></a> event handler functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop data: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="si">}</span><span class="s2">, Position: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.01.basic.py">tutorial/examples/DragAndDrop/dnd.01.basic.py</a>       (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.01.basic.py">tryItOnline</a>)</p></li>
+</ul>
+</div>
+</section>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>There are several events that can be used to customize the drag and drop operation:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dropEvent" title="TermTk.TTkTemplates.TDragEvents.dropEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dropEvent()</span></code></a>      - Called when a drag is dropped on the widget.</p></li>
+<li><p><a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragEnterEvent" title="TermTk.TTkTemplates.TDragEvents.dragEnterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragEnterEvent()</span></code></a> - Called when a drag enters the widget.</p></li>
+<li><p><a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragMoveEvent" title="TermTk.TTkTemplates.TDragEvents.dragMoveEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragMoveEvent()</span></code></a>  - Called when a drag moves over the widget.</p></li>
+<li><p><a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragLeaveEvent" title="TermTk.TTkTemplates.TDragEvents.dragLeaveEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragLeaveEvent()</span></code></a> - Called when a drag leaves the widget if <a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragEnterEvent" title="TermTk.TTkTemplates.TDragEvents.dragEnterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragEnterEvent()</span></code></a> or <a class="reference internal" href="../../_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents.dragMoveEvent" title="TermTk.TTkTemplates.TDragEvents.dragMoveEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragMoveEvent()</span></code></a> are andled inside the widget.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drag Enter: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="si">}</span><span class="s2">, Position: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">dragLeaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drag Leave: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="si">}</span><span class="s2">, Position: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drag Move: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="si">}</span><span class="s2">, Position: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="si">}</span><span class="s2">, Position: </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.02.events.01.py">tutorial/examples/DragAndDrop/dnd.02.events.01.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.02.events.01.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.02.events.02.py">tutorial/examples/DragAndDrop/dnd.02.events.02.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.02.events.02.py">tryItOnline</a>)</p></li>
+</ul>
+</div>
+</section>
+<section id="pixmap">
+<h2>Pixmap<a class="headerlink" href="#pixmap" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>The visual representation of the drag can be customized by setting a pixmap with <a class="reference internal" href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.setPixmap" title="TermTk.TTkGui.TTkDrag.setPixmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkDrag.setPixmap()</span></code></a>.
+By default the pixmap is initialized as a simple text string (“[…]”)
+but it can be customized by using
+a <a class="reference internal" href="../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a> or <a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a> as a pixmap.</p>
+<img alt="https://github.com/user-attachments/assets/7a23f5a9-444b-4e5a-878b-91c4b35ee8d8" src="https://github.com/user-attachments/assets/7a23f5a9-444b-4e5a-878b-91c4b35ee8d8" />
+<p>You can use the same object as pixmap to have a visual feedback of the widget being dragged:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">drag</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkDrag</span><span class="p">()</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Or define another <a class="reference internal" href="../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a> as pixmap:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">button</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;DnD&quot;</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">drag</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkDrag</span><span class="p">()</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Or use a <a class="reference internal" href="../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a> as pixmap and draw the required content on it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">pixmap</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkCanvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;╭╼ TXT ╾────────╮&quot;</span><span class="p">)</span>
+    <span class="n">pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;│Lorem ipsum dol│&quot;</span><span class="p">)</span>
+    <span class="n">pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;│consectetur adi│&quot;</span><span class="p">)</span>
+    <span class="n">pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;│sed do eiusmod │&quot;</span><span class="p">)</span>
+    <span class="n">pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;╰────────╼ End ╾╯&quot;</span><span class="p">)</span>
+
+    <span class="n">drag</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkDrag</span><span class="p">()</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">pixmap</span><span class="p">)</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.01.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.01.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.01.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.02.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.02.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.02.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.03.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.03.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.03.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.04.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.04.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.04.py">tryItOnline</a>)</p></li>
+</ul>
+</div>
+</section>
+<section id="hotspot">
+<h2>HotSpot<a class="headerlink" href="#hotspot" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>The hotspot is the offset of the pixmap related to the cursor position.
+It can be set using <a class="reference internal" href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.setHotSpot" title="TermTk.TTkGui.TTkDrag.setHotSpot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkDrag.setHotSpot()</span></code></a>.
+It is useful when the pixmap is not centered on the cursor or when you want to define an offset to allow
+the object being dragged from the clicked position:</p>
+<img alt="https://github.com/user-attachments/assets/8d999365-c787-4eff-84f2-03ef2b22c37a" src="https://github.com/user-attachments/assets/8d999365-c787-4eff-84f2-03ef2b22c37a" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">ttk</span><span class="o">.</span> <span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">drag</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkDrag</span><span class="p">()</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">setHotSpot</span><span class="p">((</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.04.hotSpot.01.py">tutorial/examples/DragAndDrop/dnd.04.hotSpot.01.py</a>  (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.04.hotSpot.01.py">tryItOnline</a>)</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"><span>🌶️</span></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.01.basic.py">tutorial/examples/DragAndDrop/dnd.01.basic.py</a>       (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.01.basic.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.02.events.01.py">tutorial/examples/DragAndDrop/dnd.02.events.01.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.02.events.01.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.02.events.02.py">tutorial/examples/DragAndDrop/dnd.02.events.02.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.02.events.02.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.01.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.01.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.01.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.02.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.02.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.02.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.03.py">tutorial/examples/DragAndDrop/dnd.03.pixmap.03.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.03.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.03.pixmap.04.py">tutorial/examples/DragAndDrop/dnd.04.pixmap.03.py</a>   (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.03.pixmap.04.py">tryItOnline</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tutorial/examples/DragAndDrop/dnd.04.hotSpot.01.py">tutorial/examples/DragAndDrop/dnd.04.hotSpot.01.py</a>  (<a class="reference external" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=tutorial/examples/DragAndDrop/dnd.04.hotSpot.01.py">tryItOnline</a>)</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -550,6 +746,28 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drag-and-drop-classes">Drag and Drop Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dragging">Dragging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropping">Dropping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events">Events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pixmap">Pixmap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hotspot">HotSpot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

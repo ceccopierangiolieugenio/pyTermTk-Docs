@@ -215,6 +215,8 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
 </details></li>
@@ -222,8 +224,9 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html">TTkDropEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkGui.TTkTextWrap.html">TTkTextWrap</a></li>
@@ -532,11 +535,12 @@
 <dt class="sig sig-object py" id="TermTk.TTkTemplates.TDragEvents">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TDragEvents</span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkTemplates.TDragEvents.dragEnterEvent">
-<span class="sig-name descname"><span class="pre">dragEnterEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dragEnterEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dragEnterEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">dragEnterEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTkDnDEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dragEnterEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dragEnterEvent" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -544,7 +548,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html#TermTk.TTkGui.TTkDropEvent" title="TermTk.TTkGui.TTkDropEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDropEvent</span></code></a>) – The drop event</p>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a>) – The drop event</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>True</strong> if the event has been handled</p>
@@ -557,15 +561,19 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkTemplates.TDragEvents.dragLeaveEvent">
-<span class="sig-name descname"><span class="pre">dragLeaveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dragLeaveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dragLeaveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">dragLeaveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTkDnDEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dragLeaveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dragLeaveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Reimplement this function to handle this event</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This event is triggered only if <a class="reference internal" href="#TermTk.TTkTemplates.TDragEvents.dragEnterEvent" title="TermTk.TTkTemplates.TDragEvents.dragEnterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragEnterEvent()</span></code></a> or <a class="reference internal" href="#TermTk.TTkTemplates.TDragEvents.dragMoveEvent" title="TermTk.TTkTemplates.TDragEvents.dragMoveEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TDragEvents.dragMoveEvent()</span></code></a> were previously handled inside this widget.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html#TermTk.TTkGui.TTkDropEvent" title="TermTk.TTkGui.TTkDropEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDropEvent</span></code></a>) – The drop event</p>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a>) – The drop event</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>True</strong> if the event has been handled</p>
@@ -578,7 +586,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkTemplates.TDragEvents.dragMoveEvent">
-<span class="sig-name descname"><span class="pre">dragMoveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dragMoveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dragMoveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">dragMoveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTkDnDEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dragMoveEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dragMoveEvent" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -586,7 +594,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html#TermTk.TTkGui.TTkDropEvent" title="TermTk.TTkGui.TTkDropEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDropEvent</span></code></a>) – The drop event</p>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a>) – The drop event</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>True</strong> if the event has been handled</p>
@@ -599,7 +607,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkTemplates.TDragEvents.dropEvent">
-<span class="sig-name descname"><span class="pre">dropEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dropEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dropEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">dropEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TTkDnDEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkTemplates/dragevents.html#TDragEvents.dropEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkTemplates.TDragEvents.dropEvent" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -607,7 +615,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDropEvent.html#TermTk.TTkGui.TTkDropEvent" title="TermTk.TTkGui.TTkDropEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDropEvent</span></code></a>) – The drop event</p>
+<dd class="field-odd"><p><strong>evt</strong> (<a class="reference internal" href="TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent" title="TermTk.TTkGui.TTkDnDEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkDnDEvent</span></code></a>) – The drop event</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>True</strong> if the event has been handled</p>

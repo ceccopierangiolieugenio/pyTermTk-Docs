@@ -1,4 +1,4 @@
-TTkDropEvent
+﻿TTkDropEvent
 ============
 
 .. currentmodule:: TermTk.TTkGui

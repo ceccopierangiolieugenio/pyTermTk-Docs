@@ -225,7 +225,6 @@ TTkTableWidget
       maximumWidth
       minimumHeight
       minimumWidth
-      mouseEvent
       paintChildCanvas
       removeWidget
       rootLayout
