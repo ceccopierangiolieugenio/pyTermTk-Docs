@@ -47,8 +47,10 @@ TTkTreeWidgetItem
    .. automethod:: child
    .. automethod:: childIndicatorPolicy
    .. automethod:: children
+   .. automethod:: collapseAll
    .. automethod:: data
    .. automethod:: emitDataChanged
+   .. automethod:: expandAll
    .. automethod:: hasWidgets
    .. automethod:: height
    .. automethod:: icon

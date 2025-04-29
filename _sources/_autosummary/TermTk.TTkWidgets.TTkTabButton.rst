@@ -8,6 +8,17 @@ TTkTabButton
 
    
 
+   .. _TermTk.TTkWidgets.TTkTabButton.classStyle:
+
+   Style
+   -----
+
+   .. code-block:: python
+
+      
+          classStyle = (
+   
+
    
    :ref:`Signals <Signal and Slots>`
    ---------------------------------
@@ -35,15 +46,6 @@ TTkTabButton
 
    
    
-   
-   
-   Slots Inherited from: :py:class:`TTkContainer`
-
-   .. autosummary::
-
-   
-      hide
-      show
    
    
    Slots Inherited from: :py:class:`TTkWidget`
@@ -93,37 +95,15 @@ TTkTabButton
    .. automethod:: setData
    .. automethod:: setSideEnd
    .. automethod:: setTabStatus
+   .. automethod:: setText
    .. automethod:: sideEnd
    .. automethod:: tabStatus
+   .. automethod:: text
 
    
 
    
    
-   
-   
-   Methods Inherited from: :py:class:`TTkContainer`
-
-   .. autosummary::
-
-   
-      addWidget
-      getPadding
-      getWidgetByName
-      hide
-      layout
-      maximumHeight
-      maximumWidth
-      minimumHeight
-      minimumWidth
-      paintChildCanvas
-      removeWidget
-      rootLayout
-      setCurrentStyle
-      setLayout
-      setPadding
-      show
-      update
    
    
    Methods Inherited from: :py:class:`TTkWidget`
@@ -175,6 +155,7 @@ TTkTabButton
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

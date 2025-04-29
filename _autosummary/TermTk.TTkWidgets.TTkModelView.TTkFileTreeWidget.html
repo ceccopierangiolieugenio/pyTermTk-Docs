@@ -47,7 +47,7 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget';</script>
-    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
+    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="TTkFileTreeWidgetItem" href="TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html" />
@@ -264,6 +264,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkAbout.html">TTkAbout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkAbstractListItem.html">TTkAbstractListItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkAppTemplate.html">TTkAppTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkBarType.html">TTkBarType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkButton.html">TTkButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkCheckbox.html">TTkCheckbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkComboBox.html">TTkComboBox</a></li>
@@ -293,6 +294,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTabButton.html">TTkTabButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTabWidget.html">TTkTabWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEdit.html">TTkTextEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditRuler.html">TTkTextEditRuler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html">TTkTextEditView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html">TTkWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkWidgets.TTkWindow.html">TTkWindow</a></li>
@@ -600,6 +602,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>header</strong> (<em>list</em><em>[</em><a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><em>TTkString</em></a><em>]</em><em>, </em><em>optional</em>) – define the header labels of each column, defaults to []</p></li>
 <li><p><strong>sortingEnabled</strong> (<em>bool</em><em>, </em><em>optional</em>) – enable the column sorting, defaults to False</p></li>
+<li><p><strong>dragDropMode</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode" title="TermTk.TTkCore.TTkK.DragDropMode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.DragDropMode</span></code></a>, optional) – This property holds the drag and drop event the view will act upon, defaults to <a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode.NoDragDrop" title="TermTk.TTkCore.TTkK.DragDropMode.NoDragDrop"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.DragDropMode.NoDragDrop</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -714,6 +717,18 @@
 </section>
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
+<p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTreeWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTreeWidget</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">collapseAll</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">expandAll</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
@@ -1038,37 +1053,49 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">columnWidth</span></code>(column)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">collapseAll</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">columnWidth</span></code>(column)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOfTopLevelItem</span></code>(item)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragDropMode</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSortingEnabled</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">expandAll</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code>(evt)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">focusOutEvent</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOfTopLevelItem</span></code>(item)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSortingEnabled</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDoubleClickEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse click events for the widget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDragEvent</span></code>(evt)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouseDragEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse drag events for the widget.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code>(evt)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mousePressEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse press events for the widget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code>(canvas)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paintEvent</span></code>(canvas)</p></td>
 <td><p>Paint Event callback, this need to be overridden in the widget.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeColumnToContents</span></code>(column)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeColumnToContents</span></code>(column)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedItems</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedItems</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColumnWidth</span></code>(column, width)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColumnWidth</span></code>(column, width)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDragDropMode</span></code>(dndMode)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHeaderLabels</span></code>(labels)</p></td>
@@ -1317,79 +1344,82 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDisabled</span></code>([disabled])</p></td>
 <td><p>This property holds whether the widget is disnabled</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code>([enabled])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDropEventProxy</span></code>(proxy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code>([enabled])</p></td>
 <td><p>This property holds whether the widget is enabled</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code>()</p></td>
 <td><p>Focus the widget</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocusPolicy</span></code>(policy)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocusPolicy</span></code>(policy)</p></td>
 <td><p>This property holds the way the widget accepts keyboard focus</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, width, height)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, width, height)</p></td>
 <td><p>Resize and move the widget</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumHeight</span></code>(maxh)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumHeight</span></code>(maxh)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumSize</span></code>(maxw, maxh)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumSize</span></code>(maxw, maxh)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumWidth</span></code>(maxw)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaximumWidth</span></code>(maxw)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumHeight</span></code>(minh)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumHeight</span></code>(minh)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumSize</span></code>(minw, minh)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumSize</span></code>(minw, minh)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumWidth</span></code>(minw)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMinimumWidth</span></code>(minw)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setName</span></code>(name)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setName</span></code>(name)</p></td>
 <td><p>Set the name of this Instance</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyle</span></code>([style])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyle</span></code>([style])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setToolTip</span></code>(toolTip)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setToolTip</span></code>(toolTip)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisible</span></code>(visible)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisible</span></code>(visible)</p></td>
 <td><p>Set the visibility status of this widget</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWidgetCursor</span></code>([pos, type])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWidgetCursor</span></code>([pos, type])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code>()</p></td>
 <td><p>show the widget</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolTip</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolTip</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([repaint, updateLayout, updateParent])</p></td>
 <td><p>Notify the drawing routine that the widget changed and needs to draw its new content.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">widgetItem</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">widgetItem</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">x</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">x</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

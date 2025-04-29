@@ -109,9 +109,11 @@ TTkTabWidget
    .. automethod:: addTab
    .. automethod:: count
    .. automethod:: currentWidget
+   .. automethod:: indexOf
    .. automethod:: insertTab
    .. automethod:: removeTab
    .. automethod:: setCurrentWidget
+   .. automethod:: tabButton
    .. automethod:: widget
 
    
@@ -210,6 +212,7 @@ TTkTabWidget
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

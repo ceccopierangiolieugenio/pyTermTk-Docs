@@ -212,6 +212,7 @@ TTkFileTree
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy
@@ -292,6 +293,9 @@ TTkFileTree Attributes
   addTopLevelItems
   classStyle
   clear
+  collapseAll
+  dragDropMode
+  expandAll
   fileActivated
   fileClicked
   fileDoubleClicked
@@ -310,6 +314,7 @@ TTkFileTree Attributes
   resizeColumnToContents
   selectedItems
   setColumnWidth
+  setDragDropMode
   setFilter
   setHeaderLabels
   sortColumn

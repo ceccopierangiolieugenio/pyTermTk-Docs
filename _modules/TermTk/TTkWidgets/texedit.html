@@ -46,7 +46,7 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/TermTk/TTkWidgets/texedit';</script>
-    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
+    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -263,6 +263,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbout.html">TTkAbout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbstractListItem.html">TTkAbstractListItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAppTemplate.html">TTkAppTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkBarType.html">TTkBarType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkButton.html">TTkButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkCheckbox.html">TTkCheckbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkComboBox.html">TTkComboBox</a></li>
@@ -292,6 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html">TTkTabButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html">TTkTabWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html">TTkTextEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html">TTkTextEditRuler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html">TTkTextEditView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html">TTkWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWindow.html">TTkWindow</a></li>
@@ -487,7 +489,7 @@
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextEditView&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEdit&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextEditView&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEditRuler&#39;</span><span class="p">]</span>
 
 
 <span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
@@ -510,7 +512,48 @@
 <span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollarea</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span>
 <span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollview</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollView</span><span class="p">,</span> <span class="n">TTkAbstractScrollViewGridLayout</span>
 
-<span class="k">class</span> <span class="nc">_TTkTextEditViewLineNumber</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
+<div class="viewcode-block" id="TTkTextEditRuler">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler">[docs]</a>
+<span class="k">class</span> <span class="nc">TTkTextEditRuler</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">MarkRuler</span><span class="p">():</span>
+        <span class="k">class</span> <span class="nc">States</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+            <span class="n">NONE</span>      <span class="o">=</span> <span class="mh">0x00</span>
+            <span class="n">FLAGGED</span>   <span class="o">=</span> <span class="mh">0x01</span>
+            <span class="n">UNFLAGGED</span> <span class="o">=</span> <span class="n">NONE</span>
+
+        <span class="c1"># class MarkRulerType(int):</span>
+        <span class="c1">#     ALLOW_EMPTY  = 0x01</span>
+        <span class="c1">#     SINGLE_STATE = 0x02</span>
+        <span class="c1">#     MULTI_STATE  = 0x04</span>
+
+        <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_markers&#39;</span><span class="p">,</span><span class="s1">&#39;_states&#39;</span><span class="p">,</span><span class="s1">&#39;_width&#39;</span><span class="p">,</span><span class="s1">&#39;_lines&#39;</span><span class="p">,</span><span class="s1">&#39;_defaultState&#39;</span><span class="p">)</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">markers</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="n">TTkString</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_markers</span> <span class="o">=</span> <span class="n">markers</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_states</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">markers</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">markers</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">markers</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+        <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>
+
+        <span class="k">def</span> <span class="nf">nextState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">state</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">_states</span>
+
+        <span class="k">def</span> <span class="nf">setState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">line</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">line</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
+
+        <span class="k">def</span> <span class="nf">getState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">getTTkStr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+            <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">())</span>
+
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span>
                     <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#88aaaa&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#333333&quot;</span><span class="p">),</span>
@@ -522,24 +565,38 @@
                     <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">)},</span>
             <span class="p">}</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_textWrap&#39;</span><span class="p">,</span><span class="s1">&#39;_startingNumber&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_textWrap&#39;</span><span class="p">,</span><span class="s1">&#39;_startingNumber&#39;</span><span class="p">,</span> <span class="s1">&#39;_markRuler&#39;</span><span class="p">,</span> <span class="s1">&#39;_markRulerSizes&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startingNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_startingNumber</span> <span class="o">=</span> <span class="n">startingNumber</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_startingNumber</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="n">startingNumber</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">TTkTextEditRuler</span><span class="o">.</span><span class="n">MarkRuler</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_markRulerSizes</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_wrapChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">dt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">off</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startingNumber</span>
-        <span class="n">width</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="p">))),</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">off</span><span class="p">))))</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="p">))),</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">off</span><span class="p">))))</span>
+        <span class="n">width</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_markRulerSizes</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumWidth</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
+<div class="viewcode-block" id="TTkTextEditRuler.addMarkRuler">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler.addMarkRuler">[docs]</a>
+    <span class="k">def</span> <span class="nf">addMarkRuler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">markRuler</span><span class="p">:</span><span class="n">MarkRuler</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">markRuler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_markRulerSizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">markRuler</span><span class="o">.</span><span class="n">width</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEditRuler.setTextWrap">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler.setTextWrap">[docs]</a>
     <span class="k">def</span> <span class="nf">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span> <span class="o">=</span> <span class="n">tw</span>
         <span class="n">tw</span><span class="o">.</span><span class="n">wrapChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
+
 
     <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span>
@@ -547,11 +604,32 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
+    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="n">mx</span><span class="p">,</span><span class="n">my</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="n">ox</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="o">+</span><span class="n">oy</span>
+        <span class="k">for</span> <span class="n">mk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="p">:</span>
+            <span class="n">mx</span> <span class="o">-=</span> <span class="n">mk</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">mx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span> <span class="ow">and</span> <span class="n">my</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_lines</span><span class="p">):</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">my</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">mk</span><span class="o">.</span><span class="n">setState</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">mk</span><span class="o">.</span><span class="n">nextState</span><span class="p">(</span><span class="n">mk</span><span class="o">.</span><span class="n">getState</span><span class="p">(</span><span class="n">dt</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mk</span><span class="o">.</span><span class="n">setState</span><span class="p">(</span><span class="n">my</span><span class="p">,</span> <span class="n">mk</span><span class="o">.</span><span class="n">nextState</span><span class="p">(</span><span class="n">mk</span><span class="o">.</span><span class="n">getState</span><span class="p">(</span><span class="n">my</span><span class="p">)))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
     <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="n">off</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startingNumber</span>
+        <span class="n">leftOff</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_markRulerSizes</span><span class="p">)</span>
+        <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_markRulerSizes</span><span class="p">)</span>
 
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
         <span class="n">color</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
@@ -561,14 +639,26 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="p">(</span><span class="n">fr</span><span class="p">,</span> <span class="n">_</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">oy</span><span class="p">:</span><span class="n">oy</span><span class="o">+</span><span class="n">h</span><span class="p">]):</span>
                 <span class="k">if</span> <span class="n">fr</span><span class="p">:</span>
-                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">wrapColor</span><span class="p">)</span>
+                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">leftOff</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">wrapColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">leftOff</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">char</span><span class="o">=</span><span class="s1">&#39;▌&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">separatorColor</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
-                <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="o">+</span><span class="n">oy</span><span class="o">+</span><span class="n">off</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+                <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">leftOff</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="o">+</span><span class="n">oy</span><span class="o">+</span><span class="n">off</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">char</span><span class="o">=</span><span class="s1">&#39;▌&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">separatorColor</span><span class="p">)</span>
+
+        <span class="n">ox</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">mk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="p">(</span><span class="n">fr</span><span class="p">,</span> <span class="n">_</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">oy</span><span class="p">:</span><span class="n">oy</span><span class="o">+</span><span class="n">h</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">fr</span><span class="p">:</span>
+                        <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">ox</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="n">mk</span><span class="o">.</span><span class="n">getTTkStr</span><span class="p">(</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">ox</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="n">mk</span><span class="o">.</span><span class="n">getTTkStr</span><span class="p">(</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="p">))</span>
+            <span class="n">ox</span> <span class="o">+=</span> <span class="n">mk</span><span class="o">.</span><span class="n">width</span><span class="p">()</span></div>
+
 
 <div class="viewcode-block" id="TTkTextEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView">[docs]</a>
@@ -762,7 +852,7 @@
 <span class="sd">        :param multiLine: In a multiline text edit the user can split the text in multiple lines, defaults to **True**</span>
 <span class="sd">        :type multiLine: bool, optional</span>
 
-<span class="sd">        :param document: If required an external Document can be used in this text editor, this option is useful if multiple editors share the same document as in the `demo &lt;https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/sandbox.html?filePath=demo/showcase/textedit.py&gt;`__, defaults to a new Document</span>
+<span class="sd">        :param document: If required an external Document can be used in this text editor, this option is useful if multiple editors share the same document as in the `demo &lt;https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/sandbox.html?filePath=demo/showcase/textedit.py&gt;`__, defaults to a new Document</span>
 <span class="sd">        :type document: :py:class:`TTkTextDocument`, optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
@@ -1282,6 +1372,9 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span>
                 <span class="k">elif</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_A</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">SelectionType</span><span class="o">.</span><span class="n">Document</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># No action performed</span>
+                    <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Up</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">movePosition</span><span class="p">(</span><span class="n">moveMode</span><span class="o">=</span><span class="n">moveMode</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">Up</span><span class="p">,</span>   <span class="n">textWrap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">clearColor</span><span class="p">()</span>
@@ -1459,13 +1552,20 @@
 
         <span class="n">textEditLayout</span> <span class="o">=</span> <span class="n">TTkAbstractScrollViewGridLayout</span><span class="p">()</span>
         <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span> <span class="o">=</span> <span class="n">_TTkTextEditViewLineNumber</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumber</span><span class="p">,</span> <span class="n">startingNumber</span><span class="o">=</span><span class="n">lineNumberStarting</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span> <span class="o">=</span> <span class="n">TTkTextEditRuler</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumber</span><span class="p">,</span> <span class="n">startingNumber</span><span class="o">=</span><span class="n">lineNumberStarting</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span>
         <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">textEditLayout</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">:</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
+
+<div class="viewcode-block" id="TTkTextEdit.ruler">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ruler">[docs]</a>
+    <span class="k">def</span> <span class="nf">ruler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextEditRuler</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;ruler&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span></div>
+
 
 <div class="viewcode-block" id="TTkTextEdit.textEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textEditView">[docs]</a>

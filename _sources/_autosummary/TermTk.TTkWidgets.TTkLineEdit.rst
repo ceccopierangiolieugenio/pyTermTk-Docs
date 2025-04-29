@@ -17,11 +17,14 @@ TTkLineEdit
 
       
           classStyle = {
-                      'default':     {'color':         TTkColor.fg("#dddddd")+TTkColor.bg("#222222"),
-                                      'selectedColor': TTkColor.fg("#ffffff")+TTkColor.bg("#008844")},
-                      'disabled':    {'color': TTkColor.fg('#888888'),
-                                      'selectedColor': TTkColor.fg("#888888")+TTkColor.bg("#444444")},
-                      'focus':       {'color':         TTkColor.fg("#dddddd")+TTkColor.bg("#000044")},
+                      'default':     {'color':         TTkColor.fgbg("#dddddd","#222222"),
+                                      'bgcolor':       TTkColor.fgbg("#666666","#222222")+TTkColor.UNDERLINE,
+                                      'selectedColor': TTkColor.fgbg("#ffffff","#008844")},
+                      'disabled':    {'color':         TTkColor.fg(  "#888888"),
+                                      'bgcolor':       TTkColor.fg(  "#444444")+TTkColor.UNDERLINE,
+                                      'selectedColor': TTkColor.fgbg("#888888","#444444")},
+                      'focus':       {'color':         TTkColor.fgbg("#dddddd","#000044"),
+                                      'bgcolor':       TTkColor.fgbg("#666666","#000044")+TTkColor.UNDERLINE}
                   }
    
 
@@ -167,6 +170,7 @@ TTkLineEdit
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

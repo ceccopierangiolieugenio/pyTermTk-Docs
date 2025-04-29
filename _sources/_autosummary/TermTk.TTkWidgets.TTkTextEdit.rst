@@ -169,6 +169,7 @@ TTkTextEdit
    
    .. automethod:: getLineNumber
    .. automethod:: lineNumberStarting
+   .. automethod:: ruler
    .. automethod:: setDocument
    .. automethod:: setLineNumber
    .. automethod:: setLineNumberStarting
@@ -265,6 +266,7 @@ TTkTextEdit
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

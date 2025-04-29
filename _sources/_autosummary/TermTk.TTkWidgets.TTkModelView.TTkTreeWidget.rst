@@ -65,6 +65,11 @@ TTkTreeWidget
    
 
    
+   .. autosummary::
+   
+      collapseAll
+      expandAll
+   
 
    
    
@@ -141,12 +146,16 @@ TTkTreeWidget
    .. automethod:: addTopLevelItem
    .. automethod:: addTopLevelItems
    .. automethod:: clear
+   .. automethod:: collapseAll
    .. automethod:: columnWidth
+   .. automethod:: dragDropMode
+   .. automethod:: expandAll
    .. automethod:: indexOfTopLevelItem
    .. automethod:: isSortingEnabled
    .. automethod:: resizeColumnToContents
    .. automethod:: selectedItems
    .. automethod:: setColumnWidth
+   .. automethod:: setDragDropMode
    .. automethod:: setHeaderLabels
    .. automethod:: setSortingEnabled
    .. automethod:: sortColumn
@@ -247,6 +256,7 @@ TTkTreeWidget
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

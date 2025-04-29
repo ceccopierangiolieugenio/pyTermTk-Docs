@@ -95,6 +95,7 @@ TTkKodeTab
    
    .. automethod:: addMenu
    .. automethod:: addTab
+   .. automethod:: iterWidgets
    .. automethod:: setCurrentWidget
 
    
@@ -208,6 +209,7 @@ TTkKodeTab
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy
@@ -286,6 +288,7 @@ TTkKodeTab Attributes
 
   classStyle
   currentChanged
+  tabAdded
   tabBarClicked
   tabCloseRequested
 

@@ -46,7 +46,7 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/TermTk/TTkGui/textdocument';</script>
-    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
+    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -263,6 +263,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbout.html">TTkAbout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbstractListItem.html">TTkAbstractListItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAppTemplate.html">TTkAppTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkBarType.html">TTkBarType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkButton.html">TTkButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkCheckbox.html">TTkCheckbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkComboBox.html">TTkComboBox</a></li>
@@ -292,6 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html">TTkTabButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html">TTkTabWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html">TTkTextEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html">TTkTextEditRuler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html">TTkTextEditView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html">TTkWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWindow.html">TTkWindow</a></li>
@@ -621,7 +623,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">undoCommandAdded</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modificationChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_backgroundColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dataLines</span> <span class="o">=</span> <span class="p">[</span><span class="n">TTkString</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_modified</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="c1"># Cumulative changes since the lasrt snapshot</span>
@@ -765,13 +766,13 @@
 <div class="viewcode-block" id="TTkTextDocument.isUndoAvailable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.isUndoAvailable">[docs]</a>
     <span class="k">def</span> <span class="nf">isUndoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">_prevDiff</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">_prevDiff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkTextDocument.isRedoAvailable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.isRedoAvailable">[docs]</a>
     <span class="k">def</span> <span class="nf">isRedoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">_nextDiff</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snap</span><span class="o">.</span><span class="n">_nextDiff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkTextDocument.hasSnapshots">

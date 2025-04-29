@@ -35,6 +35,7 @@ TTkDnDEvent
    
 
    
+   .. automethod:: clone
    .. automethod:: pos
 
    

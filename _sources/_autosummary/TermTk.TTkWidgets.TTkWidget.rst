@@ -137,6 +137,7 @@ TTkWidget
    .. automethod:: setCurrentStyle
    .. automethod:: setDefaultSize
    .. automethod:: setDisabled
+   .. automethod:: setDropEventProxy
    .. automethod:: setEnabled
    .. automethod:: setFocus
    .. automethod:: setFocusPolicy

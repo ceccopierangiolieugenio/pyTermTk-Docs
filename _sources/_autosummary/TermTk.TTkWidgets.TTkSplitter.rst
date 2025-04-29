@@ -17,11 +17,14 @@ TTkSplitter
 
       
           classStyle = {
-                      'default':     {'color': TTkColor.fg("#dddddd")+TTkColor.bg("#222222"),
-                                      'borderColor': TTkColor.RST},
+                      'default':     {'glyphs' : {
+                                          TTkK.VERTICAL   : ('╞','═','╡'),
+                                          TTkK.HORIZONTAL : ('╥','║','╨') },
+                                      'color': TTkColor.fgbg("#dddddd","#222222"),
+                                      'borderColor': TTkColor.RST },
                       'disabled':    {'color': TTkColor.fg('#888888'),
                                       'borderColor':TTkColor.fg('#888888')},
-                      'focus':       {'color': TTkColor.fg("#ffddff")+TTkColor.bg("#222222"),
+                      'focus':       {'color': TTkColor.fgbg("#ffddff","#222222"),
                                       'borderColor': TTkColor.fg("#ffffaa")}
                   }
    
@@ -200,6 +203,7 @@ TTkSplitter
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

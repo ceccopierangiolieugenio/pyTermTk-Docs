@@ -15,6 +15,7 @@
       TTkAbout
       TTkAbstractListItem
       TTkAppTemplate
+      TTkBarType
       TTkButton
       TTkCheckbox
       TTkComboBox
@@ -44,6 +45,7 @@
       TTkTabButton
       TTkTabWidget
       TTkTextEdit
+      TTkTextEditRuler
       TTkTextEditView
       TTkWidget
       TTkWindow

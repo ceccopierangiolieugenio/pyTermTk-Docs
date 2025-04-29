@@ -114,6 +114,7 @@ TTkTabBar
    .. automethod:: setTabData
    .. automethod:: setTabsClosable
    .. automethod:: sideEnd
+   .. automethod:: tabButton
    .. automethod:: tabData
    .. automethod:: tabsClosable
 
@@ -195,6 +196,7 @@ TTkTabBar
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

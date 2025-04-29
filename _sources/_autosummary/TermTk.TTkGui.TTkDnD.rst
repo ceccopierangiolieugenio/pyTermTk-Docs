@@ -35,6 +35,7 @@ TTkDnD
    
 
    
+   .. automethod:: clone
    .. automethod:: data
    .. automethod:: hotSpot
    .. automethod:: setData

@@ -46,7 +46,7 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/TermTk/TTkWidgets/widget';</script>
-    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk/sandbox/www/favicon.ico"/>
+    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -263,6 +263,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbout.html">TTkAbout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbstractListItem.html">TTkAbstractListItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAppTemplate.html">TTkAppTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkBarType.html">TTkBarType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkButton.html">TTkButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkCheckbox.html">TTkCheckbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkComboBox.html">TTkComboBox</a></li>
@@ -292,6 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html">TTkTabButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html">TTkTabWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html">TTkTextEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html">TTkTextEditRuler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html">TTkTextEditView</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html">TTkWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWindow.html">TTkWindow</a></li>
@@ -489,6 +491,8 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkWidget&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Self</span>
 <span class="k">except</span><span class="p">:</span>
@@ -584,6 +588,7 @@
         <span class="s1">&#39;_enabled&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_style&#39;</span><span class="p">,</span> <span class="s1">&#39;_currentStyle&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_toolTip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_dropEventProxy&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_widgetCursor&#39;</span><span class="p">,</span> <span class="s1">&#39;_widgetCursorEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;_widgetCursorType&#39;</span><span class="p">,</span>
         <span class="c1">#Signals</span>
         <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;sizeChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentStyleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;closed&#39;</span><span class="p">)</span>
@@ -663,6 +668,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">closed</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">)</span>
         <span class="c1"># self.sizeChanged.connect(self.resizeEvent)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dropEventProxy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursor</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorEnabled</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorType</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Cursor_Blinking_Bar</span>
@@ -740,6 +746,16 @@
 <span class="sd">        :type name: str</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span></div>
+
+
+<div class="viewcode-block" id="TTkWidget.setDropEventProxy">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setDropEventProxy">[docs]</a>
+    <span class="k">def</span> <span class="nf">setDropEventProxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy</span><span class="p">:</span><span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. warning::</span>
+<span class="sd">            This is an alpha Method to prototype the Drag and Drop prosy feature and may change in the future</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dropEventProxy</span> <span class="o">=</span> <span class="n">proxy</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.widgetItem">
@@ -954,7 +970,7 @@
                         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndEnter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
                         <span class="k">return</span> <span class="kc">True</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDropEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dropEventProxy</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDropEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))):</span>
                     <span class="k">return</span> <span class="kc">True</span>
             <span class="k">return</span> <span class="n">ret</span>
 

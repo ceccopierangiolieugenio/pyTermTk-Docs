@@ -192,6 +192,7 @@ TTkTestAbstractScrollWidget
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy

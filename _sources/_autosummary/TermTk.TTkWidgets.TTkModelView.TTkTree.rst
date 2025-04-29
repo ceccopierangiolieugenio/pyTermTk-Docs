@@ -45,6 +45,17 @@ TTkTree
    
 
    
+   Slots linked to: :py:class:`TTkTreeWidget`
+
+   .. autosummary::
+   
+      TTkTreeWidget.collapseAll
+      TTkTreeWidget.expandAll
+
+   
+   :py:class:`TTkTree` slots:
+   
+   
 
    
 
@@ -106,10 +117,14 @@ TTkTree
       TTkTreeWidget.addTopLevelItem
       TTkTreeWidget.addTopLevelItems
       TTkTreeWidget.clear
+      TTkTreeWidget.collapseAll
+      TTkTreeWidget.dragDropMode
+      TTkTreeWidget.expandAll
       TTkTreeWidget.indexOfTopLevelItem
       TTkTreeWidget.resizeColumnToContents
       TTkTreeWidget.selectedItems
       TTkTreeWidget.setColumnWidth
+      TTkTreeWidget.setDragDropMode
       TTkTreeWidget.setHeaderLabels
       TTkTreeWidget.sortColumn
       TTkTreeWidget.sortItems
@@ -213,6 +228,7 @@ TTkTree
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy
@@ -293,6 +309,9 @@ TTkTree Attributes
   addTopLevelItems
   classStyle
   clear
+  collapseAll
+  dragDropMode
+  expandAll
   indexOfTopLevelItem
   itemActivated
   itemChanged
@@ -303,6 +322,7 @@ TTkTree Attributes
   resizeColumnToContents
   selectedItems
   setColumnWidth
+  setDragDropMode
   setHeaderLabels
   sortColumn
   sortItems

@@ -51,6 +51,14 @@ TTkFileTreeWidget
    
    
    
+   Slots Inherited from: :py:class:`TTkTreeWidget`
+
+   .. autosummary::
+
+   
+      collapseAll
+      expandAll
+   
    
    Slots Inherited from: :py:class:`TTkAbstractScrollView`
 
@@ -144,7 +152,10 @@ TTkFileTreeWidget
       addTopLevelItem
       addTopLevelItems
       clear
+      collapseAll
       columnWidth
+      dragDropMode
+      expandAll
       focusOutEvent
       indexOfTopLevelItem
       isSortingEnabled
@@ -155,6 +166,7 @@ TTkFileTreeWidget
       resizeColumnToContents
       selectedItems
       setColumnWidth
+      setDragDropMode
       setHeaderLabels
       setSortingEnabled
       sortColumn
@@ -252,6 +264,7 @@ TTkFileTreeWidget
       setCurrentStyle
       setDefaultSize
       setDisabled
+      setDropEventProxy
       setEnabled
       setFocus
       setFocusPolicy
