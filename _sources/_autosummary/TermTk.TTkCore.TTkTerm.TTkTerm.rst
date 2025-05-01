@@ -25,20 +25,9 @@ TTkTerm
    
 
    
-   Methods
-   -------
-   
 
    
 
-
-   
-
-   
-   .. automethod:: exit
-   .. automethod:: getSigmask
-   .. automethod:: restoreTermAttr
-   .. automethod:: saveTermAttr
 
    
 
