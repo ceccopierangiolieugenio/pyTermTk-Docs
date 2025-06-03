@@ -57,6 +57,14 @@ TTkFileTree
    
    
    
+   Slots Inherited from: :py:class:`TTkTree`
+
+   .. autosummary::
+
+   
+      collapseAll
+      expandAll
+   
    
    
    Slots Inherited from: :py:class:`TTkContainer`
@@ -123,7 +131,36 @@ TTkFileTree
    
 
    
+   .. automethod:: getOpenPath
+   .. automethod:: openPath
+   .. automethod:: setFilter
+
    
+
+   
+   
+   
+   Methods Inherited from: :py:class:`TTkTree`
+
+   .. autosummary::
+
+   
+      addTopLevelItem
+      addTopLevelItems
+      clear
+      collapseAll
+      dragDropMode
+      expandAll
+      indexOfTopLevelItem
+      resizeColumnToContents
+      selectedItems
+      setColumnWidth
+      setDragDropMode
+      setHeaderLabels
+      sortColumn
+      sortItems
+      takeTopLevelItem
+      topLevelItem
    
    
    Methods Inherited from: :py:class:`TTkAbstractScrollArea`
@@ -289,38 +326,19 @@ TTkFileTree Attributes
 .. autosummary::
 
 
-  addTopLevelItem
-  addTopLevelItems
   classStyle
-  clear
-  collapseAll
-  dragDropMode
-  expandAll
   fileActivated
   fileClicked
   fileDoubleClicked
   folderActivated
   folderClicked
   folderDoubleClicked
-  getOpenPath
-  indexOfTopLevelItem
   itemActivated
   itemChanged
   itemClicked
   itemCollapsed
   itemDoubleClicked
   itemExpanded
-  openPath
-  resizeColumnToContents
-  selectedItems
-  setColumnWidth
-  setDragDropMode
-  setFilter
-  setHeaderLabels
-  sortColumn
-  sortItems
-  takeTopLevelItem
-  topLevelItem
 
 .. currentmodule::  TermTk.TTkWidgets.TTkModelView
 

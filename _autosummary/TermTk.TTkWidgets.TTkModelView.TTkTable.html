@@ -17,30 +17,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="prev" title="TTkHeaderView" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -103,8 +111,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -135,11 +142,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -480,16 +491,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -518,6 +537,41 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.clearSelection"><code class="docutils literal notranslate"><span class="pre">clearSelection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.columnCount"><code class="docutils literal notranslate"><span class="pre">columnCount()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentColumn"><code class="docutils literal notranslate"><span class="pre">currentColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentRow"><code class="docutils literal notranslate"><span class="pre">currentRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.hSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">hSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader"><code class="docutils literal notranslate"><span class="pre">horizontalHeader()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isRedoAvailable"><code class="docutils literal notranslate"><span class="pre">isRedoAvailable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isSortingEnabled"><code class="docutils literal notranslate"><span class="pre">isSortingEnabled()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isUndoAvailable"><code class="docutils literal notranslate"><span class="pre">isUndoAvailable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.model"><code class="docutils literal notranslate"><span class="pre">model()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.paste"><code class="docutils literal notranslate"><span class="pre">paste()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.redo"><code class="docutils literal notranslate"><span class="pre">redo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents"><code class="docutils literal notranslate"><span class="pre">resizeColumnToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents"><code class="docutils literal notranslate"><span class="pre">resizeColumnsToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents"><code class="docutils literal notranslate"><span class="pre">resizeRowToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents"><code class="docutils literal notranslate"><span class="pre">resizeRowsToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.rowCount"><code class="docutils literal notranslate"><span class="pre">rowCount()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectAll"><code class="docutils literal notranslate"><span class="pre">selectAll()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn"><code class="docutils literal notranslate"><span class="pre">selectColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow"><code class="docutils literal notranslate"><span class="pre">selectRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth"><code class="docutils literal notranslate"><span class="pre">setColumnWidth()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">setHSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setModel"><code class="docutils literal notranslate"><span class="pre">setModel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight"><code class="docutils literal notranslate"><span class="pre">setRowHeight()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSelection"><code class="docutils literal notranslate"><span class="pre">setSelection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled"><code class="docutils literal notranslate"><span class="pre">setSortingEnabled()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">setVSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="docutils literal notranslate"><span class="pre">sortByColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.undo"><code class="docutils literal notranslate"><span class="pre">undo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectColumn"><code class="docutils literal notranslate"><span class="pre">unselectColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectRow"><code class="docutils literal notranslate"><span class="pre">unselectRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.vSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">vSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader"><code class="docutils literal notranslate"><span class="pre">verticalHeader()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttktable-attributes">TTkTable Attributes</a></li>
@@ -536,7 +590,7 @@
 <h1>TTkTable<a class="headerlink" href="#ttktable" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableWidget</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.tablewidget.TTkTableWidget"><span class="pre">TTkTableWidget</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableModel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.abstracttablemodel.TTkAbstractTableModel"><span class="pre">TTkAbstractTableModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vSeparator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hSeparator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vHeader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hHeader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortingEnabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataPadding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableWidget</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.tablewidget.TTkTableWidget"><span class="pre">TTkTableWidget</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableModel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.abstracttablemodel.TTkAbstractTableModel"><span class="pre">TTkAbstractTableModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vSeparator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hSeparator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vHeader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hHeader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortingEnabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataPadding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.abstractscrollarea.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a></p>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable" title="TermTk.TTkWidgets.TTkModelView.TTkTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTable</span></code></a> is a container widget which place <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTableWidget</span></code></a> in a scrolling area with on-demand scroll bars.</p>
 <p>A <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTableWidget</span></code></a> implements a table view that displays items from a model.</p>
@@ -562,19 +616,19 @@
 or by using the arrow keys,
 you can also hit Tab and Backtab to move from cell to cell.</p>
 <p><strong>Visual Appearance</strong></p>
-<p>The table has a vertical header that can be obtained using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">verticalHeader()</span></code> function,
-and a horizontal header that is available through the <code class="xref py py-meth docutils literal notranslate"><span class="pre">horizontalHeader()</span></code> function.
-The height of each row in the table can be set using <code class="xref py py-meth docutils literal notranslate"><span class="pre">setRowHeight()</span></code>;
-similarly, the width of columns can be set using <code class="xref py py-meth docutils literal notranslate"><span class="pre">setColumnWidth()</span></code>.</p>
-<p>They can be selected with <code class="xref py py-meth docutils literal notranslate"><span class="pre">selectRow()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">selectColumn()</span></code>.
-The table will show a grid depending on the <code class="xref py py-meth docutils literal notranslate"><span class="pre">setHSeparatorVisibility()</span></code> <code class="xref py py-meth docutils literal notranslate"><span class="pre">setVSeparatorVisibility()</span></code> methods.</p>
+<p>The table has a vertical header that can be obtained using the <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader" title="TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">verticalHeader()</span></code></a> function,
+and a horizontal header that is available through the <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader" title="TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">horizontalHeader()</span></code></a> function.
+The height of each row in the table can be set using <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setRowHeight()</span></code></a>;
+similarly, the width of columns can be set using <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setColumnWidth()</span></code></a>.</p>
+<p>They can be selected with <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow" title="TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">selectRow()</span></code></a> and <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">selectColumn()</span></code></a>.
+The table will show a grid depending on the <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setHSeparatorVisibility()</span></code></a> <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setVSeparatorVisibility()</span></code></a> methods.</p>
 <p>The items shown in a table view, like those in the other item views, are rendered and edited using standard delegates.
 However, for some tasks it is sometimes useful to be able to insert widgets in a table instead.
 Widgets are set for particular indexes with the setIndexWidget() function, and later retrieved with indexWidget().</p>
 <p>By default, the cells in a table do not expand to fill the available space.
 You can make the cells fill the available space by stretching the last header section.</p>
 <p>To distribute the available space according to the space requirement of each column or row,
-call the view’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">resizeColumnsToContents()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">resizeRowsToContents()</span></code> functions.</p>
+call the view’s <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">resizeColumnsToContents()</span></code></a> or <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">resizeRowsToContents()</span></code></a> functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>tableWidget</strong> (<a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTableWidget</span></code></a>, optional) – a custom Table Widget to be used instead of the default one.</p>
@@ -647,7 +701,7 @@ call the view’s <code class="xref py py-meth docutils literal notranslate"><sp
 <section id="signals">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Signals linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTableWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.cellChanged" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.cellChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.cellChanged</span></code></a></p></td>
 <td><p>This signal is emitted whenever the data of the item in the cell specified by row and column has changed.</p></td>
@@ -668,7 +722,7 @@ call the view’s <code class="xref py py-meth docutils literal notranslate"><sp
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable" title="TermTk.TTkWidgets.TTkModelView.TTkTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTable</span></code></a> signals:</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.closed" title="TermTk.TTkWidgets.TTkModelView.TTkTable.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget is closed</p></td>
@@ -689,7 +743,7 @@ call the view’s <code class="xref py py-meth docutils literal notranslate"><sp
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Slots linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTableWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.copy" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.copy</span></code></a>()</p></td>
 <td><p>Copies any selected cells to the clipboard.</p></td>
@@ -722,7 +776,7 @@ call the view’s <code class="xref py py-meth docutils literal notranslate"><sp
 <td><p>Sets the height of the given row.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.setSortingEnabled</span></code></a>(enable)</p></td>
-<td><p>If enable is true, enables sorting for the table and immediately trigger a call to <code class="xref py py-meth docutils literal notranslate"><span class="pre">sortByColumn()</span></code> with the current sort section and order</p></td>
+<td><p>If enable is true, enables sorting for the table and immediately trigger a call to <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sortByColumn()</span></code></a> with the current sort section and order</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.sortByColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.sortByColumn</span></code></a>(column, order)</p></td>
 <td><p>Sorts the model by the values in the given column and order.</p></td>
@@ -734,8 +788,52 @@ call the view’s <code class="xref py py-meth docutils literal notranslate"><sp
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable" title="TermTk.TTkWidgets.TTkModelView.TTkTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTable</span></code></a> slots:</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.copy" title="TermTk.TTkWidgets.TTkModelView.TTkTable.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.cut" title="TermTk.TTkWidgets.TTkModelView.TTkTable.cut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.paste" title="TermTk.TTkWidgets.TTkModelView.TTkTable.paste"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paste</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.redo" title="TermTk.TTkWidgets.TTkModelView.TTkTable.redo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redo</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeColumnToContents</span></code></a>(column)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeColumnsToContents</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeRowToContents</span></code></a>(row)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeRowsToContents</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColumnWidth</span></code></a>(column, width)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRowHeight</span></code></a>(row, height)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSortingEnabled</span></code></a>(enable)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sortByColumn</span></code></a>(column, order)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.undo" title="TermTk.TTkWidgets.TTkModelView.TTkTable.undo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
 <td><p>hide the widget</p></td>
@@ -747,7 +845,7 @@ call the view’s <code class="xref py py-meth docutils literal notranslate"><sp
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
 <td><p>Close (Destroy/Remove) the widget</p></td>
@@ -837,7 +935,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Methods linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTableWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.clearSelection" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.clearSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.clearSelection</span></code></a>()</p></td>
 <td><p>Deselects all selected items.</p></td>
@@ -921,7 +1019,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <td><p>Selects the items within the given rect and in accordance with the specified selection flags.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.setSortingEnabled</span></code></a>(enable)</p></td>
-<td><p>If enable is true, enables sorting for the table and immediately trigger a call to <code class="xref py py-meth docutils literal notranslate"><span class="pre">sortByColumn()</span></code> with the current sort section and order</p></td>
+<td><p>If enable is true, enables sorting for the table and immediately trigger a call to <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sortByColumn()</span></code></a> with the current sort section and order</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setVSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setVSeparatorVisibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTableWidget.setVSeparatorVisibility</span></code></a>(...)</p></td>
 <td><p>Set the the visibility of the vertical separators (lines)</p></td>
@@ -948,8 +1046,531 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable" title="TermTk.TTkWidgets.TTkModelView.TTkTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTable</span></code></a> methods:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.clearSelection">
+<span class="sig-name descname"><span class="pre">clearSelection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.clearSelection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.clearSelection" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.clearSelection" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.clearSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.clearSelection()</span></code></a></p>
+</div>
+<p>Deselects all selected items.
+The current index will not be changed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.columnCount">
+<span class="sig-name descname"><span class="pre">columnCount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.columnCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.columnCount" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.columnCount" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.columnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.columnCount()</span></code></a></p>
+</div>
+<p>Returns the number of columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.copy" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.copy" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.copy()</span></code></a></p>
+</div>
+<p>Copies any selected cells to the clipboard.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.currentColumn">
+<span class="sig-name descname"><span class="pre">currentColumn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.currentColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentColumn" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.currentColumn()</span></code></a></p>
+</div>
+<p>Returns the column of the current item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.currentRow">
+<span class="sig-name descname"><span class="pre">currentRow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.currentRow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentRow" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentRow" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.currentRow()</span></code></a></p>
+</div>
+<p>Returns the row of the current item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.cut">
+<span class="sig-name descname"><span class="pre">cut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.cut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.cut" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.cut" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.cut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.cut()</span></code></a></p>
+</div>
+<p>Copies the selected ccells to the clipboard and deletes them from the table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.hSeparatorVisibility">
+<span class="sig-name descname"><span class="pre">hSeparatorVisibility</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.hSeparatorVisibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.hSeparatorVisibility" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.hSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.hSeparatorVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.hSeparatorVisibility()</span></code></a></p>
+</div>
+<p>Returns the visibility status of the horizontal separator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader">
+<span class="sig-name descname"><span class="pre">horizontalHeader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html#TermTk.TTkWidgets.TTkModelView.TTkHeaderView" title="TermTk.TTkWidgets.TTkModelView.tablewidget.TTkHeaderView"><span class="pre">TTkHeaderView</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.horizontalHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.horizontalHeader" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.horizontalHeader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.horizontalHeader()</span></code></a></p>
+</div>
+<p>Returns the table view’s horizontal header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html#TermTk.TTkWidgets.TTkModelView.TTkHeaderView" title="TermTk.TTkWidgets.TTkModelView.TTkHeaderView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkHeaderView</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.isRedoAvailable">
+<span class="sig-name descname"><span class="pre">isRedoAvailable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.isRedoAvailable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isRedoAvailable" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isRedoAvailable" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isRedoAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.isRedoAvailable()</span></code></a></p>
+</div>
+<p>isRedoAvailable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.isSortingEnabled">
+<span class="sig-name descname"><span class="pre">isSortingEnabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.isSortingEnabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isSortingEnabled" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isSortingEnabled" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isSortingEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.isSortingEnabled()</span></code></a></p>
+</div>
+<p>This property holds whether sorting is enabled
+If this property is true, sorting is enabled for the table.
+If this property is false, sorting is not enabled. The default value is false.</p>
+<p><strong>Note</strong>: . Setting the property to true with <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled" title="TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setSortingEnabled()</span></code></a>
+immediately triggers a call to <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sortByColumn()</span></code></a>
+with the current sort section and order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.isUndoAvailable">
+<span class="sig-name descname"><span class="pre">isUndoAvailable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.isUndoAvailable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isUndoAvailable" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isUndoAvailable" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isUndoAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.isUndoAvailable()</span></code></a></p>
+</div>
+<p>isUndoAvailable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.abstracttablemodel.TTkAbstractTableModel"><span class="pre">TTkAbstractTableModel</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.model" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.model" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.model()</span></code></a></p>
+</div>
+<p>Returns the model that this view is presenting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.TTkAbstractTableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractTableModel</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.paste">
+<span class="sig-name descname"><span class="pre">paste</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.paste"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.paste" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.paste" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.paste"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.paste()</span></code></a></p>
+</div>
+<p>Pastes the text/cells from the clipboard into the table at the current cursor position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.redo">
+<span class="sig-name descname"><span class="pre">redo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.redo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.redo" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.redo" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.redo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.redo()</span></code></a></p>
+</div>
+<p>Redoes the last operation if redo is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents">
+<span class="sig-name descname"><span class="pre">resizeColumnToContents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.resizeColumnToContents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnToContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.resizeColumnToContents()</span></code></a></p>
+</div>
+<p>Resizes the given column based on the size hints of the delegate used to render each item in the column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>int</em>) – the column to be resized</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents">
+<span class="sig-name descname"><span class="pre">resizeColumnsToContents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.resizeColumnsToContents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnsToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnsToContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.resizeColumnsToContents()</span></code></a></p>
+</div>
+<p>Resizes all columns based on the size hints of the delegate used to render each item in the columns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents">
+<span class="sig-name descname"><span class="pre">resizeRowToContents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.resizeRowToContents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowToContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.resizeRowToContents()</span></code></a></p>
+</div>
+<p>Resizes the given row based on the size hints of the delegate used to render each item in the row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – the row to be resized</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents">
+<span class="sig-name descname"><span class="pre">resizeRowsToContents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.resizeRowsToContents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowsToContents" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowsToContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.resizeRowsToContents()</span></code></a></p>
+</div>
+<p>Resizes all rows based on the size hints of the delegate used to render each item in the rows.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.rowCount">
+<span class="sig-name descname"><span class="pre">rowCount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.rowCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.rowCount" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.rowCount" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.rowCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.rowCount()</span></code></a></p>
+</div>
+<p>Returns the number of rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.selectAll">
+<span class="sig-name descname"><span class="pre">selectAll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.selectAll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectAll" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectAll" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.selectAll()</span></code></a></p>
+</div>
+<p>Selects all items in the view.
+This function will use the selection behavior set on the view when selecting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn">
+<span class="sig-name descname"><span class="pre">selectColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.selectColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.selectColumn()</span></code></a></p>
+</div>
+<p>Selects the given column in the table view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – the column to be selected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow">
+<span class="sig-name descname"><span class="pre">selectRow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.selectRow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectRow" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.selectRow()</span></code></a></p>
+</div>
+<p>Selects the given row in the table view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – the row to be selected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth">
+<span class="sig-name descname"><span class="pre">setColumnWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setColumnWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setColumnWidth" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setColumnWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setColumnWidth()</span></code></a></p>
+</div>
+<p>Sets the width of the given column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>int</em>) – the column</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – its width</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility">
+<span class="sig-name descname"><span class="pre">setHSeparatorVisibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setHSeparatorVisibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setHSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setHSeparatorVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setHSeparatorVisibility()</span></code></a></p>
+</div>
+<p>Set the the visibility of the horizontal separators (lines)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     Customer Id      First Name  Last Name   Company
+1  │ DD37Cf93aecA6Dc  Sheryl      Baxter      Rasmussen Group
+╾╌╌┼───────────────────────────────────────────────────────────
+2  │ 1Ef7b82A4CAAD10  Preston     Lozano      Vega-Gentry
+╾╌╌┼───────────────────────────────────────────────────────────
+3  │ 6F94879bDAfE5a6  Roy         Berry       Murillo-Perry
+╾╌╌┼───────────────────────────────────────────────────────────
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>visibility</strong> (<em>bool</em>) – the visibility status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setModel">
+<span class="sig-name descname"><span class="pre">setModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.abstracttablemodel.TTkAbstractTableModel"><span class="pre">TTkAbstractTableModel</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setModel" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setModel" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setModel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setModel()</span></code></a></p>
+</div>
+<p>Sets the model for the view to present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.TTkAbstractTableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractTableModel</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight">
+<span class="sig-name descname"><span class="pre">setRowHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setRowHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setRowHeight" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setRowHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setRowHeight()</span></code></a></p>
+</div>
+<p>Sets the height of the given row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – the row</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – its height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setSelection">
+<span class="sig-name descname"><span class="pre">setSelection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.TTkItemSelectionModel" title="TermTk.TTkCore.constant.TTkConstant.TTkItemSelectionModel"><span class="pre">TTkItemSelectionModel</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setSelection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSelection" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSelection" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setSelection()</span></code></a></p>
+</div>
+<p>Selects the items within the given rect and in accordance with the specified selection flags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>,</em><em>int</em><em>]</em>) – the x,y position of the rect</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>,</em><em>int</em><em>]</em>) – the width,height of the rect used for the selection</p></li>
+<li><p><strong>flags</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TTkItemSelectionModel</span></code>) – the selection model used (i.e. <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkItemSelectionModel.Select</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled">
+<span class="sig-name descname"><span class="pre">setSortingEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setSortingEnabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setSortingEnabled()</span></code></a></p>
+</div>
+<p>If enable is true, enables sorting for the table and immediately trigger a
+call to <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sortByColumn()</span></code></a>
+with the current sort section and order</p>
+<p><strong>Note</strong>: Setter function for property sortingEnabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – the availability of undo</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility">
+<span class="sig-name descname"><span class="pre">setVSeparatorVisibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.setVSeparatorVisibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setVSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setVSeparatorVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.setVSeparatorVisibility()</span></code></a></p>
+</div>
+<p>Set the the visibility of the vertical separators (lines)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     Customer Id     ╿First Name ╿Last Name   ╿Company                     ╿
+1  │ DD37Cf93aecA6Dc │Sheryl     │Baxter      │Rasmussen Group             │
+2  │ 1Ef7b82A4CAAD10 │Preston    │Lozano      │Vega-Gentry                 │
+3  │ 6F94879bDAfE5a6 │Roy        │Berry       │Murillo-Perry               │
+4  │ 5Cef8BFA16c5e3c │Linda      │Olsen       │Dominguez, Mcmillan and Don │
+5  │ 053d585Ab6b3159 │Joanna     │Bender      │Martin, Lang and Andrade    │
+6  │ 2d08FB17EE273F4 │Aimee      │Downs       │Steele Group                │
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>visibility</strong> (<em>bool</em>) – the visibility status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn">
+<span class="sig-name descname"><span class="pre">sortByColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.SortOrder" title="TermTk.TTkCore.constant.TTkConstant.SortOrder"><span class="pre">SortOrder</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.sortByColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.sortByColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.sortByColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.sortByColumn()</span></code></a></p>
+</div>
+<p>Sorts the model by the values in the given column and order.</p>
+<p>column may be -1, in which case no sort indicator will be shown and the model will return to its natural, unsorted order.
+Note that not all models support this and may even crash in this case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>bool</em>) – the column used for the sorting, -1 to keep the table unsorted</p></li>
+<li><p><strong>order</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.SortOrder" title="TermTk.TTkCore.TTkK.SortOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.SortOrder</span></code></a>) – the sort order</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.undo">
+<span class="sig-name descname"><span class="pre">undo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.undo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.undo" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.undo" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.undo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.undo()</span></code></a></p>
+</div>
+<p>Undoes the last operation if undo is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.unselectColumn">
+<span class="sig-name descname"><span class="pre">unselectColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.unselectColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectColumn" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectColumn" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.unselectColumn()</span></code></a></p>
+</div>
+<p>Unselects the given column in the table view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>int</em>) – the column to be unselected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.unselectRow">
+<span class="sig-name descname"><span class="pre">unselectRow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.unselectRow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectRow" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectRow" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.unselectRow()</span></code></a></p>
+</div>
+<p>Unselects the given row in the table view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – the row to be unselected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.vSeparatorVisibility">
+<span class="sig-name descname"><span class="pre">vSeparatorVisibility</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.vSeparatorVisibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.vSeparatorVisibility" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.vSeparatorVisibility" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.vSeparatorVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.vSeparatorVisibility()</span></code></a></p>
+</div>
+<p>Returns the visibility status of the vertical separator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader">
+<span class="sig-name descname"><span class="pre">verticalHeader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html#TermTk.TTkWidgets.TTkModelView.TTkHeaderView" title="TermTk.TTkWidgets.TTkModelView.tablewidget.TTkHeaderView"><span class="pre">TTkHeaderView</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/table.html#TTkTable.verticalHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.verticalHeader" title="TermTk.TTkWidgets.TTkModelView.TTkTableWidget.verticalHeader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTableWidget.verticalHeader()</span></code></a></p>
+</div>
+<p>Returns the table view’s vertical header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html#TermTk.TTkWidgets.TTkModelView.TTkHeaderView" title="TermTk.TTkWidgets.TTkModelView.TTkHeaderView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkHeaderView</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
 <td><p>Convenience function, Event Callback triggered after a successful resize</p></td>
@@ -973,7 +1594,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addWidget</span></code>(widget)</p></td>
 <td><p></p></td>
@@ -1030,7 +1651,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearFocus</span></code>()</p></td>
 <td><p>Remove the Focus state of this widget</p></td>
@@ -1246,7 +1867,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TMouseEvents.html#TermTk.TTkTemplates.TMouseEvents" title="TermTk.TTkTemplates.TMouseEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TMouseEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse enter events for the widget.</p></td>
@@ -1279,7 +1900,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TKeyEvents.html#TermTk.TTkTemplates.TKeyEvents" title="TermTk.TTkTemplates.TKeyEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TKeyEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive key events for the widget.</p></td>
@@ -1288,7 +1909,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents" title="TermTk.TTkTemplates.TDragEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TDragEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p></td>
@@ -1310,7 +1931,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 
 <section id="ttktable-attributes">
 <h2>TTkTable Attributes<a class="headerlink" href="#ttktable-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cellChanged</span></code></p></td>
 <td><p></p></td>
@@ -1327,112 +1948,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearSelection</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">columnCount</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentCellChanged</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentColumn</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentRow</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hSeparatorVisibility</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">horizontalHeader</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isRedoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSortingEnabled</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isUndoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paste</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redo</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeColumnToContents</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeColumnsToContents</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeRowToContents</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeRowsToContents</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowCount</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectAll</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectColumn</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectRow</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColumnWidth</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHSeparatorVisibility</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setModel</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRowHeight</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelection</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSortingEnabled</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVSeparatorVisibility</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sortByColumn</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unselectColumn</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unselectRow</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vSeparatorVisibility</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">verticalHeader</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentCellChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1477,8 +1993,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1492,6 +2007,41 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.clearSelection"><code class="docutils literal notranslate"><span class="pre">clearSelection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.columnCount"><code class="docutils literal notranslate"><span class="pre">columnCount()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentColumn"><code class="docutils literal notranslate"><span class="pre">currentColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.currentRow"><code class="docutils literal notranslate"><span class="pre">currentRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.hSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">hSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader"><code class="docutils literal notranslate"><span class="pre">horizontalHeader()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isRedoAvailable"><code class="docutils literal notranslate"><span class="pre">isRedoAvailable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isSortingEnabled"><code class="docutils literal notranslate"><span class="pre">isSortingEnabled()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.isUndoAvailable"><code class="docutils literal notranslate"><span class="pre">isUndoAvailable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.model"><code class="docutils literal notranslate"><span class="pre">model()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.paste"><code class="docutils literal notranslate"><span class="pre">paste()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.redo"><code class="docutils literal notranslate"><span class="pre">redo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents"><code class="docutils literal notranslate"><span class="pre">resizeColumnToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents"><code class="docutils literal notranslate"><span class="pre">resizeColumnsToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents"><code class="docutils literal notranslate"><span class="pre">resizeRowToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents"><code class="docutils literal notranslate"><span class="pre">resizeRowsToContents()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.rowCount"><code class="docutils literal notranslate"><span class="pre">rowCount()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectAll"><code class="docutils literal notranslate"><span class="pre">selectAll()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn"><code class="docutils literal notranslate"><span class="pre">selectColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow"><code class="docutils literal notranslate"><span class="pre">selectRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth"><code class="docutils literal notranslate"><span class="pre">setColumnWidth()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">setHSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setModel"><code class="docutils literal notranslate"><span class="pre">setModel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight"><code class="docutils literal notranslate"><span class="pre">setRowHeight()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSelection"><code class="docutils literal notranslate"><span class="pre">setSelection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled"><code class="docutils literal notranslate"><span class="pre">setSortingEnabled()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">setVSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn"><code class="docutils literal notranslate"><span class="pre">sortByColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.undo"><code class="docutils literal notranslate"><span class="pre">undo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectColumn"><code class="docutils literal notranslate"><span class="pre">unselectColumn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectRow"><code class="docutils literal notranslate"><span class="pre">unselectRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.vSeparatorVisibility"><code class="docutils literal notranslate"><span class="pre">vSeparatorVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader"><code class="docutils literal notranslate"><span class="pre">verticalHeader()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttktable-attributes">TTkTable Attributes</a></li>
@@ -1543,8 +2093,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

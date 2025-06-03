@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=984eaf5c"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -541,23 +560,35 @@
       <ul>
         <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addItem">(TTkLayout method)</a>
 </li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItem">(TTkList method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItem">(TTkListWidget method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.addItem">(TTkSplitter method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItemAt">addItemAt() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItemAt">addItemAt() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItemAt">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkComboBox.html#TermTk.TTkWidgets.TTkComboBox.addItems">addItems() (TTkComboBox method)</a>
 
       <ul>
         <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addItems">(TTkLayout method)</a>
 </li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItems">(TTkList method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItems">(TTkListWidget method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItemsAt">addItemsAt() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItemsAt">addItemsAt() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItemsAt">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler.addMarkRuler">addMarkRuler() (TTkTextEditRuler method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkKodeTab.html#TermTk.TTkWidgets.TTkKodeTab.addMenu">addMenu() (TTkKodeTab method)</a>
@@ -574,6 +605,8 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkMenuButton.html#TermTk.TTkWidgets.TTkMenuButton.addSpacer">addSpacer() (TTkMenuButton method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkKodeTab.html#TermTk.TTkWidgets.TTkKodeTab.addTab">addTab() (TTkKodeTab method)</a>
 
       <ul>
@@ -582,16 +615,20 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.addTab">(TTkTabWidget method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeWidget.html#TermTk.TTkWidgets.Fancy.TTkFancyTreeWidget.addTopLevelItem">addTopLevelItem() (TTkFancyTreeWidget method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.addTopLevelItem">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.addTopLevelItem">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.addTopLevelItems">addTopLevelItems() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.addTopLevelItems">addTopLevelItems() (TTkTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.addTopLevelItems">(TTkTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.addUpdateBuffer">addUpdateBuffer() (TTkHelper static method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.addUpdateWidget">addUpdateWidget() (TTkHelper static method)</a>
@@ -634,8 +671,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.FileMode.AnyFile">AnyFile (FileMode attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.FileMode.AnyFile">[1]</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.append">append() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.append">append() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.append">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.appendText">appendText() (TTkTextDocument method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.ShortcutContext.ApplicationShortcut">ApplicationShortcut (ShortcutContext attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.ShortcutContext.ApplicationShortcut">[1]</a>
@@ -765,7 +806,11 @@
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkMenuBarLayout.html#TermTk.TTkWidgets.TTkMenuBarLayout.clear">(TTkMenuBarLayout method)</a>
 </li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.clear">(TTkTextEdit method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.clear">(TTkTextEditView method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.clear">(TTkTree method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.clear">(TTkTreeWidget method)</a>
 </li>
@@ -784,9 +829,11 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.clearFocus">(TTkWidget method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.clearSelection">clearSelection() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.clearSelection">clearSelection() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.clearSelection">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.clearSelection">(TTkTextCursor method)</a>
 </li>
       </ul></li>
@@ -952,9 +999,11 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkAbstract.TTkModelIndex.html#TermTk.TTkAbstract.TTkModelIndex.col">col() (TTkModelIndex method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.collapseAll">collapseAll() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.collapseAll">collapseAll() (TTkTree method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.collapseAll">(TTkTreeWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.collapseAll">(TTkTreeWidgetItem method)</a>
 </li>
       </ul></li>
@@ -1005,6 +1054,8 @@
       <li><a href="_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.columnCount">columnCount() (TTkAbstractTableModel method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.columnCount">(TTkTable method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.columnCount">(TTkTableModelList method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.columnCount">(TTkTableModelSQLite3 method)</a>
@@ -1035,9 +1086,13 @@
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.copy">(TTkLineEdit method)</a>
 </li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.copy">(TTkTable method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.copy">(TTkTableWidget method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.copy">(TTkTextCursor method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.copy">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.copy">(TTkTextEditView method)</a>
 </li>
@@ -1066,8 +1121,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.currentColorChanged">currentColorChanged (TTkTextEditView attribute)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentColumn">currentColumn() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.currentColumn">currentColumn() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentColumn">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.currentData">currentData() (TTkTabBar method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkComboBox.html#TermTk.TTkWidgets.TTkComboBox.currentIndex">currentIndex() (TTkComboBox method)</a>
@@ -1076,8 +1135,12 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.currentIndex">(TTkTabBar method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentRow">currentRow() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.currentRow">currentRow() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.currentRow">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.currentStyle">currentStyle() (TTkWidget method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTk.html#TermTk.TTkCore.TTk.currentStyleChanged">currentStyleChanged (TTk attribute)</a>
@@ -1225,7 +1288,11 @@
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.cut">cut() (TTkLineEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.cut">(TTkTable method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.cut">(TTkTableWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.cut">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.cut">(TTkTextEditView method)</a>
 </li>
@@ -1302,17 +1369,19 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndGetDrag">dndGetDrag() (TTkHelper static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndInit">dndInit() (TTkHelper static method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndWidget">dndWidget() (TTkHelper static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.SelectionType.Document">Document (SelectionType attribute)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.document">document() (TTkTextCursor method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.document">(TTkTextEdit method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.document">(TTkTextEditView method)</a>
 </li>
       </ul></li>
@@ -1324,9 +1393,13 @@
         <li><a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode">(class in TermTk.TTkCore.TTkK)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.dragDropMode">dragDropMode() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.dragDropMode">dragDropMode() (TTkList method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.dragDropMode">(TTkListWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.dragDropMode">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.dragDropMode">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
@@ -1400,16 +1473,20 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.MoveOperation.EndOfWord">EndOfWord (MoveOperation attribute)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ensureCursorVisible">ensureCursorVisible() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible">ensureCursorVisible() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ensureCursorVisible">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkTemplates.TMouseEvents.html#TermTk.TTkTemplates.TMouseEvents.enterEvent">enterEvent() (TMouseEvents method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkLog.html#TermTk.TTkCore.TTkLog.error">error() (TTkLog static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.evt">evt (TTkMouseEvent attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.evt2str">evt2str() (TTkMouseEvent method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkAlternateColor.html#TermTk.TTkCore.TTkAlternateColor.exec">exec() (TTkAlternateColor method)</a>
@@ -1428,9 +1505,11 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeWidgetItem.html#TermTk.TTkWidgets.Fancy.TTkFancyTreeWidgetItem.expand">expand() (TTkFancyTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.expandAll">expandAll() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.expandAll">expandAll() (TTkTree method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.expandAll">(TTkTreeWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.expandAll">(TTkTreeWidgetItem method)</a>
 </li>
       </ul></li>
@@ -1442,8 +1521,12 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ExtraSelection">(class in TermTk.TTkWidgets.TTkTextEditView)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.extraSelections">extraSelections() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.extraSelections">extraSelections() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.extraSelections">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -1490,6 +1573,8 @@
 
       <ul>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.find">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.find">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.find">(TTkTextEditView method)</a>
 </li>
@@ -1724,8 +1809,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.getLinesUnderCursor">getLinesUnderCursor() (TTkTextCursor method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.getOpenPath">getOpenPath() (TTkFileTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree.getOpenPath">getOpenPath() (TTkFileTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.getOpenPath">(TTkFileTreeWidget method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.getOverlay">getOverlay() (TTkHelper static method)</a>
@@ -1796,10 +1885,10 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.height">(TTkWidget method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html#TermTk.TTkWidgets.TTkPickers.TTkMessageBox.StandardButton.Help">Help (StandardButton attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor.hexToRGB">hexToRGB() (TTkColor static method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.hide">hide() (TTkCanvas method)</a>
@@ -1816,12 +1905,20 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.Direction.HORIZONTAL">HORIZONTAL (Direction attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Direction.HORIZONTAL">[1]</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.horizontalHeader">horizontalHeader() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.horizontalHeader">horizontalHeader() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.horizontalHeader">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.hotSpot">hotSpot() (TTkDnD method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.hSeparatorVisibility">hSeparatorVisibility() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.hSeparatorVisibility">hSeparatorVisibility() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.hSeparatorVisibility">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -1842,9 +1939,11 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.index">(TTkTableModelSQLite3 method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.indexOf">indexOf() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.indexOf">indexOf() (TTkList method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.indexOf">(TTkListWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.indexOf">(TTkSplitter method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.indexOf">(TTkTabWidget method)</a>
@@ -1852,8 +1951,12 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.indexOfChild">indexOfChild() (TTkTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.indexOfTopLevelItem">indexOfTopLevelItem() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.indexOfTopLevelItem">indexOfTopLevelItem() (TTkTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.indexOfTopLevelItem">(TTkTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkLog.html#TermTk.TTkCore.TTkLog.info">info() (TTkLog static method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html#TermTk.TTkWidgets.TTkPickers.TTkMessageBox.Icon.Information">Information (Icon attribute)</a>
@@ -1930,42 +2033,56 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.isEntered">isEntered() (TTkWidget method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.isExpanded">isExpanded() (TTkTreeWidgetItem method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.isHidden">isHidden() (TTkTreeWidgetItem method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.isOverlay">isOverlay() (TTkHelper static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.isParent">isParent() (TTkHelper static method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.isPlainText">isPlainText() (TTkString method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isReadOnly">isReadOnly() (TTkTextEditView method)</a>
-</li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isRedoAvailable">isRedoAvailable() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isReadOnly">isReadOnly() (TTkTextEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isReadOnly">(TTkTextEditView method)</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.isRedoAvailable">isRedoAvailable() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isRedoAvailable">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.isRedoAvailable">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isRedoAvailable">(TTkTextEditView method)</a>
 </li>
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.isSelected">isSelected() (TTkTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isSortingEnabled">isSortingEnabled() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.isSortingEnabled">isSortingEnabled() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isSortingEnabled">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.isSortingEnabled">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkCheckbox.html#TermTk.TTkWidgets.TTkCheckbox.isTristate">isTristate() (TTkCheckbox method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isUndoAvailable">isUndoAvailable() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.isUndoAvailable">isUndoAvailable() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.isUndoAvailable">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.isUndoAvailable">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isUndoAvailable">(TTkTextEditView method)</a>
 </li>
@@ -1987,6 +2104,8 @@
       <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.itemAt">itemAt() (TTkLayout method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.itemAt">(TTkList method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.itemAt">(TTkListWidget method)</a>
 </li>
       </ul></li>
@@ -2036,14 +2155,16 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.ItemFlag.ItemIsSelectable">ItemIsSelectable (ItemFlag attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.ItemFlag.ItemIsSelectable">[1]</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.items">items() (TTkListWidget method)</a>
-</li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkKodeTab.html#TermTk.TTkWidgets.TTkKodeTab.iterWidgets">iterWidgets() (TTkKodeTab method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.items">items() (TTkList method)</a>
 
       <ul>
-        <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.iterWidgets">(TTkLayout method)</a>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.items">(TTkListWidget method)</a>
 </li>
       </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkKodeTab.html#TermTk.TTkWidgets.TTkKodeTab.iterItems">iterItems() (TTkKodeTab method)</a>
+</li>
+      <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.iterWidgets">iterWidgets() (TTkLayout method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -2138,8 +2259,12 @@
         <li><a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LineWrapMode">(class in TermTk.TTkCore.TTkK)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.lineWrapMode">lineWrapMode() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode">lineWrapMode() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.lineWrapMode">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.ColorType.Link">Link (ColorType attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.ColorType.Link">[1]</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkUiTools.TTkUiLoader.html#TermTk.TTkUiTools.TTkUiLoader.loadDict">loadDict() (TTkUiLoader static method)</a>
@@ -2282,12 +2407,16 @@
         <li><a href="_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.mod">(TTkMouseEvent attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.mod2str">mod2str() (TTkMouseEvent method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.model">model() (TTkTableWidget method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.model">model() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.model">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.modelChanged">modelChanged (TTkAbstractTableModel attribute)</a>
 
       <ul>
@@ -2375,16 +2504,24 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.moveEvent">moveEvent() (TTkWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.moveItem">moveItem() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.moveItem">moveItem() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.moveItem">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.MoveMode">MoveMode (class in TermTk.TTkGui.TTkTextCursor)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.MoveOperation">MoveOperation (class in TermTk.TTkGui.TTkTextCursor)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.movePosition">movePosition() (TTkTextCursor method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.multiLine">multiLine() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.multiLine">multiLine() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.multiLine">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.SelectionMode.MultiSelection">MultiSelection (SelectionMode attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.SelectionMode.MultiSelection">[1]</a>
 </li>
   </ul></td>
@@ -2467,12 +2604,16 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html#TermTk.TTkWidgets.TTkPickers.TTkMessageBox.StandardButton.Ok">Ok (StandardButton attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html#TermTk.TTkWidgets.TTkPickers.TTkMessageBox.StandardButton.Open">Open (StandardButton attribute)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.openPath">openPath() (TTkFileTreeWidget method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree.openPath">openPath() (TTkFileTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.openPath">(TTkFileTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkScrollBar.html#TermTk.TTkWidgets.TTkScrollBar.orientation">orientation() (TTkScrollBar method)</a>
 
       <ul>
@@ -2522,7 +2663,11 @@
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.paste">paste() (TTkLineEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.paste">(TTkTable method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.paste">(TTkTableWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.paste">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.paste">(TTkTextEditView method)</a>
 </li>
@@ -2623,10 +2768,14 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.raw">raw (TTkMouseEvent attribute)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.redo">redo() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.redo">redo() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.redo">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.redo">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.redo">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.redo">(TTkTextEditView method)</a>
 </li>
@@ -2637,13 +2786,19 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.registerRootWidget">registerRootWidget() (TTkHelper static method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeAt">removeAt() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeAt">removeAt() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeAt">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.removeChild">removeChild() (TTkTreeWidgetItem method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeItem">removeItem() (TTkLayout method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeItem">(TTkList method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeItem">(TTkListWidget method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.removeItem">(TTkSplitter method)</a>
@@ -2652,6 +2807,8 @@
       <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeItems">removeItems() (TTkLayout method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeItems">(TTkList method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeItems">(TTkListWidget method)</a>
 </li>
       </ul></li>
@@ -2709,20 +2866,36 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.resize">(TTkWidget method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnsToContents">resizeColumnsToContents() (TTkTableWidget method)</a>
-</li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnToContents">resizeColumnToContents() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnsToContents">resizeColumnsToContents() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnsToContents">(TTkTableWidget method)</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeColumnToContents">resizeColumnToContents() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeColumnToContents">(TTkTableWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.resizeColumnToContents">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.resizeColumnToContents">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.resizeEvent">resizeEvent() (TTkWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowsToContents">resizeRowsToContents() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowsToContents">resizeRowsToContents() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowsToContents">(TTkTableWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowToContents">resizeRowToContents() (TTkTableWidget method)</a>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.resizeRowToContents">resizeRowToContents() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.resizeRowToContents">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.restore">restore() (TTkTextCursor method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html#TermTk.TTkWidgets.TTkPickers.TTkMessageBox.StandardButton.RestoreDefaults">RestoreDefaults (StandardButton attribute)</a>
@@ -2754,6 +2927,8 @@
       <li><a href="_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.rowCount">rowCount() (TTkAbstractTableModel method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.rowCount">(TTkTable method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.rowCount">(TTkTableModelList method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.rowCount">(TTkTableModelSQLite3 method)</a>
@@ -2796,6 +2971,8 @@
       <li><a href="_autosummary/TermTk.TTkCore.TTkFileBuffer.html#TermTk.TTkCore.TTkFileBuffer.search">search() (TTkFileBuffer method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.search">(TTkList method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.search">(TTkListWidget method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.search">(TTkString method)</a>
@@ -2805,26 +2982,46 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkFileBuffer.html#TermTk.TTkCore.TTkFileBuffer.searchRe">searchRe() (TTkFileBuffer method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.searchVisibility">searchVisibility() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.searchVisibility">searchVisibility() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.searchVisibility">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.TTkItemSelectionModel.Select">Select (TTkItemSelectionModel attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.TTkItemSelectionModel.Select">[1]</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.select">select() (TTkTextCursor method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectAll">selectAll() (TTkTableWidget method)</a>
-</li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectColumn">selectColumn() (TTkTableWidget method)</a>
-</li>
-      <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.TTkItemSelectionModel.SelectCurrent">SelectCurrent (TTkItemSelectionModel attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.TTkItemSelectionModel.SelectCurrent">[1]</a>
-</li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectedItems">selectedItems() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.selectAll">selectAll() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectAll">(TTkTableWidget method)</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.selectColumn">selectColumn() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectColumn">(TTkTableWidget method)</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.TTkItemSelectionModel.SelectCurrent">SelectCurrent (TTkItemSelectionModel attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.TTkItemSelectionModel.SelectCurrent">[1]</a>
+</li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectedItems">selectedItems() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectedItems">(TTkListWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.selectedItems">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.selectedItems">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectedLabels">selectedLabels() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectedLabels">selectedLabels() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectedLabels">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.selectedText">selectedText() (TTkTextCursor method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.selectionEnd">selectionEnd() (TTkTextCursor method)</a>
@@ -2841,14 +3038,22 @@
         <li><a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.SelectionMode">(class in TermTk.TTkCore.TTkK)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectionMode">selectionMode() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectionMode">selectionMode() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectionMode">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.selectionStart">selectionStart() (TTkTextCursor method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.SelectionType">SelectionType (class in TermTk.TTkGui.TTkTextCursor)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectRow">selectRow() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.selectRow">selectRow() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.selectRow">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setAcceptMode">setAcceptMode() (TTkFileButtonPicker method)</a>
 
       <ul>
@@ -2918,6 +3123,8 @@
 </li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.setColor">(TTkTextCursor method)</a>
 </li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setColor">(TTkTextEdit method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setColor">(TTkTextEditView method)</a>
 </li>
       </ul></li>
@@ -2927,9 +3134,13 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTableView.html#TermTk.TTkWidgets.Fancy.TTkFancyTableView.setColumnSize">setColumnSize() (TTkFancyTableView method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setColumnWidth">setColumnWidth() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setColumnWidth">setColumnWidth() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setColumnWidth">(TTkTableWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.setColumnWidth">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setColumnWidth">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
@@ -2939,10 +3150,18 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.setCurrentIndex">(TTkTabBar method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setCurrentItem">setCurrentItem() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setCurrentItem">setCurrentItem() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setCurrentItem">(TTkListWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setCurrentRow">setCurrentRow() (TTkListWidget method)</a>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setCurrentRow">setCurrentRow() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setCurrentRow">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setCurrentStyle">setCurrentStyle() (TTkWidget method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkComboBox.html#TermTk.TTkWidgets.TTkComboBox.setCurrentText">setCurrentText() (TTkComboBox method)</a>
@@ -2987,9 +3206,13 @@
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextWrap.html#TermTk.TTkGui.TTkTextWrap.setDocument">(TTkTextWrap method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setDragDropMode">setDragDropMode() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setDragDropMode">setDragDropMode() (TTkList method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setDragDropMode">(TTkListWidget method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.setDragDropMode">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setDragDropMode">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
@@ -3013,8 +3236,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setExpanded">setExpanded() (TTkTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setExtraSelections">setExtraSelections() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections">setExtraSelections() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setExtraSelections">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setFileMode">setFileMode() (TTkFileButtonPicker method)</a>
 
       <ul>
@@ -3024,6 +3251,8 @@
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setFilter">setFilter() (TTkFileButtonPicker method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree.setFilter">(TTkFileTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.setFilter">(TTkFileTreeWidget method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.setFilter">(TTkFileTreeWidgetItem method)</a>
@@ -3054,6 +3283,8 @@
       <li><a href="_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeWidget.html#TermTk.TTkWidgets.Fancy.TTkFancyTreeWidget.setHeaderLabels">setHeaderLabels() (TTkFancyTreeWidget method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.setHeaderLabels">(TTkTree method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setHeaderLabels">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
@@ -3065,8 +3296,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.setHotSpot">setHotSpot() (TTkDnD method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setHSeparatorVisibility">setHSeparatorVisibility() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setHSeparatorVisibility">setHSeparatorVisibility() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setHSeparatorVisibility">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setIcon">setIcon() (TTkTreeWidgetItem method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkLineEdit.html#TermTk.TTkWidgets.TTkLineEdit.setInputType">setInputType() (TTkLineEdit method)</a>
@@ -3085,8 +3320,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting">setLineNumberStarting() (TTkTextEdit method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setLineWrapMode">setLineWrapMode() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode">setLineWrapMode() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setLineWrapMode">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyProgressBar.html#TermTk.TTkWidgets.Fancy.TTkFancyProgressBar.setMaximum">setMaximum() (TTkFancyProgressBar method)</a>
 
       <ul>
@@ -3123,8 +3362,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMinimumWidth">setMinimumWidth() (TTkWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setModel">setModel() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setModel">setModel() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setModel">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.setModelList">setModelList() (TTkTableModelList method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.setModified">setModified() (TTkTextDocument method)</a>
@@ -3165,30 +3408,54 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.setPosition">setPosition() (TTkTextCursor method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkScrollBar.html#TermTk.TTkWidgets.TTkScrollBar.setRange">setRange() (TTkScrollBar method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkScrollBar.html#TermTk.TTkWidgets.TTkScrollBar.setRangeTo">setRangeTo() (TTkScrollBar method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkImage.html#TermTk.TTkWidgets.TTkImage.setRasteriser">setRasteriser() (TTkImage method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setReadOnly">setReadOnly() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setReadOnly">setReadOnly() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setReadOnly">(TTkTextEditView method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setRowHeight">setRowHeight() (TTkTableWidget method)</a>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setRowHeight">setRowHeight() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setRowHeight">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.setRowMinHeight">setRowMinHeight() (TTkGridLayout method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSearch">setSearch() (TTkListWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSearch">setSearch() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSearch">(TTkListWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSearchVisibility">setSearchVisibility() (TTkListWidget method)</a>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSearchVisibility">setSearchVisibility() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSearchVisibility">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setSelected">setSelected() (TTkTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSelection">setSelection() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setSelection">setSelection() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSelection">(TTkTableWidget method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSelectionMode">setSelectionMode() (TTkListWidget method)</a>
+      </ul></li>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSelectionMode">setSelectionMode() (TTkList method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSelectionMode">(TTkListWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.Fancy.TTkLookAndFeelFPBar.html#TermTk.TTkWidgets.Fancy.TTkLookAndFeelFPBar.setShowText">setShowText() (TTkLookAndFeelFPBar method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.setSideEnd">setSideEnd() (TTkTabBar method)</a>
@@ -3201,9 +3468,11 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.setSizes">setSizes() (TTkSplitter method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled">setSortingEnabled() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setSortingEnabled">setSortingEnabled() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setSortingEnabled">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setSortingEnabled">(TTkTreeWidget method)</a>
 </li>
       </ul></li>
@@ -3241,6 +3510,8 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTabButton.html#TermTk.TTkWidgets.TTkTabButton.setText">(TTkTabButton method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.setText">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setText">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setText">(TTkTextEditView method)</a>
 </li>
@@ -3291,23 +3562,31 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setVisible">(TTkWidget method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setVSeparatorVisibility">setVSeparatorVisibility() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.setVSeparatorVisibility">setVSeparatorVisibility() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.setVSeparatorVisibility">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkAppTemplate.html#TermTk.TTkWidgets.TTkAppTemplate.setWidget">setWidget() (TTkAppTemplate method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setWidgetCursor">setWidgetCursor() (TTkWidget method)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkWindow.html#TermTk.TTkWidgets.TTkWindow.setWindowFlag">setWindowFlag() (TTkWindow method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWordWrapMode">setWordWrapMode() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode">setWordWrapMode() (TTkTextEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWordWrapMode">(TTkTextEditView method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextWrap.html#TermTk.TTkGui.TTkTextWrap.setWordWrapMode">(TTkTextWrap method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWrapWidth">setWrapWidth() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth">setWrapWidth() (TTkTextEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWrapWidth">(TTkTextEditView method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextWrap.html#TermTk.TTkGui.TTkTextWrap.setWrapWidth">(TTkTextWrap method)</a>
 </li>
       </ul></li>
@@ -3499,20 +3778,32 @@
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.sort">(TTkTableModelSQLite3 method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.sortByColumn">sortByColumn() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.sortByColumn">sortByColumn() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.sortByColumn">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.sortChildren">sortChildren() (TTkTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.sortColumn">sortColumn() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.sortColumn">sortColumn() (TTkTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.sortColumn">(TTkTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.sortData">sortData() (TTkFileTreeWidgetItem method)</a>
 
       <ul>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.sortData">(TTkTreeWidgetItem method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.sortItems">sortItems() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.sortItems">sortItems() (TTkTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.sortItems">(TTkTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.SortOrder">SortOrder (class in TermTk.TTkCore.TTkConstant)</a>
 
       <ul>
@@ -3583,8 +3874,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.takeChildren">takeChildren() (TTkTreeWidgetItem method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.takeTopLevelItem">takeTopLevelItem() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.takeTopLevelItem">takeTopLevelItem() (TTkTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.takeTopLevelItem">(TTkTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.tap">tap (TTkMouseEvent attribute)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents">TDragEvents (class in TermTk.TTkTemplates)</a>
@@ -3599,8 +3894,12 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termResized">termResized (TTkTerminalView attribute)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termSize">termSize() (TTkTerminalView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal.termSize">termSize() (TTkTerminal method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termSize">(TTkTerminalView method)</a>
 </li>
+      </ul></li>
       <li>
     TermTk.TTkAbstract
 
@@ -3694,8 +3993,12 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.termWidth">termWidth() (TTkString method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termWrite">termWrite() (TTkTerminalView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminal.termWrite">termWrite() (TTkTerminal method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html#TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.termWrite">(TTkTerminalView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkAbstractListItem.html#TermTk.TTkWidgets.TTkAbstractListItem.text">text() (TTkAbstractListItem method)</a>
 
       <ul>
@@ -3726,8 +4029,12 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.textClicked">textClicked (TTkListWidget attribute)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.textCursor">textCursor() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textCursor">textCursor() (TTkTextEdit method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.textCursor">(TTkTextEditView method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TextDocumentHighlight.html#TermTk.TTkGui.TextDocumentHighlight">TextDocumentHighlight (class in TermTk.TTkGui)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textEditView">textEditView() (TTkTextEdit method)</a>
@@ -3756,6 +4063,8 @@
         <li><a href="_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.toAnsi">(TTkString method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.toAnsi">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toAnsi">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toAnsi">(TTkTextEditView method)</a>
 </li>
@@ -3787,14 +4096,22 @@
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.toPlainText">toPlainText() (TTkTextDocument method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toPlainText">(TTkTextEdit method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toPlainText">(TTkTextEditView method)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.topLevelItem">topLevelItem() (TTkTreeWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.topLevelItem">topLevelItem() (TTkTree method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.topLevelItem">(TTkTreeWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.toRawText">toRawText() (TTkTextDocument method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toRawText">(TTkTextEdit method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toRawText">(TTkTextEditView method)</a>
 </li>
       </ul></li>
@@ -3822,6 +4139,8 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkAlternateColor.html#TermTk.TTkCore.TTkAlternateColor">TTkAlternateColor (class in TermTk.TTkCore)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkAppTemplate.html#TermTk.TTkWidgets.TTkAppTemplate">TTkAppTemplate (class in TermTk.TTkWidgets)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkBarType.html#TermTk.TTkWidgets.TTkBarType">TTkBarType (class in TermTk.TTkWidgets)</a>
@@ -3830,8 +4149,6 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas">TTkCanvas (class in TermTk.TTkCore)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkCfg.html#TermTk.TTkCore.TTkCfg">TTkCfg (class in TermTk.TTkCore)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkCheckbox.html#TermTk.TTkWidgets.TTkCheckbox">TTkCheckbox (class in TermTk.TTkWidgets)</a>
@@ -4058,10 +4375,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.CheckState.Unchecked">Unchecked (CheckState attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.CheckState.Unchecked">[1]</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.undo">undo() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.undo">undo() (TTkTable method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.undo">(TTkTableWidget method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument.undo">(TTkTextDocument method)</a>
+</li>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.undo">(TTkTextEdit method)</a>
 </li>
         <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.undo">(TTkTextEditView method)</a>
 </li>
@@ -4070,12 +4391,20 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.unlockPaint">unlockPaint() (TTkHelper static method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectColumn">unselectColumn() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectColumn">unselectColumn() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectColumn">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectRow">unselectRow() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.unselectRow">unselectRow() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.unselectRow">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.MoveOperation.Up">Up (MoveOperation attribute)</a>
 </li>
       <li><a href="_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.update">update() (TTkLayout method)</a>
@@ -4108,8 +4437,12 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.Direction.VERTICAL">VERTICAL (Direction attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Direction.VERTICAL">[1]</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.verticalHeader">verticalHeader() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.verticalHeader">verticalHeader() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.verticalHeader">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView.viewChanged">viewChanged (TTkAbstractScrollView attribute)</a>
 
       <ul>
@@ -4224,8 +4557,12 @@
       </ul></li>
       <li><a href="_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.visible">visible() (TTkDrag method)</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.vSeparatorVisibility">vSeparatorVisibility() (TTkTableWidget method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.vSeparatorVisibility">vSeparatorVisibility() (TTkTable method)</a>
+
+      <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableWidget.vSeparatorVisibility">(TTkTableWidget method)</a>
 </li>
+      </ul></li>
       <li><a href="_autosummary/TermTk.TTkWidgets.TTkBarType.html#TermTk.TTkWidgets.TTkBarType.vSize">vSize() (TTkBarType method)</a>
 </li>
   </ul></td>
@@ -4298,9 +4635,11 @@
 </li>
       <li><a href="_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.WrapMode.WordWrap">WordWrap (WrapMode attribute)</a>, <a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.WrapMode.WordWrap">[1]</a>
 </li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode">wordWrapMode() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode">wordWrapMode() (TTkTextEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode">(TTkTextEditView method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextWrap.html#TermTk.TTkGui.TTkTextWrap.wordWrapMode">(TTkTextWrap method)</a>
 </li>
       </ul></li>
@@ -4314,9 +4653,11 @@
         <li><a href="_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.WrapMode">(class in TermTk.TTkCore.TTkK)</a>
 </li>
       </ul></li>
-      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wrapWidth">wrapWidth() (TTkTextEditView method)</a>
+      <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wrapWidth">wrapWidth() (TTkTextEdit method)</a>
 
       <ul>
+        <li><a href="_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wrapWidth">(TTkTextEditView method)</a>
+</li>
         <li><a href="_autosummary/TermTk.TTkGui.TTkTextWrap.html#TermTk.TTkGui.TTkTextWrap.wrapWidth">(TTkTextWrap method)</a>
 </li>
       </ul></li>
@@ -4413,8 +4754,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

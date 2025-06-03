@@ -17,30 +17,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="prev" title="TTkList" href="TermTk.TTkWidgets.TTkList.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -103,8 +111,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -135,11 +142,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -480,16 +491,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -566,7 +585,7 @@
 <h1>TTkListWidget<a class="headerlink" href="#ttklistwidget" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkListWidget">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkListWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selectionMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dragDropMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode" title="TermTk.TTkCore.constant.TTkConstant.DragDropMode"><span class="pre">DragDropMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showSearch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/listwidget.html#TTkListWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkListWidget" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkListWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selectionMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dragDropMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode" title="TermTk.TTkCore.constant.TTkConstant.DragDropMode"><span class="pre">DragDropMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showSearch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/listwidget.html#TTkListWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkListWidget" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.abstractscrollview.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
 <p>A <a class="reference internal" href="#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.TTkListWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkListWidget</span></code></a> implements a list view that displays a set of selectable items.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╔════════════════════════════════╗
@@ -582,7 +601,7 @@
 </pre></div>
 </div>
 <p>Quickstart:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TermTk</span> <span class="k">as</span> <span class="nn">ttk</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">TermTk</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ttk</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTk</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkHBoxLayout</span><span class="p">(),</span> <span class="n">mouseTrack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -655,7 +674,7 @@
     <span class="s1">&#39;default&#39;</span><span class="p">:{</span><span class="s1">&#39;searchColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#FFFF00&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">UNDERLINE</span><span class="p">}}</span>
 
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">_DropListData</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_DropListData</span><span class="p">:</span>
     <span class="n">widget</span><span class="p">:</span> <span class="n">TTkAbstractScrollView</span>
     <span class="n">items</span><span class="p">:</span> <span class="nb">list</span>
 
@@ -665,7 +684,7 @@
              <span class="s1">&#39;_searchText&#39;</span><span class="p">,</span> <span class="s1">&#39;_showSearch&#39;</span><span class="p">,</span>
              <span class="c1"># Signals</span>
              <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;searchModified&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
              <span class="n">items</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span>
              <span class="n">selectionMode</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span>
              <span class="n">dragDropMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span><span class="p">,</span>
@@ -704,12 +723,12 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">searchModified</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_searchModifiedHandler</span><span class="p">)</span>
 
 <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">_viewChangedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_viewChangedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">setOffset</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 
 <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkAbstractListItem</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">_labelSelectedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span><span class="n">TTkAbstractListItem</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_labelSelectedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span><span class="n">TTkAbstractListItem</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectedItems</span><span class="p">:</span>
             <span class="n">item</span><span class="o">.</span><span class="n">_setSelected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -732,7 +751,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">textClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
 
 <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">_searchModifiedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_searchModifiedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchVisibility</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchText</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setPadding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -750,56 +769,56 @@
 
     <span class="bp">self</span><span class="o">.</span><span class="n">_placeItems</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;search&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchText</span>
 
-<span class="k">def</span> <span class="nf">setSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;setSearch&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_searchText</span> <span class="o">=</span> <span class="n">search</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">searchModified</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">searchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">searchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;searchVisibility&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchVisibility</span>
 
-<span class="k">def</span> <span class="nf">setSearchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visibility</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setSearchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visibility</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;setSearchVisibility&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_searchVisibility</span> <span class="o">=</span> <span class="n">visibility</span>
 
-<span class="k">def</span> <span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;dragDropMode&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span>
 
-<span class="k">def</span> <span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;setDragDropMode&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">=</span> <span class="n">dndMode</span>
 
-<span class="k">def</span> <span class="nf">selectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">selectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;selectionMode&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span>
 
-<span class="k">def</span> <span class="nf">setSelectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setSelectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;setSelectionMode&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">=</span> <span class="n">mode</span>
 
-<span class="k">def</span> <span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;selectedItems&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectedItems</span>
 
-<span class="k">def</span> <span class="nf">selectedLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">selectedLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;selectedLabels&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectedItems</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;items&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span>
 
-<span class="k">def</span> <span class="nf">filteredItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filteredItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;filteredItems&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filteredItems</span>
 
-<span class="k">def</span> <span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
     <span class="n">maxw</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
         <span class="n">maxw</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maxw</span><span class="p">,</span><span class="n">item</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">())</span>
@@ -809,15 +828,15 @@
         <span class="n">item</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">maxw</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
     <span class="n">TTkAbstractScrollView</span><span class="o">.</span><span class="n">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;addItem&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">addItemAt</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;addItems&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">addItemsAt</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">_placeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_placeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">minw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filteredItems</span><span class="p">:</span>
@@ -827,13 +846,13 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">addItemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">addItemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;addItemAt&#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">):</span>
         <span class="n">item</span> <span class="o">=</span> <span class="n">TTkAbstractListItem</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addItemsAt</span><span class="p">([</span><span class="n">item</span><span class="p">],</span><span class="n">pos</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">addItemsAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">addItemsAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;addItemsAt&#39;&#39;&#39;</span>
     <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
@@ -846,18 +865,18 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidgets</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_placeItems</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">indexOf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">indexOf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;indexOf&#39;&#39;&#39;</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">it</span> <span class="o">==</span> <span class="n">item</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">i</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-<span class="k">def</span> <span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;itemAt&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">moveItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="p">,</span> <span class="n">to</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">moveItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="p">,</span> <span class="n">to</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;moveItem&#39;&#39;&#39;</span>
     <span class="n">fr</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">fr</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">to</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">to</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
@@ -865,11 +884,11 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">to</span><span class="p">]</span> <span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">fr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">fr</span><span class="p">]</span> <span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">to</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_placeItems</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;removeItem&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
 
-<span class="k">def</span> <span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;removeItems&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">copy</span><span class="p">():</span>
@@ -883,21 +902,21 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_placeItems</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">removeAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">removeAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;removeAt&#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">pos</span><span class="p">])</span>
 
-<span class="k">def</span> <span class="nf">setCurrentRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setCurrentRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;setCurrentRow&#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">row</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">setCurrentItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setCurrentItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;setCurrentItem&#39;&#39;&#39;</span>
     <span class="n">item</span><span class="o">.</span><span class="n">listItemClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">_moveToHighlighted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_moveToHighlighted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span><span class="p">)</span>
     <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
     <span class="n">offx</span><span class="p">,</span><span class="n">offy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -907,10 +926,10 @@
     <span class="k">elif</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">offy</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewMoveTo</span><span class="p">(</span><span class="n">offx</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">AllowDrag</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">items</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">_selectedItems</span><span class="o">.</span><span class="n">copy</span><span class="p">()):</span>
@@ -935,26 +954,26 @@
     <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">AllowDrop</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">data</span><span class="p">()),</span><span class="n">TTkListWidget</span><span class="o">.</span><span class="n">_DropListData</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dragMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="n">offx</span><span class="p">,</span><span class="n">offy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
     <span class="n">y</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="o">+</span><span class="n">offy</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span> <span class="o">=</span> <span class="p">(</span><span class="n">offx</span><span class="o">+</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">dragLeaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dragLeaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkDnDEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">AllowDrop</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span> <span class="o">=</span> <span class="kc">None</span>
@@ -988,7 +1007,7 @@
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="c1"># if not self._highlighted: return False</span>
     <span class="k">if</span> <span class="p">(</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchText</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Character</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s2">&quot; &quot;</span> <span class="p">)</span> <span class="ow">or</span> \
        <span class="p">(</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span> <span class="p">):</span>
@@ -1054,20 +1073,20 @@
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">focusInEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">focusInEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span><span class="o">.</span><span class="n">_setHighlighted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_moveToHighlighted</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">focusOutEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">focusOutEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_highlighted</span><span class="o">.</span><span class="n">_setHighlighted</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="c1"># Stupid hack to paint on top of the child widgets</span>
-<span class="k">def</span> <span class="nf">paintChildCanvas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">paintChildCanvas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">paintChildCanvas</span><span class="p">()</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dragPos</span><span class="p">:</span>
         <span class="n">canvas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCanvas</span><span class="p">()</span>
@@ -1078,7 +1097,7 @@
         <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;╙─╼&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#FFFF00&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#008855&quot;</span><span class="p">))</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;╓─╼&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#FFFF00&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#008855&quot;</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchVisibility</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchText</span><span class="p">:</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()[</span><span class="s1">&#39;searchColor&#39;</span><span class="p">]</span>
@@ -1092,7 +1111,7 @@
 </section>
 <section id="signals">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkListWidget.closed" title="TermTk.TTkWidgets.TTkListWidget.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget is closed</p></td>
@@ -1131,7 +1150,7 @@
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewMoveTo</span></code>(x, y)</p></td>
 <td><p>This method is used to set the vertical and horizontal offsets of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p></td>
@@ -1140,7 +1159,7 @@
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
 <td><p>hide the widget</p></td>
@@ -1152,7 +1171,7 @@
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
 <td><p>Close (Destroy/Remove) the widget</p></td>
@@ -1434,7 +1453,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <dd></dd></dl>
 
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.html#TermTk.TTkAbstract.TTkAbstractScrollView" title="TermTk.TTkAbstract.TTkAbstractScrollView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollView</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getViewOffsets</span></code>()</p></td>
 <td><p>Retrieve the vertical and horizontal offsets of the <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html#TermTk.TTkAbstract.TTkAbstractScrollViewInterface" title="TermTk.TTkAbstract.TTkAbstractScrollViewInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollViewInterface</span></code></a></p></td>
@@ -1464,7 +1483,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addWidget</span></code>(widget)</p></td>
 <td><p></p></td>
@@ -1521,7 +1540,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearFocus</span></code>()</p></td>
 <td><p>Remove the Focus state of this widget</p></td>
@@ -1737,7 +1756,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TMouseEvents.html#TermTk.TTkTemplates.TMouseEvents" title="TermTk.TTkTemplates.TMouseEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TMouseEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse enter events for the widget.</p></td>
@@ -1770,7 +1789,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TKeyEvents.html#TermTk.TTkTemplates.TKeyEvents" title="TermTk.TTkTemplates.TKeyEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TKeyEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive key events for the widget.</p></td>
@@ -1779,7 +1798,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents" title="TermTk.TTkTemplates.TDragEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TDragEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p></td>
@@ -1801,7 +1820,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 
 <section id="ttklistwidget-attributes">
 <h2>TTkListWidget Attributes<a class="headerlink" href="#ttklistwidget-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
@@ -1848,8 +1867,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1944,8 +1962,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

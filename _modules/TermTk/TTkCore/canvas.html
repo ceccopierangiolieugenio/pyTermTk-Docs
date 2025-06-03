@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,16 +510,16 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkCanvas&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.term</span> <span class="kn">import</span> <span class="n">TTkTerm</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.term</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTerm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
 
 <div class="viewcode-block" id="TTkCanvas">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkCanvas</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkCanvas</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; Init the Canvas object</span>
 
 <span class="sd">    :param width: the width of the Canvas</span>
@@ -515,7 +534,7 @@
         <span class="s1">&#39;_visible&#39;</span><span class="p">,</span> <span class="s1">&#39;_transparent&#39;</span><span class="p">,</span> <span class="s1">&#39;_doubleBuffer&#39;</span><span class="p">)</span>
     <span class="n">_data</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
     <span class="n">_colors</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">height</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="o">=</span> <span class="kc">True</span>
@@ -533,27 +552,27 @@
 
 <div class="viewcode-block" id="TTkCanvas.transparent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.transparent">[docs]</a>
-    <span class="k">def</span> <span class="nf">transparent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">transparent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transparent</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.setTransparent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.setTransparent">[docs]</a>
-    <span class="k">def</span> <span class="nf">setTransparent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tr</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setTransparent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tr</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_transparent</span> <span class="o">=</span> <span class="n">tr</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.enableDoubleBuffer">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.enableDoubleBuffer">[docs]</a>
-    <span class="k">def</span> <span class="nf">enableDoubleBuffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enableDoubleBuffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_doubleBuffer</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedColors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copyBuffers</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.updateSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.updateSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">updateSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">updateSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_newWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_newHeight</span>
         <span class="k">if</span> <span class="n">w</span>  <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="ow">and</span> <span class="n">h</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">:</span>
@@ -575,13 +594,13 @@
 
 <div class="viewcode-block" id="TTkCanvas.size">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.size">[docs]</a>
-    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.resize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.resize">[docs]</a>
-    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; resize the canvas keeping or cutting the current one</span>
 
 <span class="sd">        :param  w: the width of the new canvas</span>
@@ -593,7 +612,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.clean">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.clean">[docs]</a>
-    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transparent</span><span class="p">:</span>
@@ -608,7 +627,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.copy">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.copy">[docs]</a>
-    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkCanvas</span><span class="p">()</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>
@@ -617,7 +636,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.copyBuffers">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.copyBuffers">[docs]</a>
-    <span class="k">def</span> <span class="nf">copyBuffers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copyBuffers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>
         <span class="n">retData</span>   <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="p">)]</span>
         <span class="n">retColors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="p">)]</span>
@@ -626,17 +645,17 @@
 
 <div class="viewcode-block" id="TTkCanvas.hide">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.hide">[docs]</a>
-    <span class="k">def</span> <span class="nf">hide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.show">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.show">[docs]</a>
-    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_y</span><span class="p">,</span> <span class="n">_x</span><span class="p">,</span> <span class="n">_ch</span><span class="p">,</span> <span class="n">_col</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_y</span><span class="p">,</span> <span class="n">_x</span><span class="p">,</span> <span class="n">_ch</span><span class="p">,</span> <span class="n">_col</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">_y</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="ow">and</span> \
            <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">_x</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>  <span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">_y</span><span class="p">][</span><span class="n">_x</span><span class="p">]</span> <span class="o">=</span> <span class="n">_ch</span>
@@ -644,7 +663,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.fill">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.fill">[docs]</a>
-    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">size</span><span class="p">:</span>
             <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
@@ -675,7 +694,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawVLine">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawVLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawVLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawVLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">ln</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">vline</span>
@@ -688,7 +707,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawHLine">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawHLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawHLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawHLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">ln</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">hline</span>
@@ -710,7 +729,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 <div class="viewcode-block" id="TTkCanvas.drawTableLine">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawTableLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawTableLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">alignments</span> <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawTableLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">alignments</span> <span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
             <span class="n">txt</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -724,7 +743,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawChar">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawChar">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawChar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">char</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawChar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">char</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">char</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
@@ -733,7 +752,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawTTkString">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawTTkString">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawTTkString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span> <span class="n">forceColor</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawTTkString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span> <span class="n">forceColor</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            NOTE:</span>
 <span class="sd">            drawText is one of the most abused functions,</span>
@@ -774,7 +793,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawText">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span> <span class="n">forceColor</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span> <span class="n">forceColor</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            NOTE:</span>
 <span class="sd">            drawText is one of the most abused functions,</span>
@@ -818,7 +837,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawBoxTitle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawBoxTitle">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawBoxTitle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">CENTER_ALIGN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">colorText</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawBoxTitle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">CENTER_ALIGN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">colorText</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">size</span>
@@ -845,13 +864,13 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawBox">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawBox">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">drawGrid</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.drawButtonBox">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawButtonBox">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawButtonBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawButtonBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">size</span>
@@ -873,7 +892,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawGrid">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawGrid">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawGrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">hlines</span><span class="o">=</span><span class="p">[],</span> <span class="n">vlines</span><span class="o">=</span><span class="p">[],</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawGrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">hlines</span><span class="o">=</span><span class="p">[],</span> <span class="n">vlines</span><span class="o">=</span><span class="p">[],</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">size</span>
@@ -919,7 +938,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawScroll">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawScroll">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawScroll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">slider</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawScroll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">slider</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">f</span><span class="p">,</span><span class="n">t</span> <span class="o">=</span> <span class="n">slider</span> <span class="c1"># slider from-to position</span>
@@ -942,7 +961,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawTabMenuButton">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawTabMenuButton">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawTabMenuButton</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawTabMenuButton</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">slim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">borderColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
             <span class="n">sideBorder</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">):</span>
@@ -967,7 +986,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawTabButton">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawTabButton">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawTabButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">sideEnd</span><span class="p">,</span> <span class="n">small</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawTabButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">sideEnd</span><span class="p">,</span> <span class="n">small</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">size</span>
         <span class="n">tt</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tab</span>
@@ -1009,7 +1028,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawTabWidgetBottomLine">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawTabWidgetBottomLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawTabWidgetBottomLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawTabWidgetBottomLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">size</span>
         <span class="n">tt</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tab</span>
@@ -1019,7 +1038,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawTab">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawTab">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawTab</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawTab</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span>
             <span class="n">labels</span><span class="p">,</span> <span class="n">labelsPos</span><span class="p">,</span> <span class="n">selected</span><span class="p">,</span>
             <span class="n">offset</span><span class="p">,</span>  <span class="n">leftScroller</span><span class="p">,</span> <span class="n">rightScroller</span><span class="p">,</span> <span class="n">slim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1042,14 +1061,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">bottomPos</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">bottomBar</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
         <span class="c1"># phase 1 - Draw From left  to &#39;Selected&#39;</span>
         <span class="c1"># phase 2 - Draw From right to &#39;Selected&#39;</span>
-        <span class="k">def</span> <span class="nf">_drawTabSlim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">txt</span><span class="p">,</span><span class="n">txtColor</span><span class="p">,</span><span class="n">borderColor</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_drawTabSlim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">txt</span><span class="p">,</span><span class="n">txtColor</span><span class="p">,</span><span class="n">borderColor</span><span class="p">):</span>
             <span class="n">lentext</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
             <span class="n">center</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">txt</span><span class="o">+</span><span class="n">b</span>
             <span class="n">bottom</span> <span class="o">=</span> <span class="n">c</span><span class="o">+</span><span class="n">d</span><span class="o">*</span><span class="p">(</span><span class="n">lentext</span><span class="p">)</span><span class="o">+</span><span class="n">e</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">txt</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">txtColor</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">_drawTab</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">txt</span><span class="p">,</span><span class="n">txtColor</span><span class="p">,</span><span class="n">borderColor</span><span class="p">,</span><span class="n">slim</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_drawTab</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">txt</span><span class="p">,</span><span class="n">txtColor</span><span class="p">,</span><span class="n">borderColor</span><span class="p">,</span><span class="n">slim</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">slim</span><span class="p">:</span> <span class="k">return</span> <span class="n">_drawTabSlim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">txt</span><span class="p">,</span><span class="n">txtColor</span><span class="p">,</span><span class="n">borderColor</span><span class="p">)</span>
             <span class="n">lentext</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
             <span class="n">top</span> <span class="o">=</span>    <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">lentext</span><span class="o">+</span><span class="n">c</span>
@@ -1097,7 +1116,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawHChart">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawHChart">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawHChart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawHChart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">pos</span>
         <span class="n">v1</span><span class="p">,</span><span class="n">v2</span> <span class="o">=</span> <span class="n">values</span>
         <span class="n">gb</span><span class="o">=</span><span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">braille</span>
@@ -1156,14 +1175,14 @@
 
 <div class="viewcode-block" id="TTkCanvas.drawMenuBarBg">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.drawMenuBarBg">[docs]</a>
-    <span class="k">def</span> <span class="nf">drawMenuBarBg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drawMenuBarBg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="p">):</span>
         <span class="n">mb</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">menuBar</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mb</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}{</span><span class="n">mb</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">size</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="si">}{</span><span class="n">mb</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkCanvas.execPaint">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.execPaint">[docs]</a>
-    <span class="k">def</span> <span class="nf">execPaint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">winw</span><span class="p">,</span> <span class="n">winh</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execPaint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">winw</span><span class="p">,</span> <span class="n">winh</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
 
@@ -1181,7 +1200,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 <div class="viewcode-block" id="TTkCanvas.paintCanvas">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.paintCanvas">[docs]</a>
-    <span class="k">def</span> <span class="nf">paintCanvas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">_slice</span><span class="p">,</span> <span class="n">bound</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paintCanvas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">_slice</span><span class="p">,</span> <span class="n">bound</span><span class="p">):</span>
         <span class="c1"># TTkLog.debug(f&quot;PaintCanvas:{geom=} {bound=} {self._widget._name=} {self._data[0] if self._data else 1234}&quot;)</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span>  <span class="o">=</span> <span class="n">geom</span>
         <span class="n">bx</span><span class="p">,</span><span class="n">by</span><span class="p">,</span><span class="n">bw</span><span class="p">,</span><span class="n">bh</span> <span class="o">=</span> <span class="n">bound</span>
@@ -1247,7 +1266,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.toAnsi">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.toAnsi">[docs]</a>
-    <span class="k">def</span> <span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># TTkLog.debug(&quot;pushToTerminal&quot;)</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">rstColor</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">)</span>
@@ -1270,7 +1289,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.pushToTerminal">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.pushToTerminal">[docs]</a>
-    <span class="k">def</span> <span class="nf">pushToTerminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pushToTerminal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="c1"># TTkLog.debug(&quot;pushToTerminal&quot;)</span>
         <span class="n">lastcolor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
         <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">):</span>
@@ -1287,7 +1306,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.cleanBuffers">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.cleanBuffers">[docs]</a>
-    <span class="k">def</span> <span class="nf">cleanBuffers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cleanBuffers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>
         <span class="n">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="p">]</span><span class="o">*</span><span class="n">w</span>
@@ -1298,7 +1317,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.pushToTerminalBuffered">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.pushToTerminalBuffered">[docs]</a>
-    <span class="k">def</span> <span class="nf">pushToTerminalBuffered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pushToTerminalBuffered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="c1"># TTkLog.debug(&quot;pushToTerminal&quot;)</span>
         <span class="n">data</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span>
         <span class="n">oldData</span><span class="p">,</span> <span class="n">oldColors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedColors</span>
@@ -1334,7 +1353,7 @@
 
 <div class="viewcode-block" id="TTkCanvas.pushToTerminalBufferedNew">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html#TermTk.TTkCore.TTkCanvas.pushToTerminalBufferedNew">[docs]</a>
-    <span class="k">def</span> <span class="nf">pushToTerminalBufferedNew</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pushToTerminalBufferedNew</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="c1"># TTkLog.debug(&quot;pushToTerminal&quot;)</span>
         <span class="n">data</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span>
         <span class="n">oldData</span><span class="p">,</span> <span class="n">oldColors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bufferedColors</span>
@@ -1448,8 +1467,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

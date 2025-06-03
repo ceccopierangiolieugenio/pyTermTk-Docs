@@ -17,30 +17,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="prev" title="TTkImage" href="TermTk.TTkWidgets.TTkImage.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -103,8 +111,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -135,11 +142,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -480,16 +491,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -520,7 +539,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.addMenu"><code class="docutils literal notranslate"><span class="pre">addMenu()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.addTab"><code class="docutils literal notranslate"><span class="pre">addTab()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.iterWidgets"><code class="docutils literal notranslate"><span class="pre">iterWidgets()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.iterItems"><code class="docutils literal notranslate"><span class="pre">iterItems()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.setCurrentWidget"><code class="docutils literal notranslate"><span class="pre">setCurrentWidget()</span></code></a></li>
 </ul>
 </li>
@@ -540,7 +559,7 @@
 <h1>TTkKodeTab<a class="headerlink" href="#ttkkodetab" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkKodeTab">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkKodeTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">barType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkBarType.html#TermTk.TTkWidgets.TTkBarType" title="TermTk.TTkWidgets.tabwidget.TTkBarType"><span class="pre">TTkBarType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TTkBarType.NONE</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/kodetab.html#TTkKodeTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkKodeTab" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkKodeTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">barType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkBarType.html#TermTk.TTkWidgets.TTkBarType" title="TermTk.TTkWidgets.tabwidget.TTkBarType"><span class="pre">TTkBarType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TTkBarType.NONE</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/kodetab.html#TTkKodeTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkKodeTab" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <a class="reference internal" href="TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter" title="TermTk.TTkWidgets.splitter.TTkSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkSplitter</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -587,7 +606,7 @@
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
 <section id="signals">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkKodeTab.closed" title="TermTk.TTkWidgets.TTkKodeTab.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget is closed</p></td>
@@ -607,7 +626,7 @@
 </section>
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkKodeTab.setCurrentWidget" title="TermTk.TTkWidgets.TTkKodeTab.setCurrentWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentWidget</span></code></a>(*args, **kwargs)</p></td>
 <td><p></p></td>
@@ -616,7 +635,7 @@
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
 <td><p>hide the widget</p></td>
@@ -628,7 +647,7 @@
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
 <td><p>Close (Destroy/Remove) the widget</p></td>
@@ -728,8 +747,8 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkKodeTab.iterWidgets">
-<span class="sig-name descname"><span class="pre">iterWidgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/kodetab.html#TTkKodeTab.iterWidgets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkKodeTab.iterWidgets" title="Link to this definition"><span>🌶️</span></a></dt>
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkKodeTab.iterItems">
+<span class="sig-name descname"><span class="pre">iterItems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">_TTkKodeTab</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/kodetab.html#TTkKodeTab.iterItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkKodeTab.iterItems" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -738,7 +757,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <dd></dd></dl>
 
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter" title="TermTk.TTkWidgets.TTkSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkSplitter</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItem</span></code>(item[, size, title])</p></td>
 <td><p></p></td>
@@ -822,7 +841,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addWidget</span></code>(widget[, size, title])</p></td>
 <td><p></p></td>
@@ -879,7 +898,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearFocus</span></code>()</p></td>
 <td><p>Remove the Focus state of this widget</p></td>
@@ -1095,7 +1114,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TMouseEvents.html#TermTk.TTkTemplates.TMouseEvents" title="TermTk.TTkTemplates.TMouseEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TMouseEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse enter events for the widget.</p></td>
@@ -1128,7 +1147,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TKeyEvents.html#TermTk.TTkTemplates.TKeyEvents" title="TermTk.TTkTemplates.TKeyEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TKeyEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive key events for the widget.</p></td>
@@ -1137,7 +1156,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents" title="TermTk.TTkTemplates.TDragEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TDragEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p></td>
@@ -1159,7 +1178,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 
 <section id="ttkkodetab-attributes">
 <h2>TTkKodeTab Attributes<a class="headerlink" href="#ttkkodetab-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
@@ -1167,13 +1186,13 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabAdded</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kodeTabCloseRequested</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabBarClicked</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabAdded</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabCloseRequested</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tabBarClicked</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1218,8 +1237,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1235,7 +1253,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.addMenu"><code class="docutils literal notranslate"><span class="pre">addMenu()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.addTab"><code class="docutils literal notranslate"><span class="pre">addTab()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.iterWidgets"><code class="docutils literal notranslate"><span class="pre">iterWidgets()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.iterItems"><code class="docutils literal notranslate"><span class="pre">iterItems()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkKodeTab.setCurrentWidget"><code class="docutils literal notranslate"><span class="pre">setCurrentWidget()</span></code></a></li>
 </ul>
 </li>
@@ -1288,8 +1306,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

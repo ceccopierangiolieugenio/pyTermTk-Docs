@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -492,20 +511,20 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTreeWidgetItem&#39;</span><span class="p">]</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Self</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="k">class</span> <span class="nc">Self</span><span class="p">():</span> <span class="k">pass</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Self</span><span class="p">():</span> <span class="k">pass</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractitemmodel</span> <span class="kn">import</span> <span class="n">TTkAbstractItemModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractitemmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractItemModel</span>
 
 <div class="viewcode-block" id="TTkTreeWidgetItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTreeWidgetItem</span><span class="p">(</span><span class="n">TTkAbstractItemModel</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTreeWidgetItem</span><span class="p">(</span><span class="n">TTkAbstractItemModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    The :py:class:`TTkTreeWidgetItem` class provides an item for use with the :py:class:&#39;TTkTree&#39; convenience class.</span>
 
@@ -539,7 +558,7 @@
         <span class="s1">&#39;heightChanged&#39;</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
                  <span class="n">parent</span><span class="p">:</span><span class="n">Self</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">expanded</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">selected</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -577,7 +596,7 @@
         <span class="k">if</span> <span class="n">parent</span><span class="p">:</span>
             <span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_processDataInputWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_processDataInputWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hasWidgets</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">widget</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
         <span class="n">widget</span><span class="o">.</span><span class="n">sizeChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_widgetSizeChanged</span><span class="p">)</span>
@@ -587,8 +606,8 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">):</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span><span class="s1">&#39;textChanged&#39;</span><span class="p">):</span>
-                <span class="k">def</span> <span class="nf">_updateField</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
-                    <span class="k">def</span> <span class="nf">__updateFieldRet</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">_updateField</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+                    <span class="k">def</span><span class="w"> </span><span class="nf">__updateFieldRet</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
                     <span class="k">return</span> <span class="n">__updateFieldRet</span>
                 <span class="n">widget</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_updateField</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
@@ -596,7 +615,7 @@
             <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ret</span>
 
-    <span class="k">def</span> <span class="nf">_processDataInput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataInput</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_processDataInput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataInput</span><span class="p">):</span>
         <span class="n">retData</span><span class="p">,</span> <span class="n">retWidgets</span> <span class="o">=</span> <span class="p">[],[]</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">di</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataInput</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">di</span><span class="p">),</span> <span class="n">TTkString</span><span class="p">):</span>
@@ -614,7 +633,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">retData</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">retData</span><span class="p">,</span> <span class="n">retWidgets</span>
 
-    <span class="k">def</span> <span class="nf">_setDefaultIcon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setDefaultIcon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultIcon</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_childIndicatorPolicy</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="ow">or</span> \
@@ -625,7 +644,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_widgetSizeChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_widgetSizeChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">h</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">:</span>
             <span class="n">h</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">height</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets</span> <span class="k">if</span> <span class="n">w</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">h</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">:</span>
@@ -636,11 +655,11 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.height">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.height">[docs]</a>
-    <span class="k">def</span> <span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_clearTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_clearTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">widgets</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasWidgets</span><span class="p">:</span>
             <span class="n">widgets</span> <span class="o">+=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">and</span> <span class="n">w</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()]</span>
@@ -654,7 +673,7 @@
             <span class="n">widgets</span> <span class="o">+=</span> <span class="n">c</span><span class="o">.</span><span class="n">_clearTreeItemParent</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">widgets</span>
 
-    <span class="k">def</span> <span class="nf">_setTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parentWidget</span> <span class="o">=</span> <span class="n">parent</span>
         <span class="n">widgets</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasWidgets</span><span class="p">:</span>
@@ -666,7 +685,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setTreeItemParent">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setTreeItemParent">[docs]</a>
-    <span class="k">def</span> <span class="nf">setTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">parent</span><span class="p">:</span>
             <span class="n">widgets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setTreeItemParent</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
             <span class="n">parent</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span>
@@ -680,19 +699,19 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.hasWidgets">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.hasWidgets">[docs]</a>
-    <span class="k">def</span> <span class="nf">hasWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hasWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasWidgets</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.isHidden">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.isHidden">[docs]</a>
-    <span class="k">def</span> <span class="nf">isHidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isHidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setHidden">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setHidden">[docs]</a>
-    <span class="k">def</span> <span class="nf">setHidden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hide</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setHidden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hide</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">hide</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hidden</span> <span class="o">=</span> <span class="n">hide</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span></div>
@@ -700,18 +719,18 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.childIndicatorPolicy">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.childIndicatorPolicy">[docs]</a>
-    <span class="k">def</span> <span class="nf">childIndicatorPolicy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">childIndicatorPolicy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_childIndicatorPolicy</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setChildIndicatorPolicy">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setChildIndicatorPolicy">[docs]</a>
-    <span class="k">def</span> <span class="nf">setChildIndicatorPolicy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setChildIndicatorPolicy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_childIndicatorPolicy</span> <span class="o">=</span> <span class="n">policy</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setDefaultIcon</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_addChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_addChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
         <span class="n">child</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="n">child</span><span class="o">.</span><span class="n">_sortOrder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortOrder</span>
@@ -724,14 +743,14 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.addChild">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.addChild">[docs]</a>
-    <span class="k">def</span> <span class="nf">addChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_addChild</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.addChildren">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.addChildren">[docs]</a>
-    <span class="k">def</span> <span class="nf">addChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_addChild</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span></div>
@@ -739,14 +758,14 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.removeChild">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.removeChild">[docs]</a>
-    <span class="k">def</span> <span class="nf">removeChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">takeChild</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">child</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.takeChild">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.takeChild">[docs]</a>
-    <span class="k">def</span> <span class="nf">takeChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">takeChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="ow">and</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">)):</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="n">child</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
@@ -758,7 +777,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.takeChildren">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.takeChildren">[docs]</a>
-    <span class="k">def</span> <span class="nf">takeChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">takeChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
             <span class="n">child</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emitDataChanged</span><span class="p">)</span>
@@ -771,7 +790,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.child">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.child">[docs]</a>
-    <span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -779,13 +798,13 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.children">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.children">[docs]</a>
-    <span class="k">def</span> <span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">isHidden</span><span class="p">()]</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.indexOfChild">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.indexOfChild">[docs]</a>
-    <span class="k">def</span> <span class="nf">indexOfChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">indexOfChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -793,7 +812,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.icon">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.icon">[docs]</a>
-    <span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">):</span>
             <span class="k">return</span> <span class="s1">&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">[</span><span class="n">col</span><span class="p">]</span></div>
@@ -801,7 +820,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setIcon">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setIcon">[docs]</a>
-    <span class="k">def</span> <span class="nf">setIcon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">icon</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setIcon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">icon</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">col</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_defaultIcon</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">icon</span>
@@ -810,7 +829,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.textAlignment">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.textAlignment">[docs]</a>
-    <span class="k">def</span> <span class="nf">textAlignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textAlignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_alignment</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT_ALIGN</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alignment</span><span class="p">[</span><span class="n">col</span><span class="p">]</span></div>
@@ -818,14 +837,14 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setTextAlignment">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setTextAlignment">[docs]</a>
-    <span class="k">def</span> <span class="nf">setTextAlignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">alignment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setTextAlignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">alignment</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_alignment</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">alignment</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.data">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.data">[docs]</a>
-    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">):</span>
             <span class="k">return</span> <span class="s1">&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span></div>
@@ -833,7 +852,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.widget">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.widget">[docs]</a>
-    <span class="k">def</span> <span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets</span><span class="p">[</span><span class="n">col</span><span class="p">]</span></div>
@@ -841,7 +860,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.expandAll">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.expandAll">[docs]</a>
-    <span class="k">def</span> <span class="nf">expandAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">expandAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
             <span class="n">child</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">child</span><span class="o">.</span><span class="n">expandAll</span><span class="p">()</span></div>
@@ -849,7 +868,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.collapseAll">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.collapseAll">[docs]</a>
-    <span class="k">def</span> <span class="nf">collapseAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">collapseAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
             <span class="n">child</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">child</span><span class="o">.</span><span class="n">collapseAll</span><span class="p">()</span></div>
@@ -857,11 +876,11 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.sortData">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.sortData">[docs]</a>
-    <span class="k">def</span> <span class="nf">sortData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sortData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">col</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">,</span>
@@ -876,7 +895,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.sortChildren">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.sortChildren">[docs]</a>
-    <span class="k">def</span> <span class="nf">sortChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sortChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="n">col</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortOrder</span> <span class="o">=</span> <span class="n">order</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span> <span class="k">return</span>
@@ -887,7 +906,7 @@
 <div class="viewcode-block" id="TTkTreeWidgetItem.emitDataChanged">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.emitDataChanged">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">emitDataChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">emitDataChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span></div>
 
 
@@ -896,10 +915,10 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setExpanded">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setExpanded">[docs]</a>
-    <span class="k">def</span> <span class="nf">setExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand</span><span class="p">):</span>
         <span class="c1"># hide all the widgets if this item is not expanded</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">expand</span><span class="p">:</span>
-            <span class="k">def</span> <span class="nf">_recurseHide</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">_recurseHide</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">_hasWidgets</span><span class="p">:</span>
                         <span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">_widgets</span> <span class="k">if</span> <span class="n">w</span><span class="p">]:</span>
@@ -914,7 +933,7 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.setSelected">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.setSelected">[docs]</a>
-    <span class="k">def</span> <span class="nf">setSelected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">select</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setSelected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">select</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="n">select</span></div>
 
 
@@ -923,19 +942,19 @@
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.isExpanded">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.isExpanded">[docs]</a>
-    <span class="k">def</span> <span class="nf">isExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expanded</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.isSelected">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.isSelected">[docs]</a>
-    <span class="k">def</span> <span class="nf">isSelected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isSelected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidgetItem.size">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.size">[docs]</a>
-    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expanded</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1004,8 +1023,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

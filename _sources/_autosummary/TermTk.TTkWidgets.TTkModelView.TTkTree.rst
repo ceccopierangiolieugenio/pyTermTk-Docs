@@ -58,6 +58,11 @@ TTkTree
    
 
    
+   .. autosummary::
+   
+      collapseAll
+      expandAll
+   
 
    
    
@@ -136,6 +141,26 @@ TTkTree
    
    
 
+
+   
+
+   
+   .. automethod:: addTopLevelItem
+   .. automethod:: addTopLevelItems
+   .. automethod:: clear
+   .. automethod:: collapseAll
+   .. automethod:: dragDropMode
+   .. automethod:: expandAll
+   .. automethod:: indexOfTopLevelItem
+   .. automethod:: resizeColumnToContents
+   .. automethod:: selectedItems
+   .. automethod:: setColumnWidth
+   .. automethod:: setDragDropMode
+   .. automethod:: setHeaderLabels
+   .. automethod:: sortColumn
+   .. automethod:: sortItems
+   .. automethod:: takeTopLevelItem
+   .. automethod:: topLevelItem
 
    
 
@@ -305,29 +330,13 @@ TTkTree Attributes
 .. autosummary::
 
 
-  addTopLevelItem
-  addTopLevelItems
   classStyle
-  clear
-  collapseAll
-  dragDropMode
-  expandAll
-  indexOfTopLevelItem
   itemActivated
   itemChanged
   itemClicked
   itemCollapsed
   itemDoubleClicked
   itemExpanded
-  resizeColumnToContents
-  selectedItems
-  setColumnWidth
-  setDragDropMode
-  setHeaderLabels
-  sortColumn
-  sortItems
-  takeTopLevelItem
-  topLevelItem
 
 .. currentmodule::  TermTk.TTkWidgets.TTkModelView
 

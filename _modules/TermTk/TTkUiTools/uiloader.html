@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,20 +510,20 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkUiLoader&#39;</span><span class="p">,</span><span class="s1">&#39;TTkUiSignature&#39;</span><span class="p">]</span>
 
-<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="kn">from</span> <span class="nn">TermTk</span> <span class="kn">import</span> <span class="n">TTkLog</span>
-<span class="kn">from</span> <span class="nn">TermTk</span> <span class="kn">import</span> <span class="n">TTkCfg</span><span class="p">,</span> <span class="n">TTkK</span><span class="p">,</span> <span class="n">TTkColor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkLayouts</span> <span class="kn">import</span> <span class="n">TTkLayout</span><span class="p">,</span> <span class="n">TTkGridLayout</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkTestWidgets</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkUiTools.uiproperties</span> <span class="kn">import</span> <span class="n">TTkUiProperties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span><span class="p">,</span> <span class="n">TTkK</span><span class="p">,</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLayout</span><span class="p">,</span> <span class="n">TTkGridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkTestWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkUiTools.uiproperties</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkUiProperties</span>
 
 <span class="n">TTkUiSignature</span> <span class="o">=</span> <span class="s2">&quot;TTkUi/Document&quot;</span>
 
 <div class="viewcode-block" id="TTkUiLoader">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkUiTools.TTkUiLoader.html#TermTk.TTkUiTools.TTkUiLoader">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkUiLoader</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkUiLoader</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkUiLoader</span>
 
 <span class="sd">    .. _ttkDesigner: https://github.com/ceccopierangiolieugenio/pyTermTk/tree/main/apps/ttkDesigner</span>
@@ -517,7 +536,7 @@
 <div class="viewcode-block" id="TTkUiLoader.loadFile">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkUiTools.TTkUiLoader.html#TermTk.TTkUiTools.TTkUiLoader.loadFile">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">loadFile</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loadFile</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;load the file generated by ttkDesigner_</span>
 
 <span class="sd">        :param filePath: the file path</span>
@@ -537,7 +556,7 @@
 <div class="viewcode-block" id="TTkUiLoader.loadJson">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkUiTools.TTkUiLoader.html#TermTk.TTkUiTools.TTkUiLoader.loadJson">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">loadJson</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loadJson</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;load the json representing the ui definition of the widget</span>
 
 <span class="sd">        :param text: the representation of the widget in Json format</span>
@@ -552,29 +571,29 @@
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">loadDict</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">baseWidget</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_convert_2_0_2_to_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_convert_2_0_2_to_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">TTkUiSignature</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.1.0&quot;</span><span class="p">,</span>
             <span class="s2">&quot;connections&quot;</span> <span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;connections&#39;</span><span class="p">],</span>
             <span class="s2">&quot;tui&quot;</span><span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;tui&#39;</span><span class="p">]</span> <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">_convert_2_0_1_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_convert_2_0_1_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">TTkUiSignature</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.2&quot;</span><span class="p">,</span>
             <span class="s2">&quot;connections&quot;</span> <span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;connections&#39;</span><span class="p">],</span>
             <span class="s2">&quot;tui&quot;</span><span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;tui&#39;</span><span class="p">]</span> <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">_convert_2_0_0_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_convert_2_0_0_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">TTkUiSignature</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.2&quot;</span><span class="p">,</span>
             <span class="s2">&quot;connections&quot;</span> <span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;connections&#39;</span><span class="p">],</span>
             <span class="s2">&quot;tui&quot;</span><span class="p">:</span> <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;tui&#39;</span><span class="p">]</span> <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">_convert_1_0_1_to_2_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">_processWidget</span><span class="p">(</span><span class="n">_wid</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_convert_1_0_1_to_2_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_processWidget</span><span class="p">(</span><span class="n">_wid</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">globals</span><span class="p">()[</span><span class="n">_wid</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]],</span><span class="n">TTkContainer</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_wid</span><span class="p">,</span><span class="s1">&#39;layout&#39;</span><span class="p">):</span>
                     <span class="n">_wid</span><span class="p">[</span><span class="s1">&#39;layout&#39;</span><span class="p">][</span><span class="s1">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">_processWidget</span><span class="p">(</span><span class="n">_ch</span><span class="p">)</span> <span class="k">for</span> <span class="n">_ch</span> <span class="ow">in</span> <span class="n">_wid</span><span class="p">[</span><span class="s1">&#39;layout&#39;</span><span class="p">][</span><span class="s1">&#39;children&#39;</span><span class="p">]]</span>
@@ -594,24 +613,24 @@
             <span class="s2">&quot;tui&quot;</span><span class="p">:</span> <span class="n">tui</span> <span class="p">}</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_loadDict_1_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_loadDict_1_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ui</span> <span class="o">=</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_1_0_1_to_2_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_loadDict_2_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_loadDict_2_0_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ui</span> <span class="o">=</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_0_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_loadDict_2_0_1</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_loadDict_2_0_1</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ui</span> <span class="o">=</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_1_to_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_loadDict_2_0_2</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ui</span> <span class="o">=</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_2_to_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_loadDict_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_loadDict_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_loadDict_2_1_0</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="n">ui</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;2.1.0&#39;</span> <span class="ow">or</span>
             <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ui</span> <span class="ow">or</span>
@@ -619,7 +638,7 @@
             <span class="n">TTkLog</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Ui Format not valid&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">def</span> <span class="nf">_setMenuButton</span><span class="p">(</span><span class="n">_menuButtonProp</span><span class="p">,</span> <span class="n">_menuButton</span><span class="p">:</span><span class="n">TTkMenuButton</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_setMenuButton</span><span class="p">(</span><span class="n">_menuButtonProp</span><span class="p">,</span> <span class="n">_menuButton</span><span class="p">:</span><span class="n">TTkMenuButton</span><span class="p">):</span>
             <span class="k">if</span> <span class="s1">&#39;submenu&#39;</span> <span class="ow">in</span> <span class="n">_menuButtonProp</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">_sm</span> <span class="ow">in</span> <span class="n">_menuButtonProp</span><span class="p">[</span><span class="s1">&#39;submenu&#39;</span><span class="p">]:</span>
                     <span class="k">if</span> <span class="n">_sm</span> <span class="o">==</span> <span class="s1">&#39;spacer&#39;</span><span class="p">:</span>
@@ -630,8 +649,8 @@
                     <span class="n">_btn</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="n">_sm</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;ToolTip&#39;</span><span class="p">])</span>
                     <span class="n">_setMenuButton</span><span class="p">(</span><span class="n">_sm</span><span class="p">,</span><span class="n">_btn</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">_setMenuBar</span><span class="p">(</span><span class="n">_menuBarProp</span><span class="p">,</span> <span class="n">_menuBar</span><span class="p">:</span><span class="n">TTkMenuBarLayout</span><span class="p">):</span>
-            <span class="k">def</span> <span class="nf">__addMenu</span><span class="p">(</span><span class="n">__prop</span><span class="p">,</span> <span class="n">__alignment</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_setMenuBar</span><span class="p">(</span><span class="n">_menuBarProp</span><span class="p">,</span> <span class="n">_menuBar</span><span class="p">:</span><span class="n">TTkMenuBarLayout</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">__addMenu</span><span class="p">(</span><span class="n">__prop</span><span class="p">,</span> <span class="n">__alignment</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">_bp</span> <span class="ow">in</span> <span class="n">__prop</span><span class="p">:</span>
                     <span class="n">_btn</span> <span class="o">=</span> <span class="n">_menuBar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">_bp</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;Text&#39;</span><span class="p">],</span> <span class="n">checkable</span><span class="o">=</span><span class="n">_bp</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;Checkable&#39;</span><span class="p">],</span> <span class="n">checked</span><span class="o">=</span><span class="n">_bp</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;Checked&#39;</span><span class="p">],</span> <span class="n">alignment</span><span class="o">=</span><span class="n">__alignment</span><span class="p">)</span>
                     <span class="n">_btn</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">_bp</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;Name&#39;</span><span class="p">])</span>
@@ -642,7 +661,7 @@
             <span class="k">if</span> <span class="s1">&#39;center&#39;</span> <span class="ow">in</span> <span class="n">_menuBarProp</span><span class="p">:</span> <span class="n">__addMenu</span><span class="p">(</span><span class="n">_menuBarProp</span><span class="p">[</span><span class="s1">&#39;center&#39;</span><span class="p">],</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">CENTER_ALIGN</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;right&#39;</span> <span class="ow">in</span> <span class="n">_menuBarProp</span><span class="p">:</span>  <span class="n">__addMenu</span><span class="p">(</span><span class="n">_menuBarProp</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">],</span>  <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT_ALIGN</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">_getWidget</span><span class="p">(</span><span class="n">_widProp</span><span class="p">,</span> <span class="n">_baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_getWidget</span><span class="p">(</span><span class="n">_widProp</span><span class="p">,</span> <span class="n">_baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
             <span class="n">properties</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">ttkClass</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">_widProp</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span>
             <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">ttkClass</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">):</span>
@@ -711,7 +730,7 @@
             <span class="c1"># TTkLog.debug(widget)</span>
             <span class="k">return</span> <span class="n">widget</span>
 
-        <span class="k">def</span> <span class="nf">_getLayout</span><span class="p">(</span><span class="n">_layprop</span><span class="p">,</span> <span class="n">_baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_getLayout</span><span class="p">(</span><span class="n">_layprop</span><span class="p">,</span> <span class="n">_baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
             <span class="n">properties</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">ttkClass</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">_layprop</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span>
             <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">ttkClass</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">):</span>
@@ -774,7 +793,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">widget</span> <span class="o">=</span>  <span class="n">_getWidget</span><span class="p">(</span><span class="n">ui</span><span class="p">[</span><span class="s1">&#39;tui&#39;</span><span class="p">],</span> <span class="n">baseWidget</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">_getSignal</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_getSignal</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">cc</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">in</span> <span class="n">TTkUiProperties</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TTkUiProperties</span><span class="p">[</span><span class="n">cc</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="s1">&#39;signals&#39;</span><span class="p">]:</span>
@@ -783,7 +802,7 @@
                     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span><span class="n">signame</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">def</span> <span class="nf">_getSlot</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_getSlot</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">receiver</span><span class="p">)</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">cc</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">in</span> <span class="n">TTkUiProperties</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TTkUiProperties</span><span class="p">[</span><span class="n">cc</span><span class="o">.</span><span class="vm">__name__</span><span class="p">][</span><span class="s1">&#39;slots&#39;</span><span class="p">]:</span>
@@ -806,7 +825,7 @@
 <div class="viewcode-block" id="TTkUiLoader.normalise">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkUiTools.TTkUiLoader.html#TermTk.TTkUiTools.TTkUiLoader.normalise">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">normalise</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalise</span><span class="p">(</span><span class="n">ui</span><span class="p">):</span>
         <span class="n">cb</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;1.0.0&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_1_0_1_to_2_0_0</span><span class="p">,</span>
               <span class="s1">&#39;1.0.1&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_1_0_1_to_2_0_0</span><span class="p">,</span>
               <span class="s1">&#39;2.0.0&#39;</span> <span class="p">:</span> <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">_convert_2_0_0_to_2_0_2</span><span class="p">,</span>
@@ -820,7 +839,7 @@
 <div class="viewcode-block" id="TTkUiLoader.loadDict">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkUiTools.TTkUiLoader.html#TermTk.TTkUiTools.TTkUiLoader.loadDict">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">loadDict</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loadDict</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">baseWidget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;load the dictionary representing the ui definition of the widget</span>
 
 <span class="sd">        :param ui: the representation of the widget</span>
@@ -908,8 +927,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

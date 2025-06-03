@@ -17,30 +17,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="prev" title="TTkColorModifier" href="TermTk.TTkCore.TTkColorModifier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -103,8 +111,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -135,11 +142,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -480,16 +491,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -699,7 +718,7 @@
 <h1>TTkConstant<a class="headerlink" href="#ttkconstant" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkConstant</span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/constant.html#TTkConstant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkConstant" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkConstant</span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/constant.html#TTkConstant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkConstant" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class container of all the constants used in <code class="xref py py-mod docutils literal notranslate"><span class="pre">TermTk</span></code>
 Initialize self.  See help(type(self)) for accurate signature.</p>
@@ -709,9 +728,9 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 <h2>TTkConstant Classes<a class="headerlink" href="#ttkconstant-classes" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.AcceptMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AcceptMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.AcceptMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AcceptMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.AcceptMode" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.AcceptMode.AcceptOpen" title="TermTk.TTkCore.TTkConstant.AcceptMode.AcceptOpen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AcceptOpen</span></code></a></p></td>
 <td><p>Open</p></td>
@@ -738,10 +757,10 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.Alignment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Alignment</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.Alignment" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Alignment</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.Alignment" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This type is used to describe alignment.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.Alignment.NONE" title="TermTk.TTkCore.TTkConstant.Alignment.NONE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NONE</span></code></a></p></td>
 <td><p>No Alignment</p></td>
@@ -795,10 +814,10 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.CheckState">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CheckState</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.CheckState" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CheckState</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.CheckState" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This class type is used to describe the check status.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.CheckState.Unchecked" title="TermTk.TTkCore.TTkConstant.CheckState.Unchecked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Unchecked</span></code></a></p></td>
 <td><p>The item is unchecked.</p></td>
@@ -834,16 +853,16 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.ChildIndicatorPolicy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ChildIndicatorPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ChildIndicatorPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ChildIndicatorPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ChildIndicatorPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.ColorPickerReturnType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ColorPickerReturnType</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ColorPickerReturnType" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ColorPickerReturnType</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ColorPickerReturnType" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This class identify the return color type used in <a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker" title="TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColorDialogPicker</span></code></a> or <a class="reference internal" href="TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker" title="TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColorButtonPicker</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.ColorPickerReturnType.Default" title="TermTk.TTkCore.TTkConstant.ColorPickerReturnType.Default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Default</span></code></a></p></td>
 <td><p>The color type returned (fg or bg) is compliant of the type used in the initialization or 'Foreground' in case is missing or <code class="xref py py-class docutils literal notranslate"><span class="pre">TTKColor.RST</span></code></p></td>
@@ -879,10 +898,10 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.ColorType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ColorType</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ColorType" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ColorType</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ColorType" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This Class type defines the various elements included in <a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.ColorType.Foreground" title="TermTk.TTkCore.TTkConstant.ColorType.Foreground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Foreground</span></code></a></p></td>
 <td><p>The <a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a> has a foreground color defined</p></td>
@@ -936,10 +955,10 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.Direction">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Direction</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.Direction" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Direction</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.Direction" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This class type is used to describe the direction</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.Direction.HORIZONTAL" title="TermTk.TTkCore.TTkConstant.Direction.HORIZONTAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HORIZONTAL</span></code></a></p></td>
 <td><p>Horizontal direction</p></td>
@@ -966,10 +985,10 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.DragDropMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DragDropMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.DragDropMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DragDropMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.DragDropMode" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Specifies the Drag and Drop mode allowed by this widget</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.DragDropMode.NoDragDrop" title="TermTk.TTkCore.TTkConstant.DragDropMode.NoDragDrop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoDragDrop</span></code></a></p></td>
 <td><p>No Drag and Drop is allowed</p></td>
@@ -1014,9 +1033,9 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.FileMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FileMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.FileMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FileMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.FileMode" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.FileMode.AnyFile" title="TermTk.TTkCore.TTkConstant.FileMode.AnyFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnyFile</span></code></a></p></td>
 <td><p>The name of a file, whether it exists or not.</p></td>
@@ -1052,11 +1071,11 @@ Initialize self.  See help(type(self)) for accurate signature.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.FocusPolicy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FocusPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.FocusPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FocusPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.FocusPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This Class type defines the various policies a widget
 can have with respect to acquiring keyboard focus.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.FocusPolicy.NoFocus" title="TermTk.TTkCore.TTkConstant.FocusPolicy.NoFocus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoFocus</span></code></a></p></td>
 <td><p>The widget does not accept focus.</p></td>
@@ -1116,10 +1135,10 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.InsertPolicy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InsertPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.InsertPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InsertPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.InsertPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Specifies what the <a class="reference internal" href="TermTk.TTkWidgets.TTkComboBox.html#TermTk.TTkWidgets.TTkComboBox" title="TermTk.TTkWidgets.TTkComboBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkComboBox</span></code></a> should do when a new string is entered by the user.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.InsertPolicy.NoInsert" title="TermTk.TTkCore.TTkConstant.InsertPolicy.NoInsert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoInsert</span></code></a></p></td>
 <td><p>The string will not be inserted into the combobox.</p></td>
@@ -1155,10 +1174,10 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.ItemFlag">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ItemFlag</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ItemFlag" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ItemFlag</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ItemFlag" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.ItemFlag" title="TermTk.TTkCore.TTkConstant.ItemFlag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ItemFlag</span></code></a> describes the properties of an item</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.ItemFlag.NoItemFlags" title="TermTk.TTkCore.TTkConstant.ItemFlag.NoItemFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoItemFlags</span></code></a></p></td>
 <td><p>It does not have any properties set.</p></td>
@@ -1203,11 +1222,11 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.KeyModifier">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KeyModifier</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.KeyModifier" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KeyModifier</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.KeyModifier" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Input <code class="xref py py-class docutils literal notranslate"><span class="pre">SpecialKey</span></code> modifiers</p>
 <p>Modifier reported by <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent</span></code></a> -&gt; <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent.mod</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.KeyModifier.NoModifier" title="TermTk.TTkCore.TTkConstant.KeyModifier.NoModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoModifier</span></code></a></p></td>
 <td><p>No modifier key is pressed.</p></td>
@@ -1315,11 +1334,11 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.KeyType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KeyType</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.KeyType" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KeyType</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.KeyType" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Input Key Types</p>
 <p>Key type reported by <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent</span></code></a> -&gt; <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent.key" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent.key"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent.key</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.KeyType.Character" title="TermTk.TTkCore.TTkConstant.KeyType.Character"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Character</span></code></a></p></td>
 <td><p>Input Char Key</p></td>
@@ -1346,10 +1365,10 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.LayoutItemTypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LayoutItemTypes</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.LayoutItemTypes" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LayoutItemTypes</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.LayoutItemTypes" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Types used internally in <a class="reference internal" href="TermTk.TTkLayouts.html#module-TermTk.TTkLayouts" title="TermTk.TTkLayouts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">TTkLayouts</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.LayoutItemTypes.LayoutItem" title="TermTk.TTkCore.TTkConstant.LayoutItemTypes.LayoutItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayoutItem</span></code></a></p></td>
 <td><p>Item Type Layout</p></td>
@@ -1376,10 +1395,10 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.LineWrapMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LineWrapMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.LineWrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LineWrapMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.LineWrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Those constants describes which wrapping status is required in the document</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 </tbody>
 </table>
@@ -1406,11 +1425,11 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.MouseEvent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MouseEvent</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.MouseEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MouseEvent</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.MouseEvent" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Input Mouse Event</p>
 <p>Events reported by <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code></a> -&gt; <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.evt" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent.evt"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent.evt</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoEvent</span></code></p></td>
 <td><p></p></td>
@@ -1440,11 +1459,11 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.MouseKey">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MouseKey</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.MouseKey" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MouseKey</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.MouseKey" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Input Mouse Key</p>
 <p>Events reported by <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent</span></code></a> -&gt; <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html#TermTk.TTkCore.TTkTerm.TTkMouseEvent.key" title="TermTk.TTkCore.TTkTerm.TTkMouseEvent.key"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkMouseEvent.key</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.MouseKey.NoButton" title="TermTk.TTkCore.TTkConstant.MouseKey.NoButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoButton</span></code></a></p></td>
 <td><p>The button state does not refer to any button.</p></td>
@@ -1516,16 +1535,16 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.ScrollBarPolicy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScrollBarPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ScrollBarPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScrollBarPolicy</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ScrollBarPolicy" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.SelectionFormat">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SelectionFormat</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.SelectionFormat" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SelectionFormat</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.SelectionFormat" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Selection properties</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.SelectionFormat.FullWidthSelection" title="TermTk.TTkCore.TTkConstant.SelectionFormat.FullWidthSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FullWidthSelection</span></code></a></p></td>
 <td><p>When set on the characterFormat of a selection, the whole width of the text will be shown selected.</p></td>
@@ -1543,10 +1562,10 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.SelectionMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SelectionMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.SelectionMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SelectionMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.SelectionMode" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This class type indicates how the view responds to user selections.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.SelectionMode.NoSelection" title="TermTk.TTkCore.TTkConstant.SelectionMode.NoSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoSelection</span></code></a></p></td>
 <td><p>Items cannot be selected.</p></td>
@@ -1582,12 +1601,12 @@ can have with respect to acquiring keyboard focus.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.ShortcutContext">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ShortcutContext</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ShortcutContext" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ShortcutContext</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.ShortcutContext" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>For a <a class="reference internal" href="TermTk.TTkCore.TTkShortcut.html#TermTk.TTkCore.TTkShortcut" title="TermTk.TTkCore.TTkShortcut"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkShortcut</span></code></a> event to occur,
 the shortcut’s key sequence must be entered by the user in a context where the shortcut is active.
 The possible contexts are these:</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.ShortcutContext.WidgetShortcut" title="TermTk.TTkCore.TTkConstant.ShortcutContext.WidgetShortcut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WidgetShortcut</span></code></a></p></td>
 <td><p>The shortcut is active when its parent widget has focus.</p></td>
@@ -1632,10 +1651,10 @@ The possible contexts are these:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.SortOrder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SortOrder</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.SortOrder" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SortOrder</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.SortOrder" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>This enum describes how the items in a widget are sorted.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.SortOrder.AscendingOrder" title="TermTk.TTkCore.TTkConstant.SortOrder.AscendingOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AscendingOrder</span></code></a></p></td>
 <td><p>The items are sorted ascending e.g. starts with 'AAA' ends with 'ZZZ' in Latin-1 locales.</p></td>
@@ -1662,10 +1681,10 @@ The possible contexts are these:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.TTkItemSelectionModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkItemSelectionModel</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.TTkItemSelectionModel" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkItemSelectionModel</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.TTkItemSelectionModel" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>These values describes the way the selection model will be updated.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.TTkItemSelectionModel.NoUpdate" title="TermTk.TTkCore.TTkConstant.TTkItemSelectionModel.NoUpdate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoUpdate</span></code></a></p></td>
 <td><p>No selection will be made.</p></td>
@@ -1773,10 +1792,10 @@ The possible contexts are these:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WindowFlag">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WindowFlag</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WindowFlag" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WindowFlag</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WindowFlag" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Those flags are used to enable customization of the window controls.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.WindowFlag.WindowReduceButtonHint" title="TermTk.TTkCore.TTkConstant.WindowFlag.WindowReduceButtonHint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WindowReduceButtonHint</span></code></a></p></td>
 <td><p>Adds a reduce button.</p></td>
@@ -1830,10 +1849,10 @@ The possible contexts are these:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WrapMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WrapMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WrapMode</span></span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 <p>Those constants describes how text is wrapped in a document.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.WrapMode.WordWrap" title="TermTk.TTkCore.TTkConstant.WrapMode.WordWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WordWrap</span></code></a></p></td>
 <td><p>Text is wrapped at word boundaries.</p></td>
@@ -1870,7 +1889,7 @@ The possible contexts are these:</p>
 </section>
 <section id="ttkconstant-attributes">
 <h2>TTkConstant Attributes<a class="headerlink" href="#ttkconstant-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ALT</span></code></p></td>
 <td><p></p></td>
@@ -3630,8 +3649,7 @@ The possible contexts are these:</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -3859,8 +3877,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

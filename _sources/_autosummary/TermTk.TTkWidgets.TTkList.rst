@@ -133,6 +133,33 @@ TTkList
    
 
    
+   .. automethod:: addItem
+   .. automethod:: addItemAt
+   .. automethod:: addItems
+   .. automethod:: addItemsAt
+   .. automethod:: dragDropMode
+   .. automethod:: indexOf
+   .. automethod:: itemAt
+   .. automethod:: items
+   .. automethod:: moveItem
+   .. automethod:: removeAt
+   .. automethod:: removeItem
+   .. automethod:: removeItems
+   .. automethod:: search
+   .. automethod:: searchVisibility
+   .. automethod:: selectedItems
+   .. automethod:: selectedLabels
+   .. automethod:: selectionMode
+   .. automethod:: setCurrentItem
+   .. automethod:: setCurrentRow
+   .. automethod:: setDragDropMode
+   .. automethod:: setSearch
+   .. automethod:: setSearchVisibility
+   .. automethod:: setSelectionMode
+
+   
+
+   
    
    
    Methods Inherited from: :py:class:`TTkAbstractScrollArea`
@@ -298,32 +325,9 @@ TTkList Attributes
 .. autosummary::
 
 
-  addItem
-  addItemAt
-  addItems
-  addItemsAt
   classStyle
-  dragDropMode
-  indexOf
-  itemAt
   itemClicked
-  items
-  moveItem
-  removeAt
-  removeItem
-  removeItems
-  search
   searchModified
-  searchVisibility
-  selectedItems
-  selectedLabels
-  selectionMode
-  setCurrentItem
-  setCurrentRow
-  setDragDropMode
-  setSearch
-  setSearchVisibility
-  setSelectionMode
   textClicked
 
 .. currentmodule::  TermTk.TTkWidgets

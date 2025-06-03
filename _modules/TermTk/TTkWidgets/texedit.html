@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,32 +510,33 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextEditView&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEditRuler&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span><span class="n">Union</span><span class="p">,</span><span class="n">Dict</span><span class="p">,</span><span class="n">Any</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.canvas</span> <span class="kn">import</span> <span class="n">TTkCanvas</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span> <span class="kn">import</span> <span class="n">TTkKeyEvent</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span> <span class="kn">import</span> <span class="n">TTkMouseEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.canvas</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCanvas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkMouseEvent</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkGui.clipboard</span> <span class="kn">import</span> <span class="n">TTkClipboard</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkGui.textwrap1</span> <span class="kn">import</span> <span class="n">TTkTextWrap</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkGui.textcursor</span> <span class="kn">import</span> <span class="n">TTkTextCursor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkGui.textdocument</span> <span class="kn">import</span> <span class="n">TTkTextDocument</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.clipboard</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkClipboard</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textwrap1</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextWrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textcursor</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextCursor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textdocument</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextDocument</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.widget</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollarea</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollview</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollView</span><span class="p">,</span> <span class="n">TTkAbstractScrollViewGridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollarea</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span><span class="p">,</span> <span class="n">_ForwardData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollview</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollView</span><span class="p">,</span> <span class="n">TTkAbstractScrollViewGridLayout</span>
 
 <div class="viewcode-block" id="TTkTextEditRuler">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTextEditRuler</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">MarkRuler</span><span class="p">():</span>
-        <span class="k">class</span> <span class="nc">States</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTextEditRuler</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">MarkRuler</span><span class="p">():</span>
+        <span class="k">class</span><span class="w"> </span><span class="nc">States</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
             <span class="n">NONE</span>      <span class="o">=</span> <span class="mh">0x00</span>
             <span class="n">FLAGGED</span>   <span class="o">=</span> <span class="mh">0x01</span>
             <span class="n">UNFLAGGED</span> <span class="o">=</span> <span class="n">NONE</span>
@@ -527,7 +547,7 @@
         <span class="c1">#     MULTI_STATE  = 0x04</span>
 
         <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_markers&#39;</span><span class="p">,</span><span class="s1">&#39;_states&#39;</span><span class="p">,</span><span class="s1">&#39;_width&#39;</span><span class="p">,</span><span class="s1">&#39;_lines&#39;</span><span class="p">,</span><span class="s1">&#39;_defaultState&#39;</span><span class="p">)</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                 <span class="n">markers</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="n">TTkString</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_markers</span> <span class="o">=</span> <span class="n">markers</span>
@@ -535,22 +555,22 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">markers</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">markers</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-        <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>
 
-        <span class="k">def</span> <span class="nf">nextState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">nextState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">state</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">_states</span>
 
-        <span class="k">def</span> <span class="nf">setState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">setState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">:</span>
                     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">line</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="n">line</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
 
-        <span class="k">def</span> <span class="nf">getState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">getState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">getTTkStr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">getTTkStr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
             <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultState</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">())</span>
 
@@ -566,7 +586,7 @@
             <span class="p">}</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_textWrap&#39;</span><span class="p">,</span><span class="s1">&#39;_startingNumber&#39;</span><span class="p">,</span> <span class="s1">&#39;_markRuler&#39;</span><span class="p">,</span> <span class="s1">&#39;_markRulerSizes&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startingNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startingNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_startingNumber</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="n">startingNumber</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">TTkTextEditRuler</span><span class="o">.</span><span class="n">MarkRuler</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -574,7 +594,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_wrapChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_wrapChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">dt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">off</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startingNumber</span>
         <span class="n">width</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">+</span><span class="n">off</span><span class="p">))),</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">off</span><span class="p">))))</span>
@@ -584,7 +604,7 @@
 
 <div class="viewcode-block" id="TTkTextEditRuler.addMarkRuler">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler.addMarkRuler">[docs]</a>
-    <span class="k">def</span> <span class="nf">addMarkRuler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">markRuler</span><span class="p">:</span><span class="n">MarkRuler</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addMarkRuler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">markRuler</span><span class="p">:</span><span class="n">MarkRuler</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">markRuler</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_markRulerSizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">markRuler</span><span class="o">.</span><span class="n">width</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
@@ -592,19 +612,19 @@
 
 <div class="viewcode-block" id="TTkTextEditRuler.setTextWrap">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler.setTextWrap">[docs]</a>
-    <span class="k">def</span> <span class="nf">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span> <span class="o">=</span> <span class="n">tw</span>
         <span class="n">tw</span><span class="o">.</span><span class="n">wrapChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">5</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markRuler</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -623,7 +643,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -662,7 +682,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTextEditView</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTextEditView</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    :py:class:`TTkTextEditView`</span>
 
@@ -686,7 +706,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
 
-    <span class="k">class</span> <span class="nc">ExtraSelection</span><span class="p">():</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">ExtraSelection</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        The :py:class:`ExtraSelection` structure provides a way of specifying a character format for a given selection in a document.</span>
 
@@ -699,7 +719,7 @@
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_format&#39;</span><span class="p">,</span> <span class="s1">&#39;_color&#39;</span><span class="p">,</span> <span class="s1">&#39;_cursor&#39;</span><span class="p">)</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                      <span class="nb">format</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionFormat</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span>
                      <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
                      <span class="n">cursor</span><span class="p">:</span><span class="n">TTkTextCursor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -707,7 +727,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_format</span> <span class="o">=</span> <span class="nb">format</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cursor</span> <span class="o">=</span> <span class="n">cursor</span> <span class="k">if</span> <span class="n">cursor</span> <span class="k">else</span> <span class="n">TTkTextCursor</span><span class="p">()</span>
 
-        <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkColor</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkColor</span><span class="p">:</span>
 <span class="w">             </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">             This propery holds the color that is used for the selection.</span>
 
@@ -715,7 +735,7 @@
 <span class="sd">             &#39;&#39;&#39;</span>
              <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span>
 
-        <span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Set the color.</span>
 
@@ -724,7 +744,7 @@
 <span class="sd">            &#39;&#39;&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
 
-        <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionFormat</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionFormat</span><span class="p">:</span>
 <span class="w">             </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">             This propery holds the format that is used to specify the type of selection.</span>
 
@@ -732,7 +752,7 @@
 <span class="sd">             &#39;&#39;&#39;</span>
              <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format</span>
 
-        <span class="k">def</span> <span class="nf">setFormat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">setFormat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Set the format.</span>
 
@@ -741,7 +761,7 @@
 <span class="sd">            &#39;&#39;&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_format</span> <span class="o">=</span> <span class="nb">format</span>
 
-        <span class="k">def</span> <span class="nf">cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
 <span class="w">             </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">             This propery holds the fcursor that contains a selection in a :py:class:`QTextDocument`.</span>
 
@@ -749,7 +769,7 @@
 <span class="sd">             &#39;&#39;&#39;</span>
              <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cursor</span>
 
-        <span class="k">def</span> <span class="nf">setCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">:</span><span class="n">TTkTextCursor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">setCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">:</span><span class="n">TTkTextCursor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Set the cursor.</span>
 
@@ -837,7 +857,7 @@
     <span class="c1">#                 [ (line, (posFrom, posTo)), ... ]</span>
     <span class="c1">#                 This is required to support the wrap feature</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">readOnly</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">multiLine</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">document</span><span class="p">:</span><span class="n">TTkTextDocument</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -886,17 +906,17 @@
 
 <div class="viewcode-block" id="TTkTextEditView.multiLine">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.multiLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">multiLine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiLine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;multiline&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_multiLine</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_undoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">available</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_undoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">available</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">undoAvailable</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">available</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_redoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">available</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_redoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">available</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">redoAvailable</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">available</span><span class="p">)</span>
 
     <span class="c1"># def toHtml(self, encoding): pass</span>
@@ -911,7 +931,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView.toAnsi">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toAnsi">[docs]</a>
-    <span class="k">def</span> <span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;toAnsi&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">toAnsi</span><span class="p">()</span>
@@ -920,7 +940,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView.toPlainText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toPlainText">[docs]</a>
-    <span class="k">def</span> <span class="nf">toPlainText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toPlainText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;toPlainText&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">()</span>
@@ -929,7 +949,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView.toRawText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toRawText">[docs]</a>
-    <span class="k">def</span> <span class="nf">toRawText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toRawText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;toRawText&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span>
@@ -938,7 +958,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView.isUndoAvailable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isUndoAvailable">[docs]</a>
-    <span class="k">def</span> <span class="nf">isUndoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isUndoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;isUndoAvailable&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">isUndoAvailable</span><span class="p">()</span>
@@ -947,7 +967,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView.isRedoAvailable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isRedoAvailable">[docs]</a>
-    <span class="k">def</span> <span class="nf">isRedoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isRedoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;isRedoAvailable&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">isRedoAvailable</span><span class="p">()</span>
@@ -956,14 +976,14 @@
 
 <div class="viewcode-block" id="TTkTextEditView.document">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.document">[docs]</a>
-    <span class="k">def</span> <span class="nf">document</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextDocument</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">document</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextDocument</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;document&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.setDocument">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setDocument">[docs]</a>
-    <span class="k">def</span> <span class="nf">setDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span><span class="n">TTkTextDocument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span><span class="n">TTkTextDocument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setDocument&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">contentsChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_documentChanged</span><span class="p">)</span>
@@ -989,24 +1009,28 @@
     <span class="c1"># forward textWrap Methods</span>
 <div class="viewcode-block" id="TTkTextEditView.wrapWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wrapWidth">[docs]</a>
-    <span class="k">def</span> <span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEditView.setWrapWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWrapWidth">[docs]</a>
-    <span class="k">def</span> <span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEditView.wordWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEditView.setWordWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWordWrapMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.extraSelections">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.extraSelections">[docs]</a>
-    <span class="k">def</span> <span class="nf">extraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Returns previously set extra selections.</span>
 
@@ -1017,7 +1041,7 @@
 
 <div class="viewcode-block" id="TTkTextEditView.setExtraSelections">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setExtraSelections">[docs]</a>
-    <span class="k">def</span> <span class="nf">setExtraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extraSelections</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setExtraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extraSelections</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This function allows temporarily marking certain regions in the document with a given color,</span>
 <span class="sd">        specified as selections. This can be useful for example in a programming editor to mark a</span>
@@ -1032,35 +1056,35 @@
 
 <div class="viewcode-block" id="TTkTextEditView.textCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.textCursor">[docs]</a>
-    <span class="k">def</span> <span class="nf">textCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.isReadOnly">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isReadOnly">[docs]</a>
-    <span class="k">def</span> <span class="nf">isReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.setReadOnly">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setReadOnly">[docs]</a>
-    <span class="k">def</span> <span class="nf">setReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ro</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ro</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span> <span class="o">=</span> <span class="n">ro</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disableWidgetCursor</span><span class="p">(</span><span class="n">ro</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">TTkString</span><span class="p">())</span>
 
 <div class="viewcode-block" id="TTkTextEditView.lineWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.lineWrapMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">lineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineWrapMode</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.setLineWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setLineWrapMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">setLineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineWrapMode</span> <span class="o">=</span> <span class="n">mode</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="o">.</span><span class="n">NoWrap</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
@@ -1074,7 +1098,7 @@
 <div class="viewcode-block" id="TTkTextEditView.setText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setText">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">TTkString</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewMoveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updateSize</span><span class="p">()</span></div>
@@ -1083,7 +1107,7 @@
 <div class="viewcode-block" id="TTkTextEditView.append">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.append">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">appendText</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updateSize</span><span class="p">()</span></div>
 
@@ -1091,7 +1115,7 @@
 <div class="viewcode-block" id="TTkTextEditView.undo">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.undo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">undo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">undo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">c</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">restoreSnapshotPrev</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">restore</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></div>
 
@@ -1099,7 +1123,7 @@
 <div class="viewcode-block" id="TTkTextEditView.redo">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.redo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">redo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">c</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">restoreSnapshotNext</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">restore</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></div>
 
@@ -1107,7 +1131,7 @@
 <div class="viewcode-block" id="TTkTextEditView.find">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.find">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkString</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">cursor</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">exp</span><span class="p">)):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span> <span class="o">=</span> <span class="n">cursor</span>
@@ -1118,14 +1142,14 @@
 <div class="viewcode-block" id="TTkTextEditView.clear">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.clear">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.copy">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.copy">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">hasSelection</span><span class="p">():</span>
             <span class="n">txt</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">getLinesUnderCursor</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1136,7 +1160,7 @@
 <div class="viewcode-block" id="TTkTextEditView.cut">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.cut">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">hasSelection</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">movePosition</span><span class="p">(</span><span class="n">moveMode</span><span class="o">=</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">MoveAnchor</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">StartOfLine</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">movePosition</span><span class="p">(</span><span class="n">moveMode</span><span class="o">=</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">KeepAnchor</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">EndOfLine</span><span class="p">)</span>
@@ -1148,17 +1172,17 @@
 <div class="viewcode-block" id="TTkTextEditView.paste">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.paste">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">paste</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clipboard</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pasteEvent</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_documentChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_documentChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rewrap</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_rewrap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_rewrap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">rewrap</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -1166,18 +1190,18 @@
 <div class="viewcode-block" id="TTkTextEditView.setColor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setColor">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">textCursor</span><span class="p">()</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_cursorPositionChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">:</span><span class="n">TTkTextCursor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cursorPositionChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">:</span><span class="n">TTkTextCursor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">cursor</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">currentColorChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">positionColor</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cursorPositionChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pushCursor</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetWidth</span> <span class="ow">and</span>
              <span class="n">w</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lastWrapUsed</span> <span class="ow">and</span>
              <span class="n">w</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">_tabSpaces</span> <span class="p">):</span>
@@ -1186,10 +1210,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_rewrap</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">resizeEvent</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_updateSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_updateSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hsize</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textDocument</span><span class="o">.</span><span class="n">_dataLines</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 
-    <span class="k">def</span> <span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NoWrap</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hsize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetWidth</span><span class="p">:</span>
@@ -1197,7 +1221,7 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FixedWidth</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_pushCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pushCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
 
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">dataToScreenPosition</span><span class="p">(</span>
@@ -1215,7 +1239,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_setCursorPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">moveAnchor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">addCursor</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setCursorPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">moveAnchor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">addCursor</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">normalizeScreenPosition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
         <span class="n">line</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">screenToDataPosition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">addCursor</span><span class="p">:</span>
@@ -1230,12 +1254,12 @@
 <div class="viewcode-block" id="TTkTextEditView.ensureCursorVisible">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ensureCursorVisible">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">ensureCursorVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ensureCursorVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_scrolToInclude</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_scrolToInclude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_scrolToInclude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># Scroll the area (if required) to include the position x,y</span>
         <span class="n">_</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
         <span class="n">offx</span><span class="p">,</span> <span class="n">offy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -1243,7 +1267,7 @@
         <span class="n">offy</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">offy</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="o">-</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewMoveTo</span><span class="p">(</span><span class="n">offx</span><span class="p">,</span> <span class="n">offy</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mousePressEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -1253,12 +1277,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">hasSelection</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseDragEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
@@ -1269,7 +1293,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">mouseDoubleClickEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mouseDoubleClickEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseDoubleClickEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">WordUnderCursor</span><span class="p">)</span>
@@ -1280,7 +1304,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">mouseTapEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mouseTapEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mouseTapEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textCursor</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="o">.</span><span class="n">LineUnderCursor</span><span class="p">)</span>
@@ -1291,7 +1315,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">pasteEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pasteEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_multiLine</span><span class="p">:</span>
             <span class="n">txt</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
@@ -1308,7 +1332,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
 
@@ -1443,7 +1467,7 @@
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
@@ -1487,7 +1511,7 @@
 
 <div class="viewcode-block" id="TTkTextEdit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTextEdit</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTextEdit</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
     <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    :py:class:`TTkTextEdit` is a container widget which place :py:class:`TTkTextEditView` in a scrolling area with on-demand scroll bars.</span>
 
@@ -1495,33 +1519,37 @@
 
     <span class="n">ExtraSelection</span> <span class="o">=</span> <span class="n">TTkTextEditView</span><span class="o">.</span><span class="n">ExtraSelection</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="p">[</span><span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">]</span> <span class="o">+</span>
-        <span class="p">(</span><span class="n">_forwardedSignals</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTexteditView</span>
-            <span class="c1"># Signals</span>
+    <span class="n">_ttk_forward</span><span class="p">:</span><span class="n">_ForwardData</span> <span class="o">=</span> <span class="n">_ForwardData</span><span class="p">(</span>
+        <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkTextEditView</span> <span class="p">,</span>
+        <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._textEditView&quot;</span><span class="p">,</span>
+        <span class="n">signals</span><span class="o">=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTexteditView</span>
             <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
             <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;textChanged&#39;</span><span class="p">])</span> <span class="o">+</span>
-        <span class="p">(</span><span class="n">_forwardedMethods</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Methods From TTkTexteditView</span>
-            <span class="c1"># Forwarded Methods</span>
-            <span class="s1">&#39;clear&#39;</span><span class="p">,</span> <span class="s1">&#39;setText&#39;</span><span class="p">,</span> <span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="s1">&#39;isReadOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;setReadOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;document&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;wrapWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;setWrapWidth&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;multiLine&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;lineWrapMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setLineWrapMode&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;wordWrapMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setWordWrapMode&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;textCursor&#39;</span><span class="p">,</span> <span class="s1">&#39;setFocus&#39;</span><span class="p">,</span> <span class="s1">&#39;setColor&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;extraSelections&#39;</span><span class="p">,</span> <span class="s1">&#39;setExtraSelections&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;cut&#39;</span><span class="p">,</span> <span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="s1">&#39;paste&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;undo&#39;</span><span class="p">,</span> <span class="s1">&#39;redo&#39;</span><span class="p">,</span> <span class="s1">&#39;isUndoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;isRedoAvailable&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;find&#39;</span><span class="p">,</span> <span class="s1">&#39;ensureCursorVisible&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;textChanged&#39;</span><span class="p">],</span>
+        <span class="n">methods</span><span class="o">=</span><span class="p">[</span>
+            <span class="c1"># Forwarded Methods From TTkTexteditView</span>
+            <span class="s2">&quot;clear&quot;</span><span class="p">,</span> <span class="s2">&quot;setText&quot;</span><span class="p">,</span> <span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="s2">&quot;isReadOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;setReadOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;document&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wrapWidth&quot;</span><span class="p">,</span> <span class="s2">&quot;setWrapWidth&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;multiLine&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lineWrapMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setLineWrapMode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wordWrapMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setWordWrapMode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;textCursor&quot;</span><span class="p">,</span> <span class="s2">&quot;setFocus&quot;</span><span class="p">,</span> <span class="s2">&quot;setColor&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;extraSelections&quot;</span><span class="p">,</span> <span class="s2">&quot;setExtraSelections&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">,</span> <span class="s2">&quot;paste&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;undo&quot;</span><span class="p">,</span> <span class="s2">&quot;redo&quot;</span><span class="p">,</span> <span class="s2">&quot;isUndoAvailable&quot;</span><span class="p">,</span> <span class="s2">&quot;isRedoAvailable&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;find&quot;</span><span class="p">,</span> <span class="s2">&quot;ensureCursorVisible&quot;</span><span class="p">,</span>
             <span class="c1"># Export Methods,</span>
-            <span class="s1">&#39;toAnsi&#39;</span><span class="p">,</span> <span class="s1">&#39;toRawText&#39;</span><span class="p">,</span> <span class="s1">&#39;toPlainText&#39;</span><span class="p">,</span> <span class="c1"># &#39;toHtml&#39;, &#39;toMarkdown&#39;,</span>
-            <span class="p">])</span>
+            <span class="s2">&quot;toAnsi&quot;</span><span class="p">,</span> <span class="s2">&quot;toRawText&quot;</span><span class="p">,</span> <span class="s2">&quot;toPlainText&quot;</span> <span class="c1"># , &quot;toHtml&quot;, &quot;toMarkdown&quot;,</span>
+            <span class="p">]</span>
         <span class="p">)</span>
-    <span class="n">_forwardWidget</span> <span class="o">=</span> <span class="n">TTkTextEditView</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="c1"># TTkWidget init</span>
                  <span class="n">parent</span><span class="p">:</span><span class="n">TTkWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">visible</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1557,26 +1585,26 @@
         <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">textEditLayout</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
 
 <div class="viewcode-block" id="TTkTextEdit.ruler">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ruler">[docs]</a>
-    <span class="k">def</span> <span class="nf">ruler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextEditRuler</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ruler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextEditRuler</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;ruler&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEdit.textEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textEditView">[docs]</a>
-    <span class="k">def</span> <span class="nf">textEditView</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textEditView</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;textEditView&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEdit.getLineNumber">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.getLineNumber">[docs]</a>
-    <span class="k">def</span> <span class="nf">getLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;getLineNumber&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span></div>
 
@@ -1584,14 +1612,14 @@
 <div class="viewcode-block" id="TTkTextEdit.setLineNumber">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumber">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ln</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ln</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumber&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="n">ln</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEdit.lineNumberStarting">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting">[docs]</a>
-    <span class="k">def</span> <span class="nf">lineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;lineNumberStarting&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span></div>
 
@@ -1599,7 +1627,7 @@
 <div class="viewcode-block" id="TTkTextEdit.setLineNumberStarting">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setLineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starting</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starting</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumberStarting&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span> <span class="o">=</span> <span class="n">starting</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
@@ -1607,12 +1635,311 @@
 
 <div class="viewcode-block" id="TTkTextEdit.setDocument">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setDocument">[docs]</a>
-    <span class="k">def</span> <span class="nf">setDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setDocument&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setDocument</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span></div>
+
+
+    <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+<div class="viewcode-block" id="TTkTextEdit.clear">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.clear">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.clear`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setText">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setText">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">TTkString</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setText`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.append">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.append">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.append`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.isReadOnly">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isReadOnly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isReadOnly`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isReadOnly</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setReadOnly">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setReadOnly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ro</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setReadOnly`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="n">ro</span><span class="o">=</span><span class="n">ro</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.document">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.document">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">document</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextDocument</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.document`</span>
+
+<span class="sd">        document</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">document</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.wrapWidth">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wrapWidth">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.wrapWidth`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setWrapWidth">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setWrapWidth`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.multiLine">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.multiLine">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiLine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.multiLine`</span>
+
+<span class="sd">        multiline</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">multiLine</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.lineWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.lineWrapMode`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setLineWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setLineWrapMode`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setLineWrapMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.wordWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.wordWrapMode`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setWordWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setWordWrapMode`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.textCursor">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textCursor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.textCursor`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textCursor</span><span class="p">()</span></div>
+
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setFocus`</span>
+
+<span class="sd">        Focus the widget</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
+<div class="viewcode-block" id="TTkTextEdit.setColor">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setColor">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setColor`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.extraSelections">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.extraSelections">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.extraSelections`</span>
+
+<span class="sd">        Returns previously set extra selections.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: list[:py:class:`ExtraSelection`]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">extraSelections</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setExtraSelections">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setExtraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extraSelections</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setExtraSelections`</span>
+
+<span class="sd">        This function allows temporarily marking certain regions in the document with a given color,</span>
+<span class="sd">        specified as selections. This can be useful for example in a programming editor to mark a</span>
+<span class="sd">        whole line of text with a given background color to indicate the existence of a breakpoint.</span>
+<span class="sd">        </span>
+<span class="sd">        :param extraSelections: the list of extra selections.</span>
+<span class="sd">        :type extraSelections: list[:py:class:`ExtraSelection`]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setExtraSelections</span><span class="p">(</span><span class="n">extraSelections</span><span class="o">=</span><span class="n">extraSelections</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.cut">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.cut">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.cut`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.copy">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.copy">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.copy`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.paste">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.paste">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.paste`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">paste</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.undo">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.undo">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">undo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.undo`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.redo">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.redo">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.redo`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.isUndoAvailable">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isUndoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isUndoAvailable`</span>
+
+<span class="sd">        isUndoAvailable</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isUndoAvailable</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.isRedoAvailable">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isRedoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isRedoAvailable`</span>
+
+<span class="sd">        isRedoAvailable</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isRedoAvailable</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.find">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.find">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkString</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.find`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">exp</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.ensureCursorVisible">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ensureCursorVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.ensureCursorVisible`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">ensureCursorVisible</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.toAnsi">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toAnsi">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toAnsi`</span>
+
+<span class="sd">        toAnsi</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toAnsi</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.toRawText">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toRawText">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toRawText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toRawText`</span>
+
+<span class="sd">        toRawText</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.toPlainText">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toPlainText">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toPlainText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toPlainText`</span>
+
+<span class="sd">        toPlainText</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">()</span></div>
 </div>
 
+    <span class="c1">#--FORWARD-AUTOGEN-END--#</span>
 </pre></div>
 
                 </article>
@@ -1675,8 +2002,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

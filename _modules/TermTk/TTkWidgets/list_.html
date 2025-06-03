@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,23 +510,24 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkList&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.listwidget</span> <span class="kn">import</span> <span class="n">TTkListWidget</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollarea</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.listwidget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkListWidget</span><span class="p">,</span> <span class="n">TTkAbstractListItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollarea</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span><span class="p">,</span> <span class="n">_ForwardData</span>
 
 <div class="viewcode-block" id="TTkList">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkList</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkList</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
     <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    :py:class:`TTkList` is a container widget which place :py:class:`TTkListWidget` in a scrolling area with on-demand scroll bars.</span>
 
 <span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">TTkListWidget</span><span class="o">.</span><span class="vm">__doc__</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-        <span class="p">[</span><span class="s1">&#39;_listView&#39;</span><span class="p">]</span> <span class="o">+</span>
-        <span class="p">(</span><span class="n">_forwardedSignals</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTable</span>
-            <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;searchModified&#39;</span><span class="p">])</span> <span class="o">+</span>
-        <span class="p">(</span><span class="n">_forwardedMethods</span><span class="o">:=</span><span class="p">[</span> <span class="c1"># Forwarded Methods From TTkTable</span>
+    <span class="n">_ttk_forward</span> <span class="o">=</span> <span class="n">_ForwardData</span><span class="p">(</span>
+        <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkListWidget</span> <span class="p">,</span>
+        <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._listView&quot;</span><span class="p">,</span>
+        <span class="n">signals</span><span class="o">=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTable</span>
+            <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;searchModified&#39;</span><span class="p">],</span>
+        <span class="n">methods</span><span class="o">=</span><span class="p">[</span>
             <span class="s1">&#39;items&#39;</span><span class="p">,</span>
             <span class="s1">&#39;dragDropMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setDragDropMode&#39;</span><span class="p">,</span>
             <span class="s1">&#39;addItem&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;addItems&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemsAt&#39;</span><span class="p">,</span>
@@ -515,11 +535,13 @@
             <span class="s1">&#39;removeAt&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItem&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItems&#39;</span><span class="p">,</span>
             <span class="s1">&#39;selectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setSelectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedItems&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedLabels&#39;</span><span class="p">,</span>
             <span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;setSearch&#39;</span><span class="p">,</span> <span class="s1">&#39;searchVisibility&#39;</span><span class="p">,</span> <span class="s1">&#39;setSearchVisibility&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;setCurrentRow&#39;</span><span class="p">,</span> <span class="s1">&#39;setCurrentItem&#39;</span><span class="p">])</span>
-        <span class="p">)</span>
-    <span class="n">_forwardWidget</span> <span class="o">=</span> <span class="n">TTkListWidget</span>
+            <span class="s1">&#39;setCurrentRow&#39;</span><span class="p">,</span> <span class="s1">&#39;setCurrentItem&#39;</span>
+            <span class="p">]</span>
+    <span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_listView&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">listWidget</span><span class="p">:</span><span class="n">TTkListWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">selectionMode</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span>
                  <span class="n">dragDropMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span><span class="p">,</span>
@@ -537,10 +559,242 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span></div>
+        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
 
+    <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+<div class="viewcode-block" id="TTkList.items">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.items">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.items`</span>
 
+<span class="sd">        items</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.dragDropMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.dragDropMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.dragDropMode`</span>
+
+<span class="sd">        dragDropMode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">dragDropMode</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.setDragDropMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setDragDropMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setDragDropMode`</span>
+
+<span class="sd">        setDragDropMode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setDragDropMode</span><span class="p">(</span><span class="n">dndMode</span><span class="o">=</span><span class="n">dndMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.addItem">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItem">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItem`</span>
+
+<span class="sd">        addItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.addItemAt">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItemAt">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addItemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItemAt`</span>
+
+<span class="sd">        addItemAt</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItemAt</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.addItems">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItems">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItems`</span>
+
+<span class="sd">        addItems</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.addItemsAt">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItemsAt">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addItemsAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItemsAt`</span>
+
+<span class="sd">        addItemsAt</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItemsAt</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.indexOf">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.indexOf">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">indexOf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.indexOf`</span>
+
+<span class="sd">        indexOf</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.itemAt">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.itemAt">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.itemAt`</span>
+
+<span class="sd">        itemAt</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">itemAt</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.moveItem">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.moveItem">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">moveItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="p">,</span> <span class="n">to</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.moveItem`</span>
+
+<span class="sd">        moveItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">moveItem</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="n">fr</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="n">to</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.removeAt">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeAt">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.removeAt`</span>
+
+<span class="sd">        removeAt</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeAt</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.removeItem">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeItem">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.removeItem`</span>
+
+<span class="sd">        removeItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.removeItems">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeItems">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.removeItems`</span>
+
+<span class="sd">        removeItems</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.selectionMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectionMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">selectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.selectionMode`</span>
+
+<span class="sd">        selectionMode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectionMode</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.setSelectionMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSelectionMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setSelectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setSelectionMode`</span>
+
+<span class="sd">        setSelectionMode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSelectionMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.selectedItems">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectedItems">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.selectedItems`</span>
+
+<span class="sd">        selectedItems</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.selectedLabels">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectedLabels">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">selectedLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.selectedLabels`</span>
+
+<span class="sd">        selectedLabels</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectedLabels</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.search">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.search">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.search`</span>
+
+<span class="sd">        search</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">search</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.setSearch">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSearch">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setSearch`</span>
+
+<span class="sd">        setSearch</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSearch</span><span class="p">(</span><span class="n">search</span><span class="o">=</span><span class="n">search</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.searchVisibility">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.searchVisibility">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">searchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.searchVisibility`</span>
+
+<span class="sd">        searchVisibility</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">searchVisibility</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkList.setSearchVisibility">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSearchVisibility">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setSearchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visibility</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setSearchVisibility`</span>
+
+<span class="sd">        setSearchVisibility</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSearchVisibility</span><span class="p">(</span><span class="n">visibility</span><span class="o">=</span><span class="n">visibility</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.setCurrentRow">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setCurrentRow">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setCurrentRow`</span>
+
+<span class="sd">        setCurrentRow</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setCurrentRow</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkList.setCurrentItem">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setCurrentItem">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setCurrentItem`</span>
+
+<span class="sd">        setCurrentItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setCurrentItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span></div>
+</div>
+
+    <span class="c1">#--FORWARD-AUTOGEN-END--#</span>
 </pre></div>
 
                 </article>
@@ -603,8 +857,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -79,6 +79,22 @@ TTkTable
    
 
    
+   .. autosummary::
+   
+      copy
+      cut
+      paste
+      redo
+      resizeColumnToContents
+      resizeColumnsToContents
+      resizeRowToContents
+      resizeRowsToContents
+      setColumnWidth
+      setRowHeight
+      setSortingEnabled
+      sortByColumn
+      undo
+   
 
    
    
@@ -176,6 +192,45 @@ TTkTable
    
    
 
+
+   
+
+   
+   .. automethod:: clearSelection
+   .. automethod:: columnCount
+   .. automethod:: copy
+   .. automethod:: currentColumn
+   .. automethod:: currentRow
+   .. automethod:: cut
+   .. automethod:: hSeparatorVisibility
+   .. automethod:: horizontalHeader
+   .. automethod:: isRedoAvailable
+   .. automethod:: isSortingEnabled
+   .. automethod:: isUndoAvailable
+   .. automethod:: model
+   .. automethod:: paste
+   .. automethod:: redo
+   .. automethod:: resizeColumnToContents
+   .. automethod:: resizeColumnsToContents
+   .. automethod:: resizeRowToContents
+   .. automethod:: resizeRowsToContents
+   .. automethod:: rowCount
+   .. automethod:: selectAll
+   .. automethod:: selectColumn
+   .. automethod:: selectRow
+   .. automethod:: setColumnWidth
+   .. automethod:: setHSeparatorVisibility
+   .. automethod:: setModel
+   .. automethod:: setRowHeight
+   .. automethod:: setSelection
+   .. automethod:: setSortingEnabled
+   .. automethod:: setVSeparatorVisibility
+   .. automethod:: sortByColumn
+   .. automethod:: undo
+   .. automethod:: unselectColumn
+   .. automethod:: unselectRow
+   .. automethod:: vSeparatorVisibility
+   .. automethod:: verticalHeader
 
    
 
@@ -350,42 +405,7 @@ TTkTable Attributes
   cellDoubleClicked
   cellEntered
   classStyle
-  clearSelection
-  columnCount
-  copy
   currentCellChanged
-  currentColumn
-  currentRow
-  cut
-  hSeparatorVisibility
-  horizontalHeader
-  isRedoAvailable
-  isSortingEnabled
-  isUndoAvailable
-  model
-  paste
-  redo
-  resizeColumnToContents
-  resizeColumnsToContents
-  resizeRowToContents
-  resizeRowsToContents
-  rowCount
-  selectAll
-  selectColumn
-  selectRow
-  setColumnWidth
-  setHSeparatorVisibility
-  setModel
-  setRowHeight
-  setSelection
-  setSortingEnabled
-  setVSeparatorVisibility
-  sortByColumn
-  undo
-  unselectColumn
-  unselectRow
-  vSeparatorVisibility
-  verticalHeader
 
 .. currentmodule::  TermTk.TTkWidgets.TTkModelView
 

@@ -17,30 +17,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="prev" title="TTkLineEdit" href="TermTk.TTkWidgets.TTkLineEdit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -103,8 +111,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -135,11 +142,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -480,16 +491,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -518,6 +537,29 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItem"><code class="docutils literal notranslate"><span class="pre">addItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItemAt"><code class="docutils literal notranslate"><span class="pre">addItemAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItems"><code class="docutils literal notranslate"><span class="pre">addItems()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItemsAt"><code class="docutils literal notranslate"><span class="pre">addItemsAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.dragDropMode"><code class="docutils literal notranslate"><span class="pre">dragDropMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.indexOf"><code class="docutils literal notranslate"><span class="pre">indexOf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.itemAt"><code class="docutils literal notranslate"><span class="pre">itemAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.items"><code class="docutils literal notranslate"><span class="pre">items()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.moveItem"><code class="docutils literal notranslate"><span class="pre">moveItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.removeAt"><code class="docutils literal notranslate"><span class="pre">removeAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.removeItem"><code class="docutils literal notranslate"><span class="pre">removeItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.removeItems"><code class="docutils literal notranslate"><span class="pre">removeItems()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.searchVisibility"><code class="docutils literal notranslate"><span class="pre">searchVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.selectedItems"><code class="docutils literal notranslate"><span class="pre">selectedItems()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.selectedLabels"><code class="docutils literal notranslate"><span class="pre">selectedLabels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.selectionMode"><code class="docutils literal notranslate"><span class="pre">selectionMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setCurrentItem"><code class="docutils literal notranslate"><span class="pre">setCurrentItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setCurrentRow"><code class="docutils literal notranslate"><span class="pre">setCurrentRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setDragDropMode"><code class="docutils literal notranslate"><span class="pre">setDragDropMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setSearch"><code class="docutils literal notranslate"><span class="pre">setSearch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setSearchVisibility"><code class="docutils literal notranslate"><span class="pre">setSearchVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setSelectionMode"><code class="docutils literal notranslate"><span class="pre">setSelectionMode()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttklist-attributes">TTkList Attributes</a></li>
@@ -536,7 +578,7 @@
 <h1>TTkList<a class="headerlink" href="#ttklist" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">listWidget</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.listwidget.TTkListWidget"><span class="pre">TTkListWidget</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selectionMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dragDropMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode" title="TermTk.TTkCore.constant.TTkConstant.DragDropMode"><span class="pre">DragDropMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showSearch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">listWidget</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.listwidget.TTkListWidget"><span class="pre">TTkListWidget</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selectionMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dragDropMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.DragDropMode" title="TermTk.TTkCore.constant.TTkConstant.DragDropMode"><span class="pre">DragDropMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showSearch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.abstractscrollarea.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a></p>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkList" title="TermTk.TTkWidgets.TTkList"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkList</span></code></a> is a container widget which place <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.TTkListWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkListWidget</span></code></a> in a scrolling area with on-demand scroll bars.</p>
 <p>A <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.TTkListWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkListWidget</span></code></a> implements a list view that displays a set of selectable items.</p>
@@ -553,7 +595,7 @@
 </pre></div>
 </div>
 <p>Quickstart:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TermTk</span> <span class="k">as</span> <span class="nn">ttk</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">TermTk</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ttk</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTk</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkHBoxLayout</span><span class="p">(),</span> <span class="n">mouseTrack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -629,7 +671,7 @@
 <section id="signals">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Signals linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.TTkListWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkListWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.itemClicked" title="TermTk.TTkWidgets.TTkListWidget.itemClicked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkListWidget.itemClicked</span></code></a></p></td>
 <td><p>This signal is emitted whenever an item is clicked.</p></td>
@@ -644,7 +686,7 @@
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkList" title="TermTk.TTkWidgets.TTkList"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkList</span></code></a> signals:</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkList.closed" title="TermTk.TTkWidgets.TTkList.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget is closed</p></td>
@@ -665,7 +707,7 @@
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
 <td><p>hide the widget</p></td>
@@ -677,7 +719,7 @@
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
 <td><p>Close (Destroy/Remove) the widget</p></td>
@@ -767,7 +809,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Methods linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget" title="TermTk.TTkWidgets.TTkListWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkListWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItem" title="TermTk.TTkWidgets.TTkListWidget.addItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkListWidget.addItem</span></code></a>(item[, data])</p></td>
 <td><p></p></td>
@@ -842,8 +884,238 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkList" title="TermTk.TTkWidgets.TTkList"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkList</span></code></a> methods:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.addItem">
+<span class="sig-name descname"><span class="pre">addItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.addItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.addItem" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItem" title="TermTk.TTkWidgets.TTkListWidget.addItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.addItem()</span></code></a></p>
+</div>
+<p>addItem</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.addItemAt">
+<span class="sig-name descname"><span class="pre">addItemAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.addItemAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.addItemAt" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItemAt" title="TermTk.TTkWidgets.TTkListWidget.addItemAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.addItemAt()</span></code></a></p>
+</div>
+<p>addItemAt</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.addItems">
+<span class="sig-name descname"><span class="pre">addItems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.addItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.addItems" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItems" title="TermTk.TTkWidgets.TTkListWidget.addItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.addItems()</span></code></a></p>
+</div>
+<p>addItems</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.addItemsAt">
+<span class="sig-name descname"><span class="pre">addItemsAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.addItemsAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.addItemsAt" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.addItemsAt" title="TermTk.TTkWidgets.TTkListWidget.addItemsAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.addItemsAt()</span></code></a></p>
+</div>
+<p>addItemsAt</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.dragDropMode">
+<span class="sig-name descname"><span class="pre">dragDropMode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.dragDropMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.dragDropMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.dragDropMode" title="TermTk.TTkWidgets.TTkListWidget.dragDropMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.dragDropMode()</span></code></a></p>
+</div>
+<p>dragDropMode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.indexOf">
+<span class="sig-name descname"><span class="pre">indexOf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.indexOf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.indexOf" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.indexOf" title="TermTk.TTkWidgets.TTkListWidget.indexOf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.indexOf()</span></code></a></p>
+</div>
+<p>indexOf</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.itemAt">
+<span class="sig-name descname"><span class="pre">itemAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.itemAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.itemAt" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.itemAt" title="TermTk.TTkWidgets.TTkListWidget.itemAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.itemAt()</span></code></a></p>
+</div>
+<p>itemAt</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkWidgets.TTkAbstractListItem.html#TermTk.TTkWidgets.TTkAbstractListItem" title="TermTk.TTkWidgets.listwidget.TTkAbstractListItem"><span class="pre">TTkAbstractListItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.items" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.items" title="TermTk.TTkWidgets.TTkListWidget.items"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.items()</span></code></a></p>
+</div>
+<p>items</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.moveItem">
+<span class="sig-name descname"><span class="pre">moveItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.moveItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.moveItem" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.moveItem" title="TermTk.TTkWidgets.TTkListWidget.moveItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.moveItem()</span></code></a></p>
+</div>
+<p>moveItem</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.removeAt">
+<span class="sig-name descname"><span class="pre">removeAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.removeAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.removeAt" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeAt" title="TermTk.TTkWidgets.TTkListWidget.removeAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.removeAt()</span></code></a></p>
+</div>
+<p>removeAt</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.removeItem">
+<span class="sig-name descname"><span class="pre">removeItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.removeItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.removeItem" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeItem" title="TermTk.TTkWidgets.TTkListWidget.removeItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.removeItem()</span></code></a></p>
+</div>
+<p>removeItem</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.removeItems">
+<span class="sig-name descname"><span class="pre">removeItems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.removeItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.removeItems" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.removeItems" title="TermTk.TTkWidgets.TTkListWidget.removeItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.removeItems()</span></code></a></p>
+</div>
+<p>removeItems</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.search" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.search" title="TermTk.TTkWidgets.TTkListWidget.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.search()</span></code></a></p>
+</div>
+<p>search</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.searchVisibility">
+<span class="sig-name descname"><span class="pre">searchVisibility</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.searchVisibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.searchVisibility" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.searchVisibility" title="TermTk.TTkWidgets.TTkListWidget.searchVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.searchVisibility()</span></code></a></p>
+</div>
+<p>searchVisibility</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.selectedItems">
+<span class="sig-name descname"><span class="pre">selectedItems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.selectedItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.selectedItems" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectedItems" title="TermTk.TTkWidgets.TTkListWidget.selectedItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.selectedItems()</span></code></a></p>
+</div>
+<p>selectedItems</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.selectedLabels">
+<span class="sig-name descname"><span class="pre">selectedLabels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.selectedLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.selectedLabels" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectedLabels" title="TermTk.TTkWidgets.TTkListWidget.selectedLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.selectedLabels()</span></code></a></p>
+</div>
+<p>selectedLabels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.selectionMode">
+<span class="sig-name descname"><span class="pre">selectionMode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.selectionMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.selectionMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.selectionMode" title="TermTk.TTkWidgets.TTkListWidget.selectionMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.selectionMode()</span></code></a></p>
+</div>
+<p>selectionMode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.setCurrentItem">
+<span class="sig-name descname"><span class="pre">setCurrentItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.setCurrentItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.setCurrentItem" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setCurrentItem" title="TermTk.TTkWidgets.TTkListWidget.setCurrentItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.setCurrentItem()</span></code></a></p>
+</div>
+<p>setCurrentItem</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.setCurrentRow">
+<span class="sig-name descname"><span class="pre">setCurrentRow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.setCurrentRow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.setCurrentRow" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setCurrentRow" title="TermTk.TTkWidgets.TTkListWidget.setCurrentRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.setCurrentRow()</span></code></a></p>
+</div>
+<p>setCurrentRow</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.setDragDropMode">
+<span class="sig-name descname"><span class="pre">setDragDropMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dndMode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.setDragDropMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.setDragDropMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setDragDropMode" title="TermTk.TTkWidgets.TTkListWidget.setDragDropMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.setDragDropMode()</span></code></a></p>
+</div>
+<p>setDragDropMode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.setSearch">
+<span class="sig-name descname"><span class="pre">setSearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.setSearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.setSearch" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSearch" title="TermTk.TTkWidgets.TTkListWidget.setSearch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.setSearch()</span></code></a></p>
+</div>
+<p>setSearch</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.setSearchVisibility">
+<span class="sig-name descname"><span class="pre">setSearchVisibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.setSearchVisibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.setSearchVisibility" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSearchVisibility" title="TermTk.TTkWidgets.TTkListWidget.setSearchVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.setSearchVisibility()</span></code></a></p>
+</div>
+<p>setSearchVisibility</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkList.setSelectionMode">
+<span class="sig-name descname"><span class="pre">setSelectionMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/list_.html#TTkList.setSelectionMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkList.setSelectionMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkListWidget.html#TermTk.TTkWidgets.TTkListWidget.setSelectionMode" title="TermTk.TTkWidgets.TTkListWidget.setSelectionMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkListWidget.setSelectionMode()</span></code></a></p>
+</div>
+<p>setSelectionMode</p>
+</dd></dl>
+
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
 <td><p>Convenience function, Event Callback triggered after a successful resize</p></td>
@@ -867,7 +1139,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addWidget</span></code>(widget)</p></td>
 <td><p></p></td>
@@ -924,7 +1196,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearFocus</span></code>()</p></td>
 <td><p>Remove the Focus state of this widget</p></td>
@@ -1140,7 +1412,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TMouseEvents.html#TermTk.TTkTemplates.TMouseEvents" title="TermTk.TTkTemplates.TMouseEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TMouseEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse enter events for the widget.</p></td>
@@ -1173,7 +1445,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TKeyEvents.html#TermTk.TTkTemplates.TKeyEvents" title="TermTk.TTkTemplates.TKeyEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TKeyEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive key events for the widget.</p></td>
@@ -1182,7 +1454,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents" title="TermTk.TTkTemplates.TDragEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TDragEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p></td>
@@ -1204,87 +1476,18 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 
 <section id="ttklist-attributes">
 <h2>TTkList Attributes<a class="headerlink" href="#ttklist-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItem</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItemAt</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItems</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addItemsAt</span></code></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragDropMode</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemClicked</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexOf</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">searchModified</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemAt</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemClicked</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveItem</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeAt</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">search</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">searchModified</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">searchVisibility</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedItems</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectedLabels</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">selectionMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentItem</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setCurrentRow</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDragDropMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSearch</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSearchVisibility</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSelectionMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">textClicked</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">textClicked</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1329,8 +1532,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1344,6 +1546,29 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItem"><code class="docutils literal notranslate"><span class="pre">addItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItemAt"><code class="docutils literal notranslate"><span class="pre">addItemAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItems"><code class="docutils literal notranslate"><span class="pre">addItems()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.addItemsAt"><code class="docutils literal notranslate"><span class="pre">addItemsAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.dragDropMode"><code class="docutils literal notranslate"><span class="pre">dragDropMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.indexOf"><code class="docutils literal notranslate"><span class="pre">indexOf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.itemAt"><code class="docutils literal notranslate"><span class="pre">itemAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.items"><code class="docutils literal notranslate"><span class="pre">items()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.moveItem"><code class="docutils literal notranslate"><span class="pre">moveItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.removeAt"><code class="docutils literal notranslate"><span class="pre">removeAt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.removeItem"><code class="docutils literal notranslate"><span class="pre">removeItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.removeItems"><code class="docutils literal notranslate"><span class="pre">removeItems()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.searchVisibility"><code class="docutils literal notranslate"><span class="pre">searchVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.selectedItems"><code class="docutils literal notranslate"><span class="pre">selectedItems()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.selectedLabels"><code class="docutils literal notranslate"><span class="pre">selectedLabels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.selectionMode"><code class="docutils literal notranslate"><span class="pre">selectionMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setCurrentItem"><code class="docutils literal notranslate"><span class="pre">setCurrentItem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setCurrentRow"><code class="docutils literal notranslate"><span class="pre">setCurrentRow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setDragDropMode"><code class="docutils literal notranslate"><span class="pre">setDragDropMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setSearch"><code class="docutils literal notranslate"><span class="pre">setSearch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setSearchVisibility"><code class="docutils literal notranslate"><span class="pre">setSearchVisibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkList.setSelectionMode"><code class="docutils literal notranslate"><span class="pre">setSelectionMode()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttklist-attributes">TTkList Attributes</a></li>
@@ -1395,8 +1620,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

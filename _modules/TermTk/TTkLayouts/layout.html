@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -495,12 +514,12 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkLayoutItem&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkLayout&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.log</span> <span class="kn">import</span> <span class="n">TTkLog</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 
 <div class="viewcode-block" id="TTkLayoutItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkLayoutItem</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkLayoutItem</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; :py:class:`~TTkLayoutItem` is the base class of layout Items inherited by :py:class:`~TTkLayout`, :py:class:`~TTkWidgetItem`, and all the derived layout managers.</span>
 
 <span class="sd">    :param int row:     (used only in the :py:class:`TTkGridLayout`), the row of the grid,   optional, defaults to None</span>
@@ -531,7 +550,7 @@
         <span class="s1">&#39;_parent&#39;</span><span class="p">,</span>
         <span class="s1">&#39;_layoutItemType&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">z</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -574,42 +593,42 @@
 
 <div class="viewcode-block" id="TTkLayoutItem.minimumSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.minDimension">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minDimension">[docs]</a>
-    <span class="k">def</span> <span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.minimumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumHeight">[docs]</a>
-    <span class="k">def</span> <span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.minimumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumWidth">[docs]</a>
-    <span class="k">def</span> <span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
 
 
 <div class="viewcode-block" id="TTkLayoutItem.maximumSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumSize">[docs]</a>
-    <span class="k">def</span> <span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.maxDimension">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maxDimension">[docs]</a>
-    <span class="k">def</span> <span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.maximumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumHeight">[docs]</a>
-    <span class="k">def</span> <span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.maximumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumWidth">[docs]</a>
-    <span class="k">def</span> <span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
 
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_calcSpanValue</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">curpos</span><span class="p">,</span> <span class="n">span</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calcSpanValue</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">curpos</span><span class="p">,</span> <span class="n">span</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">pos</span><span class="o">==</span><span class="n">curpos</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">value</span> <span class="o">-</span> <span class="p">(</span><span class="n">value</span><span class="o">//</span><span class="n">span</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">span</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -617,45 +636,45 @@
 
 <div class="viewcode-block" id="TTkLayoutItem.minimumHeightSpan">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumHeightSpan">[docs]</a>
-    <span class="k">def</span> <span class="nf">minimumHeightSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeightSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">(),</span><span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_row</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowspan</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.minimumWidthSpan">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumWidthSpan">[docs]</a>
-    <span class="k">def</span> <span class="nf">minimumWidthSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidthSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">(),</span> <span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_col</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colspan</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.maximumHeightSpan">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumHeightSpan">[docs]</a>
-    <span class="k">def</span> <span class="nf">maximumHeightSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeightSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">(),</span><span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_row</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowspan</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.maximumWidthSpan">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumWidthSpan">[docs]</a>
-    <span class="k">def</span> <span class="nf">maximumWidthSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidthSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">(),</span> <span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_col</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colspan</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayoutItem.offset">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.offset">[docs]</a>
-    <span class="k">def</span> <span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xOffset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yOffset</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xOffset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yOffset</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.pos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.pos">[docs]</a>
-    <span class="k">def</span> <span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.size">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.size">[docs]</a>
-    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span></div>
 
 <div class="viewcode-block" id="TTkLayoutItem.geometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.geometry">[docs]</a>
-    <span class="k">def</span> <span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span></div>
 
 
 <div class="viewcode-block" id="TTkLayoutItem.setOffset">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setOffset">[docs]</a>
-    <span class="k">def</span> <span class="nf">setOffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setOffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setOffset&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_xOffset</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_yOffset</span> <span class="o">=</span> <span class="n">y</span></div>
@@ -663,7 +682,7 @@
 
 <div class="viewcode-block" id="TTkLayoutItem.setGeometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setGeometry">[docs]</a>
-    <span class="k">def</span> <span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setGeometry&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span>
@@ -673,28 +692,28 @@
 
 <div class="viewcode-block" id="TTkLayoutItem.parent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.parent">[docs]</a>
-    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;parent&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span></div>
 
 
 <div class="viewcode-block" id="TTkLayoutItem.setParent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setParent">[docs]</a>
-    <span class="k">def</span> <span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setParent&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span></div>
 
 
 <div class="viewcode-block" id="TTkLayoutItem.layer">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.layer">[docs]</a>
-    <span class="k">def</span> <span class="nf">layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;layer&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer</span></div>
 
 
 <div class="viewcode-block" id="TTkLayoutItem.setLayer">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setLayer">[docs]</a>
-    <span class="k">def</span> <span class="nf">setLayer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLayer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setLayer&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layer</span> <span class="o">=</span> <span class="n">layer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">&amp;</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYERMASK</span><span class="p">)</span> <span class="o">|</span> <span class="n">layer</span></div>
@@ -702,13 +721,13 @@
 
 <div class="viewcode-block" id="TTkLayoutItem.layoutItemType">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.layoutItemType">[docs]</a>
-    <span class="k">def</span> <span class="nf">layoutItemType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layoutItemType</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layoutItemType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layoutItemType</span></div>
 </div>
 
 
 <div class="viewcode-block" id="TTkLayout">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkLayout</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkLayout</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    | The :py:class:`TTkLayout` class is the base class of geometry managers. &lt;br/&gt;</span>
 <span class="sd">    | It allows free placement of the widgets in the layout area. &lt;br/&gt;</span>
@@ -728,26 +747,26 @@
 <span class="sd">        ╚════════════════════════════╝</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_items&#39;</span><span class="p">,</span> <span class="s1">&#39;_zSortedItems&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layoutItemType</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span> <span class="o">=</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="TTkLayout.children">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.children">[docs]</a>
-    <span class="k">def</span> <span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.count">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.count">[docs]</a>
-    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.itemAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.itemAt">[docs]</a>
-    <span class="k">def</span> <span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -755,7 +774,7 @@
 
 <div class="viewcode-block" id="TTkLayout.setParent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.setParent">[docs]</a>
-    <span class="k">def</span> <span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">TTkLayoutItem</span><span class="p">):</span>
@@ -770,7 +789,7 @@
 
 <div class="viewcode-block" id="TTkLayout.parentWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.parentWidget">[docs]</a>
-    <span class="k">def</span> <span class="nf">parentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
@@ -780,7 +799,7 @@
 
 <div class="viewcode-block" id="TTkLayout.iterWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.iterWidgets">[docs]</a>
-    <span class="k">def</span> <span class="nf">iterWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">onlyVisible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">recurse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">iterWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">onlyVisible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">recurse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">onlyVisible</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">child</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span> <span class="k">continue</span>
@@ -791,15 +810,15 @@
                 <span class="k">yield from</span> <span class="n">child</span><span class="o">.</span><span class="n">iterWidgets</span><span class="p">(</span><span class="n">onlyVisible</span><span class="p">,</span> <span class="n">recurse</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_zSortItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_zSortItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">_z</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">zSortedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zSortedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span>
 
 <div class="viewcode-block" id="TTkLayout.replaceItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.replaceItem">[docs]</a>
-    <span class="k">def</span> <span class="nf">replaceItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replaceItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortItems</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -812,25 +831,25 @@
 
 <div class="viewcode-block" id="TTkLayout.addItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addItem">[docs]</a>
-    <span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),[</span><span class="n">item</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.addItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addItems">[docs]</a>
-    <span class="k">def</span> <span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),</span><span class="n">items</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertItem">[docs]</a>
-    <span class="k">def</span> <span class="nf">insertItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="n">index</span><span class="p">,[</span><span class="n">item</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertItems">[docs]</a>
-    <span class="k">def</span> <span class="nf">insertItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">widget</span> <span class="o">:=</span> <span class="n">item</span><span class="p">),</span> <span class="n">TTkLayoutItem</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span> <span class="ow">and</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span><span class="o">.</span><span class="n">layout</span><span class="p">():</span>
@@ -851,7 +870,7 @@
 
 <div class="viewcode-block" id="TTkLayout.addWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addWidget">[docs]</a>
-    <span class="k">def</span> <span class="nf">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a widget to this Layout</span>
 
 <span class="sd">        :param widget: the widget to be added</span>
@@ -862,7 +881,7 @@
 
 <div class="viewcode-block" id="TTkLayout.addWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addWidgets">[docs]</a>
-    <span class="k">def</span> <span class="nf">addWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a list of widgets to this Layout</span>
 
 <span class="sd">        :param widgets: the widget to be added</span>
@@ -873,28 +892,28 @@
 
 <div class="viewcode-block" id="TTkLayout.insertWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertWidget">[docs]</a>
-    <span class="k">def</span> <span class="nf">insertWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;insertWidget&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="p">[</span><span class="n">widget</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertWidgets">[docs]</a>
-    <span class="k">def</span> <span class="nf">insertWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;insertWidgets&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">widgets</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.removeItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeItem">[docs]</a>
-    <span class="k">def</span> <span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;removeItem&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">([</span><span class="n">item</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.removeItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeItems">[docs]</a>
-    <span class="k">def</span> <span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;removeItems&#39;&#39;&#39;</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
@@ -907,7 +926,7 @@
 
 <div class="viewcode-block" id="TTkLayout.removeWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeWidget">[docs]</a>
-    <span class="k">def</span> <span class="nf">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove a widget from this Layout</span>
 
 <span class="sd">        :param widget: the widget to be removed</span>
@@ -918,7 +937,7 @@
 
 <div class="viewcode-block" id="TTkLayout.removeWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeWidgets">[docs]</a>
-    <span class="k">def</span> <span class="nf">removeWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove a list of widget from this Layout</span>
 
 <span class="sd">        :param widgets: the widget to be removed</span>
@@ -932,7 +951,7 @@
                 <span class="n">item</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_findBranchWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_findBranchWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_findBranchWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -944,7 +963,7 @@
 
 <div class="viewcode-block" id="TTkLayout.raiseWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.raiseWidget">[docs]</a>
-    <span class="k">def</span> <span class="nf">raiseWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">raiseWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;raiseWidget&#39;&#39;&#39;</span>
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_findBranchWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="n">item</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">_z</span> <span class="k">if</span> <span class="p">(</span><span class="n">maxz</span><span class="o">:=</span><span class="nb">max</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYERMASK</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">.</span><span class="n">_z</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">))</span><span class="o">==</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYERMASK</span> <span class="o">&amp;</span> <span class="n">item</span><span class="o">.</span><span class="n">_z</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span> <span class="k">else</span> <span class="n">item</span><span class="o">.</span><span class="n">_layer</span><span class="o">|</span><span class="n">maxz</span><span class="o">+</span><span class="mi">1</span>
@@ -955,7 +974,7 @@
 
 <div class="viewcode-block" id="TTkLayout.lowerWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.lowerWidget">[docs]</a>
-    <span class="k">def</span> <span class="nf">lowerWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lowerWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;lowerWidget&#39;&#39;&#39;</span>
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_findBranchWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">_z</span><span class="o">+=</span><span class="mi">1</span>
@@ -967,7 +986,7 @@
 
 <div class="viewcode-block" id="TTkLayout.setGeometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.setGeometry">[docs]</a>
-    <span class="k">def</span> <span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;setGeometry&#39;&#39;&#39;</span>
         <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">aw</span><span class="p">,</span> <span class="n">ah</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">ax</span><span class="o">==</span><span class="n">x</span> <span class="ow">and</span> <span class="n">ay</span><span class="o">==</span><span class="n">y</span> <span class="ow">and</span> <span class="n">aw</span><span class="o">==</span><span class="n">w</span> <span class="ow">and</span> <span class="n">ah</span><span class="o">==</span><span class="n">h</span><span class="p">:</span> <span class="k">return</span>
@@ -977,7 +996,7 @@
 
 <div class="viewcode-block" id="TTkLayout.fullWidgetAreaGeometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.fullWidgetAreaGeometry">[docs]</a>
-    <span class="k">def</span> <span class="nf">fullWidgetAreaGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fullWidgetAreaGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
         <span class="n">minx</span><span class="p">,</span><span class="n">miny</span><span class="p">,</span><span class="n">maxx</span><span class="p">,</span><span class="n">maxy</span> <span class="o">=</span> <span class="mh">0x10000</span><span class="p">,</span><span class="mh">0x10000</span><span class="p">,</span><span class="o">-</span><span class="mh">0x10000</span><span class="p">,</span><span class="o">-</span><span class="mh">0x10000</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
@@ -991,7 +1010,7 @@
 
 <div class="viewcode-block" id="TTkLayout.update">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.update">[docs]</a>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span> <span class="ow">and</span> <span class="p">(</span><span class="n">_wid</span><span class="o">:=</span><span class="n">i</span><span class="o">.</span><span class="n">_widget</span><span class="p">):</span>
@@ -1002,34 +1021,34 @@
 </div>
 
 
-<span class="k">class</span> <span class="nc">TTkWidgetItem</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkWidgetItem</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_widget&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">widget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layoutItemType</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span> <span class="o">=</span> <span class="n">widget</span>
 
-    <span class="k">def</span> <span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span>
 
-    <span class="k">def</span> <span class="nf">isVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span> <span class="ow">is</span> <span class="kc">None</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span> <span class="ow">is</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>   <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minDimension</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>   <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumSize</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maxDimension</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>   <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minDimension</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>   <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumSize</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maxDimension</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
     <span class="c1">#def update(self, *args, **kwargs) -&gt; None:</span>
@@ -1096,8 +1115,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

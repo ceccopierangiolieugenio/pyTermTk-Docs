@@ -69,8 +69,19 @@ TTkTextEdit
    
    .. autosummary::
    
+      append
+      clear
+      copy
+      cut
+      ensureCursorVisible
+      find
+      paste
+      redo
+      setColor
       setLineNumber
       setLineNumberStarting
+      setText
+      undo
    
 
    
@@ -167,13 +178,42 @@ TTkTextEdit
    
 
    
+   .. automethod:: append
+   .. automethod:: clear
+   .. automethod:: copy
+   .. automethod:: cut
+   .. automethod:: document
+   .. automethod:: ensureCursorVisible
+   .. automethod:: extraSelections
+   .. automethod:: find
    .. automethod:: getLineNumber
+   .. automethod:: isReadOnly
+   .. automethod:: isRedoAvailable
+   .. automethod:: isUndoAvailable
    .. automethod:: lineNumberStarting
+   .. automethod:: lineWrapMode
+   .. automethod:: multiLine
+   .. automethod:: paste
+   .. automethod:: redo
    .. automethod:: ruler
+   .. automethod:: setColor
    .. automethod:: setDocument
+   .. automethod:: setExtraSelections
    .. automethod:: setLineNumber
    .. automethod:: setLineNumberStarting
+   .. automethod:: setLineWrapMode
+   .. automethod:: setReadOnly
+   .. automethod:: setText
+   .. automethod:: setWordWrapMode
+   .. automethod:: setWrapWidth
+   .. automethod:: textCursor
    .. automethod:: textEditView
+   .. automethod:: toAnsi
+   .. automethod:: toPlainText
+   .. automethod:: toRawText
+   .. automethod:: undo
+   .. automethod:: wordWrapMode
+   .. automethod:: wrapWidth
 
    
 
@@ -355,42 +395,12 @@ TTkTextEdit Attributes
 .. autosummary::
 
 
-  append
   classStyle
-  clear
-  copy
   currentColorChanged
   cursorPositionChanged
-  cut
-  document
-  ensureCursorVisible
-  extraSelections
-  find
-  isReadOnly
-  isRedoAvailable
-  isUndoAvailable
-  lineWrapMode
-  multiLine
-  paste
-  redo
   redoAvailable
-  setColor
-  setExtraSelections
-  setFocus
-  setLineWrapMode
-  setReadOnly
-  setText
-  setWordWrapMode
-  setWrapWidth
   textChanged
-  textCursor
-  toAnsi
-  toPlainText
-  toRawText
-  undo
   undoAvailable
-  wordWrapMode
-  wrapWidth
 
 .. currentmodule::  TermTk.TTkWidgets
 

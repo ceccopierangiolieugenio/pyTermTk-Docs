@@ -17,30 +17,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="prev" title="TTkTabWidget" href="TermTk.TTkWidgets.TTkTabWidget.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -103,8 +111,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -135,11 +142,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -480,16 +491,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -518,13 +537,42 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.append"><code class="docutils literal notranslate"><span class="pre">append()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.document"><code class="docutils literal notranslate"><span class="pre">document()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible"><code class="docutils literal notranslate"><span class="pre">ensureCursorVisible()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.extraSelections"><code class="docutils literal notranslate"><span class="pre">extraSelections()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.find"><code class="docutils literal notranslate"><span class="pre">find()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.getLineNumber"><code class="docutils literal notranslate"><span class="pre">getLineNumber()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.isReadOnly"><code class="docutils literal notranslate"><span class="pre">isReadOnly()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable"><code class="docutils literal notranslate"><span class="pre">isRedoAvailable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable"><code class="docutils literal notranslate"><span class="pre">isUndoAvailable()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting"><code class="docutils literal notranslate"><span class="pre">lineNumberStarting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode"><code class="docutils literal notranslate"><span class="pre">lineWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.multiLine"><code class="docutils literal notranslate"><span class="pre">multiLine()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.paste"><code class="docutils literal notranslate"><span class="pre">paste()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.redo"><code class="docutils literal notranslate"><span class="pre">redo()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.ruler"><code class="docutils literal notranslate"><span class="pre">ruler()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setColor"><code class="docutils literal notranslate"><span class="pre">setColor()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setDocument"><code class="docutils literal notranslate"><span class="pre">setDocument()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections"><code class="docutils literal notranslate"><span class="pre">setExtraSelections()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumber"><code class="docutils literal notranslate"><span class="pre">setLineNumber()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting"><code class="docutils literal notranslate"><span class="pre">setLineNumberStarting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode"><code class="docutils literal notranslate"><span class="pre">setLineWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setReadOnly"><code class="docutils literal notranslate"><span class="pre">setReadOnly()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setText"><code class="docutils literal notranslate"><span class="pre">setText()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode"><code class="docutils literal notranslate"><span class="pre">setWordWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth"><code class="docutils literal notranslate"><span class="pre">setWrapWidth()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.textCursor"><code class="docutils literal notranslate"><span class="pre">textCursor()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.textEditView"><code class="docutils literal notranslate"><span class="pre">textEditView()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.toAnsi"><code class="docutils literal notranslate"><span class="pre">toAnsi()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.toPlainText"><code class="docutils literal notranslate"><span class="pre">toPlainText()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.toRawText"><code class="docutils literal notranslate"><span class="pre">toRawText()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.undo"><code class="docutils literal notranslate"><span class="pre">undo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode"><code class="docutils literal notranslate"><span class="pre">wordWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.wrapWidth"><code class="docutils literal notranslate"><span class="pre">wrapWidth()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttktextedit-classes">TTkTextEdit Classes</a><ul class="visible nav section-nav flex-column">
@@ -555,7 +603,7 @@
 <h1>TTkTextEdit<a class="headerlink" href="#ttktextedit" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTextEdit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.widget.TTkWidget"><span class="pre">TTkWidget</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readOnly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument" title="TermTk.TTkGui.textdocument.TTkTextDocument"><span class="pre">TTkTextDocument</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textEditView</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.texedit.TTkTextEditView"><span class="pre">TTkTextEditView</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineNumberStarting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkTextEdit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.widget.TTkWidget"><span class="pre">TTkWidget</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readOnly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiLine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument" title="TermTk.TTkGui.textdocument.TTkTextDocument"><span class="pre">TTkTextDocument</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textEditView</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.texedit.TTkTextEditView"><span class="pre">TTkTextEditView</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineNumberStarting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.abstractscrollarea.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a></p>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit" title="TermTk.TTkWidgets.TTkTextEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEdit</span></code></a> is a container widget which place <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.TTkTextEditView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a> in a scrolling area with on-demand scroll bars.</p>
 <p><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.TTkTextEditView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a></p>
@@ -641,7 +689,7 @@
 <section id="signals">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Signals</span></a><a class="headerlink" href="#signals" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Signals linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.TTkTextEditView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.currentColorChanged" title="TermTk.TTkWidgets.TTkTextEditView.currentColorChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTextEditView.currentColorChanged</span></code></a></p></td>
 <td><p>This signal is emitted if the current character color has changed, for example caused by a change of the cursor position.</p></td>
@@ -665,7 +713,7 @@
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit" title="TermTk.TTkWidgets.TTkTextEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEdit</span></code></a> signals:</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.closed" title="TermTk.TTkWidgets.TTkTextEdit.closed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closed</span></code></a></p></td>
 <td><p>This signal is emitted whenever the widget is closed</p></td>
@@ -686,7 +734,7 @@
 <section id="slots">
 <h2><a class="reference internal" href="../tutorial/003-signalslots.html#signal-and-slots"><span class="std std-ref">Slots</span></a><a class="headerlink" href="#slots" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Slots linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.TTkTextEditView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.append" title="TermTk.TTkWidgets.TTkTextEditView.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTextEditView.append</span></code></a>(text)</p></td>
 <td><p></p></td>
@@ -725,19 +773,52 @@
 </table>
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit" title="TermTk.TTkWidgets.TTkTextEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEdit</span></code></a> slots:</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumber" title="TermTk.TTkWidgets.TTkTextEdit.setLineNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLineNumber</span></code></a>(ln)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.append" title="TermTk.TTkWidgets.TTkTextEdit.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(text)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting" title="TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLineNumberStarting</span></code></a>(starting)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.clear" title="TermTk.TTkWidgets.TTkTextEdit.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.copy" title="TermTk.TTkWidgets.TTkTextEdit.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.cut" title="TermTk.TTkWidgets.TTkTextEdit.cut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible" title="TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensureCursorVisible</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.find" title="TermTk.TTkWidgets.TTkTextEdit.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(exp)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.paste" title="TermTk.TTkWidgets.TTkTextEdit.paste"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paste</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.redo" title="TermTk.TTkWidgets.TTkTextEdit.redo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redo</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.setColor" title="TermTk.TTkWidgets.TTkTextEdit.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a>(color)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumber" title="TermTk.TTkWidgets.TTkTextEdit.setLineNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLineNumber</span></code></a>(ln)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting" title="TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLineNumberStarting</span></code></a>(starting)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.setText" title="TermTk.TTkWidgets.TTkTextEdit.setText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setText</span></code></a>(text)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.undo" title="TermTk.TTkWidgets.TTkTextEdit.undo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code>()</p></td>
 <td><p>hide the widget</p></td>
@@ -749,7 +830,7 @@
 </table>
 </div>
 <p>Slots Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code>()</p></td>
 <td><p>Close (Destroy/Remove) the widget</p></td>
@@ -769,7 +850,7 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code>([enabled])</p></td>
 <td><p>This property holds whether the widget is enabled</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code>()</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setVisible</span></code>(visible)</p></td>
@@ -839,7 +920,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <p>Methods linked to: <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView" title="TermTk.TTkWidgets.TTkTextEditView"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEditView</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.append" title="TermTk.TTkWidgets.TTkTextEditView.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTkTextEditView.append</span></code></a>(text)</p></td>
 <td><p></p></td>
@@ -933,9 +1014,117 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </div>
 <p><a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit" title="TermTk.TTkWidgets.TTkTextEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTextEdit</span></code></a> methods:</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.append" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.append" title="TermTk.TTkWidgets.TTkTextEditView.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.append()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.clear" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.clear" title="TermTk.TTkWidgets.TTkTextEditView.clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.clear()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.copy" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.copy" title="TermTk.TTkWidgets.TTkTextEditView.copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.copy()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.cut">
+<span class="sig-name descname"><span class="pre">cut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.cut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.cut" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.cut" title="TermTk.TTkWidgets.TTkTextEditView.cut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.cut()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.document">
+<span class="sig-name descname"><span class="pre">document</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkGui.TTkTextDocument.html#TermTk.TTkGui.TTkTextDocument" title="TermTk.TTkGui.textdocument.TTkTextDocument"><span class="pre">TTkTextDocument</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.document" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.document" title="TermTk.TTkWidgets.TTkTextEditView.document"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.document()</span></code></a></p>
+</div>
+<p>document</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible">
+<span class="sig-name descname"><span class="pre">ensureCursorVisible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.ensureCursorVisible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ensureCursorVisible" title="TermTk.TTkWidgets.TTkTextEditView.ensureCursorVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.ensureCursorVisible()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.extraSelections">
+<span class="sig-name descname"><span class="pre">extraSelections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ExtraSelection" title="TermTk.TTkWidgets.texedit.TTkTextEditView.ExtraSelection"><span class="pre">ExtraSelection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.extraSelections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.extraSelections" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.extraSelections" title="TermTk.TTkWidgets.TTkTextEditView.extraSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.extraSelections()</span></code></a></p>
+</div>
+<p>Returns previously set extra selections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.ExtraSelection" title="TermTk.TTkWidgets.TTkTextEdit.ExtraSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtraSelection</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.find" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.find" title="TermTk.TTkWidgets.TTkTextEditView.find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.find()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.getLineNumber">
 <span class="sig-name descname"><span class="pre">getLineNumber</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.getLineNumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.getLineNumber" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.isReadOnly">
+<span class="sig-name descname"><span class="pre">isReadOnly</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.isReadOnly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.isReadOnly" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isReadOnly" title="TermTk.TTkWidgets.TTkTextEditView.isReadOnly"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.isReadOnly()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable">
+<span class="sig-name descname"><span class="pre">isRedoAvailable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.isRedoAvailable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isRedoAvailable" title="TermTk.TTkWidgets.TTkTextEditView.isRedoAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.isRedoAvailable()</span></code></a></p>
+</div>
+<p>isRedoAvailable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable">
+<span class="sig-name descname"><span class="pre">isUndoAvailable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.isUndoAvailable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.isUndoAvailable" title="TermTk.TTkWidgets.TTkTextEditView.isUndoAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.isUndoAvailable()</span></code></a></p>
+</div>
+<p>isUndoAvailable</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting">
@@ -943,14 +1132,77 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.lineWrapMode">
+<span class="sig-name descname"><span class="pre">lineWrapMode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LineWrapMode" title="TermTk.TTkCore.constant.TTkConstant.LineWrapMode"><span class="pre">LineWrapMode</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.lineWrapMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.lineWrapMode" title="TermTk.TTkWidgets.TTkTextEditView.lineWrapMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.lineWrapMode()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.multiLine">
+<span class="sig-name descname"><span class="pre">multiLine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.multiLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.multiLine" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.multiLine" title="TermTk.TTkWidgets.TTkTextEditView.multiLine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.multiLine()</span></code></a></p>
+</div>
+<p>multiline</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.paste">
+<span class="sig-name descname"><span class="pre">paste</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.paste"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.paste" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.paste" title="TermTk.TTkWidgets.TTkTextEditView.paste"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.paste()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.redo">
+<span class="sig-name descname"><span class="pre">redo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.redo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.redo" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.redo" title="TermTk.TTkWidgets.TTkTextEditView.redo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.redo()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.ruler">
 <span class="sig-name descname"><span class="pre">ruler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditRuler.html#TermTk.TTkWidgets.TTkTextEditRuler" title="TermTk.TTkWidgets.texedit.TTkTextEditRuler"><span class="pre">TTkTextEditRuler</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.ruler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.ruler" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setColor">
+<span class="sig-name descname"><span class="pre">setColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setColor" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setColor" title="TermTk.TTkWidgets.TTkTextEditView.setColor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setColor()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setDocument">
 <span class="sig-name descname"><span class="pre">setDocument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setDocument"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setDocument" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setExtraSelections">
+<span class="sig-name descname"><span class="pre">setExtraSelections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extraSelections</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.ExtraSelection" title="TermTk.TTkWidgets.texedit.TTkTextEditView.ExtraSelection"><span class="pre">ExtraSelection</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setExtraSelections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setExtraSelections" title="TermTk.TTkWidgets.TTkTextEditView.setExtraSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setExtraSelections()</span></code></a></p>
+</div>
+<p>This function allows temporarily marking certain regions in the document with a given color,
+specified as selections. This can be useful for example in a programming editor to mark a
+whole line of text with a given background color to indicate the existence of a breakpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extraSelections</strong> (list[<a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.ExtraSelection" title="TermTk.TTkWidgets.TTkTextEdit.ExtraSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtraSelection</span></code></a>]) – the list of extra selections.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setLineNumber">
@@ -963,12 +1215,123 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode">
+<span class="sig-name descname"><span class="pre">setLineWrapMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LineWrapMode" title="TermTk.TTkCore.constant.TTkConstant.LineWrapMode"><span class="pre">LineWrapMode</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setLineWrapMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setLineWrapMode" title="TermTk.TTkWidgets.TTkTextEditView.setLineWrapMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setLineWrapMode()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setReadOnly">
+<span class="sig-name descname"><span class="pre">setReadOnly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setReadOnly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setReadOnly" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setReadOnly" title="TermTk.TTkWidgets.TTkTextEditView.setReadOnly"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setReadOnly()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setText">
+<span class="sig-name descname"><span class="pre">setText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setText" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setText" title="TermTk.TTkWidgets.TTkTextEditView.setText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setText()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode">
+<span class="sig-name descname"><span class="pre">setWordWrapMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setWordWrapMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWordWrapMode" title="TermTk.TTkWidgets.TTkTextEditView.setWordWrapMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setWordWrapMode()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.setWrapWidth">
+<span class="sig-name descname"><span class="pre">setWrapWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.setWrapWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWrapWidth" title="TermTk.TTkWidgets.TTkTextEditView.setWrapWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.setWrapWidth()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.textCursor">
+<span class="sig-name descname"><span class="pre">textCursor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor" title="TermTk.TTkGui.textcursor.TTkTextCursor"><span class="pre">TTkTextCursor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.textCursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.textCursor" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.textCursor" title="TermTk.TTkWidgets.TTkTextEditView.textCursor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.textCursor()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.textEditView">
 <span class="sig-name descname"><span class="pre">textEditView</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.textEditView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.textEditView" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.toAnsi">
+<span class="sig-name descname"><span class="pre">toAnsi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.toAnsi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.toAnsi" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toAnsi" title="TermTk.TTkWidgets.TTkTextEditView.toAnsi"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.toAnsi()</span></code></a></p>
+</div>
+<p>toAnsi</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.toPlainText">
+<span class="sig-name descname"><span class="pre">toPlainText</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.toPlainText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.toPlainText" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toPlainText" title="TermTk.TTkWidgets.TTkTextEditView.toPlainText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.toPlainText()</span></code></a></p>
+</div>
+<p>toPlainText</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.toRawText">
+<span class="sig-name descname"><span class="pre">toRawText</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.toRawText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.toRawText" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.toRawText" title="TermTk.TTkWidgets.TTkTextEditView.toRawText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.toRawText()</span></code></a></p>
+</div>
+<p>toRawText</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.undo">
+<span class="sig-name descname"><span class="pre">undo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.undo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.undo" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.undo" title="TermTk.TTkWidgets.TTkTextEditView.undo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.undo()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.wordWrapMode">
+<span class="sig-name descname"><span class="pre">wordWrapMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.wordWrapMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode" title="TermTk.TTkWidgets.TTkTextEditView.wordWrapMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.wordWrapMode()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.wrapWidth">
+<span class="sig-name descname"><span class="pre">wrapWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/texedit.html#TTkTextEdit.wrapWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.wrapWidth" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>this method is forwarded to <a class="reference internal" href="TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wrapWidth" title="TermTk.TTkWidgets.TTkTextEditView.wrapWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkTextEditView.wrapWidth()</span></code></a></p>
+</div>
+</dd></dl>
+
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollArea.html#TermTk.TTkAbstract.TTkAbstractScrollArea" title="TermTk.TTkAbstract.TTkAbstractScrollArea"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractScrollArea</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">resizeEvent</span></code>(w, h)</p></td>
 <td><p>Convenience function, Event Callback triggered after a successful resize</p></td>
@@ -992,7 +1355,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkContainer.html#TermTk.TTkWidgets.TTkContainer" title="TermTk.TTkWidgets.TTkContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkContainer</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addWidget</span></code>(widget)</p></td>
 <td><p></p></td>
@@ -1049,7 +1412,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget" title="TermTk.TTkWidgets.TTkWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidget</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clearFocus</span></code>()</p></td>
 <td><p>Remove the Focus state of this widget</p></td>
@@ -1189,7 +1552,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEnabled</span></code>([enabled])</p></td>
 <td><p>This property holds whether the widget is enabled</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code>()</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocusPolicy</span></code>(policy)</p></td>
@@ -1265,7 +1628,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TMouseEvents.html#TermTk.TTkTemplates.TMouseEvents" title="TermTk.TTkTemplates.TMouseEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TMouseEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">enterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive mouse enter events for the widget.</p></td>
@@ -1298,7 +1661,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TKeyEvents.html#TermTk.TTkTemplates.TKeyEvents" title="TermTk.TTkTemplates.TKeyEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TKeyEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive key events for the widget.</p></td>
@@ -1307,7 +1670,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </table>
 </div>
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkTemplates.TDragEvents.html#TermTk.TTkTemplates.TDragEvents" title="TermTk.TTkTemplates.TDragEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">TDragEvents</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dragEnterEvent</span></code>(evt)</p></td>
 <td><p>This event handler, can be reimplemented in a subclass to receive drag events for the widget.</p></td>
@@ -1331,7 +1694,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <h2>TTkTextEdit Classes<a class="headerlink" href="#ttktextedit-classes" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkTextEdit.ExtraSelection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ExtraSelection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.SelectionFormat</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color._TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor:</span> <span class="pre">~TermTk.TTkGui.textcursor.TTkTextCursor</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.ExtraSelection" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ExtraSelection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.SelectionFormat</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color._TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor:</span> <span class="pre">~TermTk.TTkGui.textcursor.TTkTextCursor</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TermTk.TTkWidgets.TTkTextEdit.ExtraSelection" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The <a class="reference internal" href="#TermTk.TTkWidgets.TTkTextEdit.ExtraSelection" title="TermTk.TTkWidgets.TTkTextEdit.ExtraSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtraSelection</span></code></a> structure provides a way of specifying a character format for a given selection in a document.</p>
 <dl class="field-list simple">
@@ -1414,114 +1777,24 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 </section>
 <section id="ttktextedit-attributes">
 <h2>TTkTextEdit Attributes<a class="headerlink" href="#ttktextedit-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">classStyle</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentColorChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cursorPositionChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redoAvailable</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">currentColorChanged</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cursorPositionChanged</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cut</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">document</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensureCursorVisible</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">extraSelections</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isReadOnly</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isRedoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isUndoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineWrapMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiLine</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">paste</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redo</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">redoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setExtraSelections</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFocus</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLineWrapMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setReadOnly</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setText</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWordWrapMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setWrapWidth</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">textChanged</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">textCursor</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">toAnsi</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">toPlainText</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">toRawText</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undo</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">textChanged</span></code></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">undoAvailable</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wordWrapMode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wrapWidth</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1566,8 +1839,7 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1581,13 +1853,42 @@ i.e. with the <code class="xref py py-meth docutils literal notranslate"><span c
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.currentStyleChanged"><code class="docutils literal notranslate"><span class="pre">currentStyleChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.focusChanged"><code class="docutils literal notranslate"><span class="pre">focusChanged</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.sizeChanged"><code class="docutils literal notranslate"><span class="pre">sizeChanged</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.append"><code class="docutils literal notranslate"><span class="pre">append()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.document"><code class="docutils literal notranslate"><span class="pre">document()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible"><code class="docutils literal notranslate"><span class="pre">ensureCursorVisible()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.extraSelections"><code class="docutils literal notranslate"><span class="pre">extraSelections()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.find"><code class="docutils literal notranslate"><span class="pre">find()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.getLineNumber"><code class="docutils literal notranslate"><span class="pre">getLineNumber()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.isReadOnly"><code class="docutils literal notranslate"><span class="pre">isReadOnly()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable"><code class="docutils literal notranslate"><span class="pre">isRedoAvailable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable"><code class="docutils literal notranslate"><span class="pre">isUndoAvailable()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting"><code class="docutils literal notranslate"><span class="pre">lineNumberStarting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode"><code class="docutils literal notranslate"><span class="pre">lineWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.multiLine"><code class="docutils literal notranslate"><span class="pre">multiLine()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.paste"><code class="docutils literal notranslate"><span class="pre">paste()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.redo"><code class="docutils literal notranslate"><span class="pre">redo()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.ruler"><code class="docutils literal notranslate"><span class="pre">ruler()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setColor"><code class="docutils literal notranslate"><span class="pre">setColor()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setDocument"><code class="docutils literal notranslate"><span class="pre">setDocument()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections"><code class="docutils literal notranslate"><span class="pre">setExtraSelections()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumber"><code class="docutils literal notranslate"><span class="pre">setLineNumber()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting"><code class="docutils literal notranslate"><span class="pre">setLineNumberStarting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode"><code class="docutils literal notranslate"><span class="pre">setLineWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setReadOnly"><code class="docutils literal notranslate"><span class="pre">setReadOnly()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setText"><code class="docutils literal notranslate"><span class="pre">setText()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode"><code class="docutils literal notranslate"><span class="pre">setWordWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth"><code class="docutils literal notranslate"><span class="pre">setWrapWidth()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.textCursor"><code class="docutils literal notranslate"><span class="pre">textCursor()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.textEditView"><code class="docutils literal notranslate"><span class="pre">textEditView()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.toAnsi"><code class="docutils literal notranslate"><span class="pre">toAnsi()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.toPlainText"><code class="docutils literal notranslate"><span class="pre">toPlainText()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.toRawText"><code class="docutils literal notranslate"><span class="pre">toRawText()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.undo"><code class="docutils literal notranslate"><span class="pre">undo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode"><code class="docutils literal notranslate"><span class="pre">wordWrapMode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkTextEdit.wrapWidth"><code class="docutils literal notranslate"><span class="pre">wrapWidth()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ttktextedit-classes">TTkTextEdit Classes</a><ul class="visible nav section-nav flex-column">
@@ -1651,8 +1952,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

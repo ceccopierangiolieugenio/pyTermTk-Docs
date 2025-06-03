@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,24 +510,24 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkKeyPressView&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.input</span> <span class="kn">import</span> <span class="n">TTkInput</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span> <span class="kn">import</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">mod2str</span><span class="p">,</span> <span class="n">key2str</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span> <span class="kn">import</span> <span class="n">TTkMouseEvent</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.helper</span> <span class="kn">import</span> <span class="n">TTkHelper</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSlot</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.propertyanimation</span> <span class="kn">import</span> <span class="n">TTkPropertyAnimation</span><span class="p">,</span> <span class="n">TTkEasingCurve</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.widget</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.input</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkInput</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">mod2str</span><span class="p">,</span> <span class="n">key2str</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkMouseEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.helper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkHelper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.propertyanimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkPropertyAnimation</span><span class="p">,</span> <span class="n">TTkEasingCurve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkTestWidgets.keypressviewfont</span> <span class="kn">import</span> <span class="n">TTkKeyPressViewFont</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkTestWidgets.keypressviewfont</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyPressViewFont</span>
 
 <div class="viewcode-block" id="TTkKeyPressView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html#TermTk.TTkTestWidgets.TTkKeyPressView">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkKeyPressView</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkKeyPressView</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fadeDuration&#39;</span><span class="p">,</span><span class="s1">&#39;_keys&#39;</span><span class="p">,</span><span class="s1">&#39;_anim&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">TTkInput</span><span class="o">.</span><span class="n">inputEvent</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_processInput</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span> <span class="o">=</span> <span class="p">[]</span>
@@ -516,12 +535,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span> <span class="o">=</span> <span class="n">TTkPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pushFade&#39;</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">TTkMouseEvent</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_processInput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kevt</span><span class="p">,</span> <span class="n">mevt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_processInput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kevt</span><span class="p">,</span> <span class="n">mevt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">kevt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_addKey</span><span class="p">(</span><span class="n">kevt</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mevt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_addMouse</span><span class="p">(</span><span class="n">mevt</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkKeyEvent</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_addKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_addKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Character</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span>
         <span class="k">else</span><span class="p">:</span>
@@ -537,7 +556,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_startFade</span><span class="p">()</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkMouseEvent</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_addMouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_addMouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
               <span class="c1"># return f&quot;MouseEvent ({self.x},{self.y}) {self.key2str()} {self.evt2str()} {self.mod2str()} tap:{self.tap} - {self.raw}&quot;</span>
         <span class="c1"># text = f&quot;M:{(evt.x,evt.y)} {evt.key2str().replace(&#39;Button&#39;,&#39;&#39;)} {evt.evt2str().replace(&#39;Release&#39;,&#39;&#39;).replace(&#39;Press&#39;,&#39;&#39;)} {evt.mod2str().replace(&#39;NoModifier&#39;,&#39;&#39;)}&quot;</span>
         <span class="n">tap</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
@@ -549,14 +568,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="mh">0x100</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_startFade</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_startFade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_startFade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span><span class="o">.</span><span class="n">setDuration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fadeDuration</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span><span class="o">.</span><span class="n">setStartValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span><span class="o">.</span><span class="n">setEndValue</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span><span class="o">.</span><span class="n">setEasingCurve</span><span class="p">(</span><span class="n">TTkEasingCurve</span><span class="o">.</span><span class="n">OutExpo</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_pushFade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fade</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pushFade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fade</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="p">:</span>
             <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">fade</span>
         <span class="c1"># Apply the main fade to the current key</span>
@@ -569,7 +588,7 @@
 
 <div class="viewcode-block" id="TTkKeyPressView.txt2map">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html#TermTk.TTkTestWidgets.TTkKeyPressView.txt2map">[docs]</a>
-    <span class="k">def</span> <span class="nf">txt2map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">txt2map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">):</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">:</span>
             <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontMap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,[</span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="s2">&quot;. .&quot;</span><span class="p">,</span><span class="s2">&quot;...&quot;</span><span class="p">])</span>
@@ -579,7 +598,7 @@
         <span class="k">return</span> <span class="n">ret</span></div>
 
 
-    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">alpha</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="p">:</span>
             <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0xbb</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span>
             <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0xff</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span>
@@ -656,8 +675,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

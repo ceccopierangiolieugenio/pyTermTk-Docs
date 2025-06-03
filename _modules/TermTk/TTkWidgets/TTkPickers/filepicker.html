@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,26 +510,26 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkFileDialogPicker&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkFileButtonPicker&#39;</span><span class="p">]</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.helper</span> <span class="kn">import</span> <span class="n">TTkHelper</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.lineedit</span> <span class="kn">import</span> <span class="n">TTkLineEdit</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.window</span> <span class="kn">import</span> <span class="n">TTkWindow</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.splitter</span> <span class="kn">import</span> <span class="n">TTkSplitter</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.combobox</span> <span class="kn">import</span> <span class="n">TTkComboBox</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.button</span> <span class="kn">import</span> <span class="n">TTkButton</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.label</span> <span class="kn">import</span> <span class="n">TTkLabel</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.list_</span> <span class="kn">import</span> <span class="n">TTkList</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkLayouts.gridlayout</span> <span class="kn">import</span> <span class="n">TTkGridLayout</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkModelView.filetree</span> <span class="kn">import</span> <span class="n">TTkFileTree</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkModelView.filetreewidgetitem</span> <span class="kn">import</span> <span class="n">TTkFileTreeWidgetItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.helper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkHelper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.lineedit</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLineEdit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.window</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.combobox</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkComboBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkButton</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLabel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.list_</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkList</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts.gridlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkGridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.filetree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkFileTree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.filetreewidgetitem</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkFileTreeWidgetItem</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">::</span>
@@ -528,7 +547,7 @@
 
 <div class="viewcode-block" id="TTkFileDialogPicker">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkFileDialogPicker</span><span class="p">(</span><span class="n">TTkWindow</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkFileDialogPicker</span><span class="p">(</span><span class="n">TTkWindow</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    :py:class:`TTkFileDialogPicker` is a File/Folder Picker Dialog, normally spawned from :py:class:`TTkFileButtonPicker`</span>
 
@@ -617,7 +636,7 @@
                  <span class="c1"># Signals</span>
                  <span class="s1">&#39;pathPicked&#39;</span><span class="p">,</span> <span class="s1">&#39;filePicked&#39;</span><span class="p">,</span> <span class="s1">&#39;filesPicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderPicked&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
                  <span class="nb">filter</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;All Files (*)&#39;</span><span class="p">,</span>
                  <span class="n">caption</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;File Dialog&#39;</span><span class="p">,</span>
@@ -707,7 +726,7 @@
         <span class="n">bookmarks</span> <span class="o">=</span> <span class="n">TTkList</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">splitter</span><span class="p">)</span>
         <span class="n">bookmarks</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">TTkString</span><span class="p">()</span> <span class="o">+</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">fileIconColor</span> <span class="o">+</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">fileIcon</span><span class="o">.</span><span class="n">computer</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="o">+</span><span class="s2">&quot; Computer&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
         <span class="n">bookmarks</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">TTkString</span><span class="p">()</span> <span class="o">+</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">fileIconColor</span> <span class="o">+</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">fileIcon</span><span class="o">.</span><span class="n">home</span>     <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="o">+</span><span class="s2">&quot; Home&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">))</span>
-        <span class="k">def</span> <span class="nf">_bookmarksCallback</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_bookmarksCallback</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_openNewPath</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
         <span class="n">bookmarks</span><span class="o">.</span><span class="n">itemClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_bookmarksCallback</span><span class="p">)</span>
 
@@ -727,24 +746,24 @@
 
 <div class="viewcode-block" id="TTkFileDialogPicker.acceptMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.acceptMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">acceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">acceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acceptMode</span></div>
 
 
 <div class="viewcode-block" id="TTkFileDialogPicker.setAcceptMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.setAcceptMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">setAcceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setAcceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_acceptMode</span> <span class="o">=</span> <span class="n">mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_btnOpen</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Open&quot;</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="o">.</span><span class="n">AcceptOpen</span> <span class="k">else</span> <span class="s2">&quot;Save&quot;</span><span class="p">)</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_cbFileTypeChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cbFileTypeChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filter</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;.*\((.*)\)&quot;</span><span class="p">,</span><span class="nb">type</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fileTree</span><span class="o">.</span><span class="n">setFilter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_checkFileName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_checkFileName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fileName</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
         <span class="n">valid</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="o">.</span><span class="n">ExistingFile</span><span class="p">:</span>
@@ -761,7 +780,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_btnOpen</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fileName</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_leFileName</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span> <span class="o">!=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="o">.</span><span class="n">AnyFile</span>      <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span> <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="o">.</span><span class="n">ExistingFile</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span> <span class="k">return</span>
@@ -774,7 +793,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pathPicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_selectedItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_selectedItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">path</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;/&#39;</span><span class="p">:</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileName</span>
@@ -783,7 +802,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_leFileName</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_activatedItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_activatedItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkFileTreeWidgetItem</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">path</span><span class="p">())</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
              <span class="bp">self</span><span class="o">.</span><span class="n">_openNewPath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
@@ -792,17 +811,17 @@
 
 <div class="viewcode-block" id="TTkFileDialogPicker.filemode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.filemode">[docs]</a>
-    <span class="k">def</span> <span class="nf">filemode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filemode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span></div>
 
 
 <div class="viewcode-block" id="TTkFileDialogPicker.setFileMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.setFileMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">setFileMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFileMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span> <span class="o">=</span> <span class="n">fileMode</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_openPrev</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_openPrev</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recentPathId</span><span class="o">&lt;=</span><span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recentPathId</span><span class="o">&gt;=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_recentPath</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_btnPrev</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>
             <span class="k">return</span>
@@ -812,7 +831,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_btnPrev</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_btnNext</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_openNext</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_openNext</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recentPathId</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recentPathId</span><span class="o">&gt;=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_recentPath</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_btnNext</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>
             <span class="k">return</span>
@@ -822,13 +841,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_btnNext</span><span class="o">.</span><span class="n">setDisabled</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_btnPrev</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_openUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_openUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_recentPath</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_recentPathId</span><span class="p">])</span>
         <span class="n">path</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_openNewPath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_openNewPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">addToRecent</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_openNewPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">addToRecent</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="k">if</span> <span class="n">addToRecent</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_recentPathId</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_recentPath</span><span class="p">)</span>
@@ -844,7 +863,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_lookPath</span><span class="o">.</span><span class="n">currentTextChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_openNewPath</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_getListLook</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getListLook</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -863,7 +882,7 @@
 
 <div class="viewcode-block" id="TTkFileButtonPicker">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkFileButtonPicker</span><span class="p">(</span><span class="n">TTkButton</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkFileButtonPicker</span><span class="p">(</span><span class="n">TTkButton</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    TTkFileButtonPicker:</span>
 
@@ -952,7 +971,7 @@
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;_caption&#39;</span><span class="p">,</span> <span class="s1">&#39;_fileMode&#39;</span><span class="p">,</span> <span class="s1">&#39;_acceptMode&#39;</span><span class="p">,</span> <span class="s1">&#39;_path&#39;</span>
                  <span class="c1"># Signals</span>
                  <span class="s1">&#39;pathPicked&#39;</span><span class="p">,</span> <span class="s1">&#39;filePicked&#39;</span><span class="p">,</span> <span class="s1">&#39;filesPicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderPicked&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
                  <span class="nb">filter</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;All Files (*)&#39;</span><span class="p">,</span>
                  <span class="n">caption</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;File Dialog&#39;</span><span class="p">,</span>
@@ -974,51 +993,51 @@
 
 <div class="viewcode-block" id="TTkFileButtonPicker.filter">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.filter">[docs]</a>
-    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter</span></div>
 
 <div class="viewcode-block" id="TTkFileButtonPicker.setFilter">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setFilter">[docs]</a>
-    <span class="k">def</span> <span class="nf">setFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter</span> <span class="o">=</span> <span class="nb">filter</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter</span> <span class="o">=</span> <span class="nb">filter</span></div>
 
 
 <div class="viewcode-block" id="TTkFileButtonPicker.caption">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.caption">[docs]</a>
-    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span></div>
 
 <div class="viewcode-block" id="TTkFileButtonPicker.setCaption">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setCaption">[docs]</a>
-    <span class="k">def</span> <span class="nf">setCaption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caption</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">caption</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setCaption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caption</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">caption</span></div>
 
 
 <div class="viewcode-block" id="TTkFileButtonPicker.acceptMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.acceptMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">acceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acceptMode</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">acceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acceptMode</span></div>
 
 <div class="viewcode-block" id="TTkFileButtonPicker.setAcceptMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setAcceptMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">setAcceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acceptMode</span> <span class="o">=</span> <span class="n">mode</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setAcceptMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">AcceptMode</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acceptMode</span> <span class="o">=</span> <span class="n">mode</span></div>
 
 
 <div class="viewcode-block" id="TTkFileButtonPicker.fileMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.fileMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">fileMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fileMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span></div>
 
 <div class="viewcode-block" id="TTkFileButtonPicker.setFileMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setFileMode">[docs]</a>
-    <span class="k">def</span> <span class="nf">setFileMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fm</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span> <span class="o">=</span> <span class="n">fm</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFileMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fm</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">FileMode</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileMode</span> <span class="o">=</span> <span class="n">fm</span></div>
 
 
 <div class="viewcode-block" id="TTkFileButtonPicker.path">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.path">[docs]</a>
-    <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span></div>
 
 <div class="viewcode-block" id="TTkFileButtonPicker.setPath">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html#TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.setPath">[docs]</a>
-    <span class="k">def</span> <span class="nf">setPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">path</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">path</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_fileButtonClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_fileButtonClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">filePicker</span> <span class="o">=</span> <span class="n">TTkFileDialogPicker</span><span class="p">(</span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span>
                                          <span class="n">caption</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_caption</span><span class="p">,</span>
                                          <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span>
@@ -1093,8 +1112,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

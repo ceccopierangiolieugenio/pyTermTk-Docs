@@ -95,7 +95,7 @@ TTkKodeTab
    
    .. automethod:: addMenu
    .. automethod:: addTab
-   .. automethod:: iterWidgets
+   .. automethod:: iterItems
    .. automethod:: setCurrentWidget
 
    
@@ -288,9 +288,9 @@ TTkKodeTab Attributes
 
   classStyle
   currentChanged
+  kodeTabCloseRequested
   tabAdded
   tabBarClicked
-  tabCloseRequested
 
 .. currentmodule::  TermTk.TTkWidgets
 

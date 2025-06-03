@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -492,34 +511,34 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextPicker&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextDialogPicker&#39;</span><span class="p">]</span>
 
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.helper</span> <span class="kn">import</span> <span class="n">TTkHelper</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.string</span> <span class="kn">import</span> <span class="n">TTkString</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.color</span> <span class="kn">import</span> <span class="n">TTkColor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkGui.textcursor</span> <span class="kn">import</span> <span class="n">TTkTextCursor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkGui.textdocument</span> <span class="kn">import</span> <span class="n">TTkTextDocument</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkLayouts.gridlayout</span> <span class="kn">import</span> <span class="n">TTkGridLayout</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkLayouts.boxlayout</span> <span class="kn">import</span> <span class="n">TTkHBoxLayout</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollview</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollView</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkAbstract.abstractscrollarea</span> <span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.helper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkHelper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textcursor</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextCursor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textdocument</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextDocument</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts.gridlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkGridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts.boxlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkHBoxLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollview</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollarea</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.widget</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.container</span> <span class="kn">import</span> <span class="n">TTkContainer</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.resizableframe</span> <span class="kn">import</span> <span class="n">TTkResizableFrame</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.texedit</span> <span class="kn">import</span> <span class="n">TTkTextEditView</span><span class="p">,</span> <span class="n">TTkTextEdit</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.splitter</span> <span class="kn">import</span> <span class="n">TTkSplitter</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.button</span> <span class="kn">import</span> <span class="n">TTkButton</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.label</span> <span class="kn">import</span> <span class="n">TTkLabel</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.checkbox</span> <span class="kn">import</span> <span class="n">TTkCheckbox</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.window</span> <span class="kn">import</span> <span class="n">TTkWindow</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkModelView.filetree</span> <span class="kn">import</span> <span class="n">TTkFileTree</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkModelView.filetreewidgetitem</span> <span class="kn">import</span> <span class="n">TTkFileTreeWidgetItem</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkPickers.colorpicker</span> <span class="kn">import</span> <span class="n">TTkColorButtonPicker</span><span class="p">,</span> <span class="n">TTkColorDialogPicker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.container</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkContainer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.resizableframe</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkResizableFrame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.texedit</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextEditView</span><span class="p">,</span> <span class="n">TTkTextEdit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkButton</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLabel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.checkbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCheckbox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.window</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.filetree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkFileTree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.filetreewidgetitem</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkFileTreeWidgetItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkPickers.colorpicker</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColorButtonPicker</span><span class="p">,</span> <span class="n">TTkColorDialogPicker</span>
 
-<span class="k">class</span> <span class="nc">_superSimpleHorizontalLine</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_superSimpleHorizontalLine</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;┕&#39;</span><span class="o">+</span><span class="p">(</span><span class="s1">&#39;━&#39;</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;┙&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">))</span>
 
@@ -532,9 +551,9 @@
     <span class="c1"># &#39;Flags&#39;:   &quot;🇦🇨🇦🇩🇦🇪🇦🇫🇦🇬🇦🇮🇦🇱🇦🇲🇦🇴🇦🇶🇦🇷🇦🇸🇦🇹🇦🇺🇦🇼🇦🇽🇦🇿🇧🇦🇧🇧🇧🇩🇧🇪🇧🇫🇧🇬🇧🇭🇧🇮🇧🇯🇧🇱🇧🇲🇧🇳🇧🇴🇧🇶🇧🇷🇧🇸🇧🇹🇧🇻🇧🇼🇧🇾🇧🇿🇨🇦🇨🇨🇨🇩🇨🇫🇨🇬🇨🇭🇨🇮🇨🇰🇨🇱🇨🇲🇨🇳🇨🇴🇨🇵🇨🇷🇨🇺🇨🇻🇨🇼🇨🇽🇨🇾🇨🇿🇩🇪🇩🇬🇩🇯🇩🇰🇩🇲🇩🇴🇩🇿🇪🇦🇪🇨🇪🇪🇪🇬🇪🇭🇪🇷🇪🇸🇪🇹🇪🇺🇫🇮🇫🇯🇫🇰🇫🇲🇫🇴🇫🇷🇬🇦🇬🇧🇬🇩🇬🇪🇬🇫🇬🇬🇬🇭🇬🇮🇬🇱🇬🇲🇬🇳🇬🇵🇬🇶🇬🇷🇬🇸🇬🇹🇬🇺🇬🇼🇬🇾🇭🇰🇭🇲🇭🇳🇭🇷🇭🇹🇭🇺🇮🇨🇮🇩🇮🇪🇮🇱🇮🇲🇮🇳🇮🇴🇮🇶🇮🇷🇮🇸🇮🇹🇯🇪🇯🇲🇯🇴🇯🇵🇰🇪🇰🇬🇰🇭🇰🇮🇰🇲🇰🇳🇰🇵🇰🇷🇰🇼🇰🇾🇰🇿🇱🇦🇱🇧🇱🇨🇱🇮🇱🇰🇱🇷🇱🇸🇱🇹🇱🇺🇱🇻🇱🇾🇲🇦🇲🇨🇲🇩🇲🇪🇲🇫🇲🇬🇲🇭🇲🇰🇲🇱🇲🇲🇲🇳🇲🇴🇲🇵🇲🇶🇲🇷🇲🇸🇲🇹🇲🇺🇲🇻🇲🇼🇲🇽🇲🇾🇲🇿🇳🇦🇳🇨🇳🇪🇳🇫🇳🇬🇳🇮🇳🇱🇳🇴🇳🇵🇳🇷🇳🇺🇳🇿🇴🇲🇵🇦🇵🇪🇵🇫🇵🇬🇵🇭🇵🇰🇵🇱🇵🇲🇵🇳🇵🇷🇵🇸🇵🇹🇵🇼🇵🇾🇶🇦🇷🇪🇷🇴🇷🇸🇷🇺🇷🇼🇸🇦🇸🇧🇸🇨🇸🇩🇸🇪🇸🇬🇸🇭🇸🇮🇸🇯🇸🇰🇸🇱🇸🇲🇸🇳🇸🇴🇸🇷🇸🇸🇸🇹🇸🇻🇸🇽🇸🇾🇸🇿🇹🇦🇹🇨🇹🇩🇹🇫🇹🇬🇹🇭🇹🇯🇹🇰🇹🇱🇹🇲🇹🇳🇹🇴🇹🇷🇹🇹🇹🇻🇹🇼🇹🇿🇺🇦🇺🇬🇺🇲🇺🇳🇺🇸🇺🇾🇺🇿🇻🇦🇻🇨🇻🇪🇻🇬🇻🇮🇻🇳🇻🇺🇼🇫🇼🇸🇽🇰🇾🇪🇾🇹🇿🇦🇿🇲🇿🇼&quot;,</span>
 <span class="p">}</span>
 
-<span class="k">class</span> <span class="nc">_emojiPickerView</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_emojiPickerView</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_btns&#39;</span><span class="p">,</span> <span class="s1">&#39;_labels&#39;</span><span class="p">,</span> <span class="s1">&#39;emojiClicked&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emojiClicked</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_viewChangedHandler</span><span class="p">)</span>
@@ -545,16 +564,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">TTkLabel</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">t</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">emoji</span><span class="p">[</span><span class="n">t</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_btns</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">e</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-                <span class="k">def</span> <span class="nf">_cbEmoji</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
-                    <span class="k">def</span> <span class="nf">_ccb</span><span class="p">():</span> <span class="bp">self</span><span class="o">.</span><span class="n">emojiClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">_cbEmoji</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+                    <span class="k">def</span><span class="w"> </span><span class="nf">_ccb</span><span class="p">():</span> <span class="bp">self</span><span class="o">.</span><span class="n">emojiClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
                     <span class="k">return</span> <span class="n">_ccb</span>
                 <span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_cbEmoji</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_placeEmojis</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">resizeEvent</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_placeEmojis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_placeEmojis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_btns</span><span class="p">:</span>
@@ -572,18 +591,18 @@
                     <span class="n">x</span><span class="o">+=</span><span class="mi">4</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_viewChangedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_viewChangedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">setOffset</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="mh">0x10000</span>
-    <span class="k">def</span> <span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="mh">0x10000</span>
-    <span class="k">def</span> <span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">def</span> <span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="mh">0x10000</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="mh">0x10000</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="mi">0</span>
 
-<span class="k">class</span> <span class="nc">_emojiPickerArea</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_emojiPickerArea</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_areaView&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;parent&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;visible&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
@@ -591,18 +610,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setFocusPolicy</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_areaView</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">_emojiPicker</span><span class="p">(</span><span class="n">TTkResizableFrame</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_emojiPicker</span><span class="p">(</span><span class="n">TTkResizableFrame</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;emojiClicked&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;layout&#39;</span><span class="p">:</span><span class="n">TTkGridLayout</span><span class="p">()})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">epa</span> <span class="o">:=</span> <span class="n">_emojiPickerArea</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emojiClicked</span> <span class="o">=</span> <span class="n">epa</span><span class="o">.</span><span class="n">viewport</span><span class="p">()</span><span class="o">.</span><span class="n">emojiClicked</span>
 
 <div class="viewcode-block" id="TTkTextDialogPicker">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTextDialogPicker</span><span class="p">(</span><span class="n">TTkWindow</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTextDialogPicker</span><span class="p">(</span><span class="n">TTkWindow</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_textEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;_autoSize&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">autoSize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wrapMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetWidth</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">autoSize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wrapMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetWidth</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_autoSize</span> <span class="o">=</span> <span class="n">autoSize</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">fontLayout</span> <span class="o">=</span> <span class="n">TTkGridLayout</span><span class="p">(</span><span class="n">columnMinWidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -629,9 +648,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">setLineNumber</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
 
         <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-        <span class="k">def</span> <span class="nf">_showEmojiPicker</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_showEmojiPicker</span><span class="p">():</span>
             <span class="n">ep</span> <span class="o">=</span> <span class="n">_emojiPicker</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-            <span class="k">def</span> <span class="nf">_addEmoji</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">_addEmoji</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">textCursor</span><span class="p">()</span><span class="o">.</span><span class="n">insertText</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">moveCursor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">ep</span><span class="o">.</span><span class="n">emojiClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_addEmoji</span><span class="p">)</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">btn_emoji</span><span class="p">,</span> <span class="n">ep</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -639,7 +658,7 @@
         <span class="n">btn_emoji</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_showEmojiPicker</span><span class="p">)</span>
 
         <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">_currentColorChangedCB</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_currentColorChangedCB</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">format</span><span class="o">.</span><span class="n">hasForeground</span><span class="p">():</span>
                 <span class="n">cb_fg</span><span class="o">.</span><span class="n">setCheckState</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Checked</span><span class="p">)</span>
                 <span class="n">btn_fgColor</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">()</span>
@@ -666,7 +685,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">currentColorChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_currentColorChangedCB</span><span class="p">)</span>
 
 
-        <span class="k">def</span> <span class="nf">_setStyle</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_setStyle</span><span class="p">():</span>
             <span class="n">color</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">cb_fg</span><span class="o">.</span><span class="n">checkState</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Checked</span><span class="p">:</span>
                 <span class="n">color</span> <span class="o">+=</span> <span class="n">btn_fgColor</span><span class="o">.</span><span class="n">color</span><span class="p">()</span>
@@ -708,16 +727,16 @@
 
 <div class="viewcode-block" id="TTkTextDialogPicker.focusTextEdit">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.html#TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.focusTextEdit">[docs]</a>
-    <span class="k">def</span> <span class="nf">focusTextEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">focusTextEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_textPickerViewChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_textPickerViewChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">tw</span><span class="p">,</span><span class="n">th</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">viewport</span><span class="p">()</span><span class="o">.</span><span class="n">viewFullAreaSize</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">setLineNumber</span><span class="p">(</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_autoSize</span><span class="p">:</span>
@@ -729,14 +748,14 @@
 
 <div class="viewcode-block" id="TTkTextPicker">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextPicker.html#TermTk.TTkWidgets.TTkPickers.TTkTextPicker">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkTextPicker</span><span class="p">(</span><span class="n">TTkContainer</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTextPicker</span><span class="p">(</span><span class="n">TTkContainer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkTextPicker</span>
 <span class="sd">    .. note:: This is an early unstable prototype</span>
 <span class="sd">              Do not use it unless you know what you are doing</span>
 <span class="sd">              And I&#39;ve no idea what I am doing</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_teButton&#39;</span><span class="p">,</span><span class="s1">&#39;_textEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;documentViewChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;textChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;_autoSize&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">autoSize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wrapMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetWidth</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">autoSize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wrapMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetWidth</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">documentViewChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_autoSize</span> <span class="o">=</span> <span class="n">autoSize</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;layout&#39;</span><span class="p">:</span><span class="n">TTkHBoxLayout</span><span class="p">()})</span>
@@ -753,7 +772,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_teButton</span><span class="p">)</span>
 
         <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-        <span class="k">def</span> <span class="nf">_showTextDialogPicker</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_showTextDialogPicker</span><span class="p">():</span>
             <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
             <span class="n">tdp</span> <span class="o">=</span> <span class="n">TTkTextDialogPicker</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">8</span><span class="o">+</span><span class="n">h</span><span class="p">),</span>
                                       <span class="n">document</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">document</span><span class="p">(),</span>
@@ -765,17 +784,17 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">viewport</span><span class="p">()</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textPickerViewChanged</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
 
 <div class="viewcode-block" id="TTkTextPicker.getTTkString">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextPicker.html#TermTk.TTkWidgets.TTkPickers.TTkTextPicker.getTTkString">[docs]</a>
-    <span class="k">def</span> <span class="nf">getTTkString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getTTkString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span></div>
 
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_textPickerViewChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_textPickerViewChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">wa</span><span class="p">,</span><span class="n">ha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">viewport</span><span class="p">()</span><span class="o">.</span><span class="n">viewFullAreaSize</span><span class="p">()</span>
         <span class="n">tw</span><span class="p">,</span><span class="n">th</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEdit</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="n">bw</span><span class="p">,</span><span class="n">bh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_teButton</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -847,8 +866,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

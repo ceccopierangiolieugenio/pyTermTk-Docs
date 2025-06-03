@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,30 +510,37 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkFileTree&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkModelView.tree</span> <span class="kn">import</span> <span class="n">TTkTree</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkWidgets.TTkModelView.filetreewidget</span> <span class="kn">import</span> <span class="n">TTkFileTreeWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.filetreewidget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkFileTreeWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.treewidgetitem</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTreeWidgetItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollarea</span><span class="w"> </span><span class="kn">import</span> <span class="n">_ForwardData</span>
 
 <div class="viewcode-block" id="TTkFileTree">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkFileTree</span><span class="p">(</span><span class="n">TTkTree</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkFileTree</span><span class="p">(</span><span class="n">TTkTree</span><span class="p">):</span>
     <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    :py:class:`TTkFileTree` is a container widget which place :py:class:`TTkFileTreeWidget` in a scrolling area with on-demand scroll bars.</span>
 
 <span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">TTkFileTreeWidget</span><span class="o">.</span><span class="vm">__doc__</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-        <span class="p">[</span><span class="s1">&#39;_fileTreeWidget&#39;</span><span class="p">]</span> <span class="o">+</span>
-        <span class="p">(</span><span class="n">_forwardedSignals</span><span class="o">:=</span><span class="p">[</span><span class="c1"># Forwarded Signals from TTkFileTreeWidget</span>
-                  <span class="o">*</span><span class="n">TTkTree</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="p">,</span>
-                 <span class="s1">&#39;fileClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;fileDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;fileActivated&#39;</span><span class="p">,</span> <span class="s1">&#39;folderActivated&#39;</span><span class="p">])</span> <span class="o">+</span>
-        <span class="p">(</span><span class="n">_forwardedMethods</span><span class="o">:=</span><span class="p">[</span><span class="c1"># Forwarded Methods From TTkTreeWidget</span>
-                  <span class="o">*</span><span class="n">TTkTree</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">,</span>
-                 <span class="s1">&#39;openPath&#39;</span><span class="p">,</span> <span class="s1">&#39;getOpenPath&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;setFilter&#39;</span><span class="p">])</span>
+    <span class="n">_ttk_forward</span> <span class="o">=</span> <span class="n">_ForwardData</span><span class="p">(</span>
+        <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkFileTreeWidget</span><span class="p">,</span>
+        <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._fileTreeWidget&quot;</span><span class="p">,</span>
+        <span class="n">signals</span><span class="o">=</span><span class="p">[</span><span class="c1"># Forwarded Signals from TTkFileTreeWidget</span>
+            <span class="o">*</span><span class="n">TTkTree</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">,</span>
+            <span class="s1">&#39;fileClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;fileDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;folderDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;fileActivated&#39;</span><span class="p">,</span> <span class="s1">&#39;folderActivated&#39;</span><span class="p">],</span>
+        <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="c1"># Forwarded Methods From TTkTreeWidget</span>
+            <span class="o">*</span><span class="n">TTkTree</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">methods</span><span class="p">,</span>
+            <span class="s1">&#39;openPath&#39;</span><span class="p">,</span> <span class="s1">&#39;getOpenPath&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;setFilter&#39;</span><span class="p">]</span>
     <span class="p">)</span>
-    <span class="n">_forwardWidget</span> <span class="o">=</span> <span class="n">TTkFileTreeWidget</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fileTreeWidget&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">wkwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">wkwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;parent&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">wkwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;visible&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
@@ -522,9 +548,153 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">treeWidget</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forwardedSignals</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_forwardedMethods</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span></div>
+        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
 
+    <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setHeaderLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="n">TTkString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setHeaderLabels`</span>
+
+<span class="sd">        setHeaderLabels</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">setHeaderLabels</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setColumnWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setColumnWidth`</span>
+
+<span class="sd">        setColumnWidth</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resizeColumnToContents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.resizeColumnToContents`</span>
+
+<span class="sd">        resizeColumnToContents</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">resizeColumnToContents</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sortColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.sortColumn`</span>
+
+<span class="sd">        Returns the column used to sort the contents of the widget.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">sortColumn</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sortItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.sortItems`</span>
+
+<span class="sd">        Sorts the items in the widget in the specified order by the values in the given column.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">sortItems</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.dragDropMode`</span>
+
+<span class="sd">        dragDropMode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">dragDropMode</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setDragDropMode`</span>
+
+<span class="sd">        setDragDropMode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">setDragDropMode</span><span class="p">(</span><span class="n">dndMode</span><span class="o">=</span><span class="n">dndMode</span><span class="p">)</span>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">expandAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.expandAll`</span>
+
+<span class="sd">        expandAll</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">expandAll</span><span class="p">()</span>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">collapseAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.collapseAll`</span>
+
+<span class="sd">        collapseAll</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">collapseAll</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.addTopLevelItem`</span>
+
+<span class="sd">        addTopLevelItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">addTopLevelItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.addTopLevelItems`</span>
+
+<span class="sd">        addTopLevelItems</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">addTopLevelItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">takeTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.takeTopLevelItem`</span>
+
+<span class="sd">        takeTopLevelItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">takeTopLevelItem</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">topLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTreeWidgetItem</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.topLevelItem`</span>
+
+<span class="sd">        topLevelItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">topLevelItem</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">indexOfTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.indexOfTopLevelItem`</span>
+
+<span class="sd">        indexOfTopLevelItem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">indexOfTopLevelItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.selectedItems`</span>
+
+<span class="sd">        selectedItems</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.clear`</span>
+
+<span class="sd">        clear</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<div class="viewcode-block" id="TTkFileTree.openPath">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree.openPath">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">openPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.openPath`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">openPath</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkFileTree.getOpenPath">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree.getOpenPath">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getOpenPath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.getOpenPath`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">getOpenPath</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkFileTree.setFilter">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html#TermTk.TTkWidgets.TTkModelView.TTkFileTree.setFilter">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setFilter`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">setFilter</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">)</span></div>
+</div>
+
+    <span class="c1">#--FORWARD-AUTOGEN-END--#</span>
 </pre></div>
 
                 </article>
@@ -587,8 +757,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

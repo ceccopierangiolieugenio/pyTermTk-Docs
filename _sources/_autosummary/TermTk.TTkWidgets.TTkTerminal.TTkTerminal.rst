@@ -115,6 +115,12 @@ TTkTerminal
    
 
    
+   .. automethod:: termSize
+   .. automethod:: termWrite
+
+   
+
+   
    
    
    Methods Inherited from: :py:class:`TTkAbstractScrollArea`
@@ -284,8 +290,6 @@ TTkTerminal Attributes
   classStyle
   termData
   termResized
-  termSize
-  termWrite
   terminalClosed
   textSelected
   titleChanged

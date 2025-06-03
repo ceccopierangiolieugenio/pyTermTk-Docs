@@ -16,30 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -51,7 +48,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -67,8 +63,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -76,6 +83,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -83,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -102,8 +110,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,11 +141,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -431,16 +442,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -491,26 +510,26 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkHelper&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.colors</span> <span class="kn">import</span> <span class="n">TTkTermColor</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.TTkTerm.term</span> <span class="kn">import</span> <span class="n">TTkTerm</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.cfg</span> <span class="kn">import</span> <span class="n">TTkCfg</span><span class="p">,</span> <span class="n">TTkGlbl</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.constant</span> <span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span> <span class="nn">TermTk.TTkCore.signal</span> <span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTermColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.term</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTerm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span><span class="p">,</span> <span class="n">TTkGlbl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">TermTk.TTkGui.drag</span> <span class="kn">import</span> <span class="n">TTkDnDEvent</span><span class="p">,</span> <span class="n">TTkDrag</span>
-    <span class="kn">from</span> <span class="nn">TermTk.TTkWidgets</span> <span class="kn">import</span> <span class="n">TTkWidget</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.drag</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkDnDEvent</span><span class="p">,</span> <span class="n">TTkDrag</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">class</span> <span class="nc">TTkDrag</span><span class="p">():</span> <span class="o">...</span>
-    <span class="k">class</span> <span class="nc">TTkDnDEvent</span><span class="p">():</span> <span class="o">...</span>
-    <span class="k">class</span> <span class="nc">TTkWidget</span><span class="p">():</span> <span class="o">...</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">TTkDrag</span><span class="p">():</span> <span class="o">...</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">TTkDnDEvent</span><span class="p">():</span> <span class="o">...</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">TTkWidget</span><span class="p">():</span> <span class="o">...</span>
 
 <div class="viewcode-block" id="TTkHelper">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper">[docs]</a>
-<span class="k">class</span> <span class="nc">TTkHelper</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkHelper</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkHelper</span>
 
 <span class="sd">    This is a collection of helper utilities to be used all around TermTk</span>
@@ -526,9 +545,9 @@
     <span class="n">_cursor</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_cursorType</span> <span class="o">=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Cursor</span><span class="o">.</span><span class="n">BLINKING_BLOCK</span>
     <span class="n">_cursorWidget</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">class</span> <span class="nc">_Overlay</span><span class="p">():</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_Overlay</span><span class="p">():</span>
         <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_widget&#39;</span><span class="p">,</span><span class="s1">&#39;_prevFocus&#39;</span><span class="p">,</span><span class="s1">&#39;_x&#39;</span><span class="p">,</span><span class="s1">&#39;_y&#39;</span><span class="p">,</span><span class="s1">&#39;_modal&#39;</span><span class="p">)</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">prevFocus</span><span class="p">,</span><span class="n">modal</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">prevFocus</span><span class="p">,</span><span class="n">modal</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span> <span class="o">=</span> <span class="n">widget</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_prevFocus</span> <span class="o">=</span> <span class="n">prevFocus</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_modal</span> <span class="o">=</span> <span class="n">modal</span>
@@ -538,7 +557,7 @@
 <div class="viewcode-block" id="TTkHelper.updateAll">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.updateAll">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">updateAll</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">updateAll</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">repaint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">iterWidgets</span><span class="p">():</span>
@@ -548,7 +567,7 @@
 <div class="viewcode-block" id="TTkHelper.unlockPaint">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.unlockPaint">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">unlockPaint</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unlockPaint</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">rw</span> <span class="o">:=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="p">:</span>
             <span class="n">rw</span><span class="o">.</span><span class="n">_paintEvent</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div>
 
@@ -556,7 +575,7 @@
 <div class="viewcode-block" id="TTkHelper.addUpdateWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.addUpdateWidget">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">addUpdateWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addUpdateWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="c1"># if not widget.isVisibleAndParent(): return</span>
         <span class="k">if</span> <span class="n">widget</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_updateWidget</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_updateWidget</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
@@ -566,7 +585,7 @@
 <div class="viewcode-block" id="TTkHelper.addUpdateBuffer">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.addUpdateBuffer">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">addUpdateBuffer</span><span class="p">(</span><span class="n">canvas</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addUpdateBuffer</span><span class="p">(</span><span class="n">canvas</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">canvas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootCanvas</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_updateBuffer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span></div>
 
@@ -574,7 +593,7 @@
 <div class="viewcode-block" id="TTkHelper.registerRootWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.registerRootWidget">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">registerRootWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">registerRootWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootCanvas</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">getCanvas</span><span class="p">()</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span> <span class="o">=</span> <span class="n">widget</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootCanvas</span><span class="o">.</span><span class="n">enableDoubleBuffer</span><span class="p">()</span></div>
@@ -586,7 +605,7 @@
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.quit">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">quit</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quit</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Quit TermTk&#39;&#39;&#39;</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">quitEvent</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="p">:</span>
@@ -597,7 +616,7 @@
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.aboutTermTk">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">aboutTermTk</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">aboutTermTk</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Displays a simple message box about `pyTermTk &lt;https://github.com/ceccopierangiolieugenio/pyTermTk&gt;`__.</span>
 <span class="sd">        The message includes the version number of TermTk being used by the application.</span>
@@ -613,14 +632,14 @@
 <div class="viewcode-block" id="TTkHelper.getTerminalSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.getTerminalSize">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">getTerminalSize</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getTerminalSize</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">TTkGlbl</span><span class="o">.</span><span class="n">term_w</span><span class="p">,</span> <span class="n">TTkGlbl</span><span class="o">.</span><span class="n">term_h</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.rootOverlay">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.rootOverlay">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">rootOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rootOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">widget</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_overlay</span><span class="p">:</span>
@@ -636,7 +655,7 @@
 <div class="viewcode-block" id="TTkHelper.focusLastModal">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.focusLastModal">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">focusLastModal</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">focusLastModal</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">modal</span> <span class="o">:=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">getLastModal</span><span class="p">():</span>
             <span class="n">modal</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span></div>
 
@@ -644,7 +663,7 @@
 <div class="viewcode-block" id="TTkHelper.getLastModal">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.getLastModal">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">getLastModal</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getLastModal</span><span class="p">():</span>
         <span class="n">modal</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_overlay</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">_modal</span><span class="p">:</span>
@@ -655,7 +674,7 @@
 <div class="viewcode-block" id="TTkHelper.checkModalOverlay">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.checkModalOverlay">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">checkModalOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">checkModalOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="c1">#if not TTkHelper._overlay:</span>
         <span class="c1">#    # There are no Overlays</span>
         <span class="c1">#    return True</span>
@@ -679,14 +698,14 @@
 <div class="viewcode-block" id="TTkHelper.isOverlay">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.isOverlay">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">isOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">rootOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.overlay">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.overlay">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">overlay</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">modal</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">forceBoundaries</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">toolWindow</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">modal</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">forceBoundaries</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">toolWindow</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;overlay&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">caller</span><span class="p">:</span>
             <span class="n">caller</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span>
@@ -724,7 +743,7 @@
 <div class="viewcode-block" id="TTkHelper.getOverlay">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.getOverlay">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">getOverlay</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getOverlay</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_overlay</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_overlay</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">_widget</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -733,7 +752,7 @@
 <div class="viewcode-block" id="TTkHelper.removeOverlay">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.removeOverlay">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">removeOverlay</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeOverlay</span><span class="p">():</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_overlay</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">bkFocus</span> <span class="o">=</span> <span class="kc">None</span>
@@ -754,7 +773,7 @@
 <div class="viewcode-block" id="TTkHelper.removeOverlayAndChild">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.removeOverlayAndChild">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">removeOverlayAndChild</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeOverlayAndChild</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">isOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span> <span class="k">return</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">_overlay</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">removeOverlay</span><span class="p">()</span>
@@ -780,7 +799,7 @@
 <div class="viewcode-block" id="TTkHelper.removeOverlayChild">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.removeOverlayChild">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">removeOverlayChild</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeOverlayChild</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="n">rootWidget</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">rootOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">newOverlay</span> <span class="o">=</span> <span class="p">[]</span>
@@ -801,7 +820,7 @@
 <div class="viewcode-block" id="TTkHelper.setMousePos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.setMousePos">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">setMousePos</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setMousePos</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_mousePos</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="c1"># update the position of the Drag and Drop Widget</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">:</span>
@@ -812,14 +831,14 @@
 <div class="viewcode-block" id="TTkHelper.mousePos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.mousePos">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">mousePos</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mousePos</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_mousePos</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.paintAll">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.paintAll">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">paintAll</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paintAll</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            _updateBuffer = list widgets that require a repaint [paintEvent]</span>
 <span class="sd">            _updateWidget = list widgets that need to be pushed below</span>
@@ -882,7 +901,7 @@
 <div class="viewcode-block" id="TTkHelper.rePaintAll">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.rePaintAll">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">rePaintAll</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rePaintAll</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootCanvas</span> <span class="ow">and</span>  <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="p">:</span>
             <span class="n">TTkTerm</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">TTkTerm</span><span class="o">.</span><span class="n">CLEAR</span><span class="p">)</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootCanvas</span><span class="o">.</span><span class="n">cleanBuffers</span><span class="p">()</span>
@@ -892,7 +911,7 @@
 <div class="viewcode-block" id="TTkHelper.widgetDepth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.widgetDepth">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">widgetDepth</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">widgetDepth</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">widget</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">widgetDepth</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">())</span></div>
@@ -901,7 +920,7 @@
 <div class="viewcode-block" id="TTkHelper.isParent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.isParent">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">isParent</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isParent</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">p</span> <span class="o">:=</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">parent</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
@@ -912,7 +931,7 @@
 <div class="viewcode-block" id="TTkHelper.widgetAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.widgetAt">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">widgetAt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">widgetAt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">layout</span> <span class="o">=</span> <span class="n">layout</span> <span class="k">if</span> <span class="n">layout</span> <span class="k">else</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span>
         <span class="n">lx</span><span class="p">,</span><span class="n">ly</span><span class="p">,</span><span class="n">lw</span><span class="p">,</span><span class="n">lh</span> <span class="o">=</span><span class="n">layout</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
         <span class="n">lox</span><span class="p">,</span> <span class="n">loy</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">offset</span><span class="p">()</span>
@@ -942,7 +961,7 @@
 <div class="viewcode-block" id="TTkHelper.absPos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.absPos">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">absPos</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">absPos</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">wx</span><span class="p">,</span> <span class="n">wy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
         <span class="n">layout</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">widgetItem</span><span class="p">()</span>
         <span class="k">while</span> <span class="n">layout</span><span class="p">:</span>
@@ -956,7 +975,7 @@
 <div class="viewcode-block" id="TTkHelper.nextFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.nextFocus">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">nextFocus</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nextFocus</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="n">rootWidget</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">rootOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rootWidget</span><span class="p">:</span>
             <span class="n">rootWidget</span> <span class="o">=</span>  <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span>
@@ -983,7 +1002,7 @@
 <div class="viewcode-block" id="TTkHelper.prevFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.prevFocus">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">prevFocus</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prevFocus</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="n">rootWidget</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">rootOverlay</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rootWidget</span><span class="p">:</span>
             <span class="n">rootWidget</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span>
@@ -1006,28 +1025,28 @@
 <div class="viewcode-block" id="TTkHelper.setFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.setFocus">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">setFocus</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="n">widget</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_focusWidget</span> <span class="o">=</span> <span class="n">widget</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.getFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.getFocus">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">getFocus</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getFocus</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_focusWidget</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.clearFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.clearFocus">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">clearFocus</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clearFocus</span><span class="p">():</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_focusWidget</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.showCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.showCursor">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">showCursor</span><span class="p">(</span><span class="n">cursorType</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Cursor_Blinking_Block</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">showCursor</span><span class="p">(</span><span class="n">cursorType</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Cursor_Blinking_Block</span><span class="p">):</span>
         <span class="n">newType</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">TTkK</span><span class="o">.</span><span class="n">Cursor_Blinking_Block</span>      <span class="p">:</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Cursor</span><span class="o">.</span><span class="n">BLINKING_BLOCK</span><span class="p">,</span>
             <span class="n">TTkK</span><span class="o">.</span><span class="n">Cursor_Blinking_Block_Also</span> <span class="p">:</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Cursor</span><span class="o">.</span><span class="n">BLINKING_BLOCK_ALSO</span><span class="p">,</span>
@@ -1046,7 +1065,7 @@
 <div class="viewcode-block" id="TTkHelper.hideCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.hideCursor">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">hideCursor</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hideCursor</span><span class="p">():</span>
         <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Cursor</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_cursorType</span> <span class="o">=</span> <span class="n">TTkTerm</span><span class="o">.</span><span class="n">Cursor</span><span class="o">.</span><span class="n">BLINKING_BLOCK</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_cursor</span> <span class="o">=</span> <span class="kc">False</span></div>
@@ -1056,7 +1075,7 @@
 <div class="viewcode-block" id="TTkHelper.moveCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.moveCursor">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">moveCursor</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">moveCursor</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_cursorWidget</span> <span class="o">=</span> <span class="n">widget</span>
         <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">absPos</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">xx</span><span class="o">+</span><span class="n">x</span><span class="p">,</span><span class="n">yy</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
@@ -1069,12 +1088,12 @@
 <div class="viewcode-block" id="TTkHelper.cursorWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.cursorWidget">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">cursorWidget</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cursorWidget</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_cursorWidget</span></div>
 
 
     <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">class</span> <span class="nc">_DnD</span><span class="p">():</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_DnD</span><span class="p">():</span>
         <span class="n">d</span><span class="p">:</span>    <span class="n">TTkDrag</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">w</span><span class="p">:</span>  <span class="n">TTkWidget</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -1084,7 +1103,7 @@
 <div class="viewcode-block" id="TTkHelper.dndInit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndInit">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndInit</span><span class="p">(</span><span class="n">drag</span><span class="p">:</span><span class="n">TTkDrag</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dndInit</span><span class="p">(</span><span class="n">drag</span><span class="p">:</span><span class="n">TTkDrag</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_DnD</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">drag</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">drag</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span>
         <span class="n">drag</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">raiseWidget</span><span class="p">()</span></div>
@@ -1093,35 +1112,35 @@
 <div class="viewcode-block" id="TTkHelper.dndGetDrag">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndGetDrag">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndGetDrag</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TTkDrag</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dndGetDrag</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TTkDrag</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">d</span> <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="k">else</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.dndWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndWidget">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndWidget</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dndWidget</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">w</span> <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="k">else</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.dndEnter">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndEnter">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndEnter</span><span class="p">(</span><span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dndEnter</span><span class="p">(</span><span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">widget</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.isDnD">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.isDnD">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">isDnD</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isDnD</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkHelper.dndEnd">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.dndEnd">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">dndEnd</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dndEnd</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_dnd</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1136,7 +1155,7 @@
 <div class="viewcode-block" id="TTkHelper.toolTipShow">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.toolTipShow">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">toolTipShow</span><span class="p">(</span><span class="n">tt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toolTipShow</span><span class="p">(</span><span class="n">tt</span><span class="p">):</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipClose</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipWidget</span> <span class="o">=</span> <span class="n">tt</span>
@@ -1157,7 +1176,7 @@
 
 <div class="viewcode-block" id="TTkHelper.toolTipClose">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html#TermTk.TTkCore.TTkHelper.toolTipClose">[docs]</a>
-    <span class="k">def</span> <span class="nf">toolTipClose</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toolTipClose</span><span class="p">():</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipReset</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipWidget</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipWidget</span><span class="p">)</span>
@@ -1226,8 +1245,8 @@ By Eugenio Parodi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
