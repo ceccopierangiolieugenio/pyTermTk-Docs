@@ -629,54 +629,66 @@ document.write(`
         <span class="n">reportMove</span><span class="p">:</span>  <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">sgrMode</span><span class="p">:</span>     <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="n">bell</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted when the `bell &lt;https://en.wikipedia.org/wiki/Bell_character&gt;`__ is received.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">bell</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted when the `bell &lt;https://en.wikipedia.org/wiki/Bell_character&gt;`__ is received.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bell</span>
 
-    <span class="n">terminalClosed</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted when the terminal is closed.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminalClosed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted when the terminal is closed.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminalClosed</span>
 
-    <span class="n">titleChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted when the terminal title change through OSC &quot;ESC ]0;&quot;</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">titleChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted when the terminal title change through OSC &quot;ESC ]0;&quot;</span>
 
-<span class="sd">    :param title: the new title</span>
-<span class="sd">    :type title: str</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param title: the new title</span>
+<span class="sd">        :type title: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_titleChanged</span>
 
-    <span class="n">textSelected</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted when a text is selected.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textSelected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted when a text is selected.</span>
 
-<span class="sd">    :param text: the selected text</span>
-<span class="sd">    :type text: :py:class:`ttkString`</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param text: the selected text</span>
+<span class="sd">        :type text: :py:class:`ttkString`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textSelected</span>
 
-    <span class="n">termData</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted when data event fires.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">termData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted when data event fires.</span>
 
-<span class="sd">    This happens for example when the user types or pastes into the terminal.</span>
-<span class="sd">    The event value is whatever &#39;str&#39; results, in a typical setup,</span>
-<span class="sd">    this should be passed on to the backing pty.</span>
+<span class="sd">        This happens for example when the user types or pastes into the terminal.</span>
+<span class="sd">        The event value is whatever &#39;str&#39; results, in a typical setup,</span>
+<span class="sd">        this should be passed on to the backing pty.</span>
 
-<span class="sd">    This signal is used in :py:class:`TTkTerminalHelper` through :py:meth:`TTkTerminalHelper.attachTTkTerminal`</span>
-<span class="sd">    to frward all the terminal events to the pty interface.</span>
+<span class="sd">        This signal is used in :py:class:`TTkTerminalHelper` through :py:meth:`TTkTerminalHelper.attachTTkTerminal`</span>
+<span class="sd">        to frward all the terminal events to the pty interface.</span>
 
-<span class="sd">    :param data: the event data</span>
-<span class="sd">    :type data: str</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param data: the event data</span>
+<span class="sd">        :type data: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termData</span>
 
-    <span class="n">termResized</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted when the terminal is resized.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">termResized</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted when the terminal is resized.</span>
 
-<span class="sd">    :param size: the new size [width, height] of the terminal</span>
-<span class="sd">    :type size: (int,int)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param size: the new size [width, height] of the terminal</span>
+<span class="sd">        :type size: (int,int)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termResized</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s1">&#39;_termLoop&#39;</span><span class="p">,</span> <span class="s1">&#39;_newSize&#39;</span><span class="p">,</span>
@@ -685,17 +697,17 @@ document.write(`
             <span class="s1">&#39;_keyboard&#39;</span><span class="p">,</span> <span class="s1">&#39;_mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;_terminal&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_screen_current&#39;</span><span class="p">,</span> <span class="s1">&#39;_screen_normal&#39;</span><span class="p">,</span> <span class="s1">&#39;_screen_alt&#39;</span><span class="p">,</span>
             <span class="c1"># Signals</span>
-            <span class="s1">&#39;bell&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;titleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;terminalClosed&#39;</span><span class="p">,</span> <span class="s1">&#39;textSelected&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;termData&#39;</span><span class="p">,</span><span class="s1">&#39;termResized&#39;</span><span class="p">)</span>
+            <span class="s1">&#39;_bell&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;_titleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;_terminalClosed&#39;</span><span class="p">,</span> <span class="s1">&#39;_textSelected&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;_termData&#39;</span><span class="p">,</span><span class="s1">&#39;_termResized&#39;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1">#Signals</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bell</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">terminalClosed</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">titleChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textSelected</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkString</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">termData</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">termResized</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bell</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminalClosed</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_titleChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_textSelected</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkString</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_termData</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_termResized</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_newSize</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_terminal</span> <span class="o">=</span> <span class="n">TTkTerminalView</span><span class="o">.</span><span class="n">_Terminal</span><span class="p">()</span>

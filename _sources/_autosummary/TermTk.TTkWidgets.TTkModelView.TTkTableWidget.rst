@@ -46,12 +46,7 @@ TTkTableWidget
    
    .. autosummary::
    
-      cellChanged
-      cellClicked
-      cellDoubleClicked
-      cellEntered
       closed
-      currentCellChanged
       currentStyleChanged
       focusChanged
       sizeChanged
@@ -131,12 +126,7 @@ TTkTableWidget
    -------
 
    
-   .. autoattribute:: cellChanged
-   .. autoattribute:: cellClicked
-   .. autoattribute:: cellDoubleClicked
-   .. autoattribute:: cellEntered
    .. autoattribute:: closed
-   .. autoattribute:: currentCellChanged
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
@@ -362,7 +352,12 @@ TTkTableWidget Attributes
 .. autosummary::
 
 
+  cellChanged
+  cellClicked
+  cellDoubleClicked
+  cellEntered
   classStyle
+  currentCellChanged
 
 .. currentmodule::  TermTk.TTkWidgets.TTkModelView
 

@@ -29,7 +29,7 @@ TTkListWidget
                        '_dragPos', '_dndMode',
                        '_searchText', '_showSearch',
                        # Signals
-                       'itemClicked', 'textClicked', 'searchModified')
+                       '_itemClicked', '_textClicked', '_searchModified')
           def __init__(self, *,
                        items:list[str]=[],
                        selectionMode:int=TTkK.SelectionMode.SingleSelection,
@@ -47,9 +47,9 @@ TTkListWidget
               :type showSearch: bool, optional
               '''
               # Signals
-              self.itemClicked = pyTTkSignal(TTkAbstractListItem)
-              self.textClicked = pyTTkSignal(str)
-              self.searchModified = pyTTkSignal(str)
+              self._itemClicked = pyTTkSignal(TTkAbstractListItem)
+              self._textClicked = pyTTkSignal(str)
+              self._searchModified = pyTTkSignal(str)
       
               # Default Class Specific Values
               self._selectionMode = selectionMode
@@ -468,10 +468,7 @@ TTkListWidget
       closed
       currentStyleChanged
       focusChanged
-      itemClicked
-      searchModified
       sizeChanged
-      textClicked
       viewChanged
       viewMovedTo
       viewSizeChanged
@@ -535,10 +532,7 @@ TTkListWidget
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
-   .. autoattribute:: itemClicked
-   .. autoattribute:: searchModified
    .. autoattribute:: sizeChanged
-   .. autoattribute:: textClicked
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
    .. autoattribute:: viewSizeChanged
@@ -751,6 +745,9 @@ TTkListWidget Attributes
 
 
   classStyle
+  itemClicked
+  searchModified
+  textClicked
 
 .. currentmodule::  TermTk.TTkWidgets
 

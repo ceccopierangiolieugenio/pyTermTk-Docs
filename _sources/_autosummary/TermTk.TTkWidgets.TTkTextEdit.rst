@@ -20,7 +20,6 @@ TTkTextEdit
    
       TTkTextEditView.currentColorChanged
       TTkTextEditView.cursorPositionChanged
-      TTkTextEditView.focusChanged
       TTkTextEditView.redoAvailable
       TTkTextEditView.textChanged
       TTkTextEditView.undoAvailable

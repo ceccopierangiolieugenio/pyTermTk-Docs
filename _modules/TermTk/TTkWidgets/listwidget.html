@@ -660,27 +660,35 @@ document.write(`
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">itemClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This signal is emitted whenever an item is clicked.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This signal is emitted whenever an item is clicked.</span>
 
-<span class="sd">        :param item: the item selected</span>
-<span class="sd">        :type item: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">textClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This signal is emitted whenever an item is clicked.</span>
+<span class="sd">            :param item: the item selected</span>
+<span class="sd">            :type item: :py:class:`TTkAbstractListItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemClicked</span>
 
-<span class="sd">        :param text: the text of the item selected</span>
-<span class="sd">        :type text: str</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">searchModified</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This signal is emitted whenever the search text is modified.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This signal is emitted whenever an item is clicked.</span>
 
-<span class="sd">        :param text: the search text</span>
-<span class="sd">        :type text: str</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">            :param text: the text of the item selected</span>
+<span class="sd">            :type text: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textClicked</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">searchModified</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This signal is emitted whenever the search text is modified.</span>
+
+<span class="sd">            :param text: the search text</span>
+<span class="sd">            :type text: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchModified</span>
 
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;default&#39;</span><span class="p">:{</span><span class="s1">&#39;searchColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#FFFF00&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">UNDERLINE</span><span class="p">}}</span>
@@ -695,7 +703,7 @@ document.write(`
                  <span class="s1">&#39;_dragPos&#39;</span><span class="p">,</span> <span class="s1">&#39;_dndMode&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;_searchText&#39;</span><span class="p">,</span> <span class="s1">&#39;_showSearch&#39;</span><span class="p">,</span>
                  <span class="c1"># Signals</span>
-                 <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;searchModified&#39;</span><span class="p">)</span>
+                 <span class="s1">&#39;_itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_textClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_searchModified&#39;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">items</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span>
                  <span class="n">selectionMode</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span>
@@ -713,9 +721,9 @@ document.write(`
 <span class="sd">        :type showSearch: bool, optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># Signals</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">itemClicked</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkAbstractListItem</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textClicked</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">searchModified</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_itemClicked</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkAbstractListItem</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_textClicked</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_searchModified</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
         <span class="c1"># Default Class Specific Values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">=</span> <span class="n">selectionMode</span>

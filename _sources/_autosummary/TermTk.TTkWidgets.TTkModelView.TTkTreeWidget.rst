@@ -45,12 +45,6 @@ TTkTreeWidget
       closed
       currentStyleChanged
       focusChanged
-      itemActivated
-      itemChanged
-      itemClicked
-      itemCollapsed
-      itemDoubleClicked
-      itemExpanded
       sizeChanged
       viewChanged
       viewMovedTo
@@ -120,12 +114,6 @@ TTkTreeWidget
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
-   .. autoattribute:: itemActivated
-   .. autoattribute:: itemChanged
-   .. autoattribute:: itemClicked
-   .. autoattribute:: itemCollapsed
-   .. autoattribute:: itemDoubleClicked
-   .. autoattribute:: itemExpanded
    .. autoattribute:: sizeChanged
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
@@ -334,6 +322,12 @@ TTkTreeWidget Attributes
 
 
   classStyle
+  itemActivated
+  itemChanged
+  itemClicked
+  itemCollapsed
+  itemDoubleClicked
+  itemExpanded
 
 .. currentmodule::  TermTk.TTkWidgets.TTkModelView
 

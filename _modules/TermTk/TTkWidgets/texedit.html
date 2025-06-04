@@ -778,46 +778,56 @@ document.write(`
 <span class="sd">            &#39;&#39;&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cursor</span> <span class="o">=</span> <span class="n">cursor</span>
 
-    <span class="n">currentColorChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted if the current character color has changed,</span>
-<span class="sd">    for example caused by a change of the cursor position.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">currentColorChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted if the current character color has changed,</span>
+<span class="sd">        for example caused by a change of the cursor position.</span>
 
-<span class="sd">    :param color: the new color</span>
-<span class="sd">    :type color: :py:class:`TTkColor`</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param color: the new color</span>
+<span class="sd">        :type color: :py:class:`TTkColor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentColorChanged</span>
 
-    <span class="n">cursorPositionChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever the position of the cursor changed.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cursorPositionChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted whenever the position of the cursor changed.</span>
 
-<span class="sd">    :param cursor: the cursor changed.</span>
-<span class="sd">    :type cursor: :py:class:`TTkTextCursor`</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param cursor: the cursor changed.</span>
+<span class="sd">        :type cursor: :py:class:`TTkTextCursor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cursorPositionChanged_sig</span>
 
-    <span class="n">undoAvailable</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever undo operations become available (available is true)</span>
-<span class="sd">    or unavailable (available is false).</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">undoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted whenever undo operations become available (available is true)</span>
+<span class="sd">        or unavailable (available is false).</span>
 
-<span class="sd">    :param available: the availability of undo</span>
-<span class="sd">    :type available: bool</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param available: the availability of undo</span>
+<span class="sd">        :type available: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_undoAvailable_sig</span>
 
-    <span class="n">redoAvailable</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever redo operations become available (available is true)</span>
-<span class="sd">    or unavailable (available is false).</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted whenever redo operations become available (available is true)</span>
+<span class="sd">        or unavailable (available is false).</span>
 
-<span class="sd">    :param available: the availability of redo</span>
-<span class="sd">    :type available: bool</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">        :param available: the availability of redo</span>
+<span class="sd">        :type available: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_redoAvailable_sig</span>
 
-    <span class="n">textChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This signal is emitted whenever the document&#39;s content changes;</span>
-<span class="sd">    for example, when text is inserted or deleted, or when formatting is applied.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This signal is emitted whenever the document&#39;s content changes;</span>
+<span class="sd">        for example, when text is inserted or deleted, or when formatting is applied.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textChanged</span>
 
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span>         <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#dddddd&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#222222&quot;</span><span class="p">),</span>
@@ -845,9 +855,9 @@ document.write(`
             <span class="c1"># &#39;wrapWidth&#39;,    &#39;setWrapWidth&#39;,</span>
             <span class="c1"># &#39;wordWrapMode&#39;, &#39;setWordWrapMode&#39;,</span>
             <span class="c1"># Signals</span>
-            <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;textChanged&#39;</span>
+            <span class="s1">&#39;_currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;_cursorPositionChanged_sig&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;_undoAvailable_sig&#39;</span><span class="p">,</span> <span class="s1">&#39;_redoAvailable_sig&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;_textChanged&#39;</span>
         <span class="p">)</span>
 
     <span class="c1">#    in order to support the line wrap, I need to divide the full data text in;</span>
@@ -876,11 +886,11 @@ document.write(`
 <span class="sd">        :type document: :py:class:`TTkTextDocument`, optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">currentColorChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cursorPositionChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">undoAvailable</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redoAvailable</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">textChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_currentColorChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cursorPositionChanged_sig</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTextCursor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_undoAvailable_sig</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_redoAvailable_sig</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_textChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_readOnly</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="n">readOnly</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_multiLine</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="n">multiLine</span>
@@ -1523,7 +1533,7 @@ document.write(`
         <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkTextEditView</span> <span class="p">,</span>
         <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._textEditView&quot;</span><span class="p">,</span>
         <span class="n">signals</span><span class="o">=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTexteditView</span>
-            <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
             <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
             <span class="s1">&#39;textChanged&#39;</span><span class="p">],</span>
         <span class="n">methods</span><span class="o">=</span><span class="p">[</span>
@@ -1545,9 +1555,7 @@ document.write(`
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">,</span>
-        <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span>
-        <span class="p">)</span>
+        <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="c1"># TTkWidget init</span>
@@ -1584,9 +1592,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span>
         <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">textEditLayout</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focusChanged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">focusChanged</span>
 
 <div class="viewcode-block" id="TTkTextEdit.ruler">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ruler">[docs]</a>
@@ -1642,6 +1648,62 @@ document.write(`
 
 
     <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">currentColorChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.currentColorChanged`</span>
+
+<span class="sd">        This signal is emitted if the current character color has changed,</span>
+<span class="sd">        for example caused by a change of the cursor position.</span>
+<span class="sd">        </span>
+<span class="sd">        :param color: the new color</span>
+<span class="sd">        :type color: :py:class:`TTkColor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">currentColorChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cursorPositionChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.cursorPositionChanged`</span>
+
+<span class="sd">        This signal is emitted whenever the position of the cursor changed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param cursor: the cursor changed.</span>
+<span class="sd">        :type cursor: :py:class:`TTkTextCursor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cursorPositionChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">undoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.undoAvailable`</span>
+
+<span class="sd">        This signal is emitted whenever undo operations become available (available is true)</span>
+<span class="sd">        or unavailable (available is false).</span>
+<span class="sd">        </span>
+<span class="sd">        :param available: the availability of undo</span>
+<span class="sd">        :type available: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undoAvailable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.redoAvailable`</span>
+
+<span class="sd">        This signal is emitted whenever redo operations become available (available is true)</span>
+<span class="sd">        or unavailable (available is false).</span>
+<span class="sd">        </span>
+<span class="sd">        :param available: the availability of redo</span>
+<span class="sd">        :type available: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redoAvailable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.textChanged`</span>
+
+<span class="sd">        This signal is emitted whenever the document&#39;s content changes;</span>
+<span class="sd">        for example, when text is inserted or deleted, or when formatting is applied.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textChanged</span>
 <div class="viewcode-block" id="TTkTextEdit.clear">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.clear">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>

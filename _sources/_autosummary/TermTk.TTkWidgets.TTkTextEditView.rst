@@ -40,14 +40,9 @@ TTkTextEditView
    .. autosummary::
    
       closed
-      currentColorChanged
       currentStyleChanged
-      cursorPositionChanged
       focusChanged
-      redoAvailable
       sizeChanged
-      textChanged
-      undoAvailable
       viewChanged
       viewMovedTo
       viewSizeChanged
@@ -123,14 +118,9 @@ TTkTextEditView
 
    
    .. autoattribute:: closed
-   .. autoattribute:: currentColorChanged
    .. autoattribute:: currentStyleChanged
-   .. autoattribute:: cursorPositionChanged
    .. autoattribute:: focusChanged
-   .. autoattribute:: redoAvailable
    .. autoattribute:: sizeChanged
-   .. autoattribute:: textChanged
-   .. autoattribute:: undoAvailable
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
    .. autoattribute:: viewSizeChanged
@@ -361,6 +351,11 @@ TTkTextEditView Attributes
 
 
   classStyle
+  currentColorChanged
+  cursorPositionChanged
+  redoAvailable
+  textChanged
+  undoAvailable
 
 .. currentmodule::  TermTk.TTkWidgets
 

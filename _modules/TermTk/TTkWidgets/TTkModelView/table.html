@@ -510,6 +510,8 @@ document.write(`
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTable&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.TTkModelView.tablewidget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTableWidget</span><span class="p">,</span> <span class="n">TTkHeaderView</span>
@@ -550,11 +552,11 @@ document.write(`
             <span class="s1">&#39;setRowHeight&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeRowToContents&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeRowsToContents&#39;</span><span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_tableView&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_tableView&#39;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">tableWidget</span><span class="p">:</span><span class="n">TTkTableWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">tableModel</span><span class="p">:</span><span class="n">TTkAbstractTableModel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">tableWidget</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkTableWidget</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">tableModel</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkAbstractTableModel</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">vSeparator</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">hSeparator</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">vHeader</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -566,7 +568,6 @@ document.write(`
 <span class="sd">        :param tableWidget: a custom Table Widget to be used instead of the default one.</span>
 <span class="sd">        :type tableWidget: :py:class:`TTkTableWidget`, optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="p">:</span><span class="n">TTkTableWidget</span> <span class="o">=</span> <span class="n">tableWidget</span> <span class="k">if</span> <span class="n">tableWidget</span> <span class="k">else</span> <span class="n">TTkTableWidget</span><span class="p">(</span>
                                                                                 <span class="n">tableModel</span><span class="o">=</span><span class="n">tableModel</span><span class="p">,</span>
                                                                                 <span class="n">vSeparator</span><span class="o">=</span><span class="n">vSeparator</span><span class="p">,</span>
@@ -579,9 +580,6 @@ document.write(`
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="p">)</span>
         <span class="c1"># self.setFocusPolicy(TTkK.ClickFocus)</span>
-
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">style</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="p">:</span>
@@ -599,6 +597,80 @@ document.write(`
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mergeStyle</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
 
     <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cellChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTableWidget.cellChanged`</span>
+
+<span class="sd">        This signal is emitted whenever the data of the item in the cell specified by row and column has changed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param row: the row</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param col: the column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">cellChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cellClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTableWidget.cellClicked`</span>
+
+<span class="sd">        This signal is emitted whenever a cell in the table is clicked.</span>
+<span class="sd">        The row and column specified is the cell that was clicked.</span>
+<span class="sd">        </span>
+<span class="sd">        :param row: the row</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param col: the column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">cellClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cellDoubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTableWidget.cellDoubleClicked`</span>
+
+<span class="sd">        This signal is emitted whenever a cell in the table is double clicked.</span>
+<span class="sd">        The row and column specified is the cell that was double clicked.</span>
+<span class="sd">        </span>
+<span class="sd">        :param row: the row</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param col: the column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">cellDoubleClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cellEntered</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTableWidget.cellEntered`</span>
+
+<span class="sd">        This signal is emitted when the mouse cursor enters a cell.</span>
+<span class="sd">        The cell is specified by row and column.</span>
+<span class="sd">        </span>
+<span class="sd">        :param row: the row</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param col: the column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">cellEntered</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">currentCellChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTableWidget.currentCellChanged`</span>
+
+<span class="sd">        This signal is emitted whenever the current cell changes.</span>
+<span class="sd">        The cell specified by **prevRow** and **prevCol** is the cell that previously had the focus,</span>
+<span class="sd">        the cell specified by **currRow** and **currCol** is the new current cell.</span>
+<span class="sd">        </span>
+<span class="sd">        :param currRow: the current row</span>
+<span class="sd">        :type currRow: int</span>
+<span class="sd">        :param currColumn: the current column</span>
+<span class="sd">        :type currColumn: int</span>
+<span class="sd">        :param prevRow: the previous row</span>
+<span class="sd">        :type prevRow: int</span>
+<span class="sd">        :param prevCol: the previous column</span>
+<span class="sd">        :type prevCol: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">currentCellChanged</span>
 <div class="viewcode-block" id="TTkTable.undo">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html#TermTk.TTkWidgets.TTkModelView.TTkTable.undo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>

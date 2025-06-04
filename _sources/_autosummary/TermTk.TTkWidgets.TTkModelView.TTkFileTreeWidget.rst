@@ -20,19 +20,7 @@ TTkFileTreeWidget
    
       closed
       currentStyleChanged
-      fileActivated
-      fileClicked
-      fileDoubleClicked
       focusChanged
-      folderActivated
-      folderClicked
-      folderDoubleClicked
-      itemActivated
-      itemChanged
-      itemClicked
-      itemCollapsed
-      itemDoubleClicked
-      itemExpanded
       sizeChanged
       viewChanged
       viewMovedTo
@@ -105,19 +93,7 @@ TTkFileTreeWidget
    
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
-   .. autoattribute:: fileActivated
-   .. autoattribute:: fileClicked
-   .. autoattribute:: fileDoubleClicked
    .. autoattribute:: focusChanged
-   .. autoattribute:: folderActivated
-   .. autoattribute:: folderClicked
-   .. autoattribute:: folderDoubleClicked
-   .. autoattribute:: itemActivated
-   .. autoattribute:: itemChanged
-   .. autoattribute:: itemClicked
-   .. autoattribute:: itemCollapsed
-   .. autoattribute:: itemDoubleClicked
-   .. autoattribute:: itemExpanded
    .. autoattribute:: sizeChanged
    .. autoattribute:: viewChanged
    .. autoattribute:: viewMovedTo
@@ -342,6 +318,18 @@ TTkFileTreeWidget Attributes
 
 
   classStyle
+  fileActivated
+  fileClicked
+  fileDoubleClicked
+  folderActivated
+  folderClicked
+  folderDoubleClicked
+  itemActivated
+  itemChanged
+  itemClicked
+  itemCollapsed
+  itemDoubleClicked
+  itemExpanded
 
 .. currentmodule::  TermTk.TTkWidgets.TTkModelView
 

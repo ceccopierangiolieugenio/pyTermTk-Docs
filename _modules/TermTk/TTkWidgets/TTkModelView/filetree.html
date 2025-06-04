@@ -538,7 +538,7 @@ document.write(`
             <span class="s1">&#39;setFilter&#39;</span><span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fileTreeWidget&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fileTreeWidget&#39;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">wkwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -548,10 +548,152 @@ document.write(`
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">treeWidget</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
-
     <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemActivated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.itemActivated`</span>
+
+<span class="sd">        This signal is emitted when the user activates an item by double-clicking</span>
+<span class="sd">        or pressing a special key (e.g., Enter).</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item that was clicked.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">itemActivated</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.itemChanged`</span>
+
+<span class="sd">        This signal is emitted when the contents of the column in the specified item changes.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item reported by this signal</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">itemChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.itemClicked`</span>
+
+<span class="sd">        This signal is emitted when the user clicks inside the widget.</span>
+<span class="sd">        </span>
+<span class="sd">        If no item was clicked, no signal will be emitted.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item that was clicked.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">itemClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.itemExpanded`</span>
+
+<span class="sd">        This signal is emitted when the specified item is expanded so that all of its children are displayed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item reported by this signal</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">itemExpanded</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.itemCollapsed`</span>
+
+<span class="sd">        This signal is emitted when the specified item is collapsed so that none of its children are displayed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item reported by this signal</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">itemCollapsed</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemDoubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.itemDoubleClicked`</span>
+
+<span class="sd">        This signal is emitted when the user double clicks inside the widget.</span>
+<span class="sd">        </span>
+<span class="sd">        If no item was double clicked, no signal will be emitted.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item that was clicked.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">itemDoubleClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fileClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.fileClicked`</span>
+
+<span class="sd">        This signal is emitted when a file is clicked</span>
+<span class="sd">        </span>
+<span class="sd">        :param file:</span>
+<span class="sd">        :type  file: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">fileClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">folderClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.folderClicked`</span>
+
+<span class="sd">        This signal is emitted when a folder is clicked</span>
+<span class="sd">        </span>
+<span class="sd">        :param folder:</span>
+<span class="sd">        :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">folderClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fileDoubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.fileDoubleClicked`</span>
+
+<span class="sd">        This signal is emitted when a file is doubleclicked</span>
+<span class="sd">        </span>
+<span class="sd">        :param file:</span>
+<span class="sd">        :type  file: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">fileDoubleClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">folderDoubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.folderDoubleClicked`</span>
+
+<span class="sd">        This signal is emitted when a folder is doubleclicked</span>
+<span class="sd">        </span>
+<span class="sd">        :param folder:</span>
+<span class="sd">        :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">folderDoubleClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fileActivated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.fileActivated`</span>
+
+<span class="sd">        This signal is emitted when a file is activated</span>
+<span class="sd">        </span>
+<span class="sd">        :param file:</span>
+<span class="sd">        :type  file: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">fileActivated</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">folderActivated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.folderActivated`</span>
+
+<span class="sd">        This signal is emitted when a fiilder is activated</span>
+<span class="sd">        </span>
+<span class="sd">        :param folder:</span>
+<span class="sd">        :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">folderActivated</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setHeaderLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="n">TTkString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setHeaderLabels`</span>

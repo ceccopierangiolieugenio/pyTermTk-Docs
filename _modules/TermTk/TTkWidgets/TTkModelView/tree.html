@@ -539,7 +539,7 @@ document.write(`
             <span class="s1">&#39;addTopLevelItem&#39;</span><span class="p">,</span> <span class="s1">&#39;addTopLevelItems&#39;</span><span class="p">,</span> <span class="s1">&#39;takeTopLevelItem&#39;</span><span class="p">,</span> <span class="s1">&#39;topLevelItem&#39;</span><span class="p">,</span> <span class="s1">&#39;indexOfTopLevelItem&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedItems&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_treeView&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_treeView&#39;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">treeWidget</span><span class="p">:</span><span class="n">TTkTreeWidget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -555,10 +555,86 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setFocusPolicy</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttk_forward</span><span class="o">.</span><span class="n">signals</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">_attr</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="p">,</span><span class="n">_attr</span><span class="p">))</span>
-
     <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemActivated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTreeWidget.itemActivated`</span>
+
+<span class="sd">        This signal is emitted when the user activates an item by double-clicking</span>
+<span class="sd">        or pressing a special key (e.g., Enter).</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item that was clicked.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="o">.</span><span class="n">itemActivated</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTreeWidget.itemChanged`</span>
+
+<span class="sd">        This signal is emitted when the contents of the column in the specified item changes.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item reported by this signal</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="o">.</span><span class="n">itemChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTreeWidget.itemClicked`</span>
+
+<span class="sd">        This signal is emitted when the user clicks inside the widget.</span>
+<span class="sd">        </span>
+<span class="sd">        If no item was clicked, no signal will be emitted.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item that was clicked.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="o">.</span><span class="n">itemClicked</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTreeWidget.itemExpanded`</span>
+
+<span class="sd">        This signal is emitted when the specified item is expanded so that all of its children are displayed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item reported by this signal</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="o">.</span><span class="n">itemExpanded</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTreeWidget.itemCollapsed`</span>
+
+<span class="sd">        This signal is emitted when the specified item is collapsed so that none of its children are displayed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item reported by this signal</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="o">.</span><span class="n">itemCollapsed</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">itemDoubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTreeWidget.itemDoubleClicked`</span>
+
+<span class="sd">        This signal is emitted when the user double clicks inside the widget.</span>
+<span class="sd">        </span>
+<span class="sd">        If no item was double clicked, no signal will be emitted.</span>
+<span class="sd">        </span>
+<span class="sd">        :param item: the item that was clicked.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_treeView</span><span class="o">.</span><span class="n">itemDoubleClicked</span>
 <div class="viewcode-block" id="TTkTree.setHeaderLabels">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html#TermTk.TTkWidgets.TTkModelView.TTkTree.setHeaderLabels">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setHeaderLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="n">TTkString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
