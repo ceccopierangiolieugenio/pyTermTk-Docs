@@ -7,8 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.container &#8212; pyTermTk ..-a
- documentation</title>
+    <title>TermTk.TTkWidgets.container &#8212; pyTermTk X.XX.X-a documentation</title>
   
   
   
@@ -38,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
+    <script src="../../../_static/documentation_options.js?v=22a37c74"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,8 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk ..-a
- documentation</p>
+    <p class="title logo__title">pyTermTk X.XX.X-a documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -510,7 +508,7 @@ document.write(`
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkContainer&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkPadding&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NamedTuple</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w">  </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w">       </span><span class="kn">import</span> <span class="n">TTkLog</span>
@@ -597,8 +595,8 @@ document.write(`
         <span class="s1">&#39;_layout&#39;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">layout</span><span class="p">:</span><span class="n">TTkLayout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">padding</span><span class="p">:</span><span class="n">TTkPadding</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">layout</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkLayout</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">padding</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkPadding</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                  <span class="n">paddingTop</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
                  <span class="n">paddingBottom</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
                  <span class="n">paddingLeft</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -895,7 +893,7 @@ document.write(`
                         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>  <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_padt</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_padb</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">getWidgetByName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getWidgetByName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Return the widget from its name.</span>
 

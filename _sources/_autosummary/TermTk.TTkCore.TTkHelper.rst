@@ -9,9 +9,16 @@ TTkHelper
    
 
    
+   :ref:`Signals <Signal and Slots>`
+   ---------------------------------
+   
 
    
 
+   
+   .. autosummary::
+   
+      quitEvent
    
 
    
@@ -30,6 +37,12 @@ TTkHelper
 
    
 
+   
+   Members
+   -------
+
+   
+   .. autoattribute:: quitEvent
    
 
    
@@ -52,6 +65,7 @@ TTkHelper
    .. automethod:: cursorWidget
    .. automethod:: dndEnd
    .. automethod:: dndEnter
+   .. automethod:: dndGetDnd
    .. automethod:: dndGetDrag
    .. automethod:: dndInit
    .. automethod:: dndWidget
@@ -104,7 +118,6 @@ TTkHelper Attributes
 .. autosummary::
 
 
-  quitEvent
   toolTipWidget
 
 .. currentmodule::  TermTk.TTkCore

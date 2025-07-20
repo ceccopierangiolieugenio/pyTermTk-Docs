@@ -7,8 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.Fancy.tableview &#8212; pyTermTk ..-a
- documentation</title>
+    <title>TermTk.TTkWidgets.Fancy.tableview &#8212; pyTermTk X.XX.X-a documentation</title>
   
   
   
@@ -38,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=984eaf5c"></script>
+    <script src="../../../../_static/documentation_options.js?v=22a37c74"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,8 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk ..-a
- documentation</p>
+    <p class="title logo__title">pyTermTk X.XX.X-a documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -510,6 +508,8 @@ document.write(`
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkFancyTableView&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
@@ -524,7 +524,7 @@ document.write(`
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkFancyTableViewHeader</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_header&#39;</span><span class="p">,</span> <span class="s1">&#39;_alignments&#39;</span><span class="p">,</span> <span class="s1">&#39;_headerColor&#39;</span><span class="p">,</span> <span class="s1">&#39;_columns&#39;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">columns</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">columns</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">headerColor</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -590,9 +590,13 @@ document.write(`
             <span class="s1">&#39;_tableWidth&#39;</span><span class="p">,</span>
             <span class="c1"># Signals</span>
             <span class="s1">&#39;activated&#39;</span><span class="p">,</span> <span class="s1">&#39;doubleClicked&#39;</span><span class="p">)</span>
+    <span class="n">_tableDataId</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]]</span>
+    <span class="n">_tableDataText</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]]</span>
+    <span class="n">_tableDataWidget</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]]]</span>
+    <span class="n">_shownWidgets</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">columns</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">columnColors</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">columns</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">columnColors</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">selectColor</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                  <span class="n">headerColor</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -869,20 +873,20 @@ document.write(`
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="c1"># _TTkFancyTableView init</span>
-                 <span class="n">columns</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">columnColors</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">columns</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">columnColors</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">selectColor</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                  <span class="n">headerColor</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                  <span class="c1"># TTkFancyTableView init</span>
                  <span class="n">showHeader</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_excludeEvent</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;layout&#39;</span><span class="p">:</span><span class="n">TTkGridLayout</span><span class="p">()})</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;layout&#39;</span><span class="p">:(</span><span class="n">gl</span><span class="o">:=</span><span class="n">TTkGridLayout</span><span class="p">())})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_showHeader</span> <span class="o">=</span> <span class="n">showHeader</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span> <span class="o">=</span> <span class="n">_TTkFancyTableView</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">columnColors</span><span class="o">=</span><span class="n">columnColors</span><span class="p">,</span> <span class="n">selectColor</span><span class="o">=</span><span class="n">selectColor</span><span class="p">,</span> <span class="n">headerColor</span><span class="o">=</span><span class="n">headerColor</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">_TTkFancyTableViewHeader</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">headerColor</span><span class="o">=</span><span class="n">headerColor</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_viewChanged</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tableView</span><span class="o">.</span><span class="n">viewMovedTo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_viewMovedTo</span><span class="p">)</span>
         <span class="c1"># Forward the tableSignals</span>

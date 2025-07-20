@@ -36,10 +36,29 @@ TTkColor
 
    
    .. automethod:: ansi
+   .. automethod:: background
    .. automethod:: bg
+   .. automethod:: bgToRGB
+   .. automethod:: blinking
+   .. automethod:: bold
+   .. automethod:: colorType
+   .. automethod:: copy
    .. automethod:: fg
+   .. automethod:: fgToRGB
    .. automethod:: fgbg
+   .. automethod:: foreground
+   .. automethod:: getHex
+   .. automethod:: hasBackground
+   .. automethod:: hasForeground
    .. automethod:: hexToRGB
+   .. automethod:: hsl2rgb
+   .. automethod:: invertFgBg
+   .. automethod:: italic
+   .. automethod:: mod
+   .. automethod:: modParam
+   .. automethod:: rgb2hsl
+   .. automethod:: strikethrough
+   .. automethod:: underline
 
    
 

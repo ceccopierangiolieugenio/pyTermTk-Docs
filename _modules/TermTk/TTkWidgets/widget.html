@@ -7,8 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.widget &#8212; pyTermTk ..-a
- documentation</title>
+    <title>TermTk.TTkWidgets.widget &#8212; pyTermTk X.XX.X-a documentation</title>
   
   
   
@@ -38,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=984eaf5c"></script>
+    <script src="../../../_static/documentation_options.js?v=22a37c74"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,8 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk ..-a
- documentation</p>
+    <p class="title logo__title">pyTermTk X.XX.X-a documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -508,14 +506,11 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkWidget&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">Self</span><span class="p">():</span> <span class="k">pass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span> <span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w">       </span><span class="kn">import</span> <span class="n">TTkCfg</span><span class="p">,</span> <span class="n">TTkGlbl</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w">  </span><span class="kn">import</span> <span class="n">TTkK</span>
@@ -530,6 +525,9 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkTemplates.keyevents</span><span class="w"> </span><span class="kn">import</span> <span class="n">TKeyEvents</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts.layout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidgetItem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkMouseEvent</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkContainer</span>
 
 <div class="viewcode-block" id="TTkWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget">[docs]</a>
@@ -612,25 +610,51 @@ document.write(`
         <span class="c1">#Signals</span>
         <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;sizeChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentStyleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;closed&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">parent</span><span class="p">:</span><span class="n">Self</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>     <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">pos</span>  <span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">size</span> <span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">maxSize</span>  <span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">maxWidth</span> <span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x10000</span><span class="p">,</span>
-                 <span class="n">maxHeight</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x10000</span><span class="p">,</span>
-                 <span class="n">minSize</span>  <span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">minWidth</span> <span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x00000</span><span class="p">,</span>
-                 <span class="n">minHeight</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x00000</span><span class="p">,</span>
-                 <span class="n">name</span>     <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">visible</span>  <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-                 <span class="n">enabled</span>  <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-                 <span class="n">toolTip</span>  <span class="p">:</span> <span class="n">TTkString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                 <span class="n">style</span>    <span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">addStyle</span> <span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_name</span><span class="p">:</span><span class="nb">str</span>
+    <span class="n">_parent</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkContainer</span><span class="p">]</span>
+    <span class="n">_x</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_y</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_width</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_height</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_maxw</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_maxh</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_minw</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_minh</span><span class="p">:</span><span class="nb">int</span>
+    <span class="n">_focus</span><span class="p">:</span><span class="nb">bool</span>
+    <span class="n">_focus_policy</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">FocusPolicy</span>
+    <span class="n">_canvas</span><span class="p">:</span><span class="n">TTkCanvas</span>
+    <span class="n">_widgetItem</span><span class="p">:</span><span class="n">TTkWidgetItem</span>
+    <span class="n">_visible</span><span class="p">:</span><span class="nb">bool</span>
+    <span class="n">_pendingMouseRelease</span><span class="p">:</span><span class="nb">bool</span>
+    <span class="n">_enabled</span><span class="p">:</span><span class="nb">bool</span>
+    <span class="n">_style</span><span class="p">:</span><span class="n">Dict</span>
+    <span class="n">_currentStyle</span><span class="p">:</span><span class="n">Dict</span>
+    <span class="n">_toolTip</span><span class="p">:</span><span class="n">TTkString</span>
+    <span class="n">_dropEventProxy</span><span class="p">:</span><span class="n">Any</span>
+    <span class="n">_widgetCursor</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">_widgetCursorEnabled</span><span class="p">:</span><span class="nb">bool</span>
+    <span class="n">_widgetCursorType</span><span class="p">:</span><span class="nb">int</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">parent</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkContainer</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>     <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">pos</span>  <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">size</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">maxSize</span>  <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">maxWidth</span> <span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x10000</span><span class="p">,</span>
+            <span class="n">maxHeight</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x10000</span><span class="p">,</span>
+            <span class="n">minSize</span>  <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">minWidth</span> <span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x00000</span><span class="p">,</span>
+            <span class="n">minHeight</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mh">0x00000</span><span class="p">,</span>
+            <span class="n">name</span>     <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">visible</span>  <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">enabled</span>  <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">toolTip</span>  <span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TTkString</span><span class="p">,</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">style</span>    <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">addStyle</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        :param name: the name of the widget, defaults to &quot;&quot;</span>
 <span class="sd">        :type name: str, optional</span>
@@ -932,7 +956,7 @@ document.write(`
 <span class="sd">        :param txt: the paste object</span>
 <span class="sd">        :type txt: str</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">pass</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mouseEventParseChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -974,22 +998,23 @@ document.write(`
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># Handle Drag and Drop Events</span>
-        <span class="k">if</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">isDnD</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">_dnd</span><span class="o">:=</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDnd</span><span class="p">():</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">dndw</span> <span class="o">=</span> <span class="n">_dnd</span><span class="o">.</span><span class="n">w</span>
+            <span class="n">dndg</span> <span class="o">=</span> <span class="n">_dnd</span><span class="o">.</span><span class="n">d</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Drag</span><span class="p">:</span>
-                <span class="n">dndw</span> <span class="o">=</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndWidget</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">dndw</span> <span class="o">==</span> <span class="bp">self</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">dragMoveEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dragMoveEvent</span><span class="p">(</span><span class="n">dndg</span><span class="o">.</span><span class="n">getDragMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span>
                     <span class="k">return</span> <span class="kc">True</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">dragEnterEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragEnterEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span> <span class="ow">or</span>
-                         <span class="bp">self</span><span class="o">.</span><span class="n">dragMoveEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))):</span>
+                    <span class="k">if</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">dragEnterEvent</span><span class="p">(</span><span class="n">dndg</span><span class="o">.</span><span class="n">getDragEnterEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span> <span class="ow">or</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">dragMoveEvent</span><span class="p">(</span><span class="n">dndg</span><span class="o">.</span><span class="n">getDragMoveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))):</span>
                         <span class="k">if</span> <span class="n">dndw</span><span class="p">:</span>
-                            <span class="n">ret</span> <span class="o">=</span> <span class="n">dndw</span><span class="o">.</span><span class="n">dragLeaveEvent</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDragLeaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span>
+                            <span class="n">ret</span> <span class="o">=</span> <span class="n">dndw</span><span class="o">.</span><span class="n">dragLeaveEvent</span><span class="p">(</span><span class="n">dndg</span><span class="o">.</span><span class="n">getDragLeaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))</span>
                         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndEnter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
                         <span class="k">return</span> <span class="kc">True</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dropEventProxy</span><span class="p">(</span><span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndGetDrag</span><span class="p">()</span><span class="o">.</span><span class="n">getDropEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dropEventProxy</span><span class="p">(</span><span class="n">dndg</span><span class="o">.</span><span class="n">getDropEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">))):</span>
                     <span class="k">return</span> <span class="kc">True</span>
             <span class="k">return</span> <span class="n">ret</span>
 
@@ -1491,20 +1516,21 @@ document.write(`
 
 <div class="viewcode-block" id="TTkWidget.style">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.style">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">style</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">style</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.currentStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.currentStyle">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">currentStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">currentStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setCurrentStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setCurrentStyle">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span><span class="p">:</span> <span class="k">return</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span><span class="p">:</span>
+            <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span> <span class="o">=</span> <span class="n">style</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currentStyleChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
@@ -1512,18 +1538,9 @@ document.write(`
 
 <div class="viewcode-block" id="TTkWidget.setStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setStyle">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Dict</span><span class="p">]</span><span class="o">=</span><span class="p">{})</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">style</span><span class="p">:</span>
             <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classStyle</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">if</span> <span class="s1">&#39;default&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">style</span><span class="p">:</span>
-            <span class="c1"># find the closest subclass/parent holding the style</span>
-            <span class="n">styleType</span> <span class="o">=</span> <span class="n">TTkWidget</span>
-            <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">style</span><span class="p">:</span>
-                    <span class="n">styleType</span> <span class="o">=</span> <span class="n">cc</span>
-                    <span class="k">break</span>
-            <span class="c1"># Filtering out the current object style</span>
-            <span class="n">style</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="n">styleType</span><span class="p">]</span>
         <span class="n">defaultStyle</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
         <span class="c1"># Use the default style to apply the missing fields of the other actions</span>
         <span class="n">mergeStyle</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span><span class="n">defaultStyle</span> <span class="o">|</span> <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">style</span><span class="p">}</span>
