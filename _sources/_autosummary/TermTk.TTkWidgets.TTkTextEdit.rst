@@ -49,7 +49,6 @@ TTkTextEdit
    .. autosummary::
    
       TTkTextEditView.append
-      TTkTextEditView.clear
       TTkTextEditView.copy
       TTkTextEditView.cut
       TTkTextEditView.ensureCursorVisible
@@ -69,7 +68,6 @@ TTkTextEdit
    .. autosummary::
    
       append
-      clear
       copy
       cut
       ensureCursorVisible

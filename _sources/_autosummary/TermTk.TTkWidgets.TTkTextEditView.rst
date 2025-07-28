@@ -59,7 +59,6 @@ TTkTextEditView
    .. autosummary::
    
       append
-      clear
       copy
       cut
       ensureCursorVisible

@@ -508,6 +508,10 @@ document.write(`
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextCursor&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntEnum</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
 <span class="k">except</span><span class="p">:</span>
@@ -515,7 +519,7 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span><span class="p">,</span> <span class="n">TTkStringType</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textwrap1</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextWrap</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textdocument</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextDocument</span>
 
@@ -567,7 +571,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTextCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTextCursor</span><span class="p">():</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">MoveMode</span><span class="p">():</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">MoveMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">MoveAnchor</span> <span class="o">=</span> <span class="mh">0x00</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Moves the anchor to the same position as the cursor itself.&#39;&#39;&#39;</span>
         <span class="n">KeepAnchor</span> <span class="o">=</span> <span class="mh">0x01</span>
@@ -575,7 +579,7 @@ document.write(`
     <span class="n">MoveAnchor</span> <span class="o">=</span> <span class="n">MoveMode</span><span class="o">.</span><span class="n">MoveAnchor</span>
     <span class="n">KeepAnchor</span> <span class="o">=</span> <span class="n">MoveMode</span><span class="o">.</span><span class="n">KeepAnchor</span>
 
-    <span class="k">class</span><span class="w"> </span><span class="nc">SelectionType</span><span class="p">():</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">SelectionType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">Document</span>         <span class="o">=</span> <span class="mh">0x03</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Selects the entire document.&#39;&#39;&#39;</span>
         <span class="n">BlockUnderCursor</span> <span class="o">=</span> <span class="mh">0x02</span>
@@ -589,7 +593,7 @@ document.write(`
     <span class="n">LineUnderCursor</span>  <span class="o">=</span> <span class="n">SelectionType</span><span class="o">.</span><span class="n">LineUnderCursor</span>
     <span class="n">WordUnderCursor</span>  <span class="o">=</span> <span class="n">SelectionType</span><span class="o">.</span><span class="n">WordUnderCursor</span>
 
-    <span class="k">class</span><span class="w"> </span><span class="nc">MoveOperation</span><span class="p">():</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">MoveOperation</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">NoMove</span>            <span class="o">=</span> <span class="mi">0</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Keep the cursor where it is&#39;&#39;&#39;</span>
         <span class="n">Start</span>             <span class="o">=</span> <span class="mi">1</span>
@@ -796,7 +800,7 @@ document.write(`
 
 <div class="viewcode-block" id="TTkTextCursor.getLinesUnderCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.getLinesUnderCursor">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">getLinesUnderCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getLinesUnderCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span> <span class="p">]</span></div>
 
 
@@ -886,7 +890,7 @@ document.write(`
 
 <div class="viewcode-block" id="TTkTextCursor.replaceText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.replaceText">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">replaceText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="p">,</span> <span class="n">moveCursor</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replaceText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">,</span> <span class="n">moveCursor</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># if there is no selection, just select the next n chars till the end of the line</span>
         <span class="c1"># the newline is not replaced</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
@@ -906,7 +910,7 @@ document.write(`
 
 <div class="viewcode-block" id="TTkTextCursor.insertText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html#TermTk.TTkGui.TTkTextCursor.insertText">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">insertText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="p">,</span> <span class="n">moveCursor</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">,</span> <span class="n">moveCursor</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
         <span class="n">_lineFirst</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasSelection</span><span class="p">():</span>
