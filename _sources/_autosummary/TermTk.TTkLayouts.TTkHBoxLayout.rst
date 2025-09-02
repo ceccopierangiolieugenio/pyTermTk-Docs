@@ -90,6 +90,7 @@ TTkHBoxLayout
       addWidget
       addWidgets
       children
+      clear
       count
       fullWidgetAreaGeometry
       insertItem

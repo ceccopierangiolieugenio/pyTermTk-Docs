@@ -141,9 +141,11 @@ TTkFileTreeWidget
       paintEvent
       resizeColumnToContents
       selectedItems
+      selectionMode
       setColumnWidth
       setDragDropMode
       setHeaderLabels
+      setSelectionMode
       setSortingEnabled
       sortColumn
       sortItems

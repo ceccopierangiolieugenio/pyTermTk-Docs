@@ -508,9 +508,10 @@ document.write(`
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTreeWidget&#39;</span><span class="p">]</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">Tuple</span><span class="p">,</span><span class="n">Optional</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
@@ -524,6 +525,59 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_RootWidgetItem</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_widgets_buffer&#39;</span><span class="p">,</span><span class="s1">&#39;_widgets_buffer_check&#39;</span><span class="p">)</span>
+
+    <span class="n">_widgets_buffer</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">_widgets_buffer_check</span><span class="p">:</span><span class="nb">int</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span><span class="o">=</span><span class="mi">0</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getColumnContentSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">offset</span><span class="o">+</span><span class="mh">0x200</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">_sz</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="n">_sz</span><span class="o">-</span><span class="mh">0x200</span>
+        <span class="k">if</span> <span class="n">offset</span> <span class="o">&lt;</span> <span class="mh">0x200</span><span class="p">:</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="mh">0x200</span>
+        <span class="n">limited_page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_page_root</span><span class="p">(</span><span class="n">offset</span><span class="o">-</span><span class="mh">0x200</span><span class="p">,</span><span class="mh">0x400</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">column</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">_l</span><span class="o">+</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">+</span><span class="n">_t</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">limited_page</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">((</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">+</span><span class="n">_t</span><span class="p">)</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">limited_page</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_page_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="n">TTkTreeWidgetItem</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">_buffer</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span><span class="o">=</span><span class="mi">0</span>
+            <span class="n">page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">get_page</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">_wbi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="n">_wbi</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">_wbi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span><span class="o">=</span><span class="mi">0</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">_buffer</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,(</span><span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span><span class="p">:]):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span> <span class="ow">and</span> <span class="n">_i</span><span class="o">.</span><span class="n">hasWidgets</span><span class="p">():</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">_l</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">_i</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_widgets_buffer_check</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">page</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_item_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="n">TTkTreeWidgetItem</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">page</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">get_page</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">page</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="k">return</span> <span class="mi">0</span>
 
 <div class="viewcode-block" id="TTkTreeWidget">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget">[docs]</a>
@@ -641,12 +695,14 @@ document.write(`
                 <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span>
                     <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
                     <span class="s1">&#39;lineColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">),</span>
+                    <span class="s1">&#39;lineHeightColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">),</span>
                     <span class="s1">&#39;headerColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffffff&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                     <span class="s1">&#39;selectedColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffff88&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#000066&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
                     <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">)},</span>
                 <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span>
                     <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
                     <span class="s1">&#39;lineColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
+                    <span class="s1">&#39;lineHeightColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">),</span>
                     <span class="s1">&#39;headerColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
                     <span class="s1">&#39;selectedColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
                     <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">)},</span>
@@ -654,19 +710,16 @@ document.write(`
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">&#39;_rootItem&#39;</span><span class="p">,</span> <span class="s1">&#39;_cache&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;_header&#39;</span><span class="p">,</span> <span class="s1">&#39;_columnsPos&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;_selectionMode&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;_selectedId&#39;</span><span class="p">,</span> <span class="s1">&#39;_selected&#39;</span><span class="p">,</span> <span class="s1">&#39;_separatorSelected&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;_sortColumn&#39;</span><span class="p">,</span> <span class="s1">&#39;_sortOrder&#39;</span><span class="p">,</span> <span class="s1">&#39;_sortingEnabled&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;_dndMode&#39;</span><span class="p">,</span>
                   <span class="c1"># Signals</span>
                   <span class="s1">&#39;_itemChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemExpanded&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemCollapsed&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemActivated&#39;</span>
                   <span class="p">)</span>
-    <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">_Cache</span><span class="p">:</span>
-        <span class="n">item</span><span class="p">:</span> <span class="n">TTkTreeWidgetItem</span>
-        <span class="n">level</span><span class="p">:</span> <span class="nb">int</span>
-        <span class="n">data</span><span class="p">:</span> <span class="nb">list</span>
-        <span class="n">widgets</span><span class="p">:</span> <span class="nb">list</span>
-        <span class="n">firstLine</span><span class="p">:</span> <span class="nb">bool</span>
+
+    <span class="n">_selected</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]</span>
+    <span class="n">_rootItem</span><span class="p">:</span><span class="n">_RootWidgetItem</span>
 
     <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">_DropTreeData</span><span class="p">:</span>
@@ -676,6 +729,7 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">sortingEnabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">selectionMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span>
                  <span class="n">dragDropMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -683,6 +737,8 @@ document.write(`
 <span class="sd">        :type header: list[TTkString], optional</span>
 <span class="sd">        :param sortingEnabled: enable the column sorting, defaults to False</span>
 <span class="sd">        :type sortingEnabled: bool, optional</span>
+<span class="sd">        :param selectionMode: This property controls whether the user can select one or many items, defaults to :py:class:`TTkK.SelectionMode.SingleSelection`.</span>
+<span class="sd">        :type selectionMode: :py:class:`TTkK.SelectionMode`, optional</span>
 <span class="sd">        :param dragDropMode: This property holds the drag and drop event the view will act upon, defaults to :py:class:`TTkK.DragDropMode.NoDragDrop`.</span>
 <span class="sd">        :type dragDropMode: :py:class:`TTkK.DragDropMode`, optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -694,23 +750,28 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_itemExpanded</span>      <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_itemCollapsed</span>     <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">=</span> <span class="n">selectionMode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">=</span> <span class="n">dragDropMode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectedId</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">header</span> <span class="k">if</span> <span class="n">header</span> <span class="k">else</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortingEnabled</span><span class="o">=</span><span class="n">sortingEnabled</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortOrder</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AscendingOrder</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span> <span class="o">=</span> <span class="n">TTkTreeWidgetItem</span><span class="p">(</span><span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span> <span class="o">=</span> <span class="n">_RootWidgetItem</span><span class="p">()</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumHeight</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setFocusPolicy</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">ClickFocus</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setPadding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_viewChangedHandler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_alignWidgets</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sizeChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_alignWidgets</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_viewChangedHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -720,7 +781,7 @@ document.write(`
     <span class="c1"># Overridden function</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span> <span class="k">else</span> <span class="mi">0</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span>
         <span class="c1"># TTkLog.debug(f&quot;{w=} {h=}&quot;)</span>
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span>
 
@@ -729,14 +790,11 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;clear&#39;&#39;&#39;</span>
         <span class="c1"># Remove all the widgets</span>
-        <span class="k">for</span> <span class="n">ri</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
-            <span class="n">ri</span><span class="o">.</span><span class="n">setTreeItemParent</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span> <span class="o">=</span> <span class="n">TTkTreeWidgetItem</span><span class="p">(</span><span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span> <span class="o">=</span> <span class="n">_RootWidgetItem</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sortItems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortOrder</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
@@ -746,8 +804,6 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;addTopLevelItem&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-        <span class="n">item</span><span class="o">.</span><span class="n">setTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
@@ -757,10 +813,6 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;addTopLevelItems&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">addChildren</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">setTreeItemParent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="c1">#for item in items:</span>
-        <span class="c1">#    item.setTreeItemParent(self)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
@@ -770,7 +822,6 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">takeTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;takeTopLevelItem&#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">takeChild</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
@@ -789,12 +840,26 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">indexOfChild</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="TTkTreeWidget.selectionMode">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.selectionMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">selectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;selectionMode&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span></div>
+
+
+<div class="viewcode-block" id="TTkTreeWidget.setSelectionMode">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setSelectionMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setSelectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;setSelectionMode&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">=</span> <span class="n">mode</span></div>
+
+
 <div class="viewcode-block" id="TTkTreeWidget.selectedItems">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.selectedItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;selectedItems&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
 
@@ -853,7 +918,10 @@ document.write(`
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortingEnabled</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="n">col</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortOrder</span> <span class="o">=</span> <span class="n">order</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">sortChildren</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">sortChildren</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.columnWidth">
@@ -884,9 +952,8 @@ document.write(`
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.resizeColumnToContents">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeColumnToContents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;resizeColumnToContents&#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="n">contentSize</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span><span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
+        <span class="n">contentSize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_getColumnContentSize</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">oy</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">contentSize</span><span class="p">)</span></div>
 
 
@@ -899,8 +966,7 @@ document.write(`
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">expandAll</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.collapseAll">
@@ -912,8 +978,7 @@ document.write(`
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">collapseAll</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">mouseDoubleClickEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -931,8 +996,9 @@ document.write(`
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="n">y</span> <span class="o">+=</span> <span class="n">oy</span><span class="o">-</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">):</span>
-            <span class="n">item</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">item</span>
+        <span class="k">if</span>  <span class="n">_item_at</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_item_at</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">_</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_i</span> <span class="o">=</span> <span class="n">_item_at</span>
+            <span class="n">item</span>  <span class="o">=</span> <span class="n">_i</span>
             <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">childIndicatorPolicy</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">children</span><span class="p">()</span> <span class="ow">or</span> \
                <span class="n">item</span><span class="o">.</span><span class="n">childIndicatorPolicy</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ShowIndicator</span><span class="p">:</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">isExpanded</span><span class="p">())</span>
@@ -940,11 +1006,11 @@ document.write(`
                     <span class="bp">self</span><span class="o">.</span><span class="n">itemExpanded</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">itemCollapsed</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
+                <span class="n">_s</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_selectedId</span> <span class="o">=</span> <span class="n">y</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="n">item</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">col</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">:</span>
@@ -952,7 +1018,6 @@ document.write(`
                     <span class="k">break</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">itemDoubleClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">itemActivated</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
-
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">True</span>
 
@@ -981,24 +1046,34 @@ document.write(`
             <span class="k">return</span> <span class="kc">True</span>
         <span class="c1"># Handle Tree/Table Events</span>
         <span class="n">y</span> <span class="o">+=</span> <span class="n">oy</span><span class="o">-</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">):</span>
-            <span class="n">item</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">item</span>
-            <span class="n">level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">level</span>
+        <span class="k">if</span>  <span class="n">_item_at</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_item_at</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">_l</span><span class="p">,</span> <span class="n">_yi</span><span class="p">,</span> <span class="n">_i</span> <span class="o">=</span> <span class="n">_item_at</span>
+            <span class="n">item</span>  <span class="o">=</span> <span class="n">_i</span>
+            <span class="n">level</span> <span class="o">=</span> <span class="n">_l</span>
             <span class="c1"># check if the expand button is pressed with +-1 tollerance</span>
-            <span class="k">if</span> <span class="n">level</span><span class="o">*</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">level</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span> <span class="ow">and</span> \
-               <span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">childIndicatorPolicy</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">children</span><span class="p">()</span> <span class="ow">or</span>
-                 <span class="n">item</span><span class="o">.</span><span class="n">childIndicatorPolicy</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ShowIndicator</span> <span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">_yi</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">level</span><span class="o">*</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">level</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span> <span class="ow">and</span> \
+                 <span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">childIndicatorPolicy</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">children</span><span class="p">()</span> <span class="ow">or</span>
+                   <span class="n">item</span><span class="o">.</span><span class="n">childIndicatorPolicy</span><span class="p">()</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ShowIndicator</span> <span class="p">)):</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">isExpanded</span><span class="p">())</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">isExpanded</span><span class="p">():</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">itemExpanded</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">itemCollapsed</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_selectedId</span> <span class="o">=</span> <span class="n">y</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="n">item</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="ow">in</span> <span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">MultiSelection</span><span class="p">):</span>
+                    <span class="n">_multiSelect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">MultiSelection</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span> <span class="nb">bool</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ControlModifier</span><span class="p">)</span> <span class="ow">and</span> <span class="n">_multiSelect</span> <span class="p">):</span>
+                        <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
+                            <span class="n">_s</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_selectedId</span> <span class="o">=</span> <span class="n">y</span>
+                    <span class="c1"># Unselect Items if already selected in multiselect mode</span>
+                    <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="ow">and</span> <span class="n">_multiSelect</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                        <span class="n">item</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                        <span class="n">item</span><span class="o">.</span><span class="n">setSelected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">col</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">:</span>
@@ -1006,7 +1081,7 @@ document.write(`
                     <span class="k">break</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">itemClicked</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">mouseDragEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="c1">#    columnPos       (Selected = 2)</span>
@@ -1037,92 +1112,60 @@ document.write(`
         <span class="k">elif</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">AllowDrag</span> <span class="ow">and</span>
                <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">LeftButton</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="p">):</span>
             <span class="n">drag</span> <span class="o">=</span> <span class="n">TTkDrag</span><span class="p">()</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">TTkTreeWidget</span><span class="o">.</span><span class="n">_DropTreeData</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">])</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span><span class="o">+</span><span class="n">text</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="mi">27</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;...]&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span><span class="o">+</span><span class="n">text</span><span class="o">+</span><span class="s1">&#39;]&#39;</span>
-            <span class="n">pm</span> <span class="o">=</span> <span class="n">TTkCanvas</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">pm</span><span class="o">.</span><span class="n">drawTTkString</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">TTkTreeWidget</span><span class="o">.</span><span class="n">_DropTreeData</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span><span class="n">items</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="n">_n</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="mi">27</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;...&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">_n</span><span class="o">:=</span><span class="n">_s</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">30</span> <span class="k">else</span> <span class="n">_n</span> <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">[:</span><span class="mi">4</span><span class="p">]]</span>
+            <span class="n">dh</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+            <span class="n">dw</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">_t</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span><span class="o">+</span><span class="mi">2</span>
+            <span class="n">pm</span> <span class="o">=</span> <span class="n">TTkCanvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">dw</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="n">dh</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_y</span><span class="p">,</span><span class="n">_t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">pm</span><span class="o">.</span><span class="n">drawTTkString</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">_y</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">_t</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">pm</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+            <span class="n">pm</span><span class="o">.</span><span class="n">drawBox</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span><span class="n">dh</span><span class="p">))</span>
             <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">pm</span><span class="p">)</span>
             <span class="n">drag</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
             <span class="n">drag</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_alignWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">y</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">firstLine</span><span class="p">:</span>
-                <span class="k">continue</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">w</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">widgets</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">w</span><span class="p">:</span>
-                    <span class="n">_pos</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="k">else</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">level</span><span class="o">*</span><span class="mi">2</span>
-                    <span class="n">_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">_pos</span>
-                    <span class="n">_height</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
-                    <span class="n">w</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">_pos</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">_width</span><span class="p">,</span><span class="n">_height</span><span class="p">)</span>
-                    <span class="n">w</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
+        <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_get_page_root</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">oy</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_widgets_buffer</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="n">wids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_widgets_buffer</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_il</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">_wid</span><span class="o">:=</span><span class="n">_i</span><span class="o">.</span><span class="n">widget</span><span class="p">(</span><span class="n">_il</span><span class="p">):</span>
+                    <span class="n">_pos</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">_il</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="n">_il</span> <span class="k">else</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">_l</span><span class="o">*</span><span class="mi">2</span>
+                    <span class="n">_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">_il</span><span class="p">]</span> <span class="o">-</span> <span class="n">_pos</span>
+                    <span class="n">_height</span> <span class="o">=</span> <span class="n">_wid</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
+                    <span class="n">_wid</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">_pos</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_width</span><span class="p">,</span><span class="n">_height</span><span class="p">)</span>
+                    <span class="n">_wid</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+                    <span class="n">wids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_wid</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">wids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidgets</span><span class="p">(</span><span class="n">wids</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_refreshCache</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># I save a representation of the displayed tree in a cache array</span>
-        <span class="c1"># to avoid eccessve recursion over the items and</span>
-        <span class="c1"># identify quickly the nth displayed line to improve the interaction</span>
-        <span class="c1">#</span>
-        <span class="c1"># _cache is an array of TTkTreeWidget._Cache:</span>
-        <span class="c1"># [ item, level, data=[txtCol1, txtCol2, txtCol3, ... ]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">_addToCache</span><span class="p">(</span><span class="n">_child</span><span class="p">,</span> <span class="n">_level</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">_data</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">_widgets</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">_h</span> <span class="o">=</span><span class="n">_child</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">_il</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">)):</span>
-                <span class="n">_lines</span> <span class="o">=</span> <span class="n">_child</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">_il</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">_il</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-                    <span class="n">_data0</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="k">for</span> <span class="n">_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">_h</span><span class="p">):</span>
-                        <span class="c1"># Trying to define an icon to obtain this results on multiline field</span>
-                        <span class="c1">#  ▶ Label</span>
-                        <span class="c1">#  ┊ NewLine 1</span>
-                        <span class="c1">#  │ NewLine 2</span>
-                        <span class="c1">#  ╽</span>
-                        <span class="k">if</span> <span class="n">_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                            <span class="n">_icon</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">_child</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">_il</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span>
-                        <span class="k">elif</span> <span class="n">_id</span> <span class="o">==</span> <span class="n">_h</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                            <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s2">&quot; ╽ &quot;</span><span class="p">,</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">))</span>
-                        <span class="k">elif</span> <span class="n">_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                            <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s2">&quot; ┊ &quot;</span><span class="p">,</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">))</span>
-                        <span class="k">else</span><span class="p">:</span>
-                            <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s2">&quot; │ &quot;</span><span class="p">,</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">))</span>
-                        <span class="n">_text</span> <span class="o">=</span> <span class="n">_lines</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span> <span class="k">if</span> <span class="n">_id</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">_lines</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-                        <span class="n">_data0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_level</span><span class="o">+</span><span class="n">_icon</span><span class="o">+</span><span class="n">_text</span><span class="p">)</span>
-                    <span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_data0</span><span class="p">)</span>
-                    <span class="n">_widgets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_child</span><span class="o">.</span><span class="n">widget</span><span class="p">(</span><span class="n">_il</span><span class="p">))</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">TTkString</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">_lines</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">TTkString</span><span class="p">()]</span><span class="o">*</span><span class="p">(</span><span class="n">_h</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">_lines</span><span class="p">)))</span>
-                    <span class="n">_widgets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_child</span><span class="o">.</span><span class="n">widget</span><span class="p">(</span><span class="n">_il</span><span class="p">))</span>
-
-            <span class="k">for</span> <span class="n">_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">_h</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TTkTreeWidget</span><span class="o">.</span><span class="n">_Cache</span><span class="p">(</span>
-                                        <span class="n">item</span>  <span class="o">=</span> <span class="n">_child</span><span class="p">,</span>
-                                        <span class="n">level</span> <span class="o">=</span> <span class="n">_level</span><span class="p">,</span>
-                                        <span class="n">data</span>  <span class="o">=</span> <span class="p">[</span> <span class="n">dt</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span> <span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">_data</span><span class="p">],</span>
-                                        <span class="n">widgets</span> <span class="o">=</span> <span class="n">_widgets</span><span class="p">,</span>
-                                        <span class="n">firstLine</span><span class="o">=</span><span class="n">_id</span><span class="o">==</span><span class="mi">0</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">_child</span><span class="o">.</span><span class="n">isExpanded</span><span class="p">():</span>
-                <span class="k">for</span> <span class="n">_c</span> <span class="ow">in</span> <span class="n">_child</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
-                   <span class="n">_addToCache</span><span class="p">(</span><span class="n">_c</span><span class="p">,</span> <span class="n">_level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
-            <span class="n">_addToCache</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_alignWidgets</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+        <span class="k">return</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
 
         <span class="n">color</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
         <span class="n">lineColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;lineColor&#39;</span><span class="p">]</span>
+        <span class="n">lineHeightColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;lineHeightColor&#39;</span><span class="p">]</span>
         <span class="n">headerColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;headerColor&#39;</span><span class="p">]</span>
         <span class="n">selectedColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;selectedColor&#39;</span><span class="p">]</span>
         <span class="n">separatorColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;separatorColor&#39;</span><span class="p">]</span>
@@ -1145,19 +1188,28 @@ document.write(`
             <span class="k">for</span> <span class="n">sy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">sx</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">sy</span><span class="p">),</span> <span class="n">char</span><span class="o">=</span><span class="n">tt</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">lineColor</span><span class="p">)</span>
 
-        <span class="c1"># Draw cache</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i</span><span class="o">-</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
-            <span class="n">item</span>  <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">item</span>
+        <span class="n">col_slices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">_p</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">_y</span><span class="p">,</span> <span class="p">(</span><span class="n">_l</span><span class="p">,</span> <span class="n">_yi</span><span class="p">,</span> <span class="n">_i</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_get_page_root</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">h</span><span class="p">)):</span>
             <span class="k">for</span> <span class="n">il</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">)):</span>
-                <span class="n">lx</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">il</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">il</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
-                <span class="n">lx1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">il</span><span class="p">]</span>
-
-                <span class="n">text</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">il</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">isSelected</span><span class="p">():</span>
-                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">lx</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="o">.</span><span class="n">completeColor</span><span class="p">(</span><span class="n">selectedColor</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">lx1</span><span class="o">-</span><span class="n">lx</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">textAlignment</span><span class="p">(</span><span class="n">il</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">selectedColor</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">lx</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">lx1</span><span class="o">-</span><span class="n">lx</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">textAlignment</span><span class="p">(</span><span class="n">il</span><span class="p">))</span></div>
+                <span class="n">_lx</span><span class="p">,</span><span class="n">_lx1</span> <span class="o">=</span> <span class="n">col_slices</span><span class="p">[</span><span class="n">il</span><span class="p">]</span>
+                <span class="n">_width</span> <span class="o">=</span> <span class="n">_lx1</span><span class="o">-</span><span class="n">_lx</span>
+                <span class="n">_ih</span> <span class="o">=</span> <span class="n">_i</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
+                <span class="n">_data</span> <span class="o">=</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">il</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">TTkString</span><span class="p">()]</span><span class="o">*</span><span class="n">_ih</span>
+                <span class="k">if</span> <span class="n">il</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># First Column</span>
+                    <span class="k">if</span> <span class="n">_yi</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">_yi</span> <span class="o">==</span> <span class="n">_ih</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> ╽ &quot;</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">_yi</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> ┊ &quot;</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> │ &quot;</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
+                    <span class="n">_text</span><span class="o">=</span><span class="n">_icon</span><span class="o">+</span><span class="n">_data</span><span class="p">[</span><span class="n">_yi</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span> <span class="c1"># Other columns</span>
+                    <span class="n">_text</span><span class="o">=</span><span class="n">_data</span><span class="p">[</span><span class="n">_yi</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">_i</span><span class="o">.</span><span class="n">isSelected</span><span class="p">():</span>
+                    <span class="n">_text</span> <span class="o">=</span> <span class="p">(</span><span class="n">_text</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="n">_width</span><span class="p">)</span><span class="o">.</span><span class="n">completeColor</span><span class="p">(</span><span class="n">selectedColor</span><span class="p">)</span>
+                <span class="n">canvas</span><span class="o">.</span><span class="n">drawTTkString</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">_text</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">_lx</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">_y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">width</span><span class="o">=</span><span class="n">_width</span><span class="p">)</span></div>
 
 </pre></div>
 

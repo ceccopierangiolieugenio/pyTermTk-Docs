@@ -36,6 +36,7 @@ TTkFileTreeWidgetItem
 
    
    .. automethod:: getType
+   .. automethod:: icon
    .. automethod:: path
    .. automethod:: setFilter
    .. automethod:: sortData

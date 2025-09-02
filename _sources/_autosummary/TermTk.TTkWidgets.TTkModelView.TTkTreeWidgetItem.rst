@@ -65,10 +65,8 @@ TTkTreeWidgetItem
    .. automethod:: setIcon
    .. automethod:: setSelected
    .. automethod:: setTextAlignment
-   .. automethod:: setTreeItemParent
    .. automethod:: size
    .. automethod:: sortChildren
-   .. automethod:: sortData
    .. automethod:: takeChild
    .. automethod:: takeChildren
    .. automethod:: textAlignment

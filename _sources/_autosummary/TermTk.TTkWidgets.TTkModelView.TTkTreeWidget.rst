@@ -20,12 +20,14 @@ TTkTreeWidget
                       'default':     {
                           'color': TTkColor.RST,
                           'lineColor': TTkColor.fg("#444444"),
+                          'lineHeightColor': TTkColor.fg("#666666"),
                           'headerColor': TTkColor.fg("#ffffff")+TTkColor.bg("#444444")+TTkColor.BOLD,
                           'selectedColor': TTkColor.fg("#ffff88")+TTkColor.bg("#000066")+TTkColor.BOLD,
                           'separatorColor': TTkColor.fg("#444444")},
                       'disabled':    {
                           'color': TTkColor.fg("#888888"),
                           'lineColor': TTkColor.fg("#888888"),
+                          'lineHeightColor': TTkColor.fg("#666666"),
                           'headerColor': TTkColor.fg("#888888"),
                           'selectedColor': TTkColor.fg("#888888"),
                           'separatorColor': TTkColor.fg("#888888")},
@@ -142,9 +144,11 @@ TTkTreeWidget
    .. automethod:: isSortingEnabled
    .. automethod:: resizeColumnToContents
    .. automethod:: selectedItems
+   .. automethod:: selectionMode
    .. automethod:: setColumnWidth
    .. automethod:: setDragDropMode
    .. automethod:: setHeaderLabels
+   .. automethod:: setSelectionMode
    .. automethod:: setSortingEnabled
    .. automethod:: sortColumn
    .. automethod:: sortItems

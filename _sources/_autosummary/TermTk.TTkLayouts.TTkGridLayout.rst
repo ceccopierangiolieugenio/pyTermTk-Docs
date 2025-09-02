@@ -76,6 +76,7 @@ TTkGridLayout
       addWidget
       addWidgets
       children
+      clear
       count
       fullWidgetAreaGeometry
       insertItem

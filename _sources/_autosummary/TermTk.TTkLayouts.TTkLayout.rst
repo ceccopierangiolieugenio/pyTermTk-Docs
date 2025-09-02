@@ -40,6 +40,7 @@ TTkLayout
    .. automethod:: addWidget
    .. automethod:: addWidgets
    .. automethod:: children
+   .. automethod:: clear
    .. automethod:: count
    .. automethod:: fullWidgetAreaGeometry
    .. automethod:: insertItem

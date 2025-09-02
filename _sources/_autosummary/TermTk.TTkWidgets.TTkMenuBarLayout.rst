@@ -44,7 +44,6 @@ TTkMenuBarLayout
 
    
    .. automethod:: addMenu
-   .. automethod:: clear
 
    
 
@@ -98,6 +97,7 @@ TTkMenuBarLayout
       addWidget
       addWidgets
       children
+      clear
       count
       fullWidgetAreaGeometry
       insertItem

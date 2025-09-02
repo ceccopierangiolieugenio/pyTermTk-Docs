@@ -32,7 +32,7 @@ TTkListWidget
                        '_itemClicked', '_textClicked', '_searchModified')
           def __init__(self, *,
                        items:list[str]=[],
-                       selectionMode:int=TTkK.SelectionMode.SingleSelection,
+                       selectionMode:TTkK.SelectionMode=TTkK.SelectionMode.SingleSelection,
                        dragDropMode:TTkK.DragDropMode=TTkK.DragDropMode.NoDragDrop,
                        showSearch:bool=True,
                        **kwargs) -> None:
@@ -111,6 +111,7 @@ TTkListWidget
               else:
                   self._filteredItems = self._items
                   for item in self._items:
+                      item._quickVisible = True
                       item.setVisible(True)
       
               self._placeItems()
@@ -140,11 +141,11 @@ TTkListWidget
               '''setDragDropMode'''
               self._dndMode = dndMode
       
-          def selectionMode(self):
+          def selectionMode(self) -> TTkK.SelectionMode:
               '''selectionMode'''
               return self._selectionMode
       
-          def setSelectionMode(self, mode):
+          def setSelectionMode(self, mode:TTkK.SelectionMode) -> None:
               '''setSelectionMode'''
               self._selectionMode = mode
       
