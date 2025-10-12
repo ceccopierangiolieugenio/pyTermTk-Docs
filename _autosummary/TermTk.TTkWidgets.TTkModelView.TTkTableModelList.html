@@ -538,7 +538,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.flags"><code class="docutils literal notranslate"><span class="pre">flags()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.headerData"><code class="docutils literal notranslate"><span class="pre">headerData()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertColumns"><code class="docutils literal notranslate"><span class="pre">insertColumns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertRows"><code class="docutils literal notranslate"><span class="pre">insertRows()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.modelList"><code class="docutils literal notranslate"><span class="pre">modelList()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeColumns"><code class="docutils literal notranslate"><span class="pre">removeColumns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeRows"><code class="docutils literal notranslate"><span class="pre">removeRows()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.rowCount"><code class="docutils literal notranslate"><span class="pre">rowCount()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.setData"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.setModelList"><code class="docutils literal notranslate"><span class="pre">setModelList()</span></code></a></li>
@@ -701,9 +705,127 @@ Similarly, for vertical headers, the section number corresponds to the row numbe
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertColumns">
+<span class="sig-name descname"><span class="pre">insertColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/tablemodellist.html#TTkTableModelList.insertColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertColumns" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>On models that support this,
+inserts &lt;count&gt; new columns into the model before the given column..</p>
+<p>If column is 0, the columns are prepended to any existing columns.</p>
+<p>If column is <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.columnCount" title="TermTk.TTkAbstract.TTkAbstractTableModel.columnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkAbstractTableModel.columnCount()</span></code></a>,
+the columns are appended to any existing columns.</p>
+<p>If you implement your own model,
+you can reimplement this function if you want to support insertions.
+Alternatively, you can provide your own API for altering the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The base class implementation (<a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.TTkAbstractTableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractTableModel</span></code></a>) of this function does nothing and returns false.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>int</em>) – Starting position of columns to insert (0-based index).</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – The number of columns to be inserted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the columns were successfully inserted; otherwise returns false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertRows">
+<span class="sig-name descname"><span class="pre">insertRows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/tablemodellist.html#TTkTableModelList.insertRows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertRows" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>On models that support this,
+inserts count rows into the model before the given row.</p>
+<p>If row is 0, the rows are prepended to any existing rows in the parent.</p>
+<p>If row is <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.rowCount" title="TermTk.TTkAbstract.TTkAbstractTableModel.rowCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TTkAbstractTableModel.rowCount()</span></code></a>,
+the rows are appended to any existing rows in the parent.</p>
+<p>If you implement your own model,
+you can reimplement this function if you want to support insertions.
+Alternatively, you can provide your own API for altering the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The base class implementation (<a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.TTkAbstractTableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractTableModel</span></code></a>) of this function does nothing and returns false.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – Starting position of rows to insert (0-based index)</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – The number of rows to be inserted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the rows were successfully inserted; otherwise returns false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.modelList">
 <span class="sig-name descname"><span class="pre">modelList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/tablemodellist.html#TTkTableModelList.modelList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.modelList" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeColumns">
+<span class="sig-name descname"><span class="pre">removeColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/tablemodellist.html#TTkTableModelList.removeColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeColumns" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>On models that support this,
+removes count columns starting with the given column.</p>
+<p>If you implement your own model,
+you can reimplement this function if you want to support removing.
+Alternatively, you can provide your own API for altering the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The base class implementation (<a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.TTkAbstractTableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractTableModel</span></code></a>) of this function does nothing and returns false.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>int</em>) – Starting position of columns to remove (0-based index)</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – The number of columns to remove.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the columns were successfully removed; otherwise returns false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeRows">
+<span class="sig-name descname"><span class="pre">removeRows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/TTkModelView/tablemodellist.html#TTkTableModelList.removeRows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeRows" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>On models that support this,
+removes count rows starting with the given row.</p>
+<p>If you implement your own model,
+you can reimplement this function if you want to support removing.
+Alternatively, you can provide your own API for altering the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The base class implementation (<a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel" title="TermTk.TTkAbstract.TTkAbstractTableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkAbstractTableModel</span></code></a>) of this function does nothing and returns false.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – Starting position of rows to remove (0-based index)</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – The number of rows to remove.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the rows were successfully removed; otherwise returns false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkModelView.TTkTableModelList.rowCount">
@@ -813,7 +935,11 @@ Similarly, for vertical headers, the section number corresponds to the row numbe
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.flags"><code class="docutils literal notranslate"><span class="pre">flags()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.headerData"><code class="docutils literal notranslate"><span class="pre">headerData()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertColumns"><code class="docutils literal notranslate"><span class="pre">insertColumns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertRows"><code class="docutils literal notranslate"><span class="pre">insertRows()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.modelList"><code class="docutils literal notranslate"><span class="pre">modelList()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeColumns"><code class="docutils literal notranslate"><span class="pre">removeColumns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeRows"><code class="docutils literal notranslate"><span class="pre">removeRows()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.rowCount"><code class="docutils literal notranslate"><span class="pre">rowCount()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.setData"><code class="docutils literal notranslate"><span class="pre">setData()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.setModelList"><code class="docutils literal notranslate"><span class="pre">setModelList()</span></code></a></li>

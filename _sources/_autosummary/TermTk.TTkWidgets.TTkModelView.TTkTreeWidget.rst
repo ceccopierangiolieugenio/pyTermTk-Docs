@@ -141,6 +141,7 @@ TTkTreeWidget
    .. automethod:: dragDropMode
    .. automethod:: expandAll
    .. automethod:: indexOfTopLevelItem
+   .. automethod:: invisibleRootItem
    .. automethod:: isSortingEnabled
    .. automethod:: resizeColumnToContents
    .. automethod:: selectedItems

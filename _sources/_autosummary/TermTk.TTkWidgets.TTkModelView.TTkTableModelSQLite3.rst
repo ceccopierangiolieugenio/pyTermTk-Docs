@@ -55,6 +55,10 @@ TTkTableModelSQLite3
    .. automethod:: flags
    .. automethod:: headerData
    .. automethod:: index
+   .. automethod:: insertColumns
+   .. automethod:: insertRows
+   .. automethod:: removeColumns
+   .. automethod:: removeRows
    .. automethod:: rowCount
    .. automethod:: setData
    .. automethod:: sort

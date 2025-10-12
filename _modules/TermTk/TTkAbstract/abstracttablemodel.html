@@ -812,6 +812,180 @@ document.write(`
 <span class="sd">        :type order: :py:class:`TTkConstant.SortOrder`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.insertColumn">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertColumn">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Inserts a single column before the given column.</span>
+
+<span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.insertColumns`.</span>
+
+<span class="sd">        :param column: The column index.</span>
+<span class="sd">        :type column: int</span>
+
+<span class="sd">        :return: true if the column is inserted; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertColumns</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.insertColumns">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertColumns">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        On models that support this,</span>
+<span class="sd">        inserts &lt;count&gt; new columns into the model before the given column..</span>
+
+<span class="sd">        If column is 0, the columns are prepended to any existing columns.</span>
+
+<span class="sd">        If column is :py:meth:`TTkAbstractTableModel.columnCount`,</span>
+<span class="sd">        the columns are appended to any existing columns.</span>
+
+<span class="sd">        If you implement your own model,</span>
+<span class="sd">        you can reimplement this function if you want to support insertions.</span>
+<span class="sd">        Alternatively, you can provide your own API for altering the data.</span>
+
+<span class="sd">        .. note:: The base class implementation (:py:class:`TTkAbstractTableModel`) of this function does nothing and returns false.</span>
+
+<span class="sd">        :param column: Starting position of columns to insert (0-based index).</span>
+<span class="sd">        :type column: int</span>
+<span class="sd">        :param count: The number of columns to be inserted.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: true if the columns were successfully inserted; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.insertRow">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertRow">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Inserts a single row before the given row.</span>
+
+<span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.insertRows`.</span>
+
+<span class="sd">        :param row: The row index.</span>
+<span class="sd">        :type row: int</span>
+
+<span class="sd">        :return: true if the row is inserted; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertRows</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.insertRows">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertRows">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        On models that support this,</span>
+<span class="sd">        inserts count rows into the model before the given row.</span>
+
+<span class="sd">        If row is 0, the rows are prepended to any existing rows in the parent.</span>
+
+<span class="sd">        If row is :py:meth:`TTkAbstractTableModel.rowCount`,</span>
+<span class="sd">        the rows are appended to any existing rows in the parent.</span>
+
+<span class="sd">        If you implement your own model,</span>
+<span class="sd">        you can reimplement this function if you want to support insertions.</span>
+<span class="sd">        Alternatively, you can provide your own API for altering the data.</span>
+
+<span class="sd">        .. note:: The base class implementation (:py:class:`TTkAbstractTableModel`) of this function does nothing and returns false.</span>
+
+<span class="sd">        :param row: Starting position of rows to insert (0-based index)</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param count: The number of rows to be inserted.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: true if the rows were successfully inserted; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.removeColumn">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeColumn">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Removes the given column.</span>
+
+<span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.removeColumns`.</span>
+
+<span class="sd">        :param column: The column index.</span>
+<span class="sd">        :type column: int</span>
+
+<span class="sd">        :return: true if the column is removed; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">removeColumns</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.removeColumns">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeColumns">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        On models that support this,</span>
+<span class="sd">        removes count columns starting with the given column.</span>
+
+<span class="sd">        If you implement your own model,</span>
+<span class="sd">        you can reimplement this function if you want to support removing.</span>
+<span class="sd">        Alternatively, you can provide your own API for altering the data.</span>
+
+<span class="sd">        .. note:: The base class implementation (:py:class:`TTkAbstractTableModel`) of this function does nothing and returns false.</span>
+
+<span class="sd">        :param column: Starting position of columns to remove (0-based index)</span>
+<span class="sd">        :type column: int</span>
+<span class="sd">        :param count: The number of columns to remove.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: true if the columns were successfully removed; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.removeRow">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeRow">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Removes the given row.</span>
+
+<span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.removeRows`.</span>
+
+<span class="sd">        :param row: The row index.</span>
+<span class="sd">        :type row: int</span>
+
+<span class="sd">        :return: true if the row is removed; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">removeRows</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkAbstractTableModel.removeRows">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeRows">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        On models that support this,</span>
+<span class="sd">        removes count rows starting with the given row.</span>
+
+<span class="sd">        If you implement your own model,</span>
+<span class="sd">        you can reimplement this function if you want to support removing.</span>
+<span class="sd">        Alternatively, you can provide your own API for altering the data.</span>
+
+<span class="sd">        .. note:: The base class implementation (:py:class:`TTkAbstractTableModel`) of this function does nothing and returns false.</span>
+
+<span class="sd">        :param row: Starting position of rows to remove (0-based index)</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param count: The number of rows to remove.</span>
+<span class="sd">        :type count: int</span>
+
+<span class="sd">        :return: true if the rows were successfully removed; otherwise returns false.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 </div>
 
 </pre></div>

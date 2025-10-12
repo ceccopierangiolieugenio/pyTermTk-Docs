@@ -508,6 +508,8 @@ document.write(`
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkFileTree&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">Optional</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
@@ -692,32 +694,46 @@ document.write(`
 <span class="sd">        :type  folder: :py:class:`TTkFileTreeWidgetItem`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">folderActivated</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setHeaderLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="n">TTkString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setHeaderLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkString</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setHeaderLabels`</span>
 
-<span class="sd">        setHeaderLabels</span>
+<span class="sd">        Adds a column in the header for each item in the labels list, and sets the label for each column.</span>
+
+<span class="sd">        :param labels: the list of labels</span>
+<span class="sd">        :type labels: List[:py:class:`TTkString`]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">setHeaderLabels</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setColumnWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setColumnWidth`</span>
 
-<span class="sd">        setColumnWidth</span>
+<span class="sd">        Set the width of the column requested</span>
+
+<span class="sd">        :param column: the column position</span>
+<span class="sd">        :type column: int</span>
+
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeColumnToContents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.resizeColumnToContents`</span>
 
-<span class="sd">        resizeColumnToContents</span>
+<span class="sd">        rwsize the width of the column requestedto its content</span>
+
+<span class="sd">        :param column: the column position</span>
+<span class="sd">        :type column: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">resizeColumnToContents</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">sortColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sortColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.sortColumn`</span>
 
 <span class="sd">        Returns the column used to sort the contents of the widget.</span>
+<span class="sd">        -1 in case no column sort is used</span>
+
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">sortColumn</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">sortItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -725,16 +741,21 @@ document.write(`
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.sortItems`</span>
 
 <span class="sd">        Sorts the items in the widget in the specified order by the values in the given column.</span>
+
+<span class="sd">        :param col: the column used as reference for the sorting</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        :param order: the sorting order</span>
+<span class="sd">        :type order: :py:class:`TTkK.SortOrder`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">sortItems</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.dragDropMode`</span>
 
 <span class="sd">        dragDropMode</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">dragDropMode</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.setDragDropMode`</span>
 
@@ -746,7 +767,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.expandAll`</span>
 
-<span class="sd">        expandAll</span>
+<span class="sd">        Expands all expandable items.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">expandAll</span><span class="p">()</span>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
@@ -754,56 +775,90 @@ document.write(`
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.collapseAll`</span>
 
-<span class="sd">        collapseAll</span>
+<span class="sd">        Collapse all collapsable items.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">collapseAll</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">invisibleRootItem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTreeWidgetItem</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.invisibleRootItem`</span>
+
+<span class="sd">        Returns the tree widget&#39;s invisible root item.</span>
+
+<span class="sd">        The invisible root item provides access to the tree widget&#39;s top-level items through the :py:class:`TTkTreeWidgetItem` API,</span>
+<span class="sd">        making it possible to write functions that can treat top-level items and their children in a uniform way;</span>
+<span class="sd">        for example, recursive functions.</span>
+
+<span class="sd">        :return: the root Item</span>
+<span class="sd">        :rtype: :py:class:`TTkTreeWidgetItem`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">invisibleRootItem</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.addTopLevelItem`</span>
 
-<span class="sd">        addTopLevelItem</span>
+<span class="sd">        Appends the item as a top-level item in the widget.</span>
+
+<span class="sd">        :param item: the item to be added.</span>
+<span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">addTopLevelItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.addTopLevelItems`</span>
 
-<span class="sd">        addTopLevelItems</span>
+<span class="sd">        Appends the list of items as a top-level items in the widget.</span>
+
+<span class="sd">        :param item: the item to be added.</span>
+<span class="sd">        :type item: List[:py:class:`TTkTreeWidgetItem`]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">addTopLevelItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">takeTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">takeTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.takeTopLevelItem`</span>
 
-<span class="sd">        takeTopLevelItem</span>
+<span class="sd">        Removes the top-level item at the given index in the tree and returns it, otherwise returns None;</span>
+
+<span class="sd">        :param index: the index of the item</span>
+<span class="sd">        :type index: int</span>
+
+<span class="sd">        :rtype: Optional[:py:class:`TTkTreeWidgetItem`]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">takeTopLevelItem</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">topLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTreeWidgetItem</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">topLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.topLevelItem`</span>
 
-<span class="sd">        topLevelItem</span>
+<span class="sd">        Returns the top level item at the given index, or None if the item does not exist.</span>
+
+<span class="sd">        :param index: the index of the item</span>
+<span class="sd">        :type index: int</span>
+
+<span class="sd">        :rtype: Optional[:py:class:`TTkTreeWidgetItem`]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">topLevelItem</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">indexOfTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.indexOfTopLevelItem`</span>
 
-<span class="sd">        indexOfTopLevelItem</span>
+<span class="sd">        Returns the index of the given top-level item, or -1 if the item cannot be found.</span>
+
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">indexOfTopLevelItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.selectedItems`</span>
 
-<span class="sd">        selectedItems</span>
+<span class="sd">        Returns a list of all selected non-hidden items.</span>
+
+<span class="sd">        :rtype: List[:py:class:`TTkTreeWidgetItem`]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkFileTreeWidget.clear`</span>
 
-<span class="sd">        clear</span>
+<span class="sd">        Clears the tree widget by removing all of its items and selections.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileTreeWidget</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 <div class="viewcode-block" id="TTkFileTree.openPath">

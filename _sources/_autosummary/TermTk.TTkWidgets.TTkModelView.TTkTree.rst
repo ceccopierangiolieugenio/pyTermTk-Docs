@@ -126,6 +126,7 @@ TTkTree
       TTkTreeWidget.dragDropMode
       TTkTreeWidget.expandAll
       TTkTreeWidget.indexOfTopLevelItem
+      TTkTreeWidget.invisibleRootItem
       TTkTreeWidget.resizeColumnToContents
       TTkTreeWidget.selectedItems
       TTkTreeWidget.setColumnWidth
@@ -152,6 +153,7 @@ TTkTree
    .. automethod:: dragDropMode
    .. automethod:: expandAll
    .. automethod:: indexOfTopLevelItem
+   .. automethod:: invisibleRootItem
    .. automethod:: resizeColumnToContents
    .. automethod:: selectedItems
    .. automethod:: setColumnWidth

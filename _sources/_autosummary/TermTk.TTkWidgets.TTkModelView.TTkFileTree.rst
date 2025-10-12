@@ -152,6 +152,7 @@ TTkFileTree
       dragDropMode
       expandAll
       indexOfTopLevelItem
+      invisibleRootItem
       resizeColumnToContents
       selectedItems
       setColumnWidth

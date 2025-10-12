@@ -641,6 +641,53 @@ document.write(`
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataOriginal</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="n">column</span><span class="p">],</span>     <span class="n">reverse</span><span class="o">=</span><span class="n">order</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">DescendingOrder</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataOriginal</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">column</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="n">order</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">DescendingOrder</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelList.insertColumns">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertColumns">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_rc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()</span>
+        <span class="n">_cc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">_l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+            <span class="n">_l</span><span class="p">[</span><span class="n">column</span><span class="p">:</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">count</span>
+        <span class="c1"># Signal: from (0, column) with size (all rows, all columns from insertion point)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">column</span><span class="p">),(</span><span class="n">_rc</span><span class="p">,</span> <span class="n">_cc</span> <span class="o">+</span> <span class="n">count</span> <span class="o">-</span> <span class="n">column</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelList.insertRows">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.insertRows">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_rc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()</span>
+        <span class="n">_cc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">_cc</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">row</span><span class="p">:</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="c1"># Signal: from (row, 0) with size (all rows from insertion point, all columns)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="n">_rc</span> <span class="o">+</span> <span class="n">count</span> <span class="o">-</span> <span class="n">row</span><span class="p">,</span> <span class="n">_cc</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelList.removeColumns">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeColumns">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_rc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()</span>
+        <span class="n">_cc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">_l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+            <span class="n">_l</span><span class="p">[</span><span class="n">column</span><span class="p">:</span><span class="n">column</span><span class="o">+</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Signal: from (0, column) with size (all rows, all remaining columns from removal point)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">column</span><span class="p">),(</span><span class="n">_rc</span><span class="p">,</span> <span class="n">_cc</span> <span class="o">-</span> <span class="n">count</span> <span class="o">-</span> <span class="n">column</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="TTkTableModelList.removeRows">
+<a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelList.removeRows">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">removeRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_rc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()</span>
+        <span class="n">_cc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">row</span><span class="p">:</span><span class="n">row</span><span class="o">+</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Signal: from (row, 0) with size (all remaining rows from removal point, all columns)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="n">_rc</span> <span class="o">-</span> <span class="n">count</span> <span class="o">-</span> <span class="n">row</span><span class="p">,</span> <span class="n">_cc</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 </div>
 
 </pre></div>

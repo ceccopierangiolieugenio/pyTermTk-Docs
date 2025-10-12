@@ -55,7 +55,11 @@ TTkTableModelList
    .. automethod:: flags
    .. automethod:: headerData
    .. automethod:: index
+   .. automethod:: insertColumns
+   .. automethod:: insertRows
    .. automethod:: modelList
+   .. automethod:: removeColumns
+   .. automethod:: removeRows
    .. automethod:: rowCount
    .. automethod:: setData
    .. automethod:: setModelList

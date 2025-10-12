@@ -134,6 +134,7 @@ TTkFileTreeWidget
       expandAll
       focusOutEvent
       indexOfTopLevelItem
+      invisibleRootItem
       isSortingEnabled
       mouseDoubleClickEvent
       mouseDragEvent

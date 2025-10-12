@@ -38,6 +38,7 @@ TTkTextDocument
    .. automethod:: appendText
    .. automethod:: changed
    .. automethod:: characterCount
+   .. automethod:: clear
    .. automethod:: find
    .. automethod:: hasSnapshots
    .. automethod:: isRedoAvailable
