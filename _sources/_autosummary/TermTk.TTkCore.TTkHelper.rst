@@ -61,6 +61,7 @@ TTkHelper
    .. automethod:: addUpdateBuffer
    .. automethod:: addUpdateWidget
    .. automethod:: checkModalOverlay
+   .. automethod:: cleanRootWidget
    .. automethod:: clearFocus
    .. automethod:: cursorWidget
    .. automethod:: dndEnd

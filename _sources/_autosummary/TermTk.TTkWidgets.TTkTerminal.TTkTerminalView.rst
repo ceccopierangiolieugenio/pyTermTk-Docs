@@ -102,6 +102,7 @@ TTkTerminalView
    
 
    
+   .. automethod:: getBuffer
    .. automethod:: termSize
    .. automethod:: termWrite
 

@@ -52,6 +52,7 @@ TTkAbstractTableModel
    
    .. automethod:: columnCount
    .. automethod:: data
+   .. automethod:: displayData
    .. automethod:: flags
    .. automethod:: headerData
    .. automethod:: index

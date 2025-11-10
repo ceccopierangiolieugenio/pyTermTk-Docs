@@ -65,7 +65,7 @@ TTkListWidget
               super().__init__(**kwargs)
               self.addItems(items)
               self.viewChanged.connect(self._viewChangedHandler)
-              self.setFocusPolicy(TTkK.ClickFocus + TTkK.TabFocus)
+              self.setFocusPolicy(TTkK.ClickFocus | TTkK.TabFocus)
               self.searchModified.connect(self._searchModifiedHandler)
       
           @pyTTkSlot()

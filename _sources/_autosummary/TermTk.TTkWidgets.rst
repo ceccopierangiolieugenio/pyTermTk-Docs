@@ -20,6 +20,9 @@
       TTkCheckbox
       TTkComboBox
       TTkContainer
+      TTkDate
+      TTkDateForm
+      TTkDateTime
       TTkFrame
       TTkGraph
       TTkImage
@@ -47,6 +50,7 @@
       TTkTextEdit
       TTkTextEditRuler
       TTkTextEditView
+      TTkTime
       TTkWidget
       TTkWindow
    

@@ -15,7 +15,6 @@
       TTk
       TTkAlternateColor
       TTkCanvas
-      TTkCfg
       TTkColor
       TTkColorGradient
       TTkColorModifier

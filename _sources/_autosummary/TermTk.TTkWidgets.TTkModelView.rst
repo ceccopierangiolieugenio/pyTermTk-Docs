@@ -17,9 +17,12 @@ TermTk.TTkWidgets.TTkModelView
       TTkFileTreeWidgetItem
       TTkHeaderView
       TTkTable
+      TTkTableEditLeaving
       TTkTableModelCSV
       TTkTableModelList
       TTkTableModelSQLite3
+      TTkTableProxyEdit
+      TTkTableProxyEditWidget
       TTkTableWidget
       TTkTree
       TTkTreeWidget

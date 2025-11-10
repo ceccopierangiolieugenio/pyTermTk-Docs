@@ -71,6 +71,7 @@ TTkInput Attributes
 .. autosummary::
 
 
+  exceptionRaised
   inputEvent
   pasteEvent
 
