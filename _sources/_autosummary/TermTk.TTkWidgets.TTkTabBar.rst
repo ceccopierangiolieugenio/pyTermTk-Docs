@@ -30,9 +30,12 @@ TTkTabBar
    .. autosummary::
    
       closed
+      currentChanged
       currentStyleChanged
       focusChanged
       sizeChanged
+      tabBarClicked
+      tabCloseRequested
    
 
    
@@ -88,9 +91,12 @@ TTkTabBar
 
    
    .. autoattribute:: closed
+   .. autoattribute:: currentChanged
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
+   .. autoattribute:: tabBarClicked
+   .. autoattribute:: tabCloseRequested
    
 
    
@@ -132,6 +138,7 @@ TTkTabBar
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth
@@ -274,9 +281,6 @@ TTkTabBar Attributes
 
 
   classStyle
-  currentChanged
-  tabBarClicked
-  tabCloseRequested
 
 .. currentmodule::  TermTk.TTkWidgets
 

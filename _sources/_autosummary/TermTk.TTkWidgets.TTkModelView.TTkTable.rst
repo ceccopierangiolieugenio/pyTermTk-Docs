@@ -164,6 +164,7 @@ TTkTable
       TTkTableWidget.isUndoAvailable
       TTkTableWidget.model
       TTkTableWidget.paste
+      TTkTableWidget.proxyEdit
       TTkTableWidget.redo
       TTkTableWidget.resizeColumnToContents
       TTkTableWidget.resizeColumnsToContents
@@ -209,6 +210,7 @@ TTkTable
    .. automethod:: isUndoAvailable
    .. automethod:: model
    .. automethod:: paste
+   .. automethod:: proxyEdit
    .. automethod:: redo
    .. automethod:: resizeColumnToContents
    .. automethod:: resizeColumnsToContents
@@ -259,6 +261,7 @@ TTkTable
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth

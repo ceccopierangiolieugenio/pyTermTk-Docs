@@ -41,6 +41,7 @@ TTk
    
    
    
+   
    Slots Inherited from: :py:class:`TTkContainer`
 
    .. autosummary::
@@ -102,6 +103,7 @@ TTk
    
    
    
+   
    Methods Inherited from: :py:class:`TTkContainer`
 
    .. autosummary::
@@ -111,6 +113,7 @@ TTk
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth

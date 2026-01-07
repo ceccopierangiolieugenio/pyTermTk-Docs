@@ -9,9 +9,18 @@ TTkAbstractScrollViewInterface
    
 
    
+   :ref:`Signals <Signal and Slots>`
+   ---------------------------------
+   
 
    
 
+   
+   .. autosummary::
+   
+      viewChanged
+      viewMovedTo
+      viewSizeChanged
    
 
    
@@ -29,6 +38,14 @@ TTkAbstractScrollViewInterface
 
    
 
+   
+   Members
+   -------
+
+   
+   .. autoattribute:: viewChanged
+   .. autoattribute:: viewMovedTo
+   .. autoattribute:: viewSizeChanged
    
 
    

@@ -102,6 +102,12 @@ TTkK Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkK
 
+.. autoclass::  InputType
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkK
+
 .. autoclass::  InsertPolicy
    :show-inheritance:
    :members:

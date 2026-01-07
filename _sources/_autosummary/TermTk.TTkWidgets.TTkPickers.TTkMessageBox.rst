@@ -143,6 +143,7 @@ TTkMessageBox
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth

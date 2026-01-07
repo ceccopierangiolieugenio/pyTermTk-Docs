@@ -191,6 +191,7 @@ TTkTree
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth

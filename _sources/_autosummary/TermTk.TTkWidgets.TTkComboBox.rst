@@ -37,7 +37,10 @@ TTkComboBox
    .. autosummary::
    
       closed
+      currentIndexChanged
       currentStyleChanged
+      currentTextChanged
+      editTextChanged
       focusChanged
       sizeChanged
    
@@ -96,7 +99,10 @@ TTkComboBox
 
    
    .. autoattribute:: closed
+   .. autoattribute:: currentIndexChanged
    .. autoattribute:: currentStyleChanged
+   .. autoattribute:: currentTextChanged
+   .. autoattribute:: editTextChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
    
@@ -142,6 +148,7 @@ TTkComboBox
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth
@@ -284,9 +291,6 @@ TTkComboBox Attributes
 
 
   classStyle
-  currentIndexChanged
-  currentTextChanged
-  editTextChanged
 
 .. currentmodule::  TermTk.TTkWidgets
 

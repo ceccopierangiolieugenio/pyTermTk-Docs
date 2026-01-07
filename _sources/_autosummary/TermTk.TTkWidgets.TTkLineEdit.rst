@@ -41,7 +41,10 @@ TTkLineEdit
       closed
       currentStyleChanged
       focusChanged
+      returnPressed
       sizeChanged
+      textChanged
+      textEdited
    
 
    
@@ -92,7 +95,10 @@ TTkLineEdit
    .. autoattribute:: closed
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
+   .. autoattribute:: returnPressed
    .. autoattribute:: sizeChanged
+   .. autoattribute:: textChanged
+   .. autoattribute:: textEdited
    
 
    
@@ -260,9 +266,6 @@ TTkLineEdit Attributes
 
 
   classStyle
-  returnPressed
-  textChanged
-  textEdited
 
 .. currentmodule::  TermTk.TTkWidgets
 

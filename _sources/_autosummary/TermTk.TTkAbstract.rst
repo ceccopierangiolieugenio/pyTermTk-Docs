@@ -17,6 +17,7 @@
       TTkAbstractScrollView
       TTkAbstractScrollViewGridLayout
       TTkAbstractScrollViewInterface
+      TTkAbstractScrollViewLayout
       TTkAbstractTableModel
       TTkModelIndex
    

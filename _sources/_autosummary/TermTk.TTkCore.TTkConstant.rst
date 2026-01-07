@@ -102,6 +102,12 @@ TTkConstant Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkConstant
 
+.. autoclass::  InputType
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkConstant
+
 .. autoclass::  InsertPolicy
    :show-inheritance:
    :members:

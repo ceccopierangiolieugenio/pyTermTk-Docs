@@ -85,6 +85,7 @@ TTkTableProxyEditWidget
    
    .. automethod:: editWidgetFactory
    .. automethod:: getCellData
+   .. automethod:: isModal
    .. automethod:: proxyDispose
 
    

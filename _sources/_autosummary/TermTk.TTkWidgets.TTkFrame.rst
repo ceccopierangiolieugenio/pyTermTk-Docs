@@ -16,7 +16,7 @@ TTkFrame
    .. code-block:: python
 
       
-          classStyle = {
+          classStyle:Dict[str,Dict[str,Any]] = {
                       'default':     {'color': TTkColor.fg("#dddddd")+TTkColor.bg("#222222"),
                                       'fillColor': TTkColor.RST,
                                       'borderColor': TTkColor.RST},
@@ -130,6 +130,7 @@ TTkFrame
       getPadding
       getWidgetByName
       hide
+      keyEvent
       layout
       maximumHeight
       maximumWidth

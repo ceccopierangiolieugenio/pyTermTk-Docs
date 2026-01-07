@@ -9,9 +9,16 @@ TTkTimer
    
 
    
+   :ref:`Signals <Signal and Slots>`
+   ---------------------------------
+   
 
    
 
+   
+   .. autosummary::
+   
+      timeout
    
 
    
@@ -30,6 +37,12 @@ TTkTimer
 
    
 
+   
+   Members
+   -------
+
+   
+   .. autoattribute:: timeout
    
 
    
@@ -69,7 +82,6 @@ TTkTimer Attributes
   ident
   name
   native_id
-  timeout
 
 .. currentmodule::  TermTk.TTkCore
 

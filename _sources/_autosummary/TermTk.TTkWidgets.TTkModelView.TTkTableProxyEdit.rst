@@ -35,6 +35,7 @@ TTkTableProxyEdit
    
 
    
+   .. automethod:: addProxy
    .. automethod:: getProxyWidget
 
    

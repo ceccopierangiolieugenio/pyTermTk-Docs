@@ -33,6 +33,7 @@ TTkTabButton
       currentStyleChanged
       focusChanged
       sizeChanged
+      tcbClicked
    
 
    
@@ -78,6 +79,7 @@ TTkTabButton
    .. autoattribute:: currentStyleChanged
    .. autoattribute:: focusChanged
    .. autoattribute:: sizeChanged
+   .. autoattribute:: tcbClicked
    
 
    
@@ -91,13 +93,12 @@ TTkTabButton
    
 
    
+   .. automethod:: buttonStatus
    .. automethod:: data
+   .. automethod:: setButtonStatus
    .. automethod:: setData
    .. automethod:: setSideEnd
-   .. automethod:: setTabStatus
    .. automethod:: setText
-   .. automethod:: sideEnd
-   .. automethod:: tabStatus
    .. automethod:: text
 
    
@@ -233,7 +234,6 @@ TTkTabButton Attributes
 
 
   classStyle
-  clicked
   closeClicked
 
 .. currentmodule::  TermTk.TTkWidgets
