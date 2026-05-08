@@ -17,6 +17,7 @@
       TTkAppTemplate
       TTkBarType
       TTkButton
+      TTkCheckBox
       TTkCheckbox
       TTkComboBox
       TTkContainer
@@ -30,6 +31,7 @@
       TTkLabel
       TTkLineEdit
       TTkList
+      TTkListItem
       TTkListWidget
       TTkMenu
       TTkMenuBarButton

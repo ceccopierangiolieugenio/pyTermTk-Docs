@@ -128,22 +128,29 @@ TTkFileTreeWidget
       addTopLevelItem
       addTopLevelItems
       clear
+      clearSelection
       collapseAll
       columnWidth
+      deselectItem
       dragDropMode
       expandAll
       focusOutEvent
       indexOfTopLevelItem
       invisibleRootItem
       isSortingEnabled
+      itemAt
+      leaveEvent
       mouseDoubleClickEvent
       mouseDragEvent
+      mouseMoveEvent
       mousePressEvent
       paintEvent
       resizeColumnToContents
+      selectItem
       selectedItems
       selectionMode
       setColumnWidth
+      setCurrentItem
       setDragDropMode
       setHeaderLabels
       setSelectionMode

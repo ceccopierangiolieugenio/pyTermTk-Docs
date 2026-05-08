@@ -39,6 +39,8 @@ TTkTextDocument
    .. automethod:: changed
    .. automethod:: characterCount
    .. automethod:: clear
+   .. automethod:: dataLine
+   .. automethod:: dataLines
    .. automethod:: find
    .. automethod:: hasSnapshots
    .. automethod:: isRedoAvailable

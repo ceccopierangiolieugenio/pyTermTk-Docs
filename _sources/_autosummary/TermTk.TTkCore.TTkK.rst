@@ -192,7 +192,19 @@ TTkK Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkK
 
+.. autoclass::  TextEditEdge
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkK
+
 .. autoclass::  WindowFlag
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkK
+
+.. autoclass::  WrapEngine
    :show-inheritance:
    :members:
 
@@ -785,7 +797,6 @@ TTkK Attributes
   WindowShortcut
   WordWrap
   WrapAnywhere
-  WrapAtWordBoundaryOrAnywhere
 
 .. currentmodule::  TermTk.TTkCore
 

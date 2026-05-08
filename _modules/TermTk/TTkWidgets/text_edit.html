@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TermTk.TTkWidgets.text_edit &#8212; pyTermTk 0.50.0-a0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_overrides.css?v=370fe9cb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/ttk.css?v=a0d45580" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/TermTk/TTkWidgets/text_edit';</script>
+    <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/www/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to pyTermTk’s documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/000-examples.html">pyTermTk - &lt; <strong>the Examples</strong> &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/001-helloworld.html">pyTermTk - Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/002-layout.html">pyTermTk - Layouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/003-signalslots.html">pyTermTk - Signal &amp; Slots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/004-logging.html">pyTermTk - Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/005-calculator.html">pyTermTk - Your first Calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/ttkDesigner/textEdit/README.html">ttkDesigner - Your first TextEditor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../info/features/index.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../info/features/crosscompatible.html">Cross Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../info/features/widgets.html">Widgets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dev</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../info/installing.html">Installation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../info/debug.html">Debug</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../info/resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../info/resources/clipboard.html">Clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../info/resources/modal.html">Overlay Widgets (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../info/resources/dragdrop.html">Drag and Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../info/resources/experimental.html">Experimental Features</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.html">TermTk.TTkAbstract</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractItemModel.html">TTkAbstractItemModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollArea.html">TTkAbstractScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollView.html">TTkAbstractScrollView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewGridLayout.html">TTkAbstractScrollViewGridLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewInterface.html">TTkAbstractScrollViewInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractScrollViewLayout.html">TTkAbstractScrollViewLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html">TTkAbstractTableModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract.TTkModelIndex.html">TTkModelIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkAbstract._TTkAbstractListItem.html">_TTkAbstractListItem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.html">TermTk.TTkCore</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTk.html">TTk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkAlternateColor.html">TTkAlternateColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkCanvas.html">TTkCanvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColor.html">TTkColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorGradient.html">TTkColorGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkColorModifier.html">TTkColorModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html">TTkConstant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkEasingCurve.html">TTkEasingCurve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkFileBuffer.html">TTkFileBuffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkGlbl.html">TTkGlbl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkHelper.html">TTkHelper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkK.html">TTkK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkLinearGradient.html">TTkLinearGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkLog.html">TTkLog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkPropertyAnimation.html">TTkPropertyAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkShortcut.html">TTkShortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkString.html">TTkString</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTimer.html">TTkTimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkUtil.html">TTkUtil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.pyTTkSignal.html">pyTTkSignal</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.html">TermTk.TTkGui</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkClipboard.html">TTkClipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html">TTkDnD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html">TTkDnDEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html">TTkDrag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextCursor.html">TTkTextCursor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextDocument.html">TTkTextDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkToolTip.html">TTkToolTip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TextDocumentHighlight.html">TextDocumentHighlight</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.html">TermTk.TTkGui.TTkTextWrap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkGui.TTkTextWrap.TTkTextWrap.html">TTkTextWrap</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.html">TermTk.TTkLayouts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html">TTkGridLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkHBoxLayout.html">TTkHBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TDragEvents.html">TDragEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TKeyEvents.html">TKeyEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.TMouseEvents.html">TMouseEvents</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.html">TermTk.TTkTestWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html">TTkKeyPressView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkLogViewer.html">TTkLogViewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkTestAbstractScrollWidget.html">TTkTestAbstractScrollWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkTestWidget.html">TTkTestWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkTestWidgetSizes.html">TTkTestWidgetSizes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkUiTools.html">TermTk.TTkUiTools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkUiTools.TTkUiLoader.html">TTkUiLoader</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.html">TermTk.TTkWidgets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbout.html">TTkAbout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAbstractListItem.html">TTkAbstractListItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkAppTemplate.html">TTkAppTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkBarType.html">TTkBarType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkButton.html">TTkButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkCheckBox.html">TTkCheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkCheckbox.html">TTkCheckbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkComboBox.html">TTkComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkContainer.html">TTkContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkDate.html">TTkDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkDateForm.html">TTkDateForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkDateTime.html">TTkDateTime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkFrame.html">TTkFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkGraph.html">TTkGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkImage.html">TTkImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkKodeTab.html">TTkKodeTab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkLabel.html">TTkLabel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkLineEdit.html">TTkLineEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html">TTkList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkListItem.html">TTkListItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkListWidget.html">TTkListWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkMenu.html">TTkMenu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkMenuBarButton.html">TTkMenuBarButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkMenuBarLayout.html">TTkMenuBarLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkMenuButton.html">TTkMenuButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPadding.html">TTkPadding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkRadioButton.html">TTkRadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkResizableFrame.html">TTkResizableFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkScrollArea.html">TTkScrollArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkScrollBar.html">TTkScrollBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkSlider.html">TTkSlider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkSpacer.html">TTkSpacer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkSpinBox.html">TTkSpinBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html">TTkSplitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html">TTkTabBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html">TTkTabButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html">TTkTabWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html">TTkTextEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditRuler.html">TTkTextEditRuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html">TTkTextEditView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTime.html">TTkTime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html">TTkWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkWindow.html">TTkWindow</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.html">TermTk.TTkWidgets.Fancy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyProgressBar.html">TTkFancyProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTable.html">TTkFancyTable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTableView.html">TTkFancyTableView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTree.html">TTkFancyTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeView.html">TTkFancyTreeView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeWidget.html">TTkFancyTreeWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkFancyTreeWidgetItem.html">TTkFancyTreeWidgetItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.Fancy.TTkLookAndFeelFPBar.html">TTkLookAndFeelFPBar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.html">TermTk.TTkWidgets.TTkModelView</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListType.html">TTkCellListType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html">TTkCellListTypeBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html">TTkFileTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html">TTkFileTreeWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html">TTkFileTreeWidgetItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html">TTkHeaderView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkProxyEditDef.html">TTkProxyEditDef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html">TTkTable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableEditLeaving.html">TTkTableEditLeaving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelCSV.html">TTkTableModelCSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html">TTkTableModelList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html">TTkTableModelSQLite3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.html">TTkTableProxyEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditFlag.html">TTkTableProxyEditFlag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html">TTkTableProxyEditWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html">TTkTableWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html">TTkTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html">TTkTreeWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html">TTkTreeWidgetItem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.html">TermTk.TTkWidgets.TTkPickers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker.html">TTkColorButtonPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker.html">TTkColorDialogPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html">TTkFileButtonPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html">TTkFileDialogPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html">TTkMessageBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.html">TTkTextDialogPicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextPicker.html">TTkTextPicker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.html">TermTk.TTkWidgets.TTkTerminal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html">TTkTerminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html">TTkTerminalHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html">TTkTerminalView</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.html">TermTk.TTkWidgets.TTkModelView</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListType.html">TTkCellListType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html">TTkCellListTypeBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTree.html">TTkFileTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidget.html">TTkFileTreeWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkFileTreeWidgetItem.html">TTkFileTreeWidgetItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkHeaderView.html">TTkHeaderView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkProxyEditDef.html">TTkProxyEditDef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTable.html">TTkTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableEditLeaving.html">TTkTableEditLeaving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelCSV.html">TTkTableModelCSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelList.html">TTkTableModelList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html">TTkTableModelSQLite3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.html">TTkTableProxyEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditFlag.html">TTkTableProxyEditFlag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html">TTkTableProxyEditWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableWidget.html">TTkTableWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTree.html">TTkTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html">TTkTreeWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem.html">TTkTreeWidgetItem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.html">TermTk.TTkWidgets.TTkPickers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkColorButtonPicker.html">TTkColorButtonPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkColorDialogPicker.html">TTkColorDialogPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileButtonPicker.html">TTkFileButtonPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkFileDialogPicker.html">TTkFileDialogPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkMessageBox.html">TTkMessageBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextDialogPicker.html">TTkTextDialogPicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkPickers.TTkTextPicker.html">TTkTextPicker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.html">TermTk.TTkWidgets.TTkTerminal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminal.html">TTkTerminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalHelper.html">TTkTerminalHelper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkWidgets.TTkTerminal.TTkTerminalView.html">TTkTerminalView</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for TermTk.TTkWidgets.text_edit</h1><div class="highlight"><pre>
+<span></span><span class="c1"># MIT License</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+<span class="c1">#</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextEditView&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEditRuler&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">Optional</span><span class="p">,</span><span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span><span class="p">,</span> <span class="n">TTkStringType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textcursor</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextCursor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.textdocument</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextDocument</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.text_edit_view</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextEditView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.text_edit_ruler</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkTextEditRuler</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollarea</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span><span class="p">,</span> <span class="n">_ForwardData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollview</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollViewGridLayout</span>
+
+<div class="viewcode-block" id="TTkTextEdit">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTkTextEdit</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
+    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    :py:class:`TTkTextEdit` is a container widget which place :py:class:`TTkTextEditView` in a scrolling area with on-demand scroll bars.</span>
+
+<span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="n">TTkTextEditView</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">ExtraSelection</span> <span class="o">=</span> <span class="n">TTkTextEditView</span><span class="o">.</span><span class="n">ExtraSelection</span>
+
+    <span class="n">_ttk_forward</span><span class="p">:</span><span class="n">_ForwardData</span> <span class="o">=</span> <span class="n">_ForwardData</span><span class="p">(</span>
+        <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkTextEditView</span> <span class="p">,</span>
+        <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._textEditView&quot;</span><span class="p">,</span>
+        <span class="n">signals</span><span class="o">=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTexteditView</span>
+            <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;textChanged&#39;</span><span class="p">],</span>
+        <span class="n">methods</span><span class="o">=</span><span class="p">[</span>
+            <span class="c1"># Forwarded Methods From TTkTexteditView</span>
+            <span class="s2">&quot;clear&quot;</span><span class="p">,</span> <span class="s2">&quot;setText&quot;</span><span class="p">,</span> <span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="s2">&quot;isReadOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;setReadOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;document&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wrapWidth&quot;</span><span class="p">,</span> <span class="s2">&quot;setWrapWidth&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;multiLine&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lineWrapMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setLineWrapMode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wordWrapMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setWordWrapMode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;textCursor&quot;</span><span class="p">,</span> <span class="s2">&quot;setFocus&quot;</span><span class="p">,</span> <span class="s2">&quot;setColor&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;extraSelections&quot;</span><span class="p">,</span> <span class="s2">&quot;setExtraSelections&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">,</span> <span class="s2">&quot;paste&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;undo&quot;</span><span class="p">,</span> <span class="s2">&quot;redo&quot;</span><span class="p">,</span> <span class="s2">&quot;isUndoAvailable&quot;</span><span class="p">,</span> <span class="s2">&quot;isRedoAvailable&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;find&quot;</span><span class="p">,</span> <span class="s2">&quot;ensureCursorVisible&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;follow&quot;</span><span class="p">,</span> <span class="s2">&quot;setFollow&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scrollTo&quot;</span><span class="p">,</span>
+            <span class="c1"># Exported Methods</span>
+            <span class="s2">&quot;toAnsi&quot;</span><span class="p">,</span> <span class="s2">&quot;toRawText&quot;</span><span class="p">,</span> <span class="s2">&quot;toPlainText&quot;</span> <span class="c1"># , &quot;toHtml&quot;, &quot;toMarkdown&quot;,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="c1"># TTkWidget init</span>
+                 <span class="n">parent</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">visible</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+                 <span class="c1"># TTkTextEditView init</span>
+                 <span class="n">readOnly</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">multiLine</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">document</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkTextDocument</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">follow</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+                 <span class="c1"># TTkText init</span>
+                 <span class="n">textEditView</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkTextEditView</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">lineNumber</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">lineNumberStarting</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param textEditView: a custom TextEdit View to be used instead of the default one.</span>
+<span class="sd">        :type textEditView: :py:class:`TTkTextEditView`, optional</span>
+<span class="sd">        :param lineNumber: show the line number on the left side, defaults to False</span>
+<span class="sd">        :type lineNumber: bool, optional</span>
+<span class="sd">        :param lineNumberStarting: set the starting number of the left line number column, defaults to 0</span>
+<span class="sd">        :type lineNumberStarting: int, optional</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="n">visible</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span> <span class="o">=</span> <span class="n">textEditView</span> <span class="k">if</span> <span class="n">textEditView</span> <span class="k">else</span> <span class="n">TTkTextEditView</span><span class="p">(</span><span class="n">readOnly</span><span class="o">=</span><span class="n">readOnly</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="n">multiLine</span><span class="p">,</span> <span class="n">document</span><span class="o">=</span><span class="n">document</span><span class="p">,</span> <span class="n">follow</span><span class="o">=</span><span class="n">follow</span><span class="p">)</span>
+        <span class="c1"># self.setFocusPolicy(self._textEditView.focusPolicy())</span>
+        <span class="c1"># self._textEditView.setFocusPolicy(TTkK.ParentFocus)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumber</span> <span class="o">=</span> <span class="n">lineNumber</span>
+
+        <span class="n">textEditLayout</span> <span class="o">=</span> <span class="n">TTkAbstractScrollViewGridLayout</span><span class="p">()</span>
+        <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span> <span class="o">=</span> <span class="n">TTkTextEditRuler</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumber</span><span class="p">,</span> <span class="n">startingNumber</span><span class="o">=</span><span class="n">lineNumberStarting</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span>
+        <span class="n">textEditLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">textEditLayout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focusChanged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">focusChanged</span>
+
+<div class="viewcode-block" id="TTkTextEdit.ruler">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ruler">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ruler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextEditRuler</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;ruler&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEdit.textEditView">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textEditView">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textEditView</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;textEditView&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEdit.getLineNumber">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.getLineNumber">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;getLineNumber&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEdit.setLineNumber">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumber">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ln</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumber&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="n">ln</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEdit.lineNumberStarting">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;lineNumberStarting&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEdit.setLineNumberStarting">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starting</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumberStarting&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span> <span class="o">=</span> <span class="n">starting</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TTkTextEdit.setDocument">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setDocument">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;setDocument&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setDocument</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span></div>
+
+
+    <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">currentColorChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.currentColorChanged`</span>
+
+<span class="sd">        This signal is emitted if the current character color has changed,</span>
+<span class="sd">        for example caused by a change of the cursor position.</span>
+<span class="sd">        </span>
+<span class="sd">        :param color: the new color</span>
+<span class="sd">        :type color: :py:class:`TTkColor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">currentColorChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cursorPositionChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.cursorPositionChanged`</span>
+
+<span class="sd">        This signal is emitted whenever the position of the cursor changed.</span>
+<span class="sd">        </span>
+<span class="sd">        :param cursor: the cursor changed.</span>
+<span class="sd">        :type cursor: :py:class:`TTkTextCursor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cursorPositionChanged</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">undoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.undoAvailable`</span>
+
+<span class="sd">        This signal is emitted whenever undo operations become available (available is true)</span>
+<span class="sd">        or unavailable (available is false).</span>
+<span class="sd">        </span>
+<span class="sd">        :param available: the availability of undo</span>
+<span class="sd">        :type available: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undoAvailable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.redoAvailable`</span>
+
+<span class="sd">        This signal is emitted whenever redo operations become available (available is true)</span>
+<span class="sd">        or unavailable (available is false).</span>
+<span class="sd">        </span>
+<span class="sd">        :param available: the availability of redo</span>
+<span class="sd">        :type available: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redoAvailable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.textChanged`</span>
+
+<span class="sd">        This signal is emitted whenever the document&#39;s content changes;</span>
+<span class="sd">        for example, when text is inserted or deleted, or when formatting is applied.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textChanged</span>
+<div class="viewcode-block" id="TTkTextEdit.clear">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.clear">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.clear`</span>
+
+<span class="sd">        Deletes all the text in the text edit.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            The undo/redo history is also cleared.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setText">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setText">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkStringType</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setText`</span>
+
+<span class="sd">        Sets the text edit&#39;s text.</span>
+<span class="sd">        The text can be plain text or :py:class:`TTkString` and the text edit will</span>
+<span class="sd">        try to guess the right format.</span>
+
+<span class="sd">        :param text: the text</span>
+<span class="sd">        :type text: str or :py:class:`TTkString`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.append">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.append">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkStringType</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.append`</span>
+
+<span class="sd">        Appends a new paragraph with text to the end of the text edit.</span>
+<span class="sd">        The text can be plain text or :py:class:`TTkString`.</span>
+
+<span class="sd">        :param text: the text</span>
+<span class="sd">        :type text: str or :py:class:`TTkString`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.isReadOnly">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isReadOnly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isReadOnly`</span>
+
+<span class="sd">        This property holds whether the text edit is read-only</span>
+
+<span class="sd">        In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible.</span>
+
+<span class="sd">        This property&#39;s default is false.</span>
+
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isReadOnly</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setReadOnly">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setReadOnly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ro</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setReadOnly`</span>
+
+<span class="sd">        This property holds whether the text edit is read-only</span>
+
+<span class="sd">        In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible.</span>
+
+<span class="sd">        :param ro: the readonly status</span>
+<span class="sd">        :type ro: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="n">ro</span><span class="o">=</span><span class="n">ro</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.document">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.document">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">document</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextDocument</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.document`</span>
+
+<span class="sd">        This property holds the underlying document of the text editor.</span>
+
+<span class="sd">        :rtype: :py:class:`TTkTextDocument`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">document</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.wrapWidth">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wrapWidth">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.wrapWidth`</span>
+
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.wrapWidth`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setWrapWidth">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setWrapWidth`</span>
+
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.setWrapWidth`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.multiLine">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.multiLine">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiLine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.multiLine`</span>
+
+<span class="sd">        This property define if the text edit area will use a single line, like in the line-edit or it allows multilines like a normal text edit area.</span>
+
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">multiLine</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.lineWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.lineWrapMode`</span>
+
+<span class="sd">        This property holds the line wrap mode</span>
+
+<span class="sd">        The default mode is :py:class:`TTkK.LineWrapMode.NoWrap`.</span>
+
+<span class="sd">        :rtype: :py:class:`TTkK.LineWrapMode`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setLineWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setLineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">,</span> <span class="n">wrapEngine</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WrapEngine</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WrapEngine</span><span class="o">.</span><span class="n">FullWrap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setLineWrapMode`</span>
+
+<span class="sd">        Set the wrapping method</span>
+
+<span class="sd">        :param mode: the line wrap mode</span>
+<span class="sd">        :type mode: :py:class:`TTkK.LineWrapMode`</span>
+<span class="sd">        :param wrapEngine: the wrap engine used when wrapping is enabled</span>
+<span class="sd">        :type wrapEngine: :py:class:`TTkK.WrapEngine`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setLineWrapMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">wrapEngine</span><span class="o">=</span><span class="n">wrapEngine</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.wordWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WrapMode</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.wordWrapMode`</span>
+
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.wordWrapMode`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setWordWrapMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setWordWrapMode`</span>
+
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.setWordWrapMode`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.textCursor">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textCursor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">textCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.textCursor`</span>
+
+<span class="sd">        This property holds the underlying text cursor.</span>
+
+<span class="sd">        :rtype: :py:class:`TTkTextCursor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textCursor</span><span class="p">()</span></div>
+
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setFocus`</span>
+
+<span class="sd">        Focus the widget</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
+<div class="viewcode-block" id="TTkTextEdit.setColor">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setColor">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setColor`</span>
+
+<span class="sd">        Change the color used by the cursor to input new text or change the color of the selection</span>
+
+<span class="sd">        :param color: the color to be used</span>
+<span class="sd">        :type color: :py:class:`TTkColor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.extraSelections">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.extraSelections">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.extraSelections`</span>
+
+<span class="sd">        Returns previously set extra selections.</span>
+
+<span class="sd">        :rtype: List[:py:class:`ExtraSelection`]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">extraSelections</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setExtraSelections">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setExtraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extraSelections</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setExtraSelections`</span>
+
+<span class="sd">        This function allows temporarily marking certain regions in the document with a given color,</span>
+<span class="sd">        specified as selections. This can be useful for example in a programming editor to mark a</span>
+<span class="sd">        whole line of text with a given background color to indicate the existence of a breakpoint.</span>
+
+<span class="sd">        :param extraSelections: the list of extra selections.</span>
+<span class="sd">        :type extraSelections: List[:py:class:`ExtraSelection`]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setExtraSelections</span><span class="p">(</span><span class="n">extraSelections</span><span class="o">=</span><span class="n">extraSelections</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.cut">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.cut">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.cut`</span>
+
+<span class="sd">        Copies the selected text to the clipboard and deletes it from the text edit.</span>
+
+<span class="sd">        If there is no selected text nothing happens.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.copy">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.copy">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.copy`</span>
+
+<span class="sd">        Copies any selected text to the clipboard.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.paste">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.paste">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.paste`</span>
+
+<span class="sd">        Pastes the text from the clipboard into the text edit at the current cursor position.</span>
+
+<span class="sd">        If there is no text in the clipboard nothing happens.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">paste</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.undo">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.undo">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">undo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.undo`</span>
+
+<span class="sd">        Undoes the last operation.</span>
+
+<span class="sd">        If there is no operation to undo,</span>
+<span class="sd">        i.e. there is no undo step in the undo/redo history, nothing happens.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.redo">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.redo">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.redo`</span>
+
+<span class="sd">        Redoes the last operation.</span>
+
+<span class="sd">        If there is no operation to redo,</span>
+<span class="sd">        i.e. there is no redo step in the undo/redo history, nothing happens.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.isUndoAvailable">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isUndoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isUndoAvailable`</span>
+
+<span class="sd">        This property holds whether undo is available.</span>
+
+<span class="sd">        :return: the undo available status</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isUndoAvailable</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.isRedoAvailable">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isRedoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isRedoAvailable`</span>
+
+<span class="sd">        This property holds whether redo is available.</span>
+
+<span class="sd">        :return: the redo available status</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isRedoAvailable</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.find">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.find">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkStringType</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.find`</span>
+
+<span class="sd">        Search for text in the document and place the cursor at the beginning of the first match.</span>
+
+<span class="sd">        :param exp: the expression to find</span>
+<span class="sd">        :type exp: str or :py:class:`TTkString`</span>
+
+<span class="sd">        :return: ``True`` if the operation is successful, ``False`` otherwise</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">exp</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.ensureCursorVisible">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ensureCursorVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.ensureCursorVisible`</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">ensureCursorVisible</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.follow">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.follow">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">follow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.follow`</span>
+
+<span class="sd">        This property holds whether the view follows the last line whenever the document changes.</span>
+
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">follow</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.setFollow">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setFollow">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFollow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">follow</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setFollow`</span>
+
+<span class="sd">        Enable or disable the follow-bottom mode.</span>
+
+<span class="sd">        When enabled, the view automatically scrolls to the last visible row</span>
+<span class="sd">        every time the underlying document changes.</span>
+
+<span class="sd">        :param follow: ``True`` to keep following the bottom row, ``False`` otherwise</span>
+<span class="sd">        :type follow: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setFollow</span><span class="p">(</span><span class="n">follow</span><span class="o">=</span><span class="n">follow</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.scrollTo">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.scrollTo">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scrollTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditEdge</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.scrollTo`</span>
+
+<span class="sd">        Scrolls the view to the specified edge(s) of the text document.</span>
+
+<span class="sd">        This method allows scrolling to the top, bottom, left, or right edge of the document.</span>
+<span class="sd">        Multiple edges can be specified by combining them with the bitwise OR operator.</span>
+
+<span class="sd">        :param position: the edge(s) to scroll to</span>
+<span class="sd">        :type position: :py:class:`TTkK.TextEditEdge`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.toAnsi">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toAnsi">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toAnsi`</span>
+
+<span class="sd">        Returns the text of the text edit as ANSI text string.</span>
+
+<span class="sd">        This string will include the ANSI escape codes for color and text formatting.</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toAnsi</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.toRawText">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toRawText">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toRawText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toRawText`</span>
+
+<span class="sd">        Return :py:class:`TTkString` representing the document</span>
+
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TTkTextEdit.toPlainText">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toPlainText">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toPlainText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toPlainText`</span>
+
+<span class="sd">        Returns the text of the text edit as plain text string.</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">()</span></div>
+</div>
+
+    <span class="c1">#--FORWARD-AUTOGEN-END--#</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eugenio Parodi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021, Eugenio Parodi.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -18,8 +18,17 @@
       TTkDrag
       TTkTextCursor
       TTkTextDocument
-      TTkTextWrap
       TTkToolTip
       TextDocumentHighlight
    
 
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.01.rst
+   :recursive:
+
+
+   TermTk.TTkGui.TTkTextWrap

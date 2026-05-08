@@ -20,5 +20,6 @@
       TTkAbstractScrollViewLayout
       TTkAbstractTableModel
       TTkModelIndex
+      _TTkAbstractListItem
    
 

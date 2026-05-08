@@ -122,16 +122,22 @@ TTkTree
       TTkTreeWidget.addTopLevelItem
       TTkTreeWidget.addTopLevelItems
       TTkTreeWidget.clear
+      TTkTreeWidget.clearSelection
       TTkTreeWidget.collapseAll
+      TTkTreeWidget.deselectItem
       TTkTreeWidget.dragDropMode
       TTkTreeWidget.expandAll
       TTkTreeWidget.indexOfTopLevelItem
       TTkTreeWidget.invisibleRootItem
+      TTkTreeWidget.itemAt
       TTkTreeWidget.resizeColumnToContents
+      TTkTreeWidget.selectItem
       TTkTreeWidget.selectedItems
       TTkTreeWidget.setColumnWidth
+      TTkTreeWidget.setCurrentItem
       TTkTreeWidget.setDragDropMode
       TTkTreeWidget.setHeaderLabels
+      TTkTreeWidget.setSelectionMode
       TTkTreeWidget.sortColumn
       TTkTreeWidget.sortItems
       TTkTreeWidget.takeTopLevelItem
@@ -149,16 +155,22 @@ TTkTree
    .. automethod:: addTopLevelItem
    .. automethod:: addTopLevelItems
    .. automethod:: clear
+   .. automethod:: clearSelection
    .. automethod:: collapseAll
+   .. automethod:: deselectItem
    .. automethod:: dragDropMode
    .. automethod:: expandAll
    .. automethod:: indexOfTopLevelItem
    .. automethod:: invisibleRootItem
+   .. automethod:: itemAt
    .. automethod:: resizeColumnToContents
+   .. automethod:: selectItem
    .. automethod:: selectedItems
    .. automethod:: setColumnWidth
+   .. automethod:: setCurrentItem
    .. automethod:: setDragDropMode
    .. automethod:: setHeaderLabels
+   .. automethod:: setSelectionMode
    .. automethod:: sortColumn
    .. automethod:: sortItems
    .. automethod:: takeTopLevelItem

@@ -59,6 +59,7 @@ TTkColor
    .. automethod:: rgb2hsl
    .. automethod:: strikethrough
    .. automethod:: underline
+   .. automethod:: withoutModifiers
 
    
 

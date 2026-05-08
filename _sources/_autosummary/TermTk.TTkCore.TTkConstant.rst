@@ -192,7 +192,19 @@ TTkConstant Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkConstant
 
+.. autoclass::  TextEditEdge
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkConstant
+
 .. autoclass::  WindowFlag
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkConstant
+
+.. autoclass::  WrapEngine
    :show-inheritance:
    :members:
 
@@ -785,7 +797,6 @@ TTkConstant Attributes
   WindowShortcut
   WordWrap
   WrapAnywhere
-  WrapAtWordBoundaryOrAnywhere
 
 .. currentmodule::  TermTk.TTkCore
 

@@ -148,16 +148,22 @@ TTkFileTree
       addTopLevelItem
       addTopLevelItems
       clear
+      clearSelection
       collapseAll
+      deselectItem
       dragDropMode
       expandAll
       indexOfTopLevelItem
       invisibleRootItem
+      itemAt
       resizeColumnToContents
+      selectItem
       selectedItems
       setColumnWidth
+      setCurrentItem
       setDragDropMode
       setHeaderLabels
+      setSelectionMode
       sortColumn
       sortItems
       takeTopLevelItem

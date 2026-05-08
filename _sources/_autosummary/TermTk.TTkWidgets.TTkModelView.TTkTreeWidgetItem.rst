@@ -57,13 +57,11 @@ TTkTreeWidgetItem
    .. automethod:: indexOfChild
    .. automethod:: isExpanded
    .. automethod:: isHidden
-   .. automethod:: isSelected
    .. automethod:: removeChild
    .. automethod:: setChildIndicatorPolicy
    .. automethod:: setExpanded
    .. automethod:: setHidden
    .. automethod:: setIcon
-   .. automethod:: setSelected
    .. automethod:: setTextAlignment
    .. automethod:: size
    .. automethod:: sortChildren

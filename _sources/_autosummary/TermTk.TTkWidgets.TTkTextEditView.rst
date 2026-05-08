@@ -65,7 +65,9 @@ TTkTextEditView
       find
       paste
       redo
+      scrollTo
       setColor
+      setFollow
       setText
       undo
    
@@ -144,6 +146,7 @@ TTkTextEditView
    .. automethod:: ensureCursorVisible
    .. automethod:: extraSelections
    .. automethod:: find
+   .. automethod:: follow
    .. automethod:: isReadOnly
    .. automethod:: isRedoAvailable
    .. automethod:: isUndoAvailable
@@ -151,9 +154,11 @@ TTkTextEditView
    .. automethod:: multiLine
    .. automethod:: paste
    .. automethod:: redo
+   .. automethod:: scrollTo
    .. automethod:: setColor
    .. automethod:: setDocument
    .. automethod:: setExtraSelections
+   .. automethod:: setFollow
    .. automethod:: setLineWrapMode
    .. automethod:: setReadOnly
    .. automethod:: setText
