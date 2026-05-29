@@ -67,7 +67,7 @@ TTkTextEditView
       redo
       scrollTo
       setColor
-      setFollow
+      setFollowMode
       setText
       undo
    
@@ -146,7 +146,7 @@ TTkTextEditView
    .. automethod:: ensureCursorVisible
    .. automethod:: extraSelections
    .. automethod:: find
-   .. automethod:: follow
+   .. automethod:: followMode
    .. automethod:: isReadOnly
    .. automethod:: isRedoAvailable
    .. automethod:: isUndoAvailable
@@ -158,7 +158,7 @@ TTkTextEditView
    .. automethod:: setColor
    .. automethod:: setDocument
    .. automethod:: setExtraSelections
-   .. automethod:: setFollow
+   .. automethod:: setFollowMode
    .. automethod:: setLineWrapMode
    .. automethod:: setReadOnly
    .. automethod:: setText

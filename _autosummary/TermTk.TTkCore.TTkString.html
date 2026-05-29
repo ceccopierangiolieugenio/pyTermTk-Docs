@@ -634,15 +634,21 @@ document.write(`
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.align">
-<span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment=0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.align"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.align" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.Alignment</span> <span class="pre">=</span> <span class="pre">Alignment.NONE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.align"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.align" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Align the string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>width</strong> (<em>int</em><em>, </em><em>optional</em>) – the new width</p></li>
 <li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>, optional) – the color of the padding, defaults to <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor.RST</span></code></p></li>
-<li><p><strong>alignment</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.Alignment" title="TermTk.TTkCore.TTkConstant.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.Alignment</span></code></a>, optional) – the alignment of the text to the full width <code class="xref py py-class docutils literal notranslate"><span class="pre">NONE</span></code></p></li>
+<li><p><strong>alignment</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Alignment" title="TermTk.TTkCore.TTkK.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.Alignment</span></code></a>, optional) – text alignment within the requested width</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>aligned string with preserved styling</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -650,16 +656,40 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.charAt">
 <span class="sig-name descname"><span class="pre">charAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.charAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.charAt" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the character at the given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – character index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>character at <code class="docutils literal notranslate"><span class="pre">pos</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.colorAt">
 <span class="sig-name descname"><span class="pre">colorAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.colorAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.colorAt" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the color assigned to the character at <code class="docutils literal notranslate"><span class="pre">pos</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – character index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>color at <code class="docutils literal notranslate"><span class="pre">pos</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor.RST</span></code> when out of range</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.completeColor">
-<span class="sig-name descname"><span class="pre">completeColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posFrom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posTo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.completeColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.completeColor" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">completeColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posFrom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posTo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.completeColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.completeColor" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Complete the color of the entire string or a slice of it</p>
 <p>The Fg and/or Bg of the string is replaced with the selected Fg/Bg color only if missing</p>
 <p>If only the color is specified, the entire string is colorized</p>
@@ -672,22 +702,46 @@ document.write(`
 <li><p><strong>posTo</strong> (<em>int</em><em>, </em><em>optional</em>) – the final position of the color</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>recolored string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.extractShortcuts">
 <span class="sig-name descname"><span class="pre">extractShortcuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.extractShortcuts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.extractShortcuts" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Extract <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> shortcuts and underline the mnemonic characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of processed string and extracted shortcut characters</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[<a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a>, list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.find">
-<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.find" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.find" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the first index of a substring using <code class="docutils literal notranslate"><span class="pre">str.find</span></code> semantics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>start index of the first match, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if not found</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.findall">
-<span class="sig-name descname"><span class="pre">findall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regexp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignoreCase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.findall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.findall" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">findall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignoreCase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.findall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.findall" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>FindAll the <strong>regexp</strong> matches in the string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -696,29 +750,73 @@ document.write(`
 <li><p><strong>ignoreCase</strong> (<em>bool</em>) – Ignore case, defaults to <strong>False</strong></p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of all matches</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str] | list[tuple]</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.getData">
-<span class="sig-name descname"><span class="pre">getData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.getData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.getData" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.getData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.getData" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return text and color data in terminal-rendered form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of characters and colors</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.getIndexes">
-<span class="sig-name descname"><span class="pre">getIndexes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.getIndexes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.getIndexes" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getIndexes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.getIndexes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.getIndexes" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return indexes where <code class="docutils literal notranslate"><span class="pre">char</span></code> appears.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>char</strong> (<em>str</em>) – target character</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>matching character positions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.isPlainText">
 <span class="sig-name descname"><span class="pre">isPlainText</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.isPlainText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.isPlainText" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Return True if the string does not include colors or modifications</p>
+<dd><p>Return True if the string has no color/style information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True when all chars use <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor.RST</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.isdigit">
 <span class="sig-name descname"><span class="pre">isdigit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.isdigit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.isdigit" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether the string contains only digit characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if all characters are digits and the string is non-empty</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.join">
@@ -728,23 +826,65 @@ document.write(`
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>strings</strong> (<em>list</em>) – the list of strings to be joined</p>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>joined string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.lstrip">
 <span class="sig-name descname"><span class="pre">lstrip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.lstrip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.lstrip" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return a copy with leading characters removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ch</strong> (<em>str</em>) – characters to strip from the left side</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>left-stripped string preserving color alignment</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.nextPos">
-<span class="sig-name descname"><span class="pre">nextPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.nextPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.nextPos" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">nextPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.nextPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.nextPos" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return next editable character position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – current position</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>next non-combining character index</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.prevPos">
-<span class="sig-name descname"><span class="pre">prevPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.prevPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.prevPos" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">prevPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.prevPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.prevPos" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return previous editable character position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – current position</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>previous non-combining character index</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.replace">
@@ -754,10 +894,16 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>old</strong> (<em>str</em>) – the match to be placed</p></li>
-<li><p><strong>new</strong> (<em>str</em><em>, </em><em>optional</em>) – the match to replace</p></li>
-<li><p><strong>count</strong> (<em>int</em><em>, </em><em>optional</em>) – the number of occurrences</p></li>
+<li><p><strong>old</strong> (<em>str</em>) – substring to be replaced</p></li>
+<li><p><strong>new</strong> (<em>str</em><em>, </em><em>optional</em>) – replacement substring</p></li>
+<li><p><strong>count</strong> (<em>int</em><em>, </em><em>optional</em>) – maximum number of replacements</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated string preserving color spans</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -765,11 +911,23 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.sameAs">
 <span class="sig-name descname"><span class="pre">sameAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.sameAs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.sameAs" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether text and per-character colors are identical.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a> | str) – string to compare against</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True when text and colors match exactly</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.search">
-<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regexp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignoreCase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.search" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regexp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignoreCase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Match</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.search" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Return the <strong>re.match</strong> of the <strong>regexp</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -778,17 +936,41 @@ document.write(`
 <li><p><strong>ignoreCase</strong> (<em>bool</em>) – Ignore case, defaults to <strong>False</strong></p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>first regular-expression match or None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>re.Match | None</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.setCharAt">
 <span class="sig-name descname"><span class="pre">setCharAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.setCharAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.setCharAt" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return a copy with one character replaced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – character index to replace</p></li>
+<li><p><strong>char</strong> (<em>str</em>) – replacement character</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IndexError</strong> – if <code class="docutils literal notranslate"><span class="pre">pos</span></code> is out of range</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.setColor">
-<span class="sig-name descname"><span class="pre">setColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posFrom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posTo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.setColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.setColor" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">setColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posFrom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posTo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.setColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.setColor" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Set the color of the entire string or a slice of it</p>
 <p>If only the color is specified, the entire string is colorized</p>
 <dl class="field-list simple">
@@ -800,17 +982,41 @@ document.write(`
 <li><p><strong>posTo</strong> (<em>int</em><em>, </em><em>optional</em>) – the final position of the color</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>recolored string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.setColorAt">
-<span class="sig-name descname"><span class="pre">setColorAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.setColorAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.setColorAt" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setColorAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.setColorAt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.setColorAt" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return a copy with one character color replaced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – character index to recolor</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – replacement color</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>recolored string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IndexError</strong> – if <code class="docutils literal notranslate"><span class="pre">pos</span></code> is out of range</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.split">
-<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">separator</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.split" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.split" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Split the string using a separator</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -820,12 +1026,18 @@ document.write(`
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>separator</strong> (<em>str</em>) – the “<strong>char</strong>” separator to be used</p>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of split chunks</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a>]</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.substring">
-<span class="sig-name descname"><span class="pre">substring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.substring"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.substring" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">substring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.substring"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.substring" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Return the substring</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -834,19 +1046,53 @@ document.write(`
 <li><p><strong>to</strong> (<em>int</em><em>, </em><em>optional</em>) – the ending of the slice, defaults to the end of the string</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>sliced string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.tab2spaces">
-<span class="sig-name descname"><span class="pre">tab2spaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabSpaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.tab2spaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.tab2spaces" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Return the string representation with the tabs (converted in spaces) trimmed and aligned</p>
+<span class="sig-name descname"><span class="pre">tab2spaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabSpaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.string.TTkString"><span class="pre">TTkString</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.tab2spaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.tab2spaces" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Expand tab characters into aligned spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tabSpaces</strong> (<em>int</em>) – tab stop size</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string with tabs replaced by spaces</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.tabCharPos">
-<span class="sig-name descname"><span class="pre">tabCharPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabSpaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignTabRight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.tabCharPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.tabCharPos" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Return the char position in the string from the position in its representation with the tab and variable char sizes are solved</p>
+<span class="sig-name descname"><span class="pre">tabCharPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabSpaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignTabRight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.tabCharPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.tabCharPos" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Map a rendered column position to the internal character index.</p>
+<p>Tabs and variable-width characters are resolved against the visual
+terminal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – target visual column</p></li>
+<li><p><strong>tabSpaces</strong> (<em>int</em>) – tab stop size</p></li>
+<li><p><strong>alignTabRight</strong> (<em>bool</em>) – map positions inside a tab to the tab right edge</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>character index in <code class="docutils literal notranslate"><span class="pre">_text</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 <p>i.e.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pos                   X = 11
 tab2Spaces |----------|---------------------|
@@ -861,18 +1107,46 @@ ret                   x = 7 (tab is a char)
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.termWidth">
 <span class="sig-name descname"><span class="pre">termWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.termWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.termWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the rendered terminal width of this string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>rendered width accounting for tabs and wide/combining chars</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.toAnsi">
-<span class="sig-name descname"><span class="pre">toAnsi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.toAnsi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.toAnsi" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Return the ansii (terminal colors/events) representation of the string</p>
+<span class="sig-name descname"><span class="pre">toAnsi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.toAnsi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.toAnsi" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the ANSI escaped representation of the string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>strip</strong> (<em>bool</em>) – remove leading/trailing reset sequences</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ANSI escaped text</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkString.toAscii">
 <span class="sig-name descname"><span class="pre">toAscii</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/string.html#TTkString.toAscii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkString.toAscii" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Return the ascii representation of the string</p>
+<dd><p>Return the plain-text content.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>raw text without terminal escapes</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -882,7 +1156,10 @@ ret                   x = 7 (tab is a char)
 <h2>TTkString Attributes<a class="headerlink" href="#ttkstring-attributes" title="Link to this heading"><span>🌶️</span></a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicodeWideOverflowColor</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mnemonicColor</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicodeWideOverflowColor</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

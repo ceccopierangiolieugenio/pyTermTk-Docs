@@ -57,7 +57,7 @@ TTkTextEdit
       TTkTextEditView.redo
       TTkTextEditView.scrollTo
       TTkTextEditView.setColor
-      TTkTextEditView.setFollow
+      TTkTextEditView.setFollowMode
       TTkTextEditView.setText
       TTkTextEditView.undo
 
@@ -78,7 +78,7 @@ TTkTextEdit
       redo
       scrollTo
       setColor
-      setFollow
+      setFollowMode
       setLineNumber
       setLineNumberStarting
       setText
@@ -148,7 +148,7 @@ TTkTextEdit
       TTkTextEditView.ensureCursorVisible
       TTkTextEditView.extraSelections
       TTkTextEditView.find
-      TTkTextEditView.follow
+      TTkTextEditView.followMode
       TTkTextEditView.isReadOnly
       TTkTextEditView.isRedoAvailable
       TTkTextEditView.isUndoAvailable
@@ -159,7 +159,7 @@ TTkTextEdit
       TTkTextEditView.scrollTo
       TTkTextEditView.setColor
       TTkTextEditView.setExtraSelections
-      TTkTextEditView.setFollow
+      TTkTextEditView.setFollowMode
       TTkTextEditView.setLineWrapMode
       TTkTextEditView.setReadOnly
       TTkTextEditView.setText
@@ -190,7 +190,7 @@ TTkTextEdit
    .. automethod:: ensureCursorVisible
    .. automethod:: extraSelections
    .. automethod:: find
-   .. automethod:: follow
+   .. automethod:: followMode
    .. automethod:: getLineNumber
    .. automethod:: isReadOnly
    .. automethod:: isRedoAvailable
@@ -205,7 +205,7 @@ TTkTextEdit
    .. automethod:: setColor
    .. automethod:: setDocument
    .. automethod:: setExtraSelections
-   .. automethod:: setFollow
+   .. automethod:: setFollowMode
    .. automethod:: setLineNumber
    .. automethod:: setLineNumberStarting
    .. automethod:: setLineWrapMode

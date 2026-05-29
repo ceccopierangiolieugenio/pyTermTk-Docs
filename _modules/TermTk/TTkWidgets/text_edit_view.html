@@ -724,7 +724,7 @@ document.write(`
             <span class="s1">&#39;_textCursor&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_extraSelections&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_textWrap&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineWrapMode&#39;</span><span class="p">,</span> <span class="s1">&#39;_lastWrapUsed&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;_followBottom&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;_smartFollowing&#39;</span><span class="p">,</span> <span class="s1">&#39;_followMode&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_replace&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_readOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;_multiCursor&#39;</span><span class="p">,</span>
             <span class="s1">&#39;_clipboard&#39;</span><span class="p">,</span>
@@ -746,7 +746,7 @@ document.write(`
                  <span class="n">readOnly</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">multiLine</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">document</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkTextDocument</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">follow</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">followMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">NEVER</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        :param readOnly: In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible, defaults to **False**</span>
@@ -758,8 +758,8 @@ document.write(`
 <span class="sd">        :param document: If required an external Document can be used in this text editor, this option is useful if multiple editors share the same document as in the `demo &lt;https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/sandbox.html?filePath=demo/showcase/textedit.py&gt;`__, defaults to a new Document</span>
 <span class="sd">        :type document: :py:class:`TTkTextDocument`, optional</span>
 
-<span class="sd">        :param follow: If True, the text edit will automatically scroll to the bottom when new text is added, defaults to **False**</span>
-<span class="sd">        :type follow: bool, optional</span>
+<span class="sd">        :param followMode: Controls auto-scroll behaviour when the document changes, defaults to :py:class:`TTkK.TextEditFollow.NEVER`</span>
+<span class="sd">        :type followMode: :py:class:`TTkK.TextEditFollow`, optional</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_currentColorChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
@@ -775,7 +775,8 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_hsize</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastWrapUsed</span>  <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineWrapMode</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="o">.</span><span class="n">NoWrap</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_followBottom</span> <span class="o">=</span> <span class="n">follow</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_smartFollowing</span> <span class="o">=</span> <span class="n">followMode</span> <span class="o">!=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">NEVER</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_followMode</span> <span class="o">=</span> <span class="n">followMode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_replace</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clipboard</span> <span class="o">=</span> <span class="n">TTkClipboard</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setDocument</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
@@ -930,6 +931,10 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_wrapChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">should_follow_bottom</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_followMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">ALWAYS</span> <span class="ow">or</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_smartFollowing</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_followMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">SMART</span> <span class="p">)</span>
+        <span class="p">)</span>
         <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineMap</span><span class="o">.</span><span class="n">line</span>
         <span class="n">line_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineMap</span><span class="o">.</span><span class="n">line_pos</span>
         <span class="n">pos_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineMap</span><span class="o">.</span><span class="n">pos_y</span>
@@ -938,50 +943,58 @@ document.write(`
             <span class="n">screen_y</span> <span class="o">=</span> <span class="n">screen_position</span><span class="o">.</span><span class="n">extra</span><span class="o">.</span><span class="n">y</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">screen_y</span> <span class="o">=</span> <span class="n">screen_position</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">y</span>
-        <span class="k">if</span> <span class="n">screen_y</span> <span class="o">!=</span> <span class="n">pos_y</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">should_follow_bottom</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditEdge</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">screen_y</span> <span class="o">!=</span> <span class="n">pos_y</span><span class="p">:</span>
             <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">viewMoveTo</span><span class="p">(</span><span class="n">ox</span><span class="p">,</span> <span class="n">screen_y</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_followBottom</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditEdge</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">)</span>
 
     <span class="c1"># forward textWrap Methods</span>
 <div class="viewcode-block" id="TTkTextEditView.wrapWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wrapWidth">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.wrapWidth`</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the current wrap width in terminal cells.</span>
+
+<span class="sd">        :return: wrap width.</span>
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.setWrapWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWrapWidth">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.setWrapWidth`</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Set wrap width and trigger a full rewrap.</span>
+
+<span class="sd">        :param width: target width in terminal cells.</span>
+<span class="sd">        :type width: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.wordWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.wordWrapMode">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WrapMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.wordWrapMode`</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WrapMode</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the active word-wrap mode.</span>
+
+<span class="sd">        :return: current wrap mode.</span>
+<span class="sd">        :rtype: :py:class:`TTkK.WrapMode`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.setWordWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setWordWrapMode">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextWrap.setWordWrapMode`</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WrapMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Set the word-wrap mode and invalidate cached wrapping.</span>
+
+<span class="sd">        :param mode: new wrap mode.</span>
+<span class="sd">        :type mode: :py:class:`TTkK.WrapMode`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.extraSelections">
@@ -1226,33 +1239,38 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">pasteEvent</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="TTkTextEditView.follow">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.follow">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">follow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="TTkTextEditView.followMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.followMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">followMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This property holds whether the view follows the last line whenever the document changes.</span>
+<span class="sd">        This property holds the auto-scroll follow mode of the view.</span>
 
-<span class="sd">        :rtype: bool</span>
+<span class="sd">        :rtype: :py:class:`TTkK.TextEditFollow`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_followBottom</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_followMode</span></div>
 
 
-<div class="viewcode-block" id="TTkTextEditView.setFollow">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setFollow">[docs]</a>
-    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setFollow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">follow</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="TTkTextEditView.setFollowMode">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEditView.html#TermTk.TTkWidgets.TTkTextEditView.setFollowMode">[docs]</a>
+    <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setFollowMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Enable or disable the follow-bottom mode.</span>
+<span class="sd">        Set the auto-scroll follow mode.</span>
 
-<span class="sd">        When enabled, the view automatically scrolls to the last visible row</span>
-<span class="sd">        every time the underlying document changes.</span>
-
-<span class="sd">        :param follow: ``True`` to keep following the bottom row, ``False`` otherwise</span>
-<span class="sd">        :type follow: bool</span>
+<span class="sd">        :param mode: the follow mode</span>
+<span class="sd">        :type mode: :py:class:`TTkK.TextEditFollow`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_followBottom</span> <span class="o">=</span> <span class="n">follow</span>
-        <span class="k">if</span> <span class="n">follow</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditEdge</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_followMode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">ALWAYS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditEdge</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">)</span>
+        <span class="k">elif</span>  <span class="n">mode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">SMART</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">h</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_smartFollowing</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">_fh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewFullAreaSize</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_smartFollowing</span> <span class="o">=</span> <span class="n">oy</span><span class="o">+</span><span class="n">h</span> <span class="o">&gt;=</span> <span class="n">_fh</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEditView.scrollTo">
@@ -1336,15 +1354,6 @@ document.write(`
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textWrap</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
-    <span class="c1"># @pyTTkSlot()</span>
-    <span class="c1"># def _check_document_wrap_position(self):</span>
-    <span class="c1">#     ox, oy = self.getViewOffsets()</span>
-    <span class="c1">#     w, h = self.size()</span>
-    <span class="c1">#     y = self._textWrap.screenRows(oy,h).y</span>
-    <span class="c1">#     if y == oy:</span>
-    <span class="c1">#         return</span>
-    <span class="c1">#     self.viewMoveTo(ox, y)</span>
-
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_view_moved_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
@@ -1352,6 +1361,9 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineMap</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">screen_rows</span><span class="o">.</span><span class="n">rows</span> <span class="k">else</span> <span class="n">screen_rows</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">line</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineMap</span><span class="o">.</span><span class="n">line_pos</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">screen_rows</span><span class="o">.</span><span class="n">rows</span> <span class="k">else</span> <span class="n">screen_rows</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">start</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineMap</span><span class="o">.</span><span class="n">pos_y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_followMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="o">.</span><span class="n">SMART</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_fh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewFullAreaSize</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_smartFollowing</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span> <span class="o">&gt;=</span> <span class="n">_fh</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_pushCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">moving_left</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>

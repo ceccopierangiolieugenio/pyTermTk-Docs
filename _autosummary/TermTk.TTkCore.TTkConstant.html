@@ -723,6 +723,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditEdge.TOP"><code class="docutils literal notranslate"><span class="pre">TOP</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow"><code class="docutils literal notranslate"><span class="pre">TextEditFollow</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.ALWAYS"><code class="docutils literal notranslate"><span class="pre">ALWAYS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.NEVER"><code class="docutils literal notranslate"><span class="pre">NEVER</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.SMART"><code class="docutils literal notranslate"><span class="pre">SMART</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WindowFlag"><code class="docutils literal notranslate"><span class="pre">WindowFlag</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WindowFlag.NONE"><code class="docutils literal notranslate"><span class="pre">NONE</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WindowFlag.WindowCloseButtonHint"><code class="docutils literal notranslate"><span class="pre">WindowCloseButtonHint</span></code></a></li>
@@ -735,9 +741,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine"><code class="docutils literal notranslate"><span class="pre">WrapEngine</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.FastWrap"><code class="docutils literal notranslate"><span class="pre">FastWrap</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.FullWrap"><code class="docutils literal notranslate"><span class="pre">FullWrap</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridVimWrap"><code class="docutils literal notranslate"><span class="pre">HybridVimWrap</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridWrap"><code class="docutils literal notranslate"><span class="pre">HybridWrap</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.NoWrap"><code class="docutils literal notranslate"><span class="pre">NoWrap</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.VimWrap"><code class="docutils literal notranslate"><span class="pre">VimWrap</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapMode"><code class="docutils literal notranslate"><span class="pre">WrapMode</span></code></a><ul class="visible nav section-nav flex-column">
@@ -1950,6 +1955,46 @@ The possible contexts are these:</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.TextEditFollow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TextEditFollow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.TextEditFollow" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<p>This class type defines the auto-scroll follow mode of a text editor.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.NEVER" title="TermTk.TTkCore.TTkConstant.TextEditFollow.NEVER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NEVER</span></code></a></p></td>
+<td><p>Never auto-scroll; the view stays where the user left it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.ALWAYS" title="TermTk.TTkCore.TTkConstant.TextEditFollow.ALWAYS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ALWAYS</span></code></a></p></td>
+<td><p>Always scroll to the bottom whenever the document changes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.SMART" title="TermTk.TTkCore.TTkConstant.TextEditFollow.SMART"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMART</span></code></a></p></td>
+<td><p>Scroll to the bottom only when the view is already at the bottom, allowing the user to scroll back and read without being interrupted.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.TextEditFollow.ALWAYS">
+<span class="sig-name descname"><span class="pre">ALWAYS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.ALWAYS" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Always scroll to the bottom whenever the document changes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.TextEditFollow.NEVER">
+<span class="sig-name descname"><span class="pre">NEVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.NEVER" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Never auto-scroll; the view stays where the user left it.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.TextEditFollow.SMART">
+<span class="sig-name descname"><span class="pre">SMART</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.SMART" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Scroll to the bottom only when the view is already at the bottom,
+allowing the user to scroll back and read without being interrupted.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WindowFlag">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WindowFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WindowFlag" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntFlag</span></code></p>
@@ -2028,11 +2073,8 @@ The possible contexts are these:</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.WrapEngine.FastWrap" title="TermTk.TTkCore.TTkConstant.WrapEngine.FastWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FastWrap</span></code></a></p></td>
 <td><p>Chunk based document Wrap, Default wrap [Fast] (Scrolling position is estimated)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridVimWrap" title="TermTk.TTkCore.TTkConstant.WrapEngine.HybridVimWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HybridVimWrap</span></code></a></p></td>
-<td><p>Hybrid implementation between VimWrap and FastWrap, [Faster] (Scrolling position is estimated)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.WrapEngine.VimWrap" title="TermTk.TTkCore.TTkConstant.WrapEngine.VimWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VimWrap</span></code></a></p></td>
-<td><p>Wrap applied only in the displayed area, [Fastest] (the scrolling is snap to the beginning of the lines)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridWrap" title="TermTk.TTkCore.TTkConstant.WrapEngine.HybridWrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HybridWrap</span></code></a></p></td>
+<td><p>Hybrid implementation between a screen based Wrap and FastWrap, [Faster] (Scrolling position is estimated)</p></td>
 </tr>
 </tbody>
 </table>
@@ -2050,21 +2092,15 @@ The possible contexts are these:</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WrapEngine.HybridVimWrap">
-<span class="sig-name descname"><span class="pre">HybridVimWrap</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridVimWrap" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Hybrid implementation between VimWrap and FastWrap, [Faster] (Scrolling position is estimated)</p>
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WrapEngine.HybridWrap">
+<span class="sig-name descname"><span class="pre">HybridWrap</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridWrap" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Hybrid implementation between a screen based Wrap and FastWrap, [Faster] (Scrolling position is estimated)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WrapEngine.NoWrap">
 <span class="sig-name descname"><span class="pre">NoWrap</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WrapEngine.NoWrap" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>No Wrapping</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkConstant.WrapEngine.VimWrap">
-<span class="sig-name descname"><span class="pre">VimWrap</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkConstant.WrapEngine.VimWrap" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Wrap applied only in the displayed area, [Fastest] (the scrolling is snap to the beginning of the lines)</p>
 </dd></dl>
 
 </dd></dl>
@@ -4037,6 +4073,12 @@ The possible contexts are these:</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditEdge.TOP"><code class="docutils literal notranslate"><span class="pre">TOP</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow"><code class="docutils literal notranslate"><span class="pre">TextEditFollow</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.ALWAYS"><code class="docutils literal notranslate"><span class="pre">ALWAYS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.NEVER"><code class="docutils literal notranslate"><span class="pre">NEVER</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.TextEditFollow.SMART"><code class="docutils literal notranslate"><span class="pre">SMART</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WindowFlag"><code class="docutils literal notranslate"><span class="pre">WindowFlag</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WindowFlag.NONE"><code class="docutils literal notranslate"><span class="pre">NONE</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WindowFlag.WindowCloseButtonHint"><code class="docutils literal notranslate"><span class="pre">WindowCloseButtonHint</span></code></a></li>
@@ -4049,9 +4091,8 @@ The possible contexts are these:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine"><code class="docutils literal notranslate"><span class="pre">WrapEngine</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.FastWrap"><code class="docutils literal notranslate"><span class="pre">FastWrap</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.FullWrap"><code class="docutils literal notranslate"><span class="pre">FullWrap</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridVimWrap"><code class="docutils literal notranslate"><span class="pre">HybridVimWrap</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.HybridWrap"><code class="docutils literal notranslate"><span class="pre">HybridWrap</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.NoWrap"><code class="docutils literal notranslate"><span class="pre">NoWrap</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapEngine.VimWrap"><code class="docutils literal notranslate"><span class="pre">VimWrap</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkConstant.WrapMode"><code class="docutils literal notranslate"><span class="pre">WrapMode</span></code></a><ul class="visible nav section-nav flex-column">

@@ -81,6 +81,7 @@ TTkString Attributes
 .. autosummary::
 
 
+  mnemonicColor
   unicodeWideOverflowColor
 
 .. currentmodule::  TermTk.TTkCore

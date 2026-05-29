@@ -18,7 +18,7 @@ TTkMenuBarButton
       
           classStyle = TTkMenuButton.classStyle | {
                       'default': TTkMenuButton.classStyle['default'] |
-                                 {'borderColor':TTkColor.RST, 'shortcutColor': TTkColor.fg("#dddddd") + TTkColor.UNDERLINE,
+                                 {'borderColor':TTkColor.RST,
                                   'glyphs':('├','─','┤','┄','┄','▶')},
                       'clicked': TTkMenuButton.classStyle['clicked'] |
                                  {'color': TTkColor.fg("#ffff88")},

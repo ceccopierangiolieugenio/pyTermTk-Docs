@@ -198,6 +198,12 @@ TTkK Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkK
 
+.. autoclass::  TextEditFollow
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkK
+
 .. autoclass::  WindowFlag
    :show-inheritance:
    :members:

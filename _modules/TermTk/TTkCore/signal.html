@@ -693,7 +693,9 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected_slots</span><span class="p">:</span>
-                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected_slots</span><span class="p">[</span><span class="n">slot</span><span class="p">]</span></div>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected_slots</span><span class="p">[</span><span class="n">slot</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected_async_slots</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected_async_slots</span><span class="p">[</span><span class="n">slot</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="pyTTkSignal.emit">
@@ -714,7 +716,8 @@ document.write(`
 <div class="viewcode-block" id="pyTTkSignal.clear">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.pyTTkSignal.html#TermTk.TTkCore.pyTTkSignal.clear">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_connected_slots</span> <span class="o">=</span> <span class="p">{}</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connected_slots</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connected_async_slots</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="pyTTkSignal.clearAll">
@@ -722,7 +725,8 @@ document.write(`
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clearAll</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">pyTTkSignal</span><span class="o">.</span><span class="n">_signals</span><span class="p">:</span>
-            <span class="n">s</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+            <span class="n">s</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">pyTTkSignal</span><span class="o">.</span><span class="n">_signals</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="pyTTkSignal.forward">

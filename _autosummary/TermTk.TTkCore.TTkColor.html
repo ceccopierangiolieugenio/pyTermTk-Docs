@@ -601,7 +601,8 @@ document.write(`
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorMod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>TermTk Color helper</p>
-<p>The TTkColor constructor creates the color based on HEX values.</p>
+<blockquote>
+<div><p>The TTkColor constructor creates the color based on HEX values.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Foreground only colors:</span>
 <span class="n">color_fg_red</span>   <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
@@ -624,18 +625,48 @@ document.write(`
 <span class="n">color_6</span> <span class="o">=</span> <span class="n">color_5</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">UNDERLINE</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span>
 </pre></div>
 </div>
+</div></blockquote>
+<p>Create a color container with optional foreground/background and modifier.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param fg<span class="colon">:</span></dt>
+<dd class="field-odd"><p>foreground RGB triplet</p>
+</dd>
+<dt class="field-even">type fg<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int] | None</p>
+</dd>
+<dt class="field-odd">param bg<span class="colon">:</span></dt>
+<dd class="field-odd"><p>background RGB triplet</p>
+</dd>
+<dt class="field-even">type bg<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int] | None</p>
+</dd>
+<dt class="field-odd">param colorMod<span class="colon">:</span></dt>
+<dd class="field-odd"><p>optional runtime color modifier</p>
+</dd>
+<dt class="field-even">type colorMod<span class="colon">:</span></dt>
+<dd class="field-even"><p>TTkColorModifier | None</p>
+</dd>
+<dt class="field-odd">param clean<span class="colon">:</span></dt>
+<dd class="field-odd"><p>force emitting a full reset before this color</p>
+</dd>
+<dt class="field-even">type clean<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</div></blockquote>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.ansi">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ansi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.ansi" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Parse an ansi string and return the color representing it</p>
+<dd><p>Parse an ANSI escape sequence and return the represented color.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ansi</strong> (<em>str</em>) – the ansi string to be parsed</p>
+<dd class="field-odd"><p><strong>ansi</strong> (<em>str</em>) – ANSI escape sequence to parse</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the <a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a> representing the ansi value</p>
+<dd class="field-even"><p>the <a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a> representing the ANSI value</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
@@ -646,11 +677,20 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.background">
 <span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.background" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return a color object containing only the background component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a color with only background information if available, otherwise <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor.RST</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.bg">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.bg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.bg" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.bg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.bg" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Helper to generate a Background color</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
@@ -662,6 +702,7 @@ document.write(`
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>color</strong> (<em>str</em>) – the color representation in (str)HEX</p></li>
+<li><p><strong>link</strong> (<em>str</em>) – (optional) hyperlink URL to associate with the color</p></li>
 <li><p><strong>modifier</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.TTkColorModifier"><em>TTkColorModifier</em></a><em>, </em><em>optional</em>) – (experimental) the color modifier to be used to improve the <strong>kinkiness</strong></p></li>
 </ul>
 </dd>
@@ -674,31 +715,81 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.bgToRGB">
 <span class="sig-name descname"><span class="pre">bgToRGB</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.bgToRGB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.bgToRGB" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return background RGB values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>background RGB tuple, or <code class="docutils literal notranslate"><span class="pre">(0,0,0)</span></code> when unset</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.blinking">
 <span class="sig-name descname"><span class="pre">blinking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.blinking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.blinking" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether blinking style is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False for base colors without style flags</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.bold">
 <span class="sig-name descname"><span class="pre">bold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.bold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.bold" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether bold style is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False for base colors without style flags</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.colorType">
 <span class="sig-name descname"><span class="pre">colorType</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.colorType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.colorType" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the bitmask describing which color features are active.</p>
+<p>The result combines values from <a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.ColorType" title="TermTk.TTkCore.TTkK.ColorType"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.ColorType</span></code></a> for
+foreground, background, and color modifiers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bitmask with active color feature flags</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.copy">
 <span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.copy" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Create a copy of this color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>modifier</strong> (<em>bool</em>) – include a copied color modifier when available</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>color copy</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.fg">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fg" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fg" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Helper to generate a Foreground color</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
@@ -710,6 +801,7 @@ document.write(`
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>color</strong> (<em>str</em>) – the color representation in (str)HEX</p></li>
+<li><p><strong>link</strong> (<em>str</em>) – (optional) hyperlink URL to associate with the color</p></li>
 <li><p><strong>modifier</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.TTkColorModifier"><em>TTkColorModifier</em></a><em>, </em><em>optional</em>) – (experimental) the color modifier to be used to improve the <strong>kinkiness</strong></p></li>
 </ul>
 </dd>
@@ -722,12 +814,21 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.fgToRGB">
 <span class="sig-name descname"><span class="pre">fgToRGB</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fgToRGB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fgToRGB" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return foreground RGB values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>foreground RGB tuple, or <code class="docutils literal notranslate"><span class="pre">(0,0,0)</span></code> when unset</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.fgbg">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fgbg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fgbg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fgbg" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>Helper to generate a Background color</p>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fgbg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fgbg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fgbg" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Helper to generate a Foreground and Background color</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">)</span>
 <span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">)</span>
@@ -739,6 +840,7 @@ document.write(`
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fg</strong> (<em>str</em>) – the foreground color representation in (str)HEX</p></li>
 <li><p><strong>bg</strong> (<em>str</em>) – the background color representation in (str)HEX</p></li>
+<li><p><strong>link</strong> (<em>str</em>) – (optional) hyperlink URL to associate with the color</p></li>
 <li><p><strong>modifier</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.TTkColorModifier"><em>TTkColorModifier</em></a><em>, </em><em>optional</em>) – (experimental) the color modifier to be used to improve the <strong>kinkiness</strong></p></li>
 </ul>
 </dd>
@@ -751,72 +853,218 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.foreground">
 <span class="sig-name descname"><span class="pre">foreground</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.foreground"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.foreground" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return a color object containing only the foreground component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a color with only foreground information if available, otherwise <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor.RST</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.getHex">
 <span class="sig-name descname"><span class="pre">getHex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctype</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.getHex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.getHex" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the selected component as a hexadecimal color string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ctype</strong> (<em>int</em>) – target component, usually one of <a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.ColorType" title="TermTk.TTkCore.TTkK.ColorType"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.ColorType</span></code></a></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>lowercase hexadecimal RGB string in the form <code class="docutils literal notranslate"><span class="pre">#rrggbb</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.hasBackground">
 <span class="sig-name descname"><span class="pre">hasBackground</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.hasBackground"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.hasBackground" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether this color has a background component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if a background color is set</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.hasForeground">
 <span class="sig-name descname"><span class="pre">hasForeground</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.hasForeground"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.hasForeground" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether this color has a foreground component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if a foreground color is set</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.hexToRGB">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hexToRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.hexToRGB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.hexToRGB" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Convert a hexadecimal color string (<code class="docutils literal notranslate"><span class="pre">#rrggbb</span></code>) to RGB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>val</strong> (<em>str</em>) – hexadecimal color string</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>RGB tuple</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.hsl2rgb">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hsl2rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hsl</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.hsl2rgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.hsl2rgb" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Convert HSL values to RGB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hsl</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – HSL tuple as <code class="docutils literal notranslate"><span class="pre">(hue[0..359],</span> <span class="pre">saturation[0..100],</span> <span class="pre">lightness[0..100])</span></code></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>RGB tuple where each component is in <code class="docutils literal notranslate"><span class="pre">0..255</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.invertFgBg">
 <span class="sig-name descname"><span class="pre">invertFgBg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.invertFgBg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.invertFgBg" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return a copy with foreground and background swapped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>color copy with foreground/background inverted</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.italic">
 <span class="sig-name descname"><span class="pre">italic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.italic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.italic" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether italic style is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False for base colors without style flags</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.mod">
 <span class="sig-name descname"><span class="pre">mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.mod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.mod" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Apply the configured color modifier at position <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – horizontal coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – vertical coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed color, or self when no modifier is set</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.modParam">
 <span class="sig-name descname"><span class="pre">modParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.modParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.modParam" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return a copy with updated color-modifier parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated color instance; unchanged instance when no modifier is set</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.rgb2hsl">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rgb2hsl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.rgb2hsl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.rgb2hsl" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Convert RGB values to HSL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rgb</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – RGB tuple where each component is in <code class="docutils literal notranslate"><span class="pre">0..255</span></code></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>HSL tuple as <code class="docutils literal notranslate"><span class="pre">(hue[0..359],</span> <span class="pre">saturation[0..100],</span> <span class="pre">lightness[0..100])</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.strikethrough">
 <span class="sig-name descname"><span class="pre">strikethrough</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.strikethrough"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.strikethrough" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether strikethrough style is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False for base colors without style flags</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.underline">
 <span class="sig-name descname"><span class="pre">underline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.underline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.underline" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Check whether underline style is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False for base colors without style flags</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkColor.withoutModifiers">
 <span class="sig-name descname"><span class="pre">withoutModifiers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.withoutModifiers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.withoutModifiers" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return this color without style modifiers.</p>
+<p>For base <a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>, no text-style modifiers are stored,
+so this method returns the current instance unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the color instance without text-style modifiers</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </dd></dl>

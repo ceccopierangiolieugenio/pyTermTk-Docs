@@ -635,6 +635,22 @@ document.write(`
         <span class="n">LEFT</span> <span class="o">=</span> <span class="mh">0x0008</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;The left edge of the text editor.&#39;&#39;&#39;</span>
 
+    <span class="k">class</span><span class="w"> </span><span class="nc">TextEditFollow</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This class type defines the auto-scroll follow mode of a text editor.</span>
+
+<span class="sd">        .. autosummary::</span>
+<span class="sd">          NEVER</span>
+<span class="sd">          ALWAYS</span>
+<span class="sd">          SMART</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">NEVER</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Never auto-scroll; the view stays where the user left it.&#39;&#39;&#39;</span>
+        <span class="n">ALWAYS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Always scroll to the bottom whenever the document changes.&#39;&#39;&#39;</span>
+        <span class="n">SMART</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Scroll to the bottom only when the view is already at the bottom,</span>
+<span class="sd">        allowing the user to scroll back and read without being interrupted.&#39;&#39;&#39;</span>
+
     <span class="k">class</span><span class="w"> </span><span class="nc">SelectionMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This class type indicates how the view responds to user selections.</span>
@@ -898,8 +914,7 @@ document.write(`
 <span class="sd">          NoWrap</span>
 <span class="sd">          FullWrap</span>
 <span class="sd">          FastWrap</span>
-<span class="sd">          HybridVimWrap</span>
-<span class="sd">          VimWrap</span>
+<span class="sd">          HybridWrap</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">NoWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;No Wrapping&#39;&#39;&#39;</span>
@@ -907,10 +922,8 @@ document.write(`
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Full document Wrap at any change, Ideal for small documents (~300 Lines) [Precise] (Slow)&#39;&#39;&#39;</span>
         <span class="n">FastWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Chunk based document Wrap, Default wrap [Fast] (Scrolling position is estimated)&#39;&#39;&#39;</span>
-        <span class="n">HybridVimWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Hybrid implementation between VimWrap and FastWrap, [Faster] (Scrolling position is estimated)&#39;&#39;&#39;</span>
-        <span class="n">VimWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Wrap applied only in the displayed area, [Fastest] (the scrolling is snap to the beginning of the lines)&#39;&#39;&#39;</span>
+        <span class="n">HybridWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Hybrid implementation between a screen based Wrap and FastWrap, [Faster] (Scrolling position is estimated)&#39;&#39;&#39;</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">LineWrapMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;Those constants describes which wrapping status is required in the document</span>

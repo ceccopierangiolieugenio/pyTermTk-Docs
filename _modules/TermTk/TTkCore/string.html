@@ -575,6 +575,7 @@ document.write(`
 <span class="sd">        # Combination of constructors (Highly Unrecommended)</span>
 <span class="sd">        str7 = TTkString(&quot;test 7&quot;, color=TTkColor.fg(&#39;#FF0000&#39;))</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">mnemonicColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#dddddd&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">UNDERLINE</span>
     <span class="n">unicodeWideOverflowColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#000088&quot;</span><span class="p">)</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_text&#39;</span><span class="p">,</span><span class="s1">&#39;_colors&#39;</span><span class="p">,</span><span class="s1">&#39;_baseColor&#39;</span><span class="p">,</span><span class="s1">&#39;_hasTab&#39;</span><span class="p">,</span><span class="s1">&#39;_hasSpecialWidth&#39;</span><span class="p">)</span>
@@ -596,7 +597,7 @@ document.write(`
         <span class="c1"># raise AttributeError(f&quot;{type(text)} not supported in TTkString&quot;)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_importString1</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_importString1</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">colors</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]):</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">colors</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">text</span>
@@ -607,7 +608,7 @@ document.write(`
         <span class="k">return</span> <span class="n">ret</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_parseAnsi</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parseAnsi</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">):</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">txtret</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">colret</span> <span class="o">=</span> <span class="p">[]</span>
@@ -625,6 +626,11 @@ document.write(`
 <div class="viewcode-block" id="TTkString.termWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.termWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">termWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the rendered terminal width of this string.</span>
+
+<span class="sd">        :return: rendered width accounting for tabs and wide/combining chars</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 
@@ -671,10 +677,10 @@ document.write(`
             <span class="n">ret</span><span class="o">.</span><span class="n">_checkWidth</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ret</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">Any</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -687,16 +693,39 @@ document.write(`
         <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
 
     <span class="c1"># Operators</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;</span>  <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">),</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;</span>  <span class="n">other</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">),</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;=</span> <span class="n">other</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">),</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">==</span> <span class="n">other</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">),</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">!=</span> <span class="n">other</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;</span>  <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">),</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;</span>  <span class="n">other</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">),</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;=</span> <span class="n">other</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;</span> <span class="n">other</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&lt;=</span> <span class="n">other</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">==</span> <span class="n">other</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">!=</span> <span class="n">other</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;</span> <span class="n">other</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">_text</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">&gt;=</span> <span class="n">other</span>
 
 <div class="viewcode-block" id="TTkString.sameAs">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.sameAs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">sameAs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Check whether text and per-character colors are identical.</span>
+
+<span class="sd">        :param other: string to compare against</span>
+<span class="sd">        :type other: :py:class:`TTkString` | str</span>
+
+<span class="sd">        :return: True when text and colors match exactly</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">TTkString</span><span class="p">):</span> <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">==</span><span class="n">other</span> <span class="ow">and</span>
@@ -707,51 +736,121 @@ document.write(`
 <div class="viewcode-block" id="TTkString.isdigit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.isdigit">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isdigit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Check whether the string contains only digit characters.</span>
+
+<span class="sd">        :return: True if all characters are digits and the string is non-empty</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkString.lstrip">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.lstrip">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">lstrip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return a copy with leading characters removed.</span>
+
+<span class="sd">        :param ch: characters to strip from the left side</span>
+<span class="sd">        :type ch: str</span>
+
+<span class="sd">        :return: left-stripped string preserving color alignment</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">_text</span><span class="p">):]</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_checkWidth</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ret</span></div>
 
 
 <div class="viewcode-block" id="TTkString.charAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.charAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">charAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the character at the given position.</span>
+
+<span class="sd">        :param pos: character index</span>
+<span class="sd">        :type pos: int</span>
+
+<span class="sd">        :return: character at ``pos``</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="TTkString.setCharAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.setCharAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCharAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">char</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span><span class="o">+</span><span class="n">char</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_checkWidth</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return a copy with one character replaced.</span>
+
+<span class="sd">        :param pos: character index to replace</span>
+<span class="sd">        :type pos: int</span>
+<span class="sd">        :param char: replacement character</span>
+<span class="sd">        :type char: str</span>
+
+<span class="sd">        :return: updated string</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
+
+<span class="sd">        :raises IndexError: if ``pos`` is out of range</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">()</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span><span class="o">+</span><span class="n">char</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_checkWidth</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
 
 
 <div class="viewcode-block" id="TTkString.colorAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.colorAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">colorAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkColor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the color assigned to the character at ``pos``.</span>
+
+<span class="sd">        :param pos: character index</span>
+<span class="sd">        :type pos: int</span>
+
+<span class="sd">        :return: color at ``pos`` or :py:class:`TTkColor.RST` when out of range</span>
+<span class="sd">        :rtype: :py:class:`TTkColor`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="n">pos</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">TTkColor</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="TTkString.setColorAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.setColorAt">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setColorAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setColorAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return a copy with one character color replaced.</span>
+
+<span class="sd">        :param pos: character index to recolor</span>
+<span class="sd">        :type pos: int</span>
+<span class="sd">        :param color: replacement color</span>
+<span class="sd">        :type color: :py:class:`TTkColor`</span>
+
+<span class="sd">        :return: recolored string</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
+
+<span class="sd">        :raises IndexError: if ``pos`` is out of range</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">()</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[:</span><span class="n">pos</span><span class="p">],</span> <span class="n">color</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">:]]</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
 
 
 <div class="viewcode-block" id="TTkString.tab2spaces">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.tab2spaces">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">tab2spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tabSpaces</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the string representation with the tabs (converted in spaces) trimmed and aligned&#39;&#39;&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tab2spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tabSpaces</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Expand tab characters into aligned spaces.</span>
+
+<span class="sd">        :param tabSpaces: tab stop size</span>
+<span class="sd">        :type tabSpaces: int</span>
+
+<span class="sd">        :return: string with tabs replaced by spaces</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasTab</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
         <span class="n">slices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -771,8 +870,21 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.tabCharPos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.tabCharPos">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">tabCharPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">tabSpaces</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alignTabRight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the char position in the string from the position in its representation with the tab and variable char sizes are solved</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tabCharPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">tabSpaces</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alignTabRight</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Map a rendered column position to the internal character index.</span>
+
+<span class="sd">        Tabs and variable-width characters are resolved against the visual</span>
+<span class="sd">        terminal representation.</span>
+
+<span class="sd">        :param pos: target visual column</span>
+<span class="sd">        :type pos: int</span>
+<span class="sd">        :param tabSpaces: tab stop size</span>
+<span class="sd">        :type tabSpaces: int</span>
+<span class="sd">        :param alignTabRight: map positions inside a tab to the tab right edge</span>
+<span class="sd">        :type alignTabRight: bool</span>
+
+<span class="sd">        :return: character index in ``_text``</span>
+<span class="sd">        :rtype: int</span>
 
 <span class="sd">        i.e.</span>
 
@@ -810,8 +922,8 @@ document.write(`
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_tabCharPosWideChar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">tabSpaces</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alignTabRight</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the char position in the string from the position in its representation with the tab and variable char sizes are solved</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_tabCharPosWideChar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">tabSpaces</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alignTabRight</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Wide-char aware implementation for :py:meth:`tabCharPos`.</span>
 
 <span class="sd">        i.e.</span>
 
@@ -824,6 +936,15 @@ document.write(`
 <span class="sd">            chars      .. ...t  .....t  .....t  ...t.....</span>
 <span class="sd">            ret                   x = 7 (tab is a char)</span>
 
+<span class="sd">        :param pos: target visual column</span>
+<span class="sd">        :type pos: int</span>
+<span class="sd">        :param tabSpaces: tab stop size</span>
+<span class="sd">        :type tabSpaces: int</span>
+<span class="sd">        :param alignTabRight: unused in this implementation</span>
+<span class="sd">        :type alignTabRight: bool</span>
+
+<span class="sd">        :return: character index in ``_text``</span>
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># get pos in the slice:</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">pos</span>
@@ -844,21 +965,36 @@ document.write(`
 <div class="viewcode-block" id="TTkString.isPlainText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.isPlainText">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isPlainText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Return True if the string does not include colors or modifications &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return True if the string has no color/style information.</span>
+
+<span class="sd">        :return: True when all chars use :py:class:`TTkColor.RST`</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="o">==</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkString.toAscii">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.toAscii">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toAscii</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Return the ascii representation of the string &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the plain-text content.</span>
+
+<span class="sd">        :return: raw text without terminal escapes</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span></div>
 
 
 <div class="viewcode-block" id="TTkString.toAnsi">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.toAnsi">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strip</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Return the ansii (terminal colors/events) representation of the string &#39;&#39;&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strip</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the ANSI escaped representation of the string.</span>
+
+<span class="sd">        :param strip: remove leading/trailing reset sequences</span>
+<span class="sd">        :type strip: bool</span>
+
+<span class="sd">        :return: ANSI escaped text</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">out</span>   <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">ch</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
@@ -879,15 +1015,18 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.align">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.align">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">=</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span> <span class="n">alignment</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="o">.</span><span class="n">NONE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Align the string</span>
 
 <span class="sd">        :param width: the new width</span>
 <span class="sd">        :type width: int, optional</span>
 <span class="sd">        :param color: the color of the padding, defaults to :py:class:`TTkColor.RST`</span>
 <span class="sd">        :type color: :py:class:`TTkColor`, optional</span>
-<span class="sd">        :param alignment: the alignment of the text to the full width :py:class:`~TermTk.TTkCore.constant.TTkConstant.Alignment.NONE`</span>
-<span class="sd">        :type alignment: :py:class:`TTkConstant.Alignment`, optional</span>
+<span class="sd">        :param alignment: text alignment within the requested width</span>
+<span class="sd">        :type alignment: :py:class:`TTkK.Alignment`, optional</span>
+
+<span class="sd">        :return: aligned string with preserved styling</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">lentxt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">width</span> <span class="ow">or</span> <span class="n">width</span> <span class="o">==</span> <span class="n">lentxt</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
@@ -896,7 +1035,7 @@ document.write(`
 
         <span class="k">if</span> <span class="n">lentxt</span> <span class="o">&lt;</span> <span class="n">width</span><span class="p">:</span>
             <span class="n">pad</span> <span class="o">=</span> <span class="n">width</span><span class="o">-</span><span class="n">lentxt</span>
-            <span class="k">if</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="p">[</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT_ALIGN</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="p">[</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT_ALIGN</span><span class="p">]:</span>
                 <span class="n">ret</span><span class="o">.</span><span class="n">_text</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>   <span class="o">+</span> <span class="s2">&quot; &quot;</span>    <span class="o">*</span><span class="n">pad</span>
                 <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span> <span class="o">+</span> <span class="p">[</span><span class="n">color</span><span class="p">]</span><span class="o">*</span><span class="n">pad</span>
             <span class="k">elif</span> <span class="n">alignment</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT_ALIGN</span><span class="p">:</span>
@@ -949,6 +1088,11 @@ document.write(`
 <div class="viewcode-block" id="TTkString.extractShortcuts">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.extractShortcuts">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">extractShortcuts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TTkString</span><span class="p">,</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Extract ``&amp;`` shortcuts and underline the mnemonic characters.</span>
+
+<span class="sd">        :return: tuple of processed string and extracted shortcut characters</span>
+<span class="sd">        :rtype: tuple[:py:class:`TTkString`, list[str]]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">_chGenerator</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
                 <span class="k">yield</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span>
@@ -956,11 +1100,15 @@ document.write(`
         <span class="n">_newColors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">_ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">_gen</span> <span class="o">=</span> <span class="n">_chGenerator</span><span class="p">()</span>
+        <span class="n">_found</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="ow">in</span> <span class="n">_gen</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ch</span> <span class="o">==</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">:</span>
-                <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">_gen</span><span class="p">)</span>
+                <span class="n">_found</span> <span class="o">=</span>  <span class="kc">True</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">_found</span><span class="p">:</span>
+                <span class="n">_found</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="n">_ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
-                <span class="n">color</span> <span class="o">+=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">UNDERLINE</span>
+                <span class="n">color</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mnemonicColor</span>  <span class="c1"># UNDERLINE</span>
             <span class="n">_newText</span> <span class="o">+=</span> <span class="n">ch</span>
             <span class="n">_newColors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkString</span><span class="o">.</span><span class="n">_importString1</span><span class="p">(</span><span class="n">_newText</span><span class="p">,</span><span class="n">_newColors</span><span class="p">),</span> <span class="n">_ret</span></div>
@@ -973,12 +1121,15 @@ document.write(`
 
 <span class="sd">        Replace &quot;**old**&quot; match with &quot;**new**&quot; string for &quot;**count**&quot; times</span>
 
-<span class="sd">        :param old: the match to be placed</span>
+<span class="sd">        :param old: substring to be replaced</span>
 <span class="sd">        :type old: str</span>
-<span class="sd">        :param new: the match to replace</span>
+<span class="sd">        :param new: replacement substring</span>
 <span class="sd">        :type new: str, optional</span>
-<span class="sd">        :param count: the number of occurrences</span>
+<span class="sd">        :param count: maximum number of replacements</span>
 <span class="sd">        :type count: int, optional</span>
+
+<span class="sd">        :return: updated string preserving color spans</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">old</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">new</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -995,7 +1146,7 @@ document.write(`
             <span class="n">ret</span><span class="o">.</span><span class="n">_text</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">oldLen</span> <span class="o">&gt;</span> <span class="n">newLen</span><span class="p">:</span>
             <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">while</span> <span class="n">pos</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">old</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">pos</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">old</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">pos</span><span class="o">+</span><span class="n">newLen</span><span class="p">]</span>
                 <span class="n">start</span> <span class="o">=</span> <span class="n">pos</span><span class="o">+</span><span class="n">oldLen</span>
                 <span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span>
@@ -1004,7 +1155,7 @@ document.write(`
             <span class="n">ret</span><span class="o">.</span><span class="n">_text</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">while</span> <span class="n">pos</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">old</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">pos</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">old</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">pos</span><span class="o">+</span><span class="n">oldLen</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">pos</span><span class="o">+</span><span class="n">oldLen</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">*</span><span class="p">(</span><span class="n">newLen</span><span class="o">-</span><span class="n">oldLen</span><span class="p">)</span>
                 <span class="n">start</span> <span class="o">=</span> <span class="n">pos</span><span class="o">+</span><span class="n">oldLen</span>
                 <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
@@ -1019,7 +1170,7 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.completeColor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.completeColor">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">completeColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posFrom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posTo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">completeColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">,</span> <span class="n">match</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posFrom</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posTo</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Complete the color of the entire string or a slice of it</span>
 
 <span class="sd">        The Fg and/or Bg of the string is replaced with the selected Fg/Bg color only if missing</span>
@@ -1034,22 +1185,23 @@ document.write(`
 <span class="sd">        :type posFrom: int, optional</span>
 <span class="sd">        :param posTo: the final position of the color</span>
 <span class="sd">        :type posTo: int, optional</span>
+
+<span class="sd">        :return: recolored string</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
-        <span class="n">ret</span><span class="o">.</span><span class="n">_text</span>  <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_hasTab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasTab</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span>
         <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="n">start</span><span class="o">=</span><span class="mi">0</span>
             <span class="n">lenMatch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
-            <span class="k">while</span> <span class="n">pos</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">pos</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">start</span> <span class="o">=</span> <span class="n">pos</span><span class="o">+</span><span class="n">lenMatch</span>
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">pos</span><span class="o">+</span><span class="n">lenMatch</span><span class="p">):</span>
                     <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">|=</span> <span class="n">color</span>
-        <span class="k">elif</span> <span class="n">posFrom</span> <span class="ow">is</span> <span class="n">posTo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">color</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">posFrom</span> <span class="o">&lt;</span> <span class="n">posTo</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">posFrom</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">posTo</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">posFrom</span> <span class="o">&lt;</span> <span class="n">posTo</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="n">posFrom</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">),</span><span class="n">posFrom</span><span class="p">)</span>
             <span class="n">posTo</span>   <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">),</span><span class="n">posTo</span><span class="p">)</span>
@@ -1063,7 +1215,7 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.setColor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.setColor">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posFrom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posTo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">,</span> <span class="n">match</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posFrom</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posTo</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Set the color of the entire string or a slice of it</span>
 
 <span class="sd">        If only the color is specified, the entire string is colorized</span>
@@ -1076,6 +1228,9 @@ document.write(`
 <span class="sd">        :type posFrom: int, optional</span>
 <span class="sd">        :param posTo: the final position of the color</span>
 <span class="sd">        :type posTo: int, optional</span>
+
+<span class="sd">        :return: recolored string</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_text</span>  <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span>
@@ -1090,7 +1245,7 @@ document.write(`
                 <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="n">pos</span><span class="p">:</span> <span class="n">pos</span><span class="o">+</span><span class="n">lenMatch</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="p">]</span><span class="o">*</span><span class="n">lenMatch</span>
         <span class="k">elif</span> <span class="n">posFrom</span> <span class="ow">is</span> <span class="n">posTo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">posFrom</span> <span class="o">&lt;</span> <span class="n">posTo</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">posFrom</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">posTo</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">posFrom</span> <span class="o">&lt;</span> <span class="n">posTo</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">_colors</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors</span>
             <span class="n">posFrom</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">),</span><span class="n">posFrom</span><span class="p">)</span>
             <span class="n">posTo</span>   <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">),</span><span class="n">posTo</span><span class="p">)</span>
@@ -1102,13 +1257,16 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.substring">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.substring">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">substring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">substring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Return the substring</span>
 
 <span class="sd">        :param fr: the starting of the slice, defaults to 0</span>
 <span class="sd">        :type fr: int, optional</span>
 <span class="sd">        :param to: the ending of the slice, defaults to the end of the string</span>
 <span class="sd">        :type to: int, optional</span>
+
+<span class="sd">        :return: sliced string</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">()</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">_text</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">fr</span><span class="p">:</span><span class="n">to</span><span class="p">]</span>
@@ -1120,13 +1278,16 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.split">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.split">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">separator</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">separator</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Split the string using a separator</span>
 
 <span class="sd">        .. note:: Only a one char separator is currently supported</span>
 
 <span class="sd">        :param separator: the &quot;**char**&quot; separator to be used</span>
 <span class="sd">        :type separator: str</span>
+
+<span class="sd">        :return: list of split chunks</span>
+<span class="sd">        :rtype: list[:py:class:`TTkString`]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1144,7 +1305,12 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.getData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.getData">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="o">...</span><span class="p">],</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span><span class="n">List</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return text and color data in terminal-rendered form.</span>
+
+<span class="sd">        :return: tuple of characters and colors</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getDataW</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1153,39 +1319,58 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.search">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.search">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regexp</span><span class="p">,</span> <span class="n">ignoreCase</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regexp</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">ignoreCase</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Return the **re.match** of the **regexp**</span>
 
 <span class="sd">        :param regexp: the regular expression to be matched</span>
 <span class="sd">        :type regexp: str</span>
 <span class="sd">        :param ignoreCase: Ignore case, defaults to **False**</span>
 <span class="sd">        :type ignoreCase: bool</span>
+
+<span class="sd">        :return: first regular-expression match or None</span>
+<span class="sd">        :rtype: re.Match | None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regexp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="k">if</span> <span class="n">ignoreCase</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkString.find">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.find">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return the first index of a substring using ``str.find`` semantics.</span>
+
+<span class="sd">        :return: start index of the first match, or ``-1`` if not found</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkString.findall">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.findall">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">findall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regexp</span><span class="p">,</span> <span class="n">ignoreCase</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">findall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regexp</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">ignoreCase</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; FindAll the **regexp** matches in the string</span>
 
 <span class="sd">        :param regexp: the regular expression to be matched</span>
 <span class="sd">        :type regexp: str</span>
 <span class="sd">        :param ignoreCase: Ignore case, defaults to **False**</span>
 <span class="sd">        :type ignoreCase: bool</span>
+
+<span class="sd">        :return: list of all matches</span>
+<span class="sd">        :rtype: list[str] | list[tuple]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regexp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="k">if</span> <span class="n">ignoreCase</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkString.getIndexes">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.getIndexes">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">getIndexes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getIndexes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return indexes where ``char`` appears.</span>
+
+<span class="sd">        :param char: target character</span>
+<span class="sd">        :type char: str</span>
+
+<span class="sd">        :return: matching character positions</span>
+<span class="sd">        :rtype: list[int]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span><span class="o">==</span><span class="n">char</span><span class="p">]</span></div>
 
 
@@ -1196,6 +1381,9 @@ document.write(`
 
 <span class="sd">        :param strings: the list of strings to be joined</span>
 <span class="sd">        :type strings: list</span>
+
+<span class="sd">        :return: joined string</span>
+<span class="sd">        :rtype: :py:class:`TTkString`</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">strings</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">TTkString</span><span class="p">()</span>
@@ -1209,7 +1397,15 @@ document.write(`
 
     <span class="c1"># Unicode Zero/Half/Normal sized chars helpers:</span>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_isWideCharData</span><span class="p">(</span><span class="n">ch</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_isWideCharData</span><span class="p">(</span><span class="n">ch</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Check whether ``ch`` starts with a wide character.</span>
+
+<span class="sd">        :param ch: input text chunk</span>
+<span class="sd">        :type ch: str</span>
+
+<span class="sd">        :return: True when first character is wide</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;W&#39;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -1217,24 +1413,56 @@ document.write(`
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_isSpecialWidthChar</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_isSpecialWidthChar</span><span class="p">(</span><span class="n">ch</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Check whether a character has non-standard display width.</span>
+
+<span class="sd">        :param ch: input character</span>
+<span class="sd">        :type ch: str</span>
+
+<span class="sd">        :return: True for wide or combining characters</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="p">(</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span> <span class="ow">or</span>
                  <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">)</span> <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_getWidthText</span><span class="p">(</span><span class="n">txt</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getWidthText</span><span class="p">(</span><span class="n">txt</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Compute rendered width for a text snippet.</span>
+
+<span class="sd">        :param txt: input text</span>
+<span class="sd">        :type txt: str</span>
+
+<span class="sd">        :return: rendered width</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="o">+</span>
             <span class="nb">sum</span><span class="p">(</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span> <span class="o">-</span>
             <span class="nb">sum</span><span class="p">(</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span> <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_getLenTextWoZero</span><span class="p">(</span><span class="n">txt</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Count text length excluding zero-width combining marks.</span>
+
+<span class="sd">        :param txt: input text</span>
+<span class="sd">        :type txt: str</span>
+
+<span class="sd">        :return: logical length without combining marks</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="o">-</span>
             <span class="nb">sum</span><span class="p">(</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span> <span class="p">)</span>
 
 <div class="viewcode-block" id="TTkString.nextPos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.nextPos">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">nextPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nextPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return next editable character position.</span>
+
+<span class="sd">        :param pos: current position</span>
+<span class="sd">        :type pos: int</span>
+
+<span class="sd">        :return: next non-combining character index</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">pos</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">[</span><span class="n">pos</span><span class="p">:]):</span>
             <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">):</span>
@@ -1244,7 +1472,15 @@ document.write(`
 
 <div class="viewcode-block" id="TTkString.prevPos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString.prevPos">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">prevPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prevPos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return previous editable character position.</span>
+
+<span class="sd">        :param pos: current position</span>
+<span class="sd">        :type pos: int</span>
+
+<span class="sd">        :return: previous non-combining character index</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># from TermTk.TTkCore.log import TTkLog</span>
         <span class="c1"># TTkLog.debug(f&quot;-&gt;{self._text[:pos]}&lt;- {pos=}&quot;)</span>
         <span class="c1"># TTkLog.debug(f&quot;{str(reversed(self._text[:pos]))} {pos=}&quot;)</span>
@@ -1255,7 +1491,7 @@ document.write(`
         <span class="k">return</span> <span class="mi">0</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_fastCheckWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_fastCheckWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="p">(</span>
                 <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termWidthW</span><span class="p">()</span>
 
@@ -1267,18 +1503,21 @@ document.write(`
         <span class="n">tw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termWidthW</span><span class="p">()</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="o">&gt;=</span><span class="mh">0x300</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hasSpecialWidth</span> <span class="o">=</span> <span class="n">tw</span> <span class="k">if</span> <span class="n">tw</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_termWidthW</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_termWidthW</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; String displayed length</span>
 
 <span class="sd">        This value consider the displayed size (Zero, Half, Full) of each character.</span>
+
+<span class="sd">        :return: rendered width</span>
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="o">+</span>
              <span class="nb">sum</span><span class="p">(</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="o">-</span>
              <span class="nb">sum</span><span class="p">(</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Me&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_getDataW_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">retTxt</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">retCol</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getDataW_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span><span class="n">List</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]:</span>
+        <span class="n">retTxt</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[str]</span>
+        <span class="n">retCol</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[TTkColor]</span>
         <span class="k">for</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
                 <span class="n">retTxt</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ch</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -1297,9 +1536,9 @@ document.write(`
                 <span class="n">retCol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">retTxt</span><span class="p">,</span> <span class="n">retCol</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_getDataW_tty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">retTxt</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">retCol</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getDataW_tty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span><span class="n">List</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]]:</span>
+        <span class="n">retTxt</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[str]</span>
+        <span class="n">retCol</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[TTkColor]</span>
         <span class="k">for</span> <span class="n">ch</span><span class="p">,</span><span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
                 <span class="n">retTxt</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;■&#39;</span><span class="p">,</span><span class="s1">&#39;■&#39;</span><span class="p">)</span>

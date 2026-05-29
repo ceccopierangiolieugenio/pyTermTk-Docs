@@ -198,6 +198,12 @@ TTkConstant Classes
 
 .. currentmodule::  TermTk.TTkCore.TTkConstant
 
+.. autoclass::  TextEditFollow
+   :show-inheritance:
+   :members:
+
+.. currentmodule::  TermTk.TTkCore.TTkConstant
+
 .. autoclass::  WindowFlag
    :show-inheritance:
    :members:
