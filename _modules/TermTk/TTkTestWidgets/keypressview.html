@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkTestWidgets.keypressview &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkTestWidgets.keypressview &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,12 +533,12 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkKeyPressView&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkKeyPressView'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.input</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkInput</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">mod2str</span><span class="p">,</span> <span class="n">key2str</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">TTkKeyEvent_Character</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">,</span> <span class="n">mod2str</span><span class="p">,</span> <span class="n">key2str</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkMouseEvent</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.helper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkHelper</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span>
@@ -549,14 +552,14 @@ document.write(`
 <div class="viewcode-block" id="TTkKeyPressView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html#TermTk.TTkTestWidgets.TTkKeyPressView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkKeyPressView</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_fadeDuration&#39;</span><span class="p">,</span><span class="s1">&#39;_keys&#39;</span><span class="p">,</span><span class="s1">&#39;_anim&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_fadeDuration'</span><span class="p">,</span><span class="s1">'_keys'</span><span class="p">,</span><span class="s1">'_anim'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">TTkInput</span><span class="o">.</span><span class="n">inputEvent</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_processInput</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fadeDuration</span> <span class="o">=</span> <span class="mf">2.5</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span> <span class="o">=</span> <span class="n">TTkPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pushFade&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_anim</span> <span class="o">=</span> <span class="n">TTkPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'_pushFade'</span><span class="p">)</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">TTkMouseEvent</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_processInput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kevt</span><span class="p">,</span> <span class="n">mevt</span><span class="p">):</span>
@@ -565,13 +568,14 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkKeyEvent</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_addKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Character</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s1">''</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_Character</span><span class="p">):</span>
             <span class="n">text</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="n">key2str</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Key_&quot;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">key2str</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Key_"</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">mod</span><span class="p">:</span>
-                <span class="n">m</span> <span class="o">=</span> <span class="n">mod2str</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">mod</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Modifier&quot;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-                <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="n">mod2str</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">mod</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Modifier"</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">"</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Character</span><span class="p">:</span>
              <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="n">evt</span><span class="o">.</span><span class="n">key</span>
              <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
@@ -581,18 +585,18 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkMouseEvent</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_addMouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-              <span class="c1"># return f&quot;MouseEvent ({self.x},{self.y}) {self.key2str()} {self.evt2str()} {self.mod2str()} tap:{self.tap} - {self.raw}&quot;</span>
-        <span class="c1"># text = f&quot;M:{(evt.x,evt.y)} {evt.key2str().replace(&#39;Button&#39;,&#39;&#39;)} {evt.evt2str().replace(&#39;Release&#39;,&#39;&#39;).replace(&#39;Press&#39;,&#39;&#39;)} {evt.mod2str().replace(&#39;NoModifier&#39;,&#39;&#39;)}&quot;</span>
+              <span class="c1"># return f"MouseEvent ({self.x},{self.y}) {self.key2str()} {self.evt2str()} {self.mod2str()} tap:{self.tap} - {self.raw}"</span>
+        <span class="c1"># text = f"M:{(evt.x,evt.y)} {evt.key2str().replace('Button','')} {evt.evt2str().replace('Release','').replace('Press','')} {evt.mod2str().replace('NoModifier','')}"</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">NoButton</span><span class="p">:</span> <span class="k">return</span>
-        <span class="n">tap</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">&quot; Click &quot;</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">&quot; DoubleClick &quot;</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">&quot; TripleClick &quot;</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">:</span>  <span class="n">tap</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="si">}</span><span class="s2"> Clicks &quot;</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span><span class="o">==</span><span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">Drag</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">&quot; Drag &quot;</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span><span class="o">==</span><span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span> <span class="n">tap</span><span class="o">+=</span><span class="s2">&quot;Release &quot;</span>
+        <span class="n">tap</span> <span class="o">=</span> <span class="s2">" "</span>
+        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">" Click "</span>
+        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">" DoubleClick "</span>
+        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">" TripleClick "</span>
+        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">:</span>  <span class="n">tap</span><span class="o">=</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">tap</span><span class="si">}</span><span class="s2"> Clicks "</span>
+        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span><span class="o">==</span><span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">Drag</span><span class="p">:</span> <span class="n">tap</span><span class="o">=</span><span class="s2">" Drag "</span>
+        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">evt</span><span class="o">==</span><span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span> <span class="n">tap</span><span class="o">+=</span><span class="s2">"Release "</span>
 
-        <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;M:</span><span class="si">{</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">key2str</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Button&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}{</span><span class="n">tap</span><span class="si">}{</span><span class="n">evt</span><span class="o">.</span><span class="n">mod2str</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NoModifier&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"M:</span><span class="si">{</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">key2str</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'Button'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span><span class="si">}{</span><span class="n">tap</span><span class="si">}{</span><span class="n">evt</span><span class="o">.</span><span class="n">mod2str</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'NoModifier'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_keys</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="mh">0x100</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_startFade</span><span class="p">()</span>
 
@@ -617,9 +621,9 @@ document.write(`
 <div class="viewcode-block" id="TTkKeyPressView.txt2map">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkTestWidgets.TTkKeyPressView.html#TermTk.TTkTestWidgets.TTkKeyPressView.txt2map">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">txt2map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">):</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="s2">""</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="s2">""</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">:</span>
-            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontMap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,[</span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="s2">&quot;. .&quot;</span><span class="p">,</span><span class="s2">&quot;...&quot;</span><span class="p">])</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontMap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,[</span><span class="s2">"..."</span><span class="p">,</span><span class="s2">". ."</span><span class="p">,</span><span class="s2">"..."</span><span class="p">])</span>
             <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">ret</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">ret</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -631,7 +635,7 @@ document.write(`
             <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0xbb</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span>
             <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0xff</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span>
             <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0xff</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span>
-            <span class="n">color</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">r</span><span class="o">&lt;&lt;</span><span class="mi">16</span><span class="o">|</span><span class="n">g</span><span class="o">&lt;&lt;</span><span class="mi">8</span><span class="o">|</span><span class="n">b</span><span class="si">:</span><span class="s2">06x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="sa">f</span><span class="s2">"#</span><span class="si">{</span><span class="n">r</span><span class="o">&lt;&lt;</span><span class="mi">16</span><span class="o">|</span><span class="n">g</span><span class="o">&lt;&lt;</span><span class="mi">8</span><span class="o">|</span><span class="n">b</span><span class="si">:</span><span class="s2">06x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="c1">#canvas.drawText(pos=((self.width()-len(text))//2,0),text=text,color=color)</span>
             <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">txt2map</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">()</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>

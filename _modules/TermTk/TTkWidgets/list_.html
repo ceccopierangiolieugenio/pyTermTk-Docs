@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.list_ &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.list_ &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,7 +533,7 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkList&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkList'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">Any</span><span class="p">,</span><span class="n">Optional</span>
 
@@ -542,29 +545,29 @@ document.write(`
 <div class="viewcode-block" id="TTkList">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkList</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
-    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="s1">    :py:class:`TTkList` is a container widget which place :py:class:`TTkListWidget` in a scrolling area with on-demand scroll bars.</span>
 
-<span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="n">TTkListWidget</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="s1">    '''</span> <span class="o">+</span> <span class="p">(</span><span class="n">TTkListWidget</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s1">''</span><span class="p">)</span>
 
     <span class="n">_ttk_forward</span> <span class="o">=</span> <span class="n">_ForwardData</span><span class="p">(</span>
         <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkListWidget</span> <span class="p">,</span>
-        <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._listView&quot;</span><span class="p">,</span>
+        <span class="n">instance</span><span class="o">=</span><span class="s2">"self._listView"</span><span class="p">,</span>
         <span class="n">signals</span><span class="o">=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTable</span>
-            <span class="s1">&#39;itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;textClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;searchModified&#39;</span><span class="p">],</span>
+            <span class="s1">'itemClicked'</span><span class="p">,</span> <span class="s1">'textClicked'</span><span class="p">,</span> <span class="s1">'searchModified'</span><span class="p">],</span>
         <span class="n">methods</span><span class="o">=</span><span class="p">[</span>
-            <span class="s1">&#39;items&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dragDropMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setDragDropMode&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;addItem&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;addItems&#39;</span><span class="p">,</span> <span class="s1">&#39;addItemsAt&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;indexOf&#39;</span><span class="p">,</span> <span class="s1">&#39;itemAt&#39;</span><span class="p">,</span> <span class="s1">&#39;moveItem&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;removeAt&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItem&#39;</span><span class="p">,</span> <span class="s1">&#39;removeItems&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;selectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;setSelectionMode&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedItems&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedLabels&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;setSearch&#39;</span><span class="p">,</span> <span class="s1">&#39;searchVisibility&#39;</span><span class="p">,</span> <span class="s1">&#39;setSearchVisibility&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;setCurrentRow&#39;</span><span class="p">,</span> <span class="s1">&#39;setCurrentItem&#39;</span>
+            <span class="s1">'items'</span><span class="p">,</span>
+            <span class="s1">'dragDropMode'</span><span class="p">,</span> <span class="s1">'setDragDropMode'</span><span class="p">,</span>
+            <span class="s1">'addItem'</span><span class="p">,</span> <span class="s1">'addItemAt'</span><span class="p">,</span> <span class="s1">'addItems'</span><span class="p">,</span> <span class="s1">'addItemsAt'</span><span class="p">,</span>
+            <span class="s1">'indexOf'</span><span class="p">,</span> <span class="s1">'itemAt'</span><span class="p">,</span> <span class="s1">'moveItem'</span><span class="p">,</span>
+            <span class="s1">'removeAt'</span><span class="p">,</span> <span class="s1">'removeItem'</span><span class="p">,</span> <span class="s1">'removeItems'</span><span class="p">,</span>
+            <span class="s1">'selectionMode'</span><span class="p">,</span> <span class="s1">'setSelectionMode'</span><span class="p">,</span> <span class="s1">'selectedItems'</span><span class="p">,</span> <span class="s1">'selectedLabels'</span><span class="p">,</span>
+            <span class="s1">'search'</span><span class="p">,</span> <span class="s1">'setSearch'</span><span class="p">,</span> <span class="s1">'searchVisibility'</span><span class="p">,</span> <span class="s1">'setSearchVisibility'</span><span class="p">,</span>
+            <span class="s1">'setCurrentRow'</span><span class="p">,</span> <span class="s1">'setCurrentItem'</span>
             <span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_listView&#39;</span><span class="p">,)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_listView'</span><span class="p">,)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkAbstractListItemType</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span>
@@ -573,96 +576,96 @@ document.write(`
                  <span class="n">dragDropMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span><span class="p">,</span>
                  <span class="n">showSearch</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        :param listWidget: a custom List Widget to be used instead of the default one.</span>
 <span class="sd">        :type listWidget: :py:class:`TTkListWidget`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span> <span class="o">=</span> <span class="n">listWidget</span> <span class="k">if</span> <span class="n">listWidget</span> <span class="k">else</span> <span class="n">TTkListWidget</span><span class="p">(</span>
                                                             <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span>
                                                             <span class="n">selectionMode</span><span class="o">=</span><span class="n">selectionMode</span><span class="p">,</span>
                                                             <span class="n">dragDropMode</span><span class="o">=</span><span class="n">dragDropMode</span><span class="p">,</span>
                                                             <span class="n">showSearch</span><span class="o">=</span><span class="n">showSearch</span><span class="p">,</span>
-                                                            <span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;parent&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;visible&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+                                                            <span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">'parent'</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span><span class="s1">'visible'</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="p">)</span>
 
     <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.itemClicked`</span>
 
 <span class="sd">        This signal is emitted whenever an item is clicked.</span>
 <span class="sd">        </span>
 <span class="sd">        :param item: the item selected</span>
 <span class="sd">        :type item: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">itemClicked</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">textClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.textClicked`</span>
 
 <span class="sd">        This signal is emitted whenever an item is clicked.</span>
 <span class="sd">        </span>
 <span class="sd">        :param text: the text of the item selected</span>
 <span class="sd">        :type text: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">textClicked</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">searchModified</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.searchModified`</span>
 
 <span class="sd">        This signal is emitted whenever the search text is modified.</span>
 <span class="sd">        </span>
 <span class="sd">        :param text: the search text</span>
 <span class="sd">        :type text: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">searchModified</span>
 <div class="viewcode-block" id="TTkList.items">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.items">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.items`</span>
 
 <span class="sd">        Returns all items in the list.</span>
 
 <span class="sd">        :return: Complete list of items</span>
 <span class="sd">        :rtype: list[:py:class:`TTkAbstractListItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.dragDropMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.dragDropMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.dragDropMode`</span>
 
 <span class="sd">        Returns the current drag-drop mode.</span>
 
 <span class="sd">        :return: The drag-drop behavior setting</span>
 <span class="sd">        :rtype: :py:class:`TTkK.DragDropMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">dragDropMode</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.setDragDropMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setDragDropMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setDragDropMode`</span>
 
 <span class="sd">        Sets the drag-drop mode for this list.</span>
 
 <span class="sd">        :param dndMode: The new drag-drop behavior</span>
 <span class="sd">        :type dndMode: :py:class:`TTkK.DragDropMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setDragDropMode</span><span class="p">(</span><span class="n">dndMode</span><span class="o">=</span><span class="n">dndMode</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.addItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItemType</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItem`</span>
 
 <span class="sd">        Appends a single item to the end of the list.</span>
@@ -671,13 +674,13 @@ document.write(`
 <span class="sd">        :type item: str or :py:class:`TTkAbstractListItem`</span>
 <span class="sd">        :param data: Optional user data to associate with the item</span>
 <span class="sd">        :type data: Any, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.addItemAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItemAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItemType</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItemAt`</span>
 
 <span class="sd">        Inserts a single item at the specified position.</span>
@@ -688,26 +691,26 @@ document.write(`
 <span class="sd">        :type pos: int</span>
 <span class="sd">        :param data: Optional user data to associate with the item</span>
 <span class="sd">        :type data: Any, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItemAt</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.addItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkAbstractListItemType</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItems`</span>
 
 <span class="sd">        Appends multiple items to the end of the list.</span>
 
 <span class="sd">        :param items: List of items to add (strings or :py:class:`TTkAbstractListItem` objects)</span>
 <span class="sd">        :type items: list</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.addItemsAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.addItemsAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItemsAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkAbstractListItemType</span><span class="p">],</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.addItemsAt`</span>
 
 <span class="sd">        Inserts multiple items at the specified position.</span>
@@ -716,13 +719,13 @@ document.write(`
 <span class="sd">        :type items: list</span>
 <span class="sd">        :param pos: The index position to insert at</span>
 <span class="sd">        :type pos: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">addItemsAt</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.indexOf">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.indexOf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">indexOf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItemType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.indexOf`</span>
 
 <span class="sd">        Returns the index of the given item.</span>
@@ -731,13 +734,13 @@ document.write(`
 <span class="sd">        :type item: :py:class:`TTkAbstractListItem` or the data or the text to be searched</span>
 <span class="sd">        :return: The index of the item, or -1 if not found</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.itemAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.itemAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkAbstractListItem</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.itemAt`</span>
 
 <span class="sd">        Returns the item at the specified index.</span>
@@ -746,13 +749,13 @@ document.write(`
 <span class="sd">        :type pos: int</span>
 <span class="sd">        :return: The item at that position</span>
 <span class="sd">        :rtype: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">itemAt</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.moveItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.moveItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">moveItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.moveItem`</span>
 
 <span class="sd">        Moves an item from one position to another.</span>
@@ -761,176 +764,176 @@ document.write(`
 <span class="sd">        :type fr: int</span>
 <span class="sd">        :param to: The destination index</span>
 <span class="sd">        :type to: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">moveItem</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="n">fr</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="n">to</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.removeAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.removeAt`</span>
 
 <span class="sd">        Removes the item at the specified index.</span>
 
 <span class="sd">        :param pos: The index of the item to remove</span>
 <span class="sd">        :type pos: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeAt</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.removeItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.removeItem`</span>
 
 <span class="sd">        Removes a single item from the list.</span>
 
 <span class="sd">        :param item: The item to remove</span>
 <span class="sd">        :type item: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.removeItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.removeItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.removeItems`</span>
 
 <span class="sd">        Removes multiple items from the list.</span>
 
 <span class="sd">        :param items: List of items to remove</span>
 <span class="sd">        :type items: list[:py:class:`TTkAbstractListItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.selectionMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectionMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.selectionMode`</span>
 
 <span class="sd">        Returns the current selection mode.</span>
 
 <span class="sd">        :return: The selection behavior setting</span>
 <span class="sd">        :rtype: :py:class:`TTkK.SelectionMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectionMode</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.setSelectionMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSelectionMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setSelectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setSelectionMode`</span>
 
 <span class="sd">        Sets the selection mode for this list.</span>
 
 <span class="sd">        :param mode: The new selection behavior (SingleSelection or MultiSelection)</span>
 <span class="sd">        :type mode: :py:class:`TTkK.SelectionMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSelectionMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.selectedItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectedItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TTkAbstractListItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.selectedItems`</span>
 
 <span class="sd">        Returns the list of currently selected items.</span>
 
 <span class="sd">        :return: List of selected item widgets</span>
 <span class="sd">        :rtype: list[:py:class:`TTkAbstractListItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.selectedLabels">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.selectedLabels">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectedLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.selectedLabels`</span>
 
 <span class="sd">        Returns the text of all selected items.</span>
 
 <span class="sd">        :return: List of selected item texts</span>
 <span class="sd">        :rtype: list[str]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">selectedLabels</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.search">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.search">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.search`</span>
 
 <span class="sd">        Returns the current search text.</span>
 
 <span class="sd">        :return: The active search filter string</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">search</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.setSearch">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSearch">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setSearch`</span>
 
 <span class="sd">        Sets the search text to filter items.</span>
 
 <span class="sd">        :param search: The search string to filter by</span>
 <span class="sd">        :type search: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSearch</span><span class="p">(</span><span class="n">search</span><span class="o">=</span><span class="n">search</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.searchVisibility">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.searchVisibility">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">searchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.searchVisibility`</span>
 
 <span class="sd">        Returns whether the search hint is visible.</span>
 
 <span class="sd">        :return: True if search hint is shown</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">searchVisibility</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkList.setSearchVisibility">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setSearchVisibility">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setSearchVisibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visibility</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setSearchVisibility`</span>
 
 <span class="sd">        Sets the visibility of the search hint at the top of the list.</span>
 
 <span class="sd">        :param visibility: True to show search hint, False to hide</span>
 <span class="sd">        :type visibility: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setSearchVisibility</span><span class="p">(</span><span class="n">visibility</span><span class="o">=</span><span class="n">visibility</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.setCurrentRow">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setCurrentRow">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setCurrentRow`</span>
 
 <span class="sd">        Selects the item at the specified row.</span>
 
 <span class="sd">        :param row: The row index to select</span>
 <span class="sd">        :type row: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setCurrentRow</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkList.setCurrentItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkList.html#TermTk.TTkWidgets.TTkList.setCurrentItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkListWidget.setCurrentItem`</span>
 
 <span class="sd">        Selects the specified item and emits the itemClicked signal.</span>
 
 <span class="sd">        :param item: The item to select</span>
 <span class="sd">        :type item: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listView</span><span class="o">.</span><span class="n">setCurrentItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span></div>
 </div>
 

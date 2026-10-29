@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.splitter &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.splitter &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,7 +533,7 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkSplitter&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkSplitter'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span><span class="n">List</span><span class="p">,</span><span class="n">Optional</span>
 
@@ -548,7 +551,7 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkSplitter</span><span class="p">(</span><span class="n">TTkContainer</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkSplitter:</span>
+<span class="w">    </span><span class="sd">'''TTkSplitter:</span>
 
 <span class="sd">    A container widget that arranges child widgets with adjustable splitter bars.</span>
 
@@ -587,41 +590,41 @@ document.write(`
 <span class="sd">        splitter.addWidget(ttk.TTkTestWidgetSizes(border=True), size=30)</span>
 
 <span class="sd">        root.mainloop()</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;glyphs&#39;</span> <span class="p">:</span> <span class="p">{</span>
-                                    <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span>   <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;╞&#39;</span><span class="p">,</span><span class="s1">&#39;═&#39;</span><span class="p">,</span><span class="s1">&#39;╡&#39;</span><span class="p">),</span>
-                                    <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;╥&#39;</span><span class="p">,</span><span class="s1">&#39;║&#39;</span><span class="p">,</span><span class="s1">&#39;╨&#39;</span><span class="p">)</span> <span class="p">},</span>
-                                <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#dddddd&quot;</span><span class="p">,</span><span class="s2">&quot;#222222&quot;</span><span class="p">),</span>
-                                <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="p">},</span>
-                <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">),</span>
-                                <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">)},</span>
-                <span class="s1">&#39;focus&#39;</span><span class="p">:</span>       <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#ffddff&quot;</span><span class="p">,</span><span class="s2">&quot;#222222&quot;</span><span class="p">),</span>
-                                <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffffaa&quot;</span><span class="p">)}</span>
+                <span class="s1">'default'</span><span class="p">:</span>     <span class="p">{</span><span class="s1">'glyphs'</span> <span class="p">:</span> <span class="p">{</span>
+                                    <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span>   <span class="p">:</span> <span class="p">(</span><span class="s1">'╞'</span><span class="p">,</span><span class="s1">'═'</span><span class="p">,</span><span class="s1">'╡'</span><span class="p">),</span>
+                                    <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="p">:</span> <span class="p">(</span><span class="s1">'╥'</span><span class="p">,</span><span class="s1">'║'</span><span class="p">,</span><span class="s1">'╨'</span><span class="p">)</span> <span class="p">},</span>
+                                <span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#dddddd"</span><span class="p">,</span><span class="s2">"#222222"</span><span class="p">),</span>
+                                <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span> <span class="p">},</span>
+                <span class="s1">'disabled'</span><span class="p">:</span>    <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">),</span>
+                                <span class="s1">'borderColor'</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">)},</span>
+                <span class="s1">'focus'</span><span class="p">:</span>       <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#ffddff"</span><span class="p">,</span><span class="s2">"#222222"</span><span class="p">),</span>
+                                <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffffaa"</span><span class="p">)}</span>
             <span class="p">}</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_orientation&#39;</span><span class="p">,</span> <span class="s1">&#39;_separators&#39;</span><span class="p">,</span> <span class="s1">&#39;_refSizes&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_items&#39;</span><span class="p">,</span> <span class="s1">&#39;_titles&#39;</span><span class="p">,</span> <span class="s1">&#39;_separatorSelected&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_border&#39;</span><span class="p">)</span>
+        <span class="s1">'_orientation'</span><span class="p">,</span> <span class="s1">'_separators'</span><span class="p">,</span> <span class="s1">'_refSizes'</span><span class="p">,</span>
+        <span class="s1">'_items'</span><span class="p">,</span> <span class="s1">'_titles'</span><span class="p">,</span> <span class="s1">'_separatorSelected'</span><span class="p">,</span>
+        <span class="s1">'_border'</span><span class="p">)</span>
     <span class="n">_items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">,</span><span class="n">TTkLayout</span><span class="p">]]</span>
     <span class="n">_titles</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]]</span>
     <span class="n">_separators</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">_refSizes</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Reference sizes for each widget in the splitter&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''Reference sizes for each widget in the splitter'''</span>
     <span class="n">_separatorSelected</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">border</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">orientation</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Direction</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the splitter</span>
+<span class="w">        </span><span class="sd">''' Initialize the splitter</span>
 
 <span class="sd">        :param border: Draw a border around the splitter, defaults to False</span>
 <span class="sd">        :type border: bool, optional</span>
 <span class="sd">        :param orientation: Splitter orientation (:py:class:`TTkK.Direction.HORIZONTAL` or :py:class:`TTkK.Direction.VERTICAL`), defaults to :py:class:`TTkK.Direction.HORIZONTAL`</span>
 <span class="sd">        :type orientation: :py:class:`TTkK.Direction`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_separators</span> <span class="o">=</span> <span class="p">[]</span>
@@ -647,11 +650,11 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.setBorder">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.setBorder">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setBorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">border</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Set whether to draw a border around the splitter</span>
+<span class="w">        </span><span class="sd">''' Set whether to draw a border around the splitter</span>
 
 <span class="sd">        :param border: True to show border, False to hide</span>
 <span class="sd">        :type border: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="o">=</span> <span class="n">border</span>
         <span class="k">if</span> <span class="n">border</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">setPadding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>      <span class="bp">self</span><span class="o">.</span><span class="n">setPadding</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -661,33 +664,33 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.border">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.border">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">border</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current border state</span>
+<span class="w">        </span><span class="sd">''' Get the current border state</span>
 
 <span class="sd">        :return: True if border is visible, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span></div>
 
 
 <div class="viewcode-block" id="TTkSplitter.orientation">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.orientation">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Direction</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current splitter orientation</span>
+<span class="w">        </span><span class="sd">''' Get the current splitter orientation</span>
 
 <span class="sd">        :return: The orientation (HORIZONTAL or VERTICAL)</span>
 <span class="sd">        :rtype: :py:class:`TTkK.Direction`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span></div>
 
 
 <div class="viewcode-block" id="TTkSplitter.setOrientation">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.setOrientation">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setOrientation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Direction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Set the splitter orientation</span>
+<span class="w">        </span><span class="sd">''' Set the splitter orientation</span>
 
 <span class="sd">        :param orientation: The new orientation (HORIZONTAL or VERTICAL)</span>
 <span class="sd">        :type orientation: :py:class:`TTkK.Direction`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span><span class="p">:</span> <span class="k">return</span>
         <span class="k">if</span> <span class="n">orientation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">,</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">):</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">=</span> <span class="n">orientation</span>
@@ -700,7 +703,7 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.clean">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.clean">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove all widgets and items from the splitter &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Remove all widgets and items from the splitter '''</span>
         <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_i</span><span class="p">,</span><span class="n">TTkWidget</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="n">_i</span><span class="p">)</span>
@@ -711,46 +714,46 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.count">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.count">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the number of items in the splitter</span>
+<span class="w">        </span><span class="sd">''' Get the number of items in the splitter</span>
 
 <span class="sd">        :return: The count of widgets/items</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkSplitter.indexOf">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.indexOf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">indexOf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">,</span><span class="n">TTkLayout</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the index of a widget or layout in the splitter</span>
+<span class="w">        </span><span class="sd">''' Get the index of a widget or layout in the splitter</span>
 
 <span class="sd">        :param widget: The widget or layout to find</span>
 <span class="sd">        :type widget: :py:class:`TTkWidget` or :py:class:`TTkLayout`</span>
 
 <span class="sd">        :return: The index of the item</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkSplitter.widget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.widget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">,</span><span class="n">TTkLayout</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the widget or layout at the specified index</span>
+<span class="w">        </span><span class="sd">''' Get the widget or layout at the specified index</span>
 
 <span class="sd">        :param index: The index of the item</span>
 <span class="sd">        :type index: int</span>
 
 <span class="sd">        :return: The widget or layout at the index</span>
 <span class="sd">        :rtype: :py:class:`TTkWidget` or :py:class:`TTkLayout`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="TTkSplitter.replaceItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.replaceItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">replaceItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkLayout</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkStringType</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Replace the layout at the specified index</span>
+<span class="w">        </span><span class="sd">''' Replace the layout at the specified index</span>
 
 <span class="sd">        :param index: The index to replace at</span>
 <span class="sd">        :type index: int</span>
@@ -758,7 +761,7 @@ document.write(`
 <span class="sd">        :type item: :py:class:`TTkLayout`</span>
 <span class="sd">        :param title: Optional title for the item, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
         <span class="n">TTkLayout</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
@@ -774,7 +777,7 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.replaceWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.replaceWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">replaceWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Replace the widget at the specified index</span>
+<span class="w">        </span><span class="sd">''' Replace the widget at the specified index</span>
 
 <span class="sd">        :param index: The index to replace at</span>
 <span class="sd">        :type index: int</span>
@@ -782,7 +785,7 @@ document.write(`
 <span class="sd">        :type widget: :py:class:`TTkWidget`</span>
 <span class="sd">        :param title: Optional title for the widget, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
         <span class="n">TTkLayout</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
@@ -798,11 +801,11 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.removeItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.removeItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkLayout</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove a layout from the splitter</span>
+<span class="w">        </span><span class="sd">''' Remove a layout from the splitter</span>
 
 <span class="sd">        :param item: The layout to remove</span>
 <span class="sd">        :type item: :py:class:`TTkLayout`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_refSizes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
@@ -815,11 +818,11 @@ document.write(`
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove a widget from the splitter</span>
+<span class="w">        </span><span class="sd">''' Remove a widget from the splitter</span>
 
 <span class="sd">        :param widget: The widget to remove</span>
 <span class="sd">        :type widget: :py:class:`TTkWidget`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_refSizes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
@@ -833,7 +836,7 @@ document.write(`
 <div class="viewcode-block" id="TTkSplitter.addItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.addItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkLayout</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkStringType</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a layout to the end of the splitter</span>
+<span class="w">        </span><span class="sd">''' Add a layout to the end of the splitter</span>
 
 <span class="sd">        :param item: The layout to add</span>
 <span class="sd">        :type item: :py:class:`TTkLayout`</span>
@@ -841,14 +844,14 @@ document.write(`
 <span class="sd">        :type size: int, optional</span>
 <span class="sd">        :param title: Optional title for the item, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItem</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),</span> <span class="n">item</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkSplitter.insertItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.insertItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkLayout</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkStringType</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Insert a layout at the specified index</span>
+<span class="w">        </span><span class="sd">''' Insert a layout at the specified index</span>
 
 <span class="sd">        :param index: The index to insert at</span>
 <span class="sd">        :type index: int</span>
@@ -858,13 +861,13 @@ document.write(`
 <span class="sd">        :type size: int, optional</span>
 <span class="sd">        :param title: Optional title for the item, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">TTkLayout</span><span class="o">.</span><span class="n">insertItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">(),</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_insertWidgetItem</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkStringType</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a widget to the end of the splitter</span>
+<span class="w">        </span><span class="sd">''' Add a widget to the end of the splitter</span>
 
 <span class="sd">        :param widget: The widget to add</span>
 <span class="sd">        :type widget: :py:class:`TTkWidget`</span>
@@ -872,13 +875,13 @@ document.write(`
 <span class="sd">        :type size: int, optional</span>
 <span class="sd">        :param title: Optional title for the widget, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertWidget</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),</span> <span class="n">widget</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkSplitter.insertWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.insertWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkStringType</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Insert a widget at the specified index</span>
+<span class="w">        </span><span class="sd">''' Insert a widget at the specified index</span>
 
 <span class="sd">        :param index: The index to insert at</span>
 <span class="sd">        :type index: int</span>
@@ -888,13 +891,13 @@ document.write(`
 <span class="sd">        :type size: int, optional</span>
 <span class="sd">        :param title: Optional title for the widget, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">TTkLayout</span><span class="o">.</span><span class="n">insertWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">(),</span> <span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_insertWidgetItem</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_insertWidgetItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">widgetItem</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">,</span><span class="n">TTkLayout</span><span class="p">],</span> <span class="n">size</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkStringType</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Internal method to insert a widget or layout item</span>
+<span class="w">        </span><span class="sd">''' Internal method to insert a widget or layout item</span>
 
 <span class="sd">        :param index: The index to insert at</span>
 <span class="sd">        :type index: int</span>
@@ -904,7 +907,7 @@ document.write(`
 <span class="sd">        :type size: int, optional</span>
 <span class="sd">        :param title: Optional title, defaults to None</span>
 <span class="sd">        :type title: str, :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">widgetItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_titles</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">title</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
 
@@ -914,17 +917,17 @@ document.write(`
         <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_processRefSizes</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updateGeometries</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">repaint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_pw</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">():</span>
+            <span class="n">_pw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">repaint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkSplitter.setSizes">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkSplitter.html#TermTk.TTkWidgets.TTkSplitter.setSizes">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setSizes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sizes</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Set the sizes for all widgets in the splitter</span>
+<span class="w">        </span><span class="sd">''' Set the sizes for all widgets in the splitter</span>
 
 <span class="sd">        :param sizes: List of sizes in characters (None for proportional sizing)</span>
 <span class="sd">        :type sizes: list of int or None</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">ls</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_separators</span><span class="p">)</span>
         <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">[:</span><span class="n">ls</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ls</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">sizes</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_refSizes</span> <span class="o">=</span> <span class="n">sizes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -935,14 +938,14 @@ document.write(`
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_minMaxSizeBefore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Calculate minimum and maximum sizes before the selected separator</span>
+<span class="w">        </span><span class="sd">''' Calculate minimum and maximum sizes before the selected separator</span>
 
 <span class="sd">        :param index: The separator index</span>
 <span class="sd">        :type index: int</span>
 
 <span class="sd">        :return: Tuple of (minimum_size, maximum_size)</span>
 <span class="sd">        :rtype: tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0x1000</span>
         <span class="c1"># this is because there is a hidden splitter at position -1</span>
@@ -955,14 +958,14 @@ document.write(`
         <span class="k">return</span> <span class="n">minsize</span><span class="p">,</span> <span class="n">maxsize</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_minMaxSizeAfter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Calculate minimum and maximum sizes after the selected separator</span>
+<span class="w">        </span><span class="sd">''' Calculate minimum and maximum sizes after the selected separator</span>
 
 <span class="sd">        :param index: The separator index</span>
 <span class="sd">        :type index: int</span>
 
 <span class="sd">        :return: Tuple of (minimum_size, maximum_size)</span>
 <span class="sd">        :rtype: tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0x1000</span>
         <span class="n">minsize</span> <span class="o">=</span> <span class="mh">0x0</span>
@@ -974,11 +977,11 @@ document.write(`
         <span class="k">return</span> <span class="n">minsize</span><span class="p">,</span> <span class="n">maxsize</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_updateGeometries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resized</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Internal method to update widget geometries based on splitter positions</span>
+<span class="w">        </span><span class="sd">''' Internal method to update widget geometries based on splitter positions</span>
 
 <span class="sd">        :param resized: True if called from resize event, defaults to False</span>
 <span class="sd">        :type resized: bool, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">w</span><span class="o">==</span><span class="n">h</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
@@ -1026,11 +1029,11 @@ document.write(`
             <span class="n">selected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span>
             <span class="n">sepPos</span> <span class="o">=</span> <span class="n">sep</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
             <span class="n">minsize</span><span class="p">,</span><span class="n">maxsize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minMaxSizeBefore</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
-            <span class="c1"># TTkLog.debug(f&quot;before:{minsize,maxsize}&quot;)</span>
+            <span class="c1"># TTkLog.debug(f"before:{minsize,maxsize}")</span>
             <span class="k">if</span> <span class="n">sepPos</span> <span class="o">&gt;</span> <span class="n">maxsize</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxsize</span>
             <span class="k">if</span> <span class="n">sepPos</span> <span class="o">&lt;</span> <span class="n">minsize</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span> <span class="o">=</span> <span class="n">minsize</span>
             <span class="n">minsize</span><span class="p">,</span><span class="n">maxsize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minMaxSizeAfter</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
-            <span class="c1"># TTkLog.debug(f&quot;after:{minsize,maxsize}&quot;)</span>
+            <span class="c1"># TTkLog.debug(f"after:{minsize,maxsize}")</span>
             <span class="k">if</span> <span class="n">sepPos</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">-</span><span class="n">maxsize</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="o">-</span><span class="n">maxsize</span>
             <span class="k">if</span> <span class="n">sepPos</span> <span class="o">&gt;</span> <span class="n">size</span><span class="o">-</span><span class="n">minsize</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="o">-</span><span class="n">minsize</span>
 
@@ -1052,7 +1055,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_processRefSizes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Process reference sizes and calculate separator positions</span>
+<span class="w">        </span><span class="sd">''' Process reference sizes and calculate separator positions</span>
 
 <span class="sd">        This method handles both fixed and proportional widget sizing:</span>
 
@@ -1064,7 +1067,7 @@ document.write(`
 <span class="sd">        :type w: int</span>
 <span class="sd">        :param h: Available height</span>
 <span class="sd">        :type h: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
             <span class="n">sizeRef</span> <span class="o">=</span> <span class="n">w</span>
@@ -1103,7 +1106,7 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">_separators</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">diff</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_separators</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle resize events and update widget geometries</span>
+<span class="w">        </span><span class="sd">''' Handle resize events and update widget geometries</span>
 
 <span class="sd">        This method recalculates all separator positions and widget sizes</span>
 <span class="sd">        when the splitter is resized, maintaining the proportional or fixed</span>
@@ -1113,7 +1116,7 @@ document.write(`
 <span class="sd">        :type w: int</span>
 <span class="sd">        :param h: New height</span>
 <span class="sd">        :type h: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_processRefSizes</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updateGeometries</span><span class="p">(</span><span class="n">resized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1123,7 +1126,7 @@ document.write(`
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span><span class="p">:</span>
             <span class="n">x</span><span class="o">-=</span><span class="mi">1</span> <span class="p">;</span> <span class="n">y</span><span class="o">-=</span><span class="mi">1</span>
-        <span class="c1"># TTkLog.debug(f&quot;{self._separators} {evt}&quot;)</span>
+        <span class="c1"># TTkLog.debug(f"{self._separators} {evt}")</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_separators</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">val</span><span class="p">:</span>
@@ -1152,14 +1155,14 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_separatorSelected</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the minimum height required for the splitter</span>
+<span class="w">        </span><span class="sd">''' Get the minimum height required for the splitter</span>
 
 <span class="sd">        For vertical splitters, returns the sum of all child minimum heights plus separators.</span>
 <span class="sd">        For horizontal splitters, returns the maximum child minimum height.</span>
 
 <span class="sd">        :return: The minimum height in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span> <span class="n">ret</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
@@ -1172,14 +1175,14 @@ document.write(`
         <span class="k">return</span> <span class="n">ret</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the minimum width required for the splitter</span>
+<span class="w">        </span><span class="sd">''' Get the minimum width required for the splitter</span>
 
 <span class="sd">        For horizontal splitters, returns the sum of all child minimum widths plus separators.</span>
 <span class="sd">        For vertical splitters, returns the maximum child minimum width.</span>
 
 <span class="sd">        :return: The minimum width in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span> <span class="n">ret</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
@@ -1192,14 +1195,14 @@ document.write(`
         <span class="k">return</span> <span class="n">ret</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the maximum height allowed for the splitter</span>
+<span class="w">        </span><span class="sd">''' Get the maximum height allowed for the splitter</span>
 
 <span class="sd">        For vertical splitters, returns the sum of all child maximum heights plus separators.</span>
 <span class="sd">        For horizontal splitters, returns the minimum child maximum height.</span>
 
 <span class="sd">        :return: The maximum height in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span> <span class="mh">0x10000</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
@@ -1214,14 +1217,14 @@ document.write(`
         <span class="k">return</span> <span class="n">ret</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the maximum width allowed for the splitter</span>
+<span class="w">        </span><span class="sd">''' Get the maximum width allowed for the splitter</span>
 
 <span class="sd">        For horizontal splitters, returns the sum of all child maximum widths plus separators.</span>
 <span class="sd">        For vertical splitters, returns the minimum child maximum width.</span>
 
 <span class="sd">        :return: The maximum width in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_border</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span> <span class="mh">0x10000</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
@@ -1237,8 +1240,8 @@ document.write(`
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span><span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
-        <span class="n">color</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderColor&#39;</span><span class="p">]</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span>
+        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderColor'</span><span class="p">]</span>
 
         <span class="n">off</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -1247,7 +1250,7 @@ document.write(`
             <span class="n">off</span><span class="o">=</span> <span class="mi">1</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">drawBox</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
 
-        <span class="n">glyphs</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;glyphs&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span><span class="p">]</span>
+        <span class="n">glyphs</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'glyphs'</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span><span class="p">]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_separators</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">off</span><span class="p">,</span><span class="mi">0</span>  <span class="p">),</span> <span class="n">char</span><span class="o">=</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
@@ -1284,7 +1287,6 @@ document.write(`
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawBoxTitle</span><span class="p">(</span>
                                 <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">),</span>
                                 <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-                                <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
                                 <span class="n">text</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
                                 <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">,</span>
                                 <span class="n">colorText</span><span class="o">=</span><span class="n">color</span><span class="p">)</span></div>

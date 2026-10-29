@@ -49,15 +49,10 @@ TTkCanvas
    .. automethod:: drawMenuBarBg
    .. automethod:: drawScroll
    .. automethod:: drawTTkString
-   .. automethod:: drawTab
-   .. automethod:: drawTabButton
-   .. automethod:: drawTabMenuButton
-   .. automethod:: drawTabWidgetBottomLine
    .. automethod:: drawTableLine
    .. automethod:: drawText
    .. automethod:: drawVLine
    .. automethod:: enableDoubleBuffer
-   .. automethod:: execPaint
    .. automethod:: fill
    .. automethod:: hide
    .. automethod:: paintCanvas

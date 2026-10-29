@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkLayouts.layout &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkLayouts.layout &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,234 +533,27 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 <span class="sd">**Layout** [:ref:`Tutorial &lt;Layout-Tutorial_Intro&gt;`]</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkLayoutItem&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkLayout&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkLayoutItem'</span><span class="p">,</span> <span class="s1">'TTkLayout'</span><span class="p">,</span> <span class="s1">'TTkWidgetItem'</span><span class="p">]</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span><span class="n">Generator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.layoutitem</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLayoutItem</span><span class="p">,</span> <span class="n">TTkWidgetItem</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkWidgets.widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidget</span>
 
-<div class="viewcode-block" id="TTkLayoutItem">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">TTkLayoutItem</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; :py:class:`~TTkLayoutItem` is the base class of layout Items inherited by :py:class:`~TTkLayout`, :py:class:`~TTkWidgetItem`, and all the derived layout managers.</span>
-
-<span class="sd">    :param int row:     (used only in the :py:class:`TTkGridLayout`), the row of the grid,   optional, defaults to None</span>
-<span class="sd">    :param int col:     (used only in the :py:class:`TTkGridLayout`), the col of the grid,   optional, defaults to None</span>
-<span class="sd">    :param int rowspan: (used only in the :py:class:`TTkGridLayout`), the rows used by this, optional, defaults to 1</span>
-<span class="sd">    :param int colspan: (used only in the :py:class:`TTkGridLayout`), the cols used by this, optional, defaults to 1</span>
-<span class="sd">    :param layoutItemType: The Type of this class, optional, defaults to TTkK.NONE</span>
-<span class="sd">    :type  layoutItemType: :py:class:`TTkConstant.LayoutItemTypes`</span>
-<span class="sd">    :param alignment: The alignment of this item in the layout (not yet used)</span>
-<span class="sd">    :type  alignment: :py:class:`TTkConstant.Alignment`</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">LAYER0</span>    <span class="o">=</span>  <span class="mh">0x00000000</span>
-    <span class="n">LAYER1</span>    <span class="o">=</span>  <span class="mh">0x40000000</span>
-    <span class="n">LAYER2</span>    <span class="o">=</span>  <span class="mh">0x80000000</span>
-    <span class="n">LAYER3</span>    <span class="o">=</span>  <span class="mh">0xC0000000</span>
-    <span class="n">LAYERMASK</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">LAYER0</span> <span class="o">|</span> <span class="n">LAYER1</span> <span class="o">|</span> <span class="n">LAYER2</span> <span class="o">|</span> <span class="n">LAYER3</span><span class="p">)</span>
-
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_x&#39;</span><span class="p">,</span> <span class="s1">&#39;_y&#39;</span><span class="p">,</span> <span class="s1">&#39;_z&#39;</span><span class="p">,</span> <span class="s1">&#39;_w&#39;</span><span class="p">,</span> <span class="s1">&#39;_h&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_layer&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_xOffset&#39;</span><span class="p">,</span> <span class="s1">&#39;_yOffset&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_maxw&#39;</span><span class="p">,</span> <span class="s1">&#39;_maxh&#39;</span><span class="p">,</span> <span class="s1">&#39;_minw&#39;</span><span class="p">,</span> <span class="s1">&#39;_minh&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_row&#39;</span><span class="p">,</span><span class="s1">&#39;_col&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_rowspan&#39;</span><span class="p">,</span> <span class="s1">&#39;_colspan&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_sMax&#39;</span><span class="p">,</span> <span class="s1">&#39;_sMaxVal&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_sMin&#39;</span><span class="p">,</span> <span class="s1">&#39;_sMinVal&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_parent&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_layoutItemType&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">z</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">pos</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">height</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">size</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">rowspan</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                 <span class="n">colspan</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                 <span class="n">layoutItemType</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span>
-                 <span class="n">maxWidth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mh">0x10000</span><span class="p">,</span>
-                 <span class="n">maxHeight</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mh">0x10000</span><span class="p">,</span>
-                 <span class="n">maxSize</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">minWidth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">minHeight</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">minSize</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unhandled init params </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">pos</span>  <span class="k">if</span> <span class="n">pos</span>  <span class="k">else</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span> <span class="o">=</span> <span class="n">size</span> <span class="k">if</span> <span class="n">size</span> <span class="k">else</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">z</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_layer</span> <span class="o">=</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYER0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_xOffset</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_yOffset</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_row</span> <span class="o">=</span> <span class="n">row</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_col</span> <span class="o">=</span> <span class="n">col</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rowspan</span> <span class="o">=</span> <span class="n">rowspan</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_colspan</span> <span class="o">=</span> <span class="n">colspan</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">=</span> <span class="n">layoutItemType</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sMax</span><span class="p">,</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_sMin</span>    <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sMaxVal</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sMinVal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="o">=</span> <span class="n">maxSize</span> <span class="k">if</span> <span class="n">maxSize</span> <span class="k">else</span> <span class="p">(</span><span class="n">maxWidth</span><span class="p">,</span><span class="n">maxHeight</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="o">=</span> <span class="n">minSize</span> <span class="k">if</span> <span class="n">minSize</span> <span class="k">else</span> <span class="p">(</span><span class="n">minWidth</span><span class="p">,</span><span class="n">minHeight</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.minimumSize">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumSize">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.minDimension">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minDimension">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.minimumHeight">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumHeight">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.minimumWidth">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumWidth">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.maximumSize">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumSize">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.maxDimension">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maxDimension">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.maximumHeight">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumHeight">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.maximumWidth">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumWidth">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
-
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_calcSpanValue</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">curpos</span><span class="p">,</span> <span class="n">span</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">pos</span><span class="o">==</span><span class="n">curpos</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">value</span> <span class="o">-</span> <span class="p">(</span><span class="n">value</span><span class="o">//</span><span class="n">span</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">span</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">value</span><span class="o">//</span><span class="n">span</span>
-
-<div class="viewcode-block" id="TTkLayoutItem.minimumHeightSpan">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumHeightSpan">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeightSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">(),</span><span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_row</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowspan</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.minimumWidthSpan">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.minimumWidthSpan">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidthSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">(),</span> <span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_col</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colspan</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.maximumHeightSpan">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumHeightSpan">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeightSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">(),</span><span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_row</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowspan</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.maximumWidthSpan">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.maximumWidthSpan">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidthSpan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">_calcSpanValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">(),</span> <span class="n">pos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_col</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_colspan</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.offset">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.offset">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xOffset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yOffset</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.pos">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.pos">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.size">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.size">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span></div>
-
-<div class="viewcode-block" id="TTkLayoutItem.geometry">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.geometry">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.setOffset">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setOffset">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setOffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setOffset&#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_xOffset</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_yOffset</span> <span class="o">=</span> <span class="n">y</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.setGeometry">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setGeometry">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setGeometry&#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_w</span> <span class="o">=</span> <span class="n">w</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_h</span> <span class="o">=</span> <span class="n">h</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.parent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.parent">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;parent&#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.setParent">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setParent">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setParent&#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.layer">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.layer">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">layer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;layer&#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.setLayer">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.setLayer">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">setLayer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setLayer&#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_layer</span> <span class="o">=</span> <span class="n">layer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">&amp;</span> <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYERMASK</span><span class="p">)</span> <span class="o">|</span> <span class="n">layer</span></div>
-
-
-<div class="viewcode-block" id="TTkLayoutItem.layoutItemType">
-<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem.layoutItemType">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">layoutItemType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layoutItemType</span></div>
-</div>
-
-
 <div class="viewcode-block" id="TTkLayout">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkLayout</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    | The :py:class:`TTkLayout` class is the base class of geometry managers. &lt;br/&gt;</span>
 <span class="sd">    | It allows free placement of the widgets in the layout area. &lt;br/&gt;</span>
 <span class="sd">    | Used mainly to have free range moving :py:class:`TTkWindow` because the widgets are not automatically rearranged after a layout event</span>
@@ -774,28 +570,39 @@ document.write(`
 <span class="sd">        ║   └───────┘                ║</span>
 <span class="sd">        ║                            ║</span>
 <span class="sd">        ╚════════════════════════════╝</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_items&#39;</span><span class="p">,</span> <span class="s1">&#39;_zSortedItems&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_items'</span><span class="p">,</span> <span class="s1">'_zSortedItems'</span><span class="p">)</span>
+    <span class="n">_items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkLayoutItem</span><span class="p">]</span>
+    <span class="n">_zSortedItems</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkLayoutItem</span><span class="p">]</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layoutItemType</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span> <span class="o">=</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="TTkLayout.children">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.children">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the list of direct child layout items.'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.count">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.count">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the number of direct child layout items.'''</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.itemAt">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.itemAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the item at ``index`` or ``None`` when out of range.</span>
+
+<span class="sd">        :param index: child index</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        :return: the layout item at ``index`` if available</span>
+<span class="sd">        :rtype: :py:class:`TTkLayoutItem` or None</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -804,6 +611,11 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.setParent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.setParent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Set the parent layout item and propagate parent widget ownership.</span>
+
+<span class="sd">        :param parent: parent layout item or widget-like owner</span>
+<span class="sd">        :type parent: object</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">TTkLayoutItem</span><span class="p">):</span>
@@ -812,18 +624,25 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">widgetItem</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
             <span class="n">item</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.parentWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.parentWidget">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">parentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">'''Return the widget owning this layout branch.</span>
+
+<span class="sd">        :return: nearest parent widget in the hierarchy</span>
+<span class="sd">        :rtype: :py:class:`TTkWidget` or None</span>
+<span class="sd">        '''</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">parent</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">parent</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.iterWidgets">
@@ -833,7 +652,7 @@ document.write(`
             <span class="n">onlyVisible</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="n">recurse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Iterate over all widgets in the layout.</span>
 
 <span class="sd">        :param onlyVisible: if True, only yield visible widgets</span>
@@ -845,27 +664,38 @@ document.write(`
 
 <span class="sd">        :return: generator yielding widgets</span>
 <span class="sd">        :rtype: Generator[:py:class:`TTkWidget`, None, None]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">items</span> <span class="o">=</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span> <span class="k">if</span> <span class="n">reverse</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">onlyVisible</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">child</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span> <span class="k">continue</span>
                 <span class="k">yield</span> <span class="n">child</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span> <span class="ow">and</span> <span class="n">recurse</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">recurse</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
                 <span class="k">yield from</span> <span class="n">child</span><span class="o">.</span><span class="n">iterWidgets</span><span class="p">(</span><span class="n">onlyVisible</span><span class="p">,</span> <span class="n">recurse</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_zSortItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Sort child items by z-order and cache the sorted list.'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">_z</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">zSortedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zSortedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return child items sorted by z-order.'''</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_zSortedItems</span>
 
 <div class="viewcode-block" id="TTkLayout.replaceItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.replaceItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">replaceItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Replace the item at ``index`` with ``item``.</span>
+
+<span class="sd">        :param item: replacement item</span>
+<span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
+<span class="sd">        :param index: target index to replace</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        :raises ValueError: if ``index`` is outside the valid range</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">index</span><span class="si">=}</span><span class="s2"> is not inside the items list&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The </span><span class="si">{</span><span class="n">index</span><span class="si">=}</span><span class="s2"> is not inside the items list"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItem</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span></div>
 
@@ -873,91 +703,149 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.addItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Append a layout item.</span>
+
+<span class="sd">        :param item: item to append</span>
+<span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),[</span><span class="n">item</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.addItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Append multiple layout items.</span>
+
+<span class="sd">        :param items: items to append</span>
+<span class="sd">        :type items: list[:py:class:`TTkLayoutItem`]</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),</span><span class="n">items</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Insert a single item at ``index``.</span>
+
+<span class="sd">        :param index: insertion index</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        :param item: item to insert</span>
+<span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="n">index</span><span class="p">,[</span><span class="n">item</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">widget</span> <span class="o">:=</span> <span class="n">item</span><span class="p">),</span> <span class="n">TTkLayoutItem</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span> <span class="ow">and</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span><span class="o">.</span><span class="n">layout</span><span class="p">():</span>
-                    <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-                <span class="n">item</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">widgetItem</span><span class="p">()</span>
-                <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">item</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">items</span>
+<span class="w">        </span><span class="sd">'''Insert multiple items at ``index`` and re-parent them.</span>
+
+<span class="sd">        Widgets passed directly are converted to their associated</span>
+<span class="sd">        :py:class:`TTkWidgetItem` wrapper before insertion.</span>
+
+<span class="sd">        :param index: insertion index</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        :param items: items or widgets to insert</span>
+<span class="sd">        :type items: list</span>
+<span class="sd">        '''</span>
+        <span class="n">normalizedItems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">normalizedItems</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">widget</span><span class="o">:=</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayoutItem</span><span class="p">):</span>
+                <span class="n">parent_widget</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">parent_widget</span> <span class="ow">and</span> <span class="n">parent_widget</span><span class="o">.</span><span class="n">layout</span><span class="p">():</span>
+                    <span class="n">parent_widget</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+                <span class="n">normalizedItems</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">widgetItem</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">widget_item</span><span class="o">:=</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
+                <span class="n">widget</span> <span class="o">=</span> <span class="n">widget_item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
+                <span class="n">parent_widget</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">parent_widget</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pl</span> <span class="o">:=</span> <span class="n">parent_widget</span><span class="o">.</span><span class="n">layout</span><span class="p">())</span> <span class="ow">and</span> <span class="n">pl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+                    <span class="n">pl</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">widget_item</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">parent_layout</span> <span class="o">:=</span> <span class="n">widget_item</span><span class="o">.</span><span class="n">parent</span><span class="p">())</span> <span class="ow">and</span> <span class="n">parent_layout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+                    <span class="n">parent_layout</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">widget_item</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layout_item</span><span class="o">:=</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
+                <span class="n">parent_widget</span> <span class="o">=</span> <span class="n">layout_item</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">parent_widget</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pl</span> <span class="o">:=</span> <span class="n">parent_widget</span><span class="o">.</span><span class="n">layout</span><span class="p">())</span> <span class="ow">and</span> <span class="n">pl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+                    <span class="n">pl</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">layout_item</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">parent_layout</span> <span class="o">:=</span> <span class="n">layout_item</span><span class="o">.</span><span class="n">parent</span><span class="p">())</span> <span class="ow">and</span> <span class="n">parent_layout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+                    <span class="n">parent_layout</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">layout_item</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalizedItems</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortItems</span><span class="p">()</span>
         <span class="c1">#self.update()</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">parent_widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">normalizedItems</span><span class="p">:</span>
             <span class="n">item</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
-                <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">())</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">repaint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="n">parent_widget</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parent_widget</span> <span class="ow">and</span> <span class="n">parent_widget</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span>
+            <span class="n">parent_widget</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">repaint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.addWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a widget to this Layout</span>
+<span class="w">        </span><span class="sd">''' Add a widget to this Layout</span>
 
 <span class="sd">        :param widget: the widget to be added</span>
 <span class="sd">        :type widget: :py:class:`TTkWidgets`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),[</span><span class="n">widget</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.addWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.addWidgets">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a list of widgets to this Layout</span>
+<span class="w">        </span><span class="sd">''' Add a list of widgets to this Layout</span>
 
 <span class="sd">        :param widgets: the widget to be added</span>
 <span class="sd">        :type widgets: list of :py:class:`TTkWidgets`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">),</span><span class="n">widgets</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;insertWidget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Insert a widget at ``index``.</span>
+
+<span class="sd">        :param index: insertion index</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        :param widget: widget to insert</span>
+<span class="sd">        :type widget: :py:class:`TTkWidgets`</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="p">[</span><span class="n">widget</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.insertWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.insertWidgets">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;insertWidgets&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Insert widgets at ``index``.</span>
+
+<span class="sd">        :param index: insertion index</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        :param widgets: widgets to insert</span>
+<span class="sd">        :type widgets: list of :py:class:`TTkWidgets`</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insertItems</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">widgets</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.removeItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;removeItem&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Remove a single layout item.</span>
+
+<span class="sd">        :param item: item to remove</span>
+<span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">([</span><span class="n">item</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.clear">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.clear">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;clear&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Remove and detach all items from this layout.'''</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
             <span class="n">item</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
@@ -967,11 +855,15 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.removeItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;removeItems&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Remove a list of layout items if present.</span>
+
+<span class="sd">        :param items: items to remove</span>
+<span class="sd">        :type items: list[:py:class:`TTkLayoutItem`]</span>
+<span class="sd">        '''</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">copy</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
                     <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortItems</span><span class="p">()</span></div>
@@ -980,33 +872,43 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.removeWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove a widget from this Layout</span>
+<span class="w">        </span><span class="sd">''' Remove a widget from this Layout</span>
 
 <span class="sd">        :param widget: the widget to be removed</span>
 <span class="sd">        :type widget: :py:class:`TTkWidgets`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">([</span><span class="n">widget</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="TTkLayout.removeWidgets">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.removeWidgets">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Remove a list of widget from this Layout</span>
+<span class="w">        </span><span class="sd">''' Remove a list of widget from this Layout</span>
 
 <span class="sd">        :param widgets: the widget to be removed</span>
 <span class="sd">        :type widgets: list of :py:class:`TTkWidgets`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">:</span>
-               <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">removeItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
-                <span class="n">item</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span></div>
+<span class="sd">        '''</span>
+        <span class="n">itemsToRemove</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
+                    <span class="n">itemsToRemove</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">itemsToRemove</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">itemsToRemove</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_findBranchWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Find the direct branch item containing ``widget``.</span>
+
+<span class="sd">        :param widget: widget to search in the layout tree</span>
+<span class="sd">        :type widget: :py:class:`TTkWidget`</span>
+<span class="sd">        :return: direct child branch that contains the widget</span>
+<span class="sd">        :rtype: :py:class:`TTkLayoutItem` or None</span>
+<span class="sd">        '''</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_findBranchWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">item</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1017,10 +919,14 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.raiseWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.raiseWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">raiseWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;raiseWidget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Raise a widget (and its branch) to the top z-order.</span>
+
+<span class="sd">        :param widget: widget to raise</span>
+<span class="sd">        :type widget: :py:class:`TTkWidget`</span>
+<span class="sd">        '''</span>
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_findBranchWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="n">item</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">_z</span> <span class="k">if</span> <span class="p">(</span><span class="n">maxz</span><span class="o">:=</span><span class="nb">max</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYERMASK</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">.</span><span class="n">_z</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">))</span><span class="o">==</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">LAYERMASK</span> <span class="o">&amp;</span> <span class="n">item</span><span class="o">.</span><span class="n">_z</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span> <span class="k">else</span> <span class="n">item</span><span class="o">.</span><span class="n">_layer</span><span class="o">|</span><span class="n">maxz</span><span class="o">+</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
             <span class="n">item</span><span class="o">.</span><span class="n">raiseWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortItems</span><span class="p">()</span></div>
 
@@ -1028,11 +934,15 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.lowerWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.lowerWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">lowerWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;lowerWidget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Lower a widget (and its branch) to the bottom z-order.</span>
+
+<span class="sd">        :param widget: widget to lower</span>
+<span class="sd">        :type widget: :py:class:`TTkWidget`</span>
+<span class="sd">        '''</span>
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_findBranchWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">_z</span><span class="o">+=</span><span class="mi">1</span>
         <span class="n">item</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">_layer</span>
-        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
             <span class="n">item</span><span class="o">.</span><span class="n">lowerWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_zSortItems</span><span class="p">()</span></div>
 
@@ -1040,7 +950,17 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.setGeometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.setGeometry">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setGeometry&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Set layout geometry and propagate a layout update when changed.</span>
+
+<span class="sd">        :param x: horizontal position</span>
+<span class="sd">        :type x: int</span>
+<span class="sd">        :param y: vertical position</span>
+<span class="sd">        :type y: int</span>
+<span class="sd">        :param w: width</span>
+<span class="sd">        :type w: int</span>
+<span class="sd">        :param h: height</span>
+<span class="sd">        :type h: int</span>
+<span class="sd">        '''</span>
         <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">aw</span><span class="p">,</span> <span class="n">ah</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">ax</span><span class="o">==</span><span class="n">x</span> <span class="ow">and</span> <span class="n">ay</span><span class="o">==</span><span class="n">y</span> <span class="ow">and</span> <span class="n">aw</span><span class="o">==</span><span class="n">w</span> <span class="ow">and</span> <span class="n">ah</span><span class="o">==</span><span class="n">h</span><span class="p">:</span> <span class="k">return</span>
         <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
@@ -1050,6 +970,11 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.fullWidgetAreaGeometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.fullWidgetAreaGeometry">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">fullWidgetAreaGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the bounding geometry that encloses all child items.</span>
+
+<span class="sd">        :return: ``(x, y, width, height)`` bounding box</span>
+<span class="sd">        :rtype: tuple[int, int, int, int]</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
         <span class="n">minx</span><span class="p">,</span><span class="n">miny</span><span class="p">,</span><span class="n">maxx</span><span class="p">,</span><span class="n">maxy</span> <span class="o">=</span> <span class="mh">0x10000</span><span class="p">,</span><span class="mh">0x10000</span><span class="p">,</span><span class="o">-</span><span class="mh">0x10000</span><span class="p">,</span><span class="o">-</span><span class="mh">0x10000</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
@@ -1064,49 +989,21 @@ document.write(`
 <div class="viewcode-block" id="TTkLayout.update">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.update">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="w">        </span><span class="sd">'''Propagate update requests to child widgets and nested layouts.'''</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span> <span class="ow">and</span> <span class="p">(</span><span class="n">_wid</span><span class="o">:=</span><span class="n">i</span><span class="o">.</span><span class="n">_widget</span><span class="p">):</span>
-                <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="ow">or</span> <span class="n">_wid</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">i</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
-                <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="ow">or</span> <span class="n">i</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ret</span></div>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">_wid</span><span class="o">:=</span><span class="n">i</span><span class="o">.</span><span class="n">_widget</span><span class="p">):</span>
+                <span class="n">_wid</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
+                <span class="n">i</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TTkLayout.layoutItemType">
+<a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout.layoutItemType">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layoutItemType</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">'''Return :py:attr:`TTkK.LayoutItemTypes.LayoutItem`.'''</span>
+        <span class="k">return</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">LayoutItem</span></div>
 </div>
 
-
-<span class="k">class</span><span class="w"> </span><span class="nc">TTkWidgetItem</span><span class="p">(</span><span class="n">TTkLayoutItem</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_widget&#39;</span><span class="p">,)</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">widget</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">TTkLayoutItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layoutItemType</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">WidgetItem</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span> <span class="o">=</span> <span class="n">widget</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">isVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span> <span class="ow">is</span> <span class="kc">None</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>   <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minDimension</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>   <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumSize</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maxDimension</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-
-    <span class="c1">#def update(self, *args, **kwargs) -&gt; None:</span>
-    <span class="c1">#    self.widget().update(*args, **kwargs)</span>
 </pre></div>
 
                 </article>

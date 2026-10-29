@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.TTkModelView.treewidget &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.TTkModelView.treewidget &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,7 +533,7 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTreeWidget&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkTreeWidget'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">Tuple</span><span class="p">,</span><span class="n">Optional</span>
 
@@ -551,7 +554,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_RootWidgetItem</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_widgets_buffer&#39;</span><span class="p">,</span><span class="s1">&#39;_widgets_buffer_check&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_widgets_buffer'</span><span class="p">,</span><span class="s1">'_widgets_buffer_check'</span><span class="p">)</span>
 
     <span class="n">_widgets_buffer</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">TTkTreeWidgetItem</span><span class="p">]]</span>
     <span class="n">_widgets_buffer_check</span><span class="p">:</span><span class="nb">int</span>
@@ -570,9 +573,9 @@ document.write(`
         <span class="k">if</span> <span class="ow">not</span> <span class="n">limited_page</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">column</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-            <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="n">_l</span><span class="o">+</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">+</span><span class="n">_t</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">limited_page</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="n">_l</span><span class="o">+</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">+</span><span class="n">_t</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">))</span> <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">limited_page</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">max</span><span class="p">((</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">+</span><span class="n">_t</span><span class="p">)</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">limited_page</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">max</span><span class="p">((</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">+</span><span class="n">_t</span><span class="p">)</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">))</span> <span class="k">for</span> <span class="n">_l</span><span class="p">,</span><span class="n">_y</span><span class="p">,</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">limited_page</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_y</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_page_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="n">TTkTreeWidgetItem</span><span class="p">]]:</span>
@@ -608,11 +611,11 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTreeWidget</span><span class="p">(</span><span class="n">TTkAbstractScrollView</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    The :py:class:`TTkTreeWidget` class is a convenience class that provides a standard tree</span>
 <span class="sd">    widget with a classic item-based interface.</span>
 
-<span class="sd">    This class is based on TTk&#39;s Model/View architecture and uses a default model to hold items,</span>
+<span class="sd">    This class is based on TTk's Model/View architecture and uses a default model to hold items,</span>
 <span class="sd">    each of which is a :py:class:`TTkTreeWidgetItem`.</span>
 
 <span class="sd">    In its simplest form, a tree widget can be constructed in the following way:</span>
@@ -624,14 +627,14 @@ document.write(`
 <span class="sd">        root = ttk.TTk()</span>
 
 <span class="sd">        tree = ttk.TTkTree(parent=root,size=(80,24))</span>
-<span class="sd">        tree.setHeaderLabels([&quot;Column 1&quot;, &quot;Column 2&quot;, &quot;Column 3&quot;])</span>
+<span class="sd">        tree.setHeaderLabels(["Column 1", "Column 2", "Column 3"])</span>
 
-<span class="sd">        top = ttk.TTkTreeWidgetItem([&quot;String A&quot;, &quot;String B&quot;, &quot;String C&quot;])</span>
+<span class="sd">        top = ttk.TTkTreeWidgetItem(["String A", "String B", "String C"])</span>
 
 <span class="sd">        tree.addTopLevelItem(top)</span>
 
 <span class="sd">        for i in range(5):</span>
-<span class="sd">            child = ttk.TTkTreeWidgetItem([&quot;Child A&quot; + str(i), &quot;Child B&quot; + str(i), &quot;Child C&quot; + str(i)])</span>
+<span class="sd">            child = ttk.TTkTreeWidgetItem(["Child A" + str(i), "Child B" + str(i), "Child C" + str(i)])</span>
 <span class="sd">            top.addChild(child)</span>
 
 <span class="sd">        root.mainloop()</span>
@@ -647,104 +650,104 @@ document.write(`
 <span class="sd">    If sorting is enabled, the user can sort the items by clicking on a column header.</span>
 <span class="sd">    Sorting can be enabled or disabled by calling setSortingEnabled().</span>
 <span class="sd">    The isSortingEnabled() function indicates whether sorting is enabled.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemActivated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted when the user activates an item by double-clicking</span>
 <span class="sd">        or pressing a special key (e.g., Enter).</span>
 
 <span class="sd">        :param item: the item that was clicked.</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :param col: the item's column that was clicked.</span>
 <span class="sd">        :type col: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemActivated</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted when the contents of the column in the specified item changes.</span>
 
 <span class="sd">        :param item: the item reported by this signal</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        :param col: the item&#39;s column</span>
+<span class="sd">        :param col: the item's column</span>
 <span class="sd">        :type col: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemChanged</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted when the user clicks inside the widget.</span>
 
 <span class="sd">        If no item was clicked, no signal will be emitted.</span>
 
 <span class="sd">        :param item: the item that was clicked.</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :param col: the item's column that was clicked.</span>
 <span class="sd">        :type col: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemClicked</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemDoubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted when the user double clicks inside the widget.</span>
 
 <span class="sd">        If no item was double clicked, no signal will be emitted.</span>
 
 <span class="sd">        :param item: the item that was clicked.</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        :param col: the item&#39;s column that was clicked.</span>
+<span class="sd">        :param col: the item's column that was clicked.</span>
 <span class="sd">        :type col: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemDoubleClicked</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemExpanded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted when the specified item is expanded so that all of its children are displayed.</span>
 
 <span class="sd">        :param item: the item reported by this signal</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemExpanded</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted when the specified item is collapsed so that none of its children are displayed.</span>
 
 <span class="sd">        :param item: the item reported by this signal</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemCollapsed</span>
 
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span>
-                    <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
-                    <span class="s1">&#39;lineColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;lineHeightColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;headerColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffffff&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                    <span class="s1">&#39;hoveredColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#0088FF&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;selectedColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffff88&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#000066&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                    <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">)},</span>
-                <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span>
-                    <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;lineColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;lineHeightColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;headerColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;hoveredColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#777777&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;selectedColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                    <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">)},</span>
+                <span class="s1">'default'</span><span class="p">:</span>     <span class="p">{</span>
+                    <span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
+                    <span class="s1">'lineColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#444444"</span><span class="p">),</span>
+                    <span class="s1">'lineHeightColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#666666"</span><span class="p">),</span>
+                    <span class="s1">'headerColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffffff"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">"#444444"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                    <span class="s1">'hoveredColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#0088FF'</span><span class="p">),</span>
+                    <span class="s1">'selectedColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffff88"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">"#000066"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                    <span class="s1">'separatorColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#444444"</span><span class="p">)},</span>
+                <span class="s1">'disabled'</span><span class="p">:</span>    <span class="p">{</span>
+                    <span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                    <span class="s1">'lineColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                    <span class="s1">'lineHeightColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#666666"</span><span class="p">),</span>
+                    <span class="s1">'headerColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                    <span class="s1">'hoveredColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#777777'</span><span class="p">),</span>
+                    <span class="s1">'selectedColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                    <span class="s1">'separatorColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">)},</span>
             <span class="p">}</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">&#39;_rootItem&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;_header&#39;</span><span class="p">,</span> <span class="s1">&#39;_columnsPos&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;_selectionMode&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;_hoverItem&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;_selected&#39;</span><span class="p">,</span> <span class="s1">&#39;_separatorSelected&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;_sortColumn&#39;</span><span class="p">,</span> <span class="s1">&#39;_sortOrder&#39;</span><span class="p">,</span> <span class="s1">&#39;_sortingEnabled&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;_dndMode&#39;</span><span class="p">,</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">'_rootItem'</span><span class="p">,</span>
+                  <span class="s1">'_header'</span><span class="p">,</span> <span class="s1">'_columnsPos'</span><span class="p">,</span>
+                  <span class="s1">'_selectionMode'</span><span class="p">,</span>
+                  <span class="s1">'_hoverItem'</span><span class="p">,</span>
+                  <span class="s1">'_selected'</span><span class="p">,</span> <span class="s1">'_separatorSelected'</span><span class="p">,</span>
+                  <span class="s1">'_sortColumn'</span><span class="p">,</span> <span class="s1">'_sortOrder'</span><span class="p">,</span> <span class="s1">'_sortingEnabled'</span><span class="p">,</span>
+                  <span class="s1">'_dndMode'</span><span class="p">,</span>
                   <span class="c1"># Signals</span>
-                  <span class="s1">&#39;_itemChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemDoubleClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemExpanded&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemCollapsed&#39;</span><span class="p">,</span> <span class="s1">&#39;_itemActivated&#39;</span>
+                  <span class="s1">'_itemChanged'</span><span class="p">,</span> <span class="s1">'_itemClicked'</span><span class="p">,</span> <span class="s1">'_itemDoubleClicked'</span><span class="p">,</span> <span class="s1">'_itemExpanded'</span><span class="p">,</span> <span class="s1">'_itemCollapsed'</span><span class="p">,</span> <span class="s1">'_itemActivated'</span>
                   <span class="p">)</span>
 
     <span class="n">_selected</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]</span>
@@ -763,7 +766,7 @@ document.write(`
                  <span class="n">selectionMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">,</span>
                  <span class="n">dragDropMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        :param header: define the header labels of each column, defaults to []</span>
 <span class="sd">        :type header: List[:py:class:`TTkString`], optional</span>
 <span class="sd">        :param sortingEnabled: enable the column sorting, defaults to False</span>
@@ -772,7 +775,7 @@ document.write(`
 <span class="sd">        :type selectionMode: :py:class:`TTkK.SelectionMode`, optional</span>
 <span class="sd">        :param dragDropMode: This property holds the drag and drop event the view will act upon, defaults to :py:class:`TTkK.DragDropMode.NoDragDrop`.</span>
 <span class="sd">        :type dragDropMode: :py:class:`TTkK.DragDropMode`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="c1"># Signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_itemActivated</span>     <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_itemChanged</span>       <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTreeWidgetItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
@@ -809,31 +812,31 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">viewFullAreaSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span>
-        <span class="c1"># TTkLog.debug(f&quot;{w=} {h=}&quot;)</span>
+        <span class="c1"># TTkLog.debug(f"{w=} {h=}")</span>
         <span class="k">return</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span>
 
 <div class="viewcode-block" id="TTkTreeWidget.invisibleRootItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.invisibleRootItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">invisibleRootItem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTreeWidgetItem</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Returns the tree widget&#39;s invisible root item.</span>
+<span class="w">        </span><span class="sd">'''</span>
+<span class="sd">        Returns the tree widget's invisible root item.</span>
 
-<span class="sd">        The invisible root item provides access to the tree widget&#39;s top-level items through the :py:class:`TTkTreeWidgetItem` API,</span>
+<span class="sd">        The invisible root item provides access to the tree widget's top-level items through the :py:class:`TTkTreeWidgetItem` API,</span>
 <span class="sd">        making it possible to write functions that can treat top-level items and their children in a uniform way;</span>
 <span class="sd">        for example, recursive functions.</span>
 
 <span class="sd">        :return: the root Item</span>
 <span class="sd">        :rtype: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.clear">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.clear">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Clears the tree widget by removing all of its items and selections.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="c1"># Remove all the widgets</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
@@ -848,12 +851,12 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.addTopLevelItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.addTopLevelItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Appends the item as a top-level item in the widget.</span>
 
 <span class="sd">        :param item: the item to be added.</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
@@ -862,12 +865,12 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.addTopLevelItems">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.addTopLevelItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addTopLevelItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Appends the list of items as a top-level items in the widget.</span>
 
 <span class="sd">        :param item: the item to be added.</span>
 <span class="sd">        :type item: List[:py:class:`TTkTreeWidgetItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">addChildren</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
@@ -894,14 +897,14 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.takeTopLevelItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.takeTopLevelItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">takeTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Removes the top-level item at the given index in the tree and returns it, otherwise returns None;</span>
 
 <span class="sd">        :param index: the index of the item</span>
 <span class="sd">        :type index: int</span>
 
 <span class="sd">        :rtype: Optional[:py:class:`TTkTreeWidgetItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">takeChild</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pruneSelection</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
@@ -912,48 +915,48 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.topLevelItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.topLevelItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">topLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the top level item at the given index, or None if the item does not exist.</span>
 
 <span class="sd">        :param index: the index of the item</span>
 <span class="sd">        :type index: int</span>
 
 <span class="sd">        :rtype: Optional[:py:class:`TTkTreeWidgetItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.indexOfTopLevelItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.indexOfTopLevelItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">indexOfTopLevelItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the index of the given top-level item, or -1 if the item cannot be found.</span>
 
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">indexOfChild</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.selectionMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.selectionMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        selectionMode</span>
 
 <span class="sd">        :rtype: :py:class:`TTkK.SelectionMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.setSelectionMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setSelectionMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setSelectionMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Sets the current selection model to the given selectionModel.</span>
 
 <span class="sd">        :param mode: the selection mode used in this tree</span>
 <span class="sd">        :type mode: :py:class:`TTkK.SelectionMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pruneSelection</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">=</span> <span class="n">mode</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">NoSelection</span><span class="p">:</span>
@@ -966,11 +969,11 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.selectedItems">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.selectedItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectedItems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns a list of all selected non-hidden items.</span>
 
 <span class="sd">        :rtype: List[:py:class:`TTkTreeWidgetItem`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pruneSelection</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span>
@@ -980,9 +983,9 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.clearSelection">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.clearSelection">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clearSelection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Deselects all selected items.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="o">=</span> <span class="p">[]</span>
@@ -992,12 +995,12 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.setCurrentItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setCurrentItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Selects the specified item as the current one.</span>
 
 <span class="sd">        :param item: the item to be selected, None clears the selection</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem` or None</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>
             <span class="k">return</span>
@@ -1012,14 +1015,14 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.selectItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.selectItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">selectItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Adds the specified item to the current selection.</span>
 
 <span class="sd">        In single selection mode this replaces the previous selection.</span>
 
 <span class="sd">        :param item: the item to be selected</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_itemInTree</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectionMode</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SelectionMode</span><span class="o">.</span><span class="n">NoSelection</span><span class="p">:</span>
@@ -1036,12 +1039,12 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.deselectItem">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.deselectItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">deselectItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkTreeWidgetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Removes the specified item from the current selection.</span>
 
 <span class="sd">        :param item: the item to be deselected</span>
 <span class="sd">        :type item: :py:class:`TTkTreeWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
@@ -1054,12 +1057,12 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.setHeaderLabels">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setHeaderLabels">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setHeaderLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkString</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Adds a column in the header for each item in the labels list, and sets the label for each column.</span>
 
 <span class="sd">        :param labels: the list of labels</span>
 <span class="sd">        :type labels: List[:py:class:`TTkString`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="n">labels</span>
         <span class="c1"># Set 20 as default column size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="o">+</span><span class="n">x</span><span class="o">*</span><span class="mi">20</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))]</span>
@@ -1070,21 +1073,21 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.dragDropMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.dragDropMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;dragDropMode&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''dragDropMode'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.setDragDropMode">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setDragDropMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setDragDropMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dndMode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">DragDropMode</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setDragDropMode&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setDragDropMode'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dndMode</span> <span class="o">=</span> <span class="n">dndMode</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.isSortingEnabled">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.isSortingEnabled">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isSortingEnabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property holds whether sorting is enabled</span>
 
 <span class="sd">        If this property is true, sorting is enabled for the tree;</span>
@@ -1092,14 +1095,14 @@ document.write(`
 <span class="sd">        The default value is false.</span>
 
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortingEnabled</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.setSortingEnabled">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setSortingEnabled">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setSortingEnabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property holds whether sorting is enabled</span>
 
 <span class="sd">        If this property is true, sorting is enabled for the tree;</span>
@@ -1108,7 +1111,7 @@ document.write(`
 
 <span class="sd">        :param enabled: the sorting status</span>
 <span class="sd">        :type enabled: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">enabled</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortingEnabled</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_sortingEnabled</span> <span class="o">=</span> <span class="n">enabled</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
@@ -1117,26 +1120,26 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.sortColumn">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.sortColumn">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">sortColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the column used to sort the contents of the widget.</span>
 <span class="sd">        -1 in case no column sort is used</span>
 
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span></div>
 
 
 <div class="viewcode-block" id="TTkTreeWidget.sortItems">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.sortItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">sortItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Sorts the items in the widget in the specified order by the values in the given column.</span>
 
 <span class="sd">        :param col: the column used as reference for the sorting</span>
 <span class="sd">        :type col: int</span>
 <span class="sd">        :param order: the sorting order</span>
 <span class="sd">        :type order: :py:class:`TTkK.SortOrder`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortingEnabled</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="n">col</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortOrder</span> <span class="o">=</span> <span class="n">order</span>
@@ -1149,14 +1152,14 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.columnWidth">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.columnWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">columnWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property hold the width of the column requested</span>
 
 <span class="sd">        :param column: the column position</span>
 <span class="sd">        :type column: int</span>
 
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">column</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1166,14 +1169,14 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.setColumnWidth">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.setColumnWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setColumnWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the width of the column requested</span>
 
 <span class="sd">        :param column: the column position</span>
 <span class="sd">        :type column: int</span>
 
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">column</span>
         <span class="n">newSize</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">width</span>
         <span class="n">oldSize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnsPos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -1187,12 +1190,12 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.resizeColumnToContents">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.resizeColumnToContents">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeColumnToContents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        rwsize the width of the column requestedto its content</span>
 
 <span class="sd">        :param column: the column position</span>
 <span class="sd">        :type column: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">_</span><span class="p">,</span><span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="n">contentSize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">_getColumnContentSize</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">oy</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">contentSize</span><span class="p">)</span></div>
@@ -1202,7 +1205,7 @@ document.write(`
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.expandAll">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">expandAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Expands all expandable items.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Expands all expandable items.'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
@@ -1215,7 +1218,7 @@ document.write(`
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.collapseAll">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">collapseAll</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Collapse all collapsable items.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Collapse all collapsable items.'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootItem</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshCache</span><span class="p">)</span>
@@ -1266,7 +1269,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTreeWidget.itemAt">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTreeWidget.itemAt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTreeWidgetItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Return the item at the vertical position</span>
 
 <span class="sd">        :param pos: y coordinate</span>
@@ -1274,7 +1277,7 @@ document.write(`
 
 <span class="sd">        :return: The item at the (pos) position if available</span>
 <span class="sd">        :rtype: :py:class:`TTkTreeWidgetItem` or None if no item is available</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="c1"># Handle Header Events</span>
@@ -1372,14 +1375,14 @@ document.write(`
                <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkMouseEvent</span><span class="o">.</span><span class="n">LeftButton</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span> <span class="p">):</span>
             <span class="n">drag</span> <span class="o">=</span> <span class="n">TTkDrag</span><span class="p">()</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">TTkTreeWidget</span><span class="o">.</span><span class="n">_DropTreeData</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span><span class="n">items</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">)</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="n">_n</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="mi">27</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;...&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">_n</span><span class="o">:=</span><span class="n">_s</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">30</span> <span class="k">else</span> <span class="n">_n</span> <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">[:</span><span class="mi">4</span><span class="p">]]</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="n">_n</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="mi">27</span><span class="p">)</span><span class="o">+</span><span class="s1">'...'</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">_n</span><span class="o">:=</span><span class="n">_s</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">30</span> <span class="k">else</span> <span class="n">_n</span> <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">[:</span><span class="mi">4</span><span class="p">]]</span>
             <span class="n">dh</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
             <span class="n">dw</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">_t</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">_t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span><span class="o">+</span><span class="mi">2</span>
             <span class="n">pm</span> <span class="o">=</span> <span class="n">TTkCanvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">dw</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="n">dh</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">_y</span><span class="p">,</span><span class="n">_t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span><span class="mi">1</span><span class="p">):</span>
                 <span class="n">pm</span><span class="o">.</span><span class="n">drawTTkString</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">_y</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">_t</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-                <span class="n">pm</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+                <span class="n">pm</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="s1">'...'</span><span class="p">)</span>
             <span class="n">pm</span><span class="o">.</span><span class="n">drawBox</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span><span class="n">dh</span><span class="p">))</span>
             <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">pm</span><span class="p">)</span>
             <span class="n">drag</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1441,13 +1444,13 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
 
-        <span class="n">color</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-        <span class="n">lineColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;lineColor&#39;</span><span class="p">]</span>
-        <span class="n">lineHeightColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;lineHeightColor&#39;</span><span class="p">]</span>
-        <span class="n">headerColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;headerColor&#39;</span><span class="p">]</span>
-        <span class="n">hoveredColor</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;hoveredColor&#39;</span><span class="p">]</span>
-        <span class="n">selectedColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;selectedColor&#39;</span><span class="p">]</span>
-        <span class="n">separatorColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;separatorColor&#39;</span><span class="p">]</span>
+        <span class="n">color</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span>
+        <span class="n">lineColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'lineColor'</span><span class="p">]</span>
+        <span class="n">lineHeightColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'lineHeightColor'</span><span class="p">]</span>
+        <span class="n">headerColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'headerColor'</span><span class="p">]</span>
+        <span class="n">hoveredColor</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">'hoveredColor'</span><span class="p">]</span>
+        <span class="n">selectedColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'selectedColor'</span><span class="p">]</span>
+        <span class="n">separatorColor</span><span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'separatorColor'</span><span class="p">]</span>
 
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getViewOffsets</span><span class="p">()</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -1473,23 +1476,23 @@ document.write(`
                 <span class="n">_lx</span><span class="p">,</span><span class="n">_lx1</span> <span class="o">=</span> <span class="n">col_slices</span><span class="p">[</span><span class="n">il</span><span class="p">]</span>
                 <span class="n">_width</span> <span class="o">=</span> <span class="n">_lx1</span><span class="o">-</span><span class="n">_lx</span>
                 <span class="n">_ih</span> <span class="o">=</span> <span class="n">_i</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
-                <span class="n">_data</span> <span class="o">=</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">il</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">TTkString</span><span class="p">()]</span><span class="o">*</span><span class="n">_ih</span>
+                <span class="n">_data</span> <span class="o">=</span> <span class="n">_i</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">il</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">TTkString</span><span class="p">()]</span><span class="o">*</span><span class="n">_ih</span>
                 <span class="k">if</span> <span class="n">il</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># First Column</span>
                     <span class="k">if</span> <span class="n">_yi</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">_icon</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'  '</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2">"</span><span class="o">+</span><span class="n">_i</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
                     <span class="k">elif</span> <span class="n">_yi</span> <span class="o">==</span> <span class="n">_ih</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> ╽ &quot;</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'  '</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> ╽ "</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
                     <span class="k">elif</span> <span class="n">_yi</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> ┊ &quot;</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'  '</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> ┊ "</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;  &#39;</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> │ &quot;</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
+                        <span class="n">_icon</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'  '</span><span class="o">*</span><span class="n">_l</span><span class="si">}</span><span class="s2"> │ "</span><span class="p">,</span> <span class="n">lineHeightColor</span><span class="p">)</span>
                     <span class="n">_text</span><span class="o">=</span><span class="n">_icon</span><span class="o">+</span><span class="n">_data</span><span class="p">[</span><span class="n">_yi</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span> <span class="c1"># Other columns</span>
                     <span class="n">_text</span><span class="o">=</span><span class="n">_data</span><span class="p">[</span><span class="n">_yi</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected</span><span class="p">:</span>
-                    <span class="n">_text</span> <span class="o">=</span> <span class="p">(</span><span class="n">_text</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="n">_width</span><span class="p">)</span><span class="o">.</span><span class="n">completeColor</span><span class="p">(</span><span class="n">selectedColor</span><span class="p">)</span>
+                    <span class="n">_text</span> <span class="o">=</span> <span class="p">(</span><span class="n">_text</span> <span class="o">+</span> <span class="s1">' '</span><span class="o">*</span><span class="n">_width</span><span class="p">)</span><span class="o">.</span><span class="n">completeColor</span><span class="p">(</span><span class="n">selectedColor</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">_i</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hoverItem</span><span class="p">:</span>
-                    <span class="n">_text</span> <span class="o">=</span> <span class="p">(</span><span class="n">_text</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="n">_width</span><span class="p">)</span><span class="o">.</span><span class="n">completeColor</span><span class="p">(</span><span class="n">hoveredColor</span><span class="p">)</span>
+                    <span class="n">_text</span> <span class="o">=</span> <span class="p">(</span><span class="n">_text</span> <span class="o">+</span> <span class="s1">' '</span><span class="o">*</span><span class="n">_width</span><span class="p">)</span><span class="o">.</span><span class="n">completeColor</span><span class="p">(</span><span class="n">hoveredColor</span><span class="p">)</span>
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTTkString</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">_text</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">_lx</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">_y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">width</span><span class="o">=</span><span class="n">_width</span><span class="p">)</span></div>
 
 </pre></div>

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.tabwidget &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.tabwidget &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -532,7 +535,7 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTabButton&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTabBar&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTabWidget&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkBarType&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkTabButton'</span><span class="p">,</span> <span class="s1">'TTkTabBar'</span><span class="p">,</span> <span class="s1">'TTkTabWidget'</span><span class="p">,</span> <span class="s1">'TTkBarType'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
@@ -546,7 +549,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.canvas</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkCanvas</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span><span class="p">,</span> <span class="n">TTkStringType</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSlot</span><span class="p">,</span> <span class="n">pyTTkSignal</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">TTkKeyEvent_Character</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkMouseEvent</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkGui.drag</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkDrag</span><span class="p">,</span> <span class="n">TTkDnDEvent</span>
@@ -589,9 +592,9 @@ document.write(`
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkTabStatus</span><span class="p">():</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">&quot;statusUpdated&quot;</span><span class="p">,</span> <span class="s2">&quot;currentChanged&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tabBar&quot;</span><span class="p">,</span> <span class="s2">&quot;tabButtons&quot;</span><span class="p">,</span> <span class="s2">&quot;barType&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;currentIndex&quot;</span><span class="p">,</span> <span class="s2">&quot;highlighted&quot;</span><span class="p">)</span>
+        <span class="s2">"statusUpdated"</span><span class="p">,</span> <span class="s2">"currentChanged"</span><span class="p">,</span>
+        <span class="s2">"tabBar"</span><span class="p">,</span> <span class="s2">"tabButtons"</span><span class="p">,</span> <span class="s2">"barType"</span><span class="p">,</span>
+        <span class="s2">"currentIndex"</span><span class="p">,</span> <span class="s2">"highlighted"</span><span class="p">)</span>
 
     <span class="n">statusUpdated</span><span class="p">:</span><span class="n">pyTTkSignal</span>
     <span class="n">tabBar</span><span class="p">:</span><span class="n">TTkTabBar</span>
@@ -635,7 +638,7 @@ document.write(`
 
     <span class="c1"># # @pyTTkSlot(TTkTabButton)</span>
     <span class="c1"># def _setCurrentButton(self, button:TTkTabButton) -&gt; None:</span>
-    <span class="c1">#     &#39;&#39;&#39;setCurrentButton&#39;&#39;&#39;</span>
+    <span class="c1">#     '''setCurrentButton'''</span>
     <span class="c1">#     index = self.tabButtons.index(button)</span>
     <span class="c1">#     self._setCurrentIndex(index)</span>
 
@@ -645,7 +648,7 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_setCurrentIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setCurrentIndex&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setCurrentIndex'''</span>
         <span class="k">if</span> <span class="p">(</span> <span class="p">(</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">)</span> <span class="p">)</span> <span class="ow">and</span>
              <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentIndex</span> <span class="o">!=</span> <span class="n">index</span> <span class="ow">or</span>
                <span class="bp">self</span><span class="o">.</span><span class="n">highlighted</span>  <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span> <span class="p">):</span>
@@ -678,55 +681,55 @@ document.write(`
         <span class="k">return</span> <span class="kc">None</span>
 
 <span class="n">_tabGlyphs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;scroller&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;◀&#39;</span><span class="p">,</span><span class="s1">&#39;▶&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;border&#39;</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'scroller'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'◀'</span><span class="p">,</span><span class="s1">'▶'</span><span class="p">],</span>
+    <span class="s1">'border'</span> <span class="p">:</span> <span class="p">{</span>
         <span class="n">TTkBarType</span><span class="o">.</span><span class="n">DEFAULT_3</span> <span class="p">:</span> <span class="p">[],</span>
         <span class="n">TTkBarType</span><span class="o">.</span><span class="n">DEFAULT_2</span> <span class="p">:</span> <span class="p">[],</span>
                             <span class="c1"># 0   1   2   3   4   5</span>
-        <span class="n">TTkBarType</span><span class="o">.</span><span class="n">NERD_1</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;🭛&#39;</span><span class="p">,</span><span class="s1">&#39;🭦&#39;</span><span class="p">,</span><span class="s1">&#39;🭡&#39;</span><span class="p">,</span><span class="s1">&#39;🭖&#39;</span><span class="p">,</span><span class="s1">&#39;╱&#39;</span><span class="p">,</span><span class="s1">&#39;╲&#39;</span><span class="p">],</span>
+        <span class="n">TTkBarType</span><span class="o">.</span><span class="n">NERD_1</span> <span class="p">:</span> <span class="p">[</span><span class="s1">'🭛'</span><span class="p">,</span><span class="s1">'🭦'</span><span class="p">,</span><span class="s1">'🭡'</span><span class="p">,</span><span class="s1">'🭖'</span><span class="p">,</span><span class="s1">'╱'</span><span class="p">,</span><span class="s1">'╲'</span><span class="p">],</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">_tabStyle</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]</span>  <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#dddd88&quot;</span><span class="p">,</span><span class="s2">&quot;#000044&quot;</span><span class="p">),</span>
-                            <span class="s1">&#39;bgColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span><span class="s2">&quot;#8888aa&quot;</span><span class="p">),</span>
-                            <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
-                            <span class="s1">&#39;closeColor&#39;</span><span class="p">:</span> <span class="p">{</span>
-                                <span class="s1">&#39;default&#39;</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">CYAN</span><span class="p">,</span>
-                                <span class="s1">&#39;hovered&#39;</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">YELLOW</span>
+            <span class="s1">'default'</span><span class="p">:</span>     <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#dddd88"</span><span class="p">,</span><span class="s2">"#000044"</span><span class="p">),</span>
+                            <span class="s1">'bgColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#000000"</span><span class="p">,</span><span class="s2">"#8888aa"</span><span class="p">),</span>
+                            <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
+                            <span class="s1">'closeColor'</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s1">'default'</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">CYAN</span><span class="p">,</span>
+                                <span class="s1">'hovered'</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">YELLOW</span>
                             <span class="p">},</span>
-                            <span class="s1">&#39;borderHighlightColors&#39;</span><span class="p">:</span> <span class="p">{</span>
-                                <span class="s1">&#39;main&#39;</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#00FFFF&#39;</span><span class="p">),</span>
-                                <span class="s1">&#39;fade&#39;</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#88FF88&#39;</span><span class="p">),</span>
+                            <span class="s1">'borderHighlightColors'</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s1">'main'</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#00FFFF'</span><span class="p">),</span>
+                                <span class="s1">'fade'</span> <span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#88FF88'</span><span class="p">),</span>
                             <span class="p">},</span>
-                            <span class="s1">&#39;scrollerColors&#39;</span><span class="p">:</span> <span class="p">{</span>
-                                <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#BBBBBB&#39;</span><span class="p">),</span>
-                                <span class="s1">&#39;highlight&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#00FFFF&#39;</span><span class="p">),</span>
-                                <span class="s1">&#39;inactive&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">),</span>
+                            <span class="s1">'scrollerColors'</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s1">'default'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#BBBBBB'</span><span class="p">),</span>
+                                <span class="s1">'highlight'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#00FFFF'</span><span class="p">),</span>
+                                <span class="s1">'inactive'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">),</span>
                             <span class="p">},</span>
-                            <span class="s1">&#39;glyphs&#39;</span><span class="p">:</span><span class="n">_tabGlyphs</span><span class="p">},</span>
-            <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">),</span>
-                            <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">)},</span>
-            <span class="s1">&#39;focus&#39;</span><span class="p">:</span>       <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#dddd88&quot;</span><span class="p">,</span><span class="s2">&quot;#000044&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                            <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffff00&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">},</span>
+                            <span class="s1">'glyphs'</span><span class="p">:</span><span class="n">_tabGlyphs</span><span class="p">},</span>
+            <span class="s1">'disabled'</span><span class="p">:</span>    <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">),</span>
+                            <span class="s1">'borderColor'</span><span class="p">:</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">)},</span>
+            <span class="s1">'focus'</span><span class="p">:</span>       <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#dddd88"</span><span class="p">,</span><span class="s2">"#000044"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                            <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffff00"</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">},</span>
         <span class="p">}</span>
 
 <span class="n">_tabStyleNormal</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;default&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
-            <span class="s1">&#39;disabled&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">)},</span>
-            <span class="s1">&#39;focus&#39;</span><span class="p">:</span>    <span class="p">{</span><span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
+            <span class="s1">'default'</span><span class="p">:</span>  <span class="p">{</span><span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
+            <span class="s1">'disabled'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">)},</span>
+            <span class="s1">'focus'</span><span class="p">:</span>    <span class="p">{</span><span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
         <span class="p">}</span>
 
 <span class="n">_tabStyleFocussed</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;default&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffff00&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">},</span>
-            <span class="s1">&#39;disabled&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">)},</span>
-            <span class="s1">&#39;focus&#39;</span><span class="p">:</span>    <span class="p">{</span><span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffff00&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">},</span>
+            <span class="s1">'default'</span><span class="p">:</span>  <span class="p">{</span><span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffff00"</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">},</span>
+            <span class="s1">'disabled'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">)},</span>
+            <span class="s1">'focus'</span><span class="p">:</span>    <span class="p">{</span><span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffff00"</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">},</span>
         <span class="p">}</span>
 
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkTabWidgetDragData</span><span class="p">():</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_tabButton&#39;</span><span class="p">,</span> <span class="s1">&#39;_tabWidget&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_tabButton'</span><span class="p">,</span> <span class="s1">'_tabWidget'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="n">TTkTabButton</span><span class="p">,</span> <span class="n">tw</span><span class="p">:</span><span class="n">TTkTabWidget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabButton</span> <span class="o">=</span> <span class="n">b</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidget</span> <span class="o">=</span> <span class="n">tw</span>
@@ -736,7 +739,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidget</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkNewTabWidgetDragData</span><span class="p">():</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_label&#39;</span><span class="p">,</span> <span class="s1">&#39;_widget&#39;</span><span class="p">,</span> <span class="s1">&#39;_closable&#39;</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_label'</span><span class="p">,</span> <span class="s1">'_widget'</span><span class="p">,</span> <span class="s1">'_closable'</span><span class="p">,</span> <span class="s1">'_data'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="n">TTkString</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span> <span class="n">TTkWidget</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">closable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="o">=</span> <span class="n">label</span>
@@ -752,7 +755,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closable</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkTabBarDragData</span><span class="p">():</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_tabButton&#39;</span><span class="p">,</span><span class="s1">&#39;_tabBar&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_tabButton'</span><span class="p">,</span><span class="s1">'_tabBar'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">TTkTabButton</span><span class="p">,</span> <span class="n">tb</span><span class="p">:</span> <span class="n">TTkTabBar</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabButton</span><span class="p">:</span><span class="n">TTkTabButton</span> <span class="o">=</span> <span class="n">b</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabBar</span><span class="p">:</span><span class="n">TTkTabBar</span> <span class="o">=</span> <span class="n">tb</span>
@@ -764,17 +767,17 @@ document.write(`
 <span class="c1"># class _TTkTabColorButton(TTkContainer):</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkTabColorButton</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
     <span class="n">classStyle</span> <span class="o">=</span> <span class="n">_tabStyle</span> <span class="o">|</span> <span class="p">{</span>
-                <span class="s1">&#39;hover&#39;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#dddd88&quot;</span><span class="p">,</span><span class="s2">&quot;#000050&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                    <span class="s1">&#39;bgColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">&quot;#007771&quot;</span><span class="p">,</span><span class="s2">&quot;#8888aa&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                    <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#AAFFFF&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span>
+                <span class="s1">'hover'</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#dddd88"</span><span class="p">,</span><span class="s2">"#000050"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                    <span class="s1">'bgColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s2">"#007771"</span><span class="p">,</span><span class="s2">"#8888aa"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                    <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#AAFFFF"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span>
                 <span class="p">},</span>
             <span class="p">}</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_tabStatus&#39;</span><span class="p">,</span>
+        <span class="s1">'_tabStatus'</span><span class="p">,</span>
         <span class="c1"># Signals</span>
-        <span class="s1">&#39;tcbClicked&#39;</span>
+        <span class="s1">'tcbClicked'</span>
         <span class="p">)</span>
     <span class="n">_tabStatus</span><span class="p">:</span><span class="n">_TTkTabStatus</span>
     <span class="n">tcbClicked</span><span class="p">:</span><span class="n">pyTTkSignal</span>
@@ -786,8 +789,8 @@ document.write(`
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Character</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s2">&quot; &quot;</span> <span class="p">)</span> <span class="ow">or</span> \
-           <span class="p">(</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span> <span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_Character</span><span class="p">)</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s2">" "</span> <span class="p">)</span> <span class="ow">or</span> \
+           <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">)</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span> <span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_keyPressed</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pressed</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -800,36 +803,36 @@ document.write(`
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTabButton</span><span class="p">(</span><span class="n">_TTkTabColorButton</span><span class="p">):</span>
     <span class="n">classStyle</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">_TTkTabColorButton</span><span class="o">.</span><span class="n">classStyle</span> <span class="o">|</span>
-        <span class="p">{</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">_TTkTabColorButton</span><span class="o">.</span><span class="n">classStyle</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">|</span>
+        <span class="p">{</span> <span class="s1">'default'</span><span class="p">:</span> <span class="n">_TTkTabColorButton</span><span class="o">.</span><span class="n">classStyle</span><span class="p">[</span><span class="s1">'default'</span><span class="p">]</span> <span class="o">|</span>
                     <span class="p">{</span>
-                        <span class="s1">&#39;closeGlyph&#39;</span><span class="p">:</span> <span class="p">{</span>
-                            <span class="s1">&#39;default&#39;</span><span class="p">:</span><span class="s1">&#39; ○ &#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;hovered&#39;</span><span class="p">:</span><span class="s1">&#39; ○ &#39;</span>
+                        <span class="s1">'closeGlyph'</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s1">'default'</span><span class="p">:</span><span class="s1">' ○ '</span><span class="p">,</span>
+                            <span class="s1">'hovered'</span><span class="p">:</span><span class="s1">' ○ '</span>
                         <span class="p">}</span>
                     <span class="p">}</span> <span class="p">,</span>
-          <span class="s1">&#39;hover&#39;</span><span class="p">:</span> <span class="n">_TTkTabColorButton</span><span class="o">.</span><span class="n">classStyle</span><span class="p">[</span><span class="s1">&#39;hover&#39;</span><span class="p">]</span> <span class="o">|</span>
+          <span class="s1">'hover'</span><span class="p">:</span> <span class="n">_TTkTabColorButton</span><span class="o">.</span><span class="n">classStyle</span><span class="p">[</span><span class="s1">'hover'</span><span class="p">]</span> <span class="o">|</span>
                     <span class="p">{</span>
-                        <span class="s1">&#39;closeGlyph&#39;</span><span class="p">:{</span>
-                            <span class="s1">&#39;default&#39;</span><span class="p">:</span><span class="s1">&#39; □ &#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;hovered&#39;</span><span class="p">:</span><span class="s1">&#39; ▣ &#39;</span>
+                        <span class="s1">'closeGlyph'</span><span class="p">:{</span>
+                            <span class="s1">'default'</span><span class="p">:</span><span class="s1">' □ '</span><span class="p">,</span>
+                            <span class="s1">'hovered'</span><span class="p">:</span><span class="s1">' ▣ '</span>
                         <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">)</span>
 
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkTabButton&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''TTkTabButton'''</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_data&#39;</span><span class="p">,</span><span class="s1">&#39;_sideEnd&#39;</span><span class="p">,</span> <span class="s1">&#39;_buttonStatus&#39;</span><span class="p">,</span> <span class="s1">&#39;_closable&#39;</span><span class="p">,</span> <span class="s1">&#39;_closeHovered&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;closeClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;_closeButtonPressed&#39;</span><span class="p">,</span> <span class="s1">&#39;_text&#39;</span><span class="p">)</span>
+        <span class="s1">'_data'</span><span class="p">,</span><span class="s1">'_sideEnd'</span><span class="p">,</span> <span class="s1">'_buttonStatus'</span><span class="p">,</span> <span class="s1">'_closable'</span><span class="p">,</span> <span class="s1">'_closeHovered'</span><span class="p">,</span>
+        <span class="s1">'closeClicked'</span><span class="p">,</span> <span class="s1">'_closeButtonPressed'</span><span class="p">,</span> <span class="s1">'_text'</span><span class="p">)</span>
 
     <span class="n">_closeHovered</span><span class="p">:</span><span class="nb">bool</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
                  <span class="n">data</span><span class="p">:</span><span class="nb">object</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">closable</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NONE</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_buttonStatus</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Unchecked</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
@@ -844,7 +847,7 @@ document.write(`
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
         <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closable</span><span class="p">:</span>
-            <span class="n">size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;closeGlyph&#39;</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">])</span>
+            <span class="n">size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">style</span><span class="p">[</span><span class="s1">'closeGlyph'</span><span class="p">][</span><span class="s1">'default'</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span><span class="o">.</span><span class="n">vSize</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumSize</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span><span class="o">.</span><span class="n">vSize</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumSize</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span><span class="o">.</span><span class="n">vSize</span><span class="p">())</span>
@@ -858,7 +861,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTabButton.setText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabButton.html#TermTk.TTkWidgets.TTkTabButton.setText">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_resetSize</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
@@ -951,7 +954,7 @@ document.write(`
                         <span class="n">data</span> <span class="o">=</span> <span class="n">_TTkTabBarDragData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span>
                     <span class="n">pm</span> <span class="o">=</span> <span class="n">TTkCanvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span><span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
                     <span class="n">pm</span><span class="o">.</span><span class="n">drawBox</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span><span class="mi">3</span><span class="p">))</span>
-                    <span class="n">pm</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()[</span><span class="s1">&#39;color&#39;</span><span class="p">])</span>
+                    <span class="n">pm</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()[</span><span class="s1">'color'</span><span class="p">])</span>
                     <span class="n">drag</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">pm</span><span class="p">)</span>
                     <span class="c1"># drag.setPixmap(self)</span>
                     <span class="n">drag</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -962,9 +965,9 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
 
-        <span class="n">borderColor</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderColor&#39;</span><span class="p">]</span>
-        <span class="n">textColor</span><span class="p">:</span><span class="n">TTkColor</span>   <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-        <span class="n">borderHighlightColors</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TTkColor</span><span class="p">]</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderHighlightColors&#39;</span><span class="p">]</span>
+        <span class="n">borderColor</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderColor'</span><span class="p">]</span>
+        <span class="n">textColor</span><span class="p">:</span><span class="n">TTkColor</span>   <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span>
+        <span class="n">borderHighlightColors</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TTkColor</span><span class="p">]</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderHighlightColors'</span><span class="p">]</span>
 
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="n">offY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span><span class="o">.</span><span class="n">offY</span><span class="p">()</span>
@@ -974,15 +977,15 @@ document.write(`
         <span class="n">is_highlighted</span> <span class="o">=</span> <span class="n">self_index</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">highlighted</span>
 
         <span class="n">tt</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tab</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span> <span class="o">==</span> <span class="n">TTkBarType</span><span class="o">.</span><span class="n">DEFAULT_3</span><span class="p">:</span>
             <span class="c1">#            Selected                 HighLighted</span>
             <span class="c1"># ┌─────────╔═════════╗──────────────╭─────────╮──────────────┐─────────┐</span>
             <span class="c1"># │Label 1.1║Label 1.2║Label Test 1.3│Label 1.4│Label Test 1.5│Label 1.6│</span>
             <span class="c1"># ╞═════════╩═════════╩══════════════╧═════════╧════════════════════════╡</span>
             <span class="k">if</span> <span class="n">is_highlighted</span><span class="p">:</span>
-                <span class="n">borderColor1_1</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">]</span>
-                <span class="n">borderColor1_2</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">&#39;fade&#39;</span><span class="p">]</span>
+                <span class="n">borderColor1_1</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">'main'</span><span class="p">]</span>
+                <span class="n">borderColor1_2</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">'fade'</span><span class="p">]</span>
                 <span class="n">borderColor1_3</span> <span class="o">=</span> <span class="n">borderColor</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">borderColor1_1</span> <span class="o">=</span> <span class="n">borderColor</span>
@@ -1030,8 +1033,8 @@ document.write(`
             <span class="c1"># │Label 2.1║Label 2.2║Label Test 2.3│Label 2.4│Label Test 2.5│Label 2.6│</span>
             <span class="c1"># └─────────╚═════════╝──────────────└─────────┘──────────────┘─────────┘</span>
             <span class="k">if</span> <span class="n">is_highlighted</span><span class="p">:</span>
-                <span class="n">borderColor2_1</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">]</span>
-                <span class="n">borderColor2_2</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">&#39;fade&#39;</span><span class="p">]</span>
+                <span class="n">borderColor2_1</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">'main'</span><span class="p">]</span>
+                <span class="n">borderColor2_2</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">'fade'</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">borderColor2_1</span> <span class="o">=</span> <span class="n">borderColor</span>
                 <span class="n">borderColor2_2</span> <span class="o">=</span> <span class="n">borderColor</span>
@@ -1059,33 +1062,33 @@ document.write(`
 
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span> <span class="o">==</span> <span class="n">TTkBarType</span><span class="o">.</span><span class="n">NERD_1</span><span class="p">:</span>
             <span class="c1"># 🭛Label 5.1🭦  ╱Label Test 5.3╲</span>
-            <span class="n">bgColor</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;bgColor&#39;</span><span class="p">]</span>
-            <span class="n">glyphs</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;glyphs&#39;</span><span class="p">][</span><span class="s1">&#39;border&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span><span class="p">]</span>
+            <span class="n">bgColor</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'bgColor'</span><span class="p">]</span>
+            <span class="n">glyphs</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'glyphs'</span><span class="p">][</span><span class="s1">'border'</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">is_selected</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">is_highlighted</span><span class="p">:</span>
                     <span class="n">textColor</span> <span class="o">+=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">CYAN</span>
                 <span class="n">selectedBgColor</span> <span class="o">=</span> <span class="n">textColor</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
-                    <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">selectedBgColor</span><span class="p">)</span>
+                    <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="n">selectedBgColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">selectedBgColor</span><span class="o">+</span><span class="n">bgColor</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span><span class="o">.</span><span class="n">foreground</span><span class="p">())</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">:</span>
-                    <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">selectedBgColor</span><span class="p">)</span>
+                    <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="n">selectedBgColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">selectedBgColor</span><span class="o">+</span><span class="n">bgColor</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span><span class="o">.</span><span class="n">foreground</span><span class="p">())</span>
                 <span class="n">txtCenter</span> <span class="o">=</span> <span class="n">_l</span> <span class="o">+</span> <span class="n">label</span> <span class="o">+</span> <span class="n">_r</span>
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">selectedBgColor</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="n">txtCenter</span><span class="p">)</span>
 
             <span class="k">elif</span> <span class="n">is_highlighted</span><span class="p">:</span>
-                <span class="n">highlightedBgColor</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">&#39;fade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
+                <span class="n">highlightedBgColor</span> <span class="o">=</span> <span class="n">borderHighlightColors</span><span class="p">[</span><span class="s1">'fade'</span><span class="p">]</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span><span class="o">.</span><span class="n">background</span><span class="p">()</span>
                 <span class="n">selectedColor</span> <span class="o">=</span> <span class="n">textColor</span><span class="o">.</span><span class="n">background</span><span class="p">()</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span>
                 <span class="n">textColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BLUE</span><span class="o">+</span> <span class="n">highlightedBgColor</span>
                 <span class="n">_left_selected</span> <span class="o">=</span>  <span class="p">(</span> <span class="n">self_index</span><span class="o">-</span><span class="mi">1</span> <span class="p">)</span>  <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">currentIndex</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
                 <span class="n">_right_selected</span> <span class="o">=</span> <span class="p">(</span> <span class="n">self_index</span><span class="o">+</span><span class="mi">1</span> <span class="p">)</span>  <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">currentIndex</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
-                    <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">highlightedBgColor</span><span class="p">)</span>
+                    <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="n">highlightedBgColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">_left_selected</span><span class="p">:</span>
                         <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">selectedColor</span><span class="p">)</span>
@@ -1093,7 +1096,7 @@ document.write(`
                         <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">highlightedBgColor</span><span class="o">+</span><span class="n">bgColor</span><span class="o">.</span><span class="n">invertFgBg</span><span class="p">()</span><span class="o">.</span><span class="n">foreground</span><span class="p">())</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">:</span>
-                    <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">highlightedBgColor</span><span class="p">)</span>
+                    <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="n">highlightedBgColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">_right_selected</span><span class="p">:</span>
                         <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">selectedColor</span><span class="p">)</span>
@@ -1105,11 +1108,11 @@ document.write(`
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">textColor</span> <span class="o">=</span> <span class="n">bgColor</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
-                    <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">bgColor</span><span class="p">)</span>
+                    <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="n">bgColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">_l</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">bgColor</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">:</span>
-                    <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">bgColor</span><span class="p">)</span>
+                    <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="n">bgColor</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">_r</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">bgColor</span><span class="p">)</span>
                 <span class="n">txtCenter</span> <span class="o">=</span> <span class="n">_l</span> <span class="o">+</span> <span class="n">label</span> <span class="o">+</span> <span class="n">_r</span>
@@ -1118,11 +1121,11 @@ document.write(`
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closable</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closeHovered</span><span class="p">:</span>
-                <span class="n">colorCloseHovered</span> <span class="o">=</span> <span class="n">textColor</span><span class="o">+</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;closeColor&#39;</span><span class="p">][</span><span class="s1">&#39;hovered&#39;</span><span class="p">]</span>
-                <span class="n">closeGlyph</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;closeGlyph&#39;</span><span class="p">][</span><span class="s1">&#39;hovered&#39;</span><span class="p">]</span>
+                <span class="n">colorCloseHovered</span> <span class="o">=</span> <span class="n">textColor</span><span class="o">+</span><span class="n">style</span><span class="p">[</span><span class="s1">'closeColor'</span><span class="p">][</span><span class="s1">'hovered'</span><span class="p">]</span>
+                <span class="n">closeGlyph</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'closeGlyph'</span><span class="p">][</span><span class="s1">'hovered'</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">colorCloseHovered</span> <span class="o">=</span> <span class="n">textColor</span><span class="o">+</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;closeColor&#39;</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
-                <span class="n">closeGlyph</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;closeGlyph&#39;</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
+                <span class="n">colorCloseHovered</span> <span class="o">=</span> <span class="n">textColor</span><span class="o">+</span><span class="n">style</span><span class="p">[</span><span class="s1">'closeColor'</span><span class="p">][</span><span class="s1">'default'</span><span class="p">]</span>
+                <span class="n">closeGlyph</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'closeGlyph'</span><span class="p">][</span><span class="s1">'default'</span><span class="p">]</span>
             <span class="n">closeOff</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">closeGlyph</span><span class="p">)</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="n">closeOff</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">offY</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="n">closeGlyph</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colorCloseHovered</span><span class="p">)</span></div>
 
@@ -1130,14 +1133,14 @@ document.write(`
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkTabMenuButton</span><span class="p">(</span><span class="n">TTkMenuBarButton</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
-        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderColor&#39;</span><span class="p">]</span>
-        <span class="n">textColor</span>   <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">,</span><span class="n">borderColor</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkString</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span><span class="n">textColor</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">,</span><span class="n">borderColor</span><span class="p">)</span>
+        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderColor'</span><span class="p">]</span>
+        <span class="n">textColor</span>   <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">'['</span><span class="p">,</span><span class="n">borderColor</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkString</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span><span class="n">textColor</span><span class="p">)</span> <span class="o">+</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">']'</span><span class="p">,</span><span class="n">borderColor</span><span class="p">)</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkTabScrollerButton</span><span class="p">(</span><span class="n">_TTkTabColorButton</span><span class="p">):</span>
     <span class="n">classStyle</span> <span class="o">=</span> <span class="n">_tabStyle</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_side&#39;</span><span class="p">,</span> <span class="s1">&#39;_sideEnd&#39;</span><span class="p">,</span> <span class="s1">&#39;_scrollerStatus&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_side'</span><span class="p">,</span> <span class="s1">'_sideEnd'</span><span class="p">,</span> <span class="s1">'_scrollerStatus'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">side</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1170,21 +1173,21 @@ document.write(`
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span><span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
-        <span class="n">glyphs</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;glyphs&#39;</span><span class="p">][</span><span class="s1">&#39;scroller&#39;</span><span class="p">]</span>
-        <span class="n">scrollerColors</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;scrollerColors&#39;</span><span class="p">]</span>
-        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderColor&#39;</span><span class="p">]</span>
+        <span class="n">glyphs</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'glyphs'</span><span class="p">][</span><span class="s1">'scroller'</span><span class="p">]</span>
+        <span class="n">scrollerColors</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'scrollerColors'</span><span class="p">]</span>
+        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderColor'</span><span class="p">]</span>
 
-        <span class="n">arrowColor</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
+        <span class="n">arrowColor</span><span class="p">:</span><span class="n">TTkColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">'default'</span><span class="p">]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">highlighted</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">elif</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_side</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span> <span class="ow">and</span>
                <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">highlighted</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">):</span>
-            <span class="n">arrowColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">&#39;inactive&#39;</span><span class="p">]</span>
+            <span class="n">arrowColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">'inactive'</span><span class="p">]</span>
         <span class="k">elif</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_side</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT</span> <span class="ow">and</span>
                <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">highlighted</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="p">):</span>
-            <span class="n">arrowColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">&#39;inactive&#39;</span><span class="p">]</span>
+            <span class="n">arrowColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">'inactive'</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">arrowColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">&#39;highlight&#39;</span><span class="p">]</span>
+            <span class="n">arrowColor</span> <span class="o">=</span> <span class="n">scrollerColors</span><span class="p">[</span><span class="s1">'highlight'</span><span class="p">]</span>
 
         <span class="n">tt</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tab</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span> <span class="o">==</span> <span class="n">TTkBarType</span><span class="o">.</span><span class="n">DEFAULT_3</span><span class="p">:</span>
@@ -1219,32 +1222,32 @@ document.write(`
                 <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">char</span><span class="o">=</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">arrowColor</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span> <span class="o">==</span> <span class="n">TTkBarType</span><span class="o">.</span><span class="n">NERD_1</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_side</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
-                <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;bgColor&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">arrowColor</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">'bgColor'</span><span class="p">]</span><span class="o">+</span><span class="n">arrowColor</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;bgColor&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">arrowColor</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+                <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">'bgColor'</span><span class="p">]</span><span class="o">+</span><span class="n">arrowColor</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">glyphs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 <span class="sd">_curentIndex =              2</span>
 <span class="sd">_tabButtons  =    [0],[1],  [2],   [3],   [4],</span>
 <span class="sd">                ╭─┌──┌──────╔══════╗──────┬──────┐─╮</span>
 <span class="sd">_labels=        │◀│La│Label1║Label2║Label3│Label4│▶│</span>
 <span class="sd">                ╞═══════════╩══════╩═══════════════╡</span>
 <span class="sd">                 leftscroller                     rightScroller</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 
 <div class="viewcode-block" id="TTkTabBar">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTabBar</span><span class="p">(</span><span class="n">TTkContainer</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkTabBar&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''TTkTabBar'''</span>
     <span class="n">classStyle</span> <span class="o">=</span> <span class="n">_tabStyle</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_tabStatus&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_tabMovable&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_leftScroller&#39;</span><span class="p">,</span> <span class="s1">&#39;_rightScroller&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_tabClosable&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_sideEnd&#39;</span><span class="p">,</span>
+        <span class="s1">'_tabStatus'</span><span class="p">,</span>
+        <span class="s1">'_tabMovable'</span><span class="p">,</span>
+        <span class="s1">'_leftScroller'</span><span class="p">,</span> <span class="s1">'_rightScroller'</span><span class="p">,</span>
+        <span class="s1">'_tabClosable'</span><span class="p">,</span>
+        <span class="s1">'_sideEnd'</span><span class="p">,</span>
         <span class="c1">#Signals</span>
-        <span class="s1">&#39;currentChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;tabBarClicked&#39;</span><span class="p">,</span> <span class="s1">&#39;tabCloseRequested&#39;</span><span class="p">)</span>
+        <span class="s1">'currentChanged'</span><span class="p">,</span> <span class="s1">'tabBarClicked'</span><span class="p">,</span> <span class="s1">'tabCloseRequested'</span><span class="p">)</span>
 
     <span class="n">currentChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
     <span class="n">tabBarClicked</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
@@ -1318,14 +1321,14 @@ document.write(`
 <div class="viewcode-block" id="TTkTabBar.addTab">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.addTab">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addTab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">closable</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;addTab&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''addTab'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertTab</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">closable</span><span class="o">=</span><span class="n">closable</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTabBar.insertTab">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.insertTab">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertTab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">closable</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;insertTab&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''insertTab'''</span>
         <span class="n">button</span> <span class="o">=</span> <span class="n">TTkTabButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">tabStatus</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="p">,</span> <span class="n">closable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabClosable</span> <span class="k">if</span> <span class="n">closable</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">closable</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">_insertButton</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="n">button</span><span class="p">)</span>
         <span class="n">button</span><span class="o">.</span><span class="n">tcbClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tcbClickedHandler</span><span class="p">)</span>
@@ -1344,7 +1347,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.removeTab">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeTab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;removeTab&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''removeTab'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">button</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">_popButton</span><span class="p">(</span><span class="n">index</span><span class="p">)):</span>
             <span class="k">return</span>
         <span class="n">button</span><span class="o">.</span><span class="n">tcbClicked</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -1362,7 +1365,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTabBar.tabButton">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.tabButton">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">tabButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTabButton</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;tabButton&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''tabButton'''</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -1371,7 +1374,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTabBar.tabData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.tabData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">tabData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;tabData&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''tabData'''</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -1380,28 +1383,28 @@ document.write(`
 <div class="viewcode-block" id="TTkTabBar.setTabData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.setTabData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setTabData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setTabData&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setTabData'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabButtons</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTabBar.tabsClosable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.tabsClosable">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">tabsClosable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;tabsClosable&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''tabsClosable'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabClosable</span></div>
 
 
 <div class="viewcode-block" id="TTkTabBar.setTabsClosable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.setTabsClosable">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setTabsClosable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">closable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setTabsClosable&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setTabsClosable'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabClosable</span> <span class="o">=</span> <span class="n">closable</span></div>
 
 
 <div class="viewcode-block" id="TTkTabBar.currentIndex">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.currentIndex">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">currentIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;currentIndex&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''currentIndex'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">currentIndex</span></div>
 
 
@@ -1409,7 +1412,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabBar.html#TermTk.TTkWidgets.TTkTabBar.setCurrentIndex">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setCurrentIndex&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setCurrentIndex'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">_setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
 
@@ -1475,22 +1478,22 @@ document.write(`
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Right</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">_highlightToTheRight</span><span class="p">()</span>
                 <span class="k">return</span> <span class="kc">True</span>
             <span class="k">elif</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Left</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">_andHighlightToTheLeft</span><span class="p">()</span>
                 <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="p">(</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Character</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s2">&quot; &quot;</span> <span class="p">)</span> <span class="ow">or</span> \
-           <span class="p">(</span> <span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span> <span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_Character</span><span class="p">)</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s2">" "</span> <span class="p">)</span> <span class="ow">or</span> \
+           <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">)</span> <span class="ow">and</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span> <span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">_selectHighlighted</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
-        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderColor&#39;</span><span class="p">]</span>
+        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderColor'</span><span class="p">]</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
         <span class="n">tt</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tab</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span> <span class="o">==</span> <span class="n">TTkBarType</span><span class="o">.</span><span class="n">DEFAULT_2</span><span class="p">:</span>
@@ -1502,12 +1505,12 @@ document.write(`
             <span class="n">rse</span> <span class="o">=</span> <span class="n">tt</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sideEnd</span> <span class="o">&amp;</span>  <span class="n">TTkK</span><span class="o">.</span><span class="n">RIGHT</span> <span class="k">else</span> <span class="n">tt</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">text</span><span class="o">=</span><span class="n">lse</span> <span class="o">+</span> <span class="n">tt</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">rse</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">barType</span> <span class="o">==</span> <span class="n">TTkBarType</span><span class="o">.</span><span class="n">NERD_1</span><span class="p">:</span>
-            <span class="c1"># glyphs = style[&#39;glyphs&#39;][&#39;border&#39;][self._tabStatus.barType]</span>
-            <span class="n">canvas</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;bgColor&#39;</span><span class="p">])</span></div>
+            <span class="c1"># glyphs = style['glyphs']['border'][self._tabStatus.barType]</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">style</span><span class="p">[</span><span class="s1">'bgColor'</span><span class="p">])</span></div>
 
-            <span class="c1"># canvas.drawText(pos=(0,0),color=borderColor,text=&quot;-x----------------------------------------&quot;)</span>
+            <span class="c1"># canvas.drawText(pos=(0,0),color=borderColor,text="-x----------------------------------------")</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 <span class="sd">           ┌────────────────────────────┐</span>
 <span class="sd">           │ Root Layout                │</span>
 <span class="sd">           │┌────────┬────────┬────────┐│</span>
@@ -1522,23 +1525,23 @@ document.write(`
 <span class="sd">                ┌[M1]┬[M2]┤◀│La│Label1║Label2║Label3│Label4│▶│</span>
 <span class="sd">                ╞════╧════╧═══════════╩══════╩═══════════════╡</span>
 <span class="sd">                 leftscroller                     rightScroller</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 
 <div class="viewcode-block" id="TTkTabWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTabWidget</span><span class="p">(</span><span class="n">TTkFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;TTkTabWidget&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''TTkTabWidget'''</span>
     <span class="n">classStyle</span> <span class="o">=</span> <span class="n">_tabStyle</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_tabStatus&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_tabBarTopLayout&#39;</span><span class="p">,</span> <span class="s1">&#39;_topLeftLayout&#39;</span><span class="p">,</span> <span class="s1">&#39;_topRightLayout&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_tabWidgets&#39;</span><span class="p">,</span> <span class="s1">&#39;_spacer&#39;</span><span class="p">,</span>
+        <span class="s1">'_tabStatus'</span><span class="p">,</span>
+        <span class="s1">'_tabBarTopLayout'</span><span class="p">,</span> <span class="s1">'_topLeftLayout'</span><span class="p">,</span> <span class="s1">'_topRightLayout'</span><span class="p">,</span>
+        <span class="s1">'_tabWidgets'</span><span class="p">,</span> <span class="s1">'_spacer'</span><span class="p">,</span>
         <span class="c1"># Forward Signals</span>
-        <span class="s1">&#39;currentChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;tabBarClicked&#39;</span><span class="p">,</span>
+        <span class="s1">'currentChanged'</span><span class="p">,</span> <span class="s1">'tabBarClicked'</span><span class="p">,</span>
         <span class="c1"># forward methods</span>
-        <span class="s1">&#39;tabsClosable&#39;</span><span class="p">,</span> <span class="s1">&#39;setTabsClosable&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tabData&#39;</span><span class="p">,</span> <span class="s1">&#39;setTabData&#39;</span><span class="p">,</span> <span class="s1">&#39;currentData&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;currentIndex&#39;</span><span class="p">,</span> <span class="s1">&#39;setCurrentIndex&#39;</span><span class="p">,</span> <span class="s1">&#39;tabCloseRequested&#39;</span><span class="p">)</span>
+        <span class="s1">'tabsClosable'</span><span class="p">,</span> <span class="s1">'setTabsClosable'</span><span class="p">,</span>
+        <span class="s1">'tabData'</span><span class="p">,</span> <span class="s1">'setTabData'</span><span class="p">,</span> <span class="s1">'currentData'</span><span class="p">,</span>
+        <span class="s1">'currentIndex'</span><span class="p">,</span> <span class="s1">'setCurrentIndex'</span><span class="p">,</span> <span class="s1">'tabCloseRequested'</span><span class="p">)</span>
 
     <span class="n">_tabWidgets</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]</span>
     <span class="n">_tabStatus</span><span class="p">:</span><span class="n">_TTkTabStatus</span>
@@ -1624,15 +1627,15 @@ document.write(`
 
 <div class="viewcode-block" id="TTkTabWidget.tabButton">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.tabButton">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">tabButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTabButton</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;tabButton&#39;&#39;&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tabButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTabButton</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">'''tabButton'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabBar</span><span class="o">.</span><span class="n">tabButton</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTabWidget.widget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.widget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''widget'''</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -1641,7 +1644,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTabWidget.currentWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.currentWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">currentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;currentWidget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''currentWidget'''</span>
         <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span>
                 <span class="k">return</span> <span class="n">w</span>
@@ -1652,7 +1655,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.setCurrentWidget">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span><span class="n">TTkWidget</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setCurrentWidget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setCurrentWidget'''</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="n">w</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
@@ -1733,23 +1736,23 @@ document.write(`
                 <span class="bp">self</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">tb</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">data</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">newIndex</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_tabChanged</span><span class="p">(</span><span class="n">newIndex</span><span class="p">)</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">_TTkNewTabWidgetDragData</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dropNewTab</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">_d</span><span class="p">,</span><span class="n">_TTkNewTabWidgetDragData</span><span class="p">)</span> <span class="k">for</span> <span class="n">_d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">_d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_dropNewTab</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">_d</span><span class="p">)</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Drop -&gt; pos=</span><span class="si">{</span><span class="n">evt</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="TTkTabWidget.addMenu">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.addMenu">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkMenuBarButton</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;addMenu&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''addMenu'''</span>
         <span class="n">button</span> <span class="o">=</span> <span class="n">_TTkTabMenuButton</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabBar</span><span class="o">.</span><span class="n">setSideEnd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabBar</span><span class="o">.</span><span class="n">sideEnd</span><span class="p">()</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">position</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">position</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
@@ -1770,7 +1773,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTabWidget.addTab">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.addTab">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addTab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">closable</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;addTab&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''addTab'''</span>
         <span class="n">widget</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
@@ -1780,7 +1783,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTabWidget.insertTab">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.insertTab">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertTab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">closable</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;insertTab&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''insertTab'''</span>
         <span class="n">widget</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">widget</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
@@ -1791,7 +1794,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTabWidget.html#TermTk.TTkWidgets.TTkTabWidget.removeTab">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeTab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;removeTab&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''removeTab'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabWidgets</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tabStatus</span><span class="o">.</span><span class="n">tabBar</span><span class="o">.</span><span class="n">removeTab</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
@@ -1802,7 +1805,7 @@ document.write(`
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">):</span>
         <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentStyle</span><span class="p">()</span>
-        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;borderColor&#39;</span><span class="p">]</span>
+        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'borderColor'</span><span class="p">]</span>
         <span class="n">tt</span> <span class="o">=</span> <span class="n">TTkCfg</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">tab</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">border</span><span class="p">():</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">drawBox</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">()</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>

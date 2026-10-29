@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkAbstractScrollViewGridLayout &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkAbstractScrollViewGridLayout &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -739,79 +742,79 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <td><p>Add the widgets to this <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>, this function uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">addItem()</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">columnMinWidth</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the minimum width used for empty columns.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSizes</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return cached horizontal and vertical slot sizes.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gridItems</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the internal 2D grid matrix of layout items.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gridSize</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return current allocated grid size as <code class="docutils literal notranslate"><span class="pre">(rows,</span> <span class="pre">cols)</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertColumn</span></code>(col)</p></td>
-<td><p></p></td>
+<td><p>Insert an empty column at <code class="docutils literal notranslate"><span class="pre">col</span></code> and shift items to the right.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertRow</span></code>(row)</p></td>
-<td><p></p></td>
+<td><p>Insert an empty row at <code class="docutils literal notranslate"><span class="pre">row</span></code> and shift items downward.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemAtPosition</span></code>(row, col)</p></td>
-<td><p></p></td>
+<td><p>Return the item occupying <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumColWidth</span></code>(gridCol)</p></td>
-<td><p></p></td>
+<td><p>Return the maximum width allowed for a column.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumHeight</span></code>()</p></td>
-<td><p>process the widgets and get the min size</p></td>
+<td><p>Return the layout maximum height from all grid rows.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumRowHeight</span></code>(gridRow)</p></td>
-<td><p></p></td>
+<td><p>Return the maximum height allowed for a row.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximumWidth</span></code>()</p></td>
-<td><p>process the widgets and get the min size</p></td>
+<td><p>Return the layout maximum width from all grid columns.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumColWidth</span></code>(gridCol)</p></td>
-<td><p></p></td>
+<td><p>Return the minimum width required for a column.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumHeight</span></code>()</p></td>
-<td><p>process the widgets and get the min size</p></td>
+<td><p>Return the layout minimum height from all grid rows.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumRowHeight</span></code>(gridRow)</p></td>
-<td><p></p></td>
+<td><p>Return the minimum height required for a row.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">minimumWidth</span></code>()</p></td>
-<td><p>process the widgets and get the min size</p></td>
+<td><p>Return the layout minimum width from all grid columns.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code>(item)</p></td>
-<td><p></p></td>
+<td><p>Remove a single layout item from the grid.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code>(items)</p></td>
-<td><p></p></td>
+<td><p>Remove multiple layout items and clear their grid cells.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidget</span></code>(widget)</p></td>
-<td><p>Remove a widget from this Layout</p></td>
+<td><p>Remove a single widget from the grid.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidgets</span></code>(widgets)</p></td>
-<td><p>Remove a list of widget from this Layout</p></td>
+<td><p>Remove multiple widgets from the grid.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">repack</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Remove empty rows/columns and compact item row/column indices.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceItem</span></code>(item, index)</p></td>
-<td><p></p></td>
+<td><p>Not implemented for grid layout indexed replacement.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowMinHeight</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the minimum height used for empty rows.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColumnMinWidth</span></code>(cmw)</p></td>
-<td><p></p></td>
+<td><p>Set the minimum width used for empty columns.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRowMinHeight</span></code>(rmh)</p></td>
-<td><p></p></td>
+<td><p>Set the minimum height used for empty rows.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
+<td><p>Recompute cell geometry and update child widgets/layouts.</p></td>
 </tr>
 </tbody>
 </table>
@@ -832,67 +835,70 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <td><p>Add the widgets to this <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>, this function uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">addItem()</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">children</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the list of direct child layout items.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Remove and detach all items from this layout.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the number of direct child layout items.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fullWidgetAreaGeometry</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the bounding geometry that encloses all child items.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertItem</span></code>(index, item)</p></td>
-<td><p></p></td>
+<td><p>Insert a single item at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertItems</span></code>(index, items)</p></td>
-<td><p></p></td>
+<td><p>Insert multiple items at <code class="docutils literal notranslate"><span class="pre">index</span></code> and re-parent them.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertWidget</span></code>(index, widget)</p></td>
-<td><p></p></td>
+<td><p>Insert a widget at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertWidgets</span></code>(index, widgets)</p></td>
-<td><p></p></td>
+<td><p>Insert widgets at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemAt</span></code>(index)</p></td>
-<td><p></p></td>
+<td><p>Return the item at <code class="docutils literal notranslate"><span class="pre">index</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> when out of range.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterWidgets</span></code>([onlyVisible, recurse, reverse])</p></td>
 <td><p>Iterate over all widgets in the layout.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerWidget</span></code>(widget)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutItemType</span></code>()</p></td>
+<td><p>Return <a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LayoutItemTypes.LayoutItem" title="TermTk.TTkCore.TTkK.LayoutItemTypes.LayoutItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TTkK.LayoutItemTypes.LayoutItem</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentWidget</span></code>()</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerWidget</span></code>(widget)</p></td>
+<td><p>Lower a widget (and its branch) to the bottom z-order.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseWidget</span></code>(widget)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentWidget</span></code>()</p></td>
+<td><p>Return the widget owning this layout branch.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code>(item)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseWidget</span></code>(widget)</p></td>
+<td><p>Raise a widget (and its branch) to the top z-order.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code>(items)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code>(item)</p></td>
+<td><p>Remove a single layout item from the grid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidget</span></code>(widget)</p></td>
-<td><p>Remove a widget from this Layout</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code>(items)</p></td>
+<td><p>Remove multiple layout items and clear their grid cells.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidgets</span></code>(widgets)</p></td>
-<td><p>Remove a list of widget from this Layout</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidget</span></code>(widget)</p></td>
+<td><p>Remove a single widget from the grid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceItem</span></code>(item, index)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidgets</span></code>(widgets)</p></td>
+<td><p>Remove multiple widgets from the grid.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, w, h)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceItem</span></code>(item, index)</p></td>
+<td><p>Not implemented for grid layout indexed replacement.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, w, h)</p></td>
 <td><p>Set the geometry and emit viewChanged signal</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
+<td><p>Set the parent layout item and propagate parent widget ownership.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>(*args, **kwargs)</p></td>
+<td><p>Recompute cell geometry and update child widgets/layouts.</p></td>
 </tr>
 </tbody>
 </table>
@@ -920,7 +926,7 @@ of <a class="reference internal" href="TermTk.TTkAbstract.TTkAbstractScrollView.
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">zSortedItems</span></code></p></td>
-<td><p></p></td>
+<td><p>Return child items sorted by z-order.</p></td>
 </tr>
 </tbody>
 </table>

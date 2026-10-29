@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.text_edit &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.text_edit &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,9 +533,9 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextEditView&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTextEditRuler&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkTextEditView'</span><span class="p">,</span> <span class="s1">'TTkTextEdit'</span><span class="p">,</span> <span class="s1">'TTkTextEditRuler'</span><span class="p">]</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">Optional</span><span class="p">,</span><span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeAlias</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkColor</span>
@@ -549,51 +552,45 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollarea</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollArea</span><span class="p">,</span> <span class="n">_ForwardData</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstractscrollview</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractScrollViewGridLayout</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeAlias</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="c1"># TODO: Remove this workaround for Python 3.9</span>
-    <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">type</span>  <span class="c1"># Fallback for Python &lt; 3.10 without typing_extensions</span>
-
 <div class="viewcode-block" id="TTkTextEdit">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTextEdit</span><span class="p">(</span><span class="n">TTkAbstractScrollArea</span><span class="p">):</span>
-    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+    <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="s1">    :py:class:`TTkTextEdit` is a container widget which place :py:class:`TTkTextEditView` in a scrolling area with on-demand scroll bars.</span>
 
-<span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="n">TTkTextEditView</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="s1">    '''</span> <span class="o">+</span> <span class="p">(</span><span class="n">TTkTextEditView</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s1">''</span><span class="p">)</span>
 
     <span class="n">ExtraSelection</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="n">TTkTextEditView</span><span class="o">.</span><span class="n">ExtraSelection</span>
 
     <span class="n">_ttk_forward</span><span class="p">:</span><span class="n">_ForwardData</span> <span class="o">=</span> <span class="n">_ForwardData</span><span class="p">(</span>
         <span class="n">forwardClass</span><span class="o">=</span><span class="n">TTkTextEditView</span> <span class="p">,</span>
-        <span class="n">instance</span><span class="o">=</span><span class="s2">&quot;self._textEditView&quot;</span><span class="p">,</span>
+        <span class="n">instance</span><span class="o">=</span><span class="s2">"self._textEditView"</span><span class="p">,</span>
         <span class="n">signals</span><span class="o">=</span><span class="p">[</span> <span class="c1"># Forwarded Signals From TTkTexteditView</span>
-            <span class="s1">&#39;currentColorChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;cursorPositionChanged&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;undoAvailable&#39;</span><span class="p">,</span> <span class="s1">&#39;redoAvailable&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;textChanged&#39;</span><span class="p">],</span>
+            <span class="s1">'currentColorChanged'</span><span class="p">,</span> <span class="s1">'cursorPositionChanged'</span><span class="p">,</span>
+            <span class="s1">'undoAvailable'</span><span class="p">,</span> <span class="s1">'redoAvailable'</span><span class="p">,</span>
+            <span class="s1">'textChanged'</span><span class="p">],</span>
         <span class="n">methods</span><span class="o">=</span><span class="p">[</span>
             <span class="c1"># Forwarded Methods From TTkTexteditView</span>
-            <span class="s2">&quot;clear&quot;</span><span class="p">,</span> <span class="s2">&quot;setText&quot;</span><span class="p">,</span> <span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="s2">&quot;isReadOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;setReadOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;document&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;wrapWidth&quot;</span><span class="p">,</span> <span class="s2">&quot;setWrapWidth&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;multiLine&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;lineWrapMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setLineWrapMode&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;wordWrapMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setWordWrapMode&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;textCursor&quot;</span><span class="p">,</span> <span class="s2">&quot;setFocus&quot;</span><span class="p">,</span> <span class="s2">&quot;setColor&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;extraSelections&quot;</span><span class="p">,</span> <span class="s2">&quot;setExtraSelections&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">,</span> <span class="s2">&quot;paste&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;undo&quot;</span><span class="p">,</span> <span class="s2">&quot;redo&quot;</span><span class="p">,</span> <span class="s2">&quot;isUndoAvailable&quot;</span><span class="p">,</span> <span class="s2">&quot;isRedoAvailable&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;find&quot;</span><span class="p">,</span> <span class="s2">&quot;ensureCursorVisible&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;followMode&quot;</span><span class="p">,</span> <span class="s2">&quot;setFollowMode&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;scrollTo&quot;</span><span class="p">,</span>
+            <span class="s2">"clear"</span><span class="p">,</span> <span class="s2">"setText"</span><span class="p">,</span> <span class="s2">"append"</span><span class="p">,</span> <span class="s2">"isReadOnly"</span><span class="p">,</span> <span class="s2">"setReadOnly"</span><span class="p">,</span> <span class="s2">"document"</span><span class="p">,</span>
+            <span class="s2">"wrapWidth"</span><span class="p">,</span> <span class="s2">"setWrapWidth"</span><span class="p">,</span>
+            <span class="s2">"multiLine"</span><span class="p">,</span>
+            <span class="s2">"lineWrapMode"</span><span class="p">,</span> <span class="s2">"setLineWrapMode"</span><span class="p">,</span>
+            <span class="s2">"wordWrapMode"</span><span class="p">,</span> <span class="s2">"setWordWrapMode"</span><span class="p">,</span>
+            <span class="s2">"textCursor"</span><span class="p">,</span> <span class="s2">"setFocus"</span><span class="p">,</span> <span class="s2">"setColor"</span><span class="p">,</span>
+            <span class="s2">"extraSelections"</span><span class="p">,</span> <span class="s2">"setExtraSelections"</span><span class="p">,</span>
+            <span class="s2">"cut"</span><span class="p">,</span> <span class="s2">"copy"</span><span class="p">,</span> <span class="s2">"paste"</span><span class="p">,</span>
+            <span class="s2">"undo"</span><span class="p">,</span> <span class="s2">"redo"</span><span class="p">,</span> <span class="s2">"isUndoAvailable"</span><span class="p">,</span> <span class="s2">"isRedoAvailable"</span><span class="p">,</span>
+            <span class="s2">"find"</span><span class="p">,</span> <span class="s2">"ensureCursorVisible"</span><span class="p">,</span>
+            <span class="s2">"followMode"</span><span class="p">,</span> <span class="s2">"setFollowMode"</span><span class="p">,</span>
+            <span class="s2">"scrollTo"</span><span class="p">,</span>
             <span class="c1"># Exported Methods</span>
-            <span class="s2">&quot;toAnsi&quot;</span><span class="p">,</span> <span class="s2">&quot;toRawText&quot;</span><span class="p">,</span> <span class="s2">&quot;toPlainText&quot;</span> <span class="c1"># , &quot;toHtml&quot;, &quot;toMarkdown&quot;,</span>
+            <span class="s2">"toAnsi"</span><span class="p">,</span> <span class="s2">"toRawText"</span><span class="p">,</span> <span class="s2">"toPlainText"</span> <span class="c1"># , "toHtml", "toMarkdown",</span>
             <span class="p">]</span>
         <span class="p">)</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_textEditView&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_lineNumberView&#39;</span><span class="p">,</span> <span class="s1">&#39;_lineNumber&#39;</span><span class="p">)</span>
+        <span class="s1">'_textEditView'</span><span class="p">,</span>
+        <span class="s1">'_lineNumberView'</span><span class="p">,</span> <span class="s1">'_lineNumber'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="c1"># TTkWidget init</span>
@@ -611,14 +608,14 @@ document.write(`
                  <span class="n">lineNumber</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">lineNumberStarting</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        :param textEditView: a custom TextEdit View to be used instead of the default one.</span>
 <span class="sd">        :type textEditView: :py:class:`TTkTextEditView`, optional</span>
 <span class="sd">        :param lineNumber: show the line number on the left side, defaults to False</span>
 <span class="sd">        :type lineNumber: bool, optional</span>
 <span class="sd">        :param lineNumberStarting: set the starting number of the left line number column, defaults to 0</span>
 <span class="sd">        :type lineNumberStarting: int, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="n">visible</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span> <span class="o">=</span> <span class="n">textEditView</span> <span class="k">if</span> <span class="n">textEditView</span> <span class="k">else</span> <span class="n">TTkTextEditView</span><span class="p">(</span><span class="n">readOnly</span><span class="o">=</span><span class="n">readOnly</span><span class="p">,</span> <span class="n">multiLine</span><span class="o">=</span><span class="n">multiLine</span><span class="p">,</span> <span class="n">document</span><span class="o">=</span><span class="n">document</span><span class="p">,</span> <span class="n">followMode</span><span class="o">=</span><span class="n">followMode</span><span class="p">)</span>
         <span class="c1"># self.setFocusPolicy(self._textEditView.focusPolicy())</span>
@@ -636,21 +633,21 @@ document.write(`
 <div class="viewcode-block" id="TTkTextEdit.ruler">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ruler">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">ruler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextEditRuler</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;ruler&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''ruler'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEdit.textEditView">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textEditView">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">textEditView</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;textEditView&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''textEditView'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEdit.getLineNumber">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.getLineNumber">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;getLineNumber&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''getLineNumber'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span></div>
 
 
@@ -658,14 +655,14 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumber">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setLineNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ln</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumber&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setLineNumber'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="n">ln</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTextEdit.lineNumberStarting">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineNumberStarting">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">lineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;lineNumberStarting&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''lineNumberStarting'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span></div>
 
 
@@ -673,7 +670,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineNumberStarting">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setLineNumberStarting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starting</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setLineNumberStarting&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setLineNumberStarting'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_startingNumber</span> <span class="o">=</span> <span class="n">starting</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">_wrapChanged</span><span class="p">()</span></div>
 
@@ -681,7 +678,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTextEdit.setDocument">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setDocument">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;setDocument&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''setDocument'''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setDocument</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lineNumberView</span><span class="o">.</span><span class="n">setTextWrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">_textWrap</span><span class="p">)</span></div>
 
@@ -689,7 +686,7 @@ document.write(`
     <span class="c1">#--FORWARD-AUTOGEN-START--#</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">currentColorChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.currentColorChanged`</span>
 
 <span class="sd">        This signal is emitted if the current character color has changed,</span>
@@ -697,22 +694,22 @@ document.write(`
 <span class="sd">        </span>
 <span class="sd">        :param color: the new color</span>
 <span class="sd">        :type color: :py:class:`TTkColor`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">currentColorChanged</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cursorPositionChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.cursorPositionChanged`</span>
 
 <span class="sd">        This signal is emitted whenever the position of the cursor changed.</span>
 <span class="sd">        </span>
 <span class="sd">        :param cursor: the cursor changed.</span>
 <span class="sd">        :type cursor: :py:class:`TTkTextCursor`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cursorPositionChanged</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">undoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.undoAvailable`</span>
 
 <span class="sd">        This signal is emitted whenever undo operations become available (available is true)</span>
@@ -720,11 +717,11 @@ document.write(`
 <span class="sd">        </span>
 <span class="sd">        :param available: the availability of undo</span>
 <span class="sd">        :type available: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undoAvailable</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">redoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.redoAvailable`</span>
 
 <span class="sd">        This signal is emitted whenever redo operations become available (available is true)</span>
@@ -732,21 +729,21 @@ document.write(`
 <span class="sd">        </span>
 <span class="sd">        :param available: the availability of redo</span>
 <span class="sd">        :type available: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redoAvailable</span>
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">textChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyTTkSignal</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.textChanged`</span>
 
-<span class="sd">        This signal is emitted whenever the document&#39;s content changes;</span>
+<span class="sd">        This signal is emitted whenever the document's content changes;</span>
 <span class="sd">        for example, when text is inserted or deleted, or when formatting is applied.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textChanged</span>
 <div class="viewcode-block" id="TTkTextEdit.clear">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.clear">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.clear`</span>
 
 <span class="sd">        Deletes all the text in the text edit.</span>
@@ -754,30 +751,30 @@ document.write(`
 <span class="sd">        .. note::</span>
 
 <span class="sd">            The undo/redo history is also cleared.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setText">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkStringType</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setText`</span>
 
-<span class="sd">        Sets the text edit&#39;s text.</span>
+<span class="sd">        Sets the text edit's text.</span>
 <span class="sd">        The text can be plain text or :py:class:`TTkString` and the text edit will</span>
 <span class="sd">        try to guess the right format.</span>
 
 <span class="sd">        :param text: the text</span>
 <span class="sd">        :type text: str or :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.append">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.append">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkStringType</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.append`</span>
 
 <span class="sd">        Appends a new paragraph with text to the end of the text edit.</span>
@@ -785,29 +782,29 @@ document.write(`
 
 <span class="sd">        :param text: the text</span>
 <span class="sd">        :type text: str or :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.isReadOnly">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isReadOnly">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isReadOnly`</span>
 
 <span class="sd">        This property holds whether the text edit is read-only</span>
 
 <span class="sd">        In a read-only text edit the user can only navigate through the text and select text; modifying the text is not possible.</span>
 
-<span class="sd">        This property&#39;s default is false.</span>
+<span class="sd">        This property's default is false.</span>
 
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isReadOnly</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setReadOnly">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setReadOnly">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setReadOnly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ro</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setReadOnly`</span>
 
 <span class="sd">        This property holds whether the text edit is read-only</span>
@@ -816,63 +813,63 @@ document.write(`
 
 <span class="sd">        :param ro: the readonly status</span>
 <span class="sd">        :type ro: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="n">ro</span><span class="o">=</span><span class="n">ro</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.document">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.document">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">document</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextDocument</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.document`</span>
 
 <span class="sd">        This property holds the underlying document of the text editor.</span>
 
 <span class="sd">        :rtype: :py:class:`TTkTextDocument`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">document</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.wrapWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wrapWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">wrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.wrapWidth`</span>
 
 <span class="sd">        Return the current wrap width in terminal cells.</span>
 
 <span class="sd">        :return: wrap width.</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wrapWidth</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setWrapWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWrapWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setWrapWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setWrapWidth`</span>
 
 <span class="sd">        Set wrap width and trigger a full rewrap.</span>
 
 <span class="sd">        :param width: target width in terminal cells.</span>
 <span class="sd">        :type width: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWrapWidth</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.multiLine">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.multiLine">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">multiLine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.multiLine`</span>
 
 <span class="sd">        This property define if the text edit area will use a single line, like in the line-edit or it allows multilines like a normal text edit area.</span>
 
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">multiLine</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.lineWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.lineWrapMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">lineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.lineWrapMode`</span>
 
 <span class="sd">        This property holds the line wrap mode</span>
@@ -880,13 +877,13 @@ document.write(`
 <span class="sd">        The default mode is :py:class:`TTkK.LineWrapMode.NoWrap`.</span>
 
 <span class="sd">        :rtype: :py:class:`TTkK.LineWrapMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">lineWrapMode</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setLineWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setLineWrapMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setLineWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">LineWrapMode</span><span class="p">,</span> <span class="n">wrapEngine</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WrapEngine</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WrapEngine</span><span class="o">.</span><span class="n">FullWrap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setLineWrapMode`</span>
 
 <span class="sd">        Set the wrapping method</span>
@@ -895,85 +892,85 @@ document.write(`
 <span class="sd">        :type mode: :py:class:`TTkK.LineWrapMode`</span>
 <span class="sd">        :param wrapEngine: the wrap engine used when wrapping is enabled</span>
 <span class="sd">        :type wrapEngine: :py:class:`TTkK.WrapEngine`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setLineWrapMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">wrapEngine</span><span class="o">=</span><span class="n">wrapEngine</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.wordWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.wordWrapMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">wordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WrapMode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.wordWrapMode`</span>
 
 <span class="sd">        Return the active word-wrap mode.</span>
 
 <span class="sd">        :return: current wrap mode.</span>
 <span class="sd">        :rtype: :py:class:`TTkK.WrapMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">wordWrapMode</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setWordWrapMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setWordWrapMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setWordWrapMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">WrapMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setWordWrapMode`</span>
 
 <span class="sd">        Set the word-wrap mode and invalidate cached wrapping.</span>
 
 <span class="sd">        :param mode: new wrap mode.</span>
 <span class="sd">        :type mode: :py:class:`TTkK.WrapMode`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setWordWrapMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.textCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.textCursor">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">textCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTextCursor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.textCursor`</span>
 
 <span class="sd">        This property holds the underlying text cursor.</span>
 
 <span class="sd">        :rtype: :py:class:`TTkTextCursor`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">textCursor</span><span class="p">()</span></div>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setFocus`</span>
 
 <span class="sd">        Focus the widget</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
 <div class="viewcode-block" id="TTkTextEdit.setColor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setColor">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkColor</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setColor`</span>
 
 <span class="sd">        Change the color used by the cursor to input new text or change the color of the selection</span>
 
 <span class="sd">        :param color: the color to be used</span>
 <span class="sd">        :type color: :py:class:`TTkColor`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.extraSelections">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.extraSelections">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">extraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.extraSelections`</span>
 
 <span class="sd">        Returns previously set extra selections.</span>
 
 <span class="sd">        :rtype: List[:py:class:`ExtraSelection`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">extraSelections</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setExtraSelections">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setExtraSelections">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setExtraSelections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extraSelections</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">ExtraSelection</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setExtraSelections`</span>
 
 <span class="sd">        This function allows temporarily marking certain regions in the document with a given color,</span>
@@ -982,105 +979,105 @@ document.write(`
 
 <span class="sd">        :param extraSelections: the list of extra selections.</span>
 <span class="sd">        :type extraSelections: List[:py:class:`ExtraSelection`]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setExtraSelections</span><span class="p">(</span><span class="n">extraSelections</span><span class="o">=</span><span class="n">extraSelections</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.cut">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.cut">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.cut`</span>
 
 <span class="sd">        Copies the selected text to the clipboard and deletes it from the text edit.</span>
 
 <span class="sd">        If there is no selected text nothing happens.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.copy">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.copy">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.copy`</span>
 
 <span class="sd">        Copies any selected text to the clipboard.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.paste">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.paste">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.paste`</span>
 
 <span class="sd">        Pastes the text from the clipboard into the text edit at the current cursor position.</span>
 
 <span class="sd">        If there is no text in the clipboard nothing happens.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">paste</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.undo">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.undo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">undo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.undo`</span>
 
 <span class="sd">        Undoes the last operation.</span>
 
 <span class="sd">        If there is no operation to undo,</span>
 <span class="sd">        i.e. there is no undo step in the undo/redo history, nothing happens.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.redo">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.redo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">redo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.redo`</span>
 
 <span class="sd">        Redoes the last operation.</span>
 
 <span class="sd">        If there is no operation to redo,</span>
 <span class="sd">        i.e. there is no redo step in the undo/redo history, nothing happens.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.isUndoAvailable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isUndoAvailable">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isUndoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isUndoAvailable`</span>
 
 <span class="sd">        This property holds whether undo is available.</span>
 
 <span class="sd">        :return: the undo available status</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isUndoAvailable</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.isRedoAvailable">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.isRedoAvailable">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isRedoAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.isRedoAvailable`</span>
 
 <span class="sd">        This property holds whether redo is available.</span>
 
 <span class="sd">        :return: the redo available status</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">isRedoAvailable</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.find">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.find">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkStringType</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.find`</span>
 
 <span class="sd">        Search for text in the document and place the cursor at the beginning of the first match.</span>
@@ -1090,50 +1087,50 @@ document.write(`
 
 <span class="sd">        :return: ``True`` if the operation is successful, ``False`` otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">exp</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.ensureCursorVisible">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.ensureCursorVisible">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ensureCursorVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.ensureCursorVisible`</span>
 
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">ensureCursorVisible</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.followMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.followMode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">followMode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.followMode`</span>
 
 <span class="sd">        This property holds the auto-scroll follow mode of the view.</span>
 
 <span class="sd">        :rtype: :py:class:`TTkK.TextEditFollow`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">followMode</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.setFollowMode">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.setFollowMode">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setFollowMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditFollow</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.setFollowMode`</span>
 
 <span class="sd">        Set the auto-scroll follow mode.</span>
 
 <span class="sd">        :param mode: the follow mode</span>
 <span class="sd">        :type mode: :py:class:`TTkK.TextEditFollow`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">setFollowMode</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.scrollTo">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.scrollTo">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">scrollTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">TextEditEdge</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.scrollTo`</span>
 
 <span class="sd">        Scrolls the view to the specified edge(s) of the text document.</span>
@@ -1143,13 +1140,13 @@ document.write(`
 
 <span class="sd">        :param position: the edge(s) to scroll to</span>
 <span class="sd">        :type position: :py:class:`TTkK.TextEditEdge`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.toAnsi">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toAnsi">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toAnsi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toAnsi`</span>
 
 <span class="sd">        Returns the text of the text edit as ANSI text string.</span>
@@ -1157,31 +1154,31 @@ document.write(`
 <span class="sd">        This string will include the ANSI escape codes for color and text formatting.</span>
 
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toAnsi</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.toRawText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toRawText">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toRawText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toRawText`</span>
 
 <span class="sd">        Return :py:class:`TTkString` representing the document</span>
 
 <span class="sd">        :rtype: :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkTextEdit.toPlainText">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkTextEdit.html#TermTk.TTkWidgets.TTkTextEdit.toPlainText">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toPlainText</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. seealso:: this method is forwarded to :py:meth:`TTkTextEditView.toPlainText`</span>
 
 <span class="sd">        Returns the text of the text edit as plain text string.</span>
 
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_textEditView</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">()</span></div>
 </div>
 

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkCore.propertyanimation &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkCore.propertyanimation &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2023 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,11 +533,12 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkPropertyAnimation&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkEasingCurve&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkPropertyAnimation'</span><span class="p">,</span> <span class="s1">'TTkEasingCurve'</span><span class="p">]</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">inspect</span><span class="w"> </span><span class="kn">import</span> <span class="n">getfullargspec</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_type_hints</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLog</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
@@ -588,7 +592,7 @@ document.write(`
     <span class="c1"># TCBSpline    = 46</span>
     <span class="c1"># Custom       = 47</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_easingFunc&#39;</span><span class="p">,)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_easingFunc'</span><span class="p">,)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">easingCurve</span><span class="o">=</span><span class="n">Linear</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_easingFunc</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">Linear</span>    <span class="p">:</span> <span class="n">TTkEasingCurve</span><span class="o">.</span><span class="n">_ecLinear</span><span class="p">,</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">InQuad</span>       <span class="p">:</span> <span class="n">TTkEasingCurve</span><span class="o">.</span><span class="n">_ecInQuad</span><span class="p">,</span>
@@ -819,11 +823,11 @@ document.write(`
 <div class="viewcode-block" id="TTkPropertyAnimation">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkPropertyAnimation.html#TermTk.TTkCore.TTkPropertyAnimation">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkPropertyAnimation</span><span class="p">():</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_target&#39;</span><span class="p">,</span> <span class="s1">&#39;_propertyName&#39;</span><span class="p">,</span> <span class="s1">&#39;_parent&#39;</span><span class="p">,</span> <span class="s1">&#39;_cb&#39;</span><span class="p">,</span> <span class="s1">&#39;_cast&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;_duration&#39;</span><span class="p">,</span> <span class="s1">&#39;_startValue&#39;</span><span class="p">,</span> <span class="s1">&#39;_endValue&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;_easingCurve&#39;</span><span class="p">,</span> <span class="s1">&#39;_baseTime&#39;</span><span class="p">,</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_target'</span><span class="p">,</span> <span class="s1">'_propertyName'</span><span class="p">,</span> <span class="s1">'_parent'</span><span class="p">,</span> <span class="s1">'_cb'</span><span class="p">,</span> <span class="s1">'_cast'</span><span class="p">,</span>
+                 <span class="s1">'_duration'</span><span class="p">,</span> <span class="s1">'_startValue'</span><span class="p">,</span> <span class="s1">'_endValue'</span><span class="p">,</span>
+                 <span class="s1">'_easingCurve'</span><span class="p">,</span> <span class="s1">'_baseTime'</span><span class="p">,</span>
                  <span class="c1"># Signals</span>
-                 <span class="s1">&#39;finished&#39;</span><span class="p">)</span>
+                 <span class="s1">'finished'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">propertyName</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">finished</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_target</span> <span class="o">=</span> <span class="n">target</span>
@@ -842,12 +846,19 @@ document.write(`
 
         <span class="k">def</span><span class="w"> </span><span class="nf">_cast</span><span class="p">():</span>
             <span class="n">_spec</span> <span class="o">=</span> <span class="n">getfullargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">,</span> <span class="n">LambdaType</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;&lt;lambda&gt;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">,</span> <span class="n">LambdaType</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"&lt;lambda&gt;"</span><span class="p">:</span>
                 <span class="n">_args</span> <span class="o">=</span> <span class="n">_spec</span><span class="o">.</span><span class="n">args</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">_args</span> <span class="o">=</span> <span class="n">_spec</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">,</span> <span class="s1">&#39;__self__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">_spec</span><span class="o">.</span><span class="n">args</span>
+                <span class="n">_args</span> <span class="o">=</span> <span class="n">_spec</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">,</span> <span class="s1">'__self__'</span><span class="p">)</span> <span class="k">else</span> <span class="n">_spec</span><span class="o">.</span><span class="n">args</span>
+            <span class="c1"># "from __future__ import annotations" (PEP 563) keeps the annotations</span>
+            <span class="c1"># as strings, those must be resolved before being used as a cast.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_annotations</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">_annotations</span> <span class="o">=</span> <span class="n">_spec</span><span class="o">.</span><span class="n">annotations</span>
+            <span class="n">_annotations</span> <span class="o">=</span> <span class="p">{</span><span class="n">_a</span><span class="p">:</span><span class="n">_t</span> <span class="k">for</span> <span class="n">_a</span><span class="p">,</span><span class="n">_t</span> <span class="ow">in</span> <span class="n">_annotations</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">_t</span><span class="p">)}</span>
             <span class="n">_castList</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">_spec</span><span class="o">.</span><span class="n">annotations</span><span class="p">[</span><span class="n">a</span><span class="p">](</span><span class="n">x</span><span class="p">))</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">_spec</span><span class="o">.</span><span class="n">annotations</span> <span class="k">else</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">_args</span><span class="p">]</span>
+                <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">_t</span><span class="o">=</span><span class="n">_annotations</span><span class="p">[</span><span class="n">a</span><span class="p">]:</span><span class="n">_t</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">_annotations</span> <span class="k">else</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">_args</span><span class="p">]</span>
             <span class="k">def</span><span class="w"> </span><span class="nf">_ret</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
                 <span class="k">return</span> <span class="p">[</span><span class="n">c</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">_castList</span><span class="p">,</span> <span class="n">args</span><span class="p">)]</span>
             <span class="k">return</span> <span class="n">_ret</span>
@@ -881,7 +892,7 @@ document.write(`
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_refreshAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">diff</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_baseTime</span>
-        <span class="c1"># TTkLog.info(f&quot;diff: {diff}&quot;)</span>
+        <span class="c1"># TTkLog.info(f"diff: {diff}")</span>
         <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_duration</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">_rootWidget</span><span class="o">.</span><span class="n">paintExecuted</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_refreshAnimation</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_endValue</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="nb">tuple</span><span class="p">):</span>

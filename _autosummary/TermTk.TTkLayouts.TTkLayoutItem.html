@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkLayoutItem &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkLayoutItem &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -596,18 +599,16 @@ document.write(`
 <h1>TTkLayoutItem<a class="headerlink" href="#ttklayoutitem" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkLayoutItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layoutItemType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LayoutItemTypes" title="TermTk.TTkCore.constant.TTkConstant.LayoutItemTypes"><span class="pre">LayoutItemTypes</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxWidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxHeight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minWidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minHeight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkLayoutItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxWidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxHeight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minWidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minHeight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><a class="reference internal" href="#TermTk.TTkLayouts.TTkLayoutItem" title="TermTk.TTkLayouts.TTkLayoutItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayoutItem</span></code></a> is the base class of layout Items inherited by <a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout" title="TermTk.TTkLayouts.TTkLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayout</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidgetItem</span></code>, and all the derived layout managers.</p>
+<p><a class="reference internal" href="#TermTk.TTkLayouts.TTkLayoutItem" title="TermTk.TTkLayouts.TTkLayoutItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayoutItem</span></code></a> is the base class of layout Items inherited by <a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout" title="TermTk.TTkLayouts.TTkLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayout</span></code></a>, <a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html#TermTk.TTkLayouts.TTkWidgetItem" title="TermTk.TTkLayouts.TTkWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidgetItem</span></code></a>, and all the derived layout managers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> (<em>int</em>) – (used only in the <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>), the row of the grid,   optional, defaults to None</p></li>
-<li><p><strong>col</strong> (<em>int</em>) – (used only in the <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>), the col of the grid,   optional, defaults to None</p></li>
+<li><p><strong>row</strong> (<em>int</em>) – (used only in the <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>), the row of the grid,   optional, defaults to 0</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – (used only in the <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>), the col of the grid,   optional, defaults to 0</p></li>
 <li><p><strong>rowspan</strong> (<em>int</em>) – (used only in the <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>), the rows used by this, optional, defaults to 1</p></li>
 <li><p><strong>colspan</strong> (<em>int</em>) – (used only in the <a class="reference internal" href="TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>), the cols used by this, optional, defaults to 1</p></li>
-<li><p><strong>layoutItemType</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.LayoutItemTypes" title="TermTk.TTkCore.TTkConstant.LayoutItemTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.LayoutItemTypes</span></code></a>) – The Type of this class, optional, defaults to TTkK.NONE</p></li>
-<li><p><strong>alignment</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.Alignment" title="TermTk.TTkCore.TTkConstant.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.Alignment</span></code></a>) – The alignment of this item in the layout (not yet used)</p></li>
 </ul>
 </dd>
 </dl>
@@ -615,118 +616,239 @@ document.write(`
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.geometry">
-<span class="sig-name descname"><span class="pre">geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.geometry" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.geometry" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the item geometry as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">width,</span> <span class="pre">height)</span></code>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.layer">
-<span class="sig-name descname"><span class="pre">layer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.layer" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">layer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.layer" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the current layer flag.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.layoutItemType">
-<span class="sig-name descname"><span class="pre">layoutItemType</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.layoutItemType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.layoutItemType" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">layoutItemType</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LayoutItemTypes" title="TermTk.TTkCore.constant.TTkConstant.LayoutItemTypes"><span class="pre">LayoutItemTypes</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.layoutItemType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.layoutItemType" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the layout item type.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.50.0: </span>Prefer using <code class="docutils literal notranslate"><span class="pre">isinstance(item,</span> <span class="pre">TTkLayout)</span></code> or
+<code class="docutils literal notranslate"><span class="pre">isinstance(item,</span> <span class="pre">TTkWidgetItem)</span></code> for type checks.</p>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.maxDimension">
-<span class="sig-name descname"><span class="pre">maxDimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.maxDimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maxDimension" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">maxDimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.maxDimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maxDimension" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return maximum size along an orientation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>o</strong> (<em>int</em>) – orientation constant</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>maximum size for the requested orientation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.maximumHeight">
-<span class="sig-name descname"><span class="pre">maximumHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.maximumHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">maximumHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.maximumHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumHeight" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the maximum allowed height.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.maximumHeightSpan">
-<span class="sig-name descname"><span class="pre">maximumHeightSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.maximumHeightSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumHeightSpan" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">maximumHeightSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.maximumHeightSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumHeightSpan" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the maximum height contribution for a grid row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – row index being queried</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>maximum height for this row slice</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.maximumSize">
-<span class="sig-name descname"><span class="pre">maximumSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.maximumSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">maximumSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.maximumSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumSize" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the maximum size as <code class="docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.maximumWidth">
-<span class="sig-name descname"><span class="pre">maximumWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.maximumWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">maximumWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.maximumWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumWidth" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the maximum allowed width.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.maximumWidthSpan">
-<span class="sig-name descname"><span class="pre">maximumWidthSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.maximumWidthSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumWidthSpan" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">maximumWidthSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.maximumWidthSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.maximumWidthSpan" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the maximum width contribution for a grid column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – column index being queried</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>maximum width for this column slice</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.minDimension">
-<span class="sig-name descname"><span class="pre">minDimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.minDimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minDimension" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">minDimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.minDimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minDimension" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return minimum size along an orientation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>o</strong> (<em>int</em>) – orientation constant</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>minimum size for the requested orientation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.minimumHeight">
-<span class="sig-name descname"><span class="pre">minimumHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.minimumHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">minimumHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.minimumHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumHeight" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the minimum allowed height.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.minimumHeightSpan">
-<span class="sig-name descname"><span class="pre">minimumHeightSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.minimumHeightSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumHeightSpan" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">minimumHeightSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.minimumHeightSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumHeightSpan" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the minimum height contribution for a grid row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – row index being queried</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>minimum height for this row slice</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.minimumSize">
-<span class="sig-name descname"><span class="pre">minimumSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.minimumSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">minimumSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.minimumSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumSize" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the minimum size as <code class="docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.minimumWidth">
-<span class="sig-name descname"><span class="pre">minimumWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.minimumWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">minimumWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.minimumWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumWidth" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the minimum allowed width.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.minimumWidthSpan">
-<span class="sig-name descname"><span class="pre">minimumWidthSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.minimumWidthSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumWidthSpan" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">minimumWidthSpan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.minimumWidthSpan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.minimumWidthSpan" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the minimum width contribution for a grid column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – column index being queried</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>minimum width for this column slice</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.offset">
-<span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.offset" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.offset" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the item offset as <code class="docutils literal notranslate"><span class="pre">(xOffset,</span> <span class="pre">yOffset)</span></code>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.parent">
-<span class="sig-name descname"><span class="pre">parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.parent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.parent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkLayouts.TTkLayoutItem" title="TermTk.TTkLayouts.layoutitem.TTkLayoutItem"><span class="pre">TTkLayoutItem</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.parent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.parent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the parent layout item/container.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.pos">
-<span class="sig-name descname"><span class="pre">pos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.pos" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">pos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.pos" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the item position as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.setGeometry">
-<span class="sig-name descname"><span class="pre">setGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.setGeometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setGeometry" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.setGeometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setGeometry" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Set item geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – horizontal position</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – vertical position</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – width</p></li>
+<li><p><strong>h</strong> (<em>int</em>) – height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.setLayer">
-<span class="sig-name descname"><span class="pre">setLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.setLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setLayer" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.setLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setLayer" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Set the layer and update the packed z-order layer bits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>layer</strong> (<em>int</em>) – one of the <code class="docutils literal notranslate"><span class="pre">TTkLayoutItem.LAYER*</span></code> constants</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.setOffset">
-<span class="sig-name descname"><span class="pre">setOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.setOffset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setOffset" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.setOffset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setOffset" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Set the item offset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – horizontal offset</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – vertical offset</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.setParent">
-<span class="sig-name descname"><span class="pre">setParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.setParent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setParent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#TermTk.TTkLayouts.TTkLayoutItem" title="TermTk.TTkLayouts.layoutitem.TTkLayoutItem"><span class="pre">TTkLayoutItem</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.setParent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.setParent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Set the parent layout item/container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>object</em>) – parent object in the layout hierarchy</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkLayoutItem.size">
-<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layout.html#TTkLayoutItem.size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.size" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/layoutitem.html#TTkLayoutItem.size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkLayoutItem.size" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Return the item size as <code class="docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code>.</p>
+</dd></dl>
 
 </section>
 </dd></dl>

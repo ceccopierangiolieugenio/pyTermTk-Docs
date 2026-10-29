@@ -17,5 +17,6 @@
       TTkLayout
       TTkLayoutItem
       TTkVBoxLayout
+      TTkWidgetItem
    
 

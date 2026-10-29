@@ -99,6 +99,7 @@ TTkVBoxLayout
       insertWidgets
       itemAt
       iterWidgets
+      layoutItemType
       lowerWidget
       parentWidget
       raiseWidget

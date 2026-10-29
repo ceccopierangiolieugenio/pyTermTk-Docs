@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkCore.constant &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkCore.constant &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -532,14 +535,14 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkConstant&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkK&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkConstant'</span><span class="p">,</span> <span class="s1">'TTkK'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">IntEnum</span><span class="p">,</span> <span class="n">Flag</span><span class="p">,</span> <span class="n">IntFlag</span><span class="p">,</span> <span class="n">auto</span>
 
 <div class="viewcode-block" id="TTkConstant">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkConstant</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Class container of all the constants used in :mod:`~TermTk`&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''Class container of all the constants used in :mod:`~TermTk`'''</span>
 
     <span class="n">NONE</span> <span class="o">=</span> <span class="mh">0x0000</span>
 
@@ -551,7 +554,7 @@ document.write(`
 
     <span class="c1"># Color Type</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">ColorType</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This Class type defines the various elements included in :py:class:`TTkColor`.</span>
 
 <span class="sd">        .. autosummary::</span>
@@ -560,20 +563,20 @@ document.write(`
 <span class="sd">          Modifier</span>
 <span class="sd">          Link</span>
 <span class="sd">          ColorModifier</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">Foreground</span>    <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The :py:class:`TTkColor` has a foreground color defined&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The :py:class:`TTkColor` has a foreground color defined'''</span>
         <span class="n">Background</span>    <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The :py:class:`TTkColor` has a background color defined&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The :py:class:`TTkColor` has a background color defined'''</span>
         <span class="n">Modifier</span>      <span class="o">=</span> <span class="mh">0x04</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The :py:class:`TTkColor` include one or more of **BOLD**, **ITALIC**, **UNDERLINE**, **STRIKETROUGH**, **BLINKING**&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The :py:class:`TTkColor` include one or more of **BOLD**, **ITALIC**, **UNDERLINE**, **STRIKETROUGH**, **BLINKING**'''</span>
         <span class="n">Link</span>          <span class="o">=</span> <span class="mh">0x08</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The :py:class:`TTkColor` include an hyperlink&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The :py:class:`TTkColor` include an hyperlink'''</span>
         <span class="n">ColorModifier</span> <span class="o">=</span> <span class="mh">0x08</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The :py:class:`TTkColor` include a color modifier based on :py:class:`TTkColorModifier`&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The :py:class:`TTkColor` include a color modifier based on :py:class:`TTkColorModifier`'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">FocusPolicy</span><span class="p">(</span><span class="n">Flag</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This Class type defines the various policies a widget</span>
 <span class="sd">        can have with respect to acquiring keyboard focus.</span>
 
@@ -583,19 +586,19 @@ document.write(`
 <span class="sd">          WheelFocus</span>
 <span class="sd">          TabFocus</span>
 <span class="sd">          ParentFocus</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoFocus</span>     <span class="o">=</span> <span class="mh">0x0000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The widget does not accept focus.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The widget does not accept focus.'''</span>
         <span class="n">ClickFocus</span>  <span class="o">=</span> <span class="mh">0x0001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The widget accepts focus by clicking.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The widget accepts focus by clicking.'''</span>
         <span class="n">WheelFocus</span>  <span class="o">=</span> <span class="mh">0x0002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The widget accepts focus by using the mouse wheel.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The widget accepts focus by using the mouse wheel.'''</span>
         <span class="n">TabFocus</span>    <span class="o">=</span> <span class="mh">0x0004</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The widget accepts focus by tabbing.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The widget accepts focus by tabbing.'''</span>
         <span class="n">ParentFocus</span> <span class="o">=</span> <span class="mh">0x0101</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The parent widget forward the focus to this widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The parent widget forward the focus to this widget'''</span>
         <span class="n">StrongFocus</span>	<span class="o">=</span> <span class="n">TabFocus</span> <span class="o">|</span> <span class="n">ClickFocus</span> <span class="o">|</span> <span class="mh">0x8</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;the widget accepts focus by both tabbing and clicking.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''the widget accepts focus by both tabbing and clicking.'''</span>
 
     <span class="n">NoFocus</span>     <span class="o">=</span> <span class="n">FocusPolicy</span><span class="o">.</span><span class="n">NoFocus</span>
     <span class="n">ClickFocus</span>  <span class="o">=</span> <span class="n">FocusPolicy</span><span class="o">.</span><span class="n">ClickFocus</span>
@@ -615,7 +618,7 @@ document.write(`
     <span class="n">FOOTER</span> <span class="o">=</span> <span class="mh">0x0040</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">TextEditEdge</span><span class="p">(</span><span class="n">IntFlag</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;This class type defines the edges of a text editor for scrolling operations.</span>
+<span class="w">        </span><span class="sd">'''This class type defines the edges of a text editor for scrolling operations.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NONE</span>
@@ -623,53 +626,53 @@ document.write(`
 <span class="sd">          BOTTOM</span>
 <span class="sd">          RIGHT</span>
 <span class="sd">          LEFT</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NONE</span> <span class="o">=</span> <span class="mh">0x0000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;No edge specified.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''No edge specified.'''</span>
         <span class="n">TOP</span> <span class="o">=</span> <span class="mh">0x0001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The top edge of the text editor.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The top edge of the text editor.'''</span>
         <span class="n">BOTTOM</span> <span class="o">=</span> <span class="mh">0x0002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The bottom edge of the text editor.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The bottom edge of the text editor.'''</span>
         <span class="n">RIGHT</span> <span class="o">=</span> <span class="mh">0x0004</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The right edge of the text editor.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The right edge of the text editor.'''</span>
         <span class="n">LEFT</span> <span class="o">=</span> <span class="mh">0x0008</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The left edge of the text editor.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The left edge of the text editor.'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">TextEditFollow</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;This class type defines the auto-scroll follow mode of a text editor.</span>
+<span class="w">        </span><span class="sd">'''This class type defines the auto-scroll follow mode of a text editor.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NEVER</span>
 <span class="sd">          ALWAYS</span>
 <span class="sd">          SMART</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NEVER</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Never auto-scroll; the view stays where the user left it.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Never auto-scroll; the view stays where the user left it.'''</span>
         <span class="n">ALWAYS</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Always scroll to the bottom whenever the document changes.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Always scroll to the bottom whenever the document changes.'''</span>
         <span class="n">SMART</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Scroll to the bottom only when the view is already at the bottom,</span>
-<span class="sd">        allowing the user to scroll back and read without being interrupted.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Scroll to the bottom only when the view is already at the bottom,</span>
+<span class="sd">        allowing the user to scroll back and read without being interrupted.'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">SelectionMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This class type indicates how the view responds to user selections.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoSelection</span>
 <span class="sd">          SingleSelection</span>
 <span class="sd">          MultiSelection</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoSelection</span>         <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Items cannot be selected.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Items cannot be selected.'''</span>
         <span class="n">SingleSelection</span>     <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;When the user selects an item, any already-selected item becomes unselected. It is possible for the user to deselect the selected item by pressing the Ctrl key when clicking the selected item.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''When the user selects an item, any already-selected item becomes unselected. It is possible for the user to deselect the selected item by pressing the Ctrl key when clicking the selected item.'''</span>
         <span class="c1"># ContiguousSelection = 0x04</span>
-        <span class="c1"># &#39;&#39;&#39;When the user selects an item in the usual way, the selection is cleared and the new item selected. However, if the user presses the Shift key while clicking on an item, all items between the current item and the clicked item are selected or unselected, depending on the state of the clicked item.&#39;&#39;&#39;</span>
+        <span class="c1"># '''When the user selects an item in the usual way, the selection is cleared and the new item selected. However, if the user presses the Shift key while clicking on an item, all items between the current item and the clicked item are selected or unselected, depending on the state of the clicked item.'''</span>
         <span class="c1"># ExtendedSelection   = 0x03</span>
-        <span class="c1"># &#39;&#39;&#39;When the user selects an item in the usual way, the selection is cleared and the new item selected. However, if the user presses the Ctrl key when clicking on an item, the clicked item gets toggled and all other items are left untouched. If the user presses the Shift key while clicking on an item, all items between the current item and the clicked item are selected or unselected, depending on the state of the clicked item. Multiple items can be selected by dragging the mouse over them.&#39;&#39;&#39;</span>
+        <span class="c1"># '''When the user selects an item in the usual way, the selection is cleared and the new item selected. However, if the user presses the Ctrl key when clicking on an item, the clicked item gets toggled and all other items are left untouched. If the user presses the Shift key while clicking on an item, all items between the current item and the clicked item are selected or unselected, depending on the state of the clicked item. Multiple items can be selected by dragging the mouse over them.'''</span>
         <span class="n">MultiSelection</span>      <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;When the user selects an item in the usual way, the selection status of that item is toggled and the other items are left alone. Multiple items can be toggled by dragging the mouse over them.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''When the user selects an item in the usual way, the selection status of that item is toggled and the other items are left alone. Multiple items can be toggled by dragging the mouse over them.'''</span>
 
     <span class="c1"># SelectionMode</span>
     <span class="n">NoSelection</span>         <span class="o">=</span> <span class="n">SelectionMode</span><span class="o">.</span><span class="n">NoSelection</span>
@@ -679,17 +682,17 @@ document.write(`
     <span class="n">MultiSelection</span>      <span class="o">=</span> <span class="n">SelectionMode</span><span class="o">.</span><span class="n">MultiSelection</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">SelectionFormat</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Selection properties</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NONE</span>
 <span class="sd">          FullWidthSelection</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Default value&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Default value'''</span>
         <span class="n">FullWidthSelection</span> <span class="o">=</span> <span class="mh">0x06000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;When set on the characterFormat of a selection, the whole width of the text will be shown selected.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''When set on the characterFormat of a selection, the whole width of the text will be shown selected.'''</span>
 
 
     <span class="c1"># Graph types</span>
@@ -704,16 +707,16 @@ document.write(`
     <span class="n">TIME_EVENT</span>   <span class="o">=</span> <span class="mh">0x10</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">Direction</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;This class type is used to describe the direction</span>
+<span class="w">        </span><span class="sd">'''This class type is used to describe the direction</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          HORIZONTAL</span>
 <span class="sd">          VERTICAL</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">HORIZONTAL</span> <span class="o">=</span> <span class="mh">0x01</span> <span class="o">+</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Horizontal direction&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Horizontal direction'''</span>
         <span class="n">VERTICAL</span>   <span class="o">=</span> <span class="mh">0x04</span> <span class="o">+</span> <span class="mh">0x08</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Vertical direction&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Vertical direction'''</span>
 
     <span class="n">HORIZONTAL</span> <span class="o">=</span> <span class="n">Direction</span><span class="o">.</span><span class="n">HORIZONTAL</span>
     <span class="n">VERTICAL</span>   <span class="o">=</span> <span class="n">Direction</span><span class="o">.</span><span class="n">VERTICAL</span>
@@ -728,80 +731,80 @@ document.write(`
     <span class="n">ScrollBarAlwaysOn</span>  <span class="o">=</span> <span class="n">ScrollBarPolicy</span><span class="o">.</span><span class="n">ScrollBarAlwaysOn</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">ColorPickerReturnType</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This class identify the return color type used in :py:class:`TTkColorDialogPicker` or :py:class:`TTkColorButtonPicker`</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          Default</span>
 <span class="sd">          Foreground</span>
 <span class="sd">          Background</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">Default</span><span class="o">=</span><span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The color type returned (fg or bg) is compliant of the type used in the initialization or &#39;Foreground&#39; in case is missing or :py:class:`TTKColor.RST`&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The color type returned (fg or bg) is compliant of the type used in the initialization or 'Foreground' in case is missing or :py:class:`TTKColor.RST`'''</span>
         <span class="n">Foreground</span><span class="o">=</span><span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The color type returned is Foreground&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The color type returned is Foreground'''</span>
         <span class="n">Background</span><span class="o">=</span><span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The color type returned is Background&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The color type returned is Background'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">CheckState</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; This class type is used to describe the check status.</span>
+<span class="w">        </span><span class="sd">''' This class type is used to describe the check status.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          Unchecked</span>
 <span class="sd">          PartiallyChecked</span>
 <span class="sd">          Checked</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">Unchecked</span>        <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The item is unchecked.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The item is unchecked.'''</span>
         <span class="n">PartiallyChecked</span> <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The item is partially checked. Items in hierarchical models may be partially checked if some, but not all, of their children are checked.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The item is partially checked. Items in hierarchical models may be partially checked if some, but not all, of their children are checked.'''</span>
         <span class="n">Checked</span>          <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The item is checked.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The item is checked.'''</span>
 
     <span class="n">Unchecked</span>        <span class="o">=</span> <span class="n">CheckState</span><span class="o">.</span><span class="n">Unchecked</span>
     <span class="n">PartiallyChecked</span> <span class="o">=</span> <span class="n">CheckState</span><span class="o">.</span><span class="n">PartiallyChecked</span>
     <span class="n">Checked</span>          <span class="o">=</span> <span class="n">CheckState</span><span class="o">.</span><span class="n">Checked</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">InsertPolicy</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Specifies what the :py:class:`TTkComboBox` should do when a new string is entered by the user.</span>
+<span class="w">        </span><span class="sd">'''Specifies what the :py:class:`TTkComboBox` should do when a new string is entered by the user.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoInsert</span>
 <span class="sd">          InsertAtTop</span>
 <span class="sd">          InsertAtBottom</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoInsert</span>               <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The string will not be inserted into the combobox.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The string will not be inserted into the combobox.'''</span>
         <span class="n">InsertAtTop</span>            <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The string will be inserted as the first item in the combobox.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The string will be inserted as the first item in the combobox.'''</span>
         <span class="c1"># InsertAtCurrent      = 0x02</span>
-        <span class="c1"># &#39;&#39;&#39;The current item will be replaced by the string.&#39;&#39;&#39;</span>
+        <span class="c1"># '''The current item will be replaced by the string.'''</span>
         <span class="n">InsertAtBottom</span>         <span class="o">=</span> <span class="mh">0x03</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The string will be inserted after the last item in the combobox.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The string will be inserted after the last item in the combobox.'''</span>
         <span class="c1"># InsertAfterCurrent   = 0x04</span>
-        <span class="c1"># &#39;&#39;&#39;The string is inserted after the current item in the combobox.&#39;&#39;&#39;</span>
+        <span class="c1"># '''The string is inserted after the current item in the combobox.'''</span>
         <span class="c1"># InsertBeforeCurrent  = 0x05</span>
-        <span class="c1"># &#39;&#39;&#39;The string is inserted before the current item in the combobox.&#39;&#39;&#39;</span>
+        <span class="c1"># '''The string is inserted before the current item in the combobox.'''</span>
         <span class="c1"># InsertAlphabetically = 0x06</span>
-        <span class="c1"># &#39;&#39;&#39;The string is inserted in the alphabetic order in the combobox.&#39;&#39;&#39;</span>
+        <span class="c1"># '''The string is inserted in the alphabetic order in the combobox.'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">DragDropMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Specifies the Drag and Drop mode allowed by this widget</span>
+<span class="w">        </span><span class="sd">'''Specifies the Drag and Drop mode allowed by this widget</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoDragDrop</span>
 <span class="sd">          AllowDrag</span>
 <span class="sd">          AllowDrop</span>
 <span class="sd">          AllowDragDrop</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoDragDrop</span> <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;No Drag and Drop is allowed&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''No Drag and Drop is allowed'''</span>
         <span class="n">AllowDrag</span>  <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Drag allowed&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Drag allowed'''</span>
         <span class="n">AllowDrop</span> <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Drop allowed&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Drop allowed'''</span>
         <span class="n">AllowDragDrop</span> <span class="o">=</span> <span class="mh">0x03</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Drag and Drop allowed&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Drag and Drop allowed'''</span>
     <span class="n">NoDragDrop</span>     <span class="o">=</span> <span class="n">DragDropMode</span><span class="o">.</span><span class="n">NoDragDrop</span>
     <span class="n">AllowDrag</span>      <span class="o">=</span> <span class="n">DragDropMode</span><span class="o">.</span><span class="n">AllowDrag</span>
     <span class="n">AllowDrop</span>      <span class="o">=</span> <span class="n">DragDropMode</span><span class="o">.</span><span class="n">AllowDrop</span>
@@ -817,16 +820,16 @@ document.write(`
     <span class="n">DontShowIndicatorWhenChildless</span> <span class="o">=</span> <span class="n">ChildIndicatorPolicy</span><span class="o">.</span><span class="n">DontShowIndicatorWhenChildless</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">SortOrder</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;This enum describes how the items in a widget are sorted.</span>
+<span class="w">        </span><span class="sd">'''This enum describes how the items in a widget are sorted.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          AscendingOrder</span>
 <span class="sd">          DescendingOrder</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">AscendingOrder</span>  <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The items are sorted ascending e.g. starts with &#39;AAA&#39; ends with &#39;ZZZ&#39; in Latin-1 locales&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The items are sorted ascending e.g. starts with 'AAA' ends with 'ZZZ' in Latin-1 locales'''</span>
         <span class="n">DescendingOrder</span> <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The items are sorted descending e.g. starts with &#39;ZZZ&#39; ends with &#39;AAA&#39; in Latin-1 locales&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The items are sorted descending e.g. starts with 'ZZZ' ends with 'AAA' in Latin-1 locales'''</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">invert</span><span class="p">(</span><span class="n">order</span><span class="p">:</span><span class="n">TTkConstant</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkConstant</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">TTkConstant</span><span class="o">.</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">AscendingOrder</span><span class="p">:</span>
@@ -847,7 +850,7 @@ document.write(`
 
     <span class="c1"># Keys</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">MouseKey</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Input Mouse Key</span>
+<span class="w">        </span><span class="sd">'''Input Mouse Key</span>
 
 <span class="sd">        Events reported by :py:class:`TTkMouseEvent` -&gt; :py:class:`TTkMouseEvent.key`</span>
 
@@ -859,21 +862,21 @@ document.write(`
 <span class="sd">          MidButton</span>
 <span class="sd">          MiddleButton</span>
 <span class="sd">          Wheel</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoButton</span>      <span class="o">=</span> <span class="mh">0x00000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The button state does not refer to any button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The button state does not refer to any button.'''</span>
         <span class="n">AllButtons</span>    <span class="o">=</span> <span class="mh">0x07ffffff</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;This value corresponds to a mask of all possible mouse buttons. Use to set the &#39;acceptedButtons&#39; property of a MouseArea to accept ALL mouse buttons.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''This value corresponds to a mask of all possible mouse buttons. Use to set the 'acceptedButtons' property of a MouseArea to accept ALL mouse buttons.'''</span>
         <span class="n">LeftButton</span>    <span class="o">=</span> <span class="mh">0x00000001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The left button is pressed, or an event refers to the left button. (The left button may be the right button on left-handed mice.)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The left button is pressed, or an event refers to the left button. (The left button may be the right button on left-handed mice.)'''</span>
         <span class="n">RightButton</span>   <span class="o">=</span> <span class="mh">0x00000002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The right button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The right button.'''</span>
         <span class="n">MidButton</span>     <span class="o">=</span> <span class="mh">0x00000004</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The middle button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The middle button.'''</span>
         <span class="n">MiddleButton</span>  <span class="o">=</span> <span class="n">MidButton</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The middle button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The middle button.'''</span>
         <span class="n">Wheel</span>         <span class="o">=</span> <span class="mh">0x00000008</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The wheel control&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The wheel control'''</span>
 
     <span class="n">NoButton</span>      <span class="o">=</span> <span class="n">MouseKey</span><span class="o">.</span><span class="n">NoButton</span>
     <span class="n">AllButtons</span>    <span class="o">=</span> <span class="n">MouseKey</span><span class="o">.</span><span class="n">AllButtons</span>
@@ -884,22 +887,22 @@ document.write(`
     <span class="n">Wheel</span>         <span class="o">=</span> <span class="n">MouseKey</span><span class="o">.</span><span class="n">Wheel</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">WrapMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Those constants describes how text is wrapped in a document.</span>
+<span class="w">        </span><span class="sd">'''Those constants describes how text is wrapped in a document.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          WordWrap</span>
 <span class="sd">          WrapAnywhere</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="c1"># NoWrap        = 0x00</span>
-        <span class="c1"># &#39;&#39;&#39;Text is not wrapped at all.&#39;&#39;&#39;</span>
+        <span class="c1"># '''Text is not wrapped at all.'''</span>
         <span class="n">WordWrap</span>      <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Text is wrapped at word boundaries.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Text is wrapped at word boundaries.'''</span>
         <span class="c1"># ManualWrap    = 0x02</span>
-        <span class="c1"># &#39;&#39;&#39;Same as :py:class:`~TermTk.TTkCore.constant.TTkConstant.WrapMode.NoWrap`&#39;&#39;&#39;</span>
+        <span class="c1"># '''Same as :py:class:`~TermTk.TTkCore.constant.TTkConstant.WrapMode.NoWrap`'''</span>
         <span class="n">WrapAnywhere</span>  <span class="o">=</span> <span class="mh">0x03</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Text can be wrapped at any point on a line, even if it occurs in the middle of a word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Text can be wrapped at any point on a line, even if it occurs in the middle of a word.'''</span>
         <span class="c1"># WrapAtWordBoundaryOrAnywhere = 0x04</span>
-        <span class="c1"># &#39;&#39;&#39;If possible, wrapping occurs at a word boundary; otherwise it will occur at the appropriate point on the line, even in the middle of a word.&#39;&#39;&#39;</span>
+        <span class="c1"># '''If possible, wrapping occurs at a word boundary; otherwise it will occur at the appropriate point on the line, even in the middle of a word.'''</span>
 
     <span class="c1"># NoWrap       = WrapMode.NoWrap</span>
     <span class="n">WordWrap</span>     <span class="o">=</span> <span class="n">WrapMode</span><span class="o">.</span><span class="n">WordWrap</span>
@@ -908,37 +911,37 @@ document.write(`
     <span class="c1"># WrapAtWordBoundaryOrAnywhere = WrapMode.WrapAtWordBoundaryOrAnywhere</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">WrapEngine</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Those constants describes which wrapping engine should be used</span>
+<span class="w">        </span><span class="sd">'''Those constants describes which wrapping engine should be used</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoWrap</span>
 <span class="sd">          FullWrap</span>
 <span class="sd">          FastWrap</span>
 <span class="sd">          HybridWrap</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;No Wrapping&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''No Wrapping'''</span>
         <span class="n">FullWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Full document Wrap at any change, Ideal for small documents (~300 Lines) [Precise] (Slow)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Full document Wrap at any change, Ideal for small documents (~300 Lines) [Precise] (Slow)'''</span>
         <span class="n">FastWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Chunk based document Wrap, Default wrap [Fast] (Scrolling position is estimated)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Chunk based document Wrap, Default wrap [Fast] (Scrolling position is estimated)'''</span>
         <span class="n">HybridWrap</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Hybrid implementation between a screen based Wrap and FastWrap, [Faster] (Scrolling position is estimated)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Hybrid implementation between a screen based Wrap and FastWrap, [Faster] (Scrolling position is estimated)'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">LineWrapMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Those constants describes which wrapping status is required in the document</span>
+<span class="w">        </span><span class="sd">'''Those constants describes which wrapping status is required in the document</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoWrap</span>
 <span class="sd">          WidgetWidth</span>
 <span class="sd">          FixedWidth</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoWrap</span>       <span class="o">=</span>  <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;No Wrapping is applied&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''No Wrapping is applied'''</span>
         <span class="n">WidgetWidth</span>  <span class="o">=</span>  <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Wrapping around the Widget width&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Wrapping around the Widget width'''</span>
         <span class="n">FixedWidth</span>   <span class="o">=</span>  <span class="mh">0x03</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Wrapping around a fixed width&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Wrapping around a fixed width'''</span>
 
     <span class="n">NoWrap</span>      <span class="o">=</span> <span class="n">LineWrapMode</span><span class="o">.</span><span class="n">NoWrap</span>
     <span class="n">WidgetWidth</span> <span class="o">=</span> <span class="n">LineWrapMode</span><span class="o">.</span><span class="n">WidgetWidth</span>
@@ -947,7 +950,7 @@ document.write(`
 
     <span class="c1"># Events</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">MouseEvent</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Input Mouse Event</span>
+<span class="w">        </span><span class="sd">'''Input Mouse Event</span>
 
 <span class="sd">        Events reported by :py:class:`TTkMouseEvent` -&gt; :py:class:`TTkMouseEvent.evt`</span>
 
@@ -959,7 +962,7 @@ document.write(`
 <span class="sd">          Move</span>
 <span class="sd">          WHEEL_Up</span>
 <span class="sd">          WHEEL_Down</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoEvent</span>    <span class="o">=</span> <span class="mh">0x00000000</span>
         <span class="n">Press</span>      <span class="o">=</span> <span class="mh">0x00010000</span>
         <span class="n">Release</span>    <span class="o">=</span> <span class="mh">0x00020000</span>
@@ -990,20 +993,20 @@ document.write(`
     <span class="n">Cursor_Steady_Bar</span>          <span class="o">=</span> <span class="mh">0x0007</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">InputType</span><span class="p">(</span><span class="n">IntFlag</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This enum type describes the input validation types for text input widgets.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          Input_Text</span>
 <span class="sd">          Input_Number</span>
 <span class="sd">          Input_Password</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">Input_Text</span>      <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Accept any text input (default)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Accept any text input (default)'''</span>
         <span class="n">Input_Number</span>    <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Accept only numeric input (integers and decimals)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Accept only numeric input (integers and decimals)'''</span>
         <span class="n">Input_Password</span>  <span class="o">=</span> <span class="mh">0x04</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Password input type (deprecated - use :py:class:`TTkLineEdit.EchoMode.Password` instead)&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Password input type (deprecated - use :py:class:`TTkLineEdit.EchoMode.Password` instead)'''</span>
 
     <span class="c1"># Input types</span>
     <span class="n">Input_Text</span>      <span class="o">=</span> <span class="n">InputType</span><span class="o">.</span><span class="n">Input_Text</span>
@@ -1012,7 +1015,7 @@ document.write(`
 
     <span class="c1"># Alignment</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">Alignment</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; This type is used to describe alignment.</span>
+<span class="w">        </span><span class="sd">''' This type is used to describe alignment.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NONE</span>
@@ -1020,17 +1023,17 @@ document.write(`
 <span class="sd">          RIGHT_ALIGN</span>
 <span class="sd">          CENTER_ALIGN</span>
 <span class="sd">          JUSTIFY</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NONE</span>         <span class="o">=</span> <span class="mh">0x0000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; No Alignment&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' No Alignment'''</span>
         <span class="n">LEFT_ALIGN</span>   <span class="o">=</span> <span class="mh">0x0001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Aligns with the left edge.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Aligns with the left edge.'''</span>
         <span class="n">RIGHT_ALIGN</span>  <span class="o">=</span> <span class="mh">0x0002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Aligns with the right edge.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Aligns with the right edge.'''</span>
         <span class="n">CENTER_ALIGN</span> <span class="o">=</span> <span class="mh">0x0004</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Centers horizontally in the available space.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Centers horizontally in the available space.'''</span>
         <span class="n">JUSTIFY</span>      <span class="o">=</span> <span class="mh">0x0008</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Justifies the text in the available space.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Justifies the text in the available space.'''</span>
 
     <span class="n">LEFT_ALIGN</span>   <span class="o">=</span> <span class="n">Alignment</span><span class="o">.</span><span class="n">LEFT_ALIGN</span>
     <span class="n">RIGHT_ALIGN</span>  <span class="o">=</span> <span class="n">Alignment</span><span class="o">.</span><span class="n">RIGHT_ALIGN</span>
@@ -1038,19 +1041,19 @@ document.write(`
     <span class="n">JUSTIFY</span>      <span class="o">=</span> <span class="n">Alignment</span><span class="o">.</span><span class="n">JUSTIFY</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">FileMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;FileMode</span>
+<span class="w">        </span><span class="sd">'''FileMode</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          AnyFile</span>
 <span class="sd">          ExistingFile</span>
 <span class="sd">          Directory</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">AnyFile</span>        <span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The name of a file, whether it exists or not.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The name of a file, whether it exists or not.'''</span>
         <span class="n">ExistingFile</span>   <span class="o">=</span> <span class="mi">1</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The name of a single existing file.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The name of a single existing file.'''</span>
         <span class="n">Directory</span>      <span class="o">=</span> <span class="mi">2</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The name of a directory. Both files and directories are displayed. However, the native Windows file dialog does not support displaying files in the directory chooser.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The name of a directory. Both files and directories are displayed. However, the native Windows file dialog does not support displaying files in the directory chooser.'''</span>
         <span class="c1"># ExistingFiles  = 3 #The names of zero or more existing files.</span>
 
     <span class="c1"># AnyFile       = FileMode.AnyFile</span>
@@ -1059,19 +1062,19 @@ document.write(`
     <span class="c1"># ExistingFiles = FileMode.ExistingFiles</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">AcceptMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;AcceptMode</span>
+<span class="w">        </span><span class="sd">'''AcceptMode</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          AcceptOpen</span>
 <span class="sd">          AcceptSave</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">AcceptOpen</span>	<span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Open&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Open'''</span>
         <span class="n">AcceptSave</span>	<span class="o">=</span> <span class="mi">1</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Save&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Save'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">TTkItemSelectionModel</span><span class="p">(</span><span class="n">IntFlag</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;These values describes the way the selection model will be updated.</span>
+<span class="w">        </span><span class="sd">'''These values describes the way the selection model will be updated.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoUpdate</span>
@@ -1085,73 +1088,73 @@ document.write(`
 <span class="sd">          SelectCurrent</span>
 <span class="sd">          ToggleCurrent</span>
 <span class="sd">          ClearAndSelect</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoUpdate</span> <span class="o">=</span> <span class="mh">0x0000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;No selection will be made.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''No selection will be made.'''</span>
         <span class="n">Clear</span>    <span class="o">=</span> <span class="mh">0x0001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The complete selection will be cleared.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The complete selection will be cleared.'''</span>
         <span class="n">Select</span>   <span class="o">=</span> <span class="mh">0x0002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;All specified indexes will be selected.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''All specified indexes will be selected.'''</span>
         <span class="n">Deselect</span> <span class="o">=</span> <span class="mh">0x0004</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;All specified indexes will be deselected.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''All specified indexes will be deselected.'''</span>
         <span class="n">Toggle</span>   <span class="o">=</span> <span class="mh">0x0008</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;All specified indexes will be selected or deselected depending on their current state.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''All specified indexes will be selected or deselected depending on their current state.'''</span>
         <span class="n">Current</span>  <span class="o">=</span> <span class="mh">0x0010</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The current selection will be updated.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The current selection will be updated.'''</span>
         <span class="n">Rows</span>     <span class="o">=</span> <span class="mh">0x0020</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;All indexes will be expanded to span rows.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''All indexes will be expanded to span rows.'''</span>
         <span class="n">Columns</span>  <span class="o">=</span> <span class="mh">0x0040</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;All indexes will be expanded to span columns.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''All indexes will be expanded to span columns.'''</span>
         <span class="n">SelectCurrent</span> <span class="o">=</span> <span class="n">Select</span> <span class="o">|</span> <span class="n">Current</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A combination of Select and Current, provided for convenience.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A combination of Select and Current, provided for convenience.'''</span>
         <span class="n">ToggleCurrent</span> <span class="o">=</span> <span class="n">Toggle</span> <span class="o">|</span> <span class="n">Current</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A combination of Toggle and Current, provided for convenience.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A combination of Toggle and Current, provided for convenience.'''</span>
         <span class="n">ClearAndSelect</span> <span class="o">=</span> <span class="n">Clear</span> <span class="o">|</span> <span class="n">Select</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A combination of Clear and Select, provided for convenience.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A combination of Clear and Select, provided for convenience.'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">ItemFlag</span><span class="p">(</span><span class="n">Flag</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;:py:class:`ItemFlag` describes the properties of an item</span>
+<span class="w">        </span><span class="sd">''':py:class:`ItemFlag` describes the properties of an item</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          NoItemFlags</span>
 <span class="sd">          ItemIsSelectable</span>
 <span class="sd">          ItemIsEditable</span>
 <span class="sd">          ItemIsEnabled</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoItemFlags</span>          <span class="o">=</span> <span class="mh">0x0000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;It does not have any properties set.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''It does not have any properties set.'''</span>
         <span class="n">ItemIsSelectable</span>     <span class="o">=</span> <span class="mh">0x0001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;It can be selected.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''It can be selected.'''</span>
         <span class="n">ItemIsEditable</span>       <span class="o">=</span> <span class="mh">0x0002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;It can be edited.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''It can be edited.'''</span>
         <span class="c1"># ItemIsDragEnabled    = 0x0004</span>
-        <span class="c1"># &#39;&#39;&#39;It can be dragged.&#39;&#39;&#39;</span>
+        <span class="c1"># '''It can be dragged.'''</span>
         <span class="c1"># ItemIsDropEnabled    = 0x0008</span>
-        <span class="c1"># &#39;&#39;&#39;It can be used as a drop target.&#39;&#39;&#39;</span>
+        <span class="c1"># '''It can be used as a drop target.'''</span>
         <span class="c1"># ItemIsUserCheckable  = 0x0010</span>
-        <span class="c1"># &#39;&#39;&#39;It can be checked or unchecked by the user.&#39;&#39;&#39;</span>
+        <span class="c1"># '''It can be checked or unchecked by the user.'''</span>
         <span class="n">ItemIsEnabled</span>        <span class="o">=</span> <span class="mh">0x0020</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The user can interact with the item.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The user can interact with the item.'''</span>
 
     <span class="c1"># LayoutItem Types</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LayoutItemTypes</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Types used internally in :mod:`~TermTk.TTkLayouts`</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">LayoutItemTypes</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Types used internally in :mod:`~TermTk.TTkLayouts`</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          LayoutItem</span>
 <span class="sd">          WidgetItem</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">LayoutItem</span> <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Item Type Layout&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Item Type Layout'''</span>
         <span class="n">WidgetItem</span> <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Item Type Widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Item Type Widget'''</span>
 
 
     <span class="n">LayoutItem</span> <span class="o">=</span> <span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">LayoutItem</span>
     <span class="n">WidgetItem</span> <span class="o">=</span> <span class="n">LayoutItemTypes</span><span class="o">.</span><span class="n">WidgetItem</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">WindowFlag</span><span class="p">(</span><span class="n">IntFlag</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Those flags are used to enable customization of the window controls.</span>
 
 <span class="sd">        .. autosummary::</span>
@@ -1160,65 +1163,66 @@ document.write(`
 <span class="sd">          WindowMaximizeButtonHint</span>
 <span class="sd">          WindowMinMaxButtonsHint</span>
 <span class="sd">          WindowCloseButtonHint</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Empty flag&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Empty flag'''</span>
         <span class="c1"># FramelessWindowHint         = 0x00000800</span>
-        <span class="c1"># &#39;&#39;&#39; Produces a borderless window.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Produces a borderless window.'''</span>
         <span class="c1"># CustomizeWindowHint         = 0x02000000</span>
-        <span class="c1"># &#39;&#39;&#39; Turns off the default window title hints.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Turns off the default window title hints.'''</span>
         <span class="c1"># WindowTitleHint             = 0x00001000</span>
-        <span class="c1"># &#39;&#39;&#39; Gives the window a title bar.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Gives the window a title bar.'''</span>
         <span class="c1"># WindowSystemMenuHint        = 0x00002000</span>
-        <span class="c1"># &#39;&#39;&#39; Adds a window system menu, and possibly a close button (for example on Mac). If you need to hide or show a close button, it is more portable to use WindowCloseButtonHint.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Adds a window system menu, and possibly a close button (for example on Mac). If you need to hide or show a close button, it is more portable to use WindowCloseButtonHint.'''</span>
         <span class="n">WindowReduceButtonHint</span>      <span class="o">=</span> <span class="mh">0x00000200</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Adds a reduce button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Adds a reduce button.'''</span>
         <span class="n">WindowMinimizeButtonHint</span>    <span class="o">=</span> <span class="mh">0x00004000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Adds a minimize button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Adds a minimize button.'''</span>
         <span class="n">WindowMaximizeButtonHint</span>    <span class="o">=</span> <span class="mh">0x00008000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Adds a maximize button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Adds a maximize button.'''</span>
         <span class="n">WindowMinMaxButtonsHint</span>     <span class="o">=</span> <span class="n">WindowMinimizeButtonHint</span> <span class="o">|</span> <span class="n">WindowMaximizeButtonHint</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Adds a minimize and a maximize button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Adds a minimize and a maximize button.'''</span>
         <span class="n">WindowCloseButtonHint</span>       <span class="o">=</span> <span class="mh">0x08000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Adds a close button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Adds a close button.'''</span>
         <span class="c1"># WindowFullscreenButtonHint  = 0x80000000</span>
-        <span class="c1"># &#39;&#39;&#39; On macOS adds a fullscreen button.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' On macOS adds a fullscreen button.'''</span>
         <span class="c1"># WindowShadeButtonHint       = 0x00020000</span>
-        <span class="c1"># &#39;&#39;&#39; Adds a shade button in place of the minimize button if the underlying window manager supports it.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Adds a shade button in place of the minimize button if the underlying window manager supports it.'''</span>
         <span class="c1"># WindowStaysOnTopHint        = 0x00040000</span>
-        <span class="c1"># &#39;&#39;&#39; Informs the window system that the window should stay on top of all other windows. Note that on some window managers on X11 you also have to pass Qt::X11BypassWindowManagerHint for this flag to work correctly.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Informs the window system that the window should stay on top of all other windows. Note that on some window managers on X11 you also have to pass Qt::X11BypassWindowManagerHint for this flag to work correctly.'''</span>
         <span class="c1"># WindowStaysOnBottomHint     = 0x04000000</span>
-        <span class="c1"># &#39;&#39;&#39; Informs the window system that the window should stay on bottom of all other windows.&#39;&#39;&#39;</span>
+        <span class="c1"># ''' Informs the window system that the window should stay on bottom of all other windows.'''</span>
 
         <span class="k">def</span><span class="w"> </span><span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">            </span><span class="sd">'''</span>
 <span class="sd">            Convert the flag to its integer value</span>
 
 <span class="sd">            :return: the integer representation of the flag</span>
 <span class="sd">            :rtype: int</span>
-<span class="sd">            &#39;&#39;&#39;</span>
+<span class="sd">            '''</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">KeyType</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Input Key Types</span>
+<span class="w">        </span><span class="sd">'''Input Key Types</span>
 
-<span class="sd">        Key type reported by :py:class:`TTkKeyEvent` -&gt; :py:class:`TTkKeyEvent.key`</span>
+<span class="sd">        Key type reported by the concrete :py:class:`TTkKeyEvent` subclass via</span>
+<span class="sd">        its :py:attr:`type` attribute.</span>
 
 <span class="sd">        .. autosummary::</span>
 <span class="sd">          Character</span>
 <span class="sd">          SpecialKey</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">Character</span>  <span class="o">=</span> <span class="mh">0x0001</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Input Char Key&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Input Char Key'''</span>
         <span class="n">SpecialKey</span> <span class="o">=</span> <span class="mh">0x0002</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Input Special Key&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Input Special Key'''</span>
 
     <span class="n">Character</span>  <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">Character</span>
     <span class="n">SpecialKey</span> <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">SpecialKey</span>
 
 
     <span class="k">class</span><span class="w"> </span><span class="nc">KeyModifier</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Input :py:class:`~TermTk.TTkCore.constant.TTkConstant.KeyType.SpecialKey` modifiers</span>
+<span class="w">        </span><span class="sd">'''Input :py:class:`~TermTk.TTkCore.constant.TTkConstant.KeyType.SpecialKey` modifiers</span>
 
 <span class="sd">        Modifier reported by :py:class:`TTkKeyEvent` -&gt; :py:class:`TTkKeyEvent.mod`</span>
 
@@ -1234,30 +1238,30 @@ document.write(`
 <span class="sd">          META</span>
 <span class="sd">          CTRL</span>
 <span class="sd">          ALT</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">NoModifier</span>          <span class="o">=</span> <span class="mh">0x00000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;No modifier key is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''No modifier key is pressed.'''</span>
         <span class="n">ShiftModifier</span>       <span class="o">=</span> <span class="mh">0x02000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A Shift key on the keyboard is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A Shift key on the keyboard is pressed.'''</span>
         <span class="n">ControlModifier</span>     <span class="o">=</span> <span class="mh">0x04000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A Ctrl key on the keyboard is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A Ctrl key on the keyboard is pressed.'''</span>
         <span class="n">AltModifier</span>         <span class="o">=</span> <span class="mh">0x08000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An Alt key on the keyboard is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An Alt key on the keyboard is pressed.'''</span>
         <span class="n">MetaModifier</span>        <span class="o">=</span> <span class="mh">0x10000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A Meta key on the keyboard is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A Meta key on the keyboard is pressed.'''</span>
         <span class="n">KeypadModifier</span>      <span class="o">=</span> <span class="mh">0x20000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A keypad button is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A keypad button is pressed.'''</span>
         <span class="n">GroupSwitchModifier</span> <span class="o">=</span> <span class="mh">0x40000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;X11 only (unless activated on Windows by a command line argument). A Mode_switch key on the keyboard is pressed.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''X11 only (unless activated on Windows by a command line argument). A Mode_switch key on the keyboard is pressed.'''</span>
 
         <span class="n">SHIFT</span> <span class="o">=</span> <span class="n">ShiftModifier</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The Shift keys provided on all standard keyboards.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The Shift keys provided on all standard keyboards.'''</span>
         <span class="n">META</span>  <span class="o">=</span> <span class="n">MetaModifier</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The Meta keys.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The Meta keys.'''</span>
         <span class="n">CTRL</span>  <span class="o">=</span> <span class="n">ControlModifier</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The Ctrl keys.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The Ctrl keys.'''</span>
         <span class="n">ALT</span>   <span class="o">=</span> <span class="n">AltModifier</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The normal Alt keys, but not keys like AltGr.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The normal Alt keys, but not keys like AltGr.'''</span>
 
     <span class="n">NoModifier</span>          <span class="o">=</span> <span class="n">KeyModifier</span><span class="o">.</span><span class="n">NoModifier</span>
     <span class="n">ShiftModifier</span>       <span class="o">=</span> <span class="n">KeyModifier</span><span class="o">.</span><span class="n">ShiftModifier</span>
@@ -1273,9 +1277,9 @@ document.write(`
     <span class="n">ALT</span>   <span class="o">=</span> <span class="n">KeyModifier</span><span class="o">.</span><span class="n">ALT</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">ShortcutContext</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        For a :py:class:`TTkShortcut` event to occur,</span>
-<span class="sd">        the shortcut&#39;s key sequence must be entered by the user in a context where the shortcut is active.</span>
+<span class="sd">        the shortcut's key sequence must be entered by the user in a context where the shortcut is active.</span>
 <span class="sd">        The possible contexts are these:</span>
 
 <span class="sd">        .. autosummary::</span>
@@ -1283,15 +1287,15 @@ document.write(`
 <span class="sd">          WidgetWithChildrenShortcut</span>
 <span class="sd">          WindowShortcut</span>
 <span class="sd">          ApplicationShortcut</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">WidgetShortcut</span>             <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The shortcut is active when its parent widget has focus.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The shortcut is active when its parent widget has focus.'''</span>
         <span class="n">WidgetWithChildrenShortcut</span> <span class="o">=</span> <span class="mh">0x03</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The shortcut is active when its parent widget, or any of its children has focus. Children which are top-level widgets, except pop-ups, are not affected by this shortcut context.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The shortcut is active when its parent widget, or any of its children has focus. Children which are top-level widgets, except pop-ups, are not affected by this shortcut context.'''</span>
         <span class="n">WindowShortcut</span>             <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The shortcut is active when its parent widget is a logical subwidget of the active top-level window.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The shortcut is active when its parent widget is a logical subwidget of the active top-level window.'''</span>
         <span class="n">ApplicationShortcut</span>        <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;The shortcut is active when one of the applications windows are active.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''The shortcut is active when one of the applications windows are active.'''</span>
 
     <span class="n">WidgetShortcut</span>             <span class="o">=</span> <span class="n">ShortcutContext</span><span class="o">.</span><span class="n">WidgetShortcut</span>
     <span class="n">WidgetWithChildrenShortcut</span> <span class="o">=</span> <span class="n">ShortcutContext</span><span class="o">.</span><span class="n">WidgetWithChildrenShortcut</span>
@@ -1613,8 +1617,8 @@ document.write(`
     <span class="n">Key_OpenUrl</span>                 <span class="o">=</span> <span class="mh">0x01000094</span>
     <span class="n">Key_LaunchMail</span>              <span class="o">=</span> <span class="mh">0x010000a0</span>
     <span class="n">Key_LaunchMedia</span>             <span class="o">=</span> <span class="mh">0x010000a1</span>
-    <span class="n">Key_Launch0</span>                 <span class="o">=</span> <span class="mh">0x010000a2</span> <span class="c1"># On X11 this key is mapped to &quot;My Computer&quot; (XF86XK_MyComputer) key for legacy reasons.</span>
-    <span class="n">Key_Launch1</span>                 <span class="o">=</span> <span class="mh">0x010000a3</span> <span class="c1"># On X11 this key is mapped to &quot;Calculator&quot; (XF86XK_Calculator) key for legacy reasons.</span>
+    <span class="n">Key_Launch0</span>                 <span class="o">=</span> <span class="mh">0x010000a2</span> <span class="c1"># On X11 this key is mapped to "My Computer" (XF86XK_MyComputer) key for legacy reasons.</span>
+    <span class="n">Key_Launch1</span>                 <span class="o">=</span> <span class="mh">0x010000a3</span> <span class="c1"># On X11 this key is mapped to "Calculator" (XF86XK_Calculator) key for legacy reasons.</span>
     <span class="n">Key_Launch2</span>                 <span class="o">=</span> <span class="mh">0x010000a4</span> <span class="c1"># On X11 this key is mapped to XF86XK_Launch0 key for legacy reasons.</span>
     <span class="n">Key_Launch3</span>                 <span class="o">=</span> <span class="mh">0x010000a5</span> <span class="c1"># On X11 this key is mapped to XF86XK_Launch1 key for legacy reasons.</span>
     <span class="n">Key_Launch4</span>                 <span class="o">=</span> <span class="mh">0x010000a6</span> <span class="c1"># On X11 this key is mapped to XF86XK_Launch2 key for legacy reasons.</span>
@@ -1774,7 +1778,7 @@ document.write(`
 <div class="viewcode-block" id="TTkK">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkK</span><span class="p">(</span><span class="n">TTkConstant</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&#39;&#39;&#39;Class container of all the constants used in :mod:`~TermTk`&#39;&#39;&#39;</span>
+<span class="w">  </span><span class="sd">'''Class container of all the constants used in :mod:`~TermTk`'''</span>
   <span class="k">pass</span></div>
 
 </pre></div>

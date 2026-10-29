@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkGui.textcursor &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkGui.textcursor &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2022 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -532,7 +535,7 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkTextCursor&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkTextCursor'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntEnum</span>
 
@@ -550,7 +553,7 @@ document.write(`
     <span class="c1"># document data structure, where the</span>
     <span class="c1"># the entire document is divided in lines</span>
     <span class="c1"># instead of considering it a massive string</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">,</span><span class="s1">&#39;pos&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'line'</span><span class="p">,</span><span class="s1">'pos'</span><span class="p">)</span>
     <span class="n">line</span><span class="p">:</span><span class="nb">int</span>
     <span class="n">pos</span><span class="p">:</span><span class="nb">int</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -564,7 +567,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_Prop</span><span class="p">():</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;anchor&#39;</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'anchor'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">)</span>
     <span class="n">anchor</span><span class="p">:</span><span class="n">_CP</span>
     <span class="n">position</span><span class="p">:</span><span class="n">_CP</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anchor</span><span class="p">:</span><span class="n">_CP</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span><span class="n">_CP</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -594,21 +597,21 @@ document.write(`
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTextCursor</span><span class="p">():</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">MoveMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">MoveAnchor</span> <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Moves the anchor to the same position as the cursor itself.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Moves the anchor to the same position as the cursor itself.'''</span>
         <span class="n">KeepAnchor</span> <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Keeps the anchor where it is.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Keeps the anchor where it is.'''</span>
     <span class="n">MoveAnchor</span> <span class="o">=</span> <span class="n">MoveMode</span><span class="o">.</span><span class="n">MoveAnchor</span>
     <span class="n">KeepAnchor</span> <span class="o">=</span> <span class="n">MoveMode</span><span class="o">.</span><span class="n">KeepAnchor</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">SelectionType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">Document</span>         <span class="o">=</span> <span class="mh">0x03</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Selects the entire document.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Selects the entire document.'''</span>
         <span class="n">BlockUnderCursor</span> <span class="o">=</span> <span class="mh">0x02</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Selects the block of text under the cursor.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Selects the block of text under the cursor.'''</span>
         <span class="n">LineUnderCursor</span>  <span class="o">=</span> <span class="mh">0x01</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Selects the line of text under the cursor.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Selects the line of text under the cursor.'''</span>
         <span class="n">WordUnderCursor</span>  <span class="o">=</span> <span class="mh">0x00</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Selects the word under the cursor. If the cursor is not positioned within a string of selectable characters, no text is selected.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Selects the word under the cursor. If the cursor is not positioned within a string of selectable characters, no text is selected.'''</span>
     <span class="n">Document</span>         <span class="o">=</span> <span class="n">SelectionType</span><span class="o">.</span><span class="n">Document</span>
     <span class="n">BlockUnderCursor</span> <span class="o">=</span> <span class="n">SelectionType</span><span class="o">.</span><span class="n">BlockUnderCursor</span>
     <span class="n">LineUnderCursor</span>  <span class="o">=</span> <span class="n">SelectionType</span><span class="o">.</span><span class="n">LineUnderCursor</span>
@@ -616,55 +619,55 @@ document.write(`
 
     <span class="k">class</span><span class="w"> </span><span class="nc">MoveOperation</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">NoMove</span>            <span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Keep the cursor where it is&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Keep the cursor where it is'''</span>
         <span class="n">Start</span>             <span class="o">=</span> <span class="mi">1</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the start of the document.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the start of the document.'''</span>
         <span class="n">StartOfLine</span>       <span class="o">=</span> <span class="mi">3</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the start of the current line.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the start of the current line.'''</span>
         <span class="n">StartOfBlock</span>      <span class="o">=</span> <span class="mi">4</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the start of the current block.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the start of the current block.'''</span>
         <span class="n">StartOfWord</span>       <span class="o">=</span> <span class="mi">5</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the start of the current word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the start of the current word.'''</span>
         <span class="n">PreviousBlock</span>     <span class="o">=</span> <span class="mi">6</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the start of the previous block.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the start of the previous block.'''</span>
         <span class="n">PreviousCharacter</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the previous character.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the previous character.'''</span>
         <span class="n">PreviousWord</span>      <span class="o">=</span> <span class="mi">8</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the beginning of the previous word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the beginning of the previous word.'''</span>
         <span class="n">Up</span>                <span class="o">=</span> <span class="mi">2</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move up one line.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move up one line.'''</span>
         <span class="n">Left</span>              <span class="o">=</span> <span class="mi">9</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move left one character.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move left one character.'''</span>
         <span class="n">WordLeft</span>          <span class="o">=</span> <span class="mi">10</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move left one word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move left one word.'''</span>
         <span class="n">End</span>               <span class="o">=</span> <span class="mi">11</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the end of the document.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the end of the document.'''</span>
         <span class="n">EndOfLine</span>         <span class="o">=</span> <span class="mi">13</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the end of the current line.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the end of the current line.'''</span>
         <span class="n">EndOfWord</span>         <span class="o">=</span> <span class="mi">14</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the end of the current word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the end of the current word.'''</span>
         <span class="n">EndOfBlock</span>        <span class="o">=</span> <span class="mi">15</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the end of the current block.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the end of the current block.'''</span>
         <span class="n">NextBlock</span>         <span class="o">=</span> <span class="mi">16</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the beginning of the next block.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the beginning of the next block.'''</span>
         <span class="n">NextCharacter</span>     <span class="o">=</span> <span class="mi">17</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the next character.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the next character.'''</span>
         <span class="n">NextWord</span>          <span class="o">=</span> <span class="mi">18</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the next word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the next word.'''</span>
         <span class="n">Down</span>              <span class="o">=</span> <span class="mi">12</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move down one line.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move down one line.'''</span>
         <span class="n">Right</span>             <span class="o">=</span> <span class="mi">19</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move right one character.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move right one character.'''</span>
         <span class="n">WordRight</span>         <span class="o">=</span> <span class="mi">20</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move right one word.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move right one word.'''</span>
         <span class="n">NextCell</span>          <span class="o">=</span> <span class="mi">21</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the beginning of the next table cell inside the current table. If the current cell is the last cell in the row, the cursor will move to the first cell in the next row.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the beginning of the next table cell inside the current table. If the current cell is the last cell in the row, the cursor will move to the first cell in the next row.'''</span>
         <span class="n">PreviousCell</span>      <span class="o">=</span> <span class="mi">22</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the beginning of the previous table cell inside the current table. If the current cell is the first cell in the row, the cursor will move to the last cell in the previous row.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the beginning of the previous table cell inside the current table. If the current cell is the first cell in the row, the cursor will move to the last cell in the previous row.'''</span>
         <span class="n">NextRow</span>           <span class="o">=</span> <span class="mi">23</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the first new cell of the next row in the current table.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the first new cell of the next row in the current table.'''</span>
         <span class="n">PreviousRow</span>       <span class="o">=</span> <span class="mi">24</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Move to the last cell of the previous row in the current table.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Move to the last cell of the previous row in the current table.'''</span>
     <span class="n">NoMove</span>            <span class="o">=</span> <span class="n">MoveOperation</span><span class="o">.</span><span class="n">NoMove</span>
     <span class="n">Start</span>             <span class="o">=</span> <span class="n">MoveOperation</span><span class="o">.</span><span class="n">Start</span>
     <span class="n">StartOfLine</span>       <span class="o">=</span> <span class="n">MoveOperation</span><span class="o">.</span><span class="n">StartOfLine</span>
@@ -691,7 +694,7 @@ document.write(`
     <span class="n">NextRow</span>           <span class="o">=</span> <span class="n">MoveOperation</span><span class="o">.</span><span class="n">NextRow</span>
     <span class="n">PreviousRow</span>       <span class="o">=</span> <span class="n">MoveOperation</span><span class="o">.</span><span class="n">PreviousRow</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_document&#39;</span><span class="p">,</span> <span class="s1">&#39;_properties&#39;</span><span class="p">,</span> <span class="s1">&#39;_cID&#39;</span><span class="p">,</span> <span class="s1">&#39;_color&#39;</span><span class="p">,</span> <span class="s1">&#39;_autoChanged&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_document'</span><span class="p">,</span> <span class="s1">'_properties'</span><span class="p">,</span> <span class="s1">'_cID'</span><span class="p">,</span> <span class="s1">'_color'</span><span class="p">,</span> <span class="s1">'_autoChanged'</span><span class="p">)</span>
     <span class="n">_color</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkColor</span><span class="p">]</span>
     <span class="n">_document</span><span class="p">:</span><span class="n">TTkTextDocument</span>
     <span class="n">_properties</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">_Prop</span><span class="p">]</span>
@@ -791,12 +794,12 @@ document.write(`
         <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">[</span><span class="n">cID</span><span class="p">]</span><span class="o">.</span><span class="n">position</span>
         <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">dataLine</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">l</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39; &#39;</span>
+            <span class="k">return</span> <span class="s1">' '</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">pos</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
             <span class="n">ch</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">charAt</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">ch</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="s1">' '</span>
         <span class="k">return</span> <span class="n">ch</span></div>
 
 
@@ -881,7 +884,7 @@ document.write(`
         <span class="k">def</span><span class="w"> </span><span class="nf">moveUpDown</span><span class="p">(</span><span class="n">offset</span><span class="p">):</span>
             <span class="k">def</span><span class="w"> </span><span class="nf">_moveUpDown</span><span class="p">(</span><span class="n">cID</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span><span class="n">_CP</span><span class="p">,</span> <span class="n">_n</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">textWrap</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;textWrap is required for the Up,Down movement&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"textWrap is required for the Up,Down movement"</span><span class="p">)</span>
                 <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span>    <span class="o">=</span> <span class="n">textWrap</span><span class="o">.</span><span class="n">dataToScreenPosition</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span><span class="o">.</span><span class="n">to_xy</span><span class="p">()</span>
                 <span class="n">x</span><span class="p">,</span>  <span class="n">y</span>     <span class="o">=</span> <span class="n">textWrap</span><span class="o">.</span><span class="n">normalizeScreenPosition</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="o">+</span><span class="n">offset</span><span class="p">)</span>
                 <span class="n">line</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">textWrap</span><span class="o">.</span><span class="n">screenToDataPosition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
@@ -961,16 +964,16 @@ document.write(`
         <span class="c1"># Check if the number of lines is the same as the number of cursors</span>
         <span class="c1"># this is a corner case where each line belongs to a</span>
         <span class="c1"># different cursor</span>
-        <span class="n">textLines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="k">else</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span>
+        <span class="n">textLines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="k">else</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">textLines</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">):</span>
             <span class="n">textLines</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">)</span>
 
         <span class="c1"># Calc the added and removed lines</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">):</span>
-            <span class="n">lenNewLines</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">textLines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+            <span class="n">lenNewLines</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">textLines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">))</span>
             <span class="n">l</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span>
             <span class="n">p</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">pos</span>
-            <span class="k">if</span> <span class="p">(</span>  <span class="n">textLines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">and</span>
+            <span class="k">if</span> <span class="p">(</span>  <span class="n">textLines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="ow">and</span>
                   <span class="n">l</span> <span class="o">==</span> <span class="n">lineFirst</span> <span class="o">!=</span> <span class="n">_lineFirst</span> <span class="ow">and</span>
                   <span class="n">p</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">[</span><span class="n">l</span><span class="p">])</span> <span class="p">):</span>
                 <span class="n">lineFirst</span> <span class="o">=</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span>
@@ -998,7 +1001,7 @@ document.write(`
 
             <span class="n">newLines</span> <span class="o">=</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span>
                          <span class="n">ttktext</span> <span class="o">+</span>
-                         <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">newLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">nl</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">newLines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_document</span><span class="o">.</span><span class="n">_dataLines</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nl</span><span class="p">)</span>
@@ -1021,10 +1024,10 @@ document.write(`
             <span class="c1">#          ......\n</span>
             <span class="c1">#          \n</span>
             <span class="c1">#          .....aaaaaYaaaaaYaaaa</span>
-            <span class="c1">#               diffPos = len(text.split(&#39;\n&#39;)[-1]) - p</span>
+            <span class="c1">#               diffPos = len(text.split('\n')[-1]) - p</span>
             <span class="n">diffLine</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">newLines</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
             <span class="k">if</span> <span class="n">diffLine</span><span class="p">:</span>
-                <span class="n">diffPos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">p</span>
+                <span class="n">diffPos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">p</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">diffPos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
             <span class="c1"># Realign all the cursos (move the same if required)</span>
@@ -1085,10 +1088,10 @@ document.write(`
                 <span class="k">if</span> <span class="n">lineData</span><span class="p">:</span>
                     <span class="n">splitBefore</span> <span class="o">=</span> <span class="n">lineData</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
                     <span class="n">splitAfter</span> <span class="o">=</span>  <span class="n">lineData</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
-                    <span class="n">selectRE</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[^ \t\r\n()[\]\.\,\+\-\*\/]*&#39;</span>
-                    <span class="k">if</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">splitBefore</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">selectRE</span><span class="o">+</span><span class="s1">&#39;$&#39;</span><span class="p">):</span>
+                    <span class="n">selectRE</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'[^ \t\r\n()[\]\.\,\+\-\*\/]*'</span>
+                    <span class="k">if</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">splitBefore</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">selectRE</span><span class="o">+</span><span class="s1">'$'</span><span class="p">):</span>
                         <span class="n">xFrom</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-                    <span class="k">if</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">splitAfter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="o">+</span><span class="n">selectRE</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">splitAfter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'^'</span><span class="o">+</span><span class="n">selectRE</span><span class="p">):</span>
                         <span class="n">xTo</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
                 <span class="n">p</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">xTo</span>
                 <span class="n">p</span><span class="o">.</span><span class="n">anchor</span><span class="o">.</span><span class="n">pos</span>   <span class="o">=</span> <span class="n">xFrom</span>
@@ -1114,7 +1117,7 @@ document.write(`
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">:</span>
             <span class="n">ret</span> <span class="o">+=</span> <span class="n">_getText</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">TTkString</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTextCursor.hasSelection">
@@ -1219,12 +1222,12 @@ document.write(`
                 <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">)</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="p">):</span> <span class="k">continue</span>
                 <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BLINKING</span><span class="p">,</span> <span class="n">posFrom</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">posTo</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]):</span>
-                   <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">+</span><span class="n">TTkString</span><span class="p">(</span><span class="s1">&#39;↵&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BLINKING</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">.</span><span class="n">charAt</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
-                    <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">.</span><span class="n">setCharAt</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s1">&#39;∙&#39;</span><span class="p">)</span>
+                   <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">+</span><span class="n">TTkString</span><span class="p">(</span><span class="s1">'↵'</span><span class="p">,</span><span class="n">color</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BLINKING</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">.</span><span class="n">charAt</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="o">==</span> <span class="s1">' '</span><span class="p">:</span>
+                    <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">line</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span><span class="o">.</span><span class="n">setCharAt</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s1">'∙'</span><span class="p">)</span>
                     <span class="c1"># ret[p.line-fr].setColorAt(pos=p.pos, color=TTkCfg.theme.treeLineColor+TTkColor.BLINKING)</span>
-                <span class="c1">#elif ret[p.line-fr].charAt(p.pos) == &#39;\t&#39;:</span>
-                <span class="c1">#    ret[p.line-fr].setCharAt(pos=p.pos, char=&#39;\t&#39;)</span>
+                <span class="c1">#elif ret[p.line-fr].charAt(p.pos) == '\t':</span>
+                <span class="c1">#    ret[p.line-fr].setCharAt(pos=p.pos, char='\t')</span>
         <span class="k">return</span> <span class="n">ret</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_getHighlightedLines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fr</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="n">TTkColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]:</span>

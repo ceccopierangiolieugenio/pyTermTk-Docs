@@ -16,7 +16,7 @@ TTkMenuBarButton
    .. code-block:: python
 
       
-          classStyle = TTkMenuButton.classStyle | {
+          classStyle:Dict[str,Dict[str,Any]] = TTkMenuButton.classStyle | {
                       'default': TTkMenuButton.classStyle['default'] |
                                  {'borderColor':TTkColor.RST,
                                   'glyphs':('├','─','┤','┄','┄','▶')},

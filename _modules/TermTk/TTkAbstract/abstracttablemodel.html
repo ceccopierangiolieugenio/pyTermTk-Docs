@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkAbstract.abstracttablemodel &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkAbstract.abstracttablemodel &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2024 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -532,7 +535,7 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkAbstractTableModel&#39;</span><span class="p">,</span><span class="s1">&#39;TTkModelIndex&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkAbstractTableModel'</span><span class="p">,</span><span class="s1">'TTkModelIndex'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span><span class="n">Any</span>
 
@@ -545,7 +548,7 @@ document.write(`
 <div class="viewcode-block" id="TTkModelIndex">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkModelIndex.html#TermTk.TTkAbstract.TTkModelIndex">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkModelIndex</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This class is used as an index into item models derived from :py:class:`TTkAbstractTableModel`.</span>
 <span class="sd">    The index is used by item views, delegates, and selection models to locate an item in the model.</span>
 
@@ -556,29 +559,29 @@ document.write(`
 <span class="sd">    Each index is located in a given row and column; use :meth:`row`, :meth:`column`, and :meth:`data` to obtain this information.</span>
 
 <span class="sd">    To obtain a model index that refers to an existing item in a model, call :py:class:`TTkAbstractTableModel` -&gt; :meth:`~TermTk.TTkAbstract.abstracttablemodel.TTkAbstractTableModel.index` with the required row and column values.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="TTkModelIndex.row">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkModelIndex.html#TermTk.TTkAbstract.TTkModelIndex.row">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">row</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the row this model index refers to.</span>
 
 <span class="sd">        :return: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkModelIndex.col">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkModelIndex.html#TermTk.TTkAbstract.TTkModelIndex.col">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">col</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the column this model index refers to.</span>
 
 <span class="sd">        :return: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
@@ -586,29 +589,29 @@ document.write(`
 <div class="viewcode-block" id="TTkModelIndex.data">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkModelIndex.html#TermTk.TTkAbstract.TTkModelIndex.data">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the data for the item referred to by the index.</span>
 
 <span class="sd">        :return: object</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkModelIndex.setData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkModelIndex.html#TermTk.TTkAbstract.TTkModelIndex.setData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the data in the item referred by the current index.</span>
 
 <span class="sd">        :param data: the data to be set in the (row,col) position of the table</span>
 <span class="sd">        :type data: object</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 </div>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkModelIndexList</span><span class="p">(</span><span class="n">TTkModelIndex</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_col&#39;</span><span class="p">,</span><span class="s1">&#39;_row&#39;</span><span class="p">,</span><span class="s1">&#39;_model&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_col'</span><span class="p">,</span><span class="s1">'_row'</span><span class="p">,</span><span class="s1">'_model'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span><span class="n">TTkAbstractTableModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_col</span> <span class="o">=</span> <span class="n">col</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_row</span> <span class="o">=</span> <span class="n">row</span>
@@ -630,7 +633,7 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkAbstractTableModel</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    :py:class:`TTkAbstractTableModel` provides a standard interface for</span>
 <span class="sd">    models that represent their data as a two-dimensional array of items.</span>
 <span class="sd">    It is not used directly, but must be subclassed.</span>
@@ -655,15 +658,15 @@ document.write(`
 
 <span class="sd">    :py:class:`TTkTableModelSQLite3` subclass of :py:class:`TTkTableModelList` including support for `sqlite3 &lt;https://www.sqlite.org&gt;`__ databases</span>
 
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
         <span class="c1"># Signals</span>
-        <span class="s1">&#39;dataChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;modelChanged&#39;</span>
+        <span class="s1">'dataChanged'</span><span class="p">,</span> <span class="s1">'modelChanged'</span>
     <span class="p">)</span>
 
     <span class="n">dataChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted whenever the data in an existing item changes.</span>
 
 <span class="sd">        If more items are affected, the pos/size definne the minimum area including all of those changes.</span>
@@ -675,13 +678,13 @@ document.write(`
 
 <span class="sd">        :param size: the size of the modified area</span>
 <span class="sd">        :type size: tuple(int,int)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="n">modelChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">        This signal is emitted whenever the model changes.</span>
 
 <span class="sd">        When the model topology changes, this signal must be emitted explicitly.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">],</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modelChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">()</span>
@@ -689,29 +692,29 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel.rowCount">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.rowCount">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">rowCount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the number of rows of the current model.</span>
 
 <span class="sd">        :return: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.columnCount">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.columnCount">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">columnCount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the number of columns of the current moodel.</span>
 
 <span class="sd">        :return: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.index">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.index">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkModelIndex</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the index of the item in the model specified by the given row, column.</span>
 
 <span class="sd">        :param row: the row position of the index</span>
@@ -720,14 +723,14 @@ document.write(`
 <span class="sd">        :type col: int</span>
 
 <span class="sd">        :return: :py:class:`TTkModelIndex`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="n">_TTkModelIndexList</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.data">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.data">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the data stored for the item referred to by the row/column.</span>
 
 <span class="sd">        Note: If you do not have a value to return, return *None* instead of returning 0.</span>
@@ -738,14 +741,14 @@ document.write(`
 <span class="sd">        :type col: int</span>
 
 <span class="sd">        :return: object</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.setData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.setData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns true if successful; otherwise returns false.</span>
 
 <span class="sd">        The :meth:`~TermTk.TTkAbstract.abstracttablemodel.TTkAbstractTableModel.dataChanged` signal should be emitted if the data was successfully set.</span>
@@ -760,13 +763,13 @@ document.write(`
 <span class="sd">        :type data: object</span>
 
 <span class="sd">        :return: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_dataToTTkString</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert arbitrary data to TTkString (passes through TTkString, wraps str, else str() coercion).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Convert arbitrary data to TTkString (passes through TTkString, wraps str, else str() coercion)."""</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">TTkString</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
@@ -777,7 +780,7 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel.ttkStringData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.ttkStringData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">ttkStringData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the :py:class:`TTkString` reprsents the data stored in the row/column.</span>
 
 <span class="sd">        :param row: the row position of the data</span>
@@ -786,7 +789,7 @@ document.write(`
 <span class="sd">        :type col: int</span>
 
 <span class="sd">        :return: :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TTkAbstractTableModel</span><span class="o">.</span><span class="n">_dataToTTkString</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
@@ -794,7 +797,7 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel.displayData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.displayData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">displayData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TTkString</span><span class="p">,</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Alignment</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the display representation and alignment for the data stored at the specified row/column position.</span>
 
 <span class="sd">        This method provides the formatted text representation of the cell data along with its preferred alignment</span>
@@ -829,15 +832,15 @@ document.write(`
 <span class="sd">                # Custom formatting based on column type</span>
 <span class="sd">                if isinstance(data, (int, float)):</span>
 <span class="sd">                    # Right-align numeric data</span>
-<span class="sd">                    return TTkString(f&quot;{data:,.2f}&quot;), TTkK.Alignment.RIGHT_ALIGN</span>
+<span class="sd">                    return TTkString(f"{data:,.2f}"), TTkK.Alignment.RIGHT_ALIGN</span>
 <span class="sd">                elif isinstance(data, bool):</span>
 <span class="sd">                    # Center-align boolean with custom symbols</span>
-<span class="sd">                    symbol = &quot;✓&quot; if data else &quot;✗&quot;</span>
+<span class="sd">                    symbol = "✓" if data else "✗"</span>
 <span class="sd">                    return TTkString(symbol), TTkK.Alignment.CENTER_ALIGN</span>
 <span class="sd">                else:</span>
 <span class="sd">                    # Default left-align for text</span>
 <span class="sd">                    return self.ttkStringData(row, col), TTkK.Alignment.LEFT_ALIGN</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
         <span class="n">retData</span> <span class="o">=</span>  <span class="n">TTkAbstractTableModel</span><span class="o">.</span><span class="n">_dataToTTkString</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">float</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)):</span>
@@ -848,7 +851,7 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel.headerData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.headerData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">headerData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Direction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the data for the given role and section in the header with the specified orientation.</span>
 
 <span class="sd">        For horizontal headers, the section number corresponds to the column number.</span>
@@ -860,7 +863,7 @@ document.write(`
 <span class="sd">        :type orientation: :py:class:`TTkConstant.Direction`</span>
 
 <span class="sd">        :return: :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">orientation</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">TTkString</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">orientation</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
@@ -871,7 +874,7 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel.flags">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.flags">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">flags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the item flags for the given row,column.</span>
 
 <span class="sd">        The base class implementation returns a combination of flags that</span>
@@ -884,7 +887,7 @@ document.write(`
 <span class="sd">        :type col: int</span>
 
 <span class="sd">        :return: :py:class:`TTkConstant.ItemFlag`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="o">.</span><span class="n">ItemIsEnabled</span>  <span class="o">|</span>
             <span class="n">TTkK</span><span class="o">.</span><span class="n">ItemFlag</span><span class="o">.</span><span class="n">ItemIsSelectable</span> <span class="p">)</span></div>
@@ -893,21 +896,21 @@ document.write(`
 <div class="viewcode-block" id="TTkAbstractTableModel.sort">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.sort">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Sorts the model by column in the given order.</span>
 
 <span class="sd">        :param column: The column index to be sorted, if -1 is provided the original unsorted order is used.</span>
 <span class="sd">        :type column: int</span>
 <span class="sd">        :param order: the sorting order</span>
 <span class="sd">        :type order: :py:class:`TTkConstant.SortOrder`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.insertColumn">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertColumn">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Inserts a single column before the given column.</span>
 
 <span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.insertColumns`.</span>
@@ -917,14 +920,14 @@ document.write(`
 
 <span class="sd">        :return: true if the column is inserted; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertColumns</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.insertColumns">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertColumns">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        On models that support this,</span>
 <span class="sd">        inserts &lt;count&gt; new columns into the model before the given column..</span>
 
@@ -946,14 +949,14 @@ document.write(`
 
 <span class="sd">        :return: true if the columns were successfully inserted; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.insertRow">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertRow">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Inserts a single row before the given row.</span>
 
 <span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.insertRows`.</span>
@@ -963,14 +966,14 @@ document.write(`
 
 <span class="sd">        :return: true if the row is inserted; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertRows</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.insertRows">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.insertRows">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        On models that support this,</span>
 <span class="sd">        inserts count rows into the model before the given row.</span>
 
@@ -992,14 +995,14 @@ document.write(`
 
 <span class="sd">        :return: true if the rows were successfully inserted; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.removeColumn">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeColumn">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Removes the given column.</span>
 
 <span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.removeColumns`.</span>
@@ -1009,14 +1012,14 @@ document.write(`
 
 <span class="sd">        :return: true if the column is removed; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">removeColumns</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.removeColumns">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeColumns">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        On models that support this,</span>
 <span class="sd">        removes count columns starting with the given column.</span>
 
@@ -1033,14 +1036,14 @@ document.write(`
 
 <span class="sd">        :return: true if the columns were successfully removed; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.removeRow">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeRow">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Removes the given row.</span>
 
 <span class="sd">        .. note:: This function calls the method :py:meth:`TTkAbstractTableModel.removeRows`.</span>
@@ -1050,14 +1053,14 @@ document.write(`
 
 <span class="sd">        :return: true if the row is removed; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">removeRows</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkAbstractTableModel.removeRows">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkAbstract.TTkAbstractTableModel.html#TermTk.TTkAbstract.TTkAbstractTableModel.removeRows">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        On models that support this,</span>
 <span class="sd">        removes count rows starting with the given row.</span>
 
@@ -1074,7 +1077,7 @@ document.write(`
 
 <span class="sd">        :return: true if the rows were successfully removed; otherwise returns false.</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 </div>
 

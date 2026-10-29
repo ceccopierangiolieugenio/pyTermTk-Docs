@@ -16,7 +16,7 @@ TTkButton
    .. code-block:: python
 
       
-          classStyle = {
+          classStyle:Dict[str,Dict[str,Any]] = {
                       'default':     {'color': TTkColor.fg("#dddd88")+TTkColor.bg("#000044"),
                                       'borderColor': TTkColor.RST,
                                       'grid':1},

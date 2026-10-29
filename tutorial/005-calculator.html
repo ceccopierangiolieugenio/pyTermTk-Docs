@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pyTermTk - Your first Calculator &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>pyTermTk - Your first Calculator &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -625,7 +628,7 @@ Thanks to my amazing <a class="reference external" href="https://github.com/cecc
 <span class="n">root</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTk</span><span class="p">()</span>
 
     <span class="c1"># Create a window and attach it to the root (parent=root)</span>
-<span class="n">calculatorWin</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkWindow</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">17</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My first Calculator&quot;</span><span class="p">)</span>
+<span class="n">calculatorWin</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkWindow</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">17</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"My first Calculator"</span><span class="p">)</span>
 
     <span class="c1"># Create a grid layout and set it as default for the window</span>
 <span class="n">winLayout</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkGridLayout</span><span class="p">()</span>
@@ -646,19 +649,19 @@ Thanks to my amazing <a class="reference external" href="https://github.com/cecc
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Define the Label and attach it to the grid layout at</span>
     <span class="c1"># Position (Row/Col) (0,0) and (Row/Col)Span (1,4)</span>
     <span class="c1"># I force the Max Height to 1 in order to avoid this widget to resize vertically</span>
-<span class="n">resLabel</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLabel</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Results&quot;</span><span class="p">,</span> <span class="n">maxHeight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">resLabel</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLabel</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">"Results"</span><span class="p">,</span> <span class="n">maxHeight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">resLabel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 
     <span class="c1"># Define the Numeric Buttons and attach them to the grid layout</span>
-<span class="n">btn1</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
-<span class="n">btn2</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
-<span class="n">btn3</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
-<span class="n">btn4</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
-<span class="n">btn5</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
-<span class="n">btn6</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;6&quot;</span><span class="p">)</span>
-<span class="n">btn7</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
-<span class="n">btn8</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="p">)</span>
-<span class="n">btn9</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;9&quot;</span><span class="p">)</span>
+<span class="n">btn1</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"1"</span><span class="p">)</span>
+<span class="n">btn2</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"2"</span><span class="p">)</span>
+<span class="n">btn3</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"3"</span><span class="p">)</span>
+<span class="n">btn4</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"4"</span><span class="p">)</span>
+<span class="n">btn5</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"5"</span><span class="p">)</span>
+<span class="n">btn6</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"6"</span><span class="p">)</span>
+<span class="n">btn7</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"7"</span><span class="p">)</span>
+<span class="n">btn8</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"8"</span><span class="p">)</span>
+<span class="n">btn9</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"9"</span><span class="p">)</span>
 
 <span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Colspan/Rowspan are defaulted to 1 if not specified</span>
 <span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -670,20 +673,20 @@ Thanks to my amazing <a class="reference external" href="https://github.com/cecc
 <span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
-    <span class="c1"># Adding the &quot;0&quot; button on the bottom which alignment is</span>
+    <span class="c1"># Adding the "0" button on the bottom which alignment is</span>
     <span class="c1"># Position (Row/Col) (4,0) (Row/Col)span (1,2)</span>
     <span class="c1"># Just to show off I am using another way to attach it to the grid layout</span>
-<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn0</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn0</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"0"</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="c1"># Define the 2 algebraic buttons</span>
-<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btnAdd</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btnSub</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btnAdd</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"+"</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btnSub</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"-"</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
-    <span class="c1"># The Enter &quot;=&quot; button (2 rows wide )</span>
-<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btnRes</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># The Enter "=" button (2 rows wide )</span>
+<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btnRes</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"="</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Last but not least an extrabutton just for  fun</span>
-<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">mysteryButton</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">winLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">mysteryButton</span><span class="o">:=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"?"</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This code will produce this result:</p>
@@ -718,23 +721,23 @@ Thanks to my amazing <a class="reference external" href="https://github.com/cecc
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># I am defining a simlpe structure that can be used to store</span>
     <span class="c1"># the mathematical elements of the formulae</span>
-<span class="n">mathElements</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;operation&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">}</span>
+<span class="n">mathElements</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'operation'</span><span class="p">:</span><span class="kc">None</span><span class="p">}</span>
 
     <span class="c1"># This is a simple callback that I can use to store the numbers</span>
-    <span class="c1"># I didn&#39;t include extra logic because out of the scope of this tutorial</span>
+    <span class="c1"># I didn't include extra logic because out of the scope of this tutorial</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">setFactor</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'operation'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">value</span>
         <span class="c1"># Display the value in the label</span>
-        <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">value</span>
+        <span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">value</span>
         <span class="c1"># Display the value in the label</span>
-        <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="c1"># I am using a lambda function to redirect the click event to the</span>
-    <span class="c1"># proper &quot;setFactor&quot; callback, this is due to the fact that the</span>
-    <span class="c1"># &quot;clicked&quot; signal does not return any object or information that</span>
+    <span class="c1"># proper "setFactor" callback, this is due to the fact that the</span>
+    <span class="c1"># "clicked" signal does not return any object or information that</span>
     <span class="c1"># can be used to identify which button has been pressed</span>
     <span class="c1"># different approaches are possible, i.e. create a separate function</span>
     <span class="c1"># for each button</span>
@@ -762,30 +765,30 @@ Thanks to my amazing <a class="reference external" href="https://github.com/cecc
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Define 2 slots to handle the Add and Sub operations</span>
 <span class="nd">@pyTTkSlot</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">setOperationAdd</span><span class="p">():</span>
-    <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ADD&quot;</span>
+    <span class="n">mathElements</span><span class="p">[</span><span class="s1">'operation'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ADD"</span>
 
 <span class="nd">@pyTTkSlot</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">setOperationSub</span><span class="p">():</span>
-    <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;SUB&quot;</span>
+    <span class="n">mathElements</span><span class="p">[</span><span class="s1">'operation'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"SUB"</span>
 
     <span class="c1"># Connect them to the clicked signal of the buttons</span>
 <span class="n">btnAdd</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">setOperationAdd</span><span class="p">)</span>
 <span class="n">btnSub</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">setOperationSub</span><span class="p">)</span>
 
-    <span class="c1"># Same for the &quot;=&quot; button</span>
+    <span class="c1"># Same for the "=" button</span>
 <span class="nd">@pyTTkSlot</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">executeOperation</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ADD&quot;</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-            <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">res</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># &quot;SUB&quot; Routine</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-            <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">res</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'operation'</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'operation'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"ADD"</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span> <span class="o">+</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span>
+            <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">res</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># "SUB" Routine</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span> <span class="o">-</span> <span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span>
+            <span class="n">resLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">res</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="c1"># reset the values</span>
-        <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
-        <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">mathElements</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">mathElements</span><span class="p">[</span><span class="s1">'a'</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="n">mathElements</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mathElements</span><span class="p">[</span><span class="s1">'operation'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="n">btnRes</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">executeOperation</span><span class="p">)</span>
 </pre></div>

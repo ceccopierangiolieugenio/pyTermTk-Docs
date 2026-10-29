@@ -57,7 +57,6 @@ TTkKeyEvent Attributes
   code
   key
   mod
-  type
 
 .. currentmodule::  TermTk.TTkCore.TTkTerm
 

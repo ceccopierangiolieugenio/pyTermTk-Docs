@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkGridLayout &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkGridLayout &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -614,7 +617,7 @@ the empty rows/cols are resized to the “rowMinHeight,columnMinWidth” paramet
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>columnMinWidth</strong> (<em>int</em>) – the minimum width of the column, optional, defaults to 0</p></li>
-<li><p><strong>rowMinHeight</strong> (<em>int</em>) – the minimum height of the column, optional, defaults to 0</p></li>
+<li><p><strong>rowMinHeight</strong> (<em>int</em>) – the minimum height of the row, optional, defaults to 0</p></li>
 </ul>
 </dd>
 </dl>
@@ -626,101 +629,203 @@ the empty rows/cols are resized to the “rowMinHeight,columnMinWidth” paramet
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.columnMinWidth">
 <span class="sig-name descname"><span class="pre">columnMinWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.columnMinWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.columnMinWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the minimum width used for empty columns.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.getSizes">
 <span class="sig-name descname"><span class="pre">getSizes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.getSizes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.getSizes" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return cached horizontal and vertical slot sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(horSizes,</span> <span class="pre">verSizes)</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[list, list]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.gridItems">
 <span class="sig-name descname"><span class="pre">gridItems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.gridItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.gridItems" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the internal 2D grid matrix of layout items.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.gridSize">
 <span class="sig-name descname"><span class="pre">gridSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.gridSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.gridSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return current allocated grid size as <code class="docutils literal notranslate"><span class="pre">(rows,</span> <span class="pre">cols)</span></code>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.insertColumn">
 <span class="sig-name descname"><span class="pre">insertColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.insertColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.insertColumn" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Insert an empty column at <code class="docutils literal notranslate"><span class="pre">col</span></code> and shift items to the right.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – column index where the new column is inserted</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.insertRow">
 <span class="sig-name descname"><span class="pre">insertRow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.insertRow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.insertRow" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Insert an empty row at <code class="docutils literal notranslate"><span class="pre">row</span></code> and shift items downward.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – row index where the new row is inserted</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.itemAtPosition">
 <span class="sig-name descname"><span class="pre">itemAtPosition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.itemAtPosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.itemAtPosition" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the item occupying <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
+<p>Spanned items are returned for any covered cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – grid row</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – grid column</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>layout item at this position</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html#TermTk.TTkLayouts.TTkLayoutItem" title="TermTk.TTkLayouts.TTkLayoutItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayoutItem</span></code></a> or None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.maximumColWidth">
 <span class="sig-name descname"><span class="pre">maximumColWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gridCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.maximumColWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.maximumColWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the maximum width allowed for a column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gridCol</strong> (<em>int</em>) – column index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>maximum column width</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.maximumHeight">
 <span class="sig-name descname"><span class="pre">maximumHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.maximumHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.maximumHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>process the widgets and get the min size</p>
+<dd><p>Return the layout maximum height from all grid rows.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.maximumRowHeight">
 <span class="sig-name descname"><span class="pre">maximumRowHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gridRow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.maximumRowHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.maximumRowHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the maximum height allowed for a row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gridRow</strong> (<em>int</em>) – row index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>maximum row height</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.maximumWidth">
 <span class="sig-name descname"><span class="pre">maximumWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.maximumWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.maximumWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>process the widgets and get the min size</p>
+<dd><p>Return the layout maximum width from all grid columns.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.minimumColWidth">
 <span class="sig-name descname"><span class="pre">minimumColWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gridCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.minimumColWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.minimumColWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the minimum width required for a column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gridCol</strong> (<em>int</em>) – column index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>minimum column width</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.minimumHeight">
 <span class="sig-name descname"><span class="pre">minimumHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.minimumHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.minimumHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>process the widgets and get the min size</p>
+<dd><p>Return the layout minimum height from all grid rows.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.minimumRowHeight">
 <span class="sig-name descname"><span class="pre">minimumRowHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gridRow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.minimumRowHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.minimumRowHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the minimum height required for a row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gridRow</strong> (<em>int</em>) – row index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>minimum row height</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.minimumWidth">
 <span class="sig-name descname"><span class="pre">minimumWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.minimumWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.minimumWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>process the widgets and get the min size</p>
+<dd><p>Return the layout minimum width from all grid columns.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.repack">
 <span class="sig-name descname"><span class="pre">repack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.repack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.repack" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Remove empty rows/columns and compact item row/column indices.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.rowMinHeight">
 <span class="sig-name descname"><span class="pre">rowMinHeight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.rowMinHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.rowMinHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Return the minimum height used for empty rows.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.setColumnMinWidth">
 <span class="sig-name descname"><span class="pre">setColumnMinWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.setColumnMinWidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.setColumnMinWidth" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Set the minimum width used for empty columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cmw</strong> (<em>int</em>) – minimum empty-column width</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkLayouts.TTkGridLayout.setRowMinHeight">
 <span class="sig-name descname"><span class="pre">setRowMinHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rmh</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkLayouts/gridlayout.html#TTkGridLayout.setRowMinHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkLayouts.TTkGridLayout.setRowMinHeight" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Set the minimum height used for empty rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rmh</strong> (<em>int</em>) – minimum empty-row height</p>
+</dd>
+</dl>
+</dd></dl>
 
 <p>Methods Inherited from: <a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html#TermTk.TTkLayouts.TTkLayout" title="TermTk.TTkLayouts.TTkLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkLayout</span></code></a></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -738,67 +843,70 @@ the empty rows/cols are resized to the “rowMinHeight,columnMinWidth” paramet
 <td><p>Add the widgets to this <a class="reference internal" href="#TermTk.TTkLayouts.TTkGridLayout" title="TermTk.TTkLayouts.TTkGridLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkGridLayout</span></code></a>, this function uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">addItem()</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">children</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the list of direct child layout items.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Remove and detach all items from this layout.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the number of direct child layout items.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fullWidgetAreaGeometry</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Return the bounding geometry that encloses all child items.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertItem</span></code>(index, item)</p></td>
-<td><p></p></td>
+<td><p>Insert a single item at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertItems</span></code>(index, items)</p></td>
-<td><p></p></td>
+<td><p>Insert multiple items at <code class="docutils literal notranslate"><span class="pre">index</span></code> and re-parent them.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertWidget</span></code>(index, widget)</p></td>
-<td><p></p></td>
+<td><p>Insert a widget at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insertWidgets</span></code>(index, widgets)</p></td>
-<td><p></p></td>
+<td><p>Insert widgets at <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemAt</span></code>(index)</p></td>
-<td><p></p></td>
+<td><p>Return the item at <code class="docutils literal notranslate"><span class="pre">index</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> when out of range.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterWidgets</span></code>([onlyVisible, recurse, reverse])</p></td>
 <td><p>Iterate over all widgets in the layout.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerWidget</span></code>(widget)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">layoutItemType</span></code>()</p></td>
+<td><p>Return <a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.LayoutItemTypes.LayoutItem" title="TermTk.TTkCore.TTkK.LayoutItemTypes.LayoutItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TTkK.LayoutItemTypes.LayoutItem</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentWidget</span></code>()</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowerWidget</span></code>(widget)</p></td>
+<td><p>Lower a widget (and its branch) to the bottom z-order.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseWidget</span></code>(widget)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parentWidget</span></code>()</p></td>
+<td><p>Return the widget owning this layout branch.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code>(item)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">raiseWidget</span></code>(widget)</p></td>
+<td><p>Raise a widget (and its branch) to the top z-order.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code>(items)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItem</span></code>(item)</p></td>
+<td><p>Remove a single layout item from the grid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidget</span></code>(widget)</p></td>
-<td><p>Remove a widget from this Layout</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeItems</span></code>(items)</p></td>
+<td><p>Remove multiple layout items and clear their grid cells.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidgets</span></code>(widgets)</p></td>
-<td><p>Remove a list of widget from this Layout</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidget</span></code>(widget)</p></td>
+<td><p>Remove a single widget from the grid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceItem</span></code>(item, index)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">removeWidgets</span></code>(widgets)</p></td>
+<td><p>Remove multiple widgets from the grid.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, w, h)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">replaceItem</span></code>(item, index)</p></td>
+<td><p>Not implemented for grid layout indexed replacement.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setGeometry</span></code>(x, y, w, h)</p></td>
+<td><p>Set layout geometry and propagate a layout update when changed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>(*args, **kwargs)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setParent</span></code>(parent)</p></td>
+<td><p>Set the parent layout item and propagate parent widget ownership.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>(*args, **kwargs)</p></td>
+<td><p>Recompute cell geometry and update child widgets/layouts.</p></td>
 </tr>
 </tbody>
 </table>
@@ -826,7 +934,7 @@ the empty rows/cols are resized to the “rowMinHeight,columnMinWidth” paramet
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">zSortedItems</span></code></p></td>
-<td><p></p></td>
+<td><p>Return child items sorted by z-order.</p></td>
 </tr>
 </tbody>
 </table>

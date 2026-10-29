@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkGui.tooltip &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkGui.tooltip &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2023 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,7 +533,7 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkToolTip&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkToolTip'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
@@ -547,7 +550,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w">    </span><span class="kn">import</span> <span class="n">pyTTkSlot</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkToolTipDisplayWidget</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; _TTkToolTipDisplayWidget:</span>
+<span class="w">    </span><span class="sd">''' _TTkToolTipDisplayWidget:</span>
 
 <span class="sd">    Internal widget that renders tooltip content in a bordered box.</span>
 
@@ -560,57 +563,57 @@ document.write(`
 
 <span class="sd">    This widget is automatically sized based on tooltip content</span>
 <span class="sd">    and uses a rounded border style for visual distinction.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_tooltip_list&#39;</span><span class="p">,</span> <span class="s1">&#39;_x&#39;</span><span class="p">,</span> <span class="s1">&#39;_y&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_tooltip_list'</span><span class="p">,</span> <span class="s1">'_x'</span><span class="p">,</span> <span class="s1">'_y'</span><span class="p">)</span>
     <span class="n">_tooltip_list</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TTkString</span><span class="p">]</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                 <span class="n">toolTip</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                 <span class="n">toolTip</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the tooltip display widget</span>
+<span class="w">        </span><span class="sd">''' Initialize the tooltip display widget</span>
 
 <span class="sd">        :param toolTip: The tooltip text to display (supports multiline with \\n)</span>
 <span class="sd">        :type toolTip: :py:class:`TTkString`, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">toolTip</span><span class="p">,</span><span class="n">TTkString</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span> <span class="o">=</span> <span class="n">toolTip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span> <span class="o">=</span> <span class="n">toolTip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">toolTip</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">toolTip</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
         <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="nb">max</span><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span><span class="p">])</span>
         <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">mouseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle mouse events (always returns False to allow click-through)</span>
+<span class="w">        </span><span class="sd">''' Handle mouse events (always returns False to allow click-through)</span>
 
 <span class="sd">        :param evt: The mouse event</span>
 <span class="sd">        :type evt: :py:class:`TTkMouseEvent`</span>
 
 <span class="sd">        :return: False to propagate event</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span> <span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Paint the tooltip with rounded border and text content</span>
+<span class="w">        </span><span class="sd">''' Paint the tooltip with rounded border and text content</span>
 
 <span class="sd">        :param canvas: The canvas to draw on</span>
 <span class="sd">        :type canvas: :py:class:`TTkCanvas`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">)</span>
+        <span class="n">borderColor</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">)</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">drawBox</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
-        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>  <span class="n">char</span><span class="o">=</span><span class="s1">&#39;╭&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
-        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>  <span class="n">char</span><span class="o">=</span><span class="s1">&#39;╮&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
-        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">char</span><span class="o">=</span><span class="s1">&#39;╯&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
-        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">char</span><span class="o">=</span><span class="s1">&#39;╰&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>  <span class="n">char</span><span class="o">=</span><span class="s1">'╭'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>  <span class="n">char</span><span class="o">=</span><span class="s1">'╮'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">char</span><span class="o">=</span><span class="s1">'╯'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">drawChar</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">char</span><span class="o">=</span><span class="s1">'╰'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">borderColor</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_list</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">drawTTkString</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkToolTip">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkToolTip.html#TermTk.TTkGui.TTkToolTip">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkToolTip</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; TTkToolTip:</span>
+<span class="w">    </span><span class="sd">''' TTkToolTip:</span>
 
 <span class="sd">    Global tooltip manager for delayed display of help text.</span>
 
@@ -628,39 +631,39 @@ document.write(`
 <span class="sd">    .. code-block:: python</span>
 
 <span class="sd">        # Widgets set tooltips via their toolTip property</span>
-<span class="sd">        button = TTkButton(text=&quot;Click me&quot;, toolTip=&quot;This button does something&quot;)</span>
+<span class="sd">        button = TTkButton(text="Click me", toolTip="This button does something")</span>
 
 <span class="sd">        # The tooltip system automatically handles display timing and positioning</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">_toolTipTime</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Timeout in seconds&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''Timeout in seconds'''</span>
 
-    <span class="n">toolTipTimer</span><span class="p">:</span><span class="n">TTkTimer</span> <span class="o">=</span> <span class="n">TTkTimer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ToolTip&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Internal timer for delayed tooltip display&#39;&#39;&#39;</span>
+    <span class="n">toolTipTimer</span><span class="p">:</span><span class="n">TTkTimer</span> <span class="o">=</span> <span class="n">TTkTimer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'ToolTip'</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">'''Internal timer for delayed tooltip display'''</span>
 
-    <span class="n">toolTip</span><span class="p">:</span><span class="n">TTkStringType</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Current tooltip text to be displayed&#39;&#39;&#39;</span>
+    <span class="n">toolTip</span><span class="p">:</span><span class="n">TTkStringType</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="w">    </span><span class="sd">'''Current tooltip text to be displayed'''</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_toolTipShow</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Internal slot that creates and displays the tooltip widget</span>
+<span class="w">        </span><span class="sd">''' Internal slot that creates and displays the tooltip widget</span>
 
 <span class="sd">        This method is called by the timer after the configured delay period.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="c1"># TTkLog.debug(f&quot;TT:{TTkToolTip.toolTip}&quot;)</span>
+<span class="sd">        '''</span>
+        <span class="c1"># TTkLog.debug(f"TT:{TTkToolTip.toolTip}")</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipShow</span><span class="p">(</span><span class="n">_TTkToolTipDisplayWidget</span><span class="p">(</span><span class="n">toolTip</span><span class="o">=</span><span class="n">TTkToolTip</span><span class="o">.</span><span class="n">toolTip</span><span class="p">))</span>
 
 <div class="viewcode-block" id="TTkToolTip.trigger">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkToolTip.html#TermTk.TTkGui.TTkToolTip.trigger">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">trigger</span><span class="p">(</span><span class="n">toolTip</span><span class="p">:</span><span class="n">TTkStringType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Trigger a tooltip to be displayed after the configured delay</span>
+<span class="w">        </span><span class="sd">''' Trigger a tooltip to be displayed after the configured delay</span>
 
 <span class="sd">        :param toolTip: The tooltip text to display (supports \\n for multiline)</span>
 <span class="sd">        :type toolTip: :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="c1"># TTkToolTip.toolTipTimer.stop()</span>
         <span class="n">TTkToolTip</span><span class="o">.</span><span class="n">toolTip</span> <span class="o">=</span> <span class="n">toolTip</span>
         <span class="n">TTkToolTip</span><span class="o">.</span><span class="n">toolTipTimer</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">TTkToolTip</span><span class="o">.</span><span class="n">_toolTipTime</span><span class="p">)</span></div>
@@ -670,11 +673,11 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkToolTip.html#TermTk.TTkGui.TTkToolTip.reset">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Cancel any pending tooltip display</span>
+<span class="w">        </span><span class="sd">''' Cancel any pending tooltip display</span>
 
 <span class="sd">        This is typically called when the mouse leaves a widget</span>
 <span class="sd">        or when the tooltip should be hidden.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">TTkToolTip</span><span class="o">.</span><span class="n">toolTipTimer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
 </div>
 

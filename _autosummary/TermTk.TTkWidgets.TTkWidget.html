@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkWidget &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkWidget &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -698,13 +701,13 @@ document.write(`
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
 <section id="style">
 <span id="termtk-ttkwidgets-ttkwidget-classstyle"></span><h2>Style<a class="headerlink" href="#style" title="Link to this heading"><span>🌶️</span></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>           <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
-            <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">),</span> <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">)},</span>
-            <span class="c1"># &#39;hover&#39;:       {&#39;color&#39;: TTkColor.fg(&#39;#00FF00&#39;)+TTkColor.bg(&#39;#0077FF&#39;)},</span>
-            <span class="c1"># &#39;checked&#39;:     {&#39;color&#39;: TTkColor.fg(&#39;#00FF00&#39;)+TTkColor.bg(&#39;#00FFFF&#39;)},</span>
-            <span class="c1"># &#39;clicked&#39;:     {&#39;color&#39;: TTkColor.fg(&#39;#FFFF00&#39;)},</span>
-            <span class="c1"># &#39;focus&#39;:       {&#39;color&#39;: TTkColor.fg(&#39;#FFFF88&#39;)},</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classStyle</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">'default'</span><span class="p">:</span>     <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>             <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
+            <span class="s1">'disabled'</span><span class="p">:</span>    <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">),</span> <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">)},</span>
+            <span class="c1"># 'hover':       {'color': TTkColor.fg('#00FF00')+TTkColor.bg('#0077FF')},</span>
+            <span class="c1"># 'checked':     {'color': TTkColor.fg('#00FF00')+TTkColor.bg('#00FFFF')},</span>
+            <span class="c1"># 'clicked':     {'color': TTkColor.fg('#FFFF00')},</span>
+            <span class="c1"># 'focus':       {'color': TTkColor.fg('#FFFF88')},</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -1683,7 +1686,7 @@ Each state has its own style dictionary.</p>
 <p>i.e.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NewLabel</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">setText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1701,14 +1704,14 @@ Each state has its own style dictionary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkWidgets.TTkWidget.widgetItem">
-<span class="sig-name descname"><span class="pre">widgetItem</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TTkWidgetItem</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/widget.html#TTkWidget.widgetItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkWidget.widgetItem" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">widgetItem</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html#TermTk.TTkLayouts.TTkWidgetItem" title="TermTk.TTkLayouts.layoutitem.TTkWidgetItem"><span class="pre">TTkWidgetItem</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkWidgets/widget.html#TTkWidget.widgetItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkWidgets.TTkWidget.widgetItem" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Retrieve the widget item (layout item wrapper)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the layout item for this widget</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidgetItem</span></code></p>
+<dd class="field-even"><p><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html#TermTk.TTkLayouts.TTkWidgetItem" title="TermTk.TTkLayouts.TTkWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkWidgetItem</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

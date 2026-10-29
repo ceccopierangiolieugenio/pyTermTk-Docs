@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkTreeWidget &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkTreeWidget &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -619,14 +622,14 @@ each of which is a <a class="reference internal" href="TermTk.TTkWidgets.TTkMode
 <span class="n">root</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTk</span><span class="p">()</span>
 
 <span class="n">tree</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTree</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">24</span><span class="p">))</span>
-<span class="n">tree</span><span class="o">.</span><span class="n">setHeaderLabels</span><span class="p">([</span><span class="s2">&quot;Column 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Column 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Column 3&quot;</span><span class="p">])</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">setHeaderLabels</span><span class="p">([</span><span class="s2">"Column 1"</span><span class="p">,</span> <span class="s2">"Column 2"</span><span class="p">,</span> <span class="s2">"Column 3"</span><span class="p">])</span>
 
-<span class="n">top</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">&quot;String A&quot;</span><span class="p">,</span> <span class="s2">&quot;String B&quot;</span><span class="p">,</span> <span class="s2">&quot;String C&quot;</span><span class="p">])</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">"String A"</span><span class="p">,</span> <span class="s2">"String B"</span><span class="p">,</span> <span class="s2">"String C"</span><span class="p">])</span>
 
 <span class="n">tree</span><span class="o">.</span><span class="n">addTopLevelItem</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">child</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">&quot;Child A&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s2">&quot;Child B&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s2">&quot;Child C&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+    <span class="n">child</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">"Child A"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s2">"Child B"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s2">"Child C"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
     <span class="n">top</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
@@ -698,22 +701,22 @@ The isSortingEnabled() function indicates whether sorting is enabled.</p>
 <section id="style">
 <span id="termtk-ttkwidgets-ttkmodelview-ttktreewidget-classstyle"></span><h2>Style<a class="headerlink" href="#style" title="Link to this heading"><span>🌶️</span></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span>
-                <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
-                <span class="s1">&#39;lineColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;lineHeightColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;headerColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffffff&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                <span class="s1">&#39;hoveredColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#0088FF&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;selectedColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#ffff88&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">&quot;#000066&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
-                <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#444444&quot;</span><span class="p">)},</span>
-            <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span>
-                <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;lineColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;lineHeightColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#666666&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;headerColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;hoveredColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#777777&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;selectedColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">),</span>
-                <span class="s1">&#39;separatorColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">&quot;#888888&quot;</span><span class="p">)},</span>
+            <span class="s1">'default'</span><span class="p">:</span>     <span class="p">{</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>
+                <span class="s1">'lineColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#444444"</span><span class="p">),</span>
+                <span class="s1">'lineHeightColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#666666"</span><span class="p">),</span>
+                <span class="s1">'headerColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffffff"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">"#444444"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                <span class="s1">'hoveredColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#0088FF'</span><span class="p">),</span>
+                <span class="s1">'selectedColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#ffff88"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s2">"#000066"</span><span class="p">)</span><span class="o">+</span><span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>
+                <span class="s1">'separatorColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#444444"</span><span class="p">)},</span>
+            <span class="s1">'disabled'</span><span class="p">:</span>    <span class="p">{</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                <span class="s1">'lineColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                <span class="s1">'lineHeightColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#666666"</span><span class="p">),</span>
+                <span class="s1">'headerColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                <span class="s1">'hoveredColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#777777'</span><span class="p">),</span>
+                <span class="s1">'selectedColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">),</span>
+                <span class="s1">'separatorColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s2">"#888888"</span><span class="p">)},</span>
         <span class="p">}</span>
 </pre></div>
 </div>

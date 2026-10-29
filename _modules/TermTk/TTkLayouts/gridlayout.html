@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkLayouts.gridlayout &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkLayouts.gridlayout &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,21 +533,24 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 <span class="sd">**Grid Layout** [:ref:`Tutorial &lt;Layout-Tutorial_Intro&gt;`]</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">'''</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkGridLayout&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkGridLayout'</span><span class="p">]</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts.layout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.layout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.layoutitem</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkWidgetItem</span><span class="p">,</span> <span class="n">TTkLayoutItem</span>
 
 <div class="viewcode-block" id="TTkGridLayout">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkGridLayout</span><span class="p">(</span><span class="n">TTkLayout</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    The grid layout allows an automatic place all the widgets in a grid, &lt;br/&gt;</span>
-<span class="sd">    the empty rows/cols are resized to the &quot;rowMinHeight,columnMinWidth&quot; parameters</span>
+<span class="sd">    the empty rows/cols are resized to the "rowMinHeight,columnMinWidth" parameters</span>
 
 <span class="sd">    ::</span>
 
@@ -562,10 +568,15 @@ document.write(`
 <span class="sd">         ╚═════════╧═════════╧╧═════════╝</span>
 
 <span class="sd">    :param int columnMinWidth: the minimum width of the column, optional, defaults to 0</span>
-<span class="sd">    :param int rowMinHeight: the minimum height of the column, optional, defaults to 0</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    :param int rowMinHeight: the minimum height of the row, optional, defaults to 0</span>
+<span class="sd">    '''</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_gridItems&#39;</span><span class="p">,</span><span class="s1">&#39;_columnMinWidth&#39;</span><span class="p">,</span><span class="s1">&#39;_rowMinHeight&#39;</span><span class="p">,</span> <span class="s1">&#39;_rows&#39;</span><span class="p">,</span> <span class="s1">&#39;_cols&#39;</span><span class="p">,</span> <span class="s1">&#39;_horSizes&#39;</span><span class="p">,</span> <span class="s1">&#39;_verSizes&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">'_gridItems'</span><span class="p">,</span><span class="s1">'_columnMinWidth'</span><span class="p">,</span><span class="s1">'_rowMinHeight'</span><span class="p">,</span>
+        <span class="s1">'_rows'</span><span class="p">,</span> <span class="s1">'_cols'</span><span class="p">,</span> <span class="s1">'_horSizes'</span><span class="p">,</span> <span class="s1">'_verSizes'</span><span class="p">)</span>
+    <span class="n">_gridItems</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TTkLayoutItem</span><span class="p">]]</span>
+    <span class="n">_horSizes</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
+    <span class="n">_verSizes</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">columnMinWidth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">rowMinHeight</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -577,9 +588,14 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_columnMinWidth</span> <span class="o">=</span> <span class="n">columnMinWidth</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rowMinHeight</span> <span class="o">=</span> <span class="n">rowMinHeight</span>
-        <span class="n">TTkLayout</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_gridUsedsize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the effective grid size used by placed items.</span>
+
+<span class="sd">        :return: ``(rows, cols)`` used by current items and their spans</span>
+<span class="sd">        :rtype: tuple[int, int]</span>
+<span class="sd">        '''</span>
         <span class="n">rows</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">cols</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
@@ -589,7 +605,12 @@ document.write(`
                     <span class="n">cols</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">gridCol</span><span class="o">+</span><span class="n">item</span><span class="o">.</span><span class="n">_colspan</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_reshapeGrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_reshapeGrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">'''Resize the internal 2D grid storage to ``size``.</span>
+
+<span class="sd">        :param size: target ``(rows, cols)``</span>
+<span class="sd">        :type size: tuple[int, int]</span>
+<span class="sd">        '''</span>
         <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span> <span class="o">=</span> <span class="n">size</span>
 
@@ -602,9 +623,9 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span> <span class="o">+=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="n">rows</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span><span class="p">))</span>
 
         <span class="c1"># remove extra cols</span>
-        <span class="k">if</span>   <span class="n">cols</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span><span class="p">[:</span><span class="n">cols</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">cols</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">):</span>
+        <span class="k">if</span>   <span class="n">cols</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span><span class="p">[:</span><span class="n">cols</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">cols</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span> <span class="o">+=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="n">cols</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">)):</span>
@@ -620,24 +641,36 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.gridSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.gridSize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">gridSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return current allocated grid size as ``(rows, cols)``.'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span></div>
 
 
 <div class="viewcode-block" id="TTkGridLayout.getSizes">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.getSizes">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getSizes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return cached horizontal and vertical slot sizes.</span>
+
+<span class="sd">        :return: ``(horSizes, verSizes)``</span>
+<span class="sd">        :rtype: tuple[list, list]</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span></div>
 
 
 <div class="viewcode-block" id="TTkGridLayout.columnMinWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.columnMinWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">columnMinWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the minimum width used for empty columns.'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnMinWidth</span></div>
 
 
 <div class="viewcode-block" id="TTkGridLayout.setColumnMinWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.setColumnMinWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setColumnMinWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmw</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Set the minimum width used for empty columns.</span>
+
+<span class="sd">        :param cmw: minimum empty-column width</span>
+<span class="sd">        :type cmw: int</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnMinWidth</span> <span class="o">==</span> <span class="n">cmw</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_columnMinWidth</span> <span class="o">=</span> <span class="n">cmw</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
@@ -646,12 +679,18 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.rowMinHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.rowMinHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">rowMinHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the minimum height used for empty rows.'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rowMinHeight</span></div>
 
 
 <div class="viewcode-block" id="TTkGridLayout.setRowMinHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.setRowMinHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setRowMinHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rmh</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Set the minimum height used for empty rows.</span>
+
+<span class="sd">        :param rmh: minimum empty-row height</span>
+<span class="sd">        :type rmh: int</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rowMinHeight</span> <span class="o">==</span> <span class="n">rmh</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rowMinHeight</span> <span class="o">=</span> <span class="n">rmh</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
@@ -660,12 +699,14 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.gridItems">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.gridItems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">gridItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the internal 2D grid matrix of layout items.'''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span></div>
 
 
 <div class="viewcode-block" id="TTkGridLayout.repack">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.repack">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">repack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Remove empty rows/columns and compact item row/column indices.'''</span>
         <span class="n">rown</span><span class="o">=</span><span class="n">coln</span><span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="c1"># remove empty rows</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">)):</span>
@@ -696,6 +737,11 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.insertColumn">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.insertColumn">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Insert an empty column at ``col`` and shift items to the right.</span>
+
+<span class="sd">        :param col: column index where the new column is inserted</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">_col</span> <span class="o">&gt;=</span> <span class="n">col</span><span class="p">:</span>
@@ -708,6 +754,11 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.insertRow">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.insertRow">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Insert an empty row at ``row`` and shift items downward.</span>
+
+<span class="sd">        :param row: row index where the new row is inserted</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">_row</span> <span class="o">&gt;=</span> <span class="n">row</span><span class="p">:</span>
@@ -718,7 +769,7 @@ document.write(`
 
     <span class="c1"># addWidget(self, widget, row, col)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Add the widget to this :py:class:`TTkGridLayout`, this function uses :meth:`~addItem`</span>
+<span class="w">        </span><span class="sd">'''Add the widget to this :py:class:`TTkGridLayout`, this function uses :meth:`~addItem`</span>
 
 <span class="sd">        :param widget: the widget to be added</span>
 <span class="sd">        :type widget: :py:class:`TTkWidget`</span>
@@ -726,13 +777,13 @@ document.write(`
 <span class="sd">        :param int col:     the col of the grid, optional, defaults to None</span>
 <span class="sd">        :param int rowspan: the rows used by the widget, optional, defaults to 1</span>
 <span class="sd">        :param int colspan: the cols used by the widget, optional, defaults to 1</span>
-<span class="sd">        :param direction: The direction the new item will be added if row/col are not specified, defaults to defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
+<span class="sd">        :param direction: The direction the new item will be added if row/col are not specified, defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
 <span class="sd">        :type direction: :py:class:`TTkConstant.Direction`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">TTkGridLayout</span><span class="o">.</span><span class="n">addWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,[</span><span class="n">widget</span><span class="p">],</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">rowspan</span><span class="p">,</span> <span class="n">colspan</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">addWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Add the widgets to this :py:class:`TTkGridLayout`, this function uses :meth:`~addItem`</span>
+<span class="w">        </span><span class="sd">'''Add the widgets to this :py:class:`TTkGridLayout`, this function uses :meth:`~addItem`</span>
 
 <span class="sd">        :param widgets: the widgets to be added</span>
 <span class="sd">        :type widgets: list of :py:class:`TTkWidget`</span>
@@ -740,19 +791,26 @@ document.write(`
 <span class="sd">        :param int col:     the col of the grid, optional, defaults to None</span>
 <span class="sd">        :param int rowspan: the rows used by the widget, optional, defaults to 1</span>
 <span class="sd">        :param int colspan: the cols used by the widget, optional, defaults to 1</span>
-<span class="sd">        :param direction: The direction the new items will be added if row/col are not specified, defaults to defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
+<span class="sd">        :param direction: The direction the new items will be added if row/col are not specified, defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
 <span class="sd">        :type direction: :py:class:`TTkConstant.Direction`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span>
+<span class="sd">        '''</span>
         <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">widgetItem</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">]</span>
         <span class="n">TTkGridLayout</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">rowspan</span><span class="p">,</span> <span class="n">colspan</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
             <span class="n">w</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">replaceItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span> <span class="k">pass</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replaceItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Not implemented for grid layout indexed replacement.</span>
+
+<span class="sd">        :param item: replacement item</span>
+<span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
+<span class="sd">        :param index: linear index</span>
+<span class="sd">        :type index: int</span>
+<span class="sd">        '''</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">'TTkGridLayout.replaceItem() is not supported. Use addItem/removeItem with row/col coordinates.'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Add the item to this :py:class:`TTkGridLayout`</span>
+<span class="w">        </span><span class="sd">'''Add the item to this :py:class:`TTkGridLayout`</span>
 
 <span class="sd">        :param item: the item to be added</span>
 <span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
@@ -760,13 +818,13 @@ document.write(`
 <span class="sd">        :param int col:     the col of the grid, optional, defaults to None</span>
 <span class="sd">        :param int rowspan: the rows used by the item, optional, defaults to 1</span>
 <span class="sd">        :param int colspan: the cols used by the item, optional, defaults to 1</span>
-<span class="sd">        :param direction: The direction the new item will be added if row/col are not specified, defaults to defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
+<span class="sd">        :param direction: The direction the new item will be added if row/col are not specified, defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
 <span class="sd">        :type direction: :py:class:`TTkConstant.Direction`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="n">item</span><span class="p">],</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">rowspan</span><span class="p">,</span><span class="n">colspan</span><span class="p">,</span><span class="n">direction</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Add the items to this :py:class:`TTkGridLayout`</span>
+<span class="w">        </span><span class="sd">'''Add the items to this :py:class:`TTkGridLayout`</span>
 
 <span class="sd">        :param items: the items to be added</span>
 <span class="sd">        :type items: list of :py:class:`TTkLayoutItem`</span>
@@ -774,11 +832,13 @@ document.write(`
 <span class="sd">        :param int col:     the col of the grid, optional, defaults to None</span>
 <span class="sd">        :param int rowspan: the rows used by the item, optional, defaults to 1</span>
 <span class="sd">        :param int colspan: the cols used by the item, optional, defaults to 1</span>
-<span class="sd">        :param direction: The direction the new items will be added if row/col are not specified, defaults to defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
+<span class="sd">        :param direction: The direction the new items will be added if row/col are not specified, defaults to :py:class:`~TermTk.TTkCore.constant.TTkConstant.Direction.HORIZONTAL`</span>
 <span class="sd">        :type direction: :py:class:`TTkConstant.Direction`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">nitems</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="n">existing</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">existing</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">existing</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># Append The widget at the end</span>
             <span class="k">if</span> <span class="n">direction</span><span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
@@ -813,35 +873,80 @@ document.write(`
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">row</span> <span class="o">+=</span> <span class="n">rowspan</span>
 
-        <span class="n">TTkLayout</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Remove a single layout item from the grid.</span>
+
+<span class="sd">        :param item: item to remove</span>
+<span class="sd">        :type item: :py:class:`TTkLayoutItem`</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
-        <span class="n">TTkLayout</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">):</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">        </span><span class="sd">'''Remove multiple layout items and clear their grid cells.</span>
+
+<span class="sd">        :param items: items to remove</span>
+<span class="sd">        :type items: list[:py:class:`TTkLayoutItem`]</span>
+<span class="sd">        '''</span>
+        <span class="c1"># Keep only direct children items from this layout.</span>
+        <span class="n">direct_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">direct_items</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">direct_items</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">_row</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">_col</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span> <span class="ow">and</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="ow">is</span> <span class="n">item</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span> <span class="ow">is</span> <span class="n">item</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">break</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reshapeGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gridUsedsize</span><span class="p">())</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Remove a single widget from the grid.</span>
+
+<span class="sd">        :param widget: widget to remove</span>
+<span class="sd">        :type widget: :py:class:`TTkWidget`</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">([</span><span class="n">widget</span><span class="p">])</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">removeWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">):</span>
-        <span class="n">TTkLayout</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgets</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">):</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
-                   <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span> <span class="ow">and</span> \
-                   <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_gridItems</span><span class="p">[</span><span class="n">gridRow</span><span class="p">][</span><span class="n">gridCol</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reshapeGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gridUsedsize</span><span class="p">())</span>
+<span class="w">        </span><span class="sd">'''Remove multiple widgets from the grid.</span>
+
+<span class="sd">        :param widgets: widgets to remove</span>
+<span class="sd">        :type widgets: list[:py:class:`TTkWidget`]</span>
+<span class="sd">        '''</span>
+        <span class="n">itemsToRemove</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
+                    <span class="n">itemsToRemove</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">removeWidgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">itemsToRemove</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">removeItems</span><span class="p">(</span><span class="n">itemsToRemove</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkGridLayout.itemAtPosition">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.itemAtPosition">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">itemAtPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the item occupying ``(row, col)``.</span>
+
+<span class="sd">        Spanned items are returned for any covered cell.</span>
+
+<span class="sd">        :param row: grid row</span>
+<span class="sd">        :type row: int</span>
+<span class="sd">        :param col: grid column</span>
+<span class="sd">        :type col: int</span>
+<span class="sd">        :return: layout item at this position</span>
+<span class="sd">        :rtype: :py:class:`TTkLayoutItem` or None</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="p">(</span> <span class="n">row</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span> <span class="ow">or</span>
              <span class="n">col</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span> <span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -857,12 +962,19 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.minimumColWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.minimumColWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumColWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gridCol</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">'''Return the minimum width required for a column.</span>
+
+<span class="sd">        :param gridCol: column index</span>
+<span class="sd">        :type gridCol: int</span>
+<span class="sd">        :return: minimum column width</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        '''</span>
         <span class="n">colw</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
             <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemAtPosition</span><span class="p">(</span><span class="n">gridRow</span><span class="p">,</span><span class="n">gridCol</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
-               <span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
+               <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">)</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
                     <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="n">w</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">minimumWidthSpan</span><span class="p">(</span><span class="n">gridCol</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">colw</span> <span class="o">&lt;</span> <span class="n">w</span><span class="p">:</span>
@@ -875,12 +987,19 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.minimumRowHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.minimumRowHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumRowHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gridRow</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the minimum height required for a row.</span>
+
+<span class="sd">        :param gridRow: row index</span>
+<span class="sd">        :type gridRow: int</span>
+<span class="sd">        :return: minimum row height</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        '''</span>
         <span class="n">rowh</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">):</span>
             <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemAtPosition</span><span class="p">(</span><span class="n">gridRow</span><span class="p">,</span><span class="n">gridCol</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
-               <span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
+               <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">)</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
                     <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="n">h</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">minimumHeightSpan</span><span class="p">(</span><span class="n">gridRow</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">rowh</span> <span class="o">&lt;</span> <span class="n">h</span><span class="p">:</span>
@@ -893,12 +1012,19 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.maximumColWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.maximumColWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumColWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gridCol</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">'''Return the maximum width allowed for a column.</span>
+
+<span class="sd">        :param gridCol: column index</span>
+<span class="sd">        :type gridCol: int</span>
+<span class="sd">        :return: maximum column width</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        '''</span>
         <span class="n">colw</span> <span class="o">=</span> <span class="mh">0x10000</span>
         <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
             <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemAtPosition</span><span class="p">(</span><span class="n">gridRow</span><span class="p">,</span><span class="n">gridCol</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
-               <span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
+               <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">)</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
                     <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="n">w</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">maximumWidthSpan</span><span class="p">(</span><span class="n">gridCol</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">colw</span> <span class="o">&gt;</span> <span class="n">w</span><span class="p">:</span>
@@ -911,12 +1037,19 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.maximumRowHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.maximumRowHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumRowHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gridRow</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">'''Return the maximum height allowed for a row.</span>
+
+<span class="sd">        :param gridRow: row index</span>
+<span class="sd">        :type gridRow: int</span>
+<span class="sd">        :return: maximum row height</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        '''</span>
         <span class="n">rowh</span> <span class="o">=</span> <span class="mh">0x10000</span>
         <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">):</span>
             <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemAtPosition</span><span class="p">(</span><span class="n">gridRow</span><span class="p">,</span><span class="n">gridCol</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
-               <span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
+               <span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">)</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="p">):</span>
                     <span class="n">anyItem</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="n">h</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">maximumHeightSpan</span><span class="p">(</span><span class="n">gridRow</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">rowh</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">:</span>
@@ -929,7 +1062,7 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.minimumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.minimumWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; process the widgets and get the min size &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Return the layout minimum width from all grid columns.'''</span>
         <span class="n">minw</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">):</span>
             <span class="n">minw</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumColWidth</span><span class="p">(</span><span class="n">gridCol</span><span class="p">)</span>
@@ -939,7 +1072,7 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.minimumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.minimumHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; process the widgets and get the min size &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Return the layout minimum height from all grid rows.'''</span>
         <span class="n">minh</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">gridRow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">):</span>
             <span class="n">minh</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumRowHeight</span><span class="p">(</span><span class="n">gridRow</span><span class="p">)</span>
@@ -949,7 +1082,7 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.maximumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.maximumWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; process the widgets and get the min size &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Return the layout maximum width from all grid columns.'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rows</span><span class="p">:</span>
             <span class="k">return</span> <span class="mh">0x1000</span>
         <span class="n">maxw</span> <span class="o">=</span> <span class="mi">0</span>
@@ -961,7 +1094,7 @@ document.write(`
 <div class="viewcode-block" id="TTkGridLayout.maximumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkLayouts.TTkGridLayout.html#TermTk.TTkLayouts.TTkGridLayout.maximumHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; process the widgets and get the min size &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Return the layout maximum height from all grid rows.'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cols</span><span class="p">:</span>
             <span class="k">return</span> <span class="mh">0x1000</span>
         <span class="n">maxh</span> <span class="o">=</span> <span class="mi">0</span>
@@ -970,8 +1103,45 @@ document.write(`
         <span class="k">return</span> <span class="n">maxh</span></div>
 
 
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parseSizes</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">iterate</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">freeSpace</span> <span class="o">=</span> <span class="n">space</span>
+        <span class="n">leftSlots</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">leftSlots</span><span class="p">)]</span>
+
+        <span class="k">while</span> <span class="n">iterate</span> <span class="ow">and</span> <span class="n">leftSlots</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">iterate</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">freeSpace</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">freeSpace</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">sliceSize</span> <span class="o">=</span> <span class="n">freeSpace</span><span class="o">//</span><span class="n">leftSlots</span>
+                <span class="n">mins</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">maxs</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">sliceSize</span> <span class="o">&gt;=</span> <span class="n">maxs</span><span class="p">:</span>
+                    <span class="n">iterate</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">freeSpace</span> <span class="o">-=</span> <span class="n">maxs</span>
+                    <span class="n">leftSlots</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxs</span>
+                <span class="k">elif</span> <span class="n">sliceSize</span> <span class="o">&lt;</span> <span class="n">mins</span><span class="p">:</span>
+                    <span class="n">iterate</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">freeSpace</span> <span class="o">-=</span> <span class="n">mins</span>
+                    <span class="n">leftSlots</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">mins</span>
+
+        <span class="c1"># Push the sizes</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
+            <span class="n">ret</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">sliceSize</span> <span class="o">=</span> <span class="n">freeSpace</span><span class="o">//</span><span class="n">leftSlots</span>
+                <span class="n">ret</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">sliceSize</span><span class="p">]</span>
+                <span class="n">freeSpace</span> <span class="o">-=</span> <span class="n">sliceSize</span>
+                <span class="n">leftSlots</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">'''Recompute cell geometry and update child widgets/layouts.'''</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
         <span class="n">newx</span><span class="p">,</span> <span class="n">newy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 
@@ -991,44 +1161,11 @@ document.write(`
         <span class="k">if</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">minHeight</span><span class="p">:</span> <span class="n">h</span> <span class="o">=</span> <span class="n">minHeight</span>
         <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">minWidth</span><span class="p">:</span>  <span class="n">w</span> <span class="o">=</span> <span class="n">minWidth</span>
 
-        <span class="c1"># TTkLog.debug(f&quot;Height: w,h:({w,h}) mh:{minHeight} sh:{sortedHeights}&quot;)</span>
-        <span class="c1"># TTkLog.debug(f&quot;width:  w,h:({w,h}) mw:{minWidth}  sw:{sortedWidths}&quot;)</span>
+        <span class="c1"># TTkLog.debug(f"Height: w,h:({w,h}) mh:{minHeight} sh:{sortedHeights}")</span>
+        <span class="c1"># TTkLog.debug(f"width:  w,h:({w,h}) mw:{minWidth}  sw:{sortedWidths}")</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="nf">parseSizes</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
-            <span class="n">iterate</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">freeSpace</span> <span class="o">=</span> <span class="n">space</span>
-            <span class="n">leftSlots</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
-            <span class="k">while</span> <span class="n">iterate</span> <span class="ow">and</span> <span class="n">leftSlots</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">iterate</span> <span class="o">=</span> <span class="kc">False</span>
-                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">continue</span>
-                    <span class="k">if</span> <span class="n">freeSpace</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">freeSpace</span><span class="o">=</span><span class="mi">0</span>
-                    <span class="n">sliceSize</span> <span class="o">=</span> <span class="n">freeSpace</span><span class="o">//</span><span class="n">leftSlots</span>
-                    <span class="n">mins</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="n">maxs</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-                    <span class="k">if</span> <span class="n">sliceSize</span> <span class="o">&gt;=</span> <span class="n">maxs</span><span class="p">:</span>
-                        <span class="n">iterate</span> <span class="o">=</span> <span class="kc">True</span>
-                        <span class="n">freeSpace</span> <span class="o">-=</span> <span class="n">maxs</span>
-                        <span class="n">leftSlots</span> <span class="o">-=</span> <span class="mi">1</span>
-                        <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxs</span>
-                    <span class="k">elif</span> <span class="n">sliceSize</span> <span class="o">&lt;</span> <span class="n">mins</span><span class="p">:</span>
-                        <span class="n">iterate</span> <span class="o">=</span> <span class="kc">True</span>
-                        <span class="n">freeSpace</span> <span class="o">-=</span> <span class="n">mins</span>
-                        <span class="n">leftSlots</span> <span class="o">-=</span> <span class="mi">1</span>
-                        <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">mins</span>
-            <span class="c1"># Push the sizes</span>
-            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
-                <span class="n">out</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
-                <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                    <span class="n">sliceSize</span> <span class="o">=</span> <span class="n">freeSpace</span><span class="o">//</span><span class="n">leftSlots</span>
-                    <span class="n">out</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">sliceSize</span><span class="p">]</span>
-                    <span class="n">freeSpace</span> <span class="o">-=</span> <span class="n">sliceSize</span>
-                    <span class="n">leftSlots</span> <span class="o">-=</span> <span class="mi">1</span>
-
-        <span class="n">vertSizes</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">sortedHeights</span><span class="p">)</span>
-        <span class="n">horSizes</span>  <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">sortedWidths</span><span class="p">)</span>
-        <span class="n">parseSizes</span><span class="p">(</span><span class="n">sortedHeights</span><span class="p">,</span><span class="n">h</span><span class="p">,</span> <span class="n">vertSizes</span><span class="p">)</span>
-        <span class="n">parseSizes</span><span class="p">(</span><span class="n">sortedWidths</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">horSizes</span><span class="p">)</span>
+        <span class="n">vertSizes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parseSizes</span><span class="p">(</span><span class="n">sortedHeights</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+        <span class="n">horSizes</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parseSizes</span><span class="p">(</span><span class="n">sortedWidths</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">horSizes</span><span class="p">:</span>
             <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">newx</span>
@@ -1037,7 +1174,7 @@ document.write(`
             <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">newy</span>
             <span class="n">newy</span> <span class="o">+=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-        <span class="c1"># TTkLog.debug(f&quot;h:{horSizes} v:{vertSizes}&quot;)</span>
+        <span class="c1"># TTkLog.debug(f"h:{horSizes} v:{vertSizes}")</span>
 
         <span class="c1"># loop and set the geometry of any item</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
@@ -1047,15 +1184,14 @@ document.write(`
             <span class="n">w</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">horSizes</span><span class="p">[</span><span class="n">col</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">_colspan</span><span class="p">)</span> <span class="p">)</span>
             <span class="n">h</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">vertSizes</span><span class="p">[</span><span class="n">row</span><span class="o">+</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">_rowspan</span><span class="p">)</span> <span class="p">)</span>
             <span class="n">item</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-            <span class="c1">#TTkLog.debug(f&quot;Children: {item.geometry()}&quot;)</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">WidgetItem</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
-                <span class="c1">#TTkLog.debug(f&quot;Children name: {item.widget()._name}&quot;)</span>
+            <span class="c1">#TTkLog.debug(f"Children: {item.geometry()}")</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkWidgetItem</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+                <span class="c1">#TTkLog.debug(f"Children name: {item.widget()._name}")</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">_layoutItemType</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">LayoutItem</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">TTkLayout</span><span class="p">):</span>
                 <span class="n">item</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_horSizes</span> <span class="o">=</span> <span class="n">horSizes</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span> <span class="o">=</span> <span class="n">vertSizes</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verSizes</span> <span class="o">=</span> <span class="n">vertSizes</span></div>
 
 </pre></div>
 

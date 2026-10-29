@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.TTkPickers.messagebox &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.TTkPickers.messagebox &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2023 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,7 +533,7 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkMessageBox&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkMessageBox'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntEnum</span><span class="p">,</span> <span class="n">Flag</span>
 
@@ -553,122 +556,122 @@ document.write(`
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkMessageBox</span><span class="p">(</span><span class="n">TTkWindow</span><span class="p">):</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">Icon</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
         <span class="n">NoIcon</span>      <span class="o">=</span> <span class="mi">0</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;the message box does not have any icon.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''the message box does not have any icon.'''</span>
         <span class="n">Question</span>    <span class="o">=</span> <span class="mi">4</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;an icon indicating that the message is asking a question.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''an icon indicating that the message is asking a question.'''</span>
         <span class="n">Information</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;an icon indicating that the message is nothing out of the ordinary.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''an icon indicating that the message is nothing out of the ordinary.'''</span>
         <span class="ne">Warning</span>     <span class="o">=</span> <span class="mi">2</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;an icon indicating that the message is a warning, but can be dealt with.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''an icon indicating that the message is a warning, but can be dealt with.'''</span>
         <span class="n">Critical</span>    <span class="o">=</span> <span class="mi">3</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;an icon indicating that the message represents a critical problem.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''an icon indicating that the message represents a critical problem.'''</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">StandardButton</span><span class="p">(</span><span class="n">Flag</span><span class="p">):</span>
         <span class="n">Ok</span>       <span class="o">=</span> <span class="mh">0x00000400</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An &quot;OK&quot; button defined with the AcceptRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An "OK" button defined with the AcceptRole.'''</span>
         <span class="n">Open</span>     <span class="o">=</span> <span class="mh">0x00002000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An &quot;Open&quot; button defined with the AcceptRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An "Open" button defined with the AcceptRole.'''</span>
         <span class="n">Save</span>     <span class="o">=</span> <span class="mh">0x00000800</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Save&quot; button defined with the AcceptRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Save" button defined with the AcceptRole.'''</span>
         <span class="n">Cancel</span>   <span class="o">=</span> <span class="mh">0x00400000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Cancel&quot; button defined with the RejectRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Cancel" button defined with the RejectRole.'''</span>
         <span class="n">Close</span>    <span class="o">=</span> <span class="mh">0x00200000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Close&quot; button defined with the RejectRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Close" button defined with the RejectRole.'''</span>
         <span class="n">Discard</span>  <span class="o">=</span> <span class="mh">0x00800000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Discard&quot; or &quot;Don&#39;t Save&quot; button, depending on the platform, defined with the DestructiveRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Discard" or "Don't Save" button, depending on the platform, defined with the DestructiveRole.'''</span>
         <span class="n">Apply</span>    <span class="o">=</span> <span class="mh">0x02000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An &quot;Apply&quot; button defined with the ApplyRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An "Apply" button defined with the ApplyRole.'''</span>
         <span class="n">Reset</span>    <span class="o">=</span> <span class="mh">0x04000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Reset&quot; button defined with the ResetRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Reset" button defined with the ResetRole.'''</span>
         <span class="n">RestoreDefaults</span> <span class="o">=</span> <span class="mh">0x08000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Restore Defaults&quot; button defined with the ResetRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Restore Defaults" button defined with the ResetRole.'''</span>
         <span class="n">Help</span>     <span class="o">=</span> <span class="mh">0x01000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Help&quot; button defined with the HelpRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Help" button defined with the HelpRole.'''</span>
         <span class="n">SaveAll</span>  <span class="o">=</span> <span class="mh">0x00001000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Save All&quot; button defined with the AcceptRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Save All" button defined with the AcceptRole.'''</span>
         <span class="n">Yes</span>      <span class="o">=</span> <span class="mh">0x00004000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Yes&quot; button defined with the YesRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Yes" button defined with the YesRole.'''</span>
         <span class="n">YesToAll</span> <span class="o">=</span> <span class="mh">0x00008000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Yes to All&quot; button defined with the YesRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Yes to All" button defined with the YesRole.'''</span>
         <span class="n">No</span>       <span class="o">=</span> <span class="mh">0x00010000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;No&quot; button defined with the NoRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "No" button defined with the NoRole.'''</span>
         <span class="n">NoToAll</span>  <span class="o">=</span> <span class="mh">0x00020000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;No to All&quot; button defined with the NoRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "No to All" button defined with the NoRole.'''</span>
         <span class="n">Abort</span>    <span class="o">=</span> <span class="mh">0x00040000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An &quot;Abort&quot; button defined with the RejectRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An "Abort" button defined with the RejectRole.'''</span>
         <span class="n">Retry</span>    <span class="o">=</span> <span class="mh">0x00080000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;A &quot;Retry&quot; button defined with the AcceptRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''A "Retry" button defined with the AcceptRole.'''</span>
         <span class="n">Ignore</span>   <span class="o">=</span> <span class="mh">0x00100000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An &quot;Ignore&quot; button defined with the AcceptRole.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An "Ignore" button defined with the AcceptRole.'''</span>
         <span class="n">NoButton</span> <span class="o">=</span> <span class="mh">0x00000000</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;An invalid button.&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''An invalid button.'''</span>
 
     <span class="c1"># Icons from:</span>
     <span class="c1">#  /usr/share/icons/mate/16x16/actions</span>
     <span class="n">_compressed_data</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">Icon</span><span class="o">.</span><span class="n">NoIcon</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">Icon</span><span class="o">.</span><span class="n">NoIcon</span> <span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
         <span class="n">Icon</span><span class="o">.</span><span class="n">Question</span> <span class="p">:</span>
-            <span class="s2">&quot;eJydlUtsjFEYhusScVuQWFE7I1aWjajLQmrzLtw1EiajzUTjWkJVdUwlY6aKSqZTqpSilGhEpi6rRixYNxYiKmxYVUMpdUla73f8nzmOf6ZGnyZP/jM557zn+885f93E&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;5pLJBeZvS2oB/1EgJFIYJ9BzBLoYS7GYLsFKrMjhJaTY6zfbGkfHHcNhO4POXUo20jUCfYRELEdILb2PVNJhbEM5XYZyhHJ4A1lPBzAfAXq84GTQdevc1QJdRQ5Y3ond&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;2EFHcRRR+rZAd5N0FnfTXQJdS2pMlgDmeRkmCGwLYSuC9EmcwnHjxpxOIoXTdBsu4jx9g1yj9yKGc8Zx4+1M20K3owOdVmapyzovQxEWoYhtd3HP5P4q0KNkJItH6WHB&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;9Ltv1nmBWVrpm6TTcjUaTMY4U7dbdfHekclwmLU5aM09RD7R78kAfRk9eEFfxUP00S14gOd0P38ftPol0YRG+pZAx7w5JUOb1e6XQWur6/tIPlgedJ678Biv6Ed4ijdW&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;Px1Hai3vPch9dcZ6Vv9Lhs9kyMc96MVbk+EJXpt6/Wp3M9wRcjiToUz2n28Gqe2wj+u5jmc+7W6GtECv5a5MWs9qzRDKkeGHkIe13wmep3prDrWbQc/FJlL6e09GcIht&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;3wV6RPBxFa6g16fdzVDB01hh3Qdupj2szy56luCczW6esrSVRcd27Wb4JiTkHo2a+9Mbm3syiM30ddLx9178467WO0qzaF30HTXjLJroL4JPpks8vXL2CjEXhZmxMZ1M&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;y9QcrUJmL/p+L7JZx44jgRj9DgPo99mL2fpPEujVWINVpj4hU598MqhnkhkJ+U7UmZr34aW5s3QfjNVf672cLPvPDOqpZAq9n1SaM9uAY3n0d77t4fDCnx3noWM=&quot;</span> <span class="p">,</span>
+            <span class="s2">"eJydlUtsjFEYhusScVuQWFE7I1aWjajLQmrzLtw1EiajzUTjWkJVdUwlY6aKSqZTqpSilGhEpi6rRixYNxYiKmxYVUMpdUla73f8nzmOf6ZGnyZP/jM557zn+885f93E"</span> <span class="o">+</span>
+            <span class="s2">"5pLJBeZvS2oB/1EgJFIYJ9BzBLoYS7GYLsFKrMjhJaTY6zfbGkfHHcNhO4POXUo20jUCfYRELEdILb2PVNJhbEM5XYZyhHJ4A1lPBzAfAXq84GTQdevc1QJdRQ5Y3ond"</span> <span class="o">+</span>
+            <span class="s2">"2EFHcRRR+rZAd5N0FnfTXQJdS2pMlgDmeRkmCGwLYSuC9EmcwnHjxpxOIoXTdBsu4jx9g1yj9yKGc8Zx4+1M20K3owOdVmapyzovQxEWoYhtd3HP5P4q0KNkJItH6WHB"</span> <span class="o">+</span>
+            <span class="s2">"9Ltv1nmBWVrpm6TTcjUaTMY4U7dbdfHekclwmLU5aM09RD7R78kAfRk9eEFfxUP00S14gOd0P38ftPol0YRG+pZAx7w5JUOb1e6XQWur6/tIPlgedJ678Biv6Ed4ijdW"</span> <span class="o">+</span>
+            <span class="s2">"Px1Hai3vPch9dcZ6Vv9Lhs9kyMc96MVbk+EJXpt6/Wp3M9wRcjiToUz2n28Gqe2wj+u5jmc+7W6GtECv5a5MWs9qzRDKkeGHkIe13wmep3prDrWbQc/FJlL6e09GcIht"</span> <span class="o">+</span>
+            <span class="s2">"3wV6RPBxFa6g16fdzVDB01hh3Qdupj2szy56luCczW6esrSVRcd27Wb4JiTkHo2a+9Mbm3syiM30ddLx9178467WO0qzaF30HTXjLJroL4JPpks8vXL2CjEXhZmxMZ1M"</span> <span class="o">+</span>
+            <span class="s2">"y9QcrUJmL/p+L7JZx44jgRj9DgPo99mL2fpPEujVWINVpj4hU598MqhnkhkJ+U7UmZr34aW5s3QfjNVf672cLPvPDOqpZAq9n1SaM9uAY3n0d77t4fDCnx3noWM="</span> <span class="p">,</span>
         <span class="n">Icon</span><span class="o">.</span><span class="n">Information</span> <span class="p">:</span>
-            <span class="s2">&quot;eJy1lO1PzWEYx9OpTlI5PZ46lJ5LEdIqIYWIrxcSK6ZUOsNaD1OtrFE2UtMIZabF9IJJy9NGvIpFXhgzzy/YYsy89gf43le/ezvLOcxMV9tnv+vcD9/r4b7aPfryvd3k&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;r7Q3if9wU3as9xd6wSQsRTJmkL0ogDc5imKYDXo7+EuRIuv0PlfnTqPdmYYkBAivoVDuespb1pEfMIGD5CdMYpD8ii+4RX7HewyRH3FDfh/GFtGkz/kbDYnGnhGUwI98&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;izuoIm/TU0xWoh4h5EqUwYtcxnWe5E5UI5x8iDH0kD+o7jl5F3ZEOZz7Ow06d/3MqTrzFa5iG9mJ40giN6JO4kpDFnzlzPmIJFcjH9lkJrIRTOahXPafwBkUkN8YxbCc&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;u0E0u6iRaNiEGPGNogkJ5E1cQC65Ga3wIeciElYyThl5SBn5mTYp+2jkIixBMrkeNVLD+7iHBvIR+lBE6nucaWhgfEr/M5xCDrkPRxFAZjAyfzJWGRmjzEFLvzLykjJy&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;lTIyndVS+dqDdqnRa2ppJBuNe5xp6OReE33veGY+WYIe6YcYJEj99Z2hCJFvP5qvA8MRhjCHddGkWleII/L7G4yjRWo7dY8zDW1YDnfRcFri2IGzoiGOdbcaeVDxB9Is&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;Ulcvo75T1H69LpYvIpTcim455wVrZSfbsELucaahAgvlt8dowQKymnvVmVnsJcV4mqpFMIIQRM6i+ThQ+/W6DHaERWraJb06jnOS3wqkutSQBZv4LlK5yuF17k0kd3Gv&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;v/EOosko2jwyyLhTU/v1uu3Mp4p/COeRTg5STbTEZHPZkya4i68eS2XOPWGXxpMdrKDKaTkGMJvMZYXVdwr7P8KB2l9qaO7AScyRedGFNLKBr9eD9GfezC40aJ8NvsID&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;nD4qZxOcC0r/CHtLxVnLeam07MYVyXUlLst3LeO2SNzd0pMPWHk1Vw5jDWaSXWiWWRfDN24jzewjDxcapmup51RSeRngpPCXuPZKfC/ZN3HSa62SrzGqiJB1RaJpPzvC&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;JPnLE+3NjKVK8tOGJjKCN6i8edBMLjRo6hrpOpYx++6S23T51tR+vU7nPIxvWc2ZbCyWfNax26tkTtQIbbAi8A8a/pVmeMpMsvLlWKRnY2XGr0UOMmWuhKqe/q8aND2Z&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;UVWbUGOOGHczS0Hq225P/Ql34Le7&quot;</span> <span class="p">,</span>
+            <span class="s2">"eJy1lO1PzWEYx9OpTlI5PZ46lJ5LEdIqIYWIrxcSK6ZUOsNaD1OtrFE2UtMIZabF9IJJy9NGvIpFXhgzzy/YYsy89gf43le/ezvLOcxMV9tnv+vcD9/r4b7aPfryvd3k"</span> <span class="o">+</span>
+            <span class="s2">"r7Q3if9wU3as9xd6wSQsRTJmkL0ogDc5imKYDXo7+EuRIuv0PlfnTqPdmYYkBAivoVDuespb1pEfMIGD5CdMYpD8ii+4RX7HewyRH3FDfh/GFtGkz/kbDYnGnhGUwI98"</span> <span class="o">+</span>
+            <span class="s2">"izuoIm/TU0xWoh4h5EqUwYtcxnWe5E5UI5x8iDH0kD+o7jl5F3ZEOZz7Ow06d/3MqTrzFa5iG9mJ40giN6JO4kpDFnzlzPmIJFcjH9lkJrIRTOahXPafwBkUkN8YxbCc"</span> <span class="o">+</span>
+            <span class="s2">"u0E0u6iRaNiEGPGNogkJ5E1cQC65Ga3wIeciElYyThl5SBn5mTYp+2jkIixBMrkeNVLD+7iHBvIR+lBE6nucaWhgfEr/M5xCDrkPRxFAZjAyfzJWGRmjzEFLvzLykjJy"</span> <span class="o">+</span>
+            <span class="s2">"lTIyndVS+dqDdqnRa2ppJBuNe5xp6OReE33veGY+WYIe6YcYJEj99Z2hCJFvP5qvA8MRhjCHddGkWleII/L7G4yjRWo7dY8zDW1YDnfRcFri2IGzoiGOdbcaeVDxB9Is"</span> <span class="o">+</span>
+            <span class="s2">"Ulcvo75T1H69LpYvIpTcim455wVrZSfbsELucaahAgvlt8dowQKymnvVmVnsJcV4mqpFMIIQRM6i+ThQ+/W6DHaERWraJb06jnOS3wqkutSQBZv4LlK5yuF17k0kd3Gv"</span> <span class="o">+</span>
+            <span class="s2">"v/EOosko2jwyyLhTU/v1uu3Mp4p/COeRTg5STbTEZHPZkya4i68eS2XOPWGXxpMdrKDKaTkGMJvMZYXVdwr7P8KB2l9qaO7AScyRedGFNLKBr9eD9GfezC40aJ8NvsID"</span> <span class="o">+</span>
+            <span class="s2">"nD4qZxOcC0r/CHtLxVnLeam07MYVyXUlLst3LeO2SNzd0pMPWHk1Vw5jDWaSXWiWWRfDN24jzewjDxcapmup51RSeRngpPCXuPZKfC/ZN3HSa62SrzGqiJB1RaJpPzvC"</span> <span class="o">+</span>
+            <span class="s2">"JPnLE+3NjKVK8tOGJjKCN6i8edBMLjRo6hrpOpYx++6S23T51tR+vU7nPIxvWc2ZbCyWfNax26tkTtQIbbAi8A8a/pVmeMpMsvLlWKRnY2XGr0UOMmWuhKqe/q8aND2Z"</span> <span class="o">+</span>
+            <span class="s2">"UVWbUGOOGHczS0Hq225P/Ql34Le7"</span> <span class="p">,</span>
         <span class="n">Icon</span><span class="o">.</span><span class="n">Critical</span> <span class="p">:</span>
-            <span class="s2">&quot;eJyVlUlslVUYhqEUUiBlCAumIi2UhhlBaBAKSKKJyaOBUKoYqdiYbqgURECkDghCIRJXmLhQNCYkJiwYRKNLjYrGjQkYh7S9WrhSLnSgrXARF773/c8f/wJW7GnytGf4&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;znu+6d+d/9ZDBQP8U314un4ZkBuNh/+VkxnMYHEroxktHmM848UfmMhE8SwTmCB+yBjGiJsYxjCxmEEM6sduYG1/Gp5hFKPEC8xipngJeFi8rJWnzJfYYTaw3es1rBfP&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;8yArrXEcY8UaCigQB/4PDUcZ67O/MZ97fUctNeZjVPquFSwT25jDbPFiYBvLqfB6FWuCpmprKWWq+D5DGXq7lj4anmY4w8VmZjNLzPAk62y7nIXiFdbYdi+f8LGY1Ytb&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;E4znM6xlrfg7C/yGNtZRJX7PJMeuum+MrOGeMPdziGuGVTzid9/HAvEqB2gUb3Cd6+JNjT/FvzRuJhjP35CqrNjJId6wn+YyR0yHWH4X/FGU0FAXcqg17L3MSh4Q26m0&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;77Nc45p4gIPsF19nH3vF7twQu3JDbFB+vCge4k3fnQ2aM4pNlf2xzLH6kWmOTR155AUNHzCCEfbdYsq9N8qDbk7zkW1lbWs7L7BNrOJxa3uebWwRn9NfmxPzr7GXVxPn&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;uvmMT53bUd6kgv33Iv9bw7cUUmifxblWRpnjm6JF1Gvsh0u54dqrpy5xZ8wtqt56+1Ejca5XUbhgDSWU2N8VLBG/SMTi65CLaa0tNUspFXtooUn8Q6M3aGgTN+vlm+6g&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;YWvwR05DJnGuR7e3+u5iil1vkb+TGt5lCEO8FvkqzUxmiB2c4Lht9DjuL/MKDYk76/XyZ4NfNibmG7RzV+Jch+rltO2XMU1sYgbTHYt/NNSqYgdq7idlapF9ttD1kFZ9&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;rHJddNEh7maP47yDnc6LdPDx+VCbu5STO8X9NDpnr2p0el+la7pVeTBPPKfeNU7c2Kc2o/7wFfnkW285i3wm6i0XlWN7XGsdXDE7rakraIsZz+fY7nNRTf/KFOdBikXu&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;M19G9aBvwO09an3gGdVJobUs5X6fncoUa3rUfSPDSceoPeRLzAynOOFzq1ndmOt1JSH+S1icsLuhnz4Z99C3A79hJCPFlmAjpZ413/9H/mkO366mwOYwnwr9sTnk3plg&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;50iwm3cX34tYyxOBse/OKmqTxF+Y517WolquSDCeP6eeXJQ4t+HOd9/VdzNm6KlxDvFO4Oe38Mgt+yb/h91YQ+3cvwEUh1KT&quot;</span><span class="p">,</span>
+            <span class="s2">"eJyVlUlslVUYhqEUUiBlCAumIi2UhhlBaBAKSKKJyaOBUKoYqdiYbqgURECkDghCIRJXmLhQNCYkJiwYRKNLjYrGjQkYh7S9WrhSLnSgrXARF773/c8f/wJW7GnytGf4"</span> <span class="o">+</span>
+            <span class="s2">"znu+6d+d/9ZDBQP8U314un4ZkBuNh/+VkxnMYHEroxktHmM848UfmMhE8SwTmCB+yBjGiJsYxjCxmEEM6sduYG1/Gp5hFKPEC8xipngJeFi8rJWnzJfYYTaw3es1rBfP"</span> <span class="o">+</span>
+            <span class="s2">"8yArrXEcY8UaCigQB/4PDUcZ67O/MZ97fUctNeZjVPquFSwT25jDbPFiYBvLqfB6FWuCpmprKWWq+D5DGXq7lj4anmY4w8VmZjNLzPAk62y7nIXiFdbYdi+f8LGY1Ytb"</span> <span class="o">+</span>
+            <span class="s2">"E4znM6xlrfg7C/yGNtZRJX7PJMeuum+MrOGeMPdziGuGVTzid9/HAvEqB2gUb3Cd6+JNjT/FvzRuJhjP35CqrNjJId6wn+YyR0yHWH4X/FGU0FAXcqg17L3MSh4Q26m0"</span> <span class="o">+</span>
+            <span class="s2">"77Nc45p4gIPsF19nH3vF7twQu3JDbFB+vCge4k3fnQ2aM4pNlf2xzLH6kWmOTR155AUNHzCCEfbdYsq9N8qDbk7zkW1lbWs7L7BNrOJxa3uebWwRn9NfmxPzr7GXVxPn"</span> <span class="o">+</span>
+            <span class="s2">"uvmMT53bUd6kgv33Iv9bw7cUUmifxblWRpnjm6JF1Gvsh0u54dqrpy5xZ8wtqt56+1Ejca5XUbhgDSWU2N8VLBG/SMTi65CLaa0tNUspFXtooUn8Q6M3aGgTN+vlm+6g"</span> <span class="o">+</span>
+            <span class="s2">"YWvwR05DJnGuR7e3+u5iil1vkb+TGt5lCEO8FvkqzUxmiB2c4Lht9DjuL/MKDYk76/XyZ4NfNibmG7RzV+Jch+rltO2XMU1sYgbTHYt/NNSqYgdq7idlapF9ttD1kFZ9"</span> <span class="o">+</span>
+            <span class="s2">"rHJddNEh7maP47yDnc6LdPDx+VCbu5STO8X9NDpnr2p0el+la7pVeTBPPKfeNU7c2Kc2o/7wFfnkW285i3wm6i0XlWN7XGsdXDE7rakraIsZz+fY7nNRTf/KFOdBikXu"</span> <span class="o">+</span>
+            <span class="s2">"M19G9aBvwO09an3gGdVJobUs5X6fncoUa3rUfSPDSceoPeRLzAynOOFzq1ndmOt1JSH+S1icsLuhnz4Z99C3A79hJCPFlmAjpZ413/9H/mkO366mwOYwnwr9sTnk3plg"</span> <span class="o">+</span>
+            <span class="s2">"50iwm3cX34tYyxOBse/OKmqTxF+Y517WolquSDCeP6eeXJQ4t+HOd9/VdzNm6KlxDvFO4Oe38Mgt+yb/h91YQ+3cvwEUh1KT"</span><span class="p">,</span>
         <span class="n">Icon</span><span class="o">.</span><span class="n">Warning</span> <span class="p">:</span>
-            <span class="s2">&quot;eJy1lUlIVXEUxlWkDMwgCiIIKoNskVQGYkGLqBb+sMEWoiWl9szAcgiUsszAeFg0mVptQlECxSaKWjQQZZOkkVkI1qKJNhKJTfo0Ovd7VxOSUNP3Hvzg3HvP+c53zv2/&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;ouDy1SEB+iSXRdiPAOfrLRs25zFVfMZ2go0PSCHQOIuwEeVx6RmNhnukMtH4gyrijN84B8aLJEjTeGpYyWzxMyeINnZb1W3iBVIVP0KkcSkzxlxDoMsWdhKqmpdIN/Zw&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;gzzxGjnypZbNxgbS5NNYaognQuzgFMul4TIZxl5TVSU2c1bxevnRwVEWGVcx9781BBMkviKbyerzPAlu37uMv3jPTfGd6Ghz/Plue7Le2MwO+RHkODlKDVuJFD9wmMXG&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;n1Qrdy9NlBl3k0OmmC328oRjuq9SO/qWYhYYN7o+jkTDJHPA4Qt3/l85wwr1WUeS+n5NrdHLAe1BCUXkKt6ueLf5FW/sopwYvcMZhBgnuL4OR0MmS8Q37GOOZmC7rj4f&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;UWzso41KY5W9H85OVlNKvhv378d9CvVcqfainXxmGtNcX/+lYYopddiER3Pssg7D5W0Va1SjhVKxlQrjXWoo8DpnVK1qOvHT4nNO6rkKooyd7Nc+NbJF+UNdn4fSkEe0&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;2GbzDdNueaXfZ9WylbsJr8sS8SmHxEYOio+lqY+H8sfHVRK9zhm2R3lbrTeHOUT9pWG6bYD//NskdlIgH5w+Fipng6vhD3OG2LE+cyR30PU+m0mWZnJcM/1iXfrrJInT&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;/HWloZBlir10dfbr9tlZtFa8RYrmfJs08Q4evS/1OpMcJrvx9EHXfe79PXaOxg7hx15iBjTUEafYJ5vBYA3jxY9kiTXEDmhIZL5iV1gnXmfDuLK/Thzho/7fHGN6PJG/&quot;</span> <span class="o">+</span>
-            <span class="s2">&quot;AT+dCtg=&quot;</span> <span class="p">,</span>
+            <span class="s2">"eJy1lUlIVXEUxlWkDMwgCiIIKoNskVQGYkGLqBb+sMEWoiWl9szAcgiUsszAeFg0mVptQlECxSaKWjQQZZOkkVkI1qKJNhKJTfo0Ovd7VxOSUNP3Hvzg3HvP+c53zv2/"</span> <span class="o">+</span>
+            <span class="s2">"ouDy1SEB+iSXRdiPAOfrLRs25zFVfMZ2go0PSCHQOIuwEeVx6RmNhnukMtH4gyrijN84B8aLJEjTeGpYyWzxMyeINnZb1W3iBVIVP0KkcSkzxlxDoMsWdhKqmpdIN/Zw"</span> <span class="o">+</span>
+            <span class="s2">"gzzxGjnypZbNxgbS5NNYaognQuzgFMul4TIZxl5TVSU2c1bxevnRwVEWGVcx9781BBMkviKbyerzPAlu37uMv3jPTfGd6Ghz/Plue7Le2MwO+RHkODlKDVuJFD9wmMXG"</span> <span class="o">+</span>
+            <span class="s2">"n1Qrdy9NlBl3k0OmmC328oRjuq9SO/qWYhYYN7o+jkTDJHPA4Qt3/l85wwr1WUeS+n5NrdHLAe1BCUXkKt6ueLf5FW/sopwYvcMZhBgnuL4OR0MmS8Q37GOOZmC7rj4f"</span> <span class="o">+</span>
+            <span class="s2">"UWzso41KY5W9H85OVlNKvhv378d9CvVcqfainXxmGtNcX/+lYYopddiER3Pssg7D5W0Va1SjhVKxlQrjXWoo8DpnVK1qOvHT4nNO6rkKooyd7Nc+NbJF+UNdn4fSkEe0"</span> <span class="o">+</span>
+            <span class="s2">"2GbzDdNueaXfZ9WylbsJr8sS8SmHxEYOio+lqY+H8sfHVRK9zhm2R3lbrTeHOUT9pWG6bYD//NskdlIgH5w+Fipng6vhD3OG2LE+cyR30PU+m0mWZnJcM/1iXfrrJInT"</span> <span class="o">+</span>
+            <span class="s2">"/HWloZBlir10dfbr9tlZtFa8RYrmfJs08Q4evS/1OpMcJrvx9EHXfe79PXaOxg7hx15iBjTUEafYJ5vBYA3jxY9kiTXEDmhIZL5iV1gnXmfDuLK/Thzho/7fHGN6PJG/"</span> <span class="o">+</span>
+            <span class="s2">"AT+dCtg="</span> <span class="p">,</span>
         <span class="p">}</span>
 
-    <span class="vm">__slots__</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_icon&#39;</span><span class="p">,</span> <span class="s1">&#39;_text&#39;</span><span class="p">,</span> <span class="s1">&#39;_detailedText&#39;</span><span class="p">,</span>  <span class="s1">&#39;_standardButtons&#39;</span><span class="p">,</span> <span class="s1">&#39;_defaultButton&#39;</span>
-               <span class="s1">&#39;_widImage&#39;</span><span class="p">,</span> <span class="s1">&#39;_widLabel&#39;</span><span class="p">,</span> <span class="s1">&#39;_widBtnLayout&#39;</span><span class="p">,</span>
+    <span class="vm">__slots__</span><span class="o">=</span><span class="p">(</span><span class="s1">'_icon'</span><span class="p">,</span> <span class="s1">'_text'</span><span class="p">,</span> <span class="s1">'_detailedText'</span><span class="p">,</span>  <span class="s1">'_standardButtons'</span><span class="p">,</span> <span class="s1">'_defaultButton'</span>
+               <span class="s1">'_widImage'</span><span class="p">,</span> <span class="s1">'_widLabel'</span><span class="p">,</span> <span class="s1">'_widBtnLayout'</span><span class="p">,</span>
                <span class="c1"># Signal</span>
-               <span class="s1">&#39;buttonSelected&#39;</span><span class="p">)</span>
+               <span class="s1">'buttonSelected'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                  <span class="n">icon</span><span class="p">:</span><span class="n">Icon</span><span class="o">=</span><span class="n">Icon</span><span class="o">.</span><span class="n">NoIcon</span><span class="p">,</span>
-                 <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-                 <span class="n">detailedText</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">text</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
+                 <span class="n">detailedText</span><span class="p">:</span><span class="n">TTkStringType</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span>
                  <span class="n">standardButtons</span><span class="p">:</span><span class="n">StandardButton</span><span class="o">=</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">,</span>
                  <span class="n">defaultButton</span><span class="p">:</span><span class="n">StandardButton</span><span class="o">=</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">NoButton</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buttonSelected</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="p">)</span>
         <span class="n">grid_layout</span> <span class="o">=</span> <span class="n">TTkGridLayout</span><span class="p">()</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;layout&#39;</span><span class="p">:</span><span class="n">grid_layout</span><span class="p">})</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">'layout'</span><span class="p">:</span><span class="n">grid_layout</span><span class="p">})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_icon</span> <span class="o">=</span> <span class="n">icon</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_detailedText</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">detailedText</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">=</span> <span class="n">standardButtons</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_defaultButton</span> <span class="o">=</span> <span class="n">defaultButton</span>
 
-        <span class="n">compressedData</span> <span class="o">=</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">_compressed_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">compressedData</span> <span class="o">=</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">_compressed_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_icon</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widImage</span> <span class="o">=</span> <span class="n">TTkImage</span><span class="p">(</span><span class="n">rasteriser</span><span class="o">=</span><span class="n">TTkImage</span><span class="o">.</span><span class="n">HALFBLOCK</span><span class="p">)</span>
         <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_widImage</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">compressedData</span><span class="p">:</span>
@@ -694,58 +697,58 @@ document.write(`
             <span class="k">return</span> <span class="n">_clicked</span>
 
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Help</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Help&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Help"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Reset</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Reset&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Reset"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">RestoreDefaults</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Restore Default&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Restore Default"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Apply</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Apply&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Apply"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Discard</span><span class="p">):</span> <span class="c1"># Don&#39;t Save</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Don&#39;t Save&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Discard</span><span class="p">):</span> <span class="c1"># Don't Save</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Don't Save"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ignore</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ignore&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Ignore"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Retry</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Retry&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Retry"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Open</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Open&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Open"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">SaveAll</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;SaveAll&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"SaveAll"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Save</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Save&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Save"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Cancel</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cancel"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Close</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Close&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Close"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Abort</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Abort&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Abort"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;OK&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"OK"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">NoToAll</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;No to All&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"No to All"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">No</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;No&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"No"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">YesToAll</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Yes to All&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Yes to All"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sb</span> <span class="o">:=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_standardButtons</span> <span class="o">&amp;</span> <span class="n">TTkMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Yes</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Yes&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_widBtnLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">_btn</span> <span class="o">:=</span> <span class="n">TTkButton</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Yes"</span><span class="p">))</span>
             <span class="n">_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_genClickedSlot</span><span class="p">(</span><span class="n">sb</span><span class="p">))</span>
 
         <span class="c1"># _,_,w,h = self.layout().fullWidgetAreaGeometry()</span>

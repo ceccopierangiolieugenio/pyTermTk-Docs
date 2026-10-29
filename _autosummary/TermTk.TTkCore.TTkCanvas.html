@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkCanvas &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkCanvas &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -569,15 +572,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawMenuBarBg"><code class="docutils literal notranslate"><span class="pre">drawMenuBarBg()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawScroll"><code class="docutils literal notranslate"><span class="pre">drawScroll()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTTkString"><code class="docutils literal notranslate"><span class="pre">drawTTkString()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTab"><code class="docutils literal notranslate"><span class="pre">drawTab()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTabButton"><code class="docutils literal notranslate"><span class="pre">drawTabButton()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTabMenuButton"><code class="docutils literal notranslate"><span class="pre">drawTabMenuButton()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTabWidgetBottomLine"><code class="docutils literal notranslate"><span class="pre">drawTabWidgetBottomLine()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTableLine"><code class="docutils literal notranslate"><span class="pre">drawTableLine()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawText"><code class="docutils literal notranslate"><span class="pre">drawText()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawVLine"><code class="docutils literal notranslate"><span class="pre">drawVLine()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.enableDoubleBuffer"><code class="docutils literal notranslate"><span class="pre">enableDoubleBuffer()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.execPaint"><code class="docutils literal notranslate"><span class="pre">execPaint()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.fill"><code class="docutils literal notranslate"><span class="pre">fill()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.hide"><code class="docutils literal notranslate"><span class="pre">hide()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.paintCanvas"><code class="docutils literal notranslate"><span class="pre">paintCanvas()</span></code></a></li>
@@ -610,7 +608,9 @@ document.write(`
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkCanvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Init the Canvas object</p>
+<p>TTkCanvas:</p>
+<p>A low-level drawing surface that stores characters and colors before they
+are composed into widgets or flushed to the terminal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -623,158 +623,357 @@ document.write(`
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"><span>🌶️</span></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.clean">
-<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.clean" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.cleanBuffers">
-<span class="sig-name descname"><span class="pre">cleanBuffers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.cleanBuffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.cleanBuffers" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.copy" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.copyBuffers">
-<span class="sig-name descname"><span class="pre">copyBuffers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.copyBuffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.copyBuffers" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawBox">
-<span class="sig-name descname"><span class="pre">drawBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid=0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawBox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawBox" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawBoxTitle">
-<span class="sig-name descname"><span class="pre">drawBoxTitle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align=Alignment.CENTER_ALIGN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorText=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid=0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawBoxTitle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawBoxTitle" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawButtonBox">
-<span class="sig-name descname"><span class="pre">drawButtonBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid=0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawButtonBox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawButtonBox" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawChar">
-<span class="sig-name descname"><span class="pre">drawChar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawChar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawChar" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawGrid">
-<span class="sig-name descname"><span class="pre">drawGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hlines=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid=0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawGrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawGrid" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawHChart">
-<span class="sig-name descname"><span class="pre">drawHChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawHChart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawHChart" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawHLine">
-<span class="sig-name descname"><span class="pre">drawHLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawHLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawHLine" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawMenuBarBg">
-<span class="sig-name descname"><span class="pre">drawMenuBarBg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawMenuBarBg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawMenuBarBg" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawScroll">
-<span class="sig-name descname"><span class="pre">drawScroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawScroll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawScroll" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTTkString">
-<span class="sig-name descname"><span class="pre">drawTTkString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text:</span> <span class="pre">~TermTk.TTkCore.string.TTkString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceColor=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTTkString"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTTkString" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>NOTE:
-drawText is one of the most abused functions,
-there is some redundant code here in order to reduce the footprint</p>
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.clean" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Clears the canvas content using either blanks or transparent cells.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTab">
-<span class="sig-name descname"><span class="pre">drawTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsPos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftScroller</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightScroller</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slim=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">borderColor=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selectColor=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsetColor=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sideBorder=12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTab" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.cleanBuffers">
+<span class="sig-name descname"><span class="pre">cleanBuffers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.cleanBuffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.cleanBuffers" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Resets the secondary buffers used by buffered terminal painting.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTabButton">
-<span class="sig-name descname"><span class="pre">drawTabButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sideEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">small</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTabButton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTabButton" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.canvas.TTkCanvas"><span class="pre">TTkCanvas</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.copy" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Creates a detached copy of the canvas content.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a new canvas with duplicated size and buffers</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTabMenuButton">
-<span class="sig-name descname"><span class="pre">drawTabMenuButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slim=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">borderColor=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sideBorder=12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTabMenuButton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTabMenuButton" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.copyBuffers">
+<span class="sig-name descname"><span class="pre">copyBuffers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.copyBuffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.copyBuffers" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Duplicates the current character and color buffers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>copies of the data and color buffers</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[list[list[str]], list[list[<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTabWidgetBottomLine">
-<span class="sig-name descname"><span class="pre">drawTabWidgetBottomLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTabWidgetBottomLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTabWidgetBottomLine" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawBox">
+<span class="sig-name descname"><span class="pre">drawBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;,</span> <span class="pre">grid:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawBox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawBox" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a rectangular box using the configured grid theme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position of the box</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the width and height of the box</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the box border</p></li>
+<li><p><strong>grid</strong> (<em>int</em>) – the themed grid variant to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawBoxTitle">
+<span class="sig-name descname"><span class="pre">drawBoxTitle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">text:</span> <span class="pre">~TermTk.TTkCore.string.TTkString,</span> <span class="pre">align:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.Alignment</span> <span class="pre">=</span> <span class="pre">Alignment.CENTER_ALIGN,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;,</span> <span class="pre">colorText:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawBoxTitle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawBoxTitle" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a titled label embedded into the top border of a box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position of the surrounding box</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the size of the surrounding box</p></li>
+<li><p><strong>text</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a>) – the title text to render</p></li>
+<li><p><strong>align</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Alignment" title="TermTk.TTkCore.TTkK.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.Alignment</span></code></a>) – the title alignment along the top border</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the border color around the title</p></li>
+<li><p><strong>colorText</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color of the title text</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawButtonBox">
+<span class="sig-name descname"><span class="pre">drawButtonBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;,</span> <span class="pre">grid:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawButtonBox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawButtonBox" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a button-style border using the button box theme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position of the box</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the width and height of the box</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the border</p></li>
+<li><p><strong>grid</strong> (<em>int</em>) – the themed button box variant to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawChar">
+<span class="sig-name descname"><span class="pre">drawChar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">char:</span> <span class="pre">str,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawChar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawChar" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a single character at the given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the target position</p></li>
+<li><p><strong>char</strong> (<em>str</em>) – the character to draw</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the character</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawGrid">
+<span class="sig-name descname"><span class="pre">drawGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">hlines:</span> <span class="pre">~typing.List[int]</span> <span class="pre">=</span> <span class="pre">[],</span> <span class="pre">vlines:</span> <span class="pre">~typing.List[int]</span> <span class="pre">=</span> <span class="pre">[],</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;,</span> <span class="pre">grid:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawGrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawGrid" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a bordered grid with optional internal horizontal and vertical lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position of the grid</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the width and height of the grid</p></li>
+<li><p><strong>hlines</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – row offsets for inner horizontal separators</p></li>
+<li><p><strong>vlines</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – column offsets for inner vertical separators</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the grid glyphs</p></li>
+<li><p><strong>grid</strong> (<em>int</em>) – the themed grid variant to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawHChart">
+<span class="sig-name descname"><span class="pre">drawHChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">values:</span> <span class="pre">~typing.Tuple[~typing.List[int],</span> <span class="pre">~typing.List[int]],</span> <span class="pre">zoom:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.0,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawHChart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawHChart" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a compact two-series vertical chart using braille cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the baseline position of the chart</p></li>
+<li><p><strong>values</strong> (<em>tuple</em><em>[</em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>list</em><em>[</em><em>int</em><em>]</em><em>]</em>) – the two value series to combine into each braille cell</p></li>
+<li><p><strong>zoom</strong> (<em>float</em>) – a scale factor applied before rasterizing the chart</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the chart glyphs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawHLine">
+<span class="sig-name descname"><span class="pre">drawHLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawHLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawHLine" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a themed horizontal line segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the left position of the line</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – the width of the line</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color used for the line glyphs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawMenuBarBg">
+<span class="sig-name descname"><span class="pre">drawMenuBarBg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawMenuBarBg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawMenuBarBg" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws the themed background strip for a menu bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the starting position of the menu bar background</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – the total width of the menu bar background</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the background glyphs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawScroll">
+<span class="sig-name descname"><span class="pre">drawScroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">slider:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">orientation:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.Direction,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawScroll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawScroll" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a horizontal or vertical scrollbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position of the scrollbar</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – the total length of the scrollbar including arrow cells</p></li>
+<li><p><strong>slider</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the slider start and end positions relative to <code class="docutils literal notranslate"><span class="pre">pos</span></code></p></li>
+<li><p><strong>orientation</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Direction" title="TermTk.TTkCore.TTkK.Direction"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.Direction</span></code></a>) – the scrollbar orientation</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the scrollbar glyphs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTTkString">
+<span class="sig-name descname"><span class="pre">drawTTkString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">text:</span> <span class="pre">~TermTk.TTkCore.string.TTkString,</span> <span class="pre">width:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;,</span> <span class="pre">alignment:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.Alignment</span> <span class="pre">=</span> <span class="pre">Alignment.NONE,</span> <span class="pre">forceColor:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTTkString"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTTkString" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a <a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a> with alignment and optional color override.</p>
+<p>This method keeps a dedicated fast path because text drawing is used in
+most widgets and needs to minimize conversion overhead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position where the string is drawn</p></li>
+<li><p><strong>text</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkString.html#TermTk.TTkCore.TTkString" title="TermTk.TTkCore.TTkString"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkString</span></code></a>) – the formatted text object to render</p></li>
+<li><p><strong>width</strong> (<em>int</em><em> | </em><em>None</em>) – the output width, defaults to the string terminal width</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – an additional color merged with the string colors</p></li>
+<li><p><strong>alignment</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Alignment" title="TermTk.TTkCore.TTkK.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.Alignment</span></code></a>) – the alignment used inside <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>forceColor</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to ignore embedded string colors and use only <code class="docutils literal notranslate"><span class="pre">color</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawTableLine">
-<span class="sig-name descname"><span class="pre">drawTableLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignments</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTableLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTableLine" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">drawTableLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Alignment" title="TermTk.TTkCore.constant.TTkConstant.Alignment"><span class="pre">Alignment</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawTableLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawTableLine" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a single row of table cells with per-column formatting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the starting position of the first cell</p></li>
+<li><p><strong>items</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – the strings to render in each column</p></li>
+<li><p><strong>sizes</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – the width of each column</p></li>
+<li><p><strong>colors</strong> (list[<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>]) – the color used for each column</p></li>
+<li><p><strong>alignments</strong> (list[<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Alignment" title="TermTk.TTkCore.TTkK.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.Alignment</span></code></a>]) – the alignment used for each column</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawText">
-<span class="sig-name descname"><span class="pre">drawText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceColor=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawText" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>NOTE:
-drawText is one of the most abused functions,
-there is some redundant code here in order to reduce the footprint</p>
+<span class="sig-name descname"><span class="pre">drawText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int]</span> <span class="pre">=</span> <span class="pre">(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment:</span> <span class="pre">~TermTk.TTkCore.constant.TTkConstant.Alignment</span> <span class="pre">=</span> <span class="pre">Alignment.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceColor:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawText" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws plain text with optional alignment and color.</p>
+<p>This method keeps a dedicated fast path because text drawing is used in
+most widgets and needs to minimize conversion overhead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – the string to render</p></li>
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position where the text is drawn</p></li>
+<li><p><strong>width</strong> (<em>int</em><em> | </em><em>None</em>) – the output width, defaults to the text length</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the text</p></li>
+<li><p><strong>alignment</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK.Alignment" title="TermTk.TTkCore.TTkK.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK.Alignment</span></code></a>) – the alignment used inside <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>forceColor</strong> (<em>bool</em>) – kept for API parity with <a class="reference internal" href="#TermTk.TTkCore.TTkCanvas.drawTTkString" title="TermTk.TTkCore.TTkCanvas.drawTTkString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">drawTTkString()</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.drawVLine">
-<span class="sig-name descname"><span class="pre">drawVLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawVLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawVLine" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">drawVLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int,</span> <span class="pre">int],</span> <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.drawVLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.drawVLine" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Draws a themed vertical line segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top position of the line</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – the height of the line</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color used for the line glyphs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.enableDoubleBuffer">
-<span class="sig-name descname"><span class="pre">enableDoubleBuffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.enableDoubleBuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.enableDoubleBuffer" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.execPaint">
-<span class="sig-name descname"><span class="pre">execPaint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">winw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winh</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.execPaint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.execPaint" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">enableDoubleBuffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.enableDoubleBuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.enableDoubleBuffer" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Initializes the secondary buffer used for buffered terminal updates.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.fill">
-<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char='</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color=&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.fill" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos:</span> <span class="pre">~typing.Tuple[int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int]</span> <span class="pre">=</span> <span class="pre">(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size:</span> <span class="pre">~typing.Tuple[int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int]</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color:</span> <span class="pre">~TermTk.TTkCore.color.TTkColor</span> <span class="pre">=</span> <span class="pre">&lt;TermTk.TTkCore.color.TTkColor</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.fill" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Fills a rectangular region with a character and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the top-left position of the fill area</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>] </em><em>| </em><em>None</em>) – the width and height of the fill area, defaults to the full canvas</p></li>
+<li><p><strong>char</strong> (<em>str</em>) – the character written into each cell</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkColor.html#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.TTkColor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkColor</span></code></a>) – the color applied to the filled cells</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.hide">
-<span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.hide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.hide" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.hide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.hide" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Marks the canvas as hidden so draw operations become no-ops.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.paintCanvas">
-<span class="sig-name descname"><span class="pre">paintCanvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_slice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.paintCanvas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.paintCanvas" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">paintCanvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.canvas.TTkCanvas"><span class="pre">TTkCanvas</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_slice</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.paintCanvas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.paintCanvas" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Paints another canvas onto this one inside the given geometry and bounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>canvas</strong> (<a class="reference internal" href="#TermTk.TTkCore.TTkCanvas" title="TermTk.TTkCore.TTkCanvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkCanvas</span></code></a>) – the source canvas to compose onto this canvas</p></li>
+<li><p><strong>geom</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – destination geometry as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">width,</span> <span class="pre">height)</span></code></p></li>
+<li><p><strong>_slice</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – reserved slice information for compatibility with callers</p></li>
+<li><p><strong>bound</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – clipping bounds as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">width,</span> <span class="pre">height)</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.pushToTerminal">
-<span class="sig-name descname"><span class="pre">pushToTerminal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.pushToTerminal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.pushToTerminal" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">pushToTerminal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.pushToTerminal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.pushToTerminal" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Pushes the full canvas to the terminal without diffing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – unused compatibility parameter for the destination x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – unused compatibility parameter for the destination y coordinate</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – unused compatibility parameter for the destination width</p></li>
+<li><p><strong>h</strong> (<em>int</em>) – unused compatibility parameter for the destination height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.pushToTerminalBuffered">
-<span class="sig-name descname"><span class="pre">pushToTerminalBuffered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.pushToTerminalBuffered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.pushToTerminalBuffered" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">pushToTerminalBuffered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.pushToTerminalBuffered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.pushToTerminalBuffered" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Pushes only changed cells to the terminal using the secondary buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – unused compatibility parameter for the destination x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – unused compatibility parameter for the destination y coordinate</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – unused compatibility parameter for the destination width</p></li>
+<li><p><strong>h</strong> (<em>int</em>) – unused compatibility parameter for the destination height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.pushToTerminalBufferedNew">
-<span class="sig-name descname"><span class="pre">pushToTerminalBufferedNew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.pushToTerminalBufferedNew"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.pushToTerminalBufferedNew" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">pushToTerminalBufferedNew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.pushToTerminalBufferedNew"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.pushToTerminalBufferedNew" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Pushes buffered terminal updates with run-length compression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – unused compatibility parameter for the destination x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – unused compatibility parameter for the destination y coordinate</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – unused compatibility parameter for the destination width</p></li>
+<li><p><strong>h</strong> (<em>int</em>) – unused compatibility parameter for the destination height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.resize">
-<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.resize" title="Link to this definition"><span>🌶️</span></a></dt>
+<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.resize" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>resize the canvas keeping or cutting the current one</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -788,33 +987,68 @@ there is some redundant code here in order to reduce the footprint</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.setTransparent">
-<span class="sig-name descname"><span class="pre">setTransparent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.setTransparent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.setTransparent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setTransparent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.setTransparent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.setTransparent" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Enables or disables transparent composition for this canvas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tr</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to preserve destination cells where nothing is drawn</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.show" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.show" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Marks the canvas as visible again.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.size">
 <span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.size" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the current canvas size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the width and height of the canvas</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.toAnsi">
-<span class="sig-name descname"><span class="pre">toAnsi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.toAnsi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.toAnsi" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">toAnsi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.toAnsi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.toAnsi" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Serializes the full canvas content into ANSI text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the canvas rendered as newline-separated ANSI escape sequences</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.transparent">
 <span class="sig-name descname"><span class="pre">transparent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.transparent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.transparent" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Returns whether the canvas treats empty cells as transparent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when empty cells preserve the destination canvas</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkCanvas.updateSize">
-<span class="sig-name descname"><span class="pre">updateSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.updateSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.updateSize" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">updateSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/canvas.html#TTkCanvas.updateSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkCanvas.updateSize" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>Rebuilds the internal buffers when the requested canvas size changes.</p>
+</dd></dl>
 
 </section>
 </dd></dl>
@@ -881,15 +1115,10 @@ there is some redundant code here in order to reduce the footprint</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawMenuBarBg"><code class="docutils literal notranslate"><span class="pre">drawMenuBarBg()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawScroll"><code class="docutils literal notranslate"><span class="pre">drawScroll()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTTkString"><code class="docutils literal notranslate"><span class="pre">drawTTkString()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTab"><code class="docutils literal notranslate"><span class="pre">drawTab()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTabButton"><code class="docutils literal notranslate"><span class="pre">drawTabButton()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTabMenuButton"><code class="docutils literal notranslate"><span class="pre">drawTabMenuButton()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTabWidgetBottomLine"><code class="docutils literal notranslate"><span class="pre">drawTabWidgetBottomLine()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawTableLine"><code class="docutils literal notranslate"><span class="pre">drawTableLine()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawText"><code class="docutils literal notranslate"><span class="pre">drawText()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.drawVLine"><code class="docutils literal notranslate"><span class="pre">drawVLine()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.enableDoubleBuffer"><code class="docutils literal notranslate"><span class="pre">enableDoubleBuffer()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.execPaint"><code class="docutils literal notranslate"><span class="pre">execPaint()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.fill"><code class="docutils literal notranslate"><span class="pre">fill()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.hide"><code class="docutils literal notranslate"><span class="pre">hide()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkCanvas.paintCanvas"><code class="docutils literal notranslate"><span class="pre">paintCanvas()</span></code></a></li>

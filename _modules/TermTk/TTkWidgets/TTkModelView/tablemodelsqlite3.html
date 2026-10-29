@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.TTkModelView.tablemodelsqlite3 &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.TTkModelView.tablemodelsqlite3 &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2024 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -532,7 +535,7 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;TTkTableModelSQLite3&#39;</span><span class="p">]</span>
+<span class="n">__all__</span><span class="o">=</span><span class="p">[</span><span class="s1">'TTkTableModelSQLite3'</span><span class="p">]</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
@@ -545,7 +548,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkAbstract.abstracttablemodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkAbstractTableModel</span><span class="p">,</span> <span class="n">TTkModelIndex</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkModelIndexSQLite3</span><span class="p">(</span><span class="n">TTkModelIndex</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_col&#39;</span><span class="p">,</span><span class="s1">&#39;_rowId&#39;</span><span class="p">,</span><span class="s1">&#39;_sqModel&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_col'</span><span class="p">,</span><span class="s1">'_rowId'</span><span class="p">,</span><span class="s1">'_sqModel'</span><span class="p">)</span>
 
     <span class="n">_col</span><span class="p">:</span><span class="nb">int</span>
     <span class="n">_rowId</span><span class="p">:</span><span class="nb">str</span>
@@ -571,7 +574,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTableModelSQLite3">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTableModelSQLite3</span><span class="p">(</span><span class="n">TTkAbstractTableModel</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    :py:class:`TTkTableModelSQLite3` extends :py:class:`TTkAbstractTableModel`,</span>
 <span class="sd">    allowing to map an sqlite3 table to this table model</span>
 
@@ -585,8 +588,8 @@ document.write(`
 
 <span class="sd">        import TermTk as ttk</span>
 
-<span class="sd">        filename=&#39;sqlite.database.db&#39;</span>
-<span class="sd">        tablename=&#39;users&#39;</span>
+<span class="sd">        filename='sqlite.database.db'</span>
+<span class="sd">        tablename='users'</span>
 
 <span class="sd">        root = ttk.TTk(mouseTrack=True, layout=ttk.TTkGridLayout())</span>
 
@@ -596,14 +599,14 @@ document.write(`
 
 <span class="sd">        root.mainloop()</span>
 
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_conn&#39;</span><span class="p">,</span> <span class="s1">&#39;_cur&#39;</span><span class="p">,</span> <span class="s1">&#39;_table&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_key&#39;</span><span class="p">,</span> <span class="s1">&#39;_columns&#39;</span><span class="p">,</span> <span class="s1">&#39;_columnTypes&#39;</span><span class="p">,</span> <span class="s1">&#39;_count&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_sort&#39;</span><span class="p">,</span> <span class="s1">&#39;_sortColumn&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_sqliteMutex&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_idMap&#39;</span><span class="p">)</span>
+        <span class="s1">'_conn'</span><span class="p">,</span> <span class="s1">'_cur'</span><span class="p">,</span> <span class="s1">'_table'</span><span class="p">,</span>
+        <span class="s1">'_key'</span><span class="p">,</span> <span class="s1">'_columns'</span><span class="p">,</span> <span class="s1">'_columnTypes'</span><span class="p">,</span> <span class="s1">'_count'</span><span class="p">,</span>
+        <span class="s1">'_sort'</span><span class="p">,</span> <span class="s1">'_sortColumn'</span><span class="p">,</span>
+        <span class="s1">'_sqliteMutex'</span><span class="p">,</span>
+        <span class="s1">'_idMap'</span><span class="p">)</span>
 
     <span class="n">_idMap</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">int</span><span class="p">]</span>
 
@@ -612,29 +615,29 @@ document.write(`
                  <span class="n">table</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
                  <span class="c1"># header:list[str]=None</span>
                  <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        :param fileName: the sqlite3 file database</span>
 <span class="sd">        :type fileName: str</span>
 
 <span class="sd">        :param table: the name of the sqlite3 table to be mapped</span>
 <span class="sd">        :type table: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_table</span> <span class="o">=</span> <span class="n">table</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_columnTypes</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Add this to store column types</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_idMap</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="s1">''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">check_same_thread</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span>  <span class="o">=</span> <span class="n">cur</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-            <span class="n">res</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT COUNT(*) FROM </span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SELECT COUNT(*) FROM </span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PRAGMA table_info(</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PRAGMA table_info(</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">)"</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>      <span class="c1"># column name</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_columnTypes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># column type</span>
@@ -648,7 +651,7 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">_refreshIdMap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_idMap</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">_id</span> <span class="p">:</span> <span class="n">_rn</span>
-            <span class="k">for</span> <span class="n">_rn</span><span class="p">,</span><span class="n">_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT ROW_NUMBER() OVER (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2">) RN, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)}</span>
+            <span class="k">for</span> <span class="n">_rn</span><span class="p">,</span><span class="n">_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SELECT ROW_NUMBER() OVER (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2">) RN, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2">"</span><span class="p">)}</span>
 
 <div class="viewcode-block" id="TTkTableModelSQLite3.rowCount">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.rowCount">[docs]</a>
@@ -670,10 +673,10 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkModelIndex</span><span class="p">:</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">key</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_fetch</span><span class="o">:=</span><span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span> <span class="k">else</span> <span class="n">_fetch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="sa">f</span><span class="s2">"SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="n">key</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_fetch</span><span class="o">:=</span><span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span> <span class="k">else</span> <span class="n">_fetch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">_TTkModelIndexSQLite3</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span><span class="n">rowId</span><span class="o">=</span><span class="n">key</span><span class="p">,</span><span class="n">sqModel</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
 
 
@@ -682,9 +685,9 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="sa">f</span><span class="s2">"SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_fetch</span><span class="o">:=</span><span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span> <span class="k">else</span> <span class="n">_fetch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
@@ -693,14 +696,14 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="sa">f</span><span class="s2">"SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"LIMIT 1 OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">key</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;UPDATE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;SET </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> = &#39;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;WHERE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+                <span class="sa">f</span><span class="s2">"UPDATE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"SET </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> = '</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">' "</span>
+                <span class="sa">f</span><span class="s2">"WHERE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span>
@@ -730,32 +733,32 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sortColumn</span> <span class="o">=</span> <span class="n">column</span>
         <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="s1">''</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">order</span> <span class="o">==</span><span class="n">TTkK</span><span class="o">.</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">AscendingOrder</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ORDER BY </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2"> ASC&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"ORDER BY </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2"> ASC"</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ORDER BY </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2"> DESC&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"ORDER BY </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2"> DESC"</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_getDefaultValueForType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlite_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get appropriate default value based on SQLite column type&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get appropriate default value based on SQLite column type"""</span>
         <span class="n">sqlite_type</span> <span class="o">=</span> <span class="n">sqlite_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="s1">&#39;INT&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;0&#39;</span>
-        <span class="k">elif</span> <span class="s1">&#39;REAL&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">&#39;FLOAT&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">&#39;DOUBLE&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;0.0&#39;</span>
-        <span class="k">elif</span> <span class="s1">&#39;TEXT&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">&#39;CHAR&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">&#39;VARCHAR&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&#39;&#39;&quot;</span>  <span class="c1"># Empty string</span>
-        <span class="k">elif</span> <span class="s1">&#39;BLOB&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;NULL&#39;</span>
-        <span class="k">elif</span> <span class="s1">&#39;BOOL&#39;</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;0&#39;</span>  <span class="c1"># False</span>
+        <span class="k">if</span> <span class="s1">'INT'</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">'0'</span>
+        <span class="k">elif</span> <span class="s1">'REAL'</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">'FLOAT'</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">'DOUBLE'</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">'0.0'</span>
+        <span class="k">elif</span> <span class="s1">'TEXT'</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">'CHAR'</span> <span class="ow">in</span> <span class="n">sqlite_type</span> <span class="ow">or</span> <span class="s1">'VARCHAR'</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">"''"</span>  <span class="c1"># Empty string</span>
+        <span class="k">elif</span> <span class="s1">'BLOB'</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">'NULL'</span>
+        <span class="k">elif</span> <span class="s1">'BOOL'</span> <span class="ow">in</span> <span class="n">sqlite_type</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">'0'</span>  <span class="c1"># False</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">&#39;NULL&#39;</span>  <span class="c1"># Default fallback</span>
+            <span class="k">return</span> <span class="s1">'NULL'</span>  <span class="c1"># Default fallback</span>
 
 <div class="viewcode-block" id="TTkTableModelSQLite3.insertRows">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.insertRows">[docs]</a>
@@ -767,20 +770,20 @@ document.write(`
             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
                 <span class="c1"># Create appropriate default values based on column types</span>
                 <span class="n">placeholders</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_getDefaultValueForType</span><span class="p">(</span><span class="n">_ct</span><span class="p">)</span> <span class="k">for</span> <span class="n">_ct</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columnTypes</span><span class="p">]</span>
-                <span class="n">placeholders_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">placeholders</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
-                <span class="n">columns_str</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">)</span>
+                <span class="n">placeholders_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">placeholders</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
+                <span class="n">columns_str</span> <span class="o">=</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="p">)</span>
 
                 <span class="c1"># Insert the specified number of rows</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">                    INSERT INTO </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">columns_str</span><span class="si">}</span><span class="s2">)</span>
-<span class="s2">                    VALUES </span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">placeholders_str</span><span class="p">]</span><span class="o">*</span><span class="n">count</span><span class="p">)</span><span class="si">}</span>
-<span class="s2">                &quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">                    VALUES </span><span class="si">{</span><span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">placeholders_str</span><span class="p">]</span><span class="o">*</span><span class="n">count</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                """</span><span class="p">)</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="n">count</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span>
         <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error adding rows: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">TTkLog</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error adding rows: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">-</span> <span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modelChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
@@ -795,23 +798,23 @@ document.write(`
 
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqliteMutex</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">                    DELETE FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span>
 <span class="s2">                    WHERE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> in (</span>
 <span class="s2">                        SELECT </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span>
 <span class="s2">                        </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="si">}</span>
 <span class="s2">                        LIMIT </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> OFFSET </span><span class="si">{</span><span class="n">row</span><span class="si">}</span>
 <span class="s2">                    )</span>
-<span class="s2">                &quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">                """</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
                 <span class="c1"># Update The rows Count</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT COUNT(*) FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SELECT COUNT(*) FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">_refreshIdMap</span><span class="p">()</span>
         <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error removing rows: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">TTkLog</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error removing rows: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">-</span> <span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnCount</span><span class="p">()))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modelChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
@@ -821,20 +824,20 @@ document.write(`
 <div class="viewcode-block" id="TTkTableModelSQLite3.insertColumns">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.insertColumns">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">insertColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. attention:: The current implementation of :py:class:`TTkTableModelSQLite3` does not supports columns operations</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The current implementation of ModelSQLite3 does not supports columns operations&quot;</span><span class="p">)</span>
+<span class="sd">        '''</span>
+        <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"The current implementation of ModelSQLite3 does not supports columns operations"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="TTkTableModelSQLite3.removeColumns">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.html#TermTk.TTkWidgets.TTkModelView.TTkTableModelSQLite3.removeColumns">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">removeColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. attention:: The current implementation of :py:class:`TTkTableModelSQLite3` does not supports columns operations</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The current implementation of ModelSQLite3 does not supports columns operations&quot;</span><span class="p">)</span>
+<span class="sd">        '''</span>
+        <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"The current implementation of ModelSQLite3 does not supports columns operations"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 </div>
 

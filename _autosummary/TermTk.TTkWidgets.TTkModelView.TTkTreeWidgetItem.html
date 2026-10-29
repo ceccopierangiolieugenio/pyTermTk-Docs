@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkTreeWidgetItem &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkTreeWidgetItem &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -608,13 +611,13 @@ Rows usually contain several columns of data, each of which can contain a <a cla
 <p>Items are usually constructed with a parent that is <a class="reference internal" href="#TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem" title="TermTk.TTkWidgets.TTkModelView.TTkTreeWidgetItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkTreeWidgetItem</span></code></a> (for items on lower levels of the tree). For example,
 the following code constructs a top-level item to represent cities of the world, and adds a entry
 for Oslo as a child item:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="n">TTkWidgetItem</span><span class="p">([</span><span class="s2">&quot;Cities&quot;</span><span class="p">])</span>
-<span class="n">osloItem</span> <span class="o">=</span> <span class="n">TTkWidgetItem</span><span class="p">([</span><span class="s2">&quot;Oslo&quot;</span><span class="p">],</span> <span class="n">parent</span><span class="o">=</span><span class="n">cities</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">"Cities"</span><span class="p">])</span>
+<span class="n">osloItem</span> <span class="o">=</span> <span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">"Oslo"</span><span class="p">],</span> <span class="n">parent</span><span class="o">=</span><span class="n">cities</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="n">TTkWidgetItem</span><span class="p">([</span><span class="s2">&quot;Cities&quot;</span><span class="p">])</span>
-<span class="n">osloItem</span> <span class="o">=</span> <span class="n">TTkWidgetItem</span><span class="p">([</span><span class="s2">&quot;Oslo&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">"Cities"</span><span class="p">])</span>
+<span class="n">osloItem</span> <span class="o">=</span> <span class="n">TTkTreeWidgetItem</span><span class="p">([</span><span class="s2">"Oslo"</span><span class="p">]</span>
 <span class="n">cities</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">osloItem</span><span class="p">)</span>
 </pre></div>
 </div>

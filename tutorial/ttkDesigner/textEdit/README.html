@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ttkDesigner - Your first TextEditor &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>ttkDesigner - Your first TextEditor &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -728,30 +731,30 @@ ttkDesigner<span class="w"> </span>tutorial/ttkDesigner/textEdit/textEdit.01.tui
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve the widgets we need to use</span>
-<span class="n">btnOpen</span>  <span class="o">=</span> <span class="n">textEditWindow</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;BtnOpen&quot;</span><span class="p">)</span>
-<span class="n">btnSave</span>  <span class="o">=</span> <span class="n">textEditWindow</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;BtnSave&quot;</span><span class="p">)</span>
-<span class="n">textEdit</span> <span class="o">=</span> <span class="n">textEditWindow</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">)</span>
+<span class="n">btnOpen</span>  <span class="o">=</span> <span class="n">textEditWindow</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"BtnOpen"</span><span class="p">)</span>
+<span class="n">btnSave</span>  <span class="o">=</span> <span class="n">textEditWindow</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"BtnSave"</span><span class="p">)</span>
+<span class="n">textEdit</span> <span class="o">=</span> <span class="n">textEditWindow</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"TextEdit"</span><span class="p">)</span>
 
 
 <span class="c1"># This is a generic routine to open/read a file</span>
-<span class="c1"># and push the content to the &quot;TextEdit&quot; widget</span>
+<span class="c1"># and push the content to the "TextEdit" widget</span>
 <span class="n">pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">openRoutine</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="n">textEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
-<span class="c1"># Connect the open routine to the (open)&quot;filePicked&quot; event</span>
+<span class="c1"># Connect the open routine to the (open)"filePicked" event</span>
 <span class="n">btnOpen</span><span class="o">.</span><span class="n">filePicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">openRoutine</span><span class="p">)</span>
 
 
 <span class="c1"># This is a generic routine to save the content of</span>
-<span class="c1"># the &quot;TextEdit&quot; widget to the chosen file</span>
+<span class="c1"># the "TextEdit" widget to the chosen file</span>
 <span class="n">pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">saveRoutine</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">textEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
 
-<span class="c1"># Connect the save routine to the (save)&quot;filePicked&quot; event</span>
+<span class="c1"># Connect the save routine to the (save)"filePicked" event</span>
 <span class="n">btnSave</span><span class="o">.</span><span class="n">filePicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">saveRoutine</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -766,32 +769,32 @@ ttkDesigner<span class="w"> </span>tutorial/ttkDesigner/textEdit/textEdit.01.tui
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyTextEditor</span><span class="p">(</span><span class="n">TTkWindow</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># The &quot;TTkUiLoader&quot; is responsible to init this custom object</span>
-        <span class="c1"># and extend it to the &quot;textEditWindow&quot; created in this tutorial</span>
-        <span class="c1"># NOTE: no &quot;super().__init__()&quot; is required</span>
+        <span class="c1"># The "TTkUiLoader" is responsible to init this custom object</span>
+        <span class="c1"># and extend it to the "textEditWindow" created in this tutorial</span>
+        <span class="c1"># NOTE: no "super().__init__()" is required</span>
         <span class="n">TTkUiLoader</span><span class="o">.</span><span class="n">loadDict</span><span class="p">(</span><span class="n">TTkUtil</span><span class="o">.</span><span class="n">base64_deflate_2_obj</span><span class="p">(</span>
             <span class="c1">#  &lt;Copy here the Compressed string representing the object&gt;</span>
             <span class="p">),</span> <span class="bp">self</span><span class="p">)</span>
 
-        <span class="c1"># Connect the open routine to the (open)&quot;filePicked&quot; event</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;BtnOpen&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filePicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">openRoutine</span><span class="p">)</span>
-        <span class="c1"># Connect the save routine to the (save)&quot;filePicked&quot; event</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;BtnSave&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filePicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saveRoutine</span><span class="p">)</span>
+        <span class="c1"># Connect the open routine to the (open)"filePicked" event</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"BtnOpen"</span><span class="p">)</span><span class="o">.</span><span class="n">filePicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">openRoutine</span><span class="p">)</span>
+        <span class="c1"># Connect the save routine to the (save)"filePicked" event</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"BtnSave"</span><span class="p">)</span><span class="o">.</span><span class="n">filePicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saveRoutine</span><span class="p">)</span>
 
     <span class="c1"># This is a generic routine to open/read a file</span>
-    <span class="c1"># and push the content to the &quot;TextEdit&quot; widget</span>
+    <span class="c1"># and push the content to the "TextEdit" widget</span>
     <span class="n">pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">openRoutine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">):</span>
-        <span class="n">textEdit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">)</span>
+        <span class="n">textEdit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"TextEdit"</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
             <span class="n">textEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
     <span class="c1"># This is a generic routine to save the content of</span>
-    <span class="c1"># the &quot;TextEdit&quot; widget to the chosen file</span>
+    <span class="c1"># the "TextEdit" widget to the chosen file</span>
     <span class="n">pyTTkSlot</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">saveRoutine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">):</span>
-        <span class="n">textEdit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">&quot;TextEdit&quot;</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">textEdit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWidgetByName</span><span class="p">(</span><span class="s2">"TextEdit"</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
             <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">textEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
 </pre></div>
 </div>

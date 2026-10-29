@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkColor &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkColor &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -605,18 +608,18 @@ document.write(`
 <div><p>The TTkColor constructor creates the color based on HEX values.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Foreground only colors:</span>
-<span class="n">color_fg_red</span>   <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
-<span class="n">color_fg_green</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">)</span>
-<span class="n">color_fg_blue</span>  <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">)</span>
+<span class="n">color_fg_red</span>   <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#FF0000'</span><span class="p">)</span>
+<span class="n">color_fg_green</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#00FF00'</span><span class="p">)</span>
+<span class="n">color_fg_blue</span>  <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#0000FF'</span><span class="p">)</span>
 
 <span class="c1"># Background only colors:</span>
-<span class="n">color_bg_red</span>   <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
-<span class="n">color_bg_green</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">)</span>
-<span class="n">color_bg_blue</span>  <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">)</span>
+<span class="n">color_bg_red</span>   <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#FF0000'</span><span class="p">)</span>
+<span class="n">color_bg_green</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#00FF00'</span><span class="p">)</span>
+<span class="n">color_bg_blue</span>  <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#0000FF'</span><span class="p">)</span>
 
 <span class="c1"># Combine</span>
 <span class="n">color_1</span> <span class="o">=</span> <span class="n">color_fg_red</span> <span class="o">+</span> <span class="n">color_bg_blue</span>
-<span class="n">color_2</span> <span class="o">=</span> <span class="n">color_fg_red</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#FFFF00&#39;</span><span class="p">)</span>
+<span class="n">color_2</span> <span class="o">=</span> <span class="n">color_fg_red</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#FFFF00'</span><span class="p">)</span>
 <span class="n">color_3</span> <span class="o">=</span> <span class="n">color_2</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">UNDERLINE</span> <span class="o">+</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">BOLD</span>
 
 <span class="c1"># Use presets</span>
@@ -693,9 +696,9 @@ document.write(`
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.bg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.bg" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Helper to generate a Background color</p>
 <p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
-<span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">)</span>
-<span class="n">color_3</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="n">TTkColorGradient</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#FF0000'</span><span class="p">)</span>
+<span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'#00FF00'</span><span class="p">)</span>
+<span class="n">color_3</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">bg</span><span class="p">(</span><span class="s1">'#0000FF'</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="n">TTkColorGradient</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -792,9 +795,9 @@ foreground, background, and color modifiers.</p>
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fg" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Helper to generate a Foreground color</p>
 <p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
-<span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">)</span>
-<span class="n">color_3</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="n">TTkColorGradient</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#FF0000'</span><span class="p">)</span>
+<span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'#00FF00'</span><span class="p">)</span>
+<span class="n">color_3</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#0000FF'</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="n">TTkColorGradient</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -830,9 +833,9 @@ foreground, background, and color modifiers.</p>
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fgbg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="TermTk.TTkCore.TTkColorModifier.html#TermTk.TTkCore.TTkColorModifier" title="TermTk.TTkCore.color.TTkColorModifier"><span class="pre">TTkColorModifier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#TermTk.TTkCore.TTkColor" title="TermTk.TTkCore.color.TTkColor"><span class="pre">TTkColor</span></a></span></span><a class="reference internal" href="../_modules/TermTk/TTkCore/color.html#TTkColor.fgbg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkColor.fgbg" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Helper to generate a Foreground and Background color</p>
 <p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">)</span>
-<span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">)</span>
-<span class="n">color_3</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="n">TTkColorGradient</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_1</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s1">'#FF0000'</span><span class="p">,</span><span class="s1">'#0000FF'</span><span class="p">)</span>
+<span class="n">color_2</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="s1">'#00FF00'</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">'#0000FF'</span><span class="p">)</span>
+<span class="n">color_3</span> <span class="o">=</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fgbg</span><span class="p">(</span><span class="s1">'#0000FF'</span><span class="p">,</span><span class="s1">'#0000FF'</span><span class="p">,</span> <span class="n">modifier</span><span class="o">=</span><span class="n">TTkColorGradient</span><span class="p">(</span><span class="n">increment</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 <dl class="field-list simple">

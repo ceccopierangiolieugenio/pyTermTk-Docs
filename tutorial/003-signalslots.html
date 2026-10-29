@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pyTermTk - Signal &amp; Slots &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>pyTermTk - Signal &amp; Slots &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -614,16 +617,16 @@ document.write(`
     <span class="c1"># Define a slot with no input as signature</span>
 <span class="nd">@ttk</span><span class="o">.</span><span class="n">pyTTkSlot</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">slot</span><span class="p">():</span>
-    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Received a simple signal&quot;</span><span class="p">)</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"Received a simple signal"</span><span class="p">)</span>
 
-    <span class="c1"># Define 2 slots with &quot;int&quot; as input signature</span>
+    <span class="c1"># Define 2 slots with "int" as input signature</span>
 <span class="nd">@ttk</span><span class="o">.</span><span class="n">pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">otherSlot</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[otherSlot] Received a valued signal, val:</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[otherSlot] Received a valued signal, val:</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="nd">@ttk</span><span class="o">.</span><span class="n">pyTTkSlot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">anotherSlot</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[anootherSlot] Received a valued signal, val:</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[anootherSlot] Received a valued signal, val:</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
     <span class="c1"># connect the signals to the proper slot</span>
@@ -632,9 +635,9 @@ document.write(`
 <span class="n">otherSignal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">anotherSlot</span><span class="p">)</span>
 
     <span class="c1"># Test the signals</span>
-<span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Emit a simple signal&quot;</span><span class="p">)</span>
+<span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"Emit a simple signal"</span><span class="p">)</span>
 <span class="n">signal</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-<span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Emit a valued signal&quot;</span><span class="p">)</span>
+<span class="n">ttk</span><span class="o">.</span><span class="n">TTkLog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"Emit a valued signal"</span><span class="p">)</span>
 <span class="n">otherSignal</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -657,16 +660,16 @@ DEBUG:(MainThread) tutorial/signalslots/example1.basic.signalslots.py:45 [anooth
 <span class="n">root</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTk</span><span class="p">()</span>
 
     <span class="c1"># Create a window with a logviewer</span>
-<span class="n">logWin</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkWindow</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;LogViewer Window&quot;</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkVBoxLayout</span><span class="p">())</span>
+<span class="n">logWin</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkWindow</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"LogViewer Window"</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttk</span><span class="o">.</span><span class="n">TTkVBoxLayout</span><span class="p">())</span>
 <span class="n">ttk</span><span class="o">.</span><span class="n">TTkLogViewer</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">logWin</span><span class="p">)</span>
 
     <span class="c1"># Create 2 buttons</span>
-<span class="n">btnShow</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Show&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">btnHide</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hide&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">btnShow</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Show"</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">btnHide</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">TTkButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Hide"</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1"># Connect the btnShow&#39;s &quot;clicked&quot; signal with the window&#39;s &quot;show&quot; slot</span>
+    <span class="c1"># Connect the btnShow's "clicked" signal with the window's "show" slot</span>
 <span class="n">btnShow</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">logWin</span><span class="o">.</span><span class="n">show</span><span class="p">)</span>
-    <span class="c1"># Connect the btnHide&#39;s &quot;clicked&quot; signal with the window&#39;s &quot;hide&quot; slot</span>
+    <span class="c1"># Connect the btnHide's "clicked" signal with the window's "hide" slot</span>
 <span class="n">btnHide</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">logWin</span><span class="o">.</span><span class="n">hide</span><span class="p">)</span>
 
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>

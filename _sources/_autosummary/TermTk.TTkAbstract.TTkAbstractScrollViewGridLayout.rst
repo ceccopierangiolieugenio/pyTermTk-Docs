@@ -128,6 +128,7 @@ TTkAbstractScrollViewGridLayout
       insertWidgets
       itemAt
       iterWidgets
+      layoutItemType
       lowerWidget
       parentWidget
       raiseWidget

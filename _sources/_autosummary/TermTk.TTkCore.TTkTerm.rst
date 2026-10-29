@@ -14,6 +14,8 @@ TermTk.TTkCore.TTkTerm
    
       TTkInput
       TTkKeyEvent
+      TTkKeyEvent_Character
+      TTkKeyEvent_SpecialKey
       TTkMouseEvent
       TTkTerm
    

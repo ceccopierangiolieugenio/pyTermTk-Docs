@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TTkKeyEvent &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TTkKeyEvent &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -46,7 +46,7 @@
     <link rel="icon" href="https://ceccopierangiolieugenio.github.io/pyTermTk-Docs/sandbox/www/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TTkMouseEvent" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html" />
+    <link rel="next" title="TTkKeyEvent_Character" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html" />
     <link rel="prev" title="TTkInput" href="TermTk.TTkCore.TTkTerm.TTkInput.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -135,7 +135,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -226,6 +226,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -253,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -555,7 +558,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent"><code class="docutils literal notranslate"><span class="pre">TTkKeyEvent</span></code></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.key"><code class="docutils literal notranslate"><span class="pre">key</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.code"><code class="docutils literal notranslate"><span class="pre">code</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod"><code class="docutils literal notranslate"><span class="pre">mod</span></code></a></li>
@@ -578,32 +580,32 @@ document.write(`
 <h1>TTkKeyEvent<a class="headerlink" href="#ttkkeyevent" title="Link to this heading"><span>🌶️</span></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkTerm.TTkKeyEvent">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkKeyEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/TTkTerm/inputkey.html#TTkKeyEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent" title="Link to this definition"><span>🌶️</span></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TTkKeyEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/TTkTerm/inputkey.html#TTkKeyEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent" title="Link to this definition"><span>🌶️</span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Keyboard Events</p>
+<p>Keyboard event base class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Demo<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/ceccopierangiolieugenio/pyTermTk/blob/main/tests/test.input.py">test.input.py</a></p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>type</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyType" title="TermTk.TTkCore.TTkConstant.KeyType"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.KeyType</span></code></a>) – The key input type recorded</p></li>
-<li><p><strong>key</strong> (<em>str</em>) – the key</p></li>
+</dl>
+<p>Parsed input is exposed as one of the concrete subclasses:
+<a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent_Character</span></code></a> for literal character input and
+<a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent_SpecialKey</span></code></a> for translated terminal sequences.</p>
+<p>The shared <a class="reference internal" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.key" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent.key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">key</span></code></a> attribute stores the payload for the concrete
+event type: a <code class="docutils literal notranslate"><span class="pre">str</span></code> for <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent_Character</span></code></a> and an <code class="docutils literal notranslate"><span class="pre">int</span></code>
+<a class="reference internal" href="TermTk.TTkCore.TTkK.html#TermTk.TTkCore.TTkK" title="TermTk.TTkCore.TTkK"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkK</span></code></a> constant for <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkKeyEvent_SpecialKey</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>code</strong> (<em>str</em>) – The terminal code used to represent this input</p></li>
 <li><p><strong>mod</strong> (<a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyModifier" title="TermTk.TTkCore.TTkConstant.KeyModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.KeyModifier</span></code></a>) – The modifier used by the <code class="xref py py-class docutils literal notranslate"><span class="pre">SpecialKey</span></code> type</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="TermTk.TTkCore.TTkTerm.TTkKeyEvent.type">
-<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyType" title="TermTk.TTkCore.TTkConstant.KeyType"><span class="pre">KeyType</span></a></em><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.type" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>The key input <a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyType" title="TermTk.TTkCore.TTkConstant.KeyType"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.KeyType</span></code></a> recorded</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkTerm.TTkKeyEvent.key">
-<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.key" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>the input key</p>
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.key" title="Link to this definition"><span>🌶️</span></a></dt>
+<dd><p>The parsed key payload for the concrete event instance.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -615,7 +617,7 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod">
 <span class="sig-name descname"><span class="pre">mod</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyModifier" title="TermTk.TTkCore.TTkConstant.KeyModifier"><span class="pre">KeyModifier</span></a></em><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd><p>The <a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyModifier" title="TermTk.TTkCore.TTkConstant.KeyModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.KeyModifier</span></code></a> used by the <code class="xref py py-class docutils literal notranslate"><span class="pre">SpecialKey</span></code> type</p>
+<dd><p>The <a class="reference internal" href="TermTk.TTkCore.TTkConstant.html#TermTk.TTkCore.TTkConstant.KeyModifier" title="TermTk.TTkCore.TTkConstant.KeyModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">TTkConstant.KeyModifier</span></code></a> associated with the input.</p>
 </dd></dl>
 
 <section id="methods">
@@ -623,7 +625,20 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="TermTk.TTkCore.TTkTerm.TTkKeyEvent.parse">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TermTk/TTkCore/TTkTerm/inputkey.html#TTkKeyEvent.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.parse" title="Link to this definition"><span>🌶️</span></a></dt>
-<dd></dd></dl>
+<dd><p>Parse raw terminal input into a typed key event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_key</strong> (<em>str</em>) – The raw terminal input sequence.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A character event, a special-key event, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when the
+sequence is not recognized.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character">TTkKeyEvent_Character</a> | <a class="reference internal" href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html#TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey">TTkKeyEvent_SpecialKey</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </dd></dl>
@@ -639,9 +654,6 @@ document.write(`
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mod</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.type" title="TermTk.TTkCore.TTkTerm.TTkKeyEvent.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -671,11 +683,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="TermTk.TTkCore.TTkTerm.TTkMouseEvent.html"
+       href="TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">TTkMouseEvent</p>
+        <p class="prev-next-title">TTkKeyEvent_Character</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -696,7 +708,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent"><code class="docutils literal notranslate"><span class="pre">TTkKeyEvent</span></code></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.key"><code class="docutils literal notranslate"><span class="pre">key</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.code"><code class="docutils literal notranslate"><span class="pre">code</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TermTk.TTkCore.TTkTerm.TTkKeyEvent.mod"><code class="docutils literal notranslate"><span class="pre">mod</span></code></a></li>

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.widget &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.widget &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2021 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -532,7 +535,7 @@ document.write(`
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkWidget&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkWidget'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span> <span class="p">)</span>
 
@@ -556,7 +559,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkWidget</span><span class="p">(</span><span class="n">TMouseEvents</span><span class="p">,</span> <span class="n">TKeyEvents</span><span class="p">,</span> <span class="n">TDragEvents</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Widget sizes:</span>
+<span class="w">    </span><span class="sd">''' Widget sizes:</span>
 
 <span class="sd">    ::</span>
 
@@ -575,63 +578,63 @@ document.write(`
 
 <span class="sd">    The TTkWidget class is the base class of all user interface objects</span>
 
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">focusChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted whenever the focus status change</span>
 <span class="sd">    i.e. with the :meth:`setFocus` or :meth:`clearFocus` methods</span>
 
 <span class="sd">    :param status: the curent focus status</span>
 <span class="sd">    :type status: bool</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="n">sizeChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted whenever the widget size change</span>
 
 <span class="sd">    :param width: the new widget width</span>
 <span class="sd">    :type width: int</span>
 <span class="sd">    :param height: the new widget height</span>
 <span class="sd">    :type height: int</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="n">currentStyleChanged</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted whenever the widget stye change</span>
 
 <span class="sd">    :param style: the new style applied</span>
 <span class="sd">    :type style: dict</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="n">closed</span><span class="p">:</span><span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted whenever the widget is closed</span>
 
 <span class="sd">    :param widget: the widget closed (=self)</span>
 <span class="sd">    :type widget: TTkWidget</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
-    <span class="n">classStyle</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;default&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>           <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
-                <span class="s1">&#39;disabled&#39;</span><span class="p">:</span>    <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">),</span> <span class="s1">&#39;borderColor&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">)},</span>
-                <span class="c1"># &#39;hover&#39;:       {&#39;color&#39;: TTkColor.fg(&#39;#00FF00&#39;)+TTkColor.bg(&#39;#0077FF&#39;)},</span>
-                <span class="c1"># &#39;checked&#39;:     {&#39;color&#39;: TTkColor.fg(&#39;#00FF00&#39;)+TTkColor.bg(&#39;#00FFFF&#39;)},</span>
-                <span class="c1"># &#39;clicked&#39;:     {&#39;color&#39;: TTkColor.fg(&#39;#FFFF00&#39;)},</span>
-                <span class="c1"># &#39;focus&#39;:       {&#39;color&#39;: TTkColor.fg(&#39;#FFFF88&#39;)},</span>
+    <span class="n">classStyle</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'default'</span><span class="p">:</span>     <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">,</span>             <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">},</span>
+                <span class="s1">'disabled'</span><span class="p">:</span>    <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">),</span> <span class="s1">'borderColor'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">fg</span><span class="p">(</span><span class="s1">'#888888'</span><span class="p">)},</span>
+                <span class="c1"># 'hover':       {'color': TTkColor.fg('#00FF00')+TTkColor.bg('#0077FF')},</span>
+                <span class="c1"># 'checked':     {'color': TTkColor.fg('#00FF00')+TTkColor.bg('#00FFFF')},</span>
+                <span class="c1"># 'clicked':     {'color': TTkColor.fg('#FFFF00')},</span>
+                <span class="c1"># 'focus':       {'color': TTkColor.fg('#FFFF88')},</span>
             <span class="p">}</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;_name&#39;</span><span class="p">,</span> <span class="s1">&#39;_parent&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_x&#39;</span><span class="p">,</span> <span class="s1">&#39;_y&#39;</span><span class="p">,</span> <span class="s1">&#39;_width&#39;</span><span class="p">,</span> <span class="s1">&#39;_height&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_maxw&#39;</span><span class="p">,</span> <span class="s1">&#39;_maxh&#39;</span><span class="p">,</span> <span class="s1">&#39;_minw&#39;</span><span class="p">,</span> <span class="s1">&#39;_minh&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_focus_policy&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_canvas&#39;</span><span class="p">,</span> <span class="s1">&#39;_widgetItem&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_visible&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_enabled&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_style&#39;</span><span class="p">,</span> <span class="s1">&#39;_currentStyle&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_toolTip&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_dropEventProxy&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;_widgetCursor&#39;</span><span class="p">,</span> <span class="s1">&#39;_widgetCursorEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;_widgetCursorType&#39;</span><span class="p">,</span>
+        <span class="s1">'_name'</span><span class="p">,</span> <span class="s1">'_parent'</span><span class="p">,</span>
+        <span class="s1">'_x'</span><span class="p">,</span> <span class="s1">'_y'</span><span class="p">,</span> <span class="s1">'_width'</span><span class="p">,</span> <span class="s1">'_height'</span><span class="p">,</span>
+        <span class="s1">'_maxw'</span><span class="p">,</span> <span class="s1">'_maxh'</span><span class="p">,</span> <span class="s1">'_minw'</span><span class="p">,</span> <span class="s1">'_minh'</span><span class="p">,</span>
+        <span class="s1">'_focus_policy'</span><span class="p">,</span>
+        <span class="s1">'_canvas'</span><span class="p">,</span> <span class="s1">'_widgetItem'</span><span class="p">,</span>
+        <span class="s1">'_visible'</span><span class="p">,</span>
+        <span class="s1">'_enabled'</span><span class="p">,</span>
+        <span class="s1">'_style'</span><span class="p">,</span> <span class="s1">'_currentStyle'</span><span class="p">,</span>
+        <span class="s1">'_toolTip'</span><span class="p">,</span>
+        <span class="s1">'_dropEventProxy'</span><span class="p">,</span>
+        <span class="s1">'_widgetCursor'</span><span class="p">,</span> <span class="s1">'_widgetCursorEnabled'</span><span class="p">,</span> <span class="s1">'_widgetCursorType'</span><span class="p">,</span>
         <span class="c1">#Signals</span>
-        <span class="s1">&#39;focusChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;sizeChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;currentStyleChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;closed&#39;</span><span class="p">)</span>
+        <span class="s1">'focusChanged'</span><span class="p">,</span> <span class="s1">'sizeChanged'</span><span class="p">,</span> <span class="s1">'currentStyleChanged'</span><span class="p">,</span> <span class="s1">'closed'</span><span class="p">)</span>
 
     <span class="n">_name</span><span class="p">:</span><span class="nb">str</span>
     <span class="n">_parent</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">TTkContainer</span><span class="p">]</span>
@@ -672,12 +675,12 @@ document.write(`
             <span class="n">name</span>     <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">visible</span>  <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
             <span class="n">enabled</span>  <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-            <span class="n">toolTip</span>  <span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TTkString</span><span class="p">,</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">toolTip</span>  <span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TTkString</span><span class="p">,</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
             <span class="n">style</span>    <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">addStyle</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        :param name: the name of the widget, defaults to &quot;&quot;</span>
+<span class="w">        </span><span class="sd">'''</span>
+<span class="sd">        :param name: the name of the widget, defaults to ""</span>
 <span class="sd">        :type name: str, optional</span>
 <span class="sd">        :param parent: the parent widget, defaults to None</span>
 <span class="sd">        :type parent: :py:class:`TTkWidget`, optional</span>
@@ -709,7 +712,7 @@ document.write(`
 <span class="sd">        :param minSize: the minSize [width,height] of the widget, optional, defaults to (minWidth,minHeight)</span>
 <span class="sd">        :type minSize: (int,int), optional</span>
 
-<span class="sd">        :param toolTip: This property holds the widget&#39;s tooltip, defaults to &#39;&#39;</span>
+<span class="sd">        :param toolTip: This property holds the widget's tooltip, defaults to ''</span>
 <span class="sd">        :type toolTip: :py:class:`TTkString`, optional</span>
 
 <span class="sd">        :param style: this field hold the custom style to be used by this widget</span>
@@ -721,9 +724,9 @@ document.write(`
 <span class="sd">        :type visible: bool, optional</span>
 <span class="sd">        :param enabled: the ability to handle input events, optional, defaults to True</span>
 <span class="sd">        :type enabled: bool, optional</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unhandled init params </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unhandled init params </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="c1">#Signals</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">focusChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
@@ -756,7 +759,7 @@ document.write(`
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetItem</span> <span class="o">=</span> <span class="n">TTkWidgetItem</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span> <span class="o">=</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">classStyle</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span> <span class="o">=</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">classStyle</span><span class="p">[</span><span class="s1">'default'</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classStyle</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_processStyleEvent</span><span class="p">(</span><span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_DEFAULT</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">style</span><span class="p">:</span>
@@ -771,22 +774,22 @@ document.write(`
         <span class="c1"># TODO: Check this,</span>
         <span class="c1"># The parent should always have a layout</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span><span class="s1">&#39;layout&#39;</span><span class="p">):</span>
-                <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The parent=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="si">}</span><span class="s2"> is not a container&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span><span class="s1">'layout'</span><span class="p">):</span>
+                <span class="n">TTkLog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The parent=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="si">}</span><span class="s2"> is not a container"</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">layout</span><span class="p">():</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">repaint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Widget destructor</span>
 
 <span class="sd">        Performs cleanup including removal from parent layout and signal cleanup.</span>
 
 <span class="sd">        .. caution:: This is an internal method, do not call it directly</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="c1"># TTkLog.debug(&quot;DESTRUCTOR&quot;)</span>
+<span class="sd">        '''</span>
+        <span class="c1"># TTkLog.debug("DESTRUCTOR")</span>
 
         <span class="c1"># clean all the signals, slots</span>
         <span class="c1">#for an in dir(self):</span>
@@ -794,60 +797,60 @@ document.write(`
         <span class="c1">#    # TODO: TBD, I need to find the time to do this</span>
 
         <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span>
-        <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;layout&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">parent</span><span class="o">.</span><span class="n">layout</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s1">'layout'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">parent</span><span class="o">.</span><span class="n">layout</span><span class="p">():</span>
             <span class="n">parent</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="TTkWidget.name">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.name">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the name of this widget</span>
 
 <span class="sd">        :return: the widget name</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setName">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setName">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the name of this Instance</span>
 
 <span class="sd">        :param name: the name to be set</span>
 <span class="sd">        :type name: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setDropEventProxy">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setDropEventProxy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setDropEventProxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        .. warning::</span>
 <span class="sd">            This is an alpha Method to prototype the Drag and Drop proxy feature and may change in the future</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dropEventProxy</span> <span class="o">=</span> <span class="n">proxy</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.widgetItem">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.widgetItem">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">widgetItem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkWidgetItem</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget item (layout item wrapper)</span>
 
 <span class="sd">        :return: the layout item for this widget</span>
 <span class="sd">        :rtype: :py:class:`TTkWidgetItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgetItem</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.paintEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.paintEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canvas</span><span class="p">:</span><span class="n">TTkCanvas</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Paint Event callback,</span>
 <span class="sd">        this need to be overridden in the widget.</span>
 
@@ -855,18 +858,18 @@ document.write(`
 
 <span class="sd">        :param canvas: the canvas where the content need to be drawn</span>
 <span class="sd">        :type canvas: :py:class:`TTkCanvas`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.getPixmap">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.getPixmap">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getPixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkCanvas</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Convenience function which return a pixmap representing the current widget status</span>
 
 <span class="sd">        :return: :py:class:`TTkCanvas`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paintChildCanvas</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canvas</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
@@ -874,7 +877,7 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_paintChildCanvas</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Internal static method for painting child widgets on the canvas</span>
 
 <span class="sd">        .. note:: This is an internal method</span>
@@ -884,27 +887,27 @@ document.write(`
 <span class="sd">        :param item: the layout item</span>
 <span class="sd">        :param geometry: the geometry information</span>
 <span class="sd">        :param offset: the drawing offset</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="TTkWidget.paintChildCanvas">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.paintChildCanvas">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">paintChildCanvas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Paint child widgets on the canvas</span>
 
 <span class="sd">        This method is called during the paint process to render child widgets.</span>
 <span class="sd">        Override in container widgets to implement custom child rendering.</span>
 
 <span class="sd">        .. note:: Override this method in subclasses to handle child widget painting</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.moveEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.moveEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">moveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Convenience function,</span>
 <span class="sd">        Event Callback triggered after a successful move</span>
 
@@ -914,14 +917,14 @@ document.write(`
 <span class="sd">        :type x: int</span>
 <span class="sd">        :param y: the new vertical position</span>
 <span class="sd">        :type y: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.resizeEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.resizeEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Convenience function,</span>
 <span class="sd">        Event Callback triggered after a successful resize</span>
 
@@ -931,7 +934,7 @@ document.write(`
 <span class="sd">        :type width: int</span>
 <span class="sd">        :param height: the new height</span>
 <span class="sd">        :type height: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 
@@ -939,7 +942,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setDefaultSize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setDefaultSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># TODO: Get rid of this method</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set default size if not already specified in arguments</span>
 
 <span class="sd">        This is a helper method for widgets to set default dimensions when no explicit size was provided.</span>
@@ -952,25 +955,25 @@ document.write(`
 <span class="sd">        :type width: int</span>
 <span class="sd">        :param height: the default height in characters</span>
 <span class="sd">        :type height: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span> <span class="s1">&#39;size&#39;</span> <span class="ow">in</span> <span class="n">arg</span> <span class="ow">or</span>
-             <span class="s1">&#39;width&#39;</span> <span class="ow">in</span> <span class="n">arg</span> <span class="ow">or</span>
-             <span class="s1">&#39;height&#39;</span> <span class="ow">in</span> <span class="n">arg</span> <span class="p">):</span>
+<span class="sd">        '''</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="s1">'size'</span> <span class="ow">in</span> <span class="n">arg</span> <span class="ow">or</span>
+             <span class="s1">'width'</span> <span class="ow">in</span> <span class="n">arg</span> <span class="ow">or</span>
+             <span class="s1">'height'</span> <span class="ow">in</span> <span class="n">arg</span> <span class="p">):</span>
              <span class="k">return</span>
-        <span class="n">arg</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">width</span>
-        <span class="n">arg</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span></div>
+        <span class="n">arg</span><span class="p">[</span><span class="s1">'width'</span><span class="p">]</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="n">arg</span><span class="p">[</span><span class="s1">'height'</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.move">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.move">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Move the widget</span>
+<span class="w">        </span><span class="sd">''' Move the widget</span>
 
 <span class="sd">        :param x: the horizontal position</span>
 <span class="sd">        :type x: int</span>
 <span class="sd">        :param y: the vertical position</span>
 <span class="sd">        :type y: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="ow">and</span> <span class="n">y</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span>
@@ -981,14 +984,14 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.resize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.resize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span>  <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Resize the widget</span>
+<span class="w">        </span><span class="sd">''' Resize the widget</span>
 
 <span class="sd">        :param width: the new width</span>
 <span class="sd">        :type width: int</span>
 <span class="sd">        :param height: the new height</span>
 <span class="sd">        :type height: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="c1"># TTkLog.debug(f&quot;resize: {w,h} {self._name}&quot;)</span>
+<span class="sd">        '''</span>
+        <span class="c1"># TTkLog.debug(f"resize: {w,h} {self._name}")</span>
         <span class="k">if</span> <span class="n">width</span><span class="o">!=</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="ow">or</span> <span class="n">height</span><span class="o">!=</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>  <span class="o">=</span> <span class="n">width</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>
@@ -1001,7 +1004,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setGeometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setGeometry">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Resize and move the widget</span>
+<span class="w">        </span><span class="sd">''' Resize and move the widget</span>
 
 <span class="sd">        :param x: the horizontal position</span>
 <span class="sd">        :type x: int</span>
@@ -1011,7 +1014,7 @@ document.write(`
 <span class="sd">        :type width: int</span>
 <span class="sd">        :param height: the new height</span>
 <span class="sd">        :type height: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
@@ -1019,7 +1022,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.pasteEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.pasteEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">pasteEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Callback triggered when a paste event is forwarded to this widget.</span>
 
 <span class="sd">        .. note:: Reimplement this function to handle this event</span>
@@ -1029,12 +1032,12 @@ document.write(`
 
 <span class="sd">        :return: the state of the paste operation</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mouseEventParseChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Parse mouse events for child widgets</span>
 
 <span class="sd">        This method is called to allow container widgets to handle mouse events for their children.</span>
@@ -1046,7 +1049,7 @@ document.write(`
 <span class="sd">        :type evt: :py:class:`TTkMouseEvent`</span>
 <span class="sd">        :return: True if the event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="n">_mouseOver</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1055,7 +1058,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.mouseEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.mouseEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">mouseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Handle mouse events for this widget and its children</span>
 
 <span class="sd">        This method handles all mouse-related events including clicks, movement, dragging, and wheel events.</span>
@@ -1067,11 +1070,11 @@ document.write(`
 <span class="sd">        :type evt: :py:class:`TTkMouseEvent`</span>
 <span class="sd">        :return: True if the event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># Saving self in this global variable</span>
-        <span class="c1"># So that after the &quot;_mouseEventLayoutHandle&quot;</span>
+        <span class="c1"># So that after the "_mouseEventLayoutHandle"</span>
         <span class="c1"># this tmp value will hold the last widget below the mouse</span>
         <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverTmp</span> <span class="o">=</span> <span class="bp">self</span>
 
@@ -1124,12 +1127,12 @@ document.write(`
             <span class="k">if</span> <span class="ow">not</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverProcessed</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span> <span class="o">!=</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOverTmp</span> <span class="o">==</span> <span class="bp">self</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span><span class="p">:</span>
-                        <span class="c1"># TTkLog.debug(f&quot;Leave: {TTkWidget._mouseOver._name}&quot;)</span>
+                        <span class="c1"># TTkLog.debug(f"Leave: {TTkWidget._mouseOver._name}")</span>
                         <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span><span class="o">.</span><span class="n">leaveEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
                     <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span> <span class="o">=</span> <span class="bp">self</span>
-                    <span class="c1"># TTkLog.debug(f&quot;Enter: {TTkWidget._mouseOver._name}&quot;)</span>
+                    <span class="c1"># TTkLog.debug(f"Enter: {TTkWidget._mouseOver._name}")</span>
                     <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipClose</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
                         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">toolTipTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span><span class="p">)</span>
                     <span class="c1"># TTkHelper.triggerToolTip(self._name)</span>
                     <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_mouseOver</span><span class="o">.</span><span class="n">enterEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
@@ -1158,7 +1161,7 @@ document.write(`
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseTapEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">True</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">tap</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mousePressEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
-                <span class="c1"># TTkLog.debug(f&quot;Click {self._name}&quot;)</span>
+                <span class="c1"># TTkLog.debug(f"Click {self._name}")</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_setPendingMouseRelease</span><span class="p">()</span>
                 <span class="k">return</span> <span class="kc">True</span>
 
@@ -1172,128 +1175,128 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setParent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setParent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkContainer</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the parent widget</span>
 
 <span class="sd">        :param parent: the parent widget</span>
 <span class="sd">        :type parent: :py:class:`TTkContainer`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span></div>
 
 <div class="viewcode-block" id="TTkWidget.parentWidget">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.parentWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">parentWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkContainer</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the parent widget</span>
 
 <span class="sd">        :return: the parent widget or None if top-level</span>
 <span class="sd">        :rtype: :py:class:`TTkContainer` or None</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.x">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.x">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the horizontal position</span>
 
 <span class="sd">        :return: the x coordinate</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span></div>
 
 <div class="viewcode-block" id="TTkWidget.y">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.y">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the vertical position</span>
 
 <span class="sd">        :return: the y coordinate</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span></div>
 
 <div class="viewcode-block" id="TTkWidget.width">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.width">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget width</span>
 
 <span class="sd">        :return: the width in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span></div>
 
 <div class="viewcode-block" id="TTkWidget.height">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.height">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget height</span>
 
 <span class="sd">        :return: the height in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.pos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.pos">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget position</span>
 
 <span class="sd">        :return: a tuple of (x, y) coordinates</span>
 <span class="sd">        :rtype: tuple[int, int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span></div>
 
 <div class="viewcode-block" id="TTkWidget.size">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.size">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget size</span>
 
 <span class="sd">        :return: a tuple of (width, height)</span>
 <span class="sd">        :rtype: tuple[int, int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span></div>
 
 <div class="viewcode-block" id="TTkWidget.geometry">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.geometry">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget geometry</span>
 
 <span class="sd">        :return: a tuple of (x, y, width, height)</span>
 <span class="sd">        :rtype: tuple[int, int, int, int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.maximumSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.maximumSize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the maximum size</span>
 
 <span class="sd">        :return: a tuple of (max_width, max_height)</span>
 <span class="sd">        :rtype: tuple[int, int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkWidget.maxDimension">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.maxDimension">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maxDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Direction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the maximum dimension for the given orientation</span>
 
 <span class="sd">        :param orientation: the orientation (:py:class:`TTkK.HORIZONTAL` or :py:class:`TTkK.VERTICAL`)</span>
 <span class="sd">        :type orientation: :py:class:`TTkK.Direction`</span>
 <span class="sd">        :return: the maximum dimension</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
+<span class="sd">        '''</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumWidth</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximumHeight</span><span class="p">()</span></div>
@@ -1301,48 +1304,48 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.maximumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.maximumHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the maximum height</span>
 
 <span class="sd">        :return: the maximum height in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span></div>
 
 <div class="viewcode-block" id="TTkWidget.maximumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.maximumWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">maximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the maximum width</span>
 
 <span class="sd">        :return: the maximum width in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.minimumSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.minimumSize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the minimum size</span>
 
 <span class="sd">        :return: a tuple of (min_width, min_height)</span>
 <span class="sd">        :rtype: tuple[int, int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumHeight</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TTkWidget.minDimension">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.minDimension">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minDimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">Direction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the minimum dimension for the given orientation</span>
 
 <span class="sd">        :param orientation: the orientation (:py:class:`TTkK.HORIZONTAL` or :py:class:`TTkK.VERTICAL`)</span>
 <span class="sd">        :type orientation: :py:class:`TTkK.Direction`</span>
 <span class="sd">        :return: the minimum dimension</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumWidth</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1351,50 +1354,50 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.minimumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.minimumHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the minimum height</span>
 
 <span class="sd">        :return: the minimum height in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span></div>
 
 <div class="viewcode-block" id="TTkWidget.minimumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.minimumWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">minimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the minimum width</span>
 
 <span class="sd">        :return: the minimum width in characters</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setMaximumSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMaximumSize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setMaximumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxw</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">maxh</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the maximum size of the widget</span>
 
 <span class="sd">        :param maxw: the maximum width in characters</span>
 <span class="sd">        :type maxw: int</span>
 <span class="sd">        :param maxh: the maximum height in characters</span>
 <span class="sd">        :type maxh: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumWidth</span><span class="p">(</span><span class="n">maxw</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="n">maxh</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_clampCurrentSizeToBoundaries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Clamp the current widget size to its minimum and maximum boundaries</span>
 
 <span class="sd">        .. note:: This is an internal method</span>
 
 <span class="sd">        :return: True if resize was needed, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">neww</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_minw</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span><span class="p">))</span>
         <span class="n">newh</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_minh</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">neww</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="ow">and</span> <span class="n">newh</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">:</span>
@@ -1405,7 +1408,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setMaximumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMaximumHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setMaximumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxh</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the maximum height of the widget</span>
 
 <span class="sd">        If the current height exceeds the new maximum, the widget will be resized.</span>
@@ -1413,7 +1416,7 @@ document.write(`
 
 <span class="sd">        :param maxh: the maximum height in characters</span>
 <span class="sd">        :type maxh: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="o">==</span> <span class="n">maxh</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="o">=</span> <span class="n">maxh</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span><span class="p">:</span>
@@ -1425,7 +1428,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setMaximumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMaximumWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setMaximumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxw</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the maximum width of the widget</span>
 
 <span class="sd">        If the current width exceeds the new maximum, the widget will be resized.</span>
@@ -1433,7 +1436,7 @@ document.write(`
 
 <span class="sd">        :param maxw: the maximum width in characters</span>
 <span class="sd">        :type maxw: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span> <span class="o">==</span> <span class="n">maxw</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span> <span class="o">=</span> <span class="n">maxw</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span><span class="p">:</span>
@@ -1445,14 +1448,14 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setMinimumSize">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMinimumSize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setMinimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minw</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">minh</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the minimum size of the widget</span>
 
 <span class="sd">        :param minw: the minimum width in characters</span>
 <span class="sd">        :type minw: int</span>
 <span class="sd">        :param minh: the minimum height in characters</span>
 <span class="sd">        :type minh: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumWidth</span><span class="p">(</span><span class="n">minw</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumHeight</span><span class="p">(</span><span class="n">minh</span><span class="p">)</span></div>
 
@@ -1460,7 +1463,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setMinimumHeight">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMinimumHeight">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setMinimumHeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minh</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the minimum height of the widget</span>
 
 <span class="sd">        If the current height is less than the new minimum, the widget will be resized.</span>
@@ -1468,7 +1471,7 @@ document.write(`
 
 <span class="sd">        :param minh: the minimum height in characters</span>
 <span class="sd">        :type minh: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="o">==</span> <span class="n">minh</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span> <span class="o">=</span> <span class="n">minh</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxh</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minh</span><span class="p">:</span>
@@ -1480,7 +1483,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setMinimumWidth">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setMinimumWidth">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setMinimumWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minw</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the minimum width of the widget</span>
 
 <span class="sd">        If the current width is less than the new minimum, the widget will be resized.</span>
@@ -1488,7 +1491,7 @@ document.write(`
 
 <span class="sd">        :param minw: the minimum width in characters</span>
 <span class="sd">        :type minw: int</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span> <span class="o">==</span> <span class="n">minw</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span> <span class="o">=</span> <span class="n">minw</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxw</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minw</span><span class="p">:</span>
@@ -1501,7 +1504,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.show">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;show the widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''show the widget'''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1512,7 +1515,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.hide">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">hide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;hide the widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''hide the widget'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_canvas</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
@@ -1523,7 +1526,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.raiseWidget">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">raiseWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raiseParent</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Raise the Widget above its relatives&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Raise the Widget above its relatives'''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
            <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">raiseParent</span><span class="p">:</span>
@@ -1535,7 +1538,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.lowerWidget">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">lowerWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Lower the Widget below its relatives&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Lower the Widget below its relatives'''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
            <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">lowerWidget</span><span class="p">()</span>
@@ -1546,7 +1549,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.close">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Close (Destroy/Remove) the widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Close (Destroy/Remove) the widget'''</span>
         <span class="k">if</span> <span class="n">_p</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">_rl</span> <span class="o">:=</span> <span class="n">_p</span><span class="o">.</span><span class="n">rootLayout</span><span class="p">():</span>
                 <span class="n">_rl</span><span class="o">.</span><span class="n">removeWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -1561,12 +1564,12 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setVisible">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the visibility status of this widget</span>
 
 <span class="sd">        :param visible: status</span>
 <span class="sd">        :type visible: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">visible</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span></div>
 
@@ -1574,12 +1577,12 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.isVisibleAndParent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.isVisibleAndParent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isVisibleAndParent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Check if the widget and all its parents are visible</span>
 
 <span class="sd">        :return: True if the widget and all its parents are visible, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="ow">and</span>
             <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="p">)</span> <span class="ow">and</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">isVisibleAndParent</span><span class="p">()</span> <span class="p">)</span></div>
@@ -1588,11 +1591,11 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.isVisible">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.isVisible">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isVisible</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the visibility status of this widget</span>
 
 <span class="sd">        :return: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span></div>
 
 
@@ -1600,7 +1603,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.update">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repaint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">updateLayout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">updateParent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Notify the drawing routine that the widget changed and needs to draw its new content.</span>
 
 <span class="sd">        It is important to call this method anytime a canvas update is required after a a status update.</span>
@@ -1613,7 +1616,7 @@ document.write(`
 
 <span class="sd">            class NewLabel(TTkWidget):</span>
 <span class="sd">                def __init__(self,**kwargs) -&gt; None:</span>
-<span class="sd">                    self.text = &quot;&quot;</span>
+<span class="sd">                    self.text = ""</span>
 <span class="sd">                    super().__init__(**kwargs)</span>
 
 <span class="sd">                def setText(self, text:str) -&gt; None:</span>
@@ -1625,7 +1628,7 @@ document.write(`
 
 <span class="sd">                def paintEvent(self, canvas:TTkCanvas) -&gt; None:</span>
 <span class="sd">                    canvas.drawText(pos=(0,0), text=self.text)</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">repaint</span><span class="p">:</span>
             <span class="n">TTkHelper</span><span class="o">.</span><span class="n">addUpdateBuffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">addUpdateWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -1634,11 +1637,11 @@ document.write(`
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_setPendingMouseRelease</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set this widget as the pending mouse release widget</span>
 
 <span class="sd">        .. note:: This is an internal method used to track which widget should receive a mouse release event</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_p</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">):</span>
              <span class="k">return</span>
         <span class="n">_p</span><span class="o">.</span><span class="n">_setPendingMouseReleaseWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -1647,7 +1650,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setFocus">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Focus the widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Focus the widget'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_p</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">):</span>
              <span class="k">return</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">_old_fw</span><span class="o">:=</span><span class="n">_p</span><span class="o">.</span><span class="n">_getFocusWidget</span><span class="p">())</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
@@ -1666,7 +1669,7 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.clearFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.clearFocus">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clearFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Remove the Focus state of this widget&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''Remove the Focus state of this widget'''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_p</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">)</span> <span class="ow">or</span> <span class="n">_p</span><span class="o">.</span><span class="n">_getFocusWidget</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">_p</span><span class="o">.</span><span class="n">_setFocusWidget</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -1679,42 +1682,42 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.hasFocus">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.hasFocus">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hasFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property holds the focus status of this widget</span>
 
 <span class="sd">        :return: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">((</span><span class="n">_p</span><span class="o">:=</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">)</span> <span class="ow">and</span> <span class="n">_p</span><span class="o">.</span><span class="n">_getFocusWidget</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.getCanvas">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.getCanvas">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getCanvas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkCanvas</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget canvas</span>
 
 <span class="sd">        :return: the canvas object used for drawing</span>
 <span class="sd">        :rtype: :py:class:`TTkCanvas`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canvas</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.focusPolicy">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.focusPolicy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">focusPolicy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">FocusPolicy</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the focus policy of this widget</span>
 
 <span class="sd">        :return: the focus policy</span>
 <span class="sd">        :rtype: :py:class:`TTkK.FocusPolicy`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_focus_policy</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setFocusPolicy">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setFocusPolicy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setFocusPolicy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span><span class="n">TTkK</span><span class="o">.</span><span class="n">FocusPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property holds the way the widget accepts keyboard focus</span>
 
 <span class="sd">        The policy is :py:class:`TTkK.FocusPolicy.TabFocus` if the widget accepts keyboard focus by tabbing,</span>
@@ -1723,60 +1726,60 @@ document.write(`
 <span class="sd">        and :py:class:`TTkK.FocusPolicy.NoFocus` (the default) if it does not accept focus at all.</span>
 
 <span class="sd">        You must enable keyboard focus for a widget if it processes keyboard events.</span>
-<span class="sd">        This is normally done from the widget&#39;s constructor. For instance,</span>
+<span class="sd">        This is normally done from the widget's constructor. For instance,</span>
 <span class="sd">        the :py:class:`TTkLineEdit` constructor calls :py:meth:`setFocusPolicy` with :py:class:`TTkK.FocusPolicy.StrongFocus`.</span>
 
 <span class="sd">        If the widget has a focus proxy, then the focus policy will be propagated to it.</span>
 
 <span class="sd">        :param policy: the focus policy</span>
 <span class="sd">        :type policy: :py:class:`TTkK.FocusPolicy`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_focus_policy</span> <span class="o">=</span> <span class="n">policy</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.focusInEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.focusInEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">focusInEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Callback triggered when the widget receives focus</span>
 
 <span class="sd">        .. note:: Override this method to handle focus in events</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="TTkWidget.focusOutEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.focusOutEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">focusOutEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Callback triggered when the widget loses focus</span>
 
 <span class="sd">        .. note:: Override this method to handle focus out events</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.isEntered">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.isEntered">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isEntered</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Check if the mouse cursor is currently over this widget</span>
 
 <span class="sd">        :return: True if the mouse is over this widget, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mouseOver</span> <span class="o">==</span> <span class="bp">self</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.isEnabled">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.isEnabled">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isEnabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property holds whether the widget is enabled</span>
 
 <span class="sd">        use :py:meth:`setEnabled` or :py:meth:`setDisabled` to change this property</span>
 
 <span class="sd">        :return: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span></div>
 
 
@@ -1784,7 +1787,7 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setEnabled">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setEnabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        This property holds whether the widget is enabled</span>
 
 <span class="sd">        In general an enabled widget handles keyboard and mouse events;</span>
@@ -1801,7 +1804,7 @@ document.write(`
 
 <span class="sd">        :param enabled: the enabled status, defaults to True</span>
 <span class="sd">        :type enabled: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span> <span class="o">==</span> <span class="n">enabled</span><span class="p">:</span> <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span> <span class="o">=</span> <span class="n">enabled</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_processStyleEvent</span><span class="p">(</span><span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_DEFAULT</span> <span class="k">if</span> <span class="n">enabled</span> <span class="k">else</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_DISABLED</span><span class="p">)</span>
@@ -1812,57 +1815,57 @@ document.write(`
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setDisabled">[docs]</a>
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">setDisabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disabled</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;This property holds whether the widget is disabled</span>
+<span class="w">        </span><span class="sd">'''This property holds whether the widget is disabled</span>
 
 <span class="sd">        This is a convenience function wrapped around :py:meth:`setEnabled` where (not disabled) is used</span>
 
 <span class="sd">        :param disabled: the disabled status, defaults to True</span>
 <span class="sd">        :type disabled: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="ow">not</span> <span class="n">disabled</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.toolTip">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.toolTip">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">toolTip</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the widget tooltip</span>
 
 <span class="sd">        :return: the tooltip text</span>
 <span class="sd">        :rtype: :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setToolTip">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setToolTip">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setToolTip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">toolTip</span><span class="p">:</span> <span class="n">TTkString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the widget tooltip</span>
 
 <span class="sd">        :param toolTip: the tooltip text to display</span>
 <span class="sd">        :type toolTip: :py:class:`TTkString`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_toolTip</span> <span class="o">=</span> <span class="n">TTkString</span><span class="p">(</span><span class="n">toolTip</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.getWidgetByName">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.getWidgetByName">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getWidgetByName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Get a widget by its name (recursively searches this widget and its children)</span>
 
 <span class="sd">        :param name: the widget name to search for</span>
 <span class="sd">        :type name: str</span>
 <span class="sd">        :return: the widget with the given name, or None if not found</span>
 <span class="sd">        :rtype: :py:class:`TTkWidget` or None</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
 
-    <span class="n">_BASE_STYLE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">}}</span>
+    <span class="n">_BASE_STYLE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'default'</span> <span class="p">:</span> <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">TTkColor</span><span class="o">.</span><span class="n">RST</span><span class="p">}}</span>
 
     <span class="c1"># Style Methods</span>
     <span class="n">_S_NONE</span>     <span class="o">=</span> <span class="mh">0x00</span>
@@ -1876,36 +1879,36 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.style">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.style">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">style</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve a copy of the widget style dictionary</span>
 
 <span class="sd">        :return: a dictionary containing the style configuration</span>
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.currentStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.currentStyle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">currentStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Retrieve the currently active style</span>
 
 <span class="sd">        :return: a dictionary containing the active style</span>
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span></div>
 
 
 <div class="viewcode-block" id="TTkWidget.setCurrentStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setCurrentStyle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the currently active style</span>
 
 <span class="sd">        :param style: the style dictionary to apply</span>
 <span class="sd">        :type style: dict</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_currentStyle</span> <span class="o">=</span> <span class="n">style</span>
@@ -1916,18 +1919,18 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setStyle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the style for the widget</span>
 
-<span class="sd">        The style dictionary should have keys for different states like &#39;default&#39;, &#39;hover&#39;, &#39;focus&#39;, &#39;disabled&#39;, &#39;clicked&#39;.</span>
+<span class="sd">        The style dictionary should have keys for different states like 'default', 'hover', 'focus', 'disabled', 'clicked'.</span>
 <span class="sd">        Each state has its own style dictionary.</span>
 
 <span class="sd">        :param style: the style configuration dictionary</span>
 <span class="sd">        :type style: dict[str, dict]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">style</span><span class="p">:</span>
             <span class="n">style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classStyle</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">defaultStyle</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
+        <span class="n">defaultStyle</span> <span class="o">=</span> <span class="n">style</span><span class="p">[</span><span class="s1">'default'</span><span class="p">]</span>
         <span class="c1"># Use the default style to apply the missing fields of the other actions</span>
         <span class="n">mergeStyle</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span><span class="n">defaultStyle</span> <span class="o">|</span> <span class="n">style</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">style</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_style</span> <span class="o">=</span> <span class="n">mergeStyle</span>
@@ -1937,14 +1940,14 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.mergeStyle">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.mergeStyle">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">mergeStyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Merge additional style properties with the existing style</span>
 
 <span class="sd">        This allows updating only specific style properties without replacing the entire style.</span>
 
 <span class="sd">        :param style: a dictionary with style properties to merge</span>
 <span class="sd">        :type style: dict</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">cs</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># for field in style:</span>
         <span class="c1">#     if field in self._style:</span>
@@ -1961,7 +1964,7 @@ document.write(`
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_processStyleEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="o">=</span><span class="n">_S_DEFAULT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Process a style event and update the widget appearance</span>
 
 <span class="sd">        This internal method handles style transitions based on widget state events.</span>
@@ -1972,32 +1975,32 @@ document.write(`
 <span class="sd">        :type evt: int</span>
 <span class="sd">        :return: True if the style was changed, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span> <span class="ow">and</span> <span class="s1">&#39;disabled&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;disabled&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enabled</span> <span class="ow">and</span> <span class="s1">'disabled'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'disabled'</span><span class="p">])</span>
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">if</span> <span class="n">evt</span> <span class="ow">in</span> <span class="p">(</span><span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_DEFAULT</span><span class="p">,</span>
                    <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_NONE</span><span class="p">,</span>
                    <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_ACTIVE</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasFocus</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;focus&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;focus&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasFocus</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">'focus'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'focus'</span><span class="p">])</span>
                 <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">elif</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="s1">'default'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'default'</span><span class="p">])</span>
                 <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">elif</span> <span class="n">evt</span> <span class="o">&amp;</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_HOVER</span> <span class="ow">and</span> <span class="s1">&#39;hover&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;hover&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">evt</span> <span class="o">&amp;</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_HOVER</span> <span class="ow">and</span> <span class="s1">'hover'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'hover'</span><span class="p">])</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">elif</span> <span class="n">evt</span> <span class="o">&amp;</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_PRESSED</span> <span class="ow">and</span> <span class="s1">&#39;clicked&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;clicked&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">evt</span> <span class="o">&amp;</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_PRESSED</span> <span class="ow">and</span> <span class="s1">'clicked'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'clicked'</span><span class="p">])</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">elif</span> <span class="n">evt</span> <span class="o">&amp;</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_DISABLED</span> <span class="ow">and</span> <span class="s1">&#39;disabled&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;disabled&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">evt</span> <span class="o">&amp;</span> <span class="n">TTkWidget</span><span class="o">.</span><span class="n">_S_DISABLED</span> <span class="ow">and</span> <span class="s1">'disabled'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'disabled'</span><span class="p">])</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasFocus</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;focus&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">&#39;focus&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasFocus</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">'focus'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="s1">'focus'</span><span class="p">])</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -2005,12 +2008,12 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.enableWidgetCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.enableWidgetCursor">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">enableWidgetCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Enable or disable the widget cursor</span>
 
 <span class="sd">        :param enable: True to enable the cursor, False to disable</span>
 <span class="sd">        :type enable: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorEnabled</span> <span class="o">=</span> <span class="n">enable</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pushWidgetCursor</span><span class="p">()</span></div>
 
@@ -2018,14 +2021,14 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.disableWidgetCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.disableWidgetCursor">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">disableWidgetCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disable</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Disable or enable the widget cursor</span>
 
 <span class="sd">        This is a convenience method that is equivalent to enableWidgetCursor(not disable).</span>
 
 <span class="sd">        :param disable: True to disable the cursor, False to enable</span>
 <span class="sd">        :type disable: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorEnabled</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">disable</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pushWidgetCursor</span><span class="p">()</span></div>
 
@@ -2033,25 +2036,25 @@ document.write(`
 <div class="viewcode-block" id="TTkWidget.setWidgetCursor">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkWidgets.TTkWidget.html#TermTk.TTkWidgets.TTkWidget.setWidgetCursor">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setWidgetCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the widget cursor position and type</span>
 
 <span class="sd">        :param pos: the cursor position as (x, y) tuple, or None to keep current</span>
 <span class="sd">        :type pos: tuple[int, int] or None</span>
 <span class="sd">        :param type: the cursor type (e.g., :py:class:`TTkK.Cursor_Blinking_Bar`), or None to keep current</span>
 <span class="sd">        :type type: int or None</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursor</span>     <span class="o">=</span> <span class="n">pos</span>  <span class="k">if</span> <span class="n">pos</span>  <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorType</span> <span class="o">=</span> <span class="nb">type</span> <span class="k">if</span> <span class="nb">type</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorType</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pushWidgetCursor</span><span class="p">()</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_pushWidgetCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Push the widget cursor to the terminal display</span>
 
 <span class="sd">        .. note:: This is an internal method</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgetCursorEnabled</span> <span class="ow">and</span>
              <span class="bp">self</span><span class="o">.</span><span class="n">_visible</span> <span class="ow">and</span>
              <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasFocus</span><span class="p">()</span> <span class="ow">or</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">TTkHelper</span><span class="o">.</span><span class="n">cursorWidget</span><span class="p">()</span> <span class="p">)</span> <span class="p">):</span>

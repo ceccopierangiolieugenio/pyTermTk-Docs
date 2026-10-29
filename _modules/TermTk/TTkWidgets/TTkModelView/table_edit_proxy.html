@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkWidgets.TTkModelView.table_edit_proxy &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkWidgets.TTkModelView.table_edit_proxy &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2025 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -533,10 +536,10 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;TTkProxyEditDef&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;TTkTableEditLeaving&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTableProxyEditFlag&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;TTkTableProxyEdit&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkTableProxyEditWidget&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;TTkCellListTypeBase&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkCellListType&#39;</span><span class="p">,</span>
+    <span class="s1">'TTkProxyEditDef'</span><span class="p">,</span>
+    <span class="s1">'TTkTableEditLeaving'</span><span class="p">,</span> <span class="s1">'TTkTableProxyEditFlag'</span><span class="p">,</span>
+    <span class="s1">'TTkTableProxyEdit'</span><span class="p">,</span> <span class="s1">'TTkTableProxyEditWidget'</span><span class="p">,</span>
+    <span class="s1">'TTkCellListTypeBase'</span><span class="p">,</span> <span class="s1">'TTkCellListType'</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -548,7 +551,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkK</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkString</span><span class="p">,</span> <span class="n">TTkStringType</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyTTkSignal</span><span class="p">,</span> <span class="n">pyTTkSlot</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputkey</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkLayouts.gridlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkGridLayout</span>
 
@@ -566,10 +569,10 @@ document.write(`
 <div class="viewcode-block" id="TTkTableEditLeaving">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableEditLeaving.html#TermTk.TTkWidgets.TTkModelView.TTkTableEditLeaving">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTableEditLeaving</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Enum indicating the direction the user is leaving the table cell editor</span>
+<span class="w">    </span><span class="sd">''' Enum indicating the direction the user is leaving the table cell editor</span>
 
 <span class="sd">    Used by :py:class:`TTkTableProxyEditWidget` to signal navigation intent</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="n">NONE</span>   <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">TOP</span>    <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">BOTTOM</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
@@ -590,51 +593,51 @@ document.write(`
 <div class="viewcode-block" id="TTkCellListTypeBase">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html#TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkCellListTypeBase</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Base protocol for list-based cell data types</span>
+<span class="w">    </span><span class="sd">''' Base protocol for list-based cell data types</span>
 
 <span class="sd">    Defines the interface for cell values that can be selected from a list of items.</span>
 <span class="sd">    Implementations must provide methods to get/set values and available items.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 <div class="viewcode-block" id="TTkCellListTypeBase.items">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html#TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.items">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the list of available items</span>
+<span class="w">        </span><span class="sd">''' Get the list of available items</span>
 
 <span class="sd">        :return: List of available items</span>
 <span class="sd">        :rtype: List[Any]</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkCellListTypeBase.value">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html#TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.value">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current selected value</span>
+<span class="w">        </span><span class="sd">''' Get the current selected value</span>
 
 <span class="sd">        :return: The current value</span>
 <span class="sd">        :rtype: Any</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkCellListTypeBase.setValue">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html#TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.setValue">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Set the current value</span>
+<span class="w">        </span><span class="sd">''' Set the current value</span>
 
 <span class="sd">        :param val: The new value to set</span>
 <span class="sd">        :type val: Any</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkCellListTypeBase.factory">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.html#TermTk.TTkWidgets.TTkModelView.TTkCellListTypeBase.factory">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">factory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">TTkCellListTypeBase</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Create a new instance with the given value and items</span>
+<span class="w">        </span><span class="sd">''' Create a new instance with the given value and items</span>
 
 <span class="sd">        :param value: The initial value</span>
 <span class="sd">        :type value: Any</span>
@@ -643,47 +646,47 @@ document.write(`
 <span class="sd">        :return: A new instance</span>
 <span class="sd">        :rtype: TTkCellListTypeBase</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Return string representation of the current value</span>
+<span class="w">        </span><span class="sd">''' Return string representation of the current value</span>
 
 <span class="sd">        :return: String representation</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkCellListType">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListType.html#TermTk.TTkWidgets.TTkModelView.TTkCellListType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkCellListType</span><span class="p">(</span><span class="n">TTkCellListTypeBase</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Concrete implementation of list-based cell data type</span>
+<span class="w">    </span><span class="sd">''' Concrete implementation of list-based cell data type</span>
 
 <span class="sd">    Represents a value that can be selected from a predefined list of items.</span>
 <span class="sd">    Used in table cells to provide dropdown-like selection behavior.</span>
 
 <span class="sd">    Example::</span>
 
-<span class="sd">        items = [&#39;Option A&#39;, &#39;Option B&#39;, &#39;Option C&#39;]</span>
-<span class="sd">        cell_value = TTkCellListType(value=&#39;Option A&#39;, items=items)</span>
-<span class="sd">        print(cell_value.value())  # &#39;Option A&#39;</span>
-<span class="sd">        cell_value.setValue(&#39;Option B&#39;)</span>
+<span class="sd">        items = ['Option A', 'Option B', 'Option C']</span>
+<span class="sd">        cell_value = TTkCellListType(value='Option A', items=items)</span>
+<span class="sd">        print(cell_value.value())  # 'Option A'</span>
+<span class="sd">        cell_value.setValue('Option B')</span>
 
 <span class="sd">    :param value: The initial selected value (must be in items)</span>
 <span class="sd">    :type value: Any</span>
 <span class="sd">    :param items: List of available options</span>
 <span class="sd">    :type items: List[Any]</span>
 <span class="sd">    :raises ValueError: If value is not in items list</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_value&#39;</span><span class="p">,</span> <span class="s1">&#39;_items&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_value'</span><span class="p">,</span> <span class="s1">'_items'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="n">items</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">=}</span><span class="s2"> not included in </span><span class="si">{</span><span class="n">items</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">value</span><span class="si">=}</span><span class="s2"> not included in </span><span class="si">{</span><span class="n">items</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TTkCellListType.items">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListType.html#TermTk.TTkWidgets.TTkModelView.TTkCellListType.items">[docs]</a>
@@ -700,21 +703,21 @@ document.write(`
 <div class="viewcode-block" id="TTkCellListType.setValue">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListType.html#TermTk.TTkWidgets.TTkModelView.TTkCellListType.setValue">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Set the value</span>
 
 <span class="sd">        :param val: The new value</span>
 <span class="sd">        :type val: Any</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2"> not included in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2"> not included in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">val</span></div>
 
 
 <div class="viewcode-block" id="TTkCellListType.factory">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkCellListType.html#TermTk.TTkWidgets.TTkModelView.TTkCellListType.factory">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">factory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">TTkCellListTypeBase</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Create a new TTkCellListType instance</span>
+<span class="w">        </span><span class="sd">''' Create a new TTkCellListType instance</span>
 
 <span class="sd">        :param value: The initial value</span>
 <span class="sd">        :type value: Any</span>
@@ -722,16 +725,16 @@ document.write(`
 <span class="sd">        :type items: List[Any]</span>
 <span class="sd">        :return: A new TTkCellListType instance</span>
 <span class="sd">        :rtype: TTkCellListTypeBase</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="n">TTkCellListType</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Return string representation of the current value</span>
+<span class="w">        </span><span class="sd">''' Return string representation of the current value</span>
 
 <span class="sd">        :return: String representation of the value</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span></div>
 
 
@@ -739,7 +742,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTableProxyEditWidget">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTableProxyEditWidget</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Protocol for table cell editor widgets</span>
+<span class="w">    </span><span class="sd">''' Protocol for table cell editor widgets</span>
 
 <span class="sd">    Any widget implementing these signals can be used as a table cell editor.</span>
 <span class="sd">    The protocol ensures consistent behavior across different editor types.</span>
@@ -747,63 +750,63 @@ document.write(`
 <span class="sd">    Example implementation::</span>
 
 <span class="sd">        class MyEditor(TTkLineEdit):</span>
-<span class="sd">            __slots__ = (&#39;leavingTriggered&#39;, &#39;dataChanged&#39;)</span>
+<span class="sd">            __slots__ = ('leavingTriggered', 'dataChanged')</span>
 
 <span class="sd">            def __init__(self, **kwargs):</span>
 <span class="sd">                self.leavingTriggered = pyTTkSignal(TTkTableEditLeaving)</span>
 <span class="sd">                self.dataChanged = pyTTkSignal(object)</span>
 <span class="sd">                super().__init__(**kwargs)</span>
 <span class="sd">                self.textChanged.connect(self.dataChanged.emit)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the editor data changes</span>
 
 <span class="sd">    :param data: The new data value</span>
 <span class="sd">    :type data: object</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
 <div class="viewcode-block" id="TTkTableProxyEditWidget.editWidgetFactory">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.editWidgetFactory">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create an editor widget from data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create an editor widget from data</span>
 
 <span class="sd">        :param data: The initial data value for the editor</span>
 <span class="sd">        :type data: object</span>
 <span class="sd">        :return: A new editor widget instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTableProxyEditWidget.getCellData">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.getCellData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current data value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current data value from the editor</span>
 
 <span class="sd">        :return: The current cell data</span>
 <span class="sd">        :rtype: object</span>
 <span class="sd">        :raises NotImplementedError: Must be implemented by subclasses</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TTkTableProxyEditWidget.proxyDispose">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.proxyDispose">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">proxyDispose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Clean up the editor widget and disconnect signals</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Clean up the editor widget and disconnect signals</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
@@ -812,59 +815,59 @@ document.write(`
 <div class="viewcode-block" id="TTkTableProxyEditWidget.isModal">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEditWidget.isModal">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">isModal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Check if the editor should be displayed modally.</span>
 
 <span class="sd">        :return: True if the editor requires modal display, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 </div>
 
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_ListBaseProxy</span><span class="p">(</span><span class="n">TTkResizableFrame</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; List-based editor for table cells</span>
+<span class="w">    </span><span class="sd">''' List-based editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkResizableFrame` with a list widget for selecting</span>
 <span class="sd">    values from a predefined set of options. Used for :py:class:`TTkCellListTypeBase` data.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;_list&#39;</span><span class="p">,</span> <span class="s1">&#39;_items&#39;</span><span class="p">,</span> <span class="s1">&#39;_value&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">,</span> <span class="s1">'_list'</span><span class="p">,</span> <span class="s1">'_items'</span><span class="p">,</span> <span class="s1">'_value'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the numeric value changes</span>
 
 <span class="sd">    :param data: The new numeric value</span>
 <span class="sd">    :type data: Union[int, float]</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">_items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">_value</span><span class="p">:</span><span class="n">TTkCellListTypeBase</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">TTkCellListTypeBase</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the list-based proxy editor</span>
+<span class="w">        </span><span class="sd">''' Initialize the list-based proxy editor</span>
 
 <span class="sd">        :param value: The cell value with list data</span>
 <span class="sd">        :type value: TTkCellListTypeBase</span>
 <span class="sd">        :param items: The list of available items</span>
 <span class="sd">        :type items: List[Any]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="n">items</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="n">w</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">_i</span><span class="o">.</span><span class="n">termWidth</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_i</span><span class="p">,</span><span class="n">TTkString</span><span class="p">)</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_i</span><span class="p">))</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
         <span class="n">h</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:(</span><span class="mi">2</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="mi">2</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;layout&#39;</span><span class="p">:</span><span class="n">TTkGridLayout</span><span class="p">()})</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">|</span><span class="p">{</span><span class="s1">'size'</span><span class="p">:(</span><span class="mi">2</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="mi">2</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="s1">'layout'</span><span class="p">:</span><span class="n">TTkGridLayout</span><span class="p">()})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_list</span> <span class="o">=</span> <span class="n">TTkList</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_list</span><span class="o">.</span><span class="n">setCurrentRow</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
@@ -872,24 +875,24 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkAbstractListItem</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItem</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle item click event from the list</span>
+<span class="w">        </span><span class="sd">''' Handle item click event from the list</span>
 
 <span class="sd">        :param item: The clicked list item</span>
 <span class="sd">        :type item: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">items</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">isModal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Check if this editor should be displayed modally</span>
+<span class="w">        </span><span class="sd">''' Check if this editor should be displayed modally</span>
 
 <span class="sd">        :return: True (list editors are modal)</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">setFocus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Set focus to the internal list widget</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Set focus to the internal list widget</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">viewport</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list</span><span class="o">.</span><span class="n">viewport</span><span class="p">())</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">viewport</span><span class="p">,</span> <span class="n">TTkWidget</span><span class="p">):</span>
             <span class="n">viewport</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
 
@@ -898,134 +901,134 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a list proxy from cell list data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a list proxy from cell list data</span>
 
 <span class="sd">        :param data: The initial list-based cell value</span>
 <span class="sd">        :type data: TTkCellListTypeBase</span>
 <span class="sd">        :return: A new list proxy instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not instance of TTkCellListTypeBase</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">TTkCellListTypeBase</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not instance of &#39;TTkCellListTypeBase&#39;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not instance of 'TTkCellListTypeBase'"</span><span class="p">)</span>
         <span class="n">sb</span> <span class="o">=</span> <span class="n">_ListBaseProxy</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">value</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">sb</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkCellListTypeBase</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current selected value from the list</span>
+<span class="w">        </span><span class="sd">''' Get the current selected value from the list</span>
 
 <span class="sd">        :return: The selected item value</span>
 <span class="sd">        :rtype: Union[float, int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span>
             <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_list</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">(),</span>
             <span class="n">items</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_BoolListProxy</span><span class="p">(</span><span class="n">_ListBaseProxy</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Boolean editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Boolean editor for table cells</span>
 
 <span class="sd">    Specialized list proxy that presents True/False choices for boolean cell values.</span>
 <span class="sd">    Displays as a compact 2-item list.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="nd">@pyTTkSlot</span><span class="p">(</span><span class="n">TTkAbstractListItem</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_itemClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="n">TTkAbstractListItem</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle boolean item selection</span>
+<span class="w">        </span><span class="sd">''' Handle boolean item selection</span>
 
 <span class="sd">        :param item: The clicked list item (True or False)</span>
 <span class="sd">        :type item: :py:class:`TTkAbstractListItem`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a boolean editor from bool data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a boolean editor from bool data</span>
 
 <span class="sd">        :param data: The initial boolean value</span>
 <span class="sd">        :type data: bool</span>
 <span class="sd">        :return: A new boolean list proxy instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a boolean</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a boolean&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a boolean"</span><span class="p">)</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">TTkCellListType</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
         <span class="n">sb</span> <span class="o">=</span> <span class="n">_BoolListProxy</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">sb</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current boolean value from the list</span>
+<span class="w">        </span><span class="sd">''' Get the current boolean value from the list</span>
 
 <span class="sd">        :return: The selected boolean value (True or False)</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_EnumListProxy</span><span class="p">(</span><span class="n">_BoolListProxy</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Enum editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Enum editor for table cells</span>
 
 <span class="sd">    Specialized list proxy that presents choices for enum cell values.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a enum editor from enum data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a enum editor from enum data</span>
 
 <span class="sd">        :param data: The initial enum value</span>
 <span class="sd">        :type data: Enum</span>
 <span class="sd">        :return: A new enum list proxy instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a enum</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not an Enum&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not an Enum"</span><span class="p">)</span>
         <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">TTkCellListType</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
         <span class="n">sb</span> <span class="o">=</span> <span class="n">_BoolListProxy</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">sb</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TextEditViewProxy</span><span class="p">(</span><span class="n">TTkTextEditView</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Text editor view for table cells</span>
+<span class="w">    </span><span class="sd">''' Text editor view for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkTextEditView` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification. Handles both plain text</span>
 <span class="sd">    and rich text (:py:class:`TTkString`) editing.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the text content changes</span>
 
 <span class="sd">    :param data: The new text value</span>
 <span class="sd">    :type data: Union[str, TTkString]</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the text edit view proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the text edit view proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_emitDataChanged</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events for navigation and data entry</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events for navigation and data entry</span>
 
 <span class="sd">        :param evt: The keyboard event</span>
 <span class="sd">        :type evt: TTkKeyEvent</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">):</span>
+<span class="sd">        '''</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
             <span class="n">_cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">textCursor</span><span class="p">()</span>
             <span class="n">_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">()</span>
             <span class="n">_line</span> <span class="o">=</span> <span class="n">_cur</span><span class="o">.</span><span class="n">anchor</span><span class="p">()</span><span class="o">.</span><span class="n">line</span>
@@ -1051,7 +1054,7 @@ document.write(`
                     <span class="k">if</span> <span class="n">_lineCount</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">_pos</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">_doc</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">()):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
                         <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">elif</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span> <span class="ow">and</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">)</span> <span class="ow">and</span>
                   <span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">ControlModifier</span> <span class="o">|</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">AltModifier</span> <span class="ow">and</span>
                   <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_M</span><span class="p">):</span>
                 <span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">=</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NoModifier</span>
@@ -1060,101 +1063,101 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_emitDataChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Emit dataChanged signal when text content changes</span>
+<span class="w">        </span><span class="sd">''' Emit dataChanged signal when text content changes</span>
 
 <span class="sd">        Converts text to string or TTkString based on formatting.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span>
         <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="k">if</span> <span class="n">txt</span><span class="o">.</span><span class="n">isPlainText</span><span class="p">()</span> <span class="k">else</span> <span class="n">txt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TextEditProxy</span><span class="p">(</span><span class="n">TTkTextEdit</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Text editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Text editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkTextEdit` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the text content changes</span>
 
 <span class="sd">    :param data: The new text value</span>
 <span class="sd">    :type data: Union[str, TTkString]</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the text edit proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the text edit proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="n">tew</span> <span class="o">=</span> <span class="n">_TextEditViewProxy</span><span class="p">()</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span> <span class="o">|</span> <span class="p">{</span><span class="s1">&#39;textEditView&#39;</span><span class="p">:</span> <span class="n">tew</span><span class="p">})</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span> <span class="o">|</span> <span class="p">{</span><span class="s1">'textEditView'</span><span class="p">:</span> <span class="n">tew</span><span class="p">})</span>
         <span class="n">tew</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">emit</span><span class="p">)</span>
         <span class="n">tew</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a text editor from string data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a text editor from string data</span>
 
 <span class="sd">        :param data: The initial text value</span>
 <span class="sd">        :type data: Union[str, TTkString]</span>
 <span class="sd">        :return: A new text editor instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a string or TTkString</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">TTkString</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a TTkStringType&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a TTkStringType"</span><span class="p">)</span>
         <span class="n">te</span> <span class="o">=</span> <span class="n">_TextEditProxy</span><span class="p">()</span>
         <span class="n">te</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">te</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkStringType</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current text value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current text value from the editor</span>
 
 <span class="sd">        :return: The current text content</span>
 <span class="sd">        :rtype: Union[str, TTkString]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toRawText</span><span class="p">()</span>
         <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="k">if</span> <span class="n">txt</span><span class="o">.</span><span class="n">isPlainText</span><span class="p">()</span> <span class="k">else</span> <span class="n">txt</span>
         <span class="k">return</span> <span class="n">val</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_SpinBoxProxy</span><span class="p">(</span><span class="n">TTkSpinBox</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Numeric editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Numeric editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkSpinBox` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the numeric value changes</span>
 
 <span class="sd">    :param data: The new numeric value</span>
 <span class="sd">    :type data: Union[int, float]</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the spin box proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the spin box proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1162,16 +1165,16 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a spin box from numeric data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a spin box from numeric data</span>
 
 <span class="sd">        :param data: The initial numeric value</span>
 <span class="sd">        :type data: Union[int, float]</span>
 <span class="sd">        :return: A new spin box instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not an int or float</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float"</span><span class="p">)</span>
         <span class="n">sb</span> <span class="o">=</span> <span class="n">_SpinBoxProxy</span><span class="p">(</span>
             <span class="n">minimum</span><span class="o">=-</span><span class="mi">1000000</span><span class="p">,</span>
             <span class="n">maximum</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span>
@@ -1179,22 +1182,22 @@ document.write(`
         <span class="k">return</span> <span class="n">sb</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current numeric value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current numeric value from the editor</span>
 
 <span class="sd">        :return: The current spin box value</span>
 <span class="sd">        :rtype: Union[int, float]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events for navigation</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events for navigation</span>
 
 <span class="sd">        :param evt: The keyboard event</span>
 <span class="sd">        :type evt: TTkKeyEvent</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">):</span>
+<span class="sd">        '''</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NoModifier</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
@@ -1203,18 +1206,18 @@ document.write(`
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_DateTime_KeyGeneric</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Mixin class for datetime widget keyboard navigation</span>
+<span class="w">    </span><span class="sd">''' Mixin class for datetime widget keyboard navigation</span>
 
 <span class="sd">    Provides common keyboard event handling for datetime-based editors</span>
 <span class="sd">    (:py:class:`TTkDate`, :py:class:`TTkTime`, :py:class:`TTkDateTime`).</span>
 <span class="sd">    Handles arrow key navigation between cells and Enter key submission.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">newKeyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">TTkKeyEvent</span><span class="p">],</span><span class="nb">bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events with custom callback and table navigation</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events with custom callback and table navigation</span>
 
 <span class="sd">        Processes Enter key for cell submission and arrow keys for navigation</span>
 <span class="sd">        to adjacent cells. Falls back to widget-specific handling via callback.</span>
@@ -1225,15 +1228,15 @@ document.write(`
 <span class="sd">        :type cb: Callable[[TTkKeyEvent], bool]</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">):</span>
+<span class="sd">        '''</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NoModifier</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
                     <span class="k">return</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="n">cb</span><span class="p">(</span><span class="n">evt</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NoModifier</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Up</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="o">.</span><span class="n">TOP</span><span class="p">)</span>
@@ -1250,32 +1253,32 @@ document.write(`
         <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_DateTime_TimeProxy</span><span class="p">(</span><span class="n">TTkTime</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">,</span> <span class="n">_DateTime_KeyGeneric</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Time editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Time editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkTime` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the time value changes</span>
 
 <span class="sd">    :param data: The new time value</span>
 <span class="sd">    :type data: datetime.time</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the time editor proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the time editor proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1283,65 +1286,65 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a time editor from time data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a time editor from time data</span>
 
 <span class="sd">        :param data: The initial time value</span>
 <span class="sd">        :type data: datetime.time</span>
 <span class="sd">        :return: A new time editor instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a datetime.time</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float"</span><span class="p">)</span>
         <span class="n">tp</span> <span class="o">=</span> <span class="n">_DateTime_TimeProxy</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">tp</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current time value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current time value from the editor</span>
 
 <span class="sd">        :return: The current time</span>
 <span class="sd">        :rtype: datetime.time</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events for navigation</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events for navigation</span>
 
 <span class="sd">        :param evt: The keyboard event</span>
 <span class="sd">        :type evt: TTkKeyEvent</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">newKeyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">)</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_DateTime_DateProxy</span><span class="p">(</span><span class="n">TTkDate</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">,</span> <span class="n">_DateTime_KeyGeneric</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Date editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Date editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkDate` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the date value changes</span>
 
 <span class="sd">    :param data: The new date value</span>
 <span class="sd">    :type data: datetime.date</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the date editor proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the date editor proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1349,65 +1352,65 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a date editor from date data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a date editor from date data</span>
 
 <span class="sd">        :param data: The initial date value</span>
 <span class="sd">        :type data: datetime.date</span>
 <span class="sd">        :return: A new date editor instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a datetime.date</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float"</span><span class="p">)</span>
         <span class="n">dp</span> <span class="o">=</span> <span class="n">_DateTime_DateProxy</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dp</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current date value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current date value from the editor</span>
 
 <span class="sd">        :return: The current date</span>
 <span class="sd">        :rtype: datetime.date</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events for navigation</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events for navigation</span>
 
 <span class="sd">        :param evt: The keyboard event</span>
 <span class="sd">        :type evt: TTkKeyEvent</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">newKeyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">)</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_DateTime_DateTimeProxy</span><span class="p">(</span><span class="n">TTkDateTime</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">,</span> <span class="n">_DateTime_KeyGeneric</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; DateTime editor for table cells</span>
+<span class="w">    </span><span class="sd">''' DateTime editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkDateTime` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the datetime value changes</span>
 
 <span class="sd">    :param data: The new datetime value</span>
 <span class="sd">    :type data: datetime.datetime</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the datetime editor proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the datetime editor proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1415,64 +1418,64 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a datetime editor from datetime data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a datetime editor from datetime data</span>
 
 <span class="sd">        :param data: The initial datetime value</span>
 <span class="sd">        :type data: datetime.datetime</span>
 <span class="sd">        :return: A new datetime editor instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a datetime.datetime</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a int or float"</span><span class="p">)</span>
         <span class="n">dtp</span> <span class="o">=</span> <span class="n">_DateTime_DateTimeProxy</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dtp</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current datetime value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current datetime value from the editor</span>
 
 <span class="sd">        :return: The current datetime</span>
 <span class="sd">        :rtype: datetime.datetime</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events for navigation</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events for navigation</span>
 
 <span class="sd">        :param evt: The keyboard event</span>
 <span class="sd">        :type evt: TTkKeyEvent</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">newKeyEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">keyEvent</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TextPickerProxy</span><span class="p">(</span><span class="n">TTkTextPicker</span><span class="p">,</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Rich text editor for table cells</span>
+<span class="w">    </span><span class="sd">''' Rich text editor for table cells</span>
 
 <span class="sd">    Extends :py:class:`TTkTextPicker` with table-specific signals</span>
 <span class="sd">    for navigation and data change notification.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;leavingTriggered&#39;</span><span class="p">,</span> <span class="s1">&#39;dataChanged&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'leavingTriggered'</span><span class="p">,</span> <span class="s1">'dataChanged'</span><span class="p">)</span>
 
     <span class="n">leavingTriggered</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the user navigates out of the editor</span>
 
 <span class="sd">    :param direction: The direction of navigation</span>
 <span class="sd">    :type direction: TTkTableEditLeaving</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="n">dataChanged</span><span class="p">:</span> <span class="n">pyTTkSignal</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This signal is emitted when the rich text content changes</span>
 
 <span class="sd">    :param data: The new TTkString value</span>
 <span class="sd">    :type data: TTkString</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the text picker proxy</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Initialize the text picker proxy</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span> <span class="o">=</span> <span class="n">pyTTkSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1480,22 +1483,22 @@ document.write(`
 
     <span class="nd">@pyTTkSlot</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_textChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Internal slot to emit dataChanged signal</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Internal slot to emit dataChanged signal</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getCellData</span><span class="p">())</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkTableProxyEditWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Factory method to create a text picker from string data</span>
+<span class="w">        </span><span class="sd">''' Factory method to create a text picker from string data</span>
 
 <span class="sd">        :param data: The initial text value</span>
 <span class="sd">        :type data: Union[str, TTkString]</span>
 <span class="sd">        :return: A new text picker instance</span>
 <span class="sd">        :rtype: :py:class:`TTkTableProxyEditWidget`</span>
 <span class="sd">        :raises ValueError: If data is not a string or TTkString</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">TTkString</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a TTkStringType&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> is not a TTkStringType"</span><span class="p">)</span>
         <span class="n">te</span> <span class="o">=</span> <span class="n">_TextPickerProxy</span><span class="p">(</span>
             <span class="n">text</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
             <span class="n">autoSize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1503,22 +1506,22 @@ document.write(`
         <span class="k">return</span> <span class="n">te</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">getCellData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkString</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get the current rich text value from the editor</span>
+<span class="w">        </span><span class="sd">''' Get the current rich text value from the editor</span>
 
 <span class="sd">        :return: The current TTkString content</span>
 <span class="sd">        :rtype: TTkString</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getTTkString</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">keyEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">TTkKeyEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Handle keyboard events for navigation</span>
+<span class="w">        </span><span class="sd">''' Handle keyboard events for navigation</span>
 
 <span class="sd">        :param evt: The keyboard event</span>
 <span class="sd">        :type evt: TTkKeyEvent</span>
 <span class="sd">        :return: True if event was handled, False otherwise</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">SpecialKey</span><span class="p">):</span>
+<span class="sd">        '''</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">TTkKeyEvent_SpecialKey</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">mod</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">NoModifier</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">TTkK</span><span class="o">.</span><span class="n">Key_Enter</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">leavingTriggered</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">TTkTableEditLeaving</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
@@ -1529,7 +1532,7 @@ document.write(`
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkProxyEditDef.html#TermTk.TTkWidgets.TTkModelView.TTkProxyEditDef">[docs]</a>
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkProxyEditDef</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Definition for table cell editor proxy</span>
+<span class="w">    </span><span class="sd">''' Definition for table cell editor proxy</span>
 
 <span class="sd">    :param types: Tuple of data types this editor handles (e.g., (int, float))</span>
 <span class="sd">    :type types: Tuple[type, ...]</span>
@@ -1537,7 +1540,7 @@ document.write(`
 <span class="sd">    :type class_def: Type[TTkTableProxyEditWidget]</span>
 <span class="sd">    :param rich: Whether this editor supports rich text formatting</span>
 <span class="sd">    :type rich: bool</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
     <span class="n">types</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
     <span class="n">class_def</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">TTkTableProxyEditWidget</span><span class="p">]</span>
     <span class="n">flags</span><span class="p">:</span> <span class="n">TTkTableProxyEditFlag</span> <span class="o">=</span> <span class="n">TTkTableProxyEditFlag</span><span class="o">.</span><span class="n">ALL</span></div>
@@ -1546,7 +1549,7 @@ document.write(`
 <div class="viewcode-block" id="TTkTableProxyEdit">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkTableProxyEdit</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Proxy class for managing table cell editors</span>
+<span class="w">    </span><span class="sd">''' Proxy class for managing table cell editors</span>
 
 <span class="sd">    Creates and configures appropriate editor widgets based on cell data type.</span>
 <span class="sd">    All editors implement the :py:class:`TTkTableProxyEditWidget` protocol.</span>
@@ -1570,23 +1573,23 @@ document.write(`
 <span class="sd">        editor = proxy.getProxyWidget(data=42, flags=TTkTableProxyEditFlag.BASE)</span>
 
 <span class="sd">        # Get editor for rich text</span>
-<span class="sd">        rich_text = TTkString(&quot;Hello&quot;, TTkColor.BOLD)</span>
+<span class="sd">        rich_text = TTkString("Hello", TTkColor.BOLD)</span>
 <span class="sd">        editor = proxy.getProxyWidget(data=rich_text, flags=TTkTableProxyEditFlag.RICH)</span>
 
 <span class="sd">        if editor:</span>
 <span class="sd">            editor.leavingTriggered.connect(handleNavigation)</span>
 <span class="sd">            editor.dataChanged.connect(handleDataChange)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    '''</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_proxies&#39;</span><span class="p">,)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_proxies'</span><span class="p">,)</span>
     <span class="n">_proxies</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TTkProxyEditDef</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Initialize the table proxy edit manager</span>
+<span class="w">        </span><span class="sd">''' Initialize the table proxy edit manager</span>
 
 <span class="sd">        Sets up the default proxy definitions for all supported data types.</span>
 <span class="sd">        Proxies are checked in order, with custom proxies taking precedence.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxies</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">TTkProxyEditDef</span><span class="p">(</span><span class="n">class_def</span><span class="o">=</span><span class="n">_ListBaseProxy</span><span class="p">,</span>   <span class="n">types</span><span class="o">=</span><span class="p">(</span><span class="n">TTkCellListTypeBase</span><span class="p">)),</span>
             <span class="n">TTkProxyEditDef</span><span class="p">(</span><span class="n">class_def</span><span class="o">=</span><span class="n">_BoolListProxy</span><span class="p">,</span>   <span class="n">types</span><span class="o">=</span><span class="p">(</span><span class="nb">bool</span><span class="p">)),</span>
@@ -1605,21 +1608,21 @@ document.write(`
 <div class="viewcode-block" id="TTkTableProxyEdit.addProxy">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.addProxy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">addProxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy</span><span class="p">:</span><span class="n">TTkProxyEditDef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Add a custom proxy definition to the manager</span>
+<span class="w">        </span><span class="sd">''' Add a custom proxy definition to the manager</span>
 
 <span class="sd">        Custom proxies are inserted at the beginning of the list,</span>
 <span class="sd">        so they take precedence over default proxies.</span>
 
 <span class="sd">        :param proxy: The proxy definition to add</span>
 <span class="sd">        :type proxy: TTkProxyEditDef</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxies</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">proxy</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TTkTableProxyEdit.getProxyWidget">
 <a class="viewcode-back" href="../../../../_autosummary/TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.html#TermTk.TTkWidgets.TTkModelView.TTkTableProxyEdit.getProxyWidget">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getProxyWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">flags</span><span class="p">:</span> <span class="n">TTkTableProxyEditFlag</span> <span class="o">=</span> <span class="n">TTkTableProxyEditFlag</span><span class="o">.</span><span class="n">BASE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TTkTableProxyEditWidget</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Get an appropriate editor widget for the given data</span>
+<span class="w">        </span><span class="sd">''' Get an appropriate editor widget for the given data</span>
 
 <span class="sd">        Searches through registered proxy definitions to find one that</span>
 <span class="sd">        matches the data type and requested flags. Returns the first match.</span>
@@ -1630,7 +1633,7 @@ document.write(`
 <span class="sd">        :type flags: TTkTableProxyEditFlag</span>
 <span class="sd">        :return: An editor widget instance, or None if no suitable editor found</span>
 <span class="sd">        :rtype: Optional[TTkTableProxyEditWidget]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">for</span> <span class="n">proxy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxies</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span> <span class="n">proxy</span><span class="o">.</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">flags</span> <span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">proxy</span><span class="o">.</span><span class="n">types</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">proxy</span><span class="o">.</span><span class="n">class_def</span><span class="o">.</span><span class="n">editWidgetFactory</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>

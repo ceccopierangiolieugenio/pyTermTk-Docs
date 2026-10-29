@@ -49,6 +49,7 @@ TTkLayout
    .. automethod:: insertWidgets
    .. automethod:: itemAt
    .. automethod:: iterWidgets
+   .. automethod:: layoutItemType
    .. automethod:: lowerWidget
    .. automethod:: parentWidget
    .. automethod:: raiseWidget

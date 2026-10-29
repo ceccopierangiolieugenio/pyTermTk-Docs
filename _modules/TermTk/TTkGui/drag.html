@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TermTk.TTkGui.drag &#8212; pyTermTk 0.50.0-a0 documentation</title>
+    <title>TermTk.TTkGui.drag &#8212; pyTermTk 0.51.0-a0 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=4f1c9dd5"></script>
+    <script src="../../../_static/documentation_options.js?v=2bd34d91"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">pyTermTk 0.50.0-a0 documentation</p>
+    <p class="title logo__title">pyTermTk 0.51.0-a0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -225,6 +225,8 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.html">TermTk.TTkCore.TTkTerm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkInput.html">TTkInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent.html">TTkKeyEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_Character.html">TTkKeyEvent_Character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkKeyEvent_SpecialKey.html">TTkKeyEvent_SpecialKey</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkMouseEvent.html">TTkMouseEvent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/TermTk.TTkCore.TTkTerm.TTkTerm.html">TTkTerm</a></li>
 </ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayout.html">TTkLayout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkLayoutItem.html">TTkLayoutItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkVBoxLayout.html">TTkVBoxLayout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/TermTk.TTkLayouts.TTkWidgetItem.html">TTkWidgetItem</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/TermTk.TTkTemplates.html">TermTk.TTkTemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -513,7 +516,7 @@ document.write(`
 <span class="c1"># Copyright (c) 2022 Eugenio Parodi &lt;ceccopierangiolieugenio AT googlemail DOT com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
 <span class="c1"># in the Software without restriction, including without limitation the rights</span>
 <span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
 <span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
@@ -522,7 +525,7 @@ document.write(`
 <span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
 <span class="c1"># copies or substantial portions of the Software.</span>
 <span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
@@ -530,7 +533,7 @@ document.write(`
 <span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
 <span class="c1"># SOFTWARE.</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TTkDrag&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkDnDEvent&#39;</span><span class="p">,</span> <span class="s1">&#39;TTkDnD&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'TTkDrag'</span><span class="p">,</span> <span class="s1">'TTkDnDEvent'</span><span class="p">,</span> <span class="s1">'TTkDnD'</span><span class="p">]</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
 
@@ -540,10 +543,10 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">TermTk.TTkCore.TTkTerm.inputmouse</span><span class="w"> </span><span class="kn">import</span> <span class="n">TTkMouseEvent</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_TTkDragDisplayWidget</span><span class="p">(</span><span class="n">TTkWidget</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_pixmap&#39;</span><span class="p">,)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_pixmap'</span><span class="p">,)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pixmap</span> <span class="o">=</span> <span class="n">TTkCanvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;[...]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pixmap</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s1">'[...]'</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pixmap</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 
@@ -562,77 +565,77 @@ document.write(`
 <div class="viewcode-block" id="TTkDnD">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkDnD</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Base class for drag and drop operations.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_data&#39;</span><span class="p">,</span> <span class="s1">&#39;_hotSpot&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_data'</span><span class="p">,</span> <span class="s1">'_hotSpot'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hotspot</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        :param data: The data attached to this Drag object, defaults to 0.</span>
 <span class="sd">        :type data: Any</span>
 <span class="sd">        :param hotSpot: The offset coordinates of the visual overlay relative to the mouse drag position.</span>
 <span class="sd">        :type hotSpot: tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hotSpot</span> <span class="o">=</span> <span class="n">hotspot</span>
 
 <div class="viewcode-block" id="TTkDnD.setData">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.setData">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        The data attached to this Drag object</span>
 
 <span class="sd">        :param data: The data attached to this Drag object</span>
 <span class="sd">        :type data: Any</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span></div>
 
 
 <div class="viewcode-block" id="TTkDnD.data">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.data">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the data attached to this Drag object</span>
 
 <span class="sd">        :return: The data attached to this Drag object</span>
 <span class="sd">        :rtype:  Any</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
 
 
 <div class="viewcode-block" id="TTkDnD.setHotSpot">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.setHotSpot">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setHotSpot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Sets the position of the hot spot relative to the top-left corner of the pixmap used to the point specified by hotspot.</span>
 
 <span class="sd">        :param pos: the hotspot position</span>
 <span class="sd">        :type pos:  tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hotSpot</span> <span class="o">=</span> <span class="n">pos</span></div>
 
 
 <div class="viewcode-block" id="TTkDnD.hotSpot">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.hotSpot">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hotSpot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the position of the hot spot relative to the top-left corner of the cursor.</span>
 
 <span class="sd">        :return: the hotspot position</span>
 <span class="sd">        :rtype:  tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hotSpot</span></div>
 
 
 <div class="viewcode-block" id="TTkDnD.clone">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnD.html#TermTk.TTkGui.TTkDnD.clone">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Clone this event</span>
 
 <span class="sd">        :return: the cloned event</span>
 <span class="sd">        :rtype:  :py:class:`TTkDnD`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="n">TTkDnD</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">hotspot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hotSpot</span><span class="p">)</span></div>
 </div>
 
@@ -640,15 +643,15 @@ document.write(`
 <div class="viewcode-block" id="TTkDnDEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkDnDEvent</span><span class="p">(</span><span class="n">TTkDnD</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Drag and Drop event class.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_pos&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="sd">    '''</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_pos'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        :param pos: The position of the mouse cursor relative to the current widget.</span>
 <span class="sd">        :type pos: tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -656,24 +659,24 @@ document.write(`
 <div class="viewcode-block" id="TTkDnDEvent.pos">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent.pos">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">pos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the position of the mouse cursor relative to the current widget.</span>
 
 <span class="sd">        :return: the position.</span>
 <span class="sd">        :rtype:  tuple[int,int]</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span></div>
 
 
 <div class="viewcode-block" id="TTkDnDEvent.clone">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDnDEvent.html#TermTk.TTkGui.TTkDnDEvent.clone">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Clone this event</span>
 
 <span class="sd">        :return: the cloned event</span>
 <span class="sd">        :rtype:  :py:class:`TTkDnDEvent`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="n">TTkDnDEvent</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">hotspot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hotSpot</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">)</span></div>
 </div>
 
@@ -681,7 +684,7 @@ document.write(`
 <div class="viewcode-block" id="TTkDrag">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TTkDrag</span><span class="p">(</span><span class="n">TTkDnD</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_pixmap&#39;</span><span class="p">,</span> <span class="s1">&#39;_showPixmap&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_pixmap'</span><span class="p">,</span> <span class="s1">'_showPixmap'</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_showPixmap</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pixmap</span> <span class="o">=</span> <span class="n">_TTkDragDisplayWidget</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
@@ -691,13 +694,13 @@ document.write(`
 <div class="viewcode-block" id="TTkDrag.setPixmap">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.setPixmap">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setPixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pixmap</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="n">TTkWidget</span><span class="p">,</span><span class="n">TTkCanvas</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Sets the pixmap used to represent the data in a drag and drop operation.</span>
 <span class="sd">        If a :py:class:`TTkWidget` is provided as pixmap, its default rendering will be used in the pixmap :py:class:`TTkCanvas`.</span>
 
 <span class="sd">        :param pixmap: the pixmap</span>
 <span class="sd">        :type  pixmap: :py:class:`TTkWidget` or :py:class:`TTkCanvas`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pixmap</span><span class="p">,</span> <span class="n">TTkWidget</span><span class="p">):</span>
             <span class="n">canvas</span> <span class="o">=</span> <span class="n">pixmap</span><span class="o">.</span><span class="n">getCanvas</span><span class="p">()</span>
             <span class="n">canvas</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span>
@@ -711,51 +714,51 @@ document.write(`
 <div class="viewcode-block" id="TTkDrag.pixmap">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.pixmap">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">pixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_TTkDragDisplayWidget</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns the pixmap used to represent the data in a drag and drop operation.</span>
 
 <span class="sd">        :return: the pixmap used to represent the data in a drag and drop operation.</span>
 <span class="sd">        :rtype:  :py:class:`TTkCanvas`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pixmap</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.visible">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.visible">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">visible</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Returns pixmap&#39;s visibility status.</span>
+<span class="w">        </span><span class="sd">'''</span>
+<span class="sd">        Returns pixmap's visibility status.</span>
 
 <span class="sd">        :return: True if the pixmap is visible, False otherwise.</span>
 <span class="sd">        :rtype:  bool</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_showPixmap</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.showPixmap">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.showPixmap">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">showPixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Shows the pixmap used to represent the data in a drag and drop operation.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_showPixmap</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.hidePixmap">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.hidePixmap">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hidePixmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Hides the pixmap used to represent the data in a drag and drop operation.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_showPixmap</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.exec">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.exec">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">exec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Starts the drag operation.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="n">TTkHelper</span><span class="o">.</span><span class="n">dndInit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 
@@ -766,7 +769,7 @@ document.write(`
 <div class="viewcode-block" id="TTkDrag.getDragEnterEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.getDragEnterEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getDragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkDnDEvent</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns a Drag and Drop event for the DragEnter event.</span>
 
 <span class="sd">        :param evt: The mouse event</span>
@@ -774,14 +777,14 @@ document.write(`
 
 <span class="sd">        :return: The Drag and Drop event</span>
 <span class="sd">        :rtype:  :py:class:`TTkDnDEvent`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toDropEvent</span><span class="p">((</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.getDragLeaveEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.getDragLeaveEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getDragLeaveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkDnDEvent</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns a Drag and Drop event for the DragLeave event.</span>
 
 <span class="sd">        :param evt: The mouse event</span>
@@ -789,14 +792,14 @@ document.write(`
 
 <span class="sd">        :return: The Drag and Drop event</span>
 <span class="sd">        :rtype:  :py:class:`TTkDnDEvent`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toDropEvent</span><span class="p">((</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.getDragMoveEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.getDragMoveEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getDragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkDnDEvent</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns a Drag and Drop event for the DragMove event.</span>
 
 <span class="sd">        :param evt: The mouse event</span>
@@ -804,14 +807,14 @@ document.write(`
 
 <span class="sd">        :return: The Drag and Drop event</span>
 <span class="sd">        :rtype:  :py:class:`TTkDnDEvent`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toDropEvent</span><span class="p">((</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TTkDrag.getDropEvent">
 <a class="viewcode-back" href="../../../_autosummary/TermTk.TTkGui.TTkDrag.html#TermTk.TTkGui.TTkDrag.getDropEvent">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">getDropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span><span class="n">TTkMouseEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTkDnDEvent</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''</span>
 <span class="sd">        Returns a Drag and Drop event for the Drop event.</span>
 
 <span class="sd">        :param evt: The mouse event</span>
@@ -819,7 +822,7 @@ document.write(`
 
 <span class="sd">        :return: The Drag and Drop event</span>
 <span class="sd">        :rtype:  :py:class:`TTkDnDEvent`</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        '''</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toDropEvent</span><span class="p">((</span><span class="n">evt</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">y</span><span class="p">))</span></div>
 </div>
 
